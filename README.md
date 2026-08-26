@@ -1,0 +1,107 @@
+# Machine verification: the fundamental-group computation in Wuebben's exotic S²×S²
+
+This repository documents an independent, machine-driven verification of the
+fundamental-group step in
+
+> B. J. Wuebben, *An exotic S²×S² and an exotic ℂP²#C̄P²*, arXiv:2608.17267,
+
+which builds on Lidman–Piccirillo, arXiv:2505.14387. The author's own code and
+certificates are at [bwuebben/exotic-s2xs2](https://github.com/bwuebben/exotic-s2xs2);
+nothing here is derived from that repository except where explicitly cited.
+This project rebuilt the geometry from scratch and checked the paper against
+the rebuild.
+
+**What this repository is:** a verification, by people and machines who are
+not the paper's author, of the historically most failure-prone step in claimed
+small exotic 4-manifolds — the fundamental-group computation — together with a
+hypothesis audit of everything downstream of it.
+
+**What this repository is not:** a claim on the theorem, which is Wuebben's,
+or a formal proof of the entire paper.
+
+## What is verified, from an independent triangulation
+
+Everything below is computed from a triangulated model built independently of
+the paper's coordinates, with proof-producing certificates that replay.
+
+* **The bundle.** The genus-2 fiber, its involution with the paper's fixed
+  points and curve actions, and the full surface bundle R are realized
+  simplicially (f-vector [9156, 116714, 356728, 403152, 153984]) and matched
+  to the paper's marked bundle by literal based monodromy action — not by
+  fingerprints. The based monodromy certificate replays 17,839 elementary
+  Tietze steps; an independently built second triangulation replays 34,735.
+* **The peripheral data.** Based meridians and longitudes for both surgery
+  tori are traced as literal simplicial loops with the paper's own whiskers.
+  The paper's sign-correction package (its §7.4 fix) is reproduced and
+  certified, and a combinatorial sweep resolves the basing double-count
+  question in the direction the paper needs.
+* **The eight filled groups.** Filling the triangulation-derived complement
+  presentation with the certified peripheral pairs proves all four n=0 sign
+  pairs, and the four adjacent half-drift systems, trivial by complete
+  confluent rewriting. KBMAG is used only as an untrusted certificate
+  generator: a small independent checker verifies every axiom, overlap,
+  rewrite trace, and final generator-to-identity rule in the exported
+  derivation DAGs. All artifacts are hash-bound and replay.
+* **Redundant second routes.** A translation mistake would have to survive
+  several structurally different implementations: an independent peripheral
+  extractor, an alternative bundle triangulation, the second based-monodromy
+  certificate, a simplex-level verifier of all 128 PL flip traces, and a
+  58-vertex marked-fiber realization matched equivariantly to the primary
+  86-vertex model.
+* **The framing lemma's algebra.** The displayed Weinstein-chart, seam, and
+  constant-momentum algebra of the paper's Lemma 8.2, and its inline
+  relative-Moser and double-cover calculations, are machine-checked; the
+  chart-independence citation is verified against ADK03 §2.1 and
+  Proposition 2.2. A self-contained referee packet states the lemma's proof
+  with each identity cross-referenced to the executable check.
+* **The downstream chain.** The deductions after simple connectivity —
+  Freedman applications, the Hambleton–Kreck classification data, the
+  intersection-form calculations, minimality and symplectic Kodaira
+  dimension, the square-zero torus lift, and the reuse of the
+  Lidman–Piccirillo Floer argument — pass a hypothesis audit with no gap
+  found; the elementary lattice and adjunction calculations are executable.
+
+## What is not claimed
+
+The remaining proof dependence is concentrated in standard smooth and
+symplectic topology, applied with hypotheses that have been checked but with
+proofs that are cited, not mechanized: local flow existence, connected-cover
+lifting, Lagrangian-neighborhood germ uniqueness, surface-bundle
+classification, elementary PL thickening and smoothing, and the quoted
+classification and Floer theorems. If the framing identification (Lemma 8.2)
+failed by j meridians, the machine certificates would remain correct for
+their literal product-framed presentations but would no longer identify those
+presentations with the paper's Lagrangian surgeries; simple connectivity, the
+homeomorphism conclusions, and the exoticness argument for the claimed
+manifolds would then be unproved. A slope-robustness scan quantifying exactly
+which discrepancies j are independently excluded is in progress and will be
+published here.
+
+The accurate one-sentence status: **the proof appears complete relative to
+explicitly named standard topology theorems, with no known project-specific
+gap.** That is a statement about verification depth, not a substitute for
+review by symplectic and 4-manifold topologists — which this repository is
+built to make cheap.
+
+## Provenance
+
+This verification was AI-assisted throughout, by Anthropic Claude models
+(Fable 5, Opus 5) and OpenAI Codex, working under human direction. The
+project keeps a commit-level provenance ledger recording which model produced
+which work (see `PROVENANCE.md`); mathematical responsibility rests with the
+human author. Certificates are designed to be checked, not trusted: every
+asserted computation ships with a replayable artifact.
+
+## Contents
+
+Code, certificates, run logs, and the verification note are being imported
+from the working repository; the layout will be documented here as it lands.
+
+## Contact
+
+John Clyde — verification@ventimath.org — [VentiMath](https://ventimath.org)
+
+## License
+
+MIT for everything in this repository. The paper and its contents are
+copyright B. J. Wuebben; this repository does not redistribute them.
