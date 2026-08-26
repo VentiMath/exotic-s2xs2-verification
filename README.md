@@ -73,9 +73,13 @@ failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
 presentations with the paper's Lagrangian surgeries; simple connectivity, the
 homeomorphism conclusions, and the exoticness argument for the claimed
-manifolds would then be unproved. A slope-robustness scan quantifying exactly
-which discrepancies j are independently excluded is in progress and will be
-published here.
+manifolds would then be unproved. A completed slope-robustness scan
+quantifies which discrepancies j are independently excluded: of 100
+meridian-shifted refillings across both half-drift families, 82 are
+certified trivial, 18 remain undecided (all perfect, all resistant to
+quotient and coset-enumeration attack), and none is nontrivial. Every shift
+touching only the second surgery torus is certified trivial; only shifts on
+the first torus produce undecided counterfactual groups.
 
 The accurate one-sentence status: **the proof appears complete relative to
 explicitly named standard topology theorems, with no known project-specific

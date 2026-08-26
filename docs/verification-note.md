@@ -98,10 +98,18 @@ the machine certificates would remain correct for the product-framed
 presentations they literally describe, but would no longer identify those
 presentations with the paper's surgeries; simple connectivity, the Freedman
 conclusions, and the exoticness argument for the claimed manifolds would
-become unproved. A slope-robustness scan — refilling the complement with the
-meridian-shifted longitudes and running the same certification pipeline —
-quantifies which discrepancies j are independently excluded; its table is
-reported with the artifacts.
+become unproved. A completed slope-robustness scan — refilling the
+complement with the meridian-shifted longitudes and running the same
+certification pipeline — quantifies which discrepancies j are independently
+excluded. Of 100 shifted cases across both half-drift families, 82 are
+certified trivial (40 by proof-producing Tietze collapse, 42 by complete
+confluent rewriting), 18 remain undecided, and none is nontrivial. The
+undecided groups are all perfect, admit no quotient onto the six smallest
+nonabelian simple groups, have no proper subgroup of index at most 8, and
+resist coset enumeration to a 12.5M-coset ceiling. Every shift touching
+only the second surgery torus is certified trivial in both families; all
+undecided cases involve a shift on the first torus. The full verdict table
+is reported with the artifacts.
 
 ## 7. The downstream audit
 
