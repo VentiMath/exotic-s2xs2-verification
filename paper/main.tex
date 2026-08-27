@@ -41,7 +41,9 @@ simplicial complex from the paper's marked-fiber data alone; the surgery
 tori, based meridians, and framed longitudes are extracted combinatorially;
 and the eight filled presentations are proved trivial by complete confluent
 rewriting, with every computation emitting a replayable proof certificate
-validated by a small independent checker. The paper's framing lemma is
+validated by a small independent checker. The author's committed scripts
+enter at exactly one point, parsed and never executed, as a cross-check of
+the dictionary of conventions read from the paper. The paper's framing lemma is
 machine-checked with its analytic normalizations rebuilt constructively and
 chart independence proved between the paper's displayed charts, and an
 exhaustive robustness scan quantifies the consequences of any framing
@@ -187,17 +189,32 @@ with the central entries cross-checked --- parsed, never executed ---
 against the author's own committed scripts, which define the same monodromy
 action, corrected relations, and sign conjugators. The three entries that
 reading could pin only by transcription --- the ordered beta twists, the
-five-chain ribbon labels, and the local twist signs --- are closed at the
-raw-paper level: a quarantined extractor reads only the paper's plain text,
-reconstructs the five-chain, involution, ordered twists, surgery tori,
-whiskers, and direction words, and a separate process compares its frozen
-output with the independently built model certificates, with reversed-order
-and reversed-sign mutations distinguished and no discrepancy found. The
-paper's Lemma~7.1 is certified rather than assumed: all 36 candidate
-equivariant ribbon rotations are enumerated, exactly four survive and all
-normalize to one marked ribbon with two invariant free-half-turn boundary
-disks, and the lemma's disk extension reduces to the Ker\'ekj\'art\'o
-periodic-disk involution theorem \cite{ConstantinKolev}.
+five-chain ribbon labels, and the local twist signs --- were then attacked
+at the raw-paper level: a quarantined extractor reads only the paper's
+plain text, reconstructs the five-chain, involution, ordered twists,
+surgery tori, whiskers, and direction words, and a separate process
+compares its frozen output with the independently built model
+certificates, with reversed-order and reversed-sign mutations
+distinguished. No discrepancy was found: the previously identified
+transcription residuals are closed relative to the paper's stated marked
+data, and what remains on this axis is independent confirmation that the
+Lidman--Piccirillo source figure carries the asserted five-chain and
+involution data. The project-specific content of the paper's Lemma~7.1 is
+certified in the same sense: all 36 candidate equivariant ribbon rotations
+are enumerated, exactly four survive and all normalize to one marked
+ribbon with two invariant free-half-turn boundary disks, so the lemma's
+finite ribbon classification and its extension hypotheses are
+machine-checked, while the source marked-data identification and the
+Ker\'ekj\'art\'o periodic-disk involution theorem \cite{ConstantinKolev}
+remain named inputs. The new artifacts replay directly from the
+repository: \texttt{verification/luttinger/paper\_coordinate\_extractor.py}
+with its frozen \texttt{paper\_coordinate\_certificate.json}, the separate
+comparison \texttt{paper\_model\_dictionary\_compare.py} with
+\texttt{paper\_model\_dictionary\_comparison.json}, and
+\texttt{lemma71\_normal\_form\_check.py} with
+\texttt{lemma71\_normal\_form\_certificate.json}, with transcripts
+\texttt{verification/runs/54-independent-paper-dictionary.txt} and
+\texttt{55-lemma71-equivariant-normal-form.txt}.
 
 \section{The framing lemma}\label{sec:framing}
 
@@ -290,7 +307,10 @@ trivial in both families --- a framing error on the second torus alone
 provably cannot change the simple-connectivity conclusion --- and every
 undecided case involves a shift on $T_\alpha$. We emphasize that these
 are counterfactual groups: the paper's own fillings are the certified
-$(0,0)$ column.
+$(0,0)$ column. The 18 undecided counterfactual groups are not evidence of
+a framing error, and they have no bearing on the $j_a=j_b=0$ proof unless
+the independent framing argument of Section~\ref{sec:framing} first
+fails.
 
 \section{The downstream audit}
 
@@ -323,6 +343,12 @@ dimension and minimality, via the audited Luttinger-surgery constructions
 \cite{ADK,HoLi}; the symplectic Thom theorem; the Rokhlin/Arf input of
 the slicing argument; and the Ozsv\'ath--Szab\'o / Lidman--Piccirillo
 Floer machinery \cite{LidmanPiccirillo}. This note does not reprove them.
+The ribbon-interpretation input is narrower than the phrase suggests: the
+redundancy section's classification certifies the implication from the
+paper's stated marked five-chain data to the equivariant normal form, so
+what this boundary retains is the elementary reading of the printed
+figures into that stated data, together with its thickening into
+complexes.
 
 Formerly listed inputs that are no longer dependencies: surface-bundle
 classification, replaced by the explicit clutching; four-dimensional
