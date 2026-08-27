@@ -32,6 +32,9 @@ reproduced exposition.
 
 GAP, KBMAG, and ACE run through the documented docker shim `bin/gap`
 (image `gapsystem/gap-docker`), invoked from `luttinger/` with
-`PATH=../bin`. The certificate *verifiers* (the derivation-DAG checker, the
-proof-producing Tietze replay, and the analytic checks) are plain Python and
-need no GAP installation.
+`PATH=../bin`. The shim bind-mounts the working directory, so the clone
+must live on a path the docker VM shares with the host (on a VM-backed
+docker such as colima, a system temp directory typically is not shared and
+GAP will report it cannot read its input file). The certificate *verifiers*
+(the derivation-DAG checker, the proof-producing Tietze replay, and the
+analytic checks) are plain Python and need no GAP installation.
