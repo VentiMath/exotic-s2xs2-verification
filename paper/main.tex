@@ -12,6 +12,8 @@
 \usepackage[hidelinks]{hyperref}
 % URLs wrap at slashes and dots only, never between the scheme and its
 % slashes, and never with an inserted hyphen.
+\DeclareUrlCommand\repopath{\urlstyle{tt}\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
+\AtBeginDocument{\UrlBreakPenalty=0 \UrlBigBreakPenalty=0 }
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
 \usepackage{booktabs}
 
@@ -41,7 +43,7 @@ simplicial complex from the paper's marked-fiber data alone; the surgery
 tori, based meridians, and framed longitudes are extracted combinatorially;
 and the eight filled presentations are proved trivial by complete confluent
 rewriting, with every computation emitting a replayable proof certificate
-validated by a small independent checker. The author's committed scripts
+validated by two independently written checkers. The author's committed scripts
 enter at exactly one point, parsed and never executed, as a cross-check of
 the dictionary of conventions read from the paper. The paper's framing lemma is
 machine-checked with its analytic normalizations rebuilt constructively and
@@ -144,7 +146,10 @@ identity. Knuth--Bendix completion (KBMAG \cite{KBMAG}, run under GAP
 exported derivation DAGs are validated by a small independent checker that
 re-verifies every input-relator axiom, inverse axiom, critical overlap,
 rewrite trace, and final generator-to-identity rule, and binds the input
-presentation by SHA-256. The checker neither imports nor runs KBMAG.
+presentation by SHA-256. The checker neither imports nor runs KBMAG. A second
+implementation, written independently in Ruby, re-verifies all 14{,}115
+retained derivation records against the same hash-bound DAGs and accepts,
+importing neither the Python checker nor any project group code.
 
 \begin{center}
 \begin{tabular}{llr@{\qquad}llr}
@@ -214,17 +219,19 @@ invariant free-half-turn boundary disks, so the lemma's finite ribbon
 classification and its extension hypotheses are machine-checked, with the
 Ker\'ekj\'art\'o periodic-disk involution theorem \cite{ConstantinKolev}
 the remaining named input now that the source marked data are audited. The new artifacts replay directly from the
-repository: \texttt{verification/luttinger/paper\_coordinate\_extractor.py}
-with its frozen \texttt{paper\_coordinate\_certificate.json}, the separate
-comparison \texttt{paper\_model\_dictionary\_compare.py} with
-\texttt{paper\_model\_dictionary\_comparison.json}, and
-\texttt{lemma71\_normal\_form\_check.py} with
-\texttt{lemma71\_normal\_form\_certificate.json}, and
-\texttt{lp\_source\_figure\_audit.py} with
-\texttt{lp\_source\_figure\_certificate.json}, with transcripts
-\texttt{verification/runs/54-independent-paper-dictionary.txt},
-\texttt{55-lemma71-equivariant-normal-form.txt}, and
-\texttt{56-lp-source-figure-audit.txt}.
+repository: \repopath{verification/luttinger/paper_coordinate_extractor.py}
+with its frozen \repopath{paper_coordinate_certificate.json}, the separate
+comparison \repopath{paper_model_dictionary_compare.py} with
+\repopath{paper_model_dictionary_comparison.json}, and
+\repopath{lemma71_normal_form_check.py} with
+\repopath{lemma71_normal_form_certificate.json}, and
+\repopath{lp_source_figure_audit.py} with
+\repopath{lp_source_figure_certificate.json}, with transcripts
+\repopath{verification/runs/54-independent-paper-dictionary.txt},
+\repopath{55-lemma71-equivariant-normal-form.txt}, and
+\repopath{56-lp-source-figure-audit.txt}. The second checker is
+\repopath{verification/luttinger/verify_certificates.rb}, with transcript
+\repopath{verification/runs/57-second-certificate-verifier.txt}.
 
 \section{The framing lemma}\label{sec:framing}
 

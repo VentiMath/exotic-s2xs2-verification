@@ -74,6 +74,11 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
   Lidman--Piccirillo v1 TeX and original vector Figure 1 directly. It recovers
   the ordered five-chain, chain-reversing involution, oriented `c` action,
   labels, and two fixed points required by Run 55, with no discrepancy.
+* **Second certificate verifier:** Run 57 rechecks all eight filled-group
+  derivation DAGs in Ruby using only its standard library. It shares no code,
+  language runtime, or group implementation with the Python checker and
+  independently accepts all 14,115 records. Four deliberate corruptions are
+  rejected at the relevant trust boundaries.
 * **Downstream implications audited:** conditional on the certified
   simple-connectivity result, the covering, intersection-form, Freedman,
   Kodaira-dimension, slicing, and reglued Heegaard Floer arguments have the
@@ -103,6 +108,7 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
 | `direct_rws/` | eight simplified presentations, completed rewriting systems, result records, and a SHA-256 manifest |
 | `proof_certificates/` | eight compressed derivation DAGs and a SHA-256 manifest for the original presentations |
 | `verify_kbmag_certificate.py` | independent checker; does not import or run KBMAG |
+| `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs |
 | `paper_bridge.py` | explicit p-whiskered octagon generators, based open-stack monodromy, and drilled-fiber R3 certificates |
 | `peripheral_bridge.py` | exact torus-slope permutation and opposite-side alpha basing checks |
 | `independent_peripheral_extractor.py` | separate derived-frontier, meridian, product-push-off, and literal-whisker extractor; imports none of the original peripheral machinery |
@@ -155,6 +161,7 @@ python3 group_attack.py direct-paper-kb-hard  # alternate ordering for one holdo
 python3 group_attack.py direct-paper-export   # durable completed systems + hashes
 python3 group_attack.py direct-paper-replay   # verify hashes, reload, and replay all eight
 python3 verify_kbmag_certificate.py proof_certificates/*.json.gz
+ruby verify_certificates.rb --negative-controls
 python3 make_proof_manifest.py --check
 python3 independent_peripheral_extractor.py --check --output independent_peripheral_certificate.json
 python3 alternative_bundle_audit.py --check --output alternative_bundle_certificate.json

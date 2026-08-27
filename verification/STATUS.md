@@ -475,12 +475,24 @@ dashed layers gives one surface crossing for `ab,bc,cd,de` and zero overlap
 for every nonconsecutive pair. Thus every marked input consumed by Run 55 is
 present in the original source; no source-to-Wuebben discrepancy was found.
 
+Run 57 closes the remaining single-checker/runtime boundary for the eight
+filled groups. `verify_certificates.rb` is a from-scratch Ruby implementation
+using only `json`, `zlib`, and other Ruby standard-library components. It
+reads the original four-generator presentations and all eight compressed
+proof DAGs directly, checks all 14,115 retained records, and reaches the same
+eight triviality verdicts as the Python checker. Its negative controls alter
+an identity root, an input-relator equation, an internal rewrite trace, and
+the presentation digest; all four are rejected.
+
 ## Next steps, in order
 
-1. **Second-implement the small proof checkers.** The 99,860-step Tietze
-   chain and all eight filled-group derivation DAGs replay, but a separate
-   implementation of the compact certificate verifier would reduce software
-   trust more efficiently than further GAP/ACE searches.
+1. **Make the large preliminary Tietze trace standalone.** The 99,859-step
+   committed trace is checked while `r_run.py` reconstructs its large input,
+   but that 99,863-generator input was not serialized in the committed
+   package. A clean second-language replay therefore requires a deterministic
+   sealed input/output bundle. This concerns the preliminary presentation
+   transport, not the Run-57 triviality proofs, which start from the committed
+   original four-generator filled presentations.
 
 2. **Leave downstream foundations downstream.** Freedman classification,
    symplectic Kodaira dimension, Thom, Rokhlin/Arf, and Heegaard Floer inputs
@@ -554,6 +566,10 @@ present in the original source; no source-to-Wuebben discrepancy was found.
   into labeled solid and hidden-side layers. It recovers the ordered
   five-chain, involution, oriented `c` action, and two fixed points required
   by Run 55. No Wuebben or model artifact is an input to this extraction.
+* **The filled-group checker has a second implementation:** Run 57 verifies
+  all 14,115 retained derivation records in Ruby without importing the Python
+  checker, compiler, GAP, KBMAG, or any project group module. It also rejects
+  four targeted certificate corruptions.
 
 Optional hygiene, no longer bearing on the conclusion:
 
@@ -648,3 +664,4 @@ Raw console output, in the order produced:
     54  independent raw-paper dictionary reconstruction
     55  Lemma 7.1 equivariant normal form (periodic-disk reduction)
     56  original Lidman--Piccirillo source-figure audit
+    57  independent Ruby verifier for all eight filled-group proof DAGs

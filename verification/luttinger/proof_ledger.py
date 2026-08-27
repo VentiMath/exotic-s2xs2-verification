@@ -81,6 +81,9 @@ NODES = {
     "M_filled_group_derivations": (
         "machine_certificate", (),
         "runs/29-independent-filled-group-certificates.txt"),
+    "M_second_filled_group_verifier": (
+        "machine_certificate", (),
+        "runs/57-second-certificate-verifier.txt"),
     "M_framing_inline_calculus": (
         "machine_certificate", (),
         "runs/35-framing-lemma-referee-packet.txt"),
@@ -166,7 +169,8 @@ NODES = {
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
     "C_pi1_V_trivial": (
         "derived_claim",
-        ("C_correct_filled_presentation", "M_filled_group_derivations"), None),
+        ("C_correct_filled_presentation", "M_filled_group_derivations",
+         "M_second_filled_group_verifier"), None),
     "C_no_square_zero_torus": (
         "derived_claim",
         ("C_pi1_V_trivial", "G_section_square_zero",

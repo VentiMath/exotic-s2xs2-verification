@@ -1,0 +1,36 @@
+# Run 57: independent Ruby verifier for all eight filled-group DAGs (2026-08-27)
+
+From `luttinger/`:
+
+```
+ruby -c verify_certificates.rb
+ruby verify_certificates.rb --negative-controls
+python3 verify_kbmag_certificate.py proof_certificates/*.json.gz
+python3 make_proof_manifest.py --check
+```
+
+Observed independent Ruby verdicts:
+
+```
+n0_y1_m1_m1  1123 records
+n0_y1_m1_p1  1075 records
+n0_y1_p1_m1   804 records
+n0_y1_p1_p1  1504 records
+n1_y2_m1_m1  1709 records
+n1_y2_m1_p1  3408 records
+n1_y2_p1_m1  1975 records
+n1_y2_p1_p1  2517 records
+
+REJECTED DELIBERATELY CORRUPTED IDENTITY ROOT
+REJECTED DELIBERATELY CORRUPTED INPUT-RELATOR EQUATION
+REJECTED DELIBERATELY CORRUPTED REWRITE TRACE
+REJECTED WRONG PRESENTATION DIGEST
+ALL RUBY FILLED-GROUP CHECKS PASSED: 14115 DAG records
+```
+
+The existing Python verifier independently returns `VERIFIED TRIVIAL` for all
+eight cases with the same record counts.
+
+The Ruby checker imports no project code and never invokes GAP, KBMAG, the
+compiler, or the Python verifier. It uses only Ruby standard-library JSON,
+gzip, SHA-256, option parsing, and temporary-file support.

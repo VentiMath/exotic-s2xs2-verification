@@ -78,7 +78,10 @@ every generator reduces to the identity. Knuth–Bendix completion (KBMAG) is
 used only as an untrusted certificate generator: the exported derivation DAGs
 are verified by an independent checker that re-validates every input-relator
 axiom, inverse axiom, critical overlap, rewrite trace, and final
-generator-to-identity rule. All artifacts are bound by SHA-256 and replay.
+generator-to-identity rule. A second checker, written independently in Ruby,
+re-verifies all 14,115 retained derivation records without importing the
+Python implementation, the compiler, GAP, or KBMAG; both accept. All
+artifacts are bound by SHA-256 and replay.
 
 ## 5. Redundancy against translation error
 
