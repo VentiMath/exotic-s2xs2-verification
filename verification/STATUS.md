@@ -166,7 +166,7 @@ replay to **3 gens / 78 relators** in 49s.
   found. Runs 43--44 directly discharge the needed chart-independence
   consequence by the fiber-dilation germ isotopy and an independent
   Liouville-coordinate route; ADK03 germ uniqueness is corroborating rather
-  than load-bearing. Runs 46--47 likewise replace lifting and local-flow
+  than necessary. Runs 46--47 likewise replace lifting and local-flow
   inputs. See `runs/22`, `runs/35`, `runs/43`--`44`, and
   `notes/framing_lemma_referee_packet_2026-08-25.md`.
 * **The peripheral bridge is now a single conventional lemma.**  The marked
@@ -519,7 +519,7 @@ the presentation digest; all four are rejected.
   Run 51's actual collar-scale checks, and the ribbon/flip interpretations.
   It records `[x,t] -> [h(x),t]` on both mapping-cylinder handles and checks
   symbolic seam and inverse equations. There is no base two-cell.
-  `T_surface_bundle` and Dehn--Nielsen--Baer are no longer load-bearing, but
+  `T_surface_bundle` and Dehn--Nielsen--Baer are no longer required, but
   Run 52 is not presented as an independent large-scale machine proof.
 * **Normal boundary/frontier:** Run 48 certifies local flatness at all 1,776
   torus simplices. Run 49 then gives the explicit level-set normal block
@@ -531,7 +531,7 @@ the presentation digest; all four are rejected.
 * **Lemma 8.2:** Runs 43--44 give independent chart/framing arguments; Run 46
   constructs the equivariant Moser field upstairs; Run 47 constructs its
   general flow by monotone inversion. No connected-cover lifting,
-  Picard--Lindelof, or ADK03 chart-independence input remains load-bearing.
+  Picard--Lindelof, or ADK03 chart-independence input remains necessary.
 * **Framing-shift robustness:** Run 45 freezes 100 auxiliary cases: 82
   certified trivial, 18 explicitly inconclusive, and zero nontrivial. These
   cases do not gate the paper's `j=0` proof.

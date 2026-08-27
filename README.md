@@ -118,7 +118,7 @@ derived-regular-neighborhood theory are no longer dependencies: the bundle
 identification is an explicit clutching, the smooth and symplectic arguments
 run entirely in the paper's already-smooth manifold, and the tubular
 boundary is constructed rather than cited. Weinstein germ uniqueness is
-corroborating rather than load-bearing — chart independence is proved
+corroborating rather than necessary — chart independence is proved
 in-project between the paper's verified charts. If the framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those

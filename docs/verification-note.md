@@ -231,7 +231,7 @@ verified charts — see §6; ADK03 remains corroboration).
 The verification was AI-assisted throughout (Anthropic Claude Fable 5 and
 Opus 5; OpenAI Codex), under human direction and with commit-level model
 provenance. Cross-model review was adversarial by design, and several
-load-bearing corrections in the record came from one model refuting the
+decisive corrections in the record came from one model refuting the
 other's assessment. Mathematical responsibility rests with the human author.
 Every asserted computation ships with a replayable certificate; no claim in
 this note depends on trusting a model.

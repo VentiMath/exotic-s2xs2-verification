@@ -52,7 +52,7 @@ theorem is being used to convert an absolute comparison into a relative one.
 
 Run 52 uses these exact representatives to construct the two
 mapping-cylinder maps and glue them directly. Thus ordinary bundle
-classification and Dehn--Nielsen--Baer are no longer load-bearing either.
+classification and Dehn--Nielsen--Baer are no longer required either.
 The elementary fact that the certified annular shear is the stated relative
 Dehn twist remains part of the already exposed labeled bistellar-trace
 interpretation, not a new smooth or relative-isotopy assumption.

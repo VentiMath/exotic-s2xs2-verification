@@ -147,7 +147,7 @@ intersection-naturality statements explicit proofs or precise citations. See
 `notes/pl_bridge_referee_packet_2026-08-25.md`.
 
 Run-52 update (2026-08-27): the standard surface-bundle classification route
-described above is no longer load-bearing. The marked homeomorphism and its
+described above is no longer required. The marked homeomorphism and its
 inverse are constructed explicitly on the alpha and beta mapping-cylinder
 handles, using the exact relative conjugacies of Run 51. The based actions
 remain independent controls; Dehn--Nielsen--Baer is not used to construct the
