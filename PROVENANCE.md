@@ -32,7 +32,7 @@ the project treats *who computed what* as part of the scientific record.
 
 The full commit-level ledger is imported with the working repository's
 history. Cross-model review was adversarial by design: each model's
-assessments were put to the other, and several load-bearing corrections in
+assessments were put to the other, and several decisive corrections in
 the record (the basing double-count resolution, the corrected blast-radius
 statement for the framing lemma) came out of exactly that exchange.
 

@@ -102,5 +102,5 @@ clutching cases. The proof ledger can therefore remove
 
 Run 52 removes `T_surface_bundle` entirely. Bundle classification and
 Dehn--Nielsen--Baer remain useful alternative explanations and diagnostics,
-but neither is load-bearing. The only gluing fact used is the elementary
+but neither is required. The only gluing fact used is the elementary
 mapping-cylinder quotient calculation written out in Run 52.

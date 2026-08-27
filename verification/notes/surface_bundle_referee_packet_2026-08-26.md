@@ -64,7 +64,7 @@ fact is not needed for the present graph base:
 Indeed, the present argument uses only
 `pi1(BDiff+(F)) = pi0(Diff+(F))`, identification of those components with
 mapping classes, and homotopy invariance of pullback bundles. No claim about
-higher homotopy groups or contractibility of `Diff_0(F)` is load-bearing.
+higher homotopy groups or contractibility of `Diff_0(F)` is required.
 
 ## 2. Why the certified actions determine the mapping classes
 

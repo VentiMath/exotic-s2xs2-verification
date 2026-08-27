@@ -88,4 +88,4 @@ The construction uses the already-listed elementary ribbon-thickening and
 labeled bistellar-trace interpretations to obtain the marked fiber map and
 the relative Dehn-twist traces. It adds no bundle-classification theorem.
 The based fundamental-group actions remain strong independent diagnostics,
-but Dehn--Nielsen--Baer is no longer load-bearing.
+but Dehn--Nielsen--Baer is no longer required.
