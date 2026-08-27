@@ -13,7 +13,8 @@
 % URLs wrap at slashes and dots only, never between the scheme and its
 % slashes, and never with an inserted hyphen.
 \DeclareUrlCommand\repopath{\urlstyle{tt}\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
-\AtBeginDocument{\UrlBreakPenalty=0 \UrlBigBreakPenalty=0 }
+\def\UrlBreakPenalty{0}\def\UrlBigBreakPenalty{0}
+\emergencystretch=1.5em
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
 \usepackage{booktabs}
 
