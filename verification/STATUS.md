@@ -631,3 +631,5 @@ Raw console output, in the order produced:
     51  direct relative marked monodromies (c and e collars)
     52  explicit marked graph clutching (symbolic assembly)
     53  interpretation dictionary with author-code cross-check
+    54  independent raw-paper dictionary reconstruction
+    55  Lemma 7.1 equivariant normal form (periodic-disk reduction)
