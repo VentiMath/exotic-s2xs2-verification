@@ -131,3 +131,9 @@ Lidman--Piccirillo v1 TeX and vector Figure 1, independently recovering every
 marked hypothesis used by Run 55. The dependency is one-way:
 LP source -> Run-56 certificate -> Run-55 normal-form argument -> marked
 bundle identification. No new theorem node is introduced.
+
+Run 57 adds `M_second_filled_group_verifier` as a second direct dependency of
+`C_pi1_V_trivial`. The independent Ruby checker replays all 14,115 records in
+the same eight proof DAGs and rejects four targeted mutations. The dependency
+is intentionally redundant with `M_filled_group_derivations`: both
+implementations must now pass before the ledger derives simple connectivity.

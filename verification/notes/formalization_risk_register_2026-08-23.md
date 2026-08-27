@@ -122,6 +122,15 @@ logical boundary of the triviality claim. Residual software risk is now the
 small checker and Python runtime, which is substantially narrower and suitable
 for a second implementation or proof-assistant port.
 
+Run-57 update: that second implementation is complete. The Ruby
+`verify_certificates.rb` shares no code or runtime with the Python checker and
+uses only Ruby's standard JSON, gzip, hashing, and collection facilities. It
+independently verifies all 14,115 records in the eight DAGs and rejects
+targeted mutations of the source digest, input-relator proof, internal rewrite
+trace, and final identity root. Residual software trust is ordinary agreement
+of two small implementations and their language runtimes, rather than a
+single custom checker.
+
 ### R3. The square-zero section — moderate geometric risk
 
 The no-torus argument needs the closed section `Gamma` to have square zero,

@@ -50,7 +50,9 @@ the paper's coordinates, with proof-producing certificates that replay.
   confluent rewriting. KBMAG is used only as an untrusted certificate
   generator: a small independent checker verifies every axiom, overlap,
   rewrite trace, and final generator-to-identity rule in the exported
-  derivation DAGs. All artifacts are hash-bound and replay.
+  derivation DAGs, and a second checker, written independently in Ruby,
+  re-verifies all 14,115 retained records without importing the Python
+  implementation. All artifacts are hash-bound and replay.
 * **Redundant second routes.** A translation mistake would have to survive
   several structurally different implementations: an independent peripheral
   extractor, an alternative bundle triangulation, the second based-monodromy

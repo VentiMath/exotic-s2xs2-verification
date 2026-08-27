@@ -1,8 +1,10 @@
 # Import provenance
 
 This directory is a curated import of the working verification repository at
-its commit `58b4fa8` ("Audit the original LP source figure
-author scripts", 2026-08-27), superseding the earlier `1bc4caf` import. Everything here — the engine under
+its commit `a9b6cb8` ("Add an independent Ruby proof verifier",
+2026-08-27), superseding the earlier `1bc4caf` and `58b4fa8` imports.
+Replaying the second checker (`luttinger/verify_certificates.rb`, run 57)
+needs only a stock Ruby 3 interpreter. Everything here — the engine under
 `luttinger/`, the certificates, the run transcripts under `runs/`, the
 referee-packet notes under `notes/`, and the provenance ledger — is the
 committed state of that repository, imported without modification except for

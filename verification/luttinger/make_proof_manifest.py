@@ -13,6 +13,7 @@ FILES = [
     ROOT / "r_presentations.json",
     ROOT / "compile_kbmag_certificate.py",
     ROOT / "verify_kbmag_certificate.py",
+    ROOT / "verify_certificates.rb",
     ROOT / "export_kbmag_proof_inputs.py",
     ROOT / "kbmag_history.py",
     ROOT / "kbmag-proof" / "Dockerfile",
