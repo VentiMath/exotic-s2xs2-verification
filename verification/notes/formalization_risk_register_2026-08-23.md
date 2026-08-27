@@ -44,6 +44,26 @@ Run 50 transports the certified marked data into the paper's already smooth
 target without smoothing the source. The remaining theorem-level inputs are
 the downstream published four-manifold theorems.
 
+Run-54 update: the three residual paper readings named by Run 53 now have a
+quarantined raw-paper reconstruction. The extractor reads no model code,
+author code, correspondence code, or previous certificate; a second process
+compares its frozen marked clutching data with Runs 34, 51, and 52 plus the
+path-level whisker certificates. Twist order and sign mutations are
+distinguished and no discrepancy is found. The remaining interpretation
+risk is therefore deeper than transcription: whether Lemma 7.1 and the
+paper's own marked-ribbon declarations correctly describe its intended
+smooth construction.
+
+Run-55 update: Lemma 7.1's finite content is now exhausted independently.
+All 36 equivariant rotation pairs are enumerated; the four admissible cases
+are orientation choices of one ribbon type, and their two disk boundaries
+carry free half-turns. The ribbon map is constructed cell by cell. The only
+surviving input for the complementary disks is the classical Kerékjártó
+periodic-disk theorem, cited in the exact form proved by
+Constantin--Kolev, together with the standard smooth branch-chart lift. This
+is an ordinary two-dimensional theorem boundary, not a project-specific
+interpretation choice.
+
 Update 2026-08-24: these ingredients and the common `y_1`/`s_2` whiskers are
 now assembled into the standalone conventional proof
 `notes/peripheral_identification_lemma_2026-08-24.md`. This closes the logical

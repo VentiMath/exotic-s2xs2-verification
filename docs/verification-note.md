@@ -97,8 +97,21 @@ dictionary: every convention read from the paper carries the certified
 computation that would fail under a rival reading, and the central entries
 are cross-checked — parsed, never executed — against the author's own
 committed scripts, which define the same actions, corrections, and sign
-conjugators. The three entries resting on transcription alone are declared
-residual rather than hidden.
+conjugators. The three entries that reading could pin only by transcription
+— the ordered beta twists, the five-chain ribbon labels, and the local twist
+signs — are then closed at the raw-paper level: a quarantined extractor
+reads only the paper's plain text, reconstructs the five-chain, involution,
+ordered twists, surgery tori, whiskers, and direction words, and a separate
+process compares its frozen output with the independently built model
+certificates. Reversed-order and reversed-sign mutations are distinguished,
+and no paper-to-model discrepancy was found. The paper's own Lemma 7.1 is
+certified rather than assumed: all 36 candidate equivariant ribbon rotations
+are enumerated, exactly four survive and all normalize to one marked ribbon
+with two invariant free-half-turn boundary disks, and the lemma's disk
+extension reduces to the classical Kerékjártó periodic-disk involution
+theorem. What remains on this axis is ordinary implementation trust — a
+checker and its review both being wrong — not a declared unverified
+reading.
 
 ## 6. The framing lemma
 
@@ -164,7 +177,8 @@ the elementary ribbon-thickening and bistellar-trace interpretations that
 read the paper's figures into complexes; the classification of surfaces; the
 collapsible-3-ball and cyclic-knot-unknot criteria behind the local-flatness
 certificates; simplicial fundamental-group presentation and Tietze theory;
-Freedman's simply connected classification with the Hambleton–Kreck
+the Kerékjártó periodic-disk involution theorem behind Lemma 7.1's disk
+extension; Freedman's simply connected classification with the Hambleton–Kreck
 finite-cyclic classification; symplectic Kodaira dimension and minimality
 (via the audited ADK / Ho–Li Luttinger-surgery constructions); the
 symplectic Thom theorem; the Rokhlin/Arf input of the slicing argument; and

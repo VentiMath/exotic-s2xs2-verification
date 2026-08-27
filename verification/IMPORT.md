@@ -1,7 +1,7 @@
 # Import provenance
 
 This directory is a curated import of the working verification repository at
-its commit `ad0ed9d` ("Record the upstream byte-identity of the parsed
+its commit `63af3bd` ("Certify Lemma 7.1's equivariant normal form
 author scripts", 2026-08-27), superseding the earlier `1bc4caf` import. Everything here — the engine under
 `luttinger/`, the certificates, the run transcripts under `runs/`, the
 referee-packet notes under `notes/`, and the provenance ledger — is the
@@ -37,8 +37,20 @@ github.com/bwuebben/exotic-s2xs2 at commit `ea1fc13d` into
 `luttinger/author_scripts/`. The certificate pins their SHA-256
 (`1a4a67d5…` and `302725da…`), and the run transcript records that the
 locally parsed copies are byte-identical to that upstream commit, so any
-fetched copy either matches and replays or visibly differs. Every other
-checker replays from this directory alone.
+fetched copy either matches and replays or visibly differs.
+
+## Replaying run 54 (the raw-paper extraction)
+
+`luttinger/paper_coordinate_extractor.py` reads only `paper_2608.17267.txt`,
+a plain-text extraction of the paper, which this import does not vendor (the
+text is the author's copyright). To replay the extraction step, produce the
+text from the paper's arXiv source for 2608.17267 and place it at
+`luttinger/paper_2608.17267.txt`. The frozen extraction certificate
+(`paper_coordinate_certificate.json`) ships, so the second, separate step —
+`paper_model_dictionary_compare.py --check`, which compares the frozen
+extraction with the model certificates — replays from this directory alone,
+as does the run-55 checker `lemma71_normal_form_check.py --check`. Every
+other checker replays from this directory alone.
 
 ## Environment note
 

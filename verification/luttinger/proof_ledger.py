@@ -25,6 +25,9 @@ NODES = {
     "T_symplectic_thom": ("external_theorem", (), None),
     "T_rokhlin_arf": ("external_theorem", (), None),
     "T_HF_mixed": ("external_theorem", (), None),
+    "T_periodic_disk_involution": (
+        "external_theorem", (),
+        "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
 
     "M_marked_fiber": ("machine_certificate", (), "runs/22-model-correspondence-and-framing.txt"),
     "M_based_monodromy": ("machine_certificate", (), "runs/12-based-generators-and-table-relations.txt"),
@@ -59,6 +62,12 @@ NODES = {
     "M_interpretation_dictionary": (
         "machine_certificate", (),
         "runs/53-interpretation-dictionary.txt"),
+    "M_independent_paper_dictionary": (
+        "machine_certificate", (),
+        "runs/54-independent-paper-dictionary.txt"),
+    "M_lemma71_normal_form": (
+        "machine_certificate", (),
+        "runs/55-lemma71-equivariant-normal-form.txt"),
     "M_complement_tietze": ("machine_certificate", (), "runs/11-proof-certificate-and-group-attacks.txt"),
     "M_peripheral_slopes": ("machine_certificate", (), "runs/20-direct-peripheral-fillings-trivial.txt"),
     "M_independent_peripheral_extraction": (
@@ -84,6 +93,11 @@ NODES = {
     "M_downstream_algebra": ("machine_certificate", (), "runs/24-downstream-theorem-audit.txt"),
     "M_section_PL_push_off": ("machine_certificate", (), "runs/28-pl-self-intersection-certificate.txt"),
 
+    "G_equivariant_normal_form": (
+        "geometric_argument",
+        ("M_lemma71_normal_form", "T_periodic_disk_involution"),
+        "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
+
     "G_marked_bundle_identification": (
         "geometric_argument",
         ("M_marked_fiber", "M_independent_marked_fiber",
@@ -91,13 +105,15 @@ NODES = {
          "M_alternative_bundle", "M_alternative_based_monodromy",
          "M_PL_flip_trace", "M_PL_theorem_hypotheses",
          "M_interpretation_dictionary",
+         "G_equivariant_normal_form",
          "G_topological_smooth_reroute",
-         "T_rotation_system_thickening", "T_elementary_bistellar_trace"),
+         "T_elementary_bistellar_trace"),
         "notes/surface_bundle_referee_packet_2026-08-26.md"),
     "G_topological_smooth_reroute": (
         "geometric_argument",
         ("M_topological_smooth_reroute", "M_relative_marked_monodromy",
-         "M_explicit_graph_clutching", "M_independent_marked_fiber",
+         "M_explicit_graph_clutching", "M_independent_paper_dictionary",
+         "M_independent_marked_fiber",
          "M_PL_flip_trace", "T_rotation_system_thickening",
          "T_elementary_bistellar_trace"),
         "notes/topological_smooth_reroute_2026-08-27.md"),
@@ -119,7 +135,8 @@ NODES = {
     "G_peripheral_identification": (
         "geometric_argument",
         ("G_marked_bundle_identification", "G_lagrangian_framing",
-         "M_peripheral_slopes", "M_independent_peripheral_extraction"),
+         "M_peripheral_slopes", "M_independent_peripheral_extraction",
+         "M_independent_paper_dictionary"),
         "notes/peripheral_identification_lemma_2026-08-24.md"),
     "G_section_square_zero": (
         "geometric_argument",

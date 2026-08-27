@@ -107,3 +107,20 @@ the exact alpha conjugacy and factorwise beta twist conjugacy make the seam
 quotients well-defined. Both handle maps restrict to the same marked fiber
 map, and the base has no two-cell. Dehn--Nielsen--Baer remains a sign- and
 mapping-class-sensitive control but is no longer a proof dependency.
+
+Run 54 adds `M_independent_paper_dictionary`. Its extractor reads only the
+raw paper text and freezes the five-chain, involution, ordered twists, torus
+labels, named whiskers, and direction words before the separate comparator
+opens Runs 34, 51, and 52. The new node feeds both the topological/smooth
+reroute and the peripheral identification. The dependency is acyclic:
+raw-paper extraction -> frozen paper certificate -> model comparison ->
+geometric conclusions. The external-theorem count is unchanged.
+
+Run 55 adds `M_lemma71_normal_form`, `G_equivariant_normal_form`, and the
+precise theorem node `T_periodic_disk_involution`. The machine node exhausts
+the five-chain rotation systems and checks the invariant disk boundaries;
+the geometric node supplies the explicit vertex-disk, edge-band, and conical
+extension construction. Its only theorem dependency is the classical
+classification of a periodic disk homeomorphism as a Euclidean isometry.
+The active external-theorem count increases from 12 to 13 because the former
+implicit disk-action assertion is now named rather than hidden.
