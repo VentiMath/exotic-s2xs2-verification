@@ -14,8 +14,9 @@
 % slashes, and never with an inserted hyphen.
 \DeclareUrlCommand\repopath{\urlstyle{tt}\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
 \def\UrlBreakPenalty{0}\def\UrlBigBreakPenalty{0}
-\emergencystretch=1.5em
-\hyphenation{OpenAI Anthropic VentiMath Wuebben Codex Claude Firestore}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
 \usepackage{booktabs}
 
