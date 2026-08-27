@@ -10,6 +10,9 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+% URLs wrap at slashes and dots only, never between the scheme and its
+% slashes, and never with an inserted hyphen.
+\AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
 \usepackage{booktabs}
 
 \newcommand{\CP}{\mathbb{CP}}
