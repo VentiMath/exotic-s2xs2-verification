@@ -1,0 +1,210 @@
+{
+  "base_and_tori": {
+    "T_alpha": {
+      "closing": "free half-rotation",
+      "fiber_curve": "c",
+      "handle": "alpha"
+    },
+    "T_beta": {
+      "closing": "pointwise product",
+      "fiber_curve": "e",
+      "handle": "beta"
+    },
+    "base_generators": [
+      "A",
+      "B"
+    ]
+  },
+  "format": "luttinger-paper-coordinate-extraction-v1",
+  "independence": {
+    "forbidden_project_imports": [],
+    "input_files": [
+      "paper_2608.17267.txt"
+    ],
+    "stdlib_imports": [
+      "argparse",
+      "ast",
+      "hashlib",
+      "json",
+      "pathlib"
+    ]
+  },
+  "marked_clutching_words": {
+    "alpha_base": "Ax",
+    "alpha_fiber": "XR",
+    "beta_base": "(R M^-epsilon r)B",
+    "beta_fiber": "sRS",
+    "corrected_relations": {
+      "M1": "AsA^-1=N^epsilon3 y",
+      "M2": "ByB^-1=M^epsilon4 (yx)",
+      "M3": "BsB^-1=(R M^epsilon r)s"
+    }
+  },
+  "marked_fiber": {
+    "c_based_word_at_V2": "XR",
+    "c_two_halves": [
+      "R",
+      "x"
+    ],
+    "complementary_disks": 2,
+    "edge_word": "xyXYrsRS",
+    "fixed_points": [
+      "p",
+      "O"
+    ],
+    "free_class_dictionary": {
+      "a": "x",
+      "b": "y",
+      "c": "xr",
+      "d": "s",
+      "e": "r"
+    },
+    "intersection_matrix_upper": {
+      "ab": 1,
+      "ac": 0,
+      "ad": 0,
+      "ae": 0,
+      "bc": 1,
+      "bd": 0,
+      "be": 0,
+      "cd": 1,
+      "ce": 0,
+      "de": 1
+    },
+    "involution": {
+      "a": "e",
+      "b": "d",
+      "c": "c",
+      "d": "b",
+      "e": "a"
+    },
+    "ordered_five_chain": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "ribbon_boundary_components": 2,
+    "ribbon_euler_characteristic": -4
+  },
+  "monodromies": {
+    "alpha": {
+      "c_action": "free half-rotation",
+      "r": "x",
+      "s": "y",
+      "x": "r",
+      "y": "s"
+    },
+    "beta_factorization": {
+      "T_a": {
+        "x": "x",
+        "y": "yx"
+      },
+      "T_b": {
+        "x": "xY",
+        "y": "y"
+      },
+      "application_order": [
+        "b",
+        "a"
+      ],
+      "derived_composite": {
+        "r": "r",
+        "s": "s",
+        "x": "Y",
+        "y": "yx"
+      },
+      "fixed_pointwise": [
+        "p",
+        "O",
+        "right handle",
+        "e"
+      ],
+      "paper_notation": "T_a o T_b",
+      "support": "left handle"
+    }
+  },
+  "mutation_controls": {
+    "identity_involution_differs": true,
+    "reverse_T_b_sign_action": {
+      "distinguished": true,
+      "x": "xyx",
+      "y": "yx"
+    },
+    "reverse_twist_order_action": {
+      "distinguished": true,
+      "x": "xY",
+      "y": "yxY"
+    },
+    "swap_s2_for_s1_changes_crossing_order": true,
+    "swap_y1_for_y2_changes_named_whisker": true
+  },
+  "named_whiskers": {
+    "M": "y_1: initial y segment to c_y",
+    "N": "s_2: initial s segment to s_e",
+    "delta": "R",
+    "delta_alternative": "x",
+    "intermediate_s_1": "initial s segment to c_s",
+    "s_edge_order": [
+      "c_s",
+      "s_e"
+    ]
+  },
+  "paper_source": {
+    "file": "paper_2608.17267.txt",
+    "line_count": 1920,
+    "sha256": "dc3b27dc5811d8a9096a47bd36256d4c20ed7676da395a6ed5a73fcded56e3af"
+  },
+  "source_windows": {
+    "cut_square_and_tori": {
+      "lines": [
+        878,
+        942
+      ],
+      "sha256": "5e977cd9042309cc2e78f7a949bd53530df20433a83801310f602c3d3fc70da1"
+    },
+    "direction_words": {
+      "lines": [
+        1026,
+        1110
+      ],
+      "sha256": "38b8dca33a6731c19da36eee387e1368b1de5bff7ecd2e7256d5520c06eb4256"
+    },
+    "equivariant_five_chain": {
+      "lines": [
+        772,
+        848
+      ],
+      "sha256": "3dcfe04c4b17ff7ee3ed1424d0e9eb8d584fb6b3aaba5273460fab4caa02c7bb"
+    },
+    "handle_dictionary": {
+      "lines": [
+        349,
+        365
+      ],
+      "sha256": "34fca48aeb2502e4eaf33b436d91c0c0b461ade44b99bd7b3c9072884f3aa1a0"
+    },
+    "octagon_and_twists": {
+      "lines": [
+        858,
+        908
+      ],
+      "sha256": "958bfc226db592427131d9c74a02e3dca0272ca82ce5c634b5a4ff83f30bc6c5"
+    },
+    "table_one": {
+      "lines": [
+        1326,
+        1466
+      ],
+      "sha256": "455747b20456df2f1f8ebf23c183edbfbf2fc4eda59f225e9545f4faa6485262"
+    },
+    "whiskers": {
+      "lines": [
+        1020,
+        1070
+      ],
+      "sha256": "d77e18f7a3c6aacbe8267f926ef1332eb8d6ca2c0a5cd3b68302d67a21746e65"
+    }
+  }
+}

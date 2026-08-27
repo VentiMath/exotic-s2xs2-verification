@@ -62,8 +62,18 @@ the paper's coordinates, with proof-producing certificates that replay.
   discriminating certified witness, and the central entries are
   cross-checked, by parsing and never executing, against the author's own
   committed scripts, which define the same actions, corrections, and sign
-  conjugators. The three entries resting on transcription alone are declared
-  residual rather than hidden.
+  conjugators. The three entries run 53 could pin only by transcription —
+  the ordered beta twists, the five-chain ribbon labels, and the local twist
+  signs — were then closed at the raw-paper level: a quarantined extractor
+  reads only the paper's text, reconstructs the five-chain, involution,
+  ordered twists, tori, whiskers, and direction words, and a separate
+  process compares its frozen output with the independently built model
+  certificates. Reversed-order and reversed-sign mutations are
+  distinguished, and no paper-to-model discrepancy was found. The paper's
+  own Lemma 7.1 is certified rather than assumed: all 36 candidate
+  equivariant ribbon rotations are enumerated, exactly four survive and all
+  normalize to one marked ribbon, and the lemma's disk extension reduces to
+  the classical Kerékjártó periodic-disk theorem.
 * **The framing lemma's analysis.** The displayed Weinstein-chart, seam, and
   constant-momentum algebra of the paper's Lemma 8.2 are machine-checked, and
   its inline normalizations are rebuilt constructively: the Moser flow is the
@@ -89,9 +99,10 @@ cited, not mechanized: the elementary ribbon-thickening and bistellar-trace
 interpretations that read the paper's figures into complexes; the
 classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
 criteria behind the local-flatness certificates; simplicial
-fundamental-group presentation and Tietze theory; and the quoted
-Freedman–Hambleton–Kreck, symplectic Kodaira-dimension, symplectic Thom,
-Rokhlin/Arf, and Heegaard Floer theorems. Surface-bundle classification,
+fundamental-group presentation and Tietze theory; the Kerékjártó
+periodic-disk involution theorem behind Lemma 7.1's disk extension; and the
+quoted Freedman–Hambleton–Kreck, symplectic Kodaira-dimension, symplectic
+Thom, Rokhlin/Arf, and Heegaard Floer theorems. Surface-bundle classification,
 four-dimensional smoothing, intersection-form naturality, and
 derived-regular-neighborhood theory are no longer dependencies: the bundle
 identification is an explicit clutching, the smooth and symplectic arguments

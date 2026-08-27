@@ -60,6 +60,16 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
   its inverse on both mapping-cylinder handles, checks their seam equations,
   and glues them on the common marked fiber. Surface-bundle classification
   and Dehn--Nielsen--Baer are now diagnostic alternatives, not dependencies.
+* **Paper dictionary independently reconstructed:** Run 54 reads only the raw
+  paper text, reconstructs the five-chain, involution, ordered twists, tori,
+  named whiskers, and directions, and only then compares the frozen result
+  with Runs 34, 51, and 52. Reversed-order and reversed-sign mutations are
+  distinguished, and no paper-to-model discrepancy was found.
+* **Lemma 7.1 reduced to a precise classical theorem:** Run 55 enumerates all
+  36 equivariant ribbon rotations. Exactly four survive, all differing only
+  by curve orientations; every one has two invariant 10-edge disk faces with
+  free half-turn boundary action. The only remaining input is the published
+  Kerékjártó classification of periodic disk homeomorphisms.
 * **Downstream implications audited:** conditional on the certified
   simple-connectivity result, the covering, intersection-form, Freedman,
   Kodaira-dimension, slicing, and reglued Heegaard Floer arguments have the
@@ -111,6 +121,12 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
 | `relative_marking_certificate.json` | reproducible Run-51 relative-monodromy certificate |
 | `graph_clutching_check.py` | explicit two-handle mapping-cylinder homeomorphism and inverse checker |
 | `graph_clutching_certificate.json` | reproducible Run-52 graph-clutching certificate |
+| `paper_coordinate_extractor.py` | quarantined raw-paper marked-coordinate extractor |
+| `paper_coordinate_certificate.json` | frozen Run-54 paper-coordinate reconstruction |
+| `paper_model_dictionary_compare.py` | separate comparison against Runs 34, 51, 52, and path evidence |
+| `paper_model_dictionary_comparison.json` | reproducible Run-54 comparison certificate |
+| `lemma71_normal_form_check.py` | exhaustive equivariant five-chain ribbon classifier |
+| `lemma71_normal_form_certificate.json` | reproducible Run-55 Lemma 7.1 certificate |
 | `model_correspondence.py` | global marked-bundle, monodromy, boundary, and surgery-torus correspondence audit |
 | `framing_check.py` | exact relative-Moser, double-cover, coordinate, seam, and push-off calculus for the paper's framing lemma |
 | `presentation_search.py` | proof-oriented Nielsen and relator-multiplication search |

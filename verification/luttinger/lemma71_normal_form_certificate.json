@@ -1,0 +1,126 @@
+{
+  "canonical_surface": {
+    "cell_counts": {
+      "bands": 10,
+      "disk_faces": 2,
+      "vertices": 6
+    },
+    "complementary_faces": "two disks",
+    "euler_characteristic": -2,
+    "face_involution": "each 10-cycle shifted freely by 5",
+    "fixed_points_after_coning": [
+      "p",
+      "O"
+    ],
+    "genus": 2
+  },
+  "checker_independence": {
+    "project_imports": [],
+    "sha256": "ae352c6f0f75f95a15ee5a1c4ab116334b42986423448f2f79a7b4c58dccd7c9",
+    "stdlib_imports": [
+      "argparse",
+      "ast",
+      "hashlib",
+      "itertools",
+      "json",
+      "pathlib"
+    ]
+  },
+  "comparison_to_runs_34_54": "PASS",
+  "explicit_extensions": {
+    "cone_formula": "[z,t] -> [f(z),t] on each labeled disk",
+    "equivariance_identity": "cone(f)(i(z),t)=i(cone(f)(z,t))",
+    "face_boundary": "equivariant cyclic maps of two 10-cycles",
+    "ribbon": "map vertex disks cyclically and edge bands by product coordinates"
+  },
+  "format": "luttinger-lemma71-normal-form-v1",
+  "input_hashes": {
+    "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "paper_coordinate_certificate.json": "02c2fa24054a923b95942078bc2aad2a9d744aa80af6bc592e5a5bf222a07475"
+  },
+  "remaining_general_input": "classification/linearization of an orientation-preserving order-two disk diffeomorphism with one interior fixed point",
+  "result": "PASS: Lemma 7.1 reduced to the periodic-disk involution theorem",
+  "rotation_enumeration": {
+    "admissible_equivariant_transverse_systems": 4,
+    "all_normalize_to_one_oriented_ribbon_system": true,
+    "raw_independent_rotation_pairs": 36,
+    "systems": [
+      {
+        "face_half_turn_shifts": [
+          5,
+          5
+        ],
+        "face_lengths": [
+          10,
+          10
+        ],
+        "independent_crossing_bits": [
+          0,
+          0
+        ],
+        "orientation_normalization": {
+          "reverse_a_and_e": false,
+          "reverse_b_and_d": false,
+          "reverse_c": false
+        }
+      },
+      {
+        "face_half_turn_shifts": [
+          5,
+          5
+        ],
+        "face_lengths": [
+          10,
+          10
+        ],
+        "independent_crossing_bits": [
+          0,
+          1
+        ],
+        "orientation_normalization": {
+          "reverse_a_and_e": false,
+          "reverse_b_and_d": false,
+          "reverse_c": true
+        }
+      },
+      {
+        "face_half_turn_shifts": [
+          5,
+          5
+        ],
+        "face_lengths": [
+          10,
+          10
+        ],
+        "independent_crossing_bits": [
+          1,
+          0
+        ],
+        "orientation_normalization": {
+          "reverse_a_and_e": true,
+          "reverse_b_and_d": false,
+          "reverse_c": false
+        }
+      },
+      {
+        "face_half_turn_shifts": [
+          5,
+          5
+        ],
+        "face_lengths": [
+          10,
+          10
+        ],
+        "independent_crossing_bits": [
+          1,
+          1
+        ],
+        "orientation_normalization": {
+          "reverse_a_and_e": true,
+          "reverse_b_and_d": false,
+          "reverse_c": true
+        }
+      }
+    ]
+  }
+}

@@ -39,8 +39,10 @@ tori, based meridians, and framed longitudes are extracted combinatorially;
 and the eight filled presentations are proved trivial by complete confluent
 rewriting, with every computation emitting a replayable proof certificate
 validated by a small independent checker. The paper's framing lemma is
-machine-checked down to one remaining standard input, and an exhaustive
-robustness scan quantifies the consequences of any framing discrepancy.
+machine-checked with its analytic normalizations rebuilt constructively and
+chart independence proved between the paper's displayed charts, and an
+exhaustive robustness scan quantifies the consequences of any framing
+discrepancy.
 The deductions downstream of simple connectivity pass a hypothesis audit.
 Stated carefully: the proof appears complete relative to explicitly named
 standard topology theorems, with no known project-specific gap. The
@@ -180,8 +182,19 @@ an interpretation dictionary in which every convention read from the paper
 carries the certified computation that would fail under a rival reading,
 with the central entries cross-checked --- parsed, never executed ---
 against the author's own committed scripts, which define the same monodromy
-action, corrected relations, and sign conjugators. The three entries
-resting on transcription alone are declared residual rather than hidden.
+action, corrected relations, and sign conjugators. The three entries that
+reading could pin only by transcription --- the ordered beta twists, the
+five-chain ribbon labels, and the local twist signs --- are closed at the
+raw-paper level: a quarantined extractor reads only the paper's plain text,
+reconstructs the five-chain, involution, ordered twists, surgery tori,
+whiskers, and direction words, and a separate process compares its frozen
+output with the independently built model certificates, with reversed-order
+and reversed-sign mutations distinguished and no discrepancy found. The
+paper's Lemma~7.1 is certified rather than assumed: all 36 candidate
+equivariant ribbon rotations are enumerated, exactly four survive and all
+normalize to one marked ribbon with two invariant free-half-turn boundary
+disks, and the lemma's disk extension reduces to the Ker\'ekj\'art\'o
+periodic-disk involution theorem \cite{ConstantinKolev}.
 
 \section{The framing lemma}\label{sec:framing}
 
@@ -298,7 +311,9 @@ proofs: the elementary ribbon-thickening and bistellar-trace
 interpretations that read the paper's figures into complexes; the
 classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
 criteria behind the local-flatness certificates; simplicial
-fundamental-group presentation and Tietze theory; Freedman's simply
+fundamental-group presentation and Tietze theory; the Ker\'ekj\'art\'o
+periodic-disk involution theorem \cite{ConstantinKolev} behind
+Lemma~7.1's disk extension; Freedman's simply
 connected classification \cite{Freedman} with the Hambleton--Kreck
 finite-cyclic classification \cite{HK88,HK93}; symplectic Kodaira
 dimension and minimality, via the audited Luttinger-surgery constructions
@@ -360,6 +375,12 @@ D.~Auroux, S.~K.~Donaldson, and L.~Katzarkov,
 \emph{Luttinger surgery along Lagrangian tori and non-isotopy for singular
 symplectic plane curves},
 Math. Ann. \textbf{326} (2003), 185--203.
+
+\bibitem{ConstantinKolev}
+A.~Constantin and B.~Kolev,
+\emph{The theorem of Ker\'ekj\'art\'o on periodic homeomorphisms of the
+disc and the sphere},
+Enseign.\ Math.\ (2) \textbf{40} (1994), 193--204.
 
 \bibitem{Luttinger}
 K.~M.~Luttinger,

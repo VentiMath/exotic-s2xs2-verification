@@ -1,0 +1,44 @@
+# Run 54: independent raw-paper reconstruction of the model dictionary (2026-08-27)
+
+Commands:
+
+```
+python3 luttinger/paper_coordinate_extractor.py --check
+python3 luttinger/paper_model_dictionary_compare.py --check
+```
+
+Result:
+
+```
+PASS: raw-paper five-chain, involution, and handle dictionary reconstructed
+PASS: T_b-first composite is x -> y^-1, y -> yx
+PASS: c/e tori, y_1/s_2 whiskers, and named directions reconstructed
+PASS: reversed twist order and reversed T_b sign are distinguished
+NO MODEL OR PRIOR CERTIFICATE MODULE IMPORTED
+PASS: Run 34 marked five-chain and involution
+PASS: Run 51 relative markings and ordered beta action
+PASS: Run 52 marked clutching tokens
+PASS: Runs 30/15 literal whiskers and selected alpha half
+PASS: Runs 12/14/16 corrected relations and direction words
+NO PAPER-TO-MODEL DICTIONARY DISCREPANCY
+```
+
+The extractor uses only the Python standard library and reads only
+`paper_2608.17267.txt`. The comparison is a separate process which reads the
+frozen extraction before consulting model certificates. This closes the
+three residual entries declared by Run 53 at the raw-paper-to-model level:
+ordered beta twists, five-chain/ribbon labels, and local twist signs.
+
+Certificate SHA-256 values:
+
+```
+paper_coordinate_certificate.json
+02c2fa24054a923b95942078bc2aad2a9d744aa80af6bc592e5a5bf222a07475
+
+paper_model_dictionary_comparison.json
+48486e703889ed96717f4a82f0f1378a64dcdc45bb0bbb5d6cdb19c0f032749c
+```
+
+Detailed note:
+
+`notes/independent_paper_dictionary_2026-08-27.md`

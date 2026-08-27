@@ -1,0 +1,47 @@
+{
+  "comparisons": {
+    "beta_zero_e_drift": "IDENTICAL",
+    "paper_coordinate_direction_words": "IDENTICAL Ax and (r^-1 M r)B",
+    "run15_alpha_half_drift": "IDENTICAL Ax; opposite half distinguished",
+    "run30_M_whisker": "IDENTICAL literal y_1",
+    "run30_N_whisker": "IDENTICAL literal s_2",
+    "run34_involution_and_fixed_points": "IDENTICAL",
+    "run34_ordered_five_chain_intersections": "IDENTICAL",
+    "run51_alpha_c_collar_action": "IDENTICAL free half-rotation",
+    "run51_beta_action": "IDENTICAL: x->y^-1,y->yx,r->r,s->s",
+    "run51_beta_factor_order": "IDENTICAL: b then a",
+    "run51_e_collar": "paper pointwise fixed; model literal product",
+    "run52_alpha_marked_seam": "IDENTICAL on a,b,c halves,d,e,p,O",
+    "run52_beta_twist_tokens": "IDENTICAL after local sign calibration",
+    "table1_corrected_relations": "IDENTICAL in one coherent sign convention"
+  },
+  "extractor_independence_audit": {
+    "extractor_sha256": "3b50623572c3f35f47aa255cb9078c3dab9d171ff15170b1d0c4151de930912c",
+    "forbidden_input_filenames_present": [],
+    "stdlib_imports": [
+      "argparse",
+      "ast",
+      "hashlib",
+      "json",
+      "pathlib"
+    ]
+  },
+  "format": "luttinger-paper-model-dictionary-comparison-v1",
+  "interpretation_controls": {
+    "extract_then_compare_separation": true,
+    "no_discrepancy": true,
+    "paper_source_not_paper_data_summary": true,
+    "twist_composite_recomputed_not_copied": true
+  },
+  "source_evidence": {
+    "graph_clutching_certificate.json": "08b33f456680012e81ca82cff1cd4482c89b9db45a001984df9e608f31f9d7c5",
+    "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "independent_peripheral_certificate.json": "e99355c3a963bd498855426b084e86fabbf64745a886dcb2ad639457c82cf7bf",
+    "paper_coordinate_certificate.json": "02c2fa24054a923b95942078bc2aad2a9d744aa80af6bc592e5a5bf222a07475",
+    "relative_marking_certificate.json": "13365e912b1c2c85eebf955475cf28f5e8edf4060800c6cbb53edc8e5e1c7fb6",
+    "runs/12-based-generators-and-table-relations.txt": "81c5e260c359ead0a188468413e9a97f47c2360495497c0b1fc1b35181b6c56d",
+    "runs/14-M1-connector-and-completion.txt": "925dae5dbda22d73812e4f176d18d07facdef1fbb1651d8236b8ec64a1cb4c60",
+    "runs/15-alpha-filling-direction.txt": "d37e8f65d99d6e1c83997e8b5a1e6ff8f2af1546e523cb97e079152228c395b9",
+    "runs/16-paper-fillings-trivial.txt": "9cf3a34ac00d0b3b1c965fa9a98f35139529456a4dc3847af201be5698e909d9"
+  }
+}

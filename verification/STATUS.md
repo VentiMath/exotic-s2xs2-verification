@@ -445,6 +445,27 @@ is not a foundational formal proof, but every construction-specific
 hypothesis currently used at the remaining theorem boundaries has a finite
 certificate.
 
+Run 54 independently reconstructs the paper-to-model dictionary without
+importing or reading the existing model, correspondence code, authors'
+scripts, or prior certificates. Its raw-paper result is frozen before a
+separate process compares the marked five-chain, twist order and signs,
+surgery tori, `y_1`/`s_2` whiskers, and direction words with Runs 34, 51, and
+52 and the path-level certificates. The comparison is exact, while mutation
+controls distinguish the two closest rival twist readings. No discrepancy
+was found.
+
+Run 55 then attacks Lemma 7.1 rather than assuming it. A standard-library-only
+checker enumerates all 36 independent cyclic-order pairs for the abstract
+five-chain. Exactly four satisfy transversality, the chain-reversing
+involution, two invariant faces, and orientation preservation, and all four
+normalize to one marked ribbon by orienting the curves successively. Each
+face is a 10-cycle on which the involution is the free shift by five. The
+remaining input is now the exact classical periodic-disk theorem of
+Kerékjártó (in the modern proof of Constantin--Kolev): an
+orientation-preserving order-two disk action with one fixed point is
+conjugate to the half-turn. Relative to that standard two-dimensional
+theorem, Lemma 7.1 is proved.
+
 ## Next steps, in order
 
 1. **Second-implement the small proof checkers.** The 99,860-step Tietze
@@ -505,6 +526,20 @@ certificate.
   word order (action pinned, word not), the ribbon figure transcription, and
   the local twist signs. See `runs/53` and
   `notes/interpretation_dictionary_2026-08-27.md`.
+* **Run 53's three paper-reading residuals were independently attacked:**
+  Run 54 quarantines a fresh extractor to the raw paper text, reconstructs
+  the ordered beta word, ribbon labels, and local twist signs, and compares
+  only its frozen output with Runs 34, 51, and 52. The results agree exactly;
+  reverse-order and reverse-sign controls fail as they should. The remaining
+  At that stage, the remaining boundary was the mathematical correctness of
+  the paper's own Lemma 7.1 and marked-ribbon declarations, rather than their
+  transcription into this model; Run 55 addresses it next.
+* **Lemma 7.1's marked-ribbon boundary is closed:** Run 55 exhausts the
+  compatible rotation systems, constructs the ribbon map on vertex disks and
+  bands, and verifies the two invariant free-half-turn boundary cycles. Its
+  disk extension is reduced to the explicitly cited periodic-disk involution
+  theorem, with the smooth branch-chart lift written out in the accompanying
+  note.
 
 Optional hygiene, no longer bearing on the conclusion:
 
