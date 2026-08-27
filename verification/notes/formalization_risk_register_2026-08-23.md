@@ -64,6 +64,15 @@ Constantin--Kolev, together with the standard smooth branch-chart lift. This
 is an ordinary two-dimensional theorem boundary, not a project-specific
 interpretation choice.
 
+Run-56 update: the marked hypotheses supplied to Run 55 are independently
+recovered from the immutable Lidman--Piccirillo v1 source. The original TeX
+states the involution action, oriented preservation of `c`, and two fixed
+points; the original vector Figure 1 has exactly the consecutive solid-layer
+crossings and no nonconsecutive overlaps. The source audit reads neither
+Wuebben's paper nor any project model. The former LP-figure transcription
+risk is therefore reduced to the standard diagram convention that dashed
+arcs are hidden-side projections, not extra intersections on the surface.
+
 Update 2026-08-24: these ingredients and the common `y_1`/`s_2` whiskers are
 now assembled into the standalone conventional proof
 `notes/peripheral_identification_lemma_2026-08-24.md`. This closes the logical

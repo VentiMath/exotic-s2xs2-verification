@@ -101,3 +101,12 @@ octagon are finite and replayable. The only general input is the published
 periodic-disk involution theorem (plus routine smooth disk extension and
 invariant-metric linearization). Relative to that standard two-dimensional
 theorem, Lemma 7.1 is proved.
+
+## Run 56 source update
+
+Run 56 independently checks that the hypotheses above are not merely
+Wuebben's transcription: the immutable Lidman--Piccirillo v1 TeX explicitly
+states the involution action, oriented preservation of `c`, and two fixed
+points, while the original vector Figure 1 realizes exactly the ordered
+five-chain intersections. Thus the remaining input to this lemma is the
+periodic-disk theorem, not an unchecked source-figure identification.

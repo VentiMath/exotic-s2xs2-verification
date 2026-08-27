@@ -1,0 +1,243 @@
+{
+  "checker_independence": {
+    "project_imports": [],
+    "sha256": "f406e0ed6c6ccfb8abe0a35893cb059eb42715cb3cd8b4802f4674e2b38d859b",
+    "stdlib_imports": [
+      "argparse",
+      "ast",
+      "hashlib",
+      "json",
+      "pathlib",
+      "re",
+      "subprocess",
+      "tempfile",
+      "xml.etree.ElementTree"
+    ]
+  },
+  "format": "luttinger-lp-source-figure-audit-v1",
+  "original_vector_figure": {
+    "curve_pixel_bboxes": {
+      "a": [
+        253,
+        338,
+        332,
+        478
+      ],
+      "b": [
+        178,
+        210,
+        432,
+        419
+      ],
+      "c": [
+        346,
+        284,
+        636,
+        378
+      ],
+      "d": [
+        552,
+        223,
+        806,
+        433
+      ],
+      "e": [
+        627,
+        351,
+        706,
+        492
+      ]
+    },
+    "dark_blue_vector_elements": 7,
+    "dash_semantics": "dashed vector pieces are hidden-side projections; only the solid-solid component is a surface crossing",
+    "fixed_point_dots": {
+      "bottom_center": [
+        486.932,
+        514.001
+      ],
+      "common_axis_x": 486.932,
+      "count": 2,
+      "top_center": [
+        486.932,
+        117.792
+      ]
+    },
+    "nonconsecutive_overlap_pixels": {
+      "ac": 0,
+      "ad": 0,
+      "ae": 0,
+      "bd": 0,
+      "be": 0,
+      "ce": 0
+    },
+    "surface_intersections": {
+      "ab": {
+        "dashed_overlap_pixels": 22,
+        "dashed_projection_overlap_components_excluded": 1,
+        "single_pixel_antialias_components_ignored": 0,
+        "visible_bbox": [
+          254,
+          407,
+          258,
+          412
+        ],
+        "visible_overlap_pixels": 20,
+        "visible_surface_crossing_components": 1
+      },
+      "bc": {
+        "dashed_overlap_pixels": 8,
+        "dashed_projection_overlap_components_excluded": 1,
+        "single_pixel_antialias_components_ignored": 1,
+        "visible_bbox": [
+          424,
+          286,
+          428,
+          289
+        ],
+        "visible_overlap_pixels": 16,
+        "visible_surface_crossing_components": 1
+      },
+      "cd": {
+        "dashed_overlap_pixels": 10,
+        "dashed_projection_overlap_components_excluded": 1,
+        "single_pixel_antialias_components_ignored": 0,
+        "visible_bbox": [
+          558,
+          293,
+          563,
+          296
+        ],
+        "visible_overlap_pixels": 15,
+        "visible_surface_crossing_components": 1
+      },
+      "de": {
+        "dashed_overlap_pixels": 21,
+        "dashed_projection_overlap_components_excluded": 1,
+        "single_pixel_antialias_components_ignored": 0,
+        "visible_bbox": [
+          628,
+          421,
+          632,
+          425
+        ],
+        "visible_overlap_pixels": 20,
+        "visible_surface_crossing_components": 1
+      }
+    },
+    "svg_dimensions": [
+      1008,
+      612
+    ],
+    "tex_label_binding": {
+      "a": {
+        "distance_to_named_layer_pixels": 20.189,
+        "vector_point": [
+          298.754,
+          498.189
+        ]
+      },
+      "b": {
+        "distance_to_named_layer_pixels": 24.791,
+        "vector_point": [
+          412.565,
+          185.209
+        ]
+      },
+      "c": {
+        "distance_to_named_layer_pixels": 56.112,
+        "vector_point": [
+          540.602,
+          227.888
+        ]
+      },
+      "d": {
+        "distance_to_named_layer_pixels": 37.791,
+        "vector_point": [
+          753.998,
+          185.209
+        ]
+      },
+      "e": {
+        "distance_to_named_layer_pixels": 8.161,
+        "vector_point": [
+          711.319,
+          498.189
+        ]
+      }
+    }
+  },
+  "remaining_boundary": "standard interpretation of the original handle projection: dashes denote hidden-side projection rather than extra surface crossings",
+  "result": "PASS: original LP source supplies every Run-55 marked input",
+  "run55_hypotheses": {
+    "c_preserved_with_orientation": true,
+    "exactly_two_fixed_points": true,
+    "involution_reverses_chain_and_preserves_c": true,
+    "ordered_five_chain_intersections": {
+      "ab": 1,
+      "ac": 0,
+      "ad": 0,
+      "ae": 0,
+      "bc": 1,
+      "bd": 0,
+      "be": 0,
+      "cd": 1,
+      "ce": 0,
+      "de": 1
+    },
+    "source_labels_match": true
+  },
+  "source": {
+    "file_hashes": {
+      "main.tex": "183f91362b748f7d633bfd12553ee5abb47ba6835607753eecb4bf04e385dcca",
+      "morecurves.pdf": "40ec26c50b735e9f8a3303dd559d668af5abb45d5b78d2c39c30665156963cca"
+    },
+    "paper": "Lidman--Piccirillo, arXiv:2505.14387v1",
+    "retrieval": "https://arxiv.org/e-print/2505.14387v1"
+  },
+  "tex_declarations": {
+    "c_fixed_setwise_and_with_orientation": true,
+    "curve_names": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "figure_asset": "morecurves.pdf at scale 0.2",
+    "fixed_points_declared": 2,
+    "involution_curve_action": {
+      "a": "e",
+      "b": "d",
+      "c": "c",
+      "d": "b",
+      "e": "a"
+    },
+    "surface_declared_genus": 2,
+    "tikz_label_positions": {
+      "a": [
+        2.1,
+        0.8
+      ],
+      "b": [
+        2.9,
+        3.0
+      ],
+      "c": [
+        3.8,
+        2.7
+      ],
+      "d": [
+        5.3,
+        3.0
+      ],
+      "e": [
+        5.0,
+        0.8
+      ],
+      "phi": [
+        4.0,
+        4.4
+      ]
+    }
+  }
+}

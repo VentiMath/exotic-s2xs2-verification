@@ -68,6 +68,9 @@ NODES = {
     "M_lemma71_normal_form": (
         "machine_certificate", (),
         "runs/55-lemma71-equivariant-normal-form.txt"),
+    "M_lp_source_figure": (
+        "machine_certificate", (),
+        "runs/56-lp-source-figure-audit.txt"),
     "M_complement_tietze": ("machine_certificate", (), "runs/11-proof-certificate-and-group-attacks.txt"),
     "M_peripheral_slopes": ("machine_certificate", (), "runs/20-direct-peripheral-fillings-trivial.txt"),
     "M_independent_peripheral_extraction": (
@@ -95,7 +98,8 @@ NODES = {
 
     "G_equivariant_normal_form": (
         "geometric_argument",
-        ("M_lemma71_normal_form", "T_periodic_disk_involution"),
+        ("M_lemma71_normal_form", "M_lp_source_figure",
+         "T_periodic_disk_involution"),
         "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
 
     "G_marked_bundle_identification": (

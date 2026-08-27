@@ -1,7 +1,7 @@
 # Import provenance
 
 This directory is a curated import of the working verification repository at
-its commit `63af3bd` ("Certify Lemma 7.1's equivariant normal form
+its commit `58b4fa8` ("Audit the original LP source figure
 author scripts", 2026-08-27), superseding the earlier `1bc4caf` import. Everything here — the engine under
 `luttinger/`, the certificates, the run transcripts under `runs/`, the
 referee-packet notes under `notes/`, and the provenance ledger — is the
@@ -49,8 +49,18 @@ text from the paper's arXiv source for 2608.17267 and place it at
 (`paper_coordinate_certificate.json`) ships, so the second, separate step —
 `paper_model_dictionary_compare.py --check`, which compares the frozen
 extraction with the model certificates — replays from this directory alone,
-as does the run-55 checker `lemma71_normal_form_check.py --check`. Every
-other checker replays from this directory alone.
+as does the run-55 checker `lemma71_normal_form_check.py --check`.
+
+## Replaying run 56 (the Lidman–Piccirillo source-figure audit)
+
+`luttinger/lp_source_figure_audit.py` reads only the original `main.tex`
+and `morecurves.pdf` from the immutable arXiv:2505.14387v1 source archive,
+which this import does not vendor (the files are Lidman–Piccirillo's
+copyright). To replay, fetch and extract the v1 e-print and pass
+`--source-dir`; the checker refuses to run unless the two input hashes
+match the pinned values, and it needs poppler (`pdftocairo`) and
+ImageMagick for the vector separation. Every other checker replays from
+this directory alone.
 
 ## Environment note
 

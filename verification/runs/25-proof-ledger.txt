@@ -124,3 +124,10 @@ extension construction. Its only theorem dependency is the classical
 classification of a periodic disk homeomorphism as a Euclidean isometry.
 The active external-theorem count increases from 12 to 13 because the former
 implicit disk-action assertion is now named rather than hidden.
+
+Run 56 adds `M_lp_source_figure` as a direct dependency of
+`G_equivariant_normal_form`. It hash-binds and parses the original
+Lidman--Piccirillo v1 TeX and vector Figure 1, independently recovering every
+marked hypothesis used by Run 55. The dependency is one-way:
+LP source -> Run-56 certificate -> Run-55 normal-form argument -> marked
+bundle identification. No new theorem node is introduced.

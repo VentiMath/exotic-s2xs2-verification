@@ -70,6 +70,10 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
   by curve orientations; every one has two invariant 10-edge disk faces with
   free half-turn boundary action. The only remaining input is the published
   Kerékjártó classification of periodic disk homeomorphisms.
+* **Original source figure audited:** Run 56 reads the immutable
+  Lidman--Piccirillo v1 TeX and original vector Figure 1 directly. It recovers
+  the ordered five-chain, chain-reversing involution, oriented `c` action,
+  labels, and two fixed points required by Run 55, with no discrepancy.
 * **Downstream implications audited:** conditional on the certified
   simple-connectivity result, the covering, intersection-form, Freedman,
   Kodaira-dimension, slicing, and reglued Heegaard Floer arguments have the
@@ -127,6 +131,8 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
 | `paper_model_dictionary_comparison.json` | reproducible Run-54 comparison certificate |
 | `lemma71_normal_form_check.py` | exhaustive equivariant five-chain ribbon classifier |
 | `lemma71_normal_form_certificate.json` | reproducible Run-55 Lemma 7.1 certificate |
+| `lp_source_figure_audit.py` | direct checker for the original Lidman--Piccirillo TeX and vector figure |
+| `lp_source_figure_certificate.json` | reproducible Run-56 source-figure certificate |
 | `model_correspondence.py` | global marked-bundle, monodromy, boundary, and surgery-torus correspondence audit |
 | `framing_check.py` | exact relative-Moser, double-cover, coordinate, seam, and push-off calculus for the paper's framing lemma |
 | `presentation_search.py` | proof-oriented Nielsen and relator-multiplication search |

@@ -197,24 +197,34 @@ compares its frozen output with the independently built model
 certificates, with reversed-order and reversed-sign mutations
 distinguished. No discrepancy was found: the previously identified
 transcription residuals are closed relative to the paper's stated marked
-data, and what remains on this axis is independent confirmation that the
-Lidman--Piccirillo source figure carries the asserted five-chain and
-involution data. The project-specific content of the paper's Lemma~7.1 is
-certified in the same sense: all 36 candidate equivariant ribbon rotations
-are enumerated, exactly four survive and all normalize to one marked
-ribbon with two invariant free-half-turn boundary disks, so the lemma's
-finite ribbon classification and its extension hypotheses are
-machine-checked, while the source marked-data identification and the
+data. The source itself was then audited directly rather than accepted
+through the paper's restatement: a checker reading only the hash-pinned
+\texttt{main.tex} and original vector Figure~1 of the immutable
+Lidman--Piccirillo v1 arXiv source \cite{LidmanPiccirillo}, importing no
+project module, confirms the ordered five-chain $a,b,c,d,e$, the
+chain-reversing involution with $c$ fixed with orientation, the single
+consecutive crossings with all required disjointness, and the two fixed
+points, in both the prose and the vector layers. The one interpretation
+remaining at that boundary is the ordinary convention that dashed arcs in
+a handle picture depict hidden projection rather than extra crossings.
+The project-specific content of the paper's Lemma~7.1 is certified in the
+same sense: all 36 candidate equivariant ribbon rotations are enumerated,
+exactly four survive and all normalize to one marked ribbon with two
+invariant free-half-turn boundary disks, so the lemma's finite ribbon
+classification and its extension hypotheses are machine-checked, with the
 Ker\'ekj\'art\'o periodic-disk involution theorem \cite{ConstantinKolev}
-remain named inputs. The new artifacts replay directly from the
+the remaining named input now that the source marked data are audited. The new artifacts replay directly from the
 repository: \texttt{verification/luttinger/paper\_coordinate\_extractor.py}
 with its frozen \texttt{paper\_coordinate\_certificate.json}, the separate
 comparison \texttt{paper\_model\_dictionary\_compare.py} with
 \texttt{paper\_model\_dictionary\_comparison.json}, and
 \texttt{lemma71\_normal\_form\_check.py} with
-\texttt{lemma71\_normal\_form\_certificate.json}, with transcripts
-\texttt{verification/runs/54-independent-paper-dictionary.txt} and
-\texttt{55-lemma71-equivariant-normal-form.txt}.
+\texttt{lemma71\_normal\_form\_certificate.json}, and
+\texttt{lp\_source\_figure\_audit.py} with
+\texttt{lp\_source\_figure\_certificate.json}, with transcripts
+\texttt{verification/runs/54-independent-paper-dictionary.txt},
+\texttt{55-lemma71-equivariant-normal-form.txt}, and
+\texttt{56-lp-source-figure-audit.txt}.
 
 \section{The framing lemma}\label{sec:framing}
 
@@ -345,10 +355,11 @@ the slicing argument; and the Ozsv\'ath--Szab\'o / Lidman--Piccirillo
 Floer machinery \cite{LidmanPiccirillo}. This note does not reprove them.
 The ribbon-interpretation input is narrower than the phrase suggests: the
 redundancy section's classification certifies the implication from the
-paper's stated marked five-chain data to the equivariant normal form, so
-what this boundary retains is the elementary reading of the printed
-figures into that stated data, together with its thickening into
-complexes.
+paper's stated marked five-chain data to the equivariant normal form, and
+the stated data themselves are audited in the original Lidman--Piccirillo
+source, so what this boundary retains is the thickening of that data into
+complexes together with the ordinary dashed-arc hidden-projection
+convention of the audited figure.
 
 Formerly listed inputs that are no longer dependencies: surface-bundle
 classification, replaced by the explicit clutching; four-dimensional
