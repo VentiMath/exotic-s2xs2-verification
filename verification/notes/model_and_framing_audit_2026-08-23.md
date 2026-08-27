@@ -91,6 +91,13 @@ isolates the remaining standard inputs in
 the dependency footprint: this framing bridge is upstream of the certified
 filled presentations, not merely of the later symplectic conclusion.
 
+Update (2026-08-26): Runs 43--44 discharge the needed Weinstein-chart
+independence directly. The fiber-dilation germ isotopy proves that two given
+charts fixing the zero section yield isotopic small constant-momentum
+push-offs; the second Liouville-coordinate route corroborates it. General
+Lagrangian-neighborhood germ uniqueness is therefore a reference, not an
+active theorem dependency.
+
 ## Implementation issue found
 
 The new top-level audit exposed a stale coding error in `check_fiber`: its
@@ -138,3 +145,10 @@ Run 36 integrates these PL facts with the Run-28 section push-off and gives
 the residual rotation-system, bistellar-trace, dimension-four smoothing, and
 intersection-naturality statements explicit proofs or precise citations. See
 `notes/pl_bridge_referee_packet_2026-08-25.md`.
+
+Run-52 update (2026-08-27): the standard surface-bundle classification route
+described above is no longer load-bearing. The marked homeomorphism and its
+inverse are constructed explicitly on the alpha and beta mapping-cylinder
+handles, using the exact relative conjugacies of Run 51. The based actions
+remain independent controls; Dehn--Nielsen--Baer is not used to construct the
+map.

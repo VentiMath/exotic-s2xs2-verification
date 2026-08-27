@@ -1,0 +1,56 @@
+{
+  "conclusion": "the proof transports the certified topological data into the paper's already-smooth marked bundle; no compatible smoothing or smoothing-uniqueness theorem for |K| is required",
+  "format": "luttinger-topological-smooth-reroute-v1",
+  "marked_bundle_homeomorphism": {
+    "T_alpha_c_and_product_collar_preserved": true,
+    "T_beta_e_and_product_collar_preserved": true,
+    "base_spine_rank": 2,
+    "fiber_orientation_preserved": true,
+    "p_O_sections_preserved": true,
+    "same_ordered_monodromy_mapping_classes": true,
+    "source": "certified oriented PL genus-2 bundle |K|",
+    "source_four_manifold_smoothing_required": false,
+    "target": "underlying topological bundle of the paper's smooth R"
+  },
+  "section_transport": {
+    "beta_product_levels": 32,
+    "boundary_gluing_compatibility": true,
+    "constant_clutching_cases": 4,
+    "disjoint_push_offs": true,
+    "doubled_bundle_extension": "apply the same marked fiberwise H on both halves",
+    "image_cycles_disjoint_in_target": true,
+    "image_cycles_homologous_in_target": true,
+    "p_section_preserved": true,
+    "radial_chain_boundary_exact": true,
+    "separate_intersection_naturality_theorem_required": false,
+    "target_section_homological_square": 0
+  },
+  "smooth_target_only": {
+    "fibered_equals_Lagrangian_framing_runs": [
+      43,
+      44,
+      46,
+      47
+    ],
+    "paper_R_is_already_smooth": true,
+    "paper_tori_are_the_smooth_Lagrangian_tori": true,
+    "smooth_operations_performed_on_source_PL_complex": false
+  },
+  "source_evidence": {
+    "frontier_normal_equivalence_certificate.json": "c3527bc13c942a469f48a6526f3a8e4fc3075aefcd90de0fcfd43656b9c4b09f",
+    "graph_clutching_certificate.json": "08b33f456680012e81ca82cff1cd4482c89b9db45a001984df9e608f31f9d7c5",
+    "independent_peripheral_certificate.json": "e99355c3a963bd498855426b084e86fabbf64745a886dcb2ad639457c82cf7bf",
+    "pl_theorem_hypotheses.json": "0cdb369ba032e2cef91bf6b4bd254b67ab53182e1d1225b9a38bac853758b506",
+    "runs/43-weinstein-chart-independence.txt": "58f09c26e13edf39fc7e9ba3a4976790beb8f20fa3cb42a22b6eeeb54725d8e7",
+    "runs/44-weinstein-second-route.txt": "9a507a486f76cfadc38110a2ab6a5beba1c8634cf03dd3b125119f37f713d784",
+    "runs/46-direct-equivariant-moser.txt": "8b8d19de4ce9fa8994c50dd4f321dadaf27c89edd2ae0f52564ff0a94725ff0e",
+    "runs/47-cumulative-moser-flow.txt": "2867003047d48eb4cc866ae98d3637b2f189d8168eadc2fa7c463db37708956d",
+    "torus_local_flatness_certificate.json": "24eb97b4a7878e17ef11373a57cb2941cde0a56122ed01384665b5140909e0a1"
+  },
+  "transported_topological_data": {
+    "complement_pi1_and_based_paths": true,
+    "local_flat_torus_simplices": 1776,
+    "normal_meridian_fibers": 592,
+    "product_framing_push_offs": true
+  }
+}

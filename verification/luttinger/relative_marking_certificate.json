@@ -1,0 +1,64 @@
+{
+  "alpha_relative_representative": {
+    "action_on_each_collar_row": "shift 4 of 8",
+    "comparison_type": "exact equivariant conjugacy, not isotopy",
+    "full_c_collar_preserved": true,
+    "p_O_fixed": true
+  },
+  "beta_relative_representative": {
+    "comparison_type": "same relative twist factorization with support outside e collar",
+    "e_collar_triangles": 32,
+    "flip_cone_cells_avoiding_e_collar": 1536,
+    "interfaces": 32,
+    "literal_e_collar_product_tetrahedra": 3072,
+    "model_twist_trace": [
+      {
+        "applied_order": 1,
+        "combinatorial_direction": 1,
+        "curve": "b"
+      },
+      {
+        "applied_order": 2,
+        "combinatorial_direction": -1,
+        "curve": "a"
+      }
+    ],
+    "p_neighborhood_product_interfaces": 32,
+    "paper_word": "T_a o T_b (T_b first)"
+  },
+  "collars": {
+    "c": {
+      "boundary_components": 2,
+      "euler_characteristic": 0,
+      "f_vector": [
+        24,
+        56,
+        32
+      ],
+      "is_triangulated_annulus": true,
+      "name": "c"
+    },
+    "e": {
+      "boundary_components": 2,
+      "euler_characteristic": 0,
+      "f_vector": [
+        24,
+        56,
+        32
+      ],
+      "is_triangulated_annulus": true,
+      "name": "e"
+    }
+  },
+  "conclusion": {
+    "reason": "alpha is exactly equivariant on the c collar; beta is the same supported twist word and is literally product on the e collar and at p",
+    "relative_isotopy_extension_required": false
+  },
+  "format": "luttinger-relative-marked-monodromy-v1",
+  "source_evidence": {
+    "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "paper_data.md": "f789359e7c3931f8e7440312516aa9a19ec4f7067de2e76fa926d3855a466414",
+    "pl_flip_trace_certificate.json": "d0524e5b8341f3e747a6a79eac3d28fd293ea9f6fe38cfd4f545d83a7362cc09",
+    "runs/28-pl-self-intersection-certificate.txt": "377d983c6f45a289b6f157275117b07fdbe44b23e01a221b16681963e089b47e"
+  }
+}

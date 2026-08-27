@@ -25,11 +25,24 @@ M1--M3 corrections and the local `N` meridian; direct boundary longitudes at
 the actual torus corners; slope permutation and whisker conjugacies; exact
 half-drift/framing coordinate algebra; and a basing-sensitive calibration.
 
-Still theorem-level: smoothing the PL mapping-cylinder bundle as the marked
-smooth bundle; relative/equivariant Moser and Weinstein invariance; and carrying
-the named Lagrangian framings to the combinatorial product framings. The first
-two are standard. The last is where an expert should try hardest to falsify,
-although Lemma 8.2 and the executable chart audit give a direct argument.
+The dominant remaining project-specific attack surface is now the
+interpretation layer: whether the paper's `psi_0=T_a o T_b` convention, twist
+signs, marked ribbon dictionary, and named whiskers have been translated
+correctly. Runs 12, 30--34, 48--52 provide several structurally different
+checks, but Run 52's clutching step is symbolic assembly supported by those
+inputs, not an independent geometric reconstruction of the paper's smooth
+bundle. Run 53 makes this layer a bound artifact: one dictionary of every
+convention read from the paper, each entry carrying its discriminating
+certified witness, and — parsed without execution from the author's own
+committed `develop.py` and `decide.g` — the author-code confirmation of the
+beta action, the alpha swap, and the M1/M2/M3 correction shapes with his own
+`delta := r^-1`. Three entries remain residual and are named there: the beta
+word order (action pinned, word not; rival same-action words leave every
+`pi_1` conclusion unchanged), the ribbon figure transcription, and the local
+twist signs. Runs 43--47 construct the needed Moser and Weinstein comparison, and
+Run 50 transports the certified marked data into the paper's already smooth
+target without smoothing the source. The remaining theorem-level inputs are
+the downstream published four-manifold theorems.
 
 Update 2026-08-24: these ingredients and the common `y_1`/`s_2` whiskers are
 now assembled into the standalone conventional proof
@@ -119,6 +132,33 @@ PL facts are separated into rotation-system thickening, the labeled
 bistellar trace, low-dimensional compatible smoothing, and homological
 intersection naturality, with precise references in
 `notes/pl_bridge_referee_packet_2026-08-25.md`.
+
+Run-50 update (2026-08-27): compatible four-dimensional source smoothing and
+a separate intersection-naturality theorem are no longer dependencies. The
+marked bundle homeomorphism is used only to transport the actual tori,
+collars, section cycles, and bounding chain into the underlying topological
+manifold of the paper's already smooth bundle. Smooth and symplectic arguments
+then occur solely in that target.
+
+Run-51 update (2026-08-27): the remaining relative-isotopy choice is removed.
+The alpha comparison is exact on the complete `c` collar, while the beta
+comparison uses the paper's same supported word `T_a o T_b`; its full trace
+is a literal product on the complete `e` collar. The surviving bundle-level
+inputs were ordinary classification over a graph and Dehn--Nielsen--Baer.
+
+Run-52 update (2026-08-27): those last two bundle-level inputs are bypassed.
+The marked homeomorphism is constructed on the two mapping-cylinder handles,
+with forward and inverse seam equations checked and no base two-cell
+coherence condition. The based actions remain independent diagnostics.
+
+Run-48 update (2026-08-27): local flatness of the two surgery tori is now
+checked at every simplex, not inferred from the product picture. The 296
+vertex links have replayed collapse witnesses for an ambient `S3` and a
+cyclic knot complement; the 888 edge and 592 triangle links pass their
+standard-pair classifications. The residual inputs are the explicitly named
+surface/3-ball/unknot criteria. Run 49 subsequently replaces the
+derived-regular-neighborhood application with an explicit half-weight normal
+block model and a global PL homeomorphism from the computed frontier.
 
 ### R5. Downstream 4-manifold theorems — lower risk
 

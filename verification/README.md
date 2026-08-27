@@ -1,6 +1,6 @@
 # luttinger — combinatorial π₁ of torus complements and Luttinger surgeries
 
-Status (updated 2026-08-25; see the root `STATUS.md` for the precise caveats):
+Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
 
 * **Engine (working, calibrated):** triangulated 4-manifold `K` + full
   2-dimensional torus subcomplex `T` → presentation of π₁(K − T), based
@@ -28,12 +28,38 @@ Status (updated 2026-08-25; see the root `STATUS.md` for the precise caveats):
   unused alternate beta
   coordinate expression remains inconclusive, but no filling calculation
   depends on it. Run 35 checks the framing lemma's full inline calculus and
-  isolates its remaining standard smooth-theorem inputs. Runs 43--45 then
+  isolates its remaining standard smooth-theorem inputs. Runs 43--44 and 46
   discharge chart independence and remove covering-space lifting by a direct
   equivariant Moser construction. Run 47 constructs the general relative
   Moser flow as an explicit monotone inverse, removing the separate local
   ODE theorem as well. The project does not formalize every global
   exoticness input.
+* **Local flatness exhausted:** Run 48 checks the standard codimension-two
+  link pair at every one of the 1,776 simplices of both surgery tori. All 296
+  vertex cases include replayed collapse witnesses for an ambient `S3` link
+  and an unknotted torus-link circle; all 888 edge and 592 triangle cases pass
+  their finite sphere-link tests.
+* **Normal frontier made explicit:** Run 49 identifies all 113,336 computed
+  frontier vertices with the half-weight barycentric normal boundary by a
+  global PL homeomorphism and checks all 592 dual meridians as literal normal
+  circle fibers. The derived-regular-neighborhood theorem is no longer a
+  dependency of the filled-presentation claim.
+* **PL-to-smooth bridge rerouted:** Run 50 transports the certified marked
+  tori, collars, peripheral data, and section cycles by an
+  orientation-preserving homeomorphism into the underlying topological
+  manifold of the paper's already smooth bundle. The source triangulation is
+  never smoothed. The disjoint homologous section pair remains so in the
+  target, proving square zero there and removing compatible 4D source
+  smoothing and separate intersection naturality from the proof ledger.
+* **Relative markings made direct:** Run 51 certifies the full `c` and `e`
+  collars. Alpha agrees exactly on the `c` collar; the beta twist trace avoids
+  the `e` collar in all 1,536 trace cells and restricts to its literal product
+  in all 3,072 collar tetrahedra. Relative isotopy extension is no longer a
+  theorem input.
+* **Bundle homeomorphism explicitly clutched:** Run 52 constructs the map and
+  its inverse on both mapping-cylinder handles, checks their seam equations,
+  and glues them on the common marked fiber. Surface-bundle classification
+  and Dehn--Nielsen--Baer are now diagnostic alternatives, not dependencies.
 * **Downstream implications audited:** conditional on the certified
   simple-connectivity result, the covering, intersection-form, Freedman,
   Kodaira-dimension, slicing, and reglued Heegaard Floer arguments have the
@@ -77,8 +103,14 @@ Status (updated 2026-08-25; see the root `STATUS.md` for the precise caveats):
 | `independent_fiber.py` | separate vertex-disk/edge-band realization of the marked genus-2 fiber; does not import `fiber.py` |
 | `independent_fiber_audit.py` | canonical equivariant ribbon-code comparison and common-subdivision certificate |
 | `independent_fiber_certificate.json` | reproducible marked-fiber equivalence certificate |
-| `pl_theorem_audit.py` | integrated checker binding flip, ribbon, smoothing, and section hypotheses to finite certificates |
+| `pl_theorem_audit.py` | integrated checker binding flip, ribbon, bundle, and section hypotheses to finite certificates |
 | `pl_theorem_hypotheses.json` | reproducible integrated PL-boundary certificate |
+| `topological_smooth_bridge.py` | verifies transport into the paper's already smooth target and replays square zero there |
+| `topological_smooth_bridge_certificate.json` | bound Run-50 transport and section certificate |
+| `relative_marking_check.py` | exact alpha-collar and supported beta-relative representative checker |
+| `relative_marking_certificate.json` | reproducible Run-51 relative-monodromy certificate |
+| `graph_clutching_check.py` | explicit two-handle mapping-cylinder homeomorphism and inverse checker |
+| `graph_clutching_certificate.json` | reproducible Run-52 graph-clutching certificate |
 | `model_correspondence.py` | global marked-bundle, monodromy, boundary, and surgery-torus correspondence audit |
 | `framing_check.py` | exact relative-Moser, double-cover, coordinate, seam, and push-off calculus for the paper's framing lemma |
 | `presentation_search.py` | proof-oriented Nielsen and relator-multiplication search |

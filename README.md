@@ -30,11 +30,20 @@ the paper's coordinates, with proof-producing certificates that replay.
   to the paper's marked bundle by literal based monodromy action — not by
   fingerprints. The based monodromy certificate replays 17,839 elementary
   Tietze steps; an independently built second triangulation replays 34,735.
+  The identification with the paper's bundle is realized by an explicit
+  marked mapping-cylinder clutching over the base graph, with the relative
+  monodromy comparisons checked exactly on the marked collars — the
+  classification of surface bundles is no longer invoked.
 * **The peripheral data.** Based meridians and longitudes for both surgery
   tori are traced as literal simplicial loops with the paper's own whiskers.
   The paper's sign-correction package (its §7.4 fix) is reproduced and
   certified, and a combinatorial sweep resolves the basing double-count
-  question in the direction the paper needs.
+  question in the direction the paper needs. Both surgery tori are certified
+  locally flat at all 1,776 of their simplex links, and the boundary the
+  peripheral curves live on is an explicit half-weight normal block model
+  with a global PL identification of the computed frontier: every extracted
+  dual meridian is checked to be a literal normal-circle fiber, with no
+  regular-neighborhood theorem invoked.
 * **The eight filled groups.** Filling the triangulation-derived complement
   presentation with the certified peripheral pairs proves all four n=0 sign
   pairs, and the four adjacent half-drift systems, trivial by complete
@@ -47,7 +56,14 @@ the paper's coordinates, with proof-producing certificates that replay.
   extractor, an alternative bundle triangulation, the second based-monodromy
   certificate, a simplex-level verifier of all 128 PL flip traces, and a
   58-vertex marked-fiber realization matched equivariantly to the primary
-  86-vertex model.
+  86-vertex model. What redundancy cannot exclude — a shared misreading of
+  the paper's conventions — is attacked by a bound interpretation
+  dictionary: every convention read from the paper carries its
+  discriminating certified witness, and the central entries are
+  cross-checked, by parsing and never executing, against the author's own
+  committed scripts, which define the same actions, corrections, and sign
+  conjugators. The three entries resting on transcription alone are declared
+  residual rather than hidden.
 * **The framing lemma's analysis.** The displayed Weinstein-chart, seam, and
   constant-momentum algebra of the paper's Lemma 8.2 are machine-checked, and
   its inline normalizations are rebuilt constructively: the Moser flow is the
@@ -67,11 +83,22 @@ the paper's coordinates, with proof-producing certificates that replay.
 
 ## What is not claimed
 
-The remaining proof dependence is concentrated in standard smooth and
-symplectic topology, applied with hypotheses that have been checked but with
-proofs that are cited, not mechanized: Lagrangian-neighborhood (Weinstein)
-germ uniqueness, surface-bundle classification, elementary PL thickening and
-smoothing, and the quoted classification and Floer theorems. If the framing identification (Lemma 8.2)
+The remaining proof dependence is concentrated in named classical inputs,
+applied with hypotheses that have been checked but with proofs that are
+cited, not mechanized: the elementary ribbon-thickening and bistellar-trace
+interpretations that read the paper's figures into complexes; the
+classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
+criteria behind the local-flatness certificates; simplicial
+fundamental-group presentation and Tietze theory; and the quoted
+Freedman–Hambleton–Kreck, symplectic Kodaira-dimension, symplectic Thom,
+Rokhlin/Arf, and Heegaard Floer theorems. Surface-bundle classification,
+four-dimensional smoothing, intersection-form naturality, and
+derived-regular-neighborhood theory are no longer dependencies: the bundle
+identification is an explicit clutching, the smooth and symplectic arguments
+run entirely in the paper's already-smooth manifold, and the tubular
+boundary is constructed rather than cited. Weinstein germ uniqueness is
+corroborating rather than load-bearing — chart independence is proved
+in-project between the paper's verified charts. If the framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
 presentations with the paper's Lagrangian surgeries; simple connectivity, the

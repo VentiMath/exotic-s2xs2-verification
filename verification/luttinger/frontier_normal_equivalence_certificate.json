@@ -1,0 +1,61 @@
+{
+  "ambient_f_vector": [
+    9156,
+    116714,
+    356728,
+    403152,
+    153984
+  ],
+  "conclusion": "the computed derived frontier is explicitly PL-homeomorphic to the half-weight normal block boundary, and every extracted dual meridian is a normal-circle fiber",
+  "derived_comparabilities_checked": 769256,
+  "format": "luttinger-frontier-normal-equivalence-v1",
+  "frontier_vertices": 113336,
+  "level_set": "sum_T(lambda)=1/2",
+  "local_flatness_certificate_sha256": "24eb97b4a7878e17ef11373a57cb2941cde0a56122ed01384665b5140909e0a1",
+  "local_product_models": [
+    {
+      "all_tetrahedra_affinely_nondegenerate": true,
+      "chain_list_sha256": "a002c4f672af2829ba5a4c1266724b1ba6b82eca30f2c934e24d20405b265f73",
+      "frontier_vertices": 15,
+      "maximal_chain_tetrahedra": 24,
+      "outside_vertices": 4,
+      "product_cell": "Delta^0 x Delta^3",
+      "torus_vertices": 1
+    },
+    {
+      "all_tetrahedra_affinely_nondegenerate": true,
+      "chain_list_sha256": "46ce3641c4f4b836dadcccd314c2431ddf2178a441735ab6183a6c23048ab2b3",
+      "frontier_vertices": 21,
+      "maximal_chain_tetrahedra": 36,
+      "outside_vertices": 3,
+      "product_cell": "Delta^1 x Delta^2",
+      "torus_vertices": 2
+    },
+    {
+      "all_tetrahedra_affinely_nondegenerate": true,
+      "chain_list_sha256": "999b395663013cc923ce2fdbf296006999598438b7fd90a71de5bc7483b0b32d",
+      "frontier_vertices": 21,
+      "maximal_chain_tetrahedra": 36,
+      "outside_vertices": 2,
+      "product_cell": "Delta^2 x Delta^1",
+      "torus_vertices": 3
+    }
+  ],
+  "meridian_distribution": {
+    "T_alpha,length=10": 6,
+    "T_alpha,length=12": 20,
+    "T_alpha,length=8": 22,
+    "T_beta,length=12": 340,
+    "T_beta,length=8": 204
+  },
+  "meridian_fibers_checked": 592,
+  "meridian_records_sha256": "167b6ac272c3e0380f66a545a10ed0ace26eb32d53152c681ebdb1ccc5c0aa80",
+  "mixed_face_pair_bijection": true,
+  "near_top_simplices": 22234,
+  "top_intersection_distribution": {
+    "a=1,b=4": 12042,
+    "a=2,b=3": 7098,
+    "a=3,b=2": 3094
+  },
+  "vertex_formula": "b(s) -> (b(s intersect T)+b(s minus T))/2"
+}

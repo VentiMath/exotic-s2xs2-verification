@@ -1,0 +1,39 @@
+# Run 50: PL-to-smooth reroute through the already-smooth target (2026-08-27)
+
+Command:
+
+`python3 luttinger/topological_smooth_bridge.py --check`
+
+Expected result:
+
+```
+PASS: luttinger/topological_smooth_bridge_certificate.json exactly reproduced
+PASS: marked PL bundle maps to the underlying paper smooth bundle
+PASS: tori, collars, peripheral data, and p-section are preserved
+PASS: section square zero transported by disjoint homologous cycles
+NO FOUR-DIMENSIONAL SOURCE SMOOTHING THEOREM REQUIRED
+```
+
+The bridge is an orientation-preserving fiberwise homeomorphism from the
+certified PL surface bundle to the underlying topological bundle of the
+paper's already-smooth `R`. It is relative to `c`, `e`, `p`, and the product
+collars. Topological complement/peripheral data are transported through that
+map; the Lagrangian and symplectic arguments are performed only on the
+existing smooth target.
+
+For the section, the checker recomputes all four clutching cases. The Run-28
+disjoint homologous cycles and their exact radial chain map to disjoint
+homologous cycles in the target, proving square zero there without comparing
+separate PL and smooth intersection forms.
+
+The map extends to the doubled bundle by applying the same fiberwise marked
+homeomorphism to both halves. Its product-collar restrictions commute with
+the common boundary clutching, so the two half-maps descend across the seam.
+
+Detailed proof:
+
+`notes/topological_smooth_reroute_2026-08-27.md`
+
+Certificate SHA-256:
+
+`fb963de238eed2c779ae351762a82fce43d4a866f3ddb1442c22c849527617fc`

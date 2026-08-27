@@ -1,0 +1,41 @@
+# Run 49: explicit normal block bundle/frontier equivalence (2026-08-27)
+
+Command:
+
+`python3 luttinger/frontier_normal_equivalence.py --check`
+
+Result:
+
+```
+PASS: luttinger/frontier_normal_equivalence_certificate.json exactly reproduced
+PASS: 113,336 frontier vertices bound
+PASS: 22,234 local product cells checked
+PASS: all 592 meridians are normal fibers
+PASS: explicit derived-frontier/normal-boundary equivalence
+```
+
+The vertex formula is
+
+```
+b(s) -> (b(s intersect T) + b(s minus T))/2.
+```
+
+It identifies the order complex of mixed faces with the barycentric
+subdivision of the half-weight level boundary `sum_T(lambda)=1/2`. All
+769,256 derived comparabilities are checked. Every local cell is one of the
+three exact product models `Delta0 x Delta3`, `Delta1 x Delta2`, or
+`Delta2 x Delta1`; every maximal-chain tetrahedron in the labeled templates
+is checked affinely nondegenerate.
+
+For each of the 592 torus triangles, the certified alternating dual loop has
+constant torus face and its outside faces are the barycentric subdivision of
+the normal link circle. Hence every extracted dual meridian is literally a
+normal-circle fiber under the explicit equivalence.
+
+Certificate SHA-256:
+
+`c3527bc13c942a469f48a6526f3a8e4fc3075aefcd90de0fcfd43656b9c4b09f`
+
+Detailed proof:
+
+`notes/frontier_normal_equivalence_2026-08-27.md`

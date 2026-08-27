@@ -10,9 +10,7 @@
   },
   "external_statements_only": [
     "classification of bundles by homotopy classes into BDiff+(F)",
-    "contractibility of Diff_0(F) for a closed oriented genus-2 surface",
-    "Dehn-Nielsen-Baer injectivity into Out(pi1(F))",
-    "isotopy extension relative to the marked curve neighborhoods"
+    "Dehn-Nielsen-Baer injectivity into Out(pi1(F))"
   ],
   "fiber_application": {
     "alpha_involution_on_c": "free half-rotation",
@@ -34,12 +32,15 @@
   "relative_marking_application": {
     "T_alpha_core_c_preserved": true,
     "T_beta_core_e_preserved_relative_to_a_neighborhood": true,
-    "marked_crossings_and_whiskers_independently_identical": true
+    "marked_crossings_and_whiskers_independently_identical": true,
+    "relative_isotopy_extension_required": false,
+    "relative_representatives_constructed_directly": true
   },
   "source_certificates": {
     "alternative_based_monodromy.json.gz": "7cb057bdb7646c76e9d1d2703cf8e1c7051a4d51fee36e801e5d8dfd1b54dcd2",
     "alternative_bundle_certificate.json": "5310e772a77988b74f9024847e6951919334445668805cbe161597c2677ad1b6",
     "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "relative_marking_certificate.json": "13365e912b1c2c85eebf955475cf28f5e8edf4060800c6cbb53edc8e5e1c7fb6",
     "runs/12-based-generators-and-table-relations.txt": "81c5e260c359ead0a188468413e9a97f47c2360495497c0b1fc1b35181b6c56d"
   }
 }

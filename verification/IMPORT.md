@@ -1,8 +1,8 @@
 # Import provenance
 
 This directory is a curated import of the working verification repository at
-its commit `1bc4caf` ("Record the run 45 freeze in STATUS, PROVENANCE, and
-the outreach draft", 2026-08-26). Everything here — the engine under
+its commit `ad0ed9d` ("Record the upstream byte-identity of the parsed
+author scripts", 2026-08-27), superseding the earlier `1bc4caf` import. Everything here — the engine under
 `luttinger/`, the certificates, the run transcripts under `runs/`, the
 referee-packet notes under `notes/`, and the provenance ledger — is the
 committed state of that repository, imported without modification except for
@@ -27,6 +27,18 @@ notes, and the run transcripts resolve within this directory.
 every line is mathematical construction data in our own notation with
 citations to the paper's numbered propositions, sections, and Table 1 — not
 reproduced exposition.
+
+## Replaying run 53 (the interpretation dictionary)
+
+`luttinger/interpretation_dictionary.py` parses two of the author's scripts
+that this import deliberately does not vendor. To replay it, fetch
+`scripts/develop.py` and `scripts/decide.g` from
+github.com/bwuebben/exotic-s2xs2 at commit `ea1fc13d` into
+`luttinger/author_scripts/`. The certificate pins their SHA-256
+(`1a4a67d5…` and `302725da…`), and the run transcript records that the
+locally parsed copies are byte-identical to that upstream commit, so any
+fetched copy either matches and replays or visibly differs. Every other
+checker replays from this directory alone.
 
 ## Environment note
 

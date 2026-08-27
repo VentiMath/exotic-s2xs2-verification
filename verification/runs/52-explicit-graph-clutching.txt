@@ -1,0 +1,32 @@
+# Run 52: explicit marked graph clutching (2026-08-27)
+
+Command:
+
+`PYTHONPATH=luttinger python3 luttinger/graph_clutching_check.py --check`
+
+Terminal result:
+
+```
+PASS: luttinger/graph_clutching_certificate.json exactly reproduced
+PASS: alpha mapping-cylinder seam and inverse checked
+PASS: beta relative twist words and seam inverse checked
+PASS: the two piece maps agree on the common fiber block
+PASS: no base two-cell and no additional coherence equation
+NO SURFACE-BUNDLE CLASSIFICATION OR DNB STEP REQUIRED
+```
+
+The induced map on each handle is `[x,t] -> [h(x),t]`. The checker verifies
+the forward and inverse seam equations, the exact alpha conjugacy, the beta
+factorwise conjugacy in transported annulus charts, agreement on the common
+fiber block, and the absence of a base two-cell coherence condition.
+This is a symbolic assembly certificate. Its geometric substance is supplied
+by Run 34's marked ribbon homeomorphism, Run 51's full collar checks, and the
+declared rotation-system and labeled-flip interpretations.
+
+Detailed proof:
+
+`notes/explicit_graph_clutching_2026-08-27.md`
+
+Certificate SHA-256:
+
+`08b33f456680012e81ca82cff1cd4482c89b9db45a001984df9e608f31f9d7c5`

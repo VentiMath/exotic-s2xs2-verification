@@ -13,12 +13,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 NODES = {
-    "T_surface_bundle": ("external_theorem", (), None),
     "T_rotation_system_thickening": ("external_theorem", (), None),
     "T_elementary_bistellar_trace": ("external_theorem", (), None),
-    "T_low_dimensional_PL_smoothing": ("external_theorem", (), None),
-    "T_oriented_intersection_naturality": ("external_theorem", (), None),
-    "T_derived_regular_neighborhood": ("external_theorem", (), None),
+    "T_surface_classification": ("external_theorem", (), None),
+    "T_contractible_PL3_ball": ("external_theorem", (), None),
+    "T_cyclic_knot_unknot": ("external_theorem", (), None),
     "T_simplicial_pi1_presentation": ("external_theorem", (), None),
     "T_tietze": ("external_theorem", (), None),
     "T_freedman_HK": ("external_theorem", (), None),
@@ -41,10 +40,25 @@ NODES = {
         "machine_certificate", (), "runs/34-independent-marked-fiber.txt"),
     "M_PL_theorem_hypotheses": (
         "machine_certificate", (), "runs/36-pl-theorem-boundary.txt"),
-    "M_surface_bundle_hypotheses": (
-        "machine_certificate", (), "runs/37-surface-bundle-boundary.txt"),
     "M_complement_theorem_hypotheses": (
         "machine_certificate", (), "runs/38-complement-presentation-boundary.txt"),
+    "M_torus_local_flatness": (
+        "machine_certificate", (), "runs/48-torus-local-flatness.txt"),
+    "M_frontier_normal_equivalence": (
+        "machine_certificate", (),
+        "runs/49-frontier-normal-equivalence.txt"),
+    "M_topological_smooth_reroute": (
+        "machine_certificate", (),
+        "runs/50-topological-smooth-reroute.txt"),
+    "M_relative_marked_monodromy": (
+        "machine_certificate", (),
+        "runs/51-relative-marked-monodromy.txt"),
+    "M_explicit_graph_clutching": (
+        "machine_certificate", (),
+        "runs/52-explicit-graph-clutching.txt"),
+    "M_interpretation_dictionary": (
+        "machine_certificate", (),
+        "runs/53-interpretation-dictionary.txt"),
     "M_complement_tietze": ("machine_certificate", (), "runs/11-proof-certificate-and-group-attacks.txt"),
     "M_peripheral_slopes": ("machine_certificate", (), "runs/20-direct-peripheral-fillings-trivial.txt"),
     "M_independent_peripheral_extraction": (
@@ -76,11 +90,17 @@ NODES = {
          "M_based_monodromy", "M_bundle_tori",
          "M_alternative_bundle", "M_alternative_based_monodromy",
          "M_PL_flip_trace", "M_PL_theorem_hypotheses",
-         "M_surface_bundle_hypotheses",
-         "T_surface_bundle", "T_rotation_system_thickening",
-         "T_elementary_bistellar_trace",
-         "T_low_dimensional_PL_smoothing"),
+         "M_interpretation_dictionary",
+         "G_topological_smooth_reroute",
+         "T_rotation_system_thickening", "T_elementary_bistellar_trace"),
         "notes/surface_bundle_referee_packet_2026-08-26.md"),
+    "G_topological_smooth_reroute": (
+        "geometric_argument",
+        ("M_topological_smooth_reroute", "M_relative_marked_monodromy",
+         "M_explicit_graph_clutching", "M_independent_marked_fiber",
+         "M_PL_flip_trace", "T_rotation_system_thickening",
+         "T_elementary_bistellar_trace"),
+        "notes/topological_smooth_reroute_2026-08-27.md"),
     "G_weinstein_chart_independence": (
         "geometric_argument", ("M_weinstein_chart_first_jet",),
         "notes/lemma82_chart_independence_2026-08-26.md"),
@@ -104,15 +124,23 @@ NODES = {
     "G_section_square_zero": (
         "geometric_argument",
         ("G_marked_bundle_identification", "M_section_PL_push_off",
-         "M_PL_theorem_hypotheses",
-         "T_oriented_intersection_naturality"),
+         "M_PL_theorem_hypotheses", "G_topological_smooth_reroute"),
         "notes/pl_self_intersection_certificate_2026-08-24.md"),
+    "G_torus_local_flatness": (
+        "geometric_argument",
+        ("M_torus_local_flatness", "T_surface_classification",
+         "T_contractible_PL3_ball", "T_cyclic_knot_unknot"),
+        "notes/torus_local_flatness_2026-08-27.md"),
+    "G_derived_frontier_identification": (
+        "geometric_argument",
+        ("G_torus_local_flatness", "M_complement_theorem_hypotheses",
+         "M_frontier_normal_equivalence"),
+        "notes/frontier_normal_equivalence_2026-08-27.md"),
 
     "C_correct_filled_presentation": (
         "derived_claim",
         ("G_peripheral_identification", "M_complement_tietze", "M_R3",
-         "M_complement_theorem_hypotheses",
-         "T_derived_regular_neighborhood",
+         "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
     "C_pi1_V_trivial": (
