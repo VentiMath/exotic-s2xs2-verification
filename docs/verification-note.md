@@ -124,16 +124,9 @@ ribbon rotations are enumerated, exactly four survive and all normalize to
 one marked ribbon with two invariant free-half-turn boundary disks, so the
 lemma's finite ribbon classification and its extension hypotheses are
 machine-checked, with the Kerékjártó periodic-disk involution theorem the
-remaining named input now that the source marked data are audited. The replay artifacts
-are `verification/luttinger/paper_coordinate_extractor.py` with its frozen
-`paper_coordinate_certificate.json`, the separate comparison
-`paper_model_dictionary_compare.py` with
-`paper_model_dictionary_comparison.json`, and
-`lemma71_normal_form_check.py` with `lemma71_normal_form_certificate.json`,
-and `lp_source_figure_audit.py` with `lp_source_figure_certificate.json`,
-with transcripts `verification/runs/54-independent-paper-dictionary.txt`,
-`55-lemma71-equivariant-normal-form.txt`, and
-`56-lp-source-figure-audit.txt`. Beyond that boundary, what
+remaining named input now that the source marked data are audited. Each of these checks
+freezes its output as a certificate and logs its run transcript; all of it
+replays directly from the repository. Beyond that boundary, what
 remains is ordinary implementation trust — a checker and its review both
 being wrong — not a declared unverified reading.
 
