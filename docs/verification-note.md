@@ -99,19 +99,31 @@ are cross-checked — parsed, never executed — against the author's own
 committed scripts, which define the same actions, corrections, and sign
 conjugators. The three entries that reading could pin only by transcription
 — the ordered beta twists, the five-chain ribbon labels, and the local twist
-signs — are then closed at the raw-paper level: a quarantined extractor
+signs — were then attacked at the raw-paper level: a quarantined extractor
 reads only the paper's plain text, reconstructs the five-chain, involution,
 ordered twists, surgery tori, whiskers, and direction words, and a separate
 process compares its frozen output with the independently built model
 certificates. Reversed-order and reversed-sign mutations are distinguished,
-and no paper-to-model discrepancy was found. The paper's own Lemma 7.1 is
-certified rather than assumed: all 36 candidate equivariant ribbon rotations
+and no paper-to-model discrepancy was found: the previously identified
+transcription residuals are closed relative to the paper's stated marked
+data, and what remains on this axis is independent confirmation that the
+Lidman–Piccirillo source figure carries the asserted five-chain and
+involution data. The project-specific content of the paper's Lemma 7.1 is
+certified in the same sense: all 36 candidate equivariant ribbon rotations
 are enumerated, exactly four survive and all normalize to one marked ribbon
-with two invariant free-half-turn boundary disks, and the lemma's disk
-extension reduces to the classical Kerékjártó periodic-disk involution
-theorem. What remains on this axis is ordinary implementation trust — a
-checker and its review both being wrong — not a declared unverified
-reading.
+with two invariant free-half-turn boundary disks, so the lemma's finite
+ribbon classification and its extension hypotheses are machine-checked,
+while the source marked-data identification and the Kerékjártó
+periodic-disk involution theorem remain named inputs. The replay artifacts
+are `verification/luttinger/paper_coordinate_extractor.py` with its frozen
+`paper_coordinate_certificate.json`, the separate comparison
+`paper_model_dictionary_compare.py` with
+`paper_model_dictionary_comparison.json`, and
+`lemma71_normal_form_check.py` with `lemma71_normal_form_certificate.json`,
+with transcripts `verification/runs/54-independent-paper-dictionary.txt`
+and `55-lemma71-equivariant-normal-form.txt`. Beyond that boundary, what
+remains is ordinary implementation trust — a checker and its review both
+being wrong — not a declared unverified reading.
 
 ## 6. The framing lemma
 
@@ -155,7 +167,9 @@ nonabelian simple groups, have no proper subgroup of index at most 8, and
 resist coset enumeration to a 12.5M-coset ceiling. Every shift touching
 only the second surgery torus is certified trivial in both families; all
 undecided cases involve a shift on the first torus. The full verdict table
-is reported with the artifacts.
+is reported with the artifacts. The 18 undecided counterfactual groups are
+not evidence of a framing error, and they have no bearing on the j=0 proof
+unless the independent framing argument of §6 first fails.
 
 ## 7. The downstream audit
 
@@ -183,7 +197,11 @@ finite-cyclic classification; symplectic Kodaira dimension and minimality
 (via the audited ADK / Ho–Li Luttinger-surgery constructions); the
 symplectic Thom theorem; the Rokhlin/Arf input of the slicing argument; and
 the Ozsváth–Szabó / Lidman–Piccirillo Floer machinery. This note does not
-reprove them.
+reprove them. The ribbon-interpretation input is narrower than the phrase
+suggests: §5's classification certifies the implication from the paper's
+stated marked five-chain data to the equivariant normal form, so what this
+boundary retains is the elementary reading of the printed figures into that
+stated data, together with its thickening into complexes.
 
 Formerly listed inputs that are no longer dependencies: surface-bundle
 classification (replaced by the explicit clutching of §2); four-dimensional

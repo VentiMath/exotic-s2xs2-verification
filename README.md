@@ -64,16 +64,20 @@ the paper's coordinates, with proof-producing certificates that replay.
   committed scripts, which define the same actions, corrections, and sign
   conjugators. The three entries run 53 could pin only by transcription —
   the ordered beta twists, the five-chain ribbon labels, and the local twist
-  signs — were then closed at the raw-paper level: a quarantined extractor
-  reads only the paper's text, reconstructs the five-chain, involution,
-  ordered twists, tori, whiskers, and direction words, and a separate
-  process compares its frozen output with the independently built model
-  certificates. Reversed-order and reversed-sign mutations are
-  distinguished, and no paper-to-model discrepancy was found. The paper's
-  own Lemma 7.1 is certified rather than assumed: all 36 candidate
-  equivariant ribbon rotations are enumerated, exactly four survive and all
-  normalize to one marked ribbon, and the lemma's disk extension reduces to
-  the classical Kerékjártó periodic-disk theorem.
+  signs — were then attacked at the raw-paper level: a quarantined
+  extractor reads only the paper's text, reconstructs the five-chain,
+  involution, ordered twists, tori, whiskers, and direction words, and a
+  separate process compares its frozen output with the independently built
+  model certificates. Reversed-order and reversed-sign mutations are
+  distinguished, and no paper-to-model discrepancy was found: the
+  transcription residuals are closed relative to the paper's stated marked
+  data, with independent confirmation of the Lidman–Piccirillo source
+  figure's five-chain and involution data as the remaining step on this
+  axis. Lemma 7.1's finite ribbon classification and extension hypotheses
+  are certified — all 36 candidate equivariant ribbon rotations enumerated,
+  exactly four surviving, all normalizing to one marked ribbon — while the
+  source marked-data identification and the classical Kerékjártó
+  periodic-disk theorem remain named inputs.
 * **The framing lemma's analysis.** The displayed Weinstein-chart, seam, and
   constant-momentum algebra of the paper's Lemma 8.2 are machine-checked, and
   its inline normalizations are rebuilt constructively: the Moser flow is the
@@ -120,7 +124,9 @@ meridian-shifted refillings across both half-drift families, 82 are
 certified trivial, 18 remain undecided (all perfect, all resistant to
 quotient and coset-enumeration attack), and none is nontrivial. Every shift
 touching only the second surgery torus is certified trivial; only shifts on
-the first torus produce undecided counterfactual groups.
+the first torus produce undecided counterfactual groups. Those 18 holdouts
+are not evidence of a framing error, and they have no bearing on the j=0
+proof unless the independent framing argument first fails.
 
 The accurate one-sentence status: **the proof appears complete relative to
 explicitly named standard topology theorems, with no known project-specific
