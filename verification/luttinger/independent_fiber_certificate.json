@@ -1,0 +1,238 @@
+{
+  "canonicalization_witness": {
+    "independent_curve_reversals": [
+      false,
+      true,
+      true,
+      false,
+      false
+    ],
+    "independent_surface_reversed": true,
+    "primary_curve_reversals": [
+      false,
+      false,
+      true,
+      true,
+      false
+    ],
+    "primary_surface_reversed": false
+  },
+  "equivariant_data_checked": [
+    "named crossing rotations",
+    "two disk faces labeled p and O",
+    "involution on every directed curve end",
+    "p and O fixed"
+  ],
+  "format": "luttinger-independent-marked-fiber-v1",
+  "independence": {
+    "fiber_module_absent": true,
+    "imports": [
+      "__future__",
+      "collections",
+      "complex",
+      "itertools"
+    ]
+  },
+  "independent_structure": {
+    "chi": -2,
+    "complement_disks": [
+      {
+        "cap_disk": {
+          "boundary_edges": 20,
+          "chi": 1,
+          "f_vector": [
+            21,
+            40,
+            20
+          ]
+        },
+        "chi": 1,
+        "f_vector": [
+          21,
+          38,
+          18
+        ],
+        "fixed_point": "O"
+      },
+      {
+        "cap_disk": {
+          "boundary_edges": 20,
+          "chi": 1,
+          "f_vector": [
+            21,
+            40,
+            20
+          ]
+        },
+        "chi": 1,
+        "f_vector": [
+          13,
+          22,
+          10
+        ],
+        "fixed_point": "p"
+      }
+    ],
+    "curve_lengths": {
+      "a": 5,
+      "b": 6,
+      "c": 6,
+      "d": 6,
+      "e": 5
+    },
+    "f_vector": [
+      58,
+      180,
+      120
+    ],
+    "intersections": {
+      "ab": 1,
+      "ac": 0,
+      "ad": 0,
+      "ae": 0,
+      "bc": 1,
+      "bd": 0,
+      "be": 0,
+      "cd": 1,
+      "ce": 0,
+      "de": 1
+    },
+    "involution_chain_action": "a<->e, b<->d, c->c freely",
+    "involution_fixed_set": [
+      "O",
+      "p"
+    ]
+  },
+  "marked_ribbon_code_sha256": "3b07cadf43e3ff010a0c7159a3e138cadc880856df153762fd347022be2d66aa",
+  "marked_ribbon_codes_identical": true,
+  "mutation_controls": {
+    "identity_involution": "DISTINGUISHED",
+    "p_O_swapping_involution": "REJECTED"
+  },
+  "primary_structure": {
+    "chi": -2,
+    "complement_disks": [
+      {
+        "cap_disk": {
+          "boundary_edges": 24,
+          "chi": 1,
+          "f_vector": [
+            25,
+            48,
+            24
+          ]
+        },
+        "chi": 1,
+        "f_vector": [
+          25,
+          48,
+          24
+        ],
+        "fixed_point": "O"
+      },
+      {
+        "cap_disk": {
+          "boundary_edges": 24,
+          "chi": 1,
+          "f_vector": [
+            25,
+            48,
+            24
+          ]
+        },
+        "chi": 1,
+        "f_vector": [
+          25,
+          48,
+          24
+        ],
+        "fixed_point": "p"
+      }
+    ],
+    "f_vector": [
+      86,
+      264,
+      176
+    ],
+    "intersections": {
+      "ab": 1,
+      "ac": 0,
+      "ad": 0,
+      "ae": 0,
+      "bc": 1,
+      "bd": 0,
+      "be": 0,
+      "cd": 1,
+      "ce": 0,
+      "de": 1
+    }
+  },
+  "result": "PASS: equivariantly identical marked filling ribbon graphs",
+  "segment_edges": {
+    "explicit_common_subdivision": {
+      "a": [
+        40
+      ],
+      "b": [
+        12,
+        12
+      ],
+      "c": [
+        12,
+        12
+      ],
+      "d": [
+        12,
+        12
+      ],
+      "e": [
+        40
+      ]
+    },
+    "independent": {
+      "a": [
+        5
+      ],
+      "b": [
+        3,
+        3
+      ],
+      "c": [
+        3,
+        3
+      ],
+      "d": [
+        3,
+        3
+      ],
+      "e": [
+        5
+      ]
+    },
+    "primary": {
+      "a": [
+        8
+      ],
+      "b": [
+        4,
+        4
+      ],
+      "c": [
+        4,
+        4
+      ],
+      "d": [
+        4,
+        4
+      ],
+      "e": [
+        8
+      ]
+    }
+  },
+  "theorem_boundary": [
+    "an equivariant ribbon-graph isomorphism thickens equivariantly",
+    "a commuting boundary-circle map extends by coning over each p/O disk",
+    "finite surface homeomorphisms admit compatible PL subdivisions"
+  ]
+}

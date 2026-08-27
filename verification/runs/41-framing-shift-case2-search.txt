@@ -1,0 +1,72 @@
+Run 40: proof-producing search on framing-shift robustness case 2
+================================================================
+
+Case
+----
+
+  n0_y1_ap1_bp1_jap2_jbp0
+
+This is the auxiliary j_alpha=+2 framing-discrepancy filling at signs (+,+).
+It is not one of the paper's j=0 surgery groups and its undecided status does
+not weaken the paper verification.
+
+Previously recorded bounded searches
+------------------------------------
+
+The group has trivial abelianization.  ACE remained open after 12,499,998
+cosets at the 50,000,000-word workspace limit.  No epimorphism was found onto
+A5, PSL(2,7), A6, PSL(2,8), PSL(2,11), or PSL(2,13), and the only subgroup of
+index at most 8 found was the whole group.  These are bounded non-witness
+results and do not prove triviality.
+
+Reproducible compact input
+--------------------------
+
+A fresh GAP replay of the fill-then-base raw ordering followed by
+IsomorphismSimplifiedFpGroup produced 2 generators and 9 relators with lengths
+
+  [62, 62, 100, 100, 101, 101, 104, 120, 126]
+
+and total length 876.  The exact exported word lists were compared against
+the embedded presentation in case2_compact_attack.py and match word for word.
+For comparison, the generated base-then-fill ordering gives length 880;
+reversing the two raw lists gives lengths 913 and 907.  Thus 876 is the best
+of the four tested deterministic orderings.
+
+Proof-preserving reductions
+---------------------------
+
+1. Seeded Nielsen basis search reduces 876 to 609 letters.
+2. Replayable relator multiplication reduces this to 602 letters, retaining
+   2 generators and 9 relators.  Eleven of twelve seeds reached 602; one
+   remained at 609.
+3. Naming the automatically selected highest-saving repeated cyclic word and
+   searching in the resulting three-generator presentation produced a new
+   2-generator presentation with only 8 relators and total length 532 in two
+   independent seeds.
+4. Restarting from 8/532 and repeating the named-block cycle reaches a
+   439-letter temporary-generator presentation.  All eight tested elimination
+   routes return to the same 8/532 presentation, so this is the present
+   one-block fixed point.
+
+Every retained row was replayed before being written: generator Nielsen
+automorphisms, named-block expansion, relator multiplications, and elementary
+Tietze elimination certificates all matched their stored outputs.
+
+Verdict and next attack
+-----------------------
+
+INCONCLUSIVE.  No nontrivial witness and no triviality certificate is known.
+The strongest current proof target is the 439-letter temporary-generator
+presentation, or the 8-relator/532-letter two-generator presentation.  The
+next useful proof-producing escalation is a second named generator (or
+relator-basis annealing while the first temporary generator remains present),
+not a larger ACE workspace.
+
+Artifacts
+---------
+
+  luttinger/case2_compact_attack.py
+  luttinger/case2_compact_attack_results.json
+  luttinger/case2_compact_expanded_results.json
+  luttinger/case2_compact_cycle2_results.json

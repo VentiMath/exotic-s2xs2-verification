@@ -1,0 +1,58 @@
+Run 19: peripheral slope permutation and y2 basing (2026-08-23)
+=================================================================
+
+Torus-level slope certificate
+-----------------------------
+`peripheral_bridge.py` constructs the literal historical and paper section
+paths inside the two induced surgery tori, independently of complement
+whiskers.  The induced components have f-vectors
+
+  T_alpha [24,72,48],   T_beta [272,816,544].
+
+KBMAG completes confluently on both torus groups and certifies
+
+  old alpha down = (paper alpha up)^-1,
+  old alpha up   = (paper alpha down)^-1,
+  old positive beta = (paper B-section)^-1.
+
+Thus reversing the base generator swaps the two alpha half-arcs, exactly as
+the mapping-torus lattice predicts, and reverses the beta section.
+
+Opposite-side alpha whisker
+---------------------------
+The first implementation changed the alpha half-arc but incorrectly retained
+the y1 whisker.  The corrected y2 path is the literal reverse-side route from
+p to the same c_y crossing.  It has its own explicitly constructed oriented
+meridian M_y2.  Positive KB reductions in the complement certify
+
+  lambda_y2 = y^-1 (A r^-1) y,
+  M_y2      = y^-1 M y.
+
+Therefore the whole adjacent alpha filling relator is simultaneously
+conjugated:
+
+  M_y2 lambda_y2^e = y^-1 [M (A r^-1)^e] y.
+
+This closes the alpha-side peripheral basing bookkeeping rather than merely
+matching the unbased slope.
+
+Scope of the adjacent calculation
+---------------------------------
+The paper states that replacing Ax by Ar^-1 is a robustness/re-indexing run
+and is not needed for the specified n=0 manifold.  Our four Ar^-1 relation
+systems are indeed certified trivial.  The y2 alpha pair is now geometric as
+above.  However the alternate-side beta correction using the paper's x-route,
+
+  x M_y2 x^-1,
+
+did not reduce to the y1 correction r^-1 M r, nor did its assembled beta word
+reduce to the explicit s2-based longitude, under the current nonconfluent
+rewriting system.  These failures are INCONCLUSIVE. Run 20 subsequently fills
+with the literal y2 alpha and s2 beta boundary loops and certifies all four
+adjacent groups directly. Thus the alternate beta-word comparison remains an
+open coordinate diagnostic, not a geometric or group-triviality blocker.
+
+Reproduce the torus calculation with:
+
+  python3 peripheral_bridge.py
+  ../bin/gap -q peripheral_bridge.g

@@ -1,0 +1,124 @@
+--- a/standalone/lib/kbfns.c
++++ b/standalone/lib/kbfns.c
+@@ -42,5 +42,21 @@
+  */
+-
++
++/* Machine-readable additions to -ve output.  These retain the information
++ * that upstream KBMAG normally loses when tidyup changes and compacts its
++ * numbered equation array. */
++static void proof_word(gen *w)
++{
++  boolean first = TRUE;
++  printf("[");
++  while (*w != '\0') {
++    if (!first)
++      printf(",");
++    printf("%d", (int)*(w++));
++    first = FALSE;
++  }
++  printf("]");
++}
++
+ /* Functions defined in this file: */
+ static void build_fulltable(rewriting_system *rwsptr);
+ int check_finite(rewriting_system *rwsptr, int max);
+@@ -671,6 +687,13 @@
+         rwsptr->exit_status = 1;
+         return;
+       }
++      if (rwsptr->print_eqns) {
++        printf("#ProofNewReduced %d ", ne1);
++        proof_word(tw1);
++        printf(" ");
++        proof_word(tw2);
++        printf("\n");
++      }
+       if (genstrlen(tw1) <= rwsptr->maxreducelen / 2 &&
+           genstrlen(tw2) <= rwsptr->maxreducelen / 2 &&
+           insert(&(rwsptr->eqns[ne1].lhs), &(rwsptr->eqns[ne1].rhs), rwsptr) >
+@@ -794,8 +817,16 @@
+       }
+     }
+     if ((*eqn)[i].changed) {
+-      if (iv == 0)
++      if (iv == 0) {
++        if (rwsptr->print_eqns) {
++          printf("#ProofReduced %d ", i);
++          proof_word(testword1);
++          printf(" ");
++          proof_word(testword2);
++          printf("\n");
++        }
+         iv = insert(newlhs + i, newrhs + i, rwsptr);
++      }
+       retain = iv > 0;
+       if (iv < 0)
+         rwsptr->lostinfo = TRUE;
+@@ -816,11 +847,24 @@
+     }
+   }
+   if (moving || some_changed) {
++    if (rwsptr->print_eqns)
++      printf("#ProofTidyBegin %d\n", rwsptr->num_eqns);
+     moving = FALSE;
+     for (i = 1; i <= rwsptr->num_eqns; i++)
+       if (!(*eqn)[i].eliminated) {
+         nnum_eqns++;
+         if ((*eqn)[i].changed) {
++          if (rwsptr->print_eqns) {
++            printf("#ProofChange %d ", i);
++            proof_word((*eqn)[i].lhs);
++            printf(" ");
++            proof_word((*eqn)[i].rhs);
++            printf(" ");
++            proof_word(newlhs[i]);
++            printf(" ");
++            proof_word(newrhs[i]);
++            printf("\n");
++          }
+           fflush(stdout);
+           tfree((*eqn)[i].lhs) tfree((*eqn)[i].rhs)(*eqn)[i].lhs = newlhs[i];
+           (*eqn)[i].rhs = newrhs[i];
+@@ -842,11 +886,15 @@
+       }
+       else {
+         moving = TRUE;
++        if (rwsptr->print_eqns)
++          printf("#ProofDrop %d\n", i);
+         if (i <= rwsptr->num_inveqns)
+           rwsptr->num_inveqns--;
+         fflush(stdout);
+         tfree((*eqn)[i].lhs) tfree((*eqn)[i].rhs)
+       }
++    if (rwsptr->print_eqns)
++      printf("#ProofTidyEnd %d\n", nnum_eqns);
+   }
+   else
+     nnum_eqns = rwsptr->num_eqns;
+@@ -1459,6 +1507,13 @@
+         if (reduce_word(testword2, &rs_rws) == -1) {
+           rwsptr->exit_status = 1;
+           return -1;
++        }
++        if (rwsptr->print_eqns) {
++          printf("#ProofNewReduced %d ", rwsptr->num_eqns + 1);
++          proof_word(testword1);
++          printf(" ");
++          proof_word(testword2);
++          printf("\n");
+         }
+         if (genstrlen(testword1) > rwsptr->maxreducelen / 2 ||
+             genstrlen(testword2) > rwsptr->maxreducelen / 2)
+@@ -1467,9 +1522,8 @@
+                               &(rwsptr->eqns[rwsptr->num_eqns + 1].rhs),
+                               rwsptr)) > 0) {
+           if (rwsptr->print_eqns) {
+-            printf("    #New equation number %d, from fast conf_check on eqn. "
+-                   "%d:\n",
+-                   rwsptr->num_eqns + 1, i);
++            printf("    #New equation number %d, from overlap %d, %d:\n",
++                   rwsptr->num_eqns + 1, i, -betar);
+             *kbm_buffer = '\0';
+             add_to_buffer(6, "#");
+             n = add_word_to_buffer(stdout,

@@ -1,0 +1,48 @@
+Run 26: live acornlib review and formalization specification (2026-08-23)
+============================================================================
+
+GitHub baseline
+---------------
+
+Live remote heads checked directly:
+
+  acornlib  bd1e602737758cff8e82934526b1710dbc3b7bc8
+  acorn     91f29ff1d25aff15afbde214dd9b620f817a9567
+
+The live acornlib commit is dated 2026-08-20. A disposable partial clone was
+used for inspection; no working checkout was mutated. The public remote heads,
+rather than an unidentified local clone, are the baseline for the specification.
+
+Capability finding
+------------------
+
+The live tree contains 1,344 Acorn source files and substantial infrastructure
+for groups, normal subgroups, equivalence-class quotient representatives,
+modules, finite vectors and matrices, topology, and graphs. The current project
+roadmaps still list free groups/presentation-style quotients as unfinished.
+No existing module supplies finite group presentations, word rewriting, or a
+derivation-certificate checker.
+
+Acorn implementation decision
+-----------------------------
+
+The shortest high-assurance route is a semantic group-presentation calculus:
+interpret signed words in every target Group, prove each certificate rule
+preserves equality, and derive that every generator is the identity under any
+assignment satisfying the relators. This proves the needed triviality statement
+without first constructing a free group or quotient group.
+
+The DeepSeek handoff is exclusively for new `.ac` library modules: group words,
+semantic presentations, derivation objects and soundness, shared finite
+derivation sequences, presentation triviality, free and presented groups,
+rank-two bilinear forms, and later chain/simplicial infrastructure. External
+certificate generators, parsers, GAP/KBMAG instrumentation, and audit-repository
+changes are explicitly outside that handoff.
+
+Deliverable
+-----------
+
+The phased DeepSeek work specification, adversarial test plan, stop conditions,
+and copyable Packet 0 prompt are in:
+
+  notes/deepseek_acorn_framework_spec_2026-08-23.md

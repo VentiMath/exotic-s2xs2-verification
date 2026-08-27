@@ -1,0 +1,43 @@
+# Run 45: the framing-shift robustness table, frozen (2026-08-26)
+
+Driver: luttinger/j_robustness.py (tiers 0-3 KBMAG passes, both relator
+orderings; then an ACE 50M-word + quotient/low-index pass on every
+undecided case, all 18 completed). Results: luttinger/j_robustness_results.jsonl;
+GAP programs in luttinger/j_gap/; successful rewriting systems in
+luttinger/j_rws/. Raw worker logs untracked.
+
+A shift (j_a, j_b) fills mu*(lambda*mu^j)^e on each torus with the
+certified coherent based pairs - the group the paper's construction
+would produce under that hypothetical framing error.
+
+Verdicts (T = trivial by Tietze collapse, K = trivial by complete
+confluent rewriting, . = inconclusive; no case is nontrivial):
+
+  n0_y1  (columns: (j_a,j_b) = +0+0 +1+0 -1+0 +2+0 -2+0 +0+1 +0-1 +0+2 +0-2 +1+1 +1-1 -1+1 -1-1)
+    signs (+1,+1):  K  .  T  .  K  K  T  K  K  .  T  T  T
+    signs (+1,-1):  K  K  T  .  K  T  K  K  K  T  .  T  T
+    signs (-1,+1):  K  T  K  K  .  K  T  K  K  T  T  K  T
+    signs (-1,-1):  K  T  K  K  K  T  K  K  K  T  T  T  .
+
+  n1_y2  (columns: (j_a,j_b) = +0+0 +1+0 -1+0 +2+0 -2+0 +0+1 +0-1 +0+2 +0-2 +1+1 +1-1 -1+1 -1-1)
+    signs (+1,+1):     .  T  .  K  K  T  K  K  .  T  T  T
+    signs (+1,-1):     .  T  .  K  T  K  K  K  T  .  T  T
+    signs (-1,+1):     T  .  K  .  K  T  K  K  T  T  .  T
+    signs (-1,-1):     T  K  K  .  T  K  K  K  T  T  T  .
+Totals: 100 cases; 82 certified trivial (40 T + 42 K); 18 inconclusive;
+0 nontrivial. Every inconclusive case is perfect (H1 = 0), has no
+epimorphism onto A5, PSL(2,7), A6, PSL(2,8), PSL(2,11), or PSL(2,13),
+no proper subgroup of index <= 8, and resists coset enumeration to the
+12.5M-coset workspace ceiling - the same profile the certified j=0
+fillings had before confluent rewriting decided them.
+
+Structural findings:
+1. ALL 32 beta-only shifts are certified trivial: a framing error on
+   T_beta alone cannot change the simple-connectivity conclusion, in
+   either half-drift family. The undecided corner consists entirely of
+   alpha-shifted slopes.
+2. The j=0 controls reproduce the eight certified fillings exactly
+   (word-for-word relator match asserted before every run).
+3. Codex's compact-presentation attacks (runs 39, 41) reduced the two
+   hardest alpha cells to replayable 310- and 439-letter targets;
+   both remain open.

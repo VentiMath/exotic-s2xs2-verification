@@ -1,0 +1,28 @@
+# Run 46: direct equivariant Moser flow (2026-08-26)
+
+`python3 luttinger/equivariant_moser_lift.py`
+
+```
+PASS q o tau = q exactly modulo the quotient angle period
+PASS dq(X) = Xbar for the directly defined vertical lift
+PASS tau_* X = X: the lifted coefficient is deck-invariant
+PASS the lifted field vanishes on the full upstairs core
+PASS q^*(dt^dbar_theta)=2 dt^dtheta=dt1^dtheta
+REDUCTION equivariance of the flow uses only uniqueness for this ODE
+NO COVERING-SPACE LIFTING THEOREM REMAINS
+ALL DIRECT EQUIVARIANT MOSER CHECKS PASSED
+```
+
+The associated proof is
+`notes/lemma82_direct_equivariant_moser_2026-08-26.md`. Rather than lift the
+downstairs diffeomorphism using covering-space theory, it defines the Moser
+field directly upstairs by
+
+`X_s(theta,t)=a(2 theta,t,s) d/dt`.
+
+The exact coordinate check proves that this field projects to the downstairs
+field, is invariant under `tau(theta,t)=(theta+pi,t)`, fixes the core, and
+has the paper's factor-two normalization. ODE uniqueness then makes its flow
+equivariant. This is the same analytic input already needed for the
+relative-Moser flow, so connected-cover lifting is removed as an independent
+theorem dependency.

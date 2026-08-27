@@ -1,0 +1,16 @@
+alpha mapping torus (phi0)...
+  Y f-vector [258, 1842, 3168, 1584]; reduced to 3 gens 17 rels (0.1s)
+beta stack (T_b dir 1, then T_a dir 1)...
+  stack f-vector [2880, 20544, 35328, 17664]; reduced to 4 gens 22 rels (1.6s)
+beta stack (T_b dir 1, then T_a dir -1)...
+  stack f-vector [2880, 20544, 35328, 17664]; reduced to 4 gens 22 rels (1.8s)
+
+phi model : [ [ 0, 0, 0 ], [ 1, 7, 29, 187, 671 ] ]
+Y actual  : [ [ 0, 0, 0 ], [ 1, 7, 29, 187, 671 ] ]
+hex model : [ [ 0, 0, 0 ], [ 1, 7, 17, 56, 86 ] ]
+tb  model : [ [ 0, 0, 0, 0 ], [ 1, 15, 50, 418, 884 ] ]
+Vpp       : [ [ 0, 0, 0 ], [ 1, 7, 13, 44, 98 ] ]
+Vpm       : [ [ 0, 0, 0 ], [ 1, 7, 17, 56, 86 ] ]
+
+
+[exited with code 0]

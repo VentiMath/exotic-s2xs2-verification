@@ -1,0 +1,71 @@
+Based-generator bridge and first Table 1 relations (2026-08-23)
+================================================================
+
+Commands:
+
+  python3 luttinger/paper_bridge.py
+  (cd luttinger && python3 r_run.py)
+  (cd luttinger && python3 group_attack.py word-all --write-only)
+  (cd luttinger && ../bin/gap -q r_group_attack.g)
+
+Certified based monodromy
+-------------------------
+
+`paper_bridge.py` uses explicit rail parallels with literal one-edge whiskers
+from p.  It verifies phi0(x,y)=(r,s) as vertex paths, the surface relator, and
+the drilled-e free basis <x,y,r>.  Transporting the complete whiskered paths
+through the open beta stack gives
+
+  x -> y^-1,  y -> yx,  r -> r,  s -> s.
+
+The open-stack calculation replays 17,839 elementary Tietze eliminations; all
+remaining residuals Dehn-reduce to the identity in the genus-2 surface group.
+Thus the reported unbased-vs-based monodromy failure is not reproduced for the
+current model and these explicit whiskers.
+
+Explicit meridians and beta corrections
+---------------------------------------
+
+`r_run.py` now bases M along the literal initial segment y_1 from p to the
+unique y-intersection with c, followed only by a shortest normal segment in
+the closed star of that crossing.  The base generator B is explicitly based
+off the torus-carrying cut and uses the paper's inverse-loop convention.
+
+KBMAG (a valid positive certificate even though the complete system is not
+confluent) reduces these two residuals to the identity:
+
+  ByB^-1 (M^-1 yx)^-1,
+  BsB^-1 ((r^-1 M^-1 r)s)^-1.
+
+The +1-M residuals remain inconclusive, not disproved.  This certifies M2 and
+M3 with the oriented triangulation's M^-1 convention.
+
+M1 alpha transport membrane
+----------------------------
+
+The full transport of s through the simplicial alpha mapping torus is the
+11x4 grid
+
+  v -> (A0 v, A1 v, A2 v, A0 phi(v)).
+
+The executable checks find:
+
+  * no incidence with T_alpha;
+  * exactly one incidence with T_beta, at s intersect e;
+  * oriented local intersection sign -1;
+  * punctured boundary lengths 8 and 12;
+  * the untouched 8-edge component is exactly y^-1 after replayed elementary
+    Tietze substitutions.
+
+The local identification is resolved by the rank-one calculation in `runs/13`.
+The boundary-component connector and correction placement are subsequently
+resolved in `runs/14`: transporting the source-corner meridian gives the paper
+word `N=A*N_grid^-1*A^-1`, and the assembled M1 residual reduces to the empty
+word in the proof-producing full replay.
+
+Regression facts
+----------------
+
+The independently traced beta basing sweep still has one signed T_alpha hit,
+boundary lengths [6,34,34], and terminal longitude exactly equal to the direct
+T_beta longitude after the replayed Tietze substitutions.

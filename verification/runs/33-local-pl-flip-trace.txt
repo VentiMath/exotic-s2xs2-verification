@@ -1,0 +1,80 @@
+Run 33: local PL flip-trace certificate (2026-08-25)
+=========================================================
+
+Purpose
+-------
+
+Replace visual or expert inspection of the alternative twist cobordism by a
+finite audit of its assembled tetrahedra. The checker is deliberately
+downstream of construction: it does not call the builder's flip, trace, or
+structural checking helpers.
+
+What is checked
+---------------
+
+`luttinger/pl_flip_trace.py` rebuilds the alternative beta stack and then
+reads only its final simplices. It assigns every tetrahedron to one of the 64
+slabs and reconstructs all 128 cone vertices. For every cone it verifies:
+
+* exactly two lower and two upper triangles on the same four labels;
+* complementary old and new diagonals;
+* exactly four side squares with the correct staircase triangulations;
+* an 8-vertex, 18-edge, 12-triangle connected closed link of Euler
+  characteristic 2, with every vertex link circular;
+* a 12-tetrahedron cone star whose boundary is exactly that link; and
+* vertex-disjoint quadrilaterals for simultaneous flips.
+
+For each complete slab it additionally verifies that every tetrahedron
+outside the cone stars is one of the three exact staircase prisms over an
+untouched lower triangle. The slab boundary is exactly its lower and upper
+marked fiber and its change of triangulation is exactly the union of the
+logged flips. A mutation control deletes one cone tetrahedron and is rejected.
+
+Global manifold audit
+---------------------
+
+  stack f-vector                 [5718,40456,69296,34560]
+  interfaces                     64
+  elementary flips               128
+  complete boundary triangles    352
+  boundary components            two marked copies of the genus-2 fiber
+
+The checker audits all 5,718 vertex links of the open stack. Every interior
+link is a connected closed combinatorial surface with Euler characteristic 2;
+every boundary link is a connected combinatorial surface with one circular
+boundary and Euler characteristic 1. Thus all links are respectively
+2-spheres or 2-disks. In particular, the check is stronger than a global
+pseudomanifold/f-vector test.
+
+Reproducibility
+---------------
+
+The certificate reproduced byte-for-byte under `PYTHONHASHSEED=86420`. Its
+SHA-256 digest is
+
+  d0524e5b8341f3e747a6a79eac3d28fd293ea9f6fe38cfd4f545d83a7362cc09
+
+Conclusion and exact theorem boundary
+-------------------------------------
+
+Every implemented local move is the labeled cone-ball trace of the stated
+2-2 bistellar flip, and the remainder of every slab is the literal product
+trace. Together with Run 32's exact based-pi1 action, the code no longer asks
+a reviewer to infer the mapping class from a picture or from homology.
+
+The residual PL input has been reduced to the elementary general facts that a
+connected closed combinatorial surface of Euler characteristic 2 is S^2, its
+cone is a PL 3-ball, and the labeled 2-2 ball trace realizes the corresponding
+bistellar move. These facts are exposed in the certificate rather than hidden
+inside a construction claim.
+
+Reproduce from the repository root:
+
+  python3 luttinger/pl_flip_trace.py \
+      --check \
+      --output luttinger/pl_flip_trace_certificate.json
+
+Run-36 integration note (2026-08-25): the surface-classification, labeled
+`A*boundary(B)` to `boundary(A)*B` trace, and global gluing statements now
+appear with precise citations and machine-bound hypotheses in the PL referee
+packet.

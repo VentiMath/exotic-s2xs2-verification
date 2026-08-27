@@ -1,0 +1,48 @@
+Run 36: integrated PL-theorem boundary (2026-08-25)
+=======================================================
+
+Command:
+
+  python3 luttinger/pl_theorem_audit.py \
+      --check --output luttinger/pl_theorem_hypotheses.json
+
+Integrated finite checks:
+
+  128 labeled 2-2 cone-ball traces                              PASS
+  5,718 sphere/disk vertex-link records                         PASS
+  64 slabs with exact marked boundaries and product remainder  PASS
+  identical equivariant marked ribbon codes                    PASS
+  explicit common subdivision of every ribbon segment          PASS
+  p/O disk faces and involution action preserved               PASS
+  four normal-clutching cases replayed                          PASS
+  ambient marked bundle dimension exactly four                 PASS
+  disjoint push-offs and exact radial-chain boundaries          PASS
+  self-intersection zero in every case                          PASS
+
+The integrated certificate binds the exact Run-33 and Run-34 JSON hashes and
+recomputes Run 28 rather than trusting its prose report.
+
+Integrated certificate SHA-256:
+
+  0cdb369ba032e2cef91bf6b4bd254b67ab53182e1d1225b9a38bac853758b506
+
+Precise theorem boundary:
+
+  compact-surface classification for the sphere/disk links;
+  standard labeled trace of a 2-2 bistellar move;
+  dimension-four compatible smoothing and concordance uniqueness;
+  naturality of the oriented homological intersection pairing.
+
+Primary references:
+
+  Lickorish (1999), Definition 2.3 and Theorems 5.9--5.10,
+    arXiv:math/9911256
+  Pachner (1991), European J. Combin. 12, 129--145,
+    doi:10.1016/S0195-6698(13)80080-7
+  Hirsch--Mazur (1974), Smoothings of Piecewise Linear Manifolds, Parts I--II
+  Rourke--Sanderson (1982), Introduction to Piecewise-Linear Topology, Ch. 3,
+    doi:10.1007/978-3-642-81735-9
+
+Detailed argument:
+
+  notes/pl_bridge_referee_packet_2026-08-25.md

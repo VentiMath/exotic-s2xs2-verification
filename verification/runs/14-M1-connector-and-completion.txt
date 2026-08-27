@@ -1,0 +1,38 @@
+M1 connector and completed corrected transport package (2026-08-23)
+===================================================================
+
+The local detour identified in run 13 is based at the source-side corner of
+the alpha transport square.  Call that oriented meridian N_grid.  The outer
+boundary has the domain order
+
+  corrected s-side, positive alpha connector, y^-1-side,
+  inverse alpha connector.
+
+The positive connector is the inverse of the paper generator A.  Rotating the
+outer boundary to the base corner used by the word AsA^-1 transports and
+reverses the source-side meridian.  Therefore the plain correction in Table 1
+is
+
+  N_paper = A * N_grid^-1 * A^-1.
+
+The traced corrected s-boundary is exactly N_grid*s after elementary Tietze
+substitution, while the other boundary is exactly y^-1.  Substitution in the
+oriented outer boundary gives
+
+  AsA^-1 = N_paper*y.
+
+The main target run now exports N_paper as `geom_N`.  In the full complement
+presentation the tracked residual `table_M1_sign+1` reduces to the empty word
+during the same proof-producing elementary Tietze run used for every other
+path.  The complete replay succeeds.
+
+Together with the positive KBMAG identity reductions from run 12, the three
+corrected transport relations in the triangulation's orientation convention
+are now
+
+  M1: AsA^-1 = N*y,
+  M2: ByB^-1 = M^-1*(yx),
+  M3: BsB^-1 = (r^-1*M^-1*r)*s.
+
+The paper treats the exponents as sign parameters, so this is one coherent
+oriented convention, not a claim that every displayed exponent must be +1.

@@ -1,0 +1,45 @@
+{
+  "base_application": {
+    "boundary_components": 1,
+    "construction": "oriented annulus plus one band joining its boundary components",
+    "euler_characteristic": -1,
+    "genus": 1,
+    "no_two_cell_coherence_condition": true,
+    "spine": "one vertex and two loop edges",
+    "spine_rank": 2
+  },
+  "external_statements_only": [
+    "classification of bundles by homotopy classes into BDiff+(F)",
+    "contractibility of Diff_0(F) for a closed oriented genus-2 surface",
+    "Dehn-Nielsen-Baer injectivity into Out(pi1(F))",
+    "isotopy extension relative to the marked curve neighborhoods"
+  ],
+  "fiber_application": {
+    "alpha_involution_on_c": "free half-rotation",
+    "beta_on_e": "relative pointwise product",
+    "closed_oriented_genus": 2,
+    "independent_marked_ribbon_equivalence": true,
+    "p_O_fixed": true
+  },
+  "format": "luttinger-surface-bundle-theorem-hypotheses-v1",
+  "monodromy_application": {
+    "alpha_based_action": "x<->r, y<->s",
+    "based_actions_stronger_than_required_outer_actions": true,
+    "beta_based_action": "x->y^-1, y->yx, r->r, s->s",
+    "independent_beta_interfaces": 64,
+    "independent_beta_residuals": "all empty after certified replay",
+    "primary_beta_tietze_steps": 17839,
+    "surface_relator_conjugacy_preserved": true
+  },
+  "relative_marking_application": {
+    "T_alpha_core_c_preserved": true,
+    "T_beta_core_e_preserved_relative_to_a_neighborhood": true,
+    "marked_crossings_and_whiskers_independently_identical": true
+  },
+  "source_certificates": {
+    "alternative_based_monodromy.json.gz": "7cb057bdb7646c76e9d1d2703cf8e1c7051a4d51fee36e801e5d8dfd1b54dcd2",
+    "alternative_bundle_certificate.json": "5310e772a77988b74f9024847e6951919334445668805cbe161597c2677ad1b6",
+    "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "runs/12-based-generators-and-table-relations.txt": "81c5e260c359ead0a188468413e9a97f47c2360495497c0b1fc1b35181b6c56d"
+  }
+}

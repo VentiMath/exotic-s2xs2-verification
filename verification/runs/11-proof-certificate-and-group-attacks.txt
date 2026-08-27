@@ -1,0 +1,98 @@
+Proof-producing reduction and bounded group attacks (2026-08-23)
+================================================================
+
+Commands:
+  PYTHONHASHSEED=0 PATH=~/luttinger/bin:$PATH python3 r_run.py
+  python3 group_attack.py summary --write-only
+  docker run --rm -i -v ~/luttinger/luttinger:/w -w /w \
+    gapsystem/gap-docker gap -q r_group_attack.g
+  python3 group_attack.py kb-all --write-only
+  python3 group_attack.py automatic --case 7 --write-only
+  python3 group_attack.py ace --case 7 --workspace 6000000 --write-only
+  python3 group_attack.py quotients --case 7 --write-only
+  python3 group_attack.py gap-export-all --write-only
+  python3 presentation_search.py --gap-input r_gap_simplified.json \
+    --nielsen-steps 100000 --seed 17
+
+Proof-producing Tietze reduction
+--------------------------------
+
+The target complement starts with 99,863 generators and 321,702 relators.
+fast_tietze.py now records every elementary elimination as
+
+  [source relator id, eliminated generator, replacement word].
+
+An independent replay does not repeat the priority-queue search.  At each
+step it reconstructs the current source relator, asserts that the generator
+occurs exactly once, recomputes the replacement from that relator, substitutes
+it everywhere, and finally checks a SHA-256 digest of the resulting relators
+and tracked words.  The target certificate contains 99,860 verified
+eliminations and reduces to 3 generators / 78 relators.  Compressed size:
+743 KB.  The T^4 regression also verifies 861 eliminations and deliberately
+rejects a corrupted first step.
+
+Artifacts:
+  r_tietze_certificate.json.gz  replayable elementary-elimination log
+  r_presentations.json          stable 3-generator complement, tracked words,
+                                and all eight fillings
+  r_gap_simplified.json         GAP's smaller presentation for each filling
+
+Geometric paper-generator bridge
+--------------------------------
+
+r_run.py now exports explicit edge-loop candidates for x,y,r,s,A,B:
+five-chain cores a,b,e,d in the unobstructed (A0,J2) fiber slice and alpha/beta
+base loops through the fixed fiber vertex p.  These are explicitly labelled
+candidates because the paper's generator choices include particular whiskers.
+A sign scan proves one peripheral identity by the elementary substitutions:
+
+  coord_alpha_fiber_r-1_x-1_out+1 = identity.
+
+No tested alpha-base, beta-fiber, or beta-reference candidate becomes the
+empty word under elementary elimination.  This is inconclusive as a word
+problem, but correctly prevents an unsupported identification with the
+paper's whiskered generators.
+
+Eight filled presentations
+--------------------------
+
+All have H1=0.  GAP IsomorphismSimplifiedFpGroup gives:
+
+  case 0  drift 1  (+,+): 3 gens / 10 rels / total length 193
+  case 1  drift 1  (+,-): 3 gens / 13 rels / total length 251
+  case 2  drift 1  (-,+): 3 gens / 11 rels / total length 218
+  case 3  drift 1  (-,-): 3 gens / 13 rels / total length 261
+  case 4  drift 2  (+,+): 3 gens / 11 rels / total length 241
+  case 5  drift 2  (+,-): 3 gens / 11 rels / total length 236
+  case 6  drift 2  (-,+): 3 gens / 11 rels / total length 206
+  case 7  drift 2  (-,-): 3 gens / 11 rels / total length 181
+
+Bounded attacks
+---------------
+
+* KBMAG KnuthBendix, all eight: nonconfluent; each generator normal form is
+  unchanged.  No triviality certificate.
+* KBMAG AutomaticStructure, shortest case 7: maximum word-difference bound
+  exceeded.  Inconclusive.
+* ACE hard strategy, case 7, each cyclic generator subgroup and the trivial
+  subgroup: every run exhausted its table (index 0, 999,998 total cosets).
+* Case 7 epimorphisms onto A5, PSL(2,7), A6, PSL(2,8): zero for each target.
+* LowIndexSubgroupsFpGroup(case 7,10) did not finish during the bounded run and
+  was interrupted; historical runs had already found no proper subgroup of
+  index <=10.
+* Proof-oriented local search uses only Nielsen automorphisms, multiplication
+  of one relator by a cyclic conjugate of another, and certified
+  occurrence-one elimination.  A 100,000-step deterministic-seed run shortened
+  cases 0,3,5,7 to total lengths 189,260,231,177 respectively, but eliminated
+  no generator.  The other cases stayed at GAP's lengths.
+
+Conclusion
+----------
+
+The reduction from the triangulation is now replayable rather than merely
+trusted, and all downstream presentations are stable artifacts.  None of the
+bounded attacks proves triviality or nontriviality.  The best next proof route
+is still geometric: certify the paper's specifically whiskered x,y,r,s,A,B
+loops and Table 1 annulus boundaries as explicit triangulated 2-chains/van
+Kampen diagrams.  Blindly enlarging coset tables has substantially lower
+expected value.

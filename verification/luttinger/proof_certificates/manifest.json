@@ -1,0 +1,28 @@
+{
+  "format": "luttinger-filled-group-proof-manifest-v1",
+  "sha256": {
+    "compile_kbmag_certificate.py": "b5bf9e3815102849e74453235965885bc76a5afdedd3d4bf07dd2b7bd8dd9a45",
+    "export_kbmag_proof_inputs.py": "75e6d02bbd87c1a25a46079f57decc4e47c53372f5096e7ca9b64df492530c00",
+    "kbmag-proof/Dockerfile": "9bcd932713837d26882399bdfacdce34cb04620e503d7469d0f55e5d3b484dfd",
+    "kbmag-proof/kbfns-proof.patch": "d4381ef095323058be753e4a7f11e508d6d954d9e975b0dc3835305599eb5cd5",
+    "kbmag_history.py": "623c5caab35d47717e7b8b24ab24b8695639f9fa699cf8a101c2eb8d3b0be360",
+    "proof_certificates/n0_y1_m1_m1.json.gz": "d1fef67fba53502436f361c6059905c5e6135007d017ba81b6cfdb45d0293382",
+    "proof_certificates/n0_y1_m1_p1.json.gz": "56d13c8dbdb76c277b4e14219067285daa37c9253c62174c95ad3a08b23b5035",
+    "proof_certificates/n0_y1_p1_m1.json.gz": "3b2930070529debc02243df27c19de3893f3a18d014218ddbab4b15083b9c00b",
+    "proof_certificates/n0_y1_p1_p1.json.gz": "69bab7b1a80f7c55846b32ae5020c4c85868b5e4fbac9e710d0aa8e22ae6194e",
+    "proof_certificates/n1_y2_m1_m1.json.gz": "843d8743e0b35cb84c7b6c4492c71bbcb111527b2dd883fe0afa95386adc1a6d",
+    "proof_certificates/n1_y2_m1_p1.json.gz": "ddce8df20f4e28ee4e7f76b763ebd02560e6da7c78094453f0d6aa4d23398b11",
+    "proof_certificates/n1_y2_p1_m1.json.gz": "c87ef72c6443ed3c40c892fa22e549bd7ebb21ec3364084bf983a6bf6e039f29",
+    "proof_certificates/n1_y2_p1_p1.json.gz": "4c2b86ce80994f6acfe8b36d48ff49b2249e610ec5e4518d09a4847cfe295258",
+    "r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
+    "raw_proof_inputs/n0_y1_m1_m1.rws": "793eb6d9a6aec0789aeb5edc0541d11d01dc7d4f13632bbd5cef85671d93a0b0",
+    "raw_proof_inputs/n0_y1_m1_p1.rws": "5ca1c5d08434e4ca944ae268f19994e5b5f9e8bc25429ed9e79d2a5d6408a395",
+    "raw_proof_inputs/n0_y1_p1_m1.rws": "9f684ba66484e22c2ca1f7877f2267c378d2c49dbd70f0b8e43fca4c51a24d9b",
+    "raw_proof_inputs/n0_y1_p1_p1.rws": "3b7f99b48e56d75e189688fde02748d278f3a72d013d73d3d80ae34381bcfef3",
+    "raw_proof_inputs/n1_y2_m1_m1.rws": "f8e78c76e6492c00dfb6bb925599b149b46e568888510c894eb61e01f52925bf",
+    "raw_proof_inputs/n1_y2_m1_p1.rws": "42ee5b097b8393ba518105329c17491c912b8dd2c8685a1fbc9ac578cad9a630",
+    "raw_proof_inputs/n1_y2_p1_m1.rws": "475e47a4eb8e144c457b1c4ff66a09bdd6eabcd6aa5d9240282604f5a64c0db8",
+    "raw_proof_inputs/n1_y2_p1_p1.rws": "54c58c345583a601b4bc0cd7eb652177ffbc6f69ca66ef63e86065f451a13a1b",
+    "verify_kbmag_certificate.py": "23f3cd0d173dd3a33a639a9a79e3c158fc9ac3577a0c7229a45cf2537b592e18"
+  }
+}

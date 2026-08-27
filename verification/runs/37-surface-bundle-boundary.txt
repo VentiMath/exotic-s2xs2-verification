@@ -1,0 +1,70 @@
+Run 37: marked surface-bundle theorem boundary (2026-08-26)
+================================================================
+
+Purpose
+-------
+
+Replace the ledger's undifferentiated `T_surface_bundle` appeal with an exact
+statement of the general theorem and a machine-bound list of every
+construction-specific hypothesis used in this instance.
+
+Key reduction
+-------------
+
+The base is an oriented annulus with one band joining its two boundary
+components. It is therefore a genus-one surface with one boundary component
+and retracts to a graph with one vertex and two loop edges. An oriented
+genus-2 surface bundle over this base has no hidden two-cell coherence
+condition: after fixing the fiber marking, it is determined by the two
+monodromy mapping classes.
+
+Finite audit
+------------
+
+`luttinger/surface_bundle_theorem_audit.py` checks and binds:
+
+  base chi, genus, boundary count, and rank-two graph spine          PASS
+  independent marked genus-2 fiber and p/O labels                   PASS
+  alpha action x<->r, y<->s and free half-rotation on c             PASS
+  primary based beta action with 17,839-step replay                 PASS
+  alternative 64-interface based beta action, all residuals empty   PASS
+  both automorphisms preserve the surface-relator conjugacy class   PASS
+  beta trace is relative pointwise product near e                   PASS
+  independent marked crossings and whiskers agree                   PASS
+
+The integrated certificate is
+`luttinger/surface_bundle_theorem_hypotheses.json`, SHA-256:
+
+  02a6f34be14f79e00914194539510b08d2d2eab9562690d229c3982857015e24
+
+Exact theorem residue
+---------------------
+
+The remaining conventional inputs are:
+
+* classification of bundles by maps into `BDiff+(F)` and homotopy
+  invariance under deformation retraction of the base;
+* contractibility of `Diff_0(F)` for closed oriented genus-2 `F` (more than
+  the graph-base application strictly needs);
+* Dehn--Nielsen--Baer injectivity from the mapping class group to
+  `Out(pi1(F))`;
+* isotopy extension relative to the already fixed c/e neighborhoods.
+
+The self-contained argument and exact citations are in
+`notes/surface_bundle_referee_packet_2026-08-26.md`. In particular, equality
+of the certified based automorphisms is stronger than the outer-automorphism
+equality required by Dehn--Nielsen--Baer.
+
+Reproduce
+---------
+
+  python3 luttinger/surface_bundle_theorem_audit.py --check
+  python3 luttinger/proof_ledger.py
+
+Conclusion
+----------
+
+No marked-bundle mismatch was found. `T_surface_bundle` is now a thin named
+standard-theorem boundary with all construction-specific hypotheses frozen.
+The next reducible upstream boundary is the derived-neighborhood/complement
+presentation input inside `T_complement_presentation`.

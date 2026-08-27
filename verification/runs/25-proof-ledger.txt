@@ -1,0 +1,77 @@
+Run 25: explicit proof-dependency ledger
+Date: 2026-08-23
+
+Command:
+
+    cd luttinger
+    python3 proof_ledger.py
+
+Expected and observed first line:
+
+    PASS: proof ledger is closed, acyclic, and all evidence files exist
+
+The ledger distinguishes machine certificates, geometric arguments, external
+theorems, and the remaining KBMAG software-trust assumption. It binds each
+local certificate to an existing evidence file and exposes the dependencies of
+the final conclusions. See
+notes/formalization_risk_register_2026-08-23.md.
+
+This is dependency formalization, not a foundational formal proof.
+
+Update 2026-08-25
+-----------------
+
+Run 29 replaced the replay-only KBMAG evidence with independently checked
+derivation DAGs for the original filled presentations. The current ledger has
+no `software_trust` node: `C_pi1_V_trivial` now depends on
+`M_filled_group_derivations` rather than `M_RWS_replay` plus
+`T_KBMAG_soundness`.
+
+Run 30 added `M_independent_peripheral_extraction` as a second prerequisite
+of `G_peripheral_identification`. It independently reconstructs the two based
+peripheral pairs from the marked triangulation. The shared bundle construction
+and the named standard PL/smooth inputs remain explicit trust boundaries.
+
+Run 31 added `M_alternative_bundle` to `G_marked_bundle_identification`. It
+rebuilds the marked bundle and tori without `bundle.py` or `layers.py`, on a
+different 64-interface beta triangulation, and reproduces the marked
+beta homology action and peripheral semantics. The shared marked fiber and
+the named standard PL/smooth inputs remain explicit.
+
+Run 32 added `M_alternative_based_monodromy` to the same geometric node. The
+64-interface alternative trace now has its own complete based-pi1 calculation:
+34,735 elementary Tietze substitutions replay, and all four residuals for
+x->y^-1, y->yx, r->r, s->s Dehn-reduce to the identity. The Run-31
+homology-only limitation is removed.
+
+Run 33 added `M_PL_flip_trace` and narrowed the former `T_PL_flip_trace`
+boundary to `T_elementary_bistellar_trace`. The new checker reads the final
+tetrahedra and verifies all 128 labeled cone-ball traces, every untouched
+product prism, every slab boundary, and every vertex link of the open stack.
+Only the elementary general interpretation of that finite local model remains
+external.
+
+Run 34 added `M_independent_marked_fiber` and the explicit theorem node
+`T_equivariant_ribbon_thickening`. A separate 58-vertex vertex-disk/edge-band
+surface, importing no `fiber.py`, has the identical canonical marked ribbon
+code as the primary 86-vertex plumbing, including p/O face labels and the
+involution on every directed curve end. Common subdivisions of every curve
+segment are recorded. The former shared-fiber software boundary is removed;
+only the named elementary thickening and disk-extension facts remain external.
+
+Run 35 replaced the combined `T_moser_weinstein` boundary with three precise
+nodes: local flow existence in relative Moser, lifting and uniqueness for the
+connected double cover, and Lagrangian-neighborhood germ uniqueness. The new
+`M_framing_inline_calculus` evidence checks the complete displayed calculus
+and points to a self-contained referee packet. The ledger makes explicit that
+`G_lagrangian_framing` is upstream of the filled-presentation identification
+and therefore of simple connectivity and both exoticness conclusions.
+
+Run 36 replaced `T_equivariant_ribbon_thickening` and the ambiguous
+`T_PL_smoothing` node with four precise boundaries: rotation-system
+thickening, the elementary bistellar trace, low-dimensional compatible
+smoothing, and oriented-intersection naturality. The new
+`M_PL_theorem_hypotheses` integration certificate binds those applications to
+Runs 28, 33, and 34. `G_section_square_zero` now uses homological intersection
+naturality rather than suggesting that its explicit PL push-off must itself
+be smoothed.

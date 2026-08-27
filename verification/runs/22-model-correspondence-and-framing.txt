@@ -1,0 +1,45 @@
+Run 22: marked-bundle correspondence and framing audit (2026-08-23)
+==================================================================
+
+Commands:
+
+  python3 model_correspondence.py
+  python3 framing_check.py
+
+Results:
+
+  marked genus-2 fiber and five-chain                         PASS
+  orientability (after repairing stale assertion code)       PASS
+  phi0(x,y)=(r,s) as literal p-based paths                    PASS
+  phi0|c is a free half-rotation                              PASS
+  psi0: x->y^-1, y->yx, r->r, s->s (17,839-step replay)       PASS
+  psi0 fixes e through a literal product stack                PASS
+  K: chi=2, codimension-one pseudomanifold globally           PASS
+  boundary: connected closed 3-pseudomanifold                 PASS
+  T_alpha,T_beta: two disjoint induced closed tori            PASS
+  Weinstein-coordinate symplectic-form identity               PASS
+  half-drift seam and constant-momentum push-offs              PASS
+  restored Moser interpolation signs                          PASS
+
+No mismatch with the paper's marked bundle or Lemma 8.2 was found. The
+surface-bundle classification argument now identifies the triangulated model
+with the paper's marked bundle, rather than only comparing fingerprints.
+
+The exact output of model_correspondence.py ended with:
+
+  model correspondence: phi0|c is the free half-rotation: PASS
+  model correspondence: psi0 fixes e through a literal product: PASS
+  model correspondence: K has connected closed boundary and chi=2: PASS
+  model correspondence: T_alpha,T_beta are disjoint induced tori: PASS
+
+The framing audit restores the PDF subscripts in
+omega_s=(1-s)Omega_0+s Omega. With d(zeta)=Omega-Omega_0 and
+i_X(omega_s)=-zeta, the Moser derivative vanishes; the apparent opposite sign
+in plain-text extraction is not present in the mathematical formula.
+
+Detailed argument: notes/model_and_framing_audit_2026-08-23.md
+
+Superseded scope note (2026-08-25): Run 35 extends the framing checker through
+the full inline relative-Moser and double-cover calculus, verifies the precise
+ADK03 citation, and records the corrected dependency footprint. Run 22
+remains the certificate for the marked-bundle and initial chart checks.

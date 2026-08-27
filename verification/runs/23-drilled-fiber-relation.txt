@@ -1,0 +1,47 @@
+Run 23: path-level certificate for the drilled-fiber relation (2026-08-23)
+============================================================================
+
+Target
+------
+Lemma 10.1 and relation R3 in the paper:
+
+  kappa3 = s^-1 r^-1 y x,
+  pi1(F - nu(c),p) = Free<x,r,kappa3>,
+  B kappa3 B^-1 = r^-1 s^-1 x.
+
+Method
+------
+`paper_bridge.py::certify_kappa3` removes the vertices of the chordless c
+core and computes the fundamental group of the resulting induced subsurface.
+It constructs geometric spanning-tree loops, finds a third loop which together
+with the already certified x and r loops freely generates the rank-three
+group, and searches in that geometric basis for the class
+s^-1 r^-1 y x. The resulting deterministic based edge loop has length 31 and is disjoint
+from c vertex by vertex.
+
+The closed-surface equality is checked after proof-producing elementary
+Tietze reduction and Dehn reduction against the unique genus-2 surface
+relator. Since F - nu(c) is an incompressible subsurface, this identifies the
+drilled-fiber class. A second free-group calculation proves that the actual
+triple x,r,kappa3 is a basis, with explicit inverse-basis words.
+
+Finally, the complete 31-edge path is transported through the open beta flip
+stack. Its boundary residual against the literal top path r^-1 s^-1 x is
+reduced using 17,839 elementary Tietze steps; the certificate is replayed and
+the remaining surface word Dehn-reduces to the identity.
+
+Exact output
+------------
+
+  paper bridge: kappa3 avoids c and equals s^-1 r^-1 y x: PASS
+  paper bridge: pi1(F-nu(c))=<x,r,kappa3> freely: PASS
+  paper bridge: B kappa3 B^-1 = r^-1 s^-1 x: PASS
+    geometric basis word: [-2, -3, 1] path length: 31
+    Tietze replay steps: 17839
+
+Conclusion
+----------
+R3 is now certified at the same literal based-path level as the monodromy and
+peripheral relations. It is not merely an algebraic relation added to make a
+presentation trivial. This closes the last additional geometrically imposed
+relation in the epimorphism G -> pi1(V) of Lemma 10.2.

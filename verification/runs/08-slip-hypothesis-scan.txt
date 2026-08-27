@@ -1,0 +1,10 @@
+drift=1 (1,1): TRIVIAL (Tietze)
+drift=1 (1,-1): TRIVIAL (Tietze)
+drift=1 (-1,1): TRIVIAL (Tietze)
+drift=1 (-1,-1): overflow
+drift=2 (1,1): TRIVIAL (Tietze)
+drift=2 (1,-1): TRIVIAL (Tietze)
+drift=2 (-1,1): TRIVIAL (Tietze)
+drift=2 (-1,-1): overflow
+
+[exited with code 0]
