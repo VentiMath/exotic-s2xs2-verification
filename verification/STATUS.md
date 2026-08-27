@@ -466,6 +466,15 @@ orientation-preserving order-two disk action with one fixed point is
 conjugate to the half-turn. Relative to that standard two-dimensional
 theorem, Lemma 7.1 is proved.
 
+Run 56 closes the remaining source-level question by auditing the immutable
+Lidman--Piccirillo `arXiv:2505.14387v1` TeX and original vector Figure 1,
+without reading Wuebben or any project model. The source prose supplies the
+chain-reversing involution, oriented preservation of `c`, and exactly two
+fixed points. Separating the original vector drawing's solid and hidden-side
+dashed layers gives one surface crossing for `ab,bc,cd,de` and zero overlap
+for every nonconsecutive pair. Thus every marked input consumed by Run 55 is
+present in the original source; no source-to-Wuebben discrepancy was found.
+
 ## Next steps, in order
 
 1. **Second-implement the small proof checkers.** The 99,860-step Tietze
@@ -531,7 +540,7 @@ theorem, Lemma 7.1 is proved.
   the ordered beta word, ribbon labels, and local twist signs, and compares
   only its frozen output with Runs 34, 51, and 52. The results agree exactly;
   reverse-order and reverse-sign controls fail as they should. The remaining
-  At that stage, the remaining boundary was the mathematical correctness of
+  boundary at that stage was the mathematical correctness of
   the paper's own Lemma 7.1 and marked-ribbon declarations, rather than their
   transcription into this model; Run 55 addresses it next.
 * **Lemma 7.1's marked-ribbon boundary is closed:** Run 55 exhausts the
@@ -540,6 +549,11 @@ theorem, Lemma 7.1 is proved.
   disk extension is reduced to the explicitly cited periodic-disk involution
   theorem, with the smooth branch-chart lift written out in the accompanying
   note.
+* **The original Lidman--Piccirillo marked input is bound:** Run 56 checks the
+  immutable v1 TeX declarations and separates the original vector Figure 1
+  into labeled solid and hidden-side layers. It recovers the ordered
+  five-chain, involution, oriented `c` action, and two fixed points required
+  by Run 55. No Wuebben or model artifact is an input to this extraction.
 
 Optional hygiene, no longer bearing on the conclusion:
 
@@ -633,3 +647,4 @@ Raw console output, in the order produced:
     53  interpretation dictionary with author-code cross-check
     54  independent raw-paper dictionary reconstruction
     55  Lemma 7.1 equivariant normal form (periodic-disk reduction)
+    56  original Lidman--Piccirillo source-figure audit

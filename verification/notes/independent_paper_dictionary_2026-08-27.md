@@ -72,3 +72,8 @@ and displayed declarations to reconstruct the marked ribbon. Thus it attacks
 shared transcription, order, sign, label, and whisker errors, but it does not
 prove Lemma 7.1 itself or replace the elementary ribbon-thickening argument
 that realizes the declared figure as a surface.
+
+Runs 55--56 subsequently close that stated boundary relative to the
+Kerékjártó periodic-disk theorem: Run 55 exhausts the equivariant ribbon
+normal form, and Run 56 recovers its marked hypotheses directly from the
+original Lidman--Piccirillo TeX and vector Figure 1.

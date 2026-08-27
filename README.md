@@ -71,13 +71,17 @@ the paper's coordinates, with proof-producing certificates that replay.
   model certificates. Reversed-order and reversed-sign mutations are
   distinguished, and no paper-to-model discrepancy was found: the
   transcription residuals are closed relative to the paper's stated marked
-  data, with independent confirmation of the Lidman–Piccirillo source
-  figure's five-chain and involution data as the remaining step on this
-  axis. Lemma 7.1's finite ribbon classification and extension hypotheses
-  are certified — all 36 candidate equivariant ribbon rotations enumerated,
-  exactly four surviving, all normalizing to one marked ribbon — while the
-  source marked-data identification and the classical Kerékjártó
-  periodic-disk theorem remain named inputs.
+  data. The original Lidman–Piccirillo v1 source was then audited directly
+  — hash-pinned main.tex and vector Figure 1, no project module imported —
+  confirming the ordered five-chain, the chain-reversing involution with c
+  fixed with orientation, the consecutive crossings and disjointness, and
+  the two fixed points, in both prose and vector layers; the one remaining
+  interpretation there is the ordinary dashed-arc hidden-projection
+  convention. Lemma 7.1's finite ribbon classification and extension
+  hypotheses are certified — all 36 candidate equivariant ribbon rotations
+  enumerated, exactly four surviving, all normalizing to one marked ribbon
+  — with the classical Kerékjártó periodic-disk theorem the remaining
+  named input.
 * **The framing lemma's analysis.** The displayed Weinstein-chart, seam, and
   constant-momentum algebra of the paper's Lemma 8.2 are machine-checked, and
   its inline normalizations are rebuilt constructively: the Moser flow is the

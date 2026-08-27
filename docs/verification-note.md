@@ -106,22 +106,31 @@ process compares its frozen output with the independently built model
 certificates. Reversed-order and reversed-sign mutations are distinguished,
 and no paper-to-model discrepancy was found: the previously identified
 transcription residuals are closed relative to the paper's stated marked
-data, and what remains on this axis is independent confirmation that the
-Lidman–Piccirillo source figure carries the asserted five-chain and
-involution data. The project-specific content of the paper's Lemma 7.1 is
-certified in the same sense: all 36 candidate equivariant ribbon rotations
-are enumerated, exactly four survive and all normalize to one marked ribbon
-with two invariant free-half-turn boundary disks, so the lemma's finite
-ribbon classification and its extension hypotheses are machine-checked,
-while the source marked-data identification and the Kerékjártó
-periodic-disk involution theorem remain named inputs. The replay artifacts
+data. The source itself was then audited directly rather than accepted
+through the paper's restatement: a checker reading only the hash-pinned
+main.tex and original vector Figure 1 of the immutable Lidman–Piccirillo
+v1 arXiv source, importing no project module, confirms the ordered
+five-chain a,b,c,d,e, the chain-reversing involution with c fixed with
+orientation, the single consecutive crossings with all required
+disjointness, and the two fixed points, in both the prose and the vector
+layers. The one interpretation remaining at that boundary is the ordinary
+convention that dashed arcs in a handle picture depict hidden projection
+rather than extra crossings. The project-specific content of the paper's
+Lemma 7.1 is certified in the same sense: all 36 candidate equivariant
+ribbon rotations are enumerated, exactly four survive and all normalize to
+one marked ribbon with two invariant free-half-turn boundary disks, so the
+lemma's finite ribbon classification and its extension hypotheses are
+machine-checked, with the Kerékjártó periodic-disk involution theorem the
+remaining named input now that the source marked data are audited. The replay artifacts
 are `verification/luttinger/paper_coordinate_extractor.py` with its frozen
 `paper_coordinate_certificate.json`, the separate comparison
 `paper_model_dictionary_compare.py` with
 `paper_model_dictionary_comparison.json`, and
 `lemma71_normal_form_check.py` with `lemma71_normal_form_certificate.json`,
-with transcripts `verification/runs/54-independent-paper-dictionary.txt`
-and `55-lemma71-equivariant-normal-form.txt`. Beyond that boundary, what
+and `lp_source_figure_audit.py` with `lp_source_figure_certificate.json`,
+with transcripts `verification/runs/54-independent-paper-dictionary.txt`,
+`55-lemma71-equivariant-normal-form.txt`, and
+`56-lp-source-figure-audit.txt`. Beyond that boundary, what
 remains is ordinary implementation trust — a checker and its review both
 being wrong — not a declared unverified reading.
 
@@ -199,9 +208,11 @@ symplectic Thom theorem; the Rokhlin/Arf input of the slicing argument; and
 the Ozsváth–Szabó / Lidman–Piccirillo Floer machinery. This note does not
 reprove them. The ribbon-interpretation input is narrower than the phrase
 suggests: §5's classification certifies the implication from the paper's
-stated marked five-chain data to the equivariant normal form, so what this
-boundary retains is the elementary reading of the printed figures into that
-stated data, together with its thickening into complexes.
+stated marked five-chain data to the equivariant normal form, and the
+stated data themselves are audited in the original Lidman–Piccirillo
+source, so what this boundary retains is the thickening of that data into
+complexes together with the ordinary dashed-arc hidden-projection
+convention of the audited figure.
 
 Formerly listed inputs that are no longer dependencies: surface-bundle
 classification (replaced by the explicit clutching of §2); four-dimensional
