@@ -1,0 +1,22 @@
+# Run 47: constructive cumulative-coordinate Moser flow (2026-08-26)
+
+`python3 luttinger/moser_cumulative_flow.py`
+
+```
+PASS dH_s/dt=f_s=(1-s)+s*f exactly (positive by convexity)
+PASS d/ds H_s(theta,T_s)=g+f_s*Tprime=0 exactly
+PASS T_0=t0 because H_0 is the identity
+PASS T_s(theta,0)=0: the core is fixed pointwise
+PASS phi_1^*Omega=Omega_0 from f(theta,T_1)dT_1/dt0=1
+PASS uniform inverse collar: |t0|<m*rho implies |T_s|<rho
+NO PICARD-LINDELOF INPUT REMAINS FOR THIS MOSER FLOW
+ALL CUMULATIVE MOSER FLOW CHECKS PASSED
+```
+
+The general flow is not numerically approximated. It is defined exactly by
+the unique monotone inverse
+
+`H_s(theta,T_s)=t0`, where `H_s=t+s*integral_0^t(f-1)`.
+
+The associated proof is
+`notes/lemma82_cumulative_moser_flow_2026-08-26.md`.

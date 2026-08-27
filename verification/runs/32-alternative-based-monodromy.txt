@@ -1,0 +1,81 @@
+Run 32: exact based monodromy in the alternative beta trace (2026-08-25)
+===========================================================================
+
+Purpose
+-------
+
+Upgrade Run 31's homology-only comparison to the full based fundamental
+group. This directly tests whether the independent 64-interface construction
+could agree after abelianization while representing a different mapping
+class, or could transport the correct unbased curves with incorrect whiskers.
+
+Independence boundary
+---------------------
+
+`luttinger/alternative_based_monodromy.py` imports none of `bundle.py`,
+`layers.py`, or `paper_bridge.py`. It uses:
+
+* the alternative open beta trace from Run 31;
+* the separately reconstructed literal p-whiskered rail loops x,y,r,s;
+* a rank-sorted 2-skeleton presentation routine; and
+* the generic proof-producing Tietze eliminator and its replay checker.
+
+The marked fiber remains shared, exactly as recorded in Run 31.
+
+Exact based residuals
+---------------------
+
+For each named bottom loop, the program forms the closed path
+
+  bottom * vertical(p) * top_target^-1 * vertical(p)^-1.
+
+Here `vertical(p)` is the literal 64-edge track of the basepoint through the
+open stack, and the targets are
+
+  x -> y^-1,  y -> yx,  r -> r,  s -> s.
+
+Thus the calculation is based from its first edge and does not infer anything
+from free homotopy or homology.
+
+Certificate result
+------------------
+
+  alternative stack f-vector   [5718,40456,69296,34560]
+  interfaces                    64
+  raw presentation generators  34739
+  raw presentation relators    69296
+  elementary Tietze steps       34735
+  reduced rank                  4
+  reduced surface relator       [-3,-1,2,1,-2,-4,3,4]
+  residual path edge lengths    x=148, y=158, r=148, s=148
+  Dehn steps after replay       x=0, y=0, r=0, s=1
+
+Every Tietze step records its source relator, uniquely occurring generator,
+and forced replacement. The independent replay reconstructs every
+intermediate presentation and checks the final digest. The final s residual
+is one cyclic orientation of the length-eight genus-2 surface relator; its
+single Dehn step records and checks that relator witness. All four residuals
+end at the empty word.
+
+The presentation orders every vertex, edge, triangle, and spanning-tree
+choice by the complex rank. The compressed certificate reproduced
+byte-for-byte under `PYTHONHASHSEED=97531`; its SHA-256 digest is
+
+  7cb057bdb7646c76e9d1d2703cf8e1c7051a4d51fee36e801e5d8dfd1b54dcd2
+
+Conclusion
+----------
+
+The alternative beta trace has the exact based action
+
+  x -> y^-1,  y -> yx,  r -> r,  s -> s.
+
+This removes the homology-only limitation of Run 31. It is a second complete
+based-pi1 calculation on a different triangulation, not a comparison of
+mapping-torus fingerprints.
+
+Reproduce from the repository root:
+
+  python3 luttinger/alternative_based_monodromy.py \
+      --check \
+      --output luttinger/alternative_based_monodromy.json.gz

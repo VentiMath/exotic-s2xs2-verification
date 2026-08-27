@@ -1,0 +1,83 @@
+{
+  "artifacts_sha256": {
+    "n0_y1_m1_m1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n0_y1_m1_m1.presentation": "c9258207a7596a5f4a59f6e49ea6e884f35c5870c5d94258900f0c6eb0c489f0",
+    "n0_y1_m1_m1.rws": "23ba24d5fee2cc6b5932aa6f458ae54fe33b0e43523d9bd18ff2787770340787",
+    "n0_y1_m1_p1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n0_y1_m1_p1.presentation": "be3617b90a49b004c4f41e751833611b9fd6c33036d7da440ce049a50506ce6b",
+    "n0_y1_m1_p1.rws": "fb39b8e65b44d662f8b74b86a4206b2ca92312f8162b3f2bd75976d17ccf4d4a",
+    "n0_y1_p1_m1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n0_y1_p1_m1.presentation": "e632ad4b35fddefe647df2aa03b15dfbe202601638eec96930e0abad81247a0a",
+    "n0_y1_p1_m1.rws": "9fb51a56c2b15149cc7cba894feede506a33f2af0db8597e64bf0d91cddc2f94",
+    "n0_y1_p1_p1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n0_y1_p1_p1.presentation": "9a27df460fb9d54de291acd5127dabf66315810121194a25c1c7b79a2e3dad18",
+    "n0_y1_p1_p1.rws": "d3a53cd4b3d7e1008db9b99ac2e0d7a6e9d7edc134f28ed88404aeba76e79f2f",
+    "n1_y2_m1_m1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n1_y2_m1_m1.presentation": "3e0a91497c491e4f25fe08579ab1f9b6cff6263e5ea4da0442d5c79131c6c7eb",
+    "n1_y2_m1_m1.rws": "d7e23438439d5086b56b08ef608a9582894dc2a3f621ac339801afad219f2c7a",
+    "n1_y2_m1_p1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n1_y2_m1_p1.presentation": "0796319ce67c6632a41cf2ae8ef13ec4da9a72fbde39042c445bb63a3ee81183",
+    "n1_y2_m1_p1.rws": "d7e23438439d5086b56b08ef608a9582894dc2a3f621ac339801afad219f2c7a",
+    "n1_y2_p1_m1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n1_y2_p1_m1.presentation": "79624a7e95e79f14ff0d78a723366f1d899ab66ef4981ca15911ac3c70537d7a",
+    "n1_y2_p1_m1.rws": "d7e23438439d5086b56b08ef608a9582894dc2a3f621ac339801afad219f2c7a",
+    "n1_y2_p1_p1.certificate": "0069adeb9bff6e1d04738fff0d32d70d184f9bbde0e0e72f1ead97697fa1ffc3",
+    "n1_y2_p1_p1.presentation": "ffcd38950be48b5d83746b154221813ddb363702af6ea0017c12355dc566e3c6",
+    "n1_y2_p1_p1.rws": "ba7993a87be2a6b4a698cb382dbad72d5f18b4497dd8294163ae7850b81fbadf"
+  },
+  "cases": [
+    {
+      "half_drift": "n0_y1",
+      "relator_order": "base_then_fill",
+      "sign_a": 1,
+      "sign_b": 1
+    },
+    {
+      "half_drift": "n0_y1",
+      "relator_order": "fill_then_base",
+      "sign_a": 1,
+      "sign_b": -1
+    },
+    {
+      "half_drift": "n0_y1",
+      "relator_order": "fill_then_base",
+      "sign_a": -1,
+      "sign_b": 1
+    },
+    {
+      "half_drift": "n0_y1",
+      "relator_order": "fill_then_base",
+      "sign_a": -1,
+      "sign_b": -1
+    },
+    {
+      "half_drift": "n1_y2",
+      "relator_order": "fill_then_base",
+      "sign_a": 1,
+      "sign_b": 1
+    },
+    {
+      "half_drift": "n1_y2",
+      "relator_order": "fill_then_base",
+      "sign_a": 1,
+      "sign_b": -1
+    },
+    {
+      "half_drift": "n1_y2",
+      "relator_order": "fill_then_base",
+      "sign_a": -1,
+      "sign_b": 1
+    },
+    {
+      "half_drift": "n1_y2",
+      "relator_order": "fill_then_base",
+      "sign_a": -1,
+      "sign_b": -1
+    }
+  ],
+  "format": "luttinger-direct-rws-export-v1",
+  "gap_program": "r_direct_paper_export.g",
+  "gap_program_sha256": "32f088c7072642c7ca92f9900145f64f21bcc0c0e50181bcc5bc69884abb18b8",
+  "input": "r_presentations.json",
+  "input_sha256": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6"
+}

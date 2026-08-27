@@ -1,0 +1,50 @@
+Run 35: framing-lemma calculus and referee packet (2026-08-25)
+================================================================
+
+Command:
+
+  python3 luttinger/framing_check.py
+
+Executable checks:
+
+  relative primitive d(zeta)=Omega-Omega_0                  PASS
+  positivity reduced to convexity with f>0                  PASS
+  relative Moser vector field vanishes on the core          PASS
+  Moser derivative signs cancel                             PASS
+  connected-double-cover deck group has one nonidentity     PASS
+  quotient pullback factor 2 and transverse rescaling       PASS
+  Weinstein-coordinate symplectic-form identity             PASS
+  half-drift seam and both constant-momentum push-offs       PASS
+
+Citation check:
+
+  ADK03, Section 2.1 and Proposition 2.2, states that the
+  cotangent-neighborhood identification is canonical up to isotopy and proves
+  choice-independence of the Luttinger surgery construction.  The referee
+  packet states the short isotopy-to-boundary-push-off consequence explicitly
+  instead of attributing that exact wording to ADK03.
+
+Corrected dependency footprint:
+
+  The framing lemma is an input to identification of the literal certified
+  product-framed fillings with the paper's Lagrangian surgeries.  If it
+  failed, the certificates would remain valid for their presentations, but
+  simple connectivity and hence both the Freedman and symplectic conclusions
+  for the paper's manifolds would become unproved.
+
+Remaining standard inputs:
+
+  local time-dependent flow existence for relative Moser; connected-cover
+  lifting and uniqueness; Lagrangian-neighborhood germ uniqueness.
+
+Precise references:
+
+  Moser (1965), Trans. AMS 120, 286--294,
+    doi:10.1090/S0002-9947-1965-0182927-5
+  Weinstein (1971), Adv. Math. 6, 329--346,
+    doi:10.1016/0001-8708(71)90020-X
+  Hatcher, Algebraic Topology, Section 1.3, Proposition 1.33 (2002 edition)
+
+Detailed argument:
+
+  notes/framing_lemma_referee_packet_2026-08-25.md

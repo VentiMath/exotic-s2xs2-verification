@@ -1,0 +1,75 @@
+{
+  "bottom_top_equal_marked_fiber": true,
+  "complete_boundary_components": 2,
+  "complete_boundary_triangles": 352,
+  "cone_link_f_vectors": {
+    "[8, 18, 12]": 128
+  },
+  "cone_records_sha256": "0f65a1b2b55de7ffa036a1b2f641af2937410989c7891be37b0edac6f6572fcf",
+  "cone_star_f_vectors": {
+    "[9, 26, 30, 12]": 128
+  },
+  "construction": "alternative 64-interface beta trace",
+  "every_flip": {
+    "diagonals": "old and new are complementary in one quadrilateral",
+    "link": "connected closed chi=2 surface, f=[8,18,12]",
+    "outside_cone_stars": "exact staircase prisms over untouched triangles",
+    "partition": "2 floor + 2 roof + 4 triangulated side squares",
+    "simultaneous_quads_vertex_disjoint": true,
+    "star": "cone 3-ball with boundary equal to link"
+  },
+  "explicit_theorem_boundary": [
+    "connected closed triangulated surface with chi=2 is S^2",
+    "cone on a combinatorial S^2 is a PL 3-ball",
+    "the labeled 2-2 ball trace realizes the corresponding bistellar move"
+  ],
+  "flips": 128,
+  "format": "luttinger-pl-flip-trace-v1",
+  "interfaces": 64,
+  "mutation_control_deleted_cone_tetrahedron": "REJECTED",
+  "slab_boundary_components": "exactly lower and upper marked fibers",
+  "slab_records_sha256": "810ccb3e11f10eabbf11916095b61f10c37798d3a65636f58d6374eef7f00d2d",
+  "stack_f_vector": [
+    5718,
+    40456,
+    69296,
+    34560
+  ],
+  "vertex_link_distributions": {
+    "disk": {
+      "[10, 20, 11]": 1,
+      "[10, 21, 12]": 45,
+      "[10, 22, 13]": 13,
+      "[11, 23, 13]": 4,
+      "[11, 24, 14]": 13,
+      "[12, 26, 15]": 3,
+      "[12, 27, 16]": 9,
+      "[13, 29, 17]": 2,
+      "[13, 30, 18]": 2,
+      "[14, 32, 19]": 3,
+      "[25, 48, 24]": 2,
+      "[49, 120, 72]": 2,
+      "[7, 12, 6]": 1,
+      "[7, 13, 7]": 12,
+      "[8, 15, 8]": 7,
+      "[8, 16, 9]": 19,
+      "[9, 17, 9]": 3,
+      "[9, 18, 10]": 11,
+      "[9, 19, 11]": 20
+    },
+    "sphere": {
+      "[11, 27, 18]": 64,
+      "[12, 30, 20]": 1866,
+      "[13, 33, 22]": 230,
+      "[14, 36, 24]": 2195,
+      "[15, 39, 26]": 243,
+      "[16, 42, 28]": 511,
+      "[17, 45, 30]": 135,
+      "[18, 48, 32]": 24,
+      "[19, 51, 34]": 24,
+      "[50, 144, 96]": 126,
+      "[8, 18, 12]": 128
+    }
+  },
+  "vertex_link_records_sha256": "044eb178024331a9663b90ed706f64326862eff4f0bada74a909065b42139b8f"
+}

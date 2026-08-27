@@ -1,0 +1,32 @@
+{
+  "bistellar_application": {
+    "all_vertex_links_classified_by_finite_surface_data": true,
+    "boundary_is_two_marked_fibers": true,
+    "untouched_region_is_literal_product": true,
+    "verified_flip_balls": 128
+  },
+  "external_statements_only": [
+    "classification of compact connected triangulated surfaces",
+    "the standard trace interpretation of a 2-2 bistellar move",
+    "rotation-system thickening and PL coning over disk faces",
+    "low-dimensional PL smoothing and intersection naturality"
+  ],
+  "format": "luttinger-pl-theorem-hypotheses-v1",
+  "intersection_application": {
+    "ambient_bundle_dimension": 4,
+    "constant_clutching_cases": 4,
+    "normal_push_offs_disjoint": true,
+    "radial_chain_boundary_exact": true,
+    "self_intersection": 0
+  },
+  "ribbon_application": {
+    "equivariance_checked_on_every_directed_curve_end": true,
+    "explicit_common_subdivision_on_every_segment": true,
+    "marked_codes_identical": true,
+    "p_O_disk_faces_preserved": true
+  },
+  "source_certificates": {
+    "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "pl_flip_trace_certificate.json": "d0524e5b8341f3e747a6a79eac3d28fd293ea9f6fe38cfd4f545d83a7362cc09"
+  }
+}

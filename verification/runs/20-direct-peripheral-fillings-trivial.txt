@@ -1,0 +1,62 @@
+Run 20: all eight directly traced peripheral fillings are trivial (2026-08-23)
+================================================================================
+
+Coordinate-free filling export
+------------------------------
+`r_run.py` now exports `paper_fillings`, built only from coherent, explicitly
+traced complement loops:
+
+  n0_y1:  (geom_M,     lb_a_y1),
+  n1_y2:  (geom_M_y2,  lb_a_y2),
+  beta:   (geom_N,     lb_b_s2).
+
+For each alpha package and each (eA,eB) in {+1,-1}^2 the two attached relators
+are
+
+  meridian_alpha * longitude_alpha^eA,
+  geom_N          * lb_b_s2^eB.
+
+No paper coordinate formula is substituted in this test. In particular, it
+does not require the still-inconclusive alternate expression
+x M_y2 x^-1 for the beta correction.
+
+Exact result
+------------
+`group_attack.py direct-paper-kb-all` simplifies and completes these eight
+presentations. Seven cases produce complete confluent KBMAG systems immediately
+and every generator reduces to the identity. The sole default-order holdout is
+n0_y1 (+1,+1). `direct-paper-kb-hard` presents the identical relator set in
+base-then-fill order; it simplifies to 2 generators / 7 relators, completes
+confluently, and both generators reduce to the identity.
+
+Therefore all eight directly traced peripheral filling groups are certified
+trivial.
+
+Historical-coordinate map
+-------------------------
+Run 19 certifies inside the induced surgery tori that
+
+  old drift 1 (down) = inverse(n1_y2 section),
+  old drift 2 (up)   = inverse(n0_y1 section),
+  old positive beta = inverse(paper beta section).
+
+All meridians use the same ambient/torus orientation routine. A change of
+whisker to a connected boundary component conjugates every peripheral element
+by the same path; paths subsequently moved within that boundary do not alter
+the pair because its fundamental group is abelian (the frontier is T^3).
+Normal closures are invariant under conjugation. Hence the historical case
+map is
+
+  drift 1 -> n1_y2,  (eA,eB) -> (-eA,-eB),
+  drift 2 -> n0_y1,  (eA,eB) -> (-eA,-eB).
+
+This proves the old hard word presentations trivial by peripheral equivalence,
+even though direct KB completion in their arbitrary spanning-tree coordinates
+remains nonconfluent.
+
+Reproduce with:
+
+  python3 r_run.py
+  python3 group_attack.py direct-paper-kb-all
+  python3 group_attack.py direct-paper-kb-hard
+

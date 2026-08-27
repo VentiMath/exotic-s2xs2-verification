@@ -1,0 +1,21 @@
+patched
+beta j=-1 k=-1: TRIVIAL (Tietze)
+beta j=-1 k=0: overflow
+beta j=-1 k=1: overflow
+beta j=0 k=-1: TRIVIAL (Tietze)
+beta j=0 k=0: overflow
+beta j=0 k=1: overflow
+beta j=1 k=-1: TRIVIAL (Tietze)
+beta j=1 k=0: overflow
+beta j=1 k=1: overflow
+alpha j=-1 k=-1: TRIVIAL
+alpha j=-1 k=0: overflow
+alpha j=-1 k=1: overflow
+alpha j=0 k=-1: TRIVIAL (Tietze)
+alpha j=0 k=0: overflow
+alpha j=0 k=1: overflow
+alpha j=1 k=-1: TRIVIAL (Tietze)
+alpha j=1 k=0: overflow
+alpha j=1 k=1: overflow
+
+[exited with code 0]

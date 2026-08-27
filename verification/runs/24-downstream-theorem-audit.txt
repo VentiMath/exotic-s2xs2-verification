@@ -1,0 +1,26 @@
+Run 24: downstream theorem audit
+Date: 2026-08-23
+
+Command:
+
+    cd luttinger
+    python3 downstream_audit.py
+
+Expected and observed output:
+
+    PASS: downstream Euler, lattice, square-zero, cover-genus, and adjunction checks
+
+Scope and conclusion:
+
+* Checked the finite Euler-characteristic and rank-two lattice calculations
+  used in Theorem 1.2.
+* Checked the square-zero axes and degree-k cover genus formula used in Lemma
+  4.3.
+* Checked the adjunction calculation K.F=2 used to transport the
+  Lidman--Piccirillo relative-invariant argument.
+* Separately audited the hypotheses of the covering, Freedman/Hambleton--Kreck,
+  Kodaira-dimension, slicing, and Heegaard Floer arguments.  See
+  notes/downstream_theorem_audit_2026-08-23.md.
+
+No downstream gap was found.  This run does not formalize the cited external
+4-manifold classification or Floer-theory theorems.

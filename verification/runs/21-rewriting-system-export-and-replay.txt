@@ -1,0 +1,67 @@
+Run 21: hashed rewriting-system export and replay (2026-08-23)
+================================================================
+
+Purpose
+-------
+Turn the all-eight GAP/KBMAG console result from Run 20 into durable,
+machine-readable artifacts which can be integrity-checked and replayed.
+
+Export
+------
+`group_attack.py direct-paper-export` reconstructs the eight directly traced
+peripheral fillings from `r_presentations.json`. It uses fill-then-base
+relator order in seven cases and the successful base-then-fill order for the
+identical hard relator set n0_y1 (+1,+1). It refuses success unless KBMAG
+reports a confluent system and every simplified generator has identity normal
+form.
+
+For each case, `luttinger/direct_rws/` contains:
+
+  * `.presentation`: the simplified free generators and relators;
+  * `.certificate`: the Knuth--Bendix return value, confluence flag, generator
+    normal forms, and certified-trivial flag;
+  * `.rws`: the completed KBMAG rewriting system.
+
+`manifest.json` records the half-drift, signs, relator ordering, SHA-256 of
+`r_presentations.json`, SHA-256 of the exact generated GAP export program, and
+SHA-256 of all 24 case artifacts. The completed systems are exceptionally
+small: their rules send the generators (and inverse letters) to the identity.
+
+Replay
+------
+`group_attack.py direct-paper-replay` verifies all 24 artifact digests before
+starting GAP. It loads each `.rws` through KBMAG's `ReadRWS`, resets the saved
+state, rebuilds the reduction engine from the stored equations, checks
+confluence, and reduces every free-structure generator.
+
+Exact replay result:
+
+  verified input and export-program digests plus 24 artifact digests
+  n0_y1 (+1,+1): four free-structure letters -> identity, ok=true
+  n0_y1 (+1,-1): four free-structure letters -> identity, ok=true
+  n0_y1 (-1,+1): four free-structure letters -> identity, ok=true
+  n0_y1 (-1,-1): four free-structure letters -> identity, ok=true
+  n1_y2 (+1,+1): four free-structure letters -> identity, ok=true
+  n1_y2 (+1,-1): four free-structure letters -> identity, ok=true
+  n1_y2 (-1,+1): four free-structure letters -> identity, ok=true
+  n1_y2 (-1,-1): four free-structure letters -> identity, ok=true
+  ALL EIGHT EXPORTED SYSTEMS REPLAYED
+
+The four free-structure letters are the two simplified group generators and
+their formal inverses; each `.certificate` records the corresponding two group
+generator normal forms.
+
+Reproduce from `luttinger/` with GAP + KBMAG available:
+
+  python3 group_attack.py direct-paper-export \
+    --gap-file r_direct_paper_export.g
+  python3 group_attack.py direct-paper-replay \
+    --gap-file r_direct_paper_replay.g
+
+Trust boundary
+--------------
+This certifies the finite-presentation calculation conditional on the exported
+triangulation-derived relators and on GAP/KBMAG's Tietze simplification and
+completion implementations. It does not independently certify the geometric
+derivation of those relators or the paper's symplectic framing lemma; those
+remain separate layers of the audit.

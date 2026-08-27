@@ -1,0 +1,42 @@
+Run 15: explicit paper-based T_alpha filling direction (2026-08-23)
+==================================================================
+
+Question
+--------
+Does the triangulation-derived base-direction longitude on T_alpha equal the
+paper's y_1-side, n=0 word A x, with all basepoints and orientations explicit?
+
+Construction
+------------
+The earlier lb_a1/lb_a2 loops started at an arbitrary c[0] corner and used the
+presentation tree as their basing.  That is sufficient for the internally
+consistent surgery presentations but not for comparison with Section 8.4.
+
+r_run.py now also constructs two paper-coordinate sections which:
+
+* start at the unique c_y intersection on the explicit based y rail;
+* use the literal initial segment y_1 from p to c_y as whisker;
+* include a two-edge normal jog in C to the retracted boundary corner;
+* lift the base generator A, not the displayed positive alpha loop (A is its
+  inverse); and
+* retain both closing half-arcs of c as separate y1/y2 candidates.
+
+Before correcting the base orientation, KBMAG certified the expected control:
+the positive alpha lift was A^-1 x.  After reversing the lift, the full
+proof-producing Tietze pass and independent replay reported
+
+  exact paper-coordinate candidate identities:
+      coord_alpha_base_y1_A+1_x+1
+
+The tracked residual is therefore the empty word:
+
+  lb_a_y1^-1 * A * x = 1.
+
+Conclusion
+----------
+The explicit y_1-side base-direction push-off is exactly A x in pi_1(C).  This
+identifies it with the paper's n=0 section.  No KB completeness assumption is
+used: the equality follows from elementary eliminations whose certificate was
+replayed.  The adjacent half-section remains a separate diagnostic and is not
+silently identified with A x.
+

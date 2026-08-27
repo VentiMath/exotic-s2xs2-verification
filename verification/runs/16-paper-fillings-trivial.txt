@@ -1,0 +1,82 @@
+Run 16: n=0 filling groups and adjacent relation systems (2026-08-23)
+======================================================================
+
+Input bridge
+------------
+The triangulation-derived complement presentation now contains explicit,
+commonly based paper-coordinate words x,y,r,s,A,B,M,N.  The preceding checks
+certify the required filling directions:
+
+  dir_base(T_alpha) = A x
+  dir_base(T_beta)  = (r^-1 M r) B
+
+The beta M exponent is +1 because the independently certified M3 convention
+is BsB^-1=(r^-1 M^-1 r)s, so epsilon=-1 and Section 8.4 uses M^-epsilon.
+
+Method
+------
+group_attack.py paper-kb-all adds, directly to the proof-reduced machine
+presentation of pi_1(C),
+
+  M (A x)^eA,
+  N ((r^-1 M r) B)^eB
+
+for all (eA,eB) in {+1,-1}^2.  The adjacent half-drift family replaces Ax by
+
+  A r^-1 = A x (r x)^-1.
+
+GAP first applies
+IsomorphismSimplifiedFpGroup.  KBMAG then runs KnuthBendix on the resulting
+presentation.  A case is called trivial only if every free generator reduces
+to the identity; here every rewriting system also completed confluently.
+
+Exact result: n=0
+------------------
+
+  paper fillings (+1,+1): 3 gens/7 rels H1=[]
+    KB returned=[true,true], confluent=true
+    generator normal forms=[1,1,1]  CERTIFIED TRIVIAL
+
+  paper fillings (+1,-1): 3 gens/7 rels H1=[]
+    KB returned=[true,true], confluent=true
+    generator normal forms=[1,1,1]  CERTIFIED TRIVIAL
+
+  paper fillings (-1,+1): 3 gens/8 rels H1=[]
+    KB returned=[true,true], confluent=true
+    generator normal forms=[1,1,1]  CERTIFIED TRIVIAL
+
+  paper fillings (-1,-1): 3 gens/8 rels H1=[]
+    KB returned=[true,true], confluent=true
+    generator normal forms=[1,1,1]  CERTIFIED TRIVIAL
+
+Exact result: adjacent n=1 half-drift
+-------------------------------------
+
+  paper fillings Ar^-1 (+1,+1): CERTIFIED TRIVIAL, confluent
+  paper fillings Ar^-1 (-1,+1): CERTIFIED TRIVIAL, confluent
+  paper fillings Ar^-1 (-1,-1): CERTIFIED TRIVIAL, confluent
+
+The first ordering for Ar^-1 (+1,-1) was nonconfluent and therefore correctly
+reported INCONCLUSIVE.  Placing the identical two filling relators before the
+complement relators changed the simplified presentation from 3 generators /
+9 relators to 3 generators / 8 relators.  KBMAG then completed confluently and
+all three generator normal forms were the identity.  Thus this case too is
+CERTIFIED TRIVIAL; no defining relation was added, removed, or changed.
+
+Conclusion and scope
+--------------------
+This resolves the perfect-group/triviality blocker for the four geometric n=0
+fillings. It is a direct computation in the triangulation-derived complement
+group, not a comparison of low-index fingerprints and not an unfinished coset
+enumeration. The four adjacent Ar^-1 relation systems are also certified
+trivial. As the paper states, that second run is a robustness/re-indexing check
+and is not needed for the specified n=0 manifold. Run 19 records the subsequent
+geometric y2 alpha bridge and the still-inconclusive alternate beta-coordinate
+comparison.
+
+The older eight exported fillings used two arbitrary c[0]-based half-drifts
+and presentation-tree basings.  Their exact simultaneous conjugacy to the
+paper-coordinate meridian/longitude pairs should still be recorded before
+calling those particular word presentations identical.  That bookkeeping is
+no longer an obstruction to either paper half-drift family, which is filled
+directly using explicit y_1- and s_2-based boundary loops.

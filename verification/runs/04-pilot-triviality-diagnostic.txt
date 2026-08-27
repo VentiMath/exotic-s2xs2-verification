@@ -1,0 +1,8 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+H1: [  ]
+simplified: 2 gens, 8 rels, total len 306
+cyclic <g1>: overflow
+cyclic <g2>: overflow
+full: overflow at 12M
+
+[exited with code 0]

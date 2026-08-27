@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+luttinger/r_group_attack.g
+luttinger/r_search_*.json
+luttinger/r_kbmag_proof_inputs.g
+luttinger/raw_proof_history/
+luttinger/proof_history/
+luttinger/proof_inputs/
+luttinger/r_tietze_bridge.g
+luttinger/tietze_bridge.json
+luttinger/raw_proof_inputs/*.rws.kbprog*
+luttinger/raw_proof_inputs/*.rws.reduce

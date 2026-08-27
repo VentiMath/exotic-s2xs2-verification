@@ -1,0 +1,470 @@
+{
+  "bundle": {
+    "K_f_vector": [
+      9156,
+      116714,
+      356728,
+      403152,
+      153984
+    ],
+    "K_vertex_set_sha256": "6946a90e5e4031a9c284e4fb5a56f5cba718d5594ce359afe05d1bbc5530f296",
+    "complement_edges": 108722,
+    "complement_vertices": 8860,
+    "frontier_vertices": 113336,
+    "torus_components": [
+      {
+        "edges": 816,
+        "euler_characteristic": 0,
+        "triangles": 544,
+        "vertex_set_sha256": "443bc006fc566dde39987b833cc58cf9e664189431e9d6a590f29d391e7e0e1d",
+        "vertices": 272
+      },
+      {
+        "edges": 72,
+        "euler_characteristic": 0,
+        "triangles": 48,
+        "vertex_set_sha256": "9a84ee01625dd08451af66479eb539f2e7b46dce77f71d583089058415e40522",
+        "vertices": 24
+      }
+    ]
+  },
+  "format": "luttinger-independent-peripheral-v2",
+  "independence_boundary": {
+    "comparison_basis": "literal derived-frontier and complement paths",
+    "forbidden_modules_imported": [],
+    "geometric_input": "bundle.build_bundle marked triangulation only",
+    "not_imported": [
+      "complement",
+      "pi1",
+      "paper_bridge",
+      "peripheral_bridge",
+      "r_run",
+      "sweep"
+    ]
+  },
+  "marked_crossings": {
+    "c_y": {
+      "tuple": [
+        "b",
+        -1,
+        4
+      ]
+    },
+    "s_2_sha256": "e85d2b9aa13473a8d4a1868c8f3fe39ba9101937547b9c2d4599f7cf1243b9b5",
+    "s_e": {
+      "tuple": [
+        "d",
+        -1,
+        4
+      ]
+    },
+    "y_1_sha256": "9f079a6c4f60807b1f78f349eacc6ffc378b6794252cbdef9efe98b26adab012"
+  },
+  "named_bundle_loops": {
+    "A": {
+      "edges": 3,
+      "sha256": "e56e2ba17a8ae89dd9b45be46d89b75016cbe0dff891912fdff8fdda430cbfeb"
+    },
+    "B": {
+      "edges": 36,
+      "sha256": "7c573b915788ddfdde845a92caef5912b999cde8fa05cdbc05eb5ddfa914016c"
+    },
+    "r": {
+      "edges": 10,
+      "sha256": "1a5f9805d741ab699a12eee2878e584cf1e7d2e61648acdf553b6e7b8d0a8eed"
+    },
+    "s": {
+      "edges": 10,
+      "sha256": "d0e600f10b2c271aedacb694f87f6e6859b6e70b409d3421e49dd60f047e4dcb"
+    },
+    "x": {
+      "edges": 10,
+      "sha256": "3263bc8c531fea32621bbae46490ddfaf53708da19f43aca644f1315608126ce"
+    },
+    "y": {
+      "edges": 10,
+      "sha256": "1246ff6e1dbb7a0d5ac5bf9545994aca13d47e278f41773ce28cfdc7ec7720e8"
+    }
+  },
+  "pair_checks": {
+    "alpha_common_whisker": "PASS: literal y_1 prefix",
+    "alpha_section": "PASS: A lift plus negative c half",
+    "beta_local_common_whisker": "PASS: local N_grid and longitude use literal s_2 prefix",
+    "beta_paper_meridian_transport": "PASS: geom_N = A*N_grid^-1*A^-1 from punctured alpha-s grid",
+    "beta_section": "PASS: B lift with zero e drift",
+    "framing": "product/fibered framing; smooth Lagrangian comparison remains Lemma 8.2",
+    "meridian_orientation": "PASS: ambient/torus induced orientation"
+  },
+  "peripheral_loops": {
+    "N_grid_local_independent": {
+      "complement_edges": 24,
+      "complement_loop_sha256": "aef50abbec3b1743c80f6a5930a85b6476f8146c22d06c7a51b0c0d2f009bb29",
+      "frontier_edges": 8,
+      "frontier_sha256": "8a1c39f4dc0da2377f2ebbec39e068dd1155568b6864353a13fe2ece348586f4",
+      "name": "N_grid_local_independent",
+      "source": {
+        "crossing": {
+          "tuple": [
+            {
+              "tuple": [
+                "A",
+                1,
+                {
+                  "tuple": [
+                    "d",
+                    -1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                "J",
+                2
+              ]
+            }
+          ]
+        },
+        "dual_triangle": {
+          "simplex": [
+            {
+              "tuple": [
+                {
+                  "tuple": [
+                    "A",
+                    1,
+                    {
+                      "tuple": [
+                        "d",
+                        -1,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tuple": [
+                    "J",
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                {
+                  "tuple": [
+                    "A",
+                    1,
+                    {
+                      "tuple": [
+                        "d",
+                        0,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tuple": [
+                    "J",
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                {
+                  "tuple": [
+                    "S",
+                    1,
+                    {
+                      "tuple": [
+                        "d",
+                        0,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tuple": [
+                    "t",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "fiber_whisker_sha256": "e85d2b9aa13473a8d4a1868c8f3fe39ba9101937547b9c2d4599f7cf1243b9b5",
+        "kind": "oriented_dual_meridian"
+      },
+      "whisker_edges": 8,
+      "whisker_sha256": "e85d2b9aa13473a8d4a1868c8f3fe39ba9101937547b9c2d4599f7cf1243b9b5"
+    },
+    "geom_M_independent": {
+      "complement_edges": 18,
+      "complement_loop_sha256": "466759110a7a378bdcab6dd22242a976ed5c8ba3d6cea0b5b9bc9d79a90e3744",
+      "frontier_edges": 8,
+      "frontier_sha256": "0c266ccc744b7d4911598d3b8978137b5e01c4234c6797096fecf8febf733873",
+      "name": "geom_M_independent",
+      "source": {
+        "crossing": {
+          "tuple": [
+            {
+              "tuple": [
+                "A",
+                0,
+                {
+                  "tuple": [
+                    "b",
+                    -1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                "J",
+                1
+              ]
+            }
+          ]
+        },
+        "dual_triangle": {
+          "simplex": [
+            {
+              "tuple": [
+                {
+                  "tuple": [
+                    "A",
+                    0,
+                    {
+                      "tuple": [
+                        "b",
+                        -1,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tuple": [
+                    "J",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                {
+                  "tuple": [
+                    "A",
+                    0,
+                    {
+                      "tuple": [
+                        "b",
+                        0,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tuple": [
+                    "J",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                {
+                  "tuple": [
+                    "A",
+                    1,
+                    {
+                      "tuple": [
+                        "b",
+                        0,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tuple": [
+                    "J",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "fiber_whisker_sha256": "9f079a6c4f60807b1f78f349eacc6ffc378b6794252cbdef9efe98b26adab012",
+        "kind": "oriented_dual_meridian"
+      },
+      "whisker_edges": 5,
+      "whisker_sha256": "08abb220c18eca81673b07b84d06b553c3cfa7aa21ba0f3ca2222eaf0f870cf7"
+    },
+    "geom_N_independent": {
+      "complement_edges": 29,
+      "complement_loop_sha256": "9064ba964d84dc163f20de01b50f1a44dfc6bf63dba15e5ef73f4923cf07cd45",
+      "formula": "A * N_grid^-1 * A^-1",
+      "grid_boundary_lengths": [
+        8,
+        12
+      ],
+      "grid_boundary_sha256": [
+        "2bee1ed73cb8824c4e54c7a26b0e4dd30f9ec388b63a2244db92dac180b855d5",
+        "b8a6fb20d200626ca4dc9d61ac1b882fa57e147bb699b00fbb87458c069ad339"
+      ],
+      "grid_detour_edges": 7,
+      "kind": "transported_oriented_grid_meridian",
+      "local_complex": {
+        "edges": 90,
+        "raw_generators": 67,
+        "triangles": 108,
+        "vertices": 24
+      },
+      "local_dual_image": [
+        1
+      ],
+      "local_grid_image": [
+        1
+      ],
+      "local_inverse_comparison": [
+        -1,
+        -1
+      ],
+      "local_orientation_check": "PASS: grid detour equals oriented dual, not inverse",
+      "local_rank": 1,
+      "local_tietze_steps": 66,
+      "name": "geom_N_independent",
+      "source_grid_meridian_sha256": "fcd3641ce7af299dcf6688e39e0e8e2fc54e695fc99db110bc09ad41b9b37cd7",
+      "transport_grid_sha256": "a874d794a376023c04e681d2b7d56e5e75406fce90d73d6f2a9b6bee39269685",
+      "unique_beta_hit": {
+        "tuple": [
+          8,
+          1,
+          {
+            "tuple": [
+              {
+                "tuple": [
+                  "A",
+                  1,
+                  {
+                    "tuple": [
+                      "d",
+                      -1,
+                      4
+                    ]
+                  }
+                ]
+              },
+              {
+                "tuple": [
+                  "J",
+                  2
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "lb_a_y1_independent": {
+      "complement_edges": 40,
+      "complement_loop_sha256": "01de7c7cef3c550a5be982e439bc9df77600968a385b7116b344cae87138c0d9",
+      "frontier_edges": 28,
+      "frontier_sha256": "bc38f7385967d9ef1c32aa06fb2e8668711c6d0852dbf3a7a7f80bdd7e4b7d35",
+      "name": "lb_a_y1_independent",
+      "source": {
+        "base_direction": "A",
+        "closing_half": "negative c half",
+        "crossing": {
+          "tuple": [
+            {
+              "tuple": [
+                "A",
+                0,
+                {
+                  "tuple": [
+                    "b",
+                    -1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                "J",
+                1
+              ]
+            }
+          ]
+        },
+        "fiber_whisker": "y_1",
+        "kind": "product_framing_push_off",
+        "torus_section_sha256": "b5b3888d8cfc8e92a423f347d645f28f67d79e5f337c32e1c200fdaf0b6fe140"
+      },
+      "whisker_edges": 6,
+      "whisker_sha256": "0a54b451a5861b3c4b80fe6cb2f74a16e98ef776e1cbdbfb52bae784ee6d4ee1"
+    },
+    "lb_b_s2_independent": {
+      "complement_edges": 154,
+      "complement_loop_sha256": "7e4770dad35b9d2bc7809e49b74636b8565e0892d465619a4f85ef7cae1dd167",
+      "frontier_edges": 136,
+      "frontier_sha256": "63137fb8f9f72947b50ca1a171144cd52a6dace5c734e285a6ebc1d95cdd9405",
+      "name": "lb_b_s2_independent",
+      "source": {
+        "base_direction": "B",
+        "crossing": {
+          "tuple": [
+            {
+              "tuple": [
+                "A",
+                1,
+                {
+                  "tuple": [
+                    "d",
+                    -1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "tuple": [
+                "J",
+                2
+              ]
+            }
+          ]
+        },
+        "fiber_drift": 0,
+        "fiber_whisker": "s_2",
+        "kind": "product_framing_push_off",
+        "torus_section_sha256": "41d564bd617a7c19b7d4d5e48c80e13de40dbd6b7c8d126d4776bb491028f528"
+      },
+      "whisker_edges": 9,
+      "whisker_sha256": "be1b24d7e94a68225f8bb4ef5fdfb061ae4284157fe038c67c1734e4c337bf32"
+    }
+  },
+  "sensitivity_controls": {
+    "opposite_alpha_half_sha256": "6ec85d2acd125cc17636d20aa3ae02f9ffbe8ec30cd3e98c0e3849f9e069820a",
+    "opposite_y_2_sha256": "8c0e9dda2b88f77fd73a16bd8c0045b315f77add6d9063157e1f7363776d30aa",
+    "result": "PASS: opposite half, opposite whisker, and meridian inverse are distinct",
+    "reversed_alpha_meridian_sha256": "9ae89479326b77d029c6217beb8f898adcf0ef43995c11886ac956e00f3c5c4c",
+    "selected_alpha_half_sha256": "b5b3888d8cfc8e92a423f347d645f28f67d79e5f337c32e1c200fdaf0b6fe140",
+    "selected_y_1_sha256": "9f079a6c4f60807b1f78f349eacc6ffc378b6794252cbdef9efe98b26adab012"
+  }
+}

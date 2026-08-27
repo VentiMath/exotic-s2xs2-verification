@@ -1,0 +1,79 @@
+Run 29: independently checked filled-group derivation certificates
+Date: 2026-08-25
+
+Result
+------
+
+All eight original four-generator filled presentations in
+`luttinger/r_presentations.json` are certified trivial without trusting GAP's
+Tietze simplifier, KBMAG's completion result, or KBMAG's claim of confluence.
+
+The retained certificate sizes are:
+
+  n0_y1_m1_m1  1123 records
+  n0_y1_m1_p1  1075 records
+  n0_y1_p1_m1   804 records
+  n0_y1_p1_p1  1504 records
+  n1_y2_m1_m1  1709 records
+  n1_y2_m1_p1  3408 records
+  n1_y2_p1_m1  1975 records
+  n1_y2_p1_p1  2517 records
+
+Each certificate ends with all eight monoid letters (the four group generators
+and their formal inverses) rewriting to the identity.
+
+Independent verification
+------------------------
+
+From `luttinger/`:
+
+  python3 verify_kbmag_certificate.py proof_certificates/*.json.gz
+  python3 make_proof_manifest.py --check
+
+Observed output for every case:
+
+  VERIFIED TRIVIAL
+
+The checker does not import the compiler and does not invoke GAP or KBMAG. It
+binds each certificate to the exact `r_presentations.json` SHA-256 digest and
+checks, in topological order:
+
+  * every formal-inverse cancellation axiom;
+  * every initial equation against a cyclic conjugate or inverse of an input
+    relator;
+  * every critical overlap from its two already-proved parent equations;
+  * every literal rewrite step, including rule number and word position;
+  * every equation change made during completion tidying; and
+  * one proved `[letter] = []` rule for each of the eight monoid letters.
+
+Only equality in the presented group is used: free cancellation, insertion of
+an already-proved equation in a word context, inversion, and cyclic conjugacy.
+No confluence claim is needed once every generator is explicitly proved equal
+to the identity.
+
+Certificate generation
+----------------------
+
+The generator is deliberately outside the trust boundary. For reproducibility:
+
+  python3 export_kbmag_proof_inputs.py
+  docker build -t luttinger-kbmag-proof:local kbmag-proof
+  python3 kbmag_history.py raw_proof_inputs/CASE.rws \
+      raw_proof_history/CASE.proof.log
+  python3 compile_kbmag_certificate.py \
+      raw_proof_history/CASE.proof.log proof_certificates/CASE.json.gz \
+      --case INDEX
+
+Repeat the last two commands for the eight manifest cases, then run the
+independent verification commands above. The proof-logging patch records data
+that upstream `kbprog -ve` otherwise loses when it silently rewrites and
+renumbers equations during tidying. Raw histories are reproducible scratch
+artifacts and are not committed; the pruned certificates, original RWS inputs,
+patch, checker, compiler, and hashes are committed.
+
+Trust-boundary consequence
+--------------------------
+
+`C_pi1_V_trivial` in `proof_ledger.py` now depends on the correct filled
+presentation and `M_filled_group_derivations`. The former
+`T_KBMAG_soundness` software-trust node has been removed.

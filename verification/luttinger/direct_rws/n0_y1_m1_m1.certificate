@@ -1,0 +1,4 @@
+knuth_bendix_return := [ true, true ];;
+confluent := true;;
+generator_normal_forms := [ <identity ...>, <identity ...> ];;
+certified_trivial := true;;

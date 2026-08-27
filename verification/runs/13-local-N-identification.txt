@@ -1,0 +1,54 @@
+Local N identification (2026-08-23)
+===================================
+
+Target
+------
+
+Identify the 12-edge detour in the punctured M1 alpha-transport grid with the
+specifically s_2-based meridian N of T_beta, including orientation.
+
+Construction
+------------
+
+The s-path meets e at the fiber vertex
+
+  s_e = ('d', -1, 4).
+
+Let u=('d',-1,3) be its predecessor.  In the punctured alpha grid, the deleted
+edge u--s_e is replaced by the five-edge path
+
+  A0 u -> A1 u -> A2 s_e -> A2 ('d',-1,5)
+       -> A1 ('d',-1,5) -> A0 s_e.
+
+Closing this detour by the reversed original edge s_e--u gives a loop based at
+the endpoint of the literal paper whisker s_2.  This is the grid-defined N.
+
+Local certificate
+-----------------
+
+Take the union of the vertices of all 4-simplices containing the crossing,
+remove the torus vertices, and retain the grid and dual-meridian paths.  Its
+induced complement has f-vector
+
+  [24, 90, 108, 42].
+
+Its spanning-tree presentation reduces by elementary Tietze elimination to
+one generator and no relators, hence is the infinite cyclic local meridian
+group.  Four oriented dual meridians based at s_e are reachable in this local
+complex.  For every one of them:
+
+  grid_meridian^-1 * oriented_dual_meridian  ->  1,
+  grid_meridian^-1 * oriented_dual_meridian^-1 -> g^2 or g^-2.
+
+Every elimination is replayed by `verify_certificate`.  Thus the traced grid
+detour is exactly the positively oriented dual meridian N, and is not N^-1.
+The result is local and does not depend on solving the difficult global
+complement word problem.
+
+Implementation
+--------------
+
+`alpha_s_transport_sweep` in `luttinger/r_run.py` performs the construction,
+asserts the rank-one result, replays the Tietze certificate, and exports the
+based word as `alpha_s_grid_N`.  The Table 1 comparison now uses this word as
+`geom_N`.

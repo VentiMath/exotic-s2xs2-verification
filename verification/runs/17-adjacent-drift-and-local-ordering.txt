@@ -1,0 +1,33 @@
+Run 17: adjacent half-drift and historical local presentations (2026-08-23)
+============================================================================
+
+Adjacent paper half-drift
+-------------------------
+The paper's second minimal alpha section is
+
+  A r^-1 = A x (r x)^-1.
+
+Replacing Ax by Ar^-1 in the explicit paper-coordinate filling relator and
+retaining the certified beta word (r^-1 M r)B gives four more groups.  Three
+completed confluently in the default relator order and every generator reduced
+to the identity.  The (+1,-1) case was initially nonconfluent.  Presenting the
+same group with the two filling relators first gave 3 generators / 8 relators;
+KBMAG then completed confluently and killed all three generators.  Therefore
+all four adjacent-half-drift relation systems are certified trivial.  These
+are the paper's robustness/re-indexing systems; the specified geometric n=0
+manifold uses Ax.  Run 19 records the later explicit y2 alpha basing and the
+remaining alternate beta-coordinate comparison.
+
+Historical local presentations
+------------------------------
+As a control, the same filling-first ordering was applied to the older eight
+exports built from arbitrary c[0]/e[0] boundary corners and spanning-tree
+coordinates.  All eight remained nonconfluent with generator normal forms
+[f1,f2,f3].  These are INCONCLUSIVE results, not nontriviality witnesses.
+
+This shows that relator ordering alone does not explain the difference between
+the easy paper-coordinate certificates and the historical hard words.  The
+remaining bookkeeping task is to record the simultaneous peripheral basing
+changes explicitly.  It is not a remaining triviality problem for the paper
+groups: those groups have already been filled directly in coherent y_1/s_2
+coordinates and certified trivial.

@@ -1,0 +1,51 @@
+{
+  "derived_frontier_application": {
+    "frontier_predicate_independently_reimplemented": true,
+    "frontier_vertices": 113336,
+    "orientation_and_inverse_sensitivity_controls_pass": true,
+    "oriented_dual_meridians_extracted": true,
+    "retraction_independently_reimplemented": true,
+    "torus_components": 2,
+    "torus_f_vectors": [
+      [
+        24,
+        72,
+        48
+      ],
+      [
+        272,
+        816,
+        544
+      ]
+    ]
+  },
+  "external_statements_only": [
+    "the derived neighborhood of a full locally flat PL submanifold is a regular neighborhood",
+    "its frontier is the normal sphere-bundle boundary",
+    "the maximal-tree/triangle-relator presentation theorem for a connected simplicial complex"
+  ],
+  "format": "luttinger-complement-theorem-hypotheses-v1",
+  "presentation_application": {
+    "connected_complement": true,
+    "generator_count_identity": "E-(V-1)=99863",
+    "non_tree_edges": 99863,
+    "reported_generators": 99863,
+    "reported_triangle_relators": 321702,
+    "tree_edges": 8859
+  },
+  "simplexwise_retraction_application": {
+    "all_nontrivial_vertex_partitions_checked": 52,
+    "ambient_dimension": 4,
+    "complement_edges": 108722,
+    "complement_vertices": 8860,
+    "marked_subcomplexes_full": true,
+    "target": "induced subcomplex on vertices outside both tori"
+  },
+  "source_evidence": {
+    "complement.py": "0dcfef21340cdf568888d40c9f6602597fe80861508be4a3e9da335b0c979528",
+    "independent_peripheral_certificate.json": "e99355c3a963bd498855426b084e86fabbf64745a886dcb2ad639457c82cf7bf",
+    "independent_peripheral_extractor.py": "c6c82561fc82372139f1747802b0765541e65c0b5c4d44911a8c6e759094d1fb",
+    "pi1.py": "f8ecb89c2b281636a37f32ebb192d26e0a2a8af045b28f98ab3bc4bee2384f82",
+    "runs/11-proof-certificate-and-group-attacks.txt": "478df157fa267b0c121e7671440661eb28c0631e4a867b2b790a1702090f1533"
+  }
+}

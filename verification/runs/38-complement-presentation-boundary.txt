@@ -1,0 +1,84 @@
+Run 38: complement-presentation theorem boundary (2026-08-26)
+================================================================
+
+Purpose
+-------
+
+Decompose the former `T_complement_presentation` trust boundary and prove the
+two elementary parts directly: the complement deformation retraction and the
+maximal-tree presentation of its fundamental group.
+
+Direct complement retraction
+----------------------------
+
+For a full subcomplex T, every simplex meets T in a face. At a point outside
+T, the sum S of barycentric coordinates on vertices outside T is positive.
+Set the T-coordinates to zero, divide the remaining coordinates by S, and
+join the point to this image by a straight-line homotopy. The outside weight
+along the homotopy is `(1-t)S+t`, hence never zero. The formulas agree on
+faces and give a strong deformation retraction onto the induced subcomplex
+on vertices outside T.
+
+The checker exhausts all 52 nontrivial T/outside vertex partitions of
+simplices in dimensions at most four. No regular-neighborhood or local-
+flatness theorem is used for this homotopy equivalence.
+
+Presentation cross-check
+------------------------
+
+The independent Run-30 extraction gives:
+
+  complement vertices       8,860
+  complement edges        108,722
+
+A maximal tree therefore has 8,859 edges and forces
+
+  108,722 - 8,859 = 99,863
+
+non-tree generators. This exactly reproduces Run 11's raw generator count.
+Triangle boundaries supply the reported 321,702 relators by the standard
+cellular van Kampen presentation implemented in `pi1.py`.
+
+Independent frontier binding
+----------------------------
+
+The Run-30 implementation imports neither `complement.py` nor `pi1.py`. It
+independently checks fullness, reconstructs the 113,336 derived-frontier
+vertices, implements the max-outside-vertex retraction, validates every
+retracted edge path, extracts oriented dual meridians, and distinguishes
+their inverses with sensitivity controls.
+
+Integrated certificate
+----------------------
+
+`luttinger/complement_theorem_hypotheses.json` SHA-256:
+
+  3dc829b4968bb101f3673d7985b8a8774c75e4ce719fdc5b09524f6b95f434a4
+
+Exact residue
+-------------
+
+The only specifically PL-geometric input is now the standard theorem that
+the derived neighborhood of a full locally flat PL submanifold is a regular
+neighborhood and that its frontier is the normal sphere-bundle boundary. The
+maximal-tree presentation theorem is also named explicitly in the ledger,
+although its one-paragraph cellular van Kampen proof is included in the
+packet. Tietze soundness remains a distinct downstream ledger node.
+
+Detailed proof and checklist:
+
+  notes/complement_presentation_referee_packet_2026-08-26.md
+
+Reproduce
+---------
+
+  python3 luttinger/complement_theorem_audit.py --check
+  python3 luttinger/proof_ledger.py
+
+Conclusion
+----------
+
+No mismatch was found between the simplicial complement, its independently
+reconstructed frontier paths, and the raw group-presentation counts. The
+former omnibus complement theorem boundary has been reduced to two precise
+standard statements, only one of which carries substantive PL geometry.

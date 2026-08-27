@@ -1,0 +1,29 @@
+Run 43: Weinstein-chart independence for Lemma 8.2 (2026-08-26)
+================================================================
+
+Two Weinstein charts for the same Lagrangian torus give isotopic sufficiently
+small constant-momentum push-offs in the torus complement. Hence changing the
+chart cannot add a meridian to the Lagrangian framing.
+
+After correcting the base parameterization, the chart transition is a
+symplectomorphism germ of `T^*T` fixing the zero section. Conjugating it by
+fiber dilation gives a symplectic Alexander isotopy to the identity. Applying
+that isotopy to a small constant-momentum curve proves the required push-off
+independence directly. The proof is in
+`notes/lemma82_chart_independence_2026-08-26.md`.
+
+Command:
+
+  python3 luttinger/weinstein_chart_independence.py
+
+Expected output:
+
+  PASS symmetric shear first jet is symplectic
+  PASS fiber-dilation path [I,tA;0,I] is symplectic exactly
+  PASS dilation path limits to the identity at t=0
+  PASS induced normal-quotient map is the identity
+  ALL WEINSTEIN CHART-INDEPENDENCE FIRST-JET CHECKS PASSED
+
+ADK03 remains an authoritative corroborating reference, but its general
+surgery-independence result is no longer a logical input to the specific
+boundary-push-off claim used in Lemma 8.2.

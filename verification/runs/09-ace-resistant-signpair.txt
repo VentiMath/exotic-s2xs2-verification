@@ -1,0 +1,15 @@
+Syntax warning: Unbound global variable in r_ace3.g:25
+    Print("  low-index<=8: ", List(Lw, u -> Index(S,u)), "\n");
+                                                  ^
+drift 1: simplified to 2 gens, total len 705
+  ACE felsch: index 0 tot 24999998
+  ACE hard: index 0 tot 24999998
+  low-index<=8: [ 1 ]
+  epis onto A5: 0
+drift 2: simplified to 2 gens, total len 599
+  ACE felsch: index 0 tot 24999998
+  ACE hard: index 0 tot 24999998
+  low-index<=8: [ 1 ]
+  epis onto A5: 0
+
+[exited with code 0]

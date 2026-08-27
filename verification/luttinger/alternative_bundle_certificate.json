@@ -1,0 +1,120 @@
+{
+  "alternative_K_vertex_sha256": "62601d0e836ca6fd9e64ef32a055babbf4fbbfd11d176ee2c264f6a6dfbb2894",
+  "beta_monodromy": {
+    "basis": [
+      "x",
+      "y",
+      "r",
+      "s"
+    ],
+    "expected_actions": [
+      "x -> -y",
+      "y -> x+y",
+      "r -> r",
+      "s -> s"
+    ],
+    "mapping_torus_H1": "Z^3, torsion-free",
+    "matrix_columns_are_images": [
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        -1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "trace_H1_rank": 4,
+    "trace_raw_presentation": {
+      "generators": 34739,
+      "relators": 69296
+    }
+  },
+  "construction_boundary": {
+    "complex_product_imported": false,
+    "forbidden_modules_absent": [
+      "bundle",
+      "layers"
+    ],
+    "imports": [
+      "__future__",
+      "collections",
+      "complex",
+      "fiber"
+    ]
+  },
+  "format": "luttinger-alternative-bundle-v1",
+  "peripheral_comparison": {
+    "beta_push_off": {
+      "alternative_edges": 282,
+      "alternative_sha256": "f922748c85c62df28d735cf10bb830897952ed51e4ad7cb5d465b8e28ec47695",
+      "path_difference": "EXPECTED: 32 versus 64 beta interfaces",
+      "primary_edges": 154,
+      "primary_sha256": "7e4770dad35b9d2bc7809e49b74636b8565e0892d465619a4f85ef7cae1dd167",
+      "semantic_source_fields": "IDENTICAL"
+    },
+    "literal_unchanged_paths": {
+      "N_grid_local_independent": "IDENTICAL canonical complement path",
+      "geom_M_independent": "IDENTICAL canonical complement path",
+      "geom_N_independent": "IDENTICAL canonical complement path",
+      "lb_a_y1_independent": "IDENTICAL canonical complement path"
+    },
+    "marked_crossings_and_whiskers": "IDENTICAL",
+    "result": "PASS: same marked peripheral semantics on a different triangulation",
+    "transported_N_formula": "A * N_grid^-1 * A^-1"
+  },
+  "primary_K_vertex_sha256": "6946a90e5e4031a9c284e4fb5a56f5cba718d5594ce359afe05d1bbc5530f296",
+  "scope": {
+    "independent": "products, mapping cylinders, flip traces, twist stack, seams, total 4-complex, marked tori",
+    "shared_input": "fiber.build_fiber marked genus-2 surface",
+    "theorem_input": "paired annular shear realizes the stated Dehn twists"
+  },
+  "structure": {
+    "K_f_vector": [
+      17412,
+      220458,
+      671864,
+      757968,
+      289152
+    ],
+    "beta_interfaces": 64,
+    "beta_stack": {
+      "bottom_top_markings": "PASS: exact labeled copies of L",
+      "boundary_triangles": 352,
+      "f_vector": [
+        5718,
+        40456,
+        69296,
+        34560
+      ]
+    },
+    "torus_f_vectors": [
+      [
+        24,
+        72,
+        48
+      ],
+      [
+        528,
+        1584,
+        1056
+      ]
+    ]
+  }
+}

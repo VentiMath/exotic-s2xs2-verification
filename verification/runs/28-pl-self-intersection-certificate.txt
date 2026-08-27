@@ -1,0 +1,62 @@
+Run 28: direct PL self-intersection certificate (2026-08-24)
+================================================================
+
+Command
+-------
+
+  python3 luttinger/pl_self_intersection.py
+
+Result
+------
+
+  PASS: extracted p-section is an orientable once-punctured torus
+    section f-vector: [102, 243, 140] boundary cycle: 66
+  PASS: actual normal link of p is a 24-cycle
+    phi0 acts by shift 12 (-I); beta stack is product at p across 32 levels
+  PASS: doubled section is a closed orientable genus-2 surface
+    double f-vector: [138, 420, 280]
+  PASS: constant clutch shift 0: push-off disjoint, radial cylinder boundary exact,
+    signed intersections=[], square=0
+  PASS: constant clutch shift 1: push-off disjoint, radial cylinder boundary exact,
+    signed intersections=[], square=0
+  PASS: constant clutch shift 2: push-off disjoint, radial cylinder boundary exact,
+    signed intersections=[], square=0
+  PASS: constant clutch shift 3: push-off disjoint, radial cylinder boundary exact,
+    signed intersections=[], square=0
+  CERTIFIED: Gamma_hat . Gamma_hat = 0
+
+All four normal neighborhoods have f-vector
+
+  [690, 6564, 17632, 18480, 6720]
+
+Their radial 3-chains have f-vector `[276, 1398, 1960, 840]`, Euler
+characteristic `-2`, and oriented boundary coefficients `+/-1` precisely on
+the two section components. Every zero-section triangle has an 8-step normal
+link. Their maximal-cell
+SHA-256 digests, in clutch-shift order 0,1,2,3, are
+
+  95cee80ab9a3834fc7c96ff15d3157e07052af9a03c42dfce5631e1b4f68b7ad
+  5d1e19dffcebd6ea85bab2f4e7bea6e167d87f97fc40925b4a42f79ec1be5347
+  9f72585b90c3454b5a70dcf8d7a211bea634f59cce090281c63d1dcf9db48b3b
+  5fba031ebc372554e0650d31cf298f485d792184fa2a3cc576318924098d32f0
+
+Determinism
+-----------
+
+The command was rerun with PYTHONHASHSEED=1 and PYTHONHASHSEED=77. Both runs
+produced the same f-vectors, link lengths, empty signed-intersection lists,
+and all four hashes.
+
+Interpretation
+--------------
+
+The zero section and its push-off are disjoint simplicial genus-2 surfaces.
+The induced radial 3-chain has precisely those two surfaces as its boundary,
+so the second is a genuine normal push-off of the first. The signed
+intersection chain is empty and the self-intersection is zero. The four cases
+exhaust the constant simplicial orientation-preserving rotations of the
+coarsened normal circle.
+
+Run-36 integration note (2026-08-25): `pl_theorem_audit.py` recomputes all
+four cases and binds the square-zero conclusion to homological intersection
+naturality. It does not require separately smoothing the literal PL push-off.
