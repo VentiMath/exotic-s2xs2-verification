@@ -1,9 +1,10 @@
 % Independent machine verification of the fundamental-group computation in
 % Wuebben's exotic S^2 x S^2 — arXiv verification note.
 %
-% Draft conventions: uncertain bibliographic details are marked
-% "TODO(John):" and must be resolved before submission. Numbers are taken
-% from the imported certificates in this repository (verification/).
+% Numbers are taken from the imported certificates in this repository
+% (verification/). Every bibliography entry is verified against the paper's
+% own reference list (arXiv:2608.17267, printed pages 31-32) or the arXiv
+% API; none is reconstructed from memory.
 \documentclass[11pt]{article}
 \usepackage[margin=1.15in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -257,7 +258,8 @@ $(0,0)$ column.
 
 Conditional on the certified simple connectivity, the deductions of the
 paper's main theorem pass a hypothesis audit: the covering exact sequence
-and Hambleton--Kreck classification data \cite{HambletonKreck}; the even
+and Hambleton--Kreck classification data \cite{HK88,HK93}, as summarized
+in \cite{Ham08}; the even
 and odd rank-two intersection-form computations feeding Freedman's
 classification \cite{Freedman}; minimality and symplectic Kodaira
 dimension by two independent routes; the symplectic Thom genus bound
@@ -271,7 +273,7 @@ characteristic, cover-genus, and adjunction computations are executable.
 
 The named standard inputs, applied with checked hypotheses and cited
 proofs: Freedman's simply connected classification \cite{Freedman}; the
-Hambleton--Kreck finite-cyclic classification \cite{HambletonKreck};
+Hambleton--Kreck finite-cyclic classification \cite{HK88,HK93};
 Weinstein-neighborhood germ uniqueness (the relative and equivariant Moser
 normalizations are constructed, not cited, and chart independence is
 argued in-project with \cite{ADK} as corroboration ---
@@ -308,7 +310,7 @@ clean-checkout replay instructions. The paper's own code is at
 \url{https://github.com/bwuebben/exotic-s2xs2}; nothing in the
 verification derives from it except where explicitly cited.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 
 \bibitem{Wuebben}
 B.~J.~Wuebben,
@@ -337,18 +339,28 @@ M.~H.~Freedman,
 \emph{The topology of four-dimensional manifolds},
 J. Differential Geom. \textbf{17} (1982), 357--453.
 
-\bibitem{HambletonKreck}
+\bibitem{HK88}
 I.~Hambleton and M.~Kreck,
 \emph{On the classification of topological 4-manifolds with finite
 fundamental group},
 Math. Ann. \textbf{280} (1988), 85--104.
-% TODO(John): confirm this is the H-K result the paper cites.
+
+\bibitem{HK93}
+I.~Hambleton and M.~Kreck,
+\emph{Cancellation, elliptic surfaces and the topology of certain
+four-manifolds},
+J. Reine Angew. Math. \textbf{444} (1993), 79--100.
+
+\bibitem{Ham08}
+I.~Hambleton,
+\emph{Intersection forms, fundamental groups and 4-manifolds},
+Proceedings of the 15th G\"okova Geometry-Topology Conference (2008),
+137--150.
 
 \bibitem{HoLi}
 C.-I.~Ho and T.-J.~Li,
 \emph{Luttinger surgery and Kodaira dimension},
 Asian J. Math. \textbf{16} (2012), 299--318.
-% TODO(John): confirm volume/pages.
 
 \bibitem{KBMAG}
 D.~F.~Holt,
