@@ -11,9 +11,10 @@ the finite group presentation.  Two facts that had been grouped under
 2. the maximal-tree generators and triangle-boundary relators present the
    fundamental group of that induced subcomplex.
 
-The only specifically PL-geometric residue is the standard derived regular
-neighborhood theorem used to interpret the computed frontier loops as loops
-on the normal boundary of the tori.
+Run 49 replaces the formerly remaining derived-regular-neighborhood citation
+for this application with an explicit barycentric level-set block bundle and
+a global PL homeomorphism from the computed frontier. It also identifies all
+592 dual loops as literal normal-circle fibers.
 
 `luttinger/complement_theorem_audit.py` binds the hypotheses below to the
 independent Run-30 extraction and the original Run-11 presentation.
@@ -105,16 +106,18 @@ combinatorial retraction used to read every frontier path as a path in `C`.
 Both the original and independent implementations check every consecutive
 edge after applying it.
 
-For a full locally flat PL submanifold, the first derived neighborhood is a
-regular neighborhood and this frontier is its normal boundary.  In
-codimension two, the boundary of the dual two-cell to a torus triangle is
-therefore an oriented meridian.  This is the remaining general PL input.  A
-standard reference is Rourke--Sanderson, *Introduction to Piecewise-Linear
-Topology*, Chapter 3, especially the derived-neighborhood construction and
-Theorem 3.8, <https://doi.org/10.1007/978-3-642-81735-9>.
+Run 49 constructs the identification directly. In barycentric coordinates,
+the normal block boundary is `sum_T(lambda)=1/2`, and the map on a mixed
+simplex barycenter is
+`b(s) -> (b(s intersect T)+b(s minus T))/2`. On every ambient simplex this is
+the canonical barycentric subdivision of a product of faces, and the formulas
+agree on overlaps. For a torus triangle, the alternating dual loop has
+constant torus face and is exactly the subdivided normal link circle.
 
 The construction-specific hypotheses are stronger than a mere numerical
-match:
+match. Run 48 now certifies local flatness at every one of the 1,776
+simplices of the two tori by standard link pairs, including replayed
+`S3` and unknot witnesses at all 296 vertices. In addition:
 
 - the two marked vertex sets induce disjoint closed tori with f-vectors
   `[24,72,48]` and `[272,816,544]`;
@@ -126,9 +129,8 @@ match:
   distinct hashes;
 - all exported frontier paths retract to valid edge paths in `C`.
 
-Thus the regular-neighborhood theorem is used only to name the frontier as
-the geometric normal boundary—not to infer the complement group or to repair
-an invalid simplicial path.
+Thus neither the complement group nor the peripheral interpretation now
+requires a derived-regular-neighborhood theorem invocation.
 
 ## Exact trust boundary
 
@@ -137,12 +139,12 @@ After this packet, the complement-to-presentation bridge consists of:
 1. the explicit barycentric-coordinate deformation retraction proved in
    Section 1;
 2. the maximal-tree cellular van Kampen argument proved in Section 2;
-3. the derived regular-neighborhood/frontier theorem for the already checked
-   full locally flat torus subcomplexes.
+3. the explicit Run-49 normal block/frontier equivalence for the full torus
+   subcomplexes whose local flatness is exhaustively certified in Run 48.
 
-The first two may be checked directly from this note.  Only item 3 remains a
-cited PL theorem.  The later claim that proof-producing eliminations preserve
-the presented group remains separately and visibly dependent on the Tietze
+All three construction-specific items now have direct proofs and machine
+certificates. The later claim that proof-producing eliminations preserve the
+presented group remains separately and visibly dependent on the Tietze
 theorem.
 
 ## Referee checklist
@@ -151,7 +153,7 @@ theorem.
 - Check that the union of the two torus vertex sets remains full.
 - Check connectedness and the maximal-tree generator count.
 - Check the triangle-boundary convention in `pi1.py`.
-- Apply the derived regular-neighborhood theorem to the two product torus
+- Replay the Run-49 half-weight block equivalence on the two torus
   subbundles.
 - Check that the dual two-cell orientation agrees with the stated meridian
   convention.

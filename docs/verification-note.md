@@ -44,8 +44,14 @@ manifold checks down to the vertex-link level.
 The identification with the paper's marked bundle is by literal based
 monodromy action — the based mapping classes of both monodromies are
 certified as equalities of vertex paths, transported by proof-producing
-Tietze chains that replay step by step — and then by the standard
-classification of surface bundles over a base that retracts to two loops.
+Tietze chains that replay step by step — and then by an explicit
+marked mapping-cylinder clutching over the base graph: the relative
+monodromy comparisons are exact on the marked collars, so the identification
+is a constructed fiberwise homeomorphism into the paper's bundle rather than
+an appeal to the classification of surface bundles. Everything the surgery
+argument needs is transported through that map into the paper's
+already-smooth manifold, where the symplectic arguments are performed; no
+smoothing of the triangulation is ever chosen.
 
 ## 3. Peripheral data
 
@@ -56,6 +62,12 @@ combinatorial sweep of the relevant transport square resolves the basing
 double-count question: the directly computed boundary longitude already
 contains the geometric basing effect, exactly as the paper's corrected
 convention requires.
+
+Both surgery tori are certified locally flat at all 1,776 of their simplex
+links, and the boundary carrying the peripheral curves is an explicit
+half-weight normal block model with a global PL identification of the
+computed frontier: every extracted dual meridian is checked to be a literal
+normal-circle fiber, with no regular-neighborhood theorem invoked.
 
 ## 4. The eight filled groups
 
@@ -80,7 +92,13 @@ abstract ribbon graph with a different vertex count, matched equivariantly to
 the primary model. A single translation mistake would need to survive all of
 them. What redundancy cannot exclude — a shared misreading of the paper's
 conventions — is attacked separately by exact reproductions of the paper's
-own displayed relations and sign tables.
+own displayed relations and sign tables, and by a bound interpretation
+dictionary: every convention read from the paper carries the certified
+computation that would fail under a rival reading, and the central entries
+are cross-checked — parsed, never executed — against the author's own
+committed scripts, which define the same actions, corrections, and sign
+conjugators. The three entries resting on transcription alone are declared
+residual rather than hidden.
 
 ## 6. The framing lemma
 
@@ -103,8 +121,10 @@ Liouville primitive with the well-defined angle frames, with every integral
 angle-basis change preserving constant momentum and the one symplectic move
 that could add meridian components — the closed-1-form shift — excluded by
 the zero-section condition. ADK03 §2.1 and Proposition 2.2 stand as
-corroboration. What remains cited rather than mechanized:
-Lagrangian-neighborhood (Weinstein) germ uniqueness.
+corroboration. After this program, no standard input to the lemma remains
+cited rather than mechanized: the only form of Weinstein germ uniqueness
+the argument uses — independence of the constant-momentum push-off between
+the paper's displayed charts — is the statement proved above.
 
 The lemma's exact logical load: if the identification failed by j meridians,
 the machine certificates would remain correct for the product-framed
@@ -140,14 +160,25 @@ computations are executable.
 ## 8. Trust boundary
 
 The named standard inputs, applied with checked hypotheses and cited proofs:
-Freedman's simply connected classification; the Hambleton–Kreck finite-cyclic
-classification; Weinstein-neighborhood germ uniqueness (the relative and
-equivariant Moser normalizations are constructed rather than cited, and chart
-independence is argued in-project with ADK03 as corroboration — see §6);
-the classification of surface bundles by based monodromy;
-elementary PL thickening, bistellar-trace, and smoothing results; the
-symplectic Thom theorem; Ho–Li on Luttinger surgery; and the Ozsváth–Szabó /
-Lidman–Piccirillo Floer machinery. This note does not reprove them.
+the elementary ribbon-thickening and bistellar-trace interpretations that
+read the paper's figures into complexes; the classification of surfaces; the
+collapsible-3-ball and cyclic-knot-unknot criteria behind the local-flatness
+certificates; simplicial fundamental-group presentation and Tietze theory;
+Freedman's simply connected classification with the Hambleton–Kreck
+finite-cyclic classification; symplectic Kodaira dimension and minimality
+(via the audited ADK / Ho–Li Luttinger-surgery constructions); the
+symplectic Thom theorem; the Rokhlin/Arf input of the slicing argument; and
+the Ozsváth–Szabó / Lidman–Piccirillo Floer machinery. This note does not
+reprove them.
+
+Formerly listed inputs that are no longer dependencies: surface-bundle
+classification (replaced by the explicit clutching of §2); four-dimensional
+smoothing and intersection naturality (the smooth arguments run entirely in
+the paper's already-smooth manifold, and the section's square is computed
+there from transported disjoint homologous cycles); derived-regular-
+neighborhood theory (the tubular boundary is constructed — see §3); and
+Weinstein germ uniqueness (chart independence is proved between the paper's
+verified charts — see §6; ADK03 remains corroboration).
 
 ## 9. Provenance and method
 

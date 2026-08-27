@@ -1,0 +1,197 @@
+{
+  "alpha_mapping_cylinder": {
+    "forward_seam_equations": [
+      [
+        "'O'",
+        "'O'"
+      ],
+      [
+        "'a'",
+        "'e'"
+      ],
+      [
+        "'b'",
+        "'d'"
+      ],
+      [
+        "'c0'",
+        "'c1'"
+      ],
+      [
+        "'c1'",
+        "'c0'"
+      ],
+      [
+        "'d'",
+        "'b'"
+      ],
+      [
+        "'e'",
+        "'a'"
+      ],
+      [
+        "'p'",
+        "'p'"
+      ]
+    ],
+    "handle": "alpha",
+    "induced_inverse": "[y,t] -> [h^-1(y),t]",
+    "induced_map": "[x,t] -> [h(x),t]",
+    "inverse_seam_equations": [
+      [
+        "'O'",
+        "'O'"
+      ],
+      [
+        "'a'",
+        "'e'"
+      ],
+      [
+        "'b'",
+        "'d'"
+      ],
+      [
+        "'c0'",
+        "'c1'"
+      ],
+      [
+        "'c1'",
+        "'c0'"
+      ],
+      [
+        "'d'",
+        "'b'"
+      ],
+      [
+        "'e'",
+        "'a'"
+      ],
+      [
+        "'p'",
+        "'p'"
+      ]
+    ],
+    "marked_endpoint_atoms": 8,
+    "quotient_map_well_defined_both_directions": true
+  },
+  "base_handle_decomposition": {
+    "additional_coherence_equations": 0,
+    "common_vertex_restriction": "h",
+    "oriented_loop_handles": [
+      "alpha",
+      "beta"
+    ],
+    "rank": 2,
+    "two_cells": 0,
+    "vertex_blocks": 1
+  },
+  "beta_mapping_cylinder": {
+    "alternate_chart_seam_check": {
+      "left_reduced": [
+        [
+          "h",
+          1
+        ],
+        [
+          "f",
+          1
+        ]
+      ],
+      "passed": true,
+      "required_equation": "g k_1 = k_0 psi_K",
+      "right_reduced": [
+        [
+          "h",
+          1
+        ],
+        [
+          "f",
+          1
+        ]
+      ]
+    },
+    "composite_conjugacy": "h psi_K = psi_R h",
+    "factorwise_conjugacies": [
+      {
+        "annulus_coordinate_formula": "D(theta,r)=(theta+direction*2pi*rho(r),r)",
+        "chart_change_isotopy": "rho_s=(1-s)rho_source+s*rho_target; D_s(theta,r)=(theta+direction*2pi*rho_s(r),r)",
+        "conjugacy": "h D_source h^-1 = D_target by transported chart",
+        "direction": 1,
+        "position": 1,
+        "source_curve": "b",
+        "target_curve": "b"
+      },
+      {
+        "annulus_coordinate_formula": "D(theta,r)=(theta+direction*2pi*rho(r),r)",
+        "chart_change_isotopy": "rho_s=(1-s)rho_source+s*rho_target; D_s(theta,r)=(theta+direction*2pi*rho_s(r),r)",
+        "conjugacy": "h D_source h^-1 = D_target by transported chart",
+        "direction": -1,
+        "position": 2,
+        "source_curve": "a",
+        "target_curve": "a"
+      }
+    ],
+    "full_e_collar_product_tetrahedra": 3072,
+    "handle": "beta",
+    "induced_inverse": "[y,t] -> [h^-1(y),t]",
+    "induced_map": "[x,t] -> [h(x),t]",
+    "mapping_torus_isotopy_formula": "for an alternate paper representative g isotopic through J_s from h psi_K h^-1 to g, use k_s=g^-1 J_(1-s) h; then g k_1=k_0 psi_K",
+    "quotient_map_well_defined_both_directions": true,
+    "source_relative_twist_word": [
+      [
+        "b",
+        1
+      ],
+      [
+        "a",
+        -1
+      ]
+    ],
+    "target_relative_twist_word": [
+      [
+        "b",
+        1
+      ],
+      [
+        "a",
+        -1
+      ]
+    ],
+    "twist_sign_calibration": "local b:+1,a:-1 word reproduces the paper's displayed based action; DNB injectivity is not used"
+  },
+  "conclusion": {
+    "based_pi1_actions_retained_as_independent_diagnostics": true,
+    "dehn_nielsen_baer_required": false,
+    "surface_bundle_classification_required": false
+  },
+  "format": "luttinger-explicit-graph-clutching-v1",
+  "global_gluing": {
+    "bundle_homeomorphism_constructed": true,
+    "c_e_p_O_markings_preserved": true,
+    "orientation_preserved": true,
+    "piece_maps_agree_on_common_vertex_fiber": true,
+    "piecewise_inverse_maps_agree": true
+  },
+  "marked_fiber_map": {
+    "canonical_marked_atoms": [
+      "a",
+      "b",
+      "c0",
+      "c1",
+      "d",
+      "e",
+      "p",
+      "O"
+    ],
+    "construction": "equivariant ribbon homeomorphism with coned p/O disks",
+    "inverse_constructed": true,
+    "orientation_preserving": true
+  },
+  "source_evidence": {
+    "independent_fiber_certificate.json": "513c6b4026a3c90ceefe0fb9f96a392ed6c200aafa1735462c1d28b77bd54b43",
+    "paper_data.md": "f789359e7c3931f8e7440312516aa9a19ec4f7067de2e76fa926d3855a466414",
+    "pl_flip_trace_certificate.json": "d0524e5b8341f3e747a6a79eac3d28fd293ea9f6fe38cfd4f545d83a7362cc09",
+    "relative_marking_certificate.json": "13365e912b1c2c85eebf955475cf28f5e8edf4060800c6cbb53edc8e5e1c7fb6",
+    "runs/12-based-generators-and-table-relations.txt": "81c5e260c359ead0a188468413e9a97f47c2360495497c0b1fc1b35181b6c56d"
+  }
+}

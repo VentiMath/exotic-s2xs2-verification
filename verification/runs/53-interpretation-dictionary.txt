@@ -1,0 +1,55 @@
+# Run 53: the interpretation dictionary with author-code cross-check (2026-08-27)
+
+Command:
+
+`python3 luttinger/interpretation_dictionary.py --check`
+
+Result:
+
+```
+PASS: luttinger/interpretation_dictionary_certificate.json exactly reproduced
+PASS: author psi action AST-extracted and equal to the certified reading
+PASS: author base relators and corrections match the certified package
+PASS: sign specializations eA=+1, eB=-1 reproduce M1, M2, M3
+PASS: 8 dictionary entries bound; 3 declared residual
+```
+
+The dictionary collects every convention the verification reads out of the
+paper into one artifact, each entry carrying its discriminating certified
+witness and, where the author's committed code defines the convention
+machine-readably, an exact non-executing extraction from that code:
+
+* the beta action is AST-parsed from `author_scripts/develop.py` and equals
+  the certified `x -> y^-1, y -> yx, r -> r, s -> s`, tied to
+  `B`-conjugation by the author's own `B kappa_3 B^-1 = psi(kappa_3)`;
+* the alpha swap, the clean beta relators, and the correction shapes
+  `mkAs`/`mkBy`/`mkBs` (with the author's `delta := r^-1`) are matched
+  verbatim in `author_scripts/decide.g`, and the checker's free-reduction
+  derivation specializes them at `eA=+1, eB=-1` to the certified
+  M1/M2/M3 package of runs 13-14;
+* the meridian-killed shadows of the corrected relations reproduce the psi
+  action, tying the author's fiber-level and complement-level conventions
+  together.
+
+Residual entries, declared rather than hidden: the beta word order (action
+pinned, word not; rival same-action words leave every pi_1 conclusion
+unchanged), the ribbon figure transcription (mitigated by the two
+independent realizations of runs 22 and 34), and the local twist signs
+(discriminated only through the run-12 calibration).
+
+Certificate SHA-256:
+
+`7b11ccbb903d321adcabfe6dbb4636d1e86bdcffef702e4d537a7f48e90d22fd`
+
+Upstream verification (2026-08-27): both parsed files are byte-identical to
+the author's public repository at the pinned commit —
+`bwuebben/exotic-s2xs2@ea1fc13d`, `scripts/develop.py`
+`1a4a67d5511fc191646708cd552526741e4f36561638baa13417bd564b751b36` and
+`scripts/decide.g`
+`302725dab0503d6ea2a6007224b314104b2e8b6b4fb0d6a6a14d42b2d4097d5d` — so the
+certificate's digests bind the author's own committed formulation, not a
+local variant.
+
+Detailed note:
+
+`notes/interpretation_dictionary_2026-08-27.md`

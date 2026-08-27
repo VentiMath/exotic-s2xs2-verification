@@ -98,8 +98,14 @@ monodromy action: the based mapping classes of both monodromies are
 certified as equalities of vertex paths, transported by proof-producing
 Tietze chains that replay step by step ($17{,}839$ elementary steps for
 the primary model; $34{,}735$ for an independently built second
-triangulation). The identification is completed by the standard
-classification of surface bundles over a base retracting to two loops.
+triangulation). The identification is completed by an explicit marked
+mapping-cylinder clutching over the base graph: the relative monodromy
+comparisons are exact on the marked collars, so the identification is a
+constructed fiberwise homeomorphism into the paper's bundle rather than an
+appeal to the classification of surface bundles. Everything the surgery
+argument needs is transported through that map into the paper's
+already-smooth manifold, where the smooth and symplectic arguments run; no
+smoothing of the triangulation is ever chosen.
 
 \section{Peripheral data}
 
@@ -111,6 +117,14 @@ resolves the basing double-count question in the direction the paper's
 corrected convention requires: the directly computed boundary longitude
 already contains the geometric basing effect, and must not be multiplied
 by an extra meridian.
+
+Both surgery tori are certified locally flat at all $1{,}776$ of their
+simplex links --- $296$ vertex, $888$ edge, and $592$ triangle links, each
+classified against the correct unknotted model --- and the boundary
+carrying the peripheral curves is an explicit half-weight normal block
+model with a global PL identification of the computed frontier: every
+extracted dual meridian is checked to be a literal normal-circle fiber,
+with no regular-neighborhood theorem invoked.
 
 \section{The eight filled groups}\label{sec:groups}
 
@@ -161,7 +175,13 @@ translation mistake would need to survive all of them. What redundancy
 cannot exclude --- a shared misreading of the paper's conventions --- is
 attacked separately by exact reproduction of the paper's displayed
 relations and sign tables, re-audited against the typeset PDF rather than
-any text extraction.
+any text extraction. The translation layer is itself a bound artifact:
+an interpretation dictionary in which every convention read from the paper
+carries the certified computation that would fail under a rival reading,
+with the central entries cross-checked --- parsed, never executed ---
+against the author's own committed scripts, which define the same monodromy
+action, corrected relations, and sign conjugators. The three entries
+resting on transcription alone are declared residual rather than hidden.
 
 \section{The framing lemma}\label{sec:framing}
 
@@ -198,8 +218,10 @@ every integral change of angle basis preserving constant momentum and the
 one symplectic move that could introduce meridian components --- the
 closed-1-form shift --- excluded by the zero-section condition.
 \cite{ADK} (\S2.1 and Proposition~2.2) stands as corroboration. After
-this program, exactly one standard input to the lemma remains cited rather
-than mechanized: Lagrangian-neighborhood (Weinstein) germ uniqueness.
+this program, no standard input to the lemma remains cited rather than
+mechanized: the only form of Weinstein germ uniqueness the argument uses is
+the statement proved above, the independence of the constant-momentum
+push-off between the paper's displayed charts.
 
 \section{The framing-robustness scan}\label{sec:scan}
 
@@ -272,16 +294,26 @@ characteristic, cover-genus, and adjunction computations are executable.
 \section{Trust boundary}\label{sec:trust}
 
 The named standard inputs, applied with checked hypotheses and cited
-proofs: Freedman's simply connected classification \cite{Freedman}; the
-Hambleton--Kreck finite-cyclic classification \cite{HK88,HK93};
-Weinstein-neighborhood germ uniqueness (the relative and equivariant Moser
-normalizations are constructed, not cited, and chart independence is
-argued in-project with \cite{ADK} as corroboration ---
-Section~\ref{sec:framing}); the classification of surface bundles by
-based monodromy; elementary PL thickening, bistellar-trace, and smoothing
-results; the symplectic Thom theorem; Ho--Li on Luttinger surgery
-\cite{HoLi}; and the Ozsv\'ath--Szab\'o / Lidman--Piccirillo Floer
-machinery. This note does not reprove them. The accurate one-sentence
+proofs: the elementary ribbon-thickening and bistellar-trace
+interpretations that read the paper's figures into complexes; the
+classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
+criteria behind the local-flatness certificates; simplicial
+fundamental-group presentation and Tietze theory; Freedman's simply
+connected classification \cite{Freedman} with the Hambleton--Kreck
+finite-cyclic classification \cite{HK88,HK93}; symplectic Kodaira
+dimension and minimality, via the audited Luttinger-surgery constructions
+\cite{ADK,HoLi}; the symplectic Thom theorem; the Rokhlin/Arf input of
+the slicing argument; and the Ozsv\'ath--Szab\'o / Lidman--Piccirillo
+Floer machinery \cite{LidmanPiccirillo}. This note does not reprove them.
+
+Formerly listed inputs that are no longer dependencies: surface-bundle
+classification, replaced by the explicit clutching; four-dimensional
+smoothing and intersection naturality, since the smooth arguments run
+entirely in the paper's already-smooth manifold; derived
+regular-neighborhood theory, since the tubular boundary is constructed;
+and Weinstein germ uniqueness, since chart independence is proved between
+the paper's verified charts (Section~\ref{sec:framing}), with \cite{ADK}
+as corroboration. The accurate one-sentence
 status is: \emph{the proof appears complete relative to explicitly named
 standard topology theorems, with no known project-specific gap} --- a
 statement about verification depth, offered to make expert review cheap,

@@ -52,12 +52,10 @@ homotopy classes.
 The proof uses the following conventional topology. These are theorem inputs,
 not results of the Python checks.
 
-1. **Marked surface bundles.** A bundle over a once-punctured torus is fixed,
-   up to bundle equivalence over the chosen base spine, by its marked fiber
-   and the two based mapping classes. The base retracts to a wedge of its two
-   generator loops. For a closed oriented genus-2 fiber, equality of the
-   induced outer automorphisms of the surface group determines equality of
-   orientation-preserving mapping classes (Dehn-Nielsen-Baer).
+1. **Marked graph clutching.** Run 52 constructs the bundle map directly on
+   the two mapping-cylinder handles. The exact alpha conjugacy and identical
+   supported beta twist word make `[x,t] -> [h(x),t]` well-defined in both
+   directions. Dehn--Nielsen--Baer is retained only as an independent check.
 2. **PL mapping-cylinder realization.** The trace of each elementary
    bistellar flip is a PL product cobordism with the prescribed boundary
    identification. Gluing the traces and staircase products in
@@ -69,6 +67,13 @@ not results of the Python checks.
    normal boundary, and the complement deformation retracts to the induced
    subcomplex on the remaining vertices. This is the PL result used in
    `complement.py` (Rourke-Sanderson, Chapter 3).
+
+   **Run-49 replacement.** For the actual two tori, the theorem invocation is
+   now superseded by an explicit construction. The normal block neighborhood
+   is the barycentric half-weight region `sum_T(lambda)>=1/2`, and
+   `b(s) -> (b(s intersect T)+b(s minus T))/2` is a globally checked PL
+   homeomorphism from the computed mixed-face frontier to its boundary. All
+   592 dual triangle loops are checked as literal normal-circle fibers.
 4. **Framing normalization.** Relative Moser on an annulus, its equivariant
    lift through a free double cover, and independence of the Lagrangian
    framing from the chosen Weinstein chart apply in the neighborhoods used in
@@ -82,14 +87,18 @@ thickening, and compatible-smoothing inputs are now separated and cited in
 `notes/pl_bridge_referee_packet_2026-08-25.md`; their construction-specific
 hypotheses are replayed by `luttinger/pl_theorem_audit.py`.
 
+Run-50/52 update (2026-08-27): no compatible smoothing of the PL source is
+needed. Explicit graph clutching supplies a homeomorphism into the
+underlying topological bundle of the paper's already smooth `R`; all smooth
+framing operations are performed on `R` after transport.
+
 ## Lemma
 
-**Peripheral identification.** After smoothing the PL bundle charts supplied
-by the mapping-cylinder construction, there is an orientation-preserving
-bundle equivalence
+**Peripheral identification.** There is an orientation-preserving marked
+bundle homeomorphism
 
 ```text
-H: K -> R
+H: |K| -> R_top
 ```
 
 over the marked once-punctured-torus base with the following properties.
@@ -372,7 +381,7 @@ This proves the displayed equality of normal closures and the lemma. `square`
 | Marked filling five-chain and involution | paper Lemma 7.1; `fiber.py`; `model_correspondence.py`; Run 22 | paper proof plus finite combinatorics |
 | Literal based `phi_0` action | `paper_bridge.py`; Runs 12 and 22 | finite path check |
 | Literal based `psi_0` action | `paper_bridge.py`; 17,839-step replay; Runs 12 and 22 | replayed Tietze certificate |
-| Two torus subbundles | `bundle.py`; `model_correspondence.py`; Run 22 | finite combinatorics plus bundle classification |
+| Two torus subbundles | `bundle.py`; `model_correspondence.py`; Runs 22, 51--52 | finite combinatorics plus explicit mapping-cylinder clutching |
 | `M` with `y_1` basing | `r_run.py`; Run 12 | derived-neighborhood dual meridian |
 | `N` with `s_2` basing and orientation | `r_run.py`; Runs 13-14 | local rank-one and boundary-chain certificates |
 | `lambda_alpha = Ax` | `r_run.py`; Run 15 | replayed elementary Tietze certificate |

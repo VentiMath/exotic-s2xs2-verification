@@ -1,4 +1,4 @@
-# Current state (2026-08-26)
+# Current state (2026-08-27)
 
 Model provenance is tracked in PROVENANCE.md; its log table is the authority
 on which model produced which commits (the original "everything after 6587b7e
@@ -156,15 +156,18 @@ replay to **3 gens / 78 relators** in 49s.
   literal based actions of both monodromies, the free half-rotation on `c`,
   the pointwise product restriction on `e`, a global codimension-one manifold
   check, and the two induced surgery tori. Since the punctured-torus base
-  retracts to its two generators, the exact based mapping classes determine
-  the bundle. This replaces the earlier fingerprint-only comparison by the
-  standard surface-bundle classification argument. `framing_check.py` now
+  has two generator handles, Run 52 now constructs the bundle map directly
+  on their mapping cylinders and checks both seam equations and inverses.
+  This replaces the earlier fingerprint-only comparison without invoking
+  surface-bundle classification or Dehn--Nielsen--Baer. `framing_check.py` now
   verifies the relative-Moser coefficient calculus, double-cover
   normalization, Weinstein coordinates, seam, half-drift, and
   constant-momentum assertions in Lemma 8.2; no framing discrepancy was
-  found. Local flow existence, connected-cover lifting, and
-  Lagrangian-neighborhood germ uniqueness remain standard inputs rather than
-  formalized code. See `runs/22`, `runs/35`, and
+  found. Runs 43--44 directly discharge the needed chart-independence
+  consequence by the fiber-dilation germ isotopy and an independent
+  Liouville-coordinate route; ADK03 germ uniqueness is corroborating rather
+  than load-bearing. Runs 46--47 likewise replace lifting and local-flow
+  inputs. See `runs/22`, `runs/35`, `runs/43`--`44`, and
   `notes/framing_lemma_referee_packet_2026-08-25.md`.
 * **The peripheral bridge is now a single conventional lemma.**  The marked
   bundle equivalence is chosen relative to `c,e`; the derived-neighborhood
@@ -223,12 +226,13 @@ replay to **3 gens / 78 relators** in 49s.
   58-vertex ribbon-graph triangulation, importing no `fiber.py`, has the exact
   same canonical crossing rotations, p/O faces, and involution action as the
   primary 86-vertex plumbing, with explicit common segment subdivisions.
-  Run 36 now binds the remaining PL applications into one integrated replay:
-  it checks the finite hypotheses for rotation-system thickening, every
-  bistellar trace, low-dimensional smoothing, and intersection naturality,
-  while recomputing the direct PL self-intersection certificate. The general
-  theorem boundary is stated with precise citations in a referee packet. See
-  `runs/25`, `runs/27`--`36`, and
+  Run 36 binds the finite PL applications into one integrated replay: it
+  checks rotation-system thickening and every bistellar trace while
+  recomputing the direct PL self-intersection certificate. Run 50 then
+  removes compatible four-dimensional source smoothing and a separate
+  intersection-naturality theorem from the ledger: the marked bundle
+  homeomorphism transports the actual certified cycles and collars into the
+  paper's already smooth target. See `runs/25`, `runs/27`--`36`, `runs/50`, and
   `notes/pl_bridge_referee_packet_2026-08-25.md`.
 * **The Acorn formalization path is specified against current GitHub.**  The
   live `acornlib` baseline is pinned at `bd1e602` (2026-08-20), not the stale
@@ -433,102 +437,74 @@ layer.
 
 Accordingly the current careful claim: the proof appears complete relative to
 explicitly named standard topology theorems, with no known project-specific
-gap. The remaining dependence is concentrated in the named standard theorem
-inputs isolated for Lemma 8.2 and the PL bridge. Both boundaries now have
-explicit statements, machine-bound hypotheses, and precise citations. This
-is not "formally proved":
-correctness does not depend on external review, but review is the remaining
-error-detection step for the cited-theorem boundary.
+gap. Lemma 8.2's former lifting, flow, and chart-independence boundaries are
+closed by Runs 43--47, and Run 49 closes the derived-frontier/normal-boundary
+interpretation constructively. Run 50 bypasses the former PL/smooth source
+smoothing boundary by transport into the paper's already smooth target. This
+is not a foundational formal proof, but every construction-specific
+hypothesis currently used at the remaining theorem boundaries has a finite
+certificate.
 
 ## Next steps, in order
 
-1. **Referee-check the thin theorem residue of Lemma 8.2.** Run 35 extends
-   `framing_check.py` through the inline relative-Moser and double-cover
-   calculus: the primitive and its core restriction, convex positivity,
-   Moser vector field and sign cancellation, order-two deck argument,
-   factor-2 absorption, seam, and constant-momentum conclusions all pass.
-   ADK03 Section 2.1 and Proposition 2.2 have been checked and cited
-   precisely. `notes/framing_lemma_referee_packet_2026-08-25.md` gives a
-   self-contained proof and checklist. Run 40 retires the local-flow input:
-   `moser_flow_check.py` derives the Moser field as the one-dimensional
-   `X_s = -(g/f_s) d/dt`, verifies its identities symbolically for general
-   `f`, solves the flow in closed form for every t-independent profile, and
-   traps the general case with an explicit Gronwall bound and invariant
-   radius; for general `f` existence itself remains Picard-Lindelof,
-   applied to that explicit field with computed Lipschitz and trapping
-   constants, and the t-independent family is fully constructive (the
-   original "no ODE citation remains" claim was too strong and is
-   corrected here). Run 40 also re-audits every §8.7
-   display against the typeset PDF (not the extraction): all match,
-   including Table 1's F1/F2 against the certified filling words. The
-   residue was then exactly two conventional inputs: connected-cover lifting
-   and Lagrangian-neighborhood germ uniqueness (ADK03). Run 42
-   (`simplicial_lift_check.py`) then certifies every topological hypothesis
-   of the equivariant-lift step on the actual simplicial collar: the c-band
-   is a connected annulus with free regular involution, the quotient is a
-   simplicial annulus, the projection is a genuine 2:1 covering
-   (star-injective, two preimages per simplex), the simplicial deck group
-   is enumerated to be exactly {id, phi0}, both annuli collapse to their
-   cores, and the core winds exactly twice — so the lifting criterion's
-   subgroup condition holds for any map fixing the core. At that stage what
-   remained was the continuous lifting principle applied with certified
-   hypotheses. Run 43 discharges the ADK03 chart-independence boundary:
-   after aligning the torus parameterizations, fiber-dilation conjugation
-   gives a symplectic isotopy of any chart-transition germ to the identity
-   relative to the zero section. Applying that isotopy to a small
-   constant-momentum curve proves directly that changing Weinstein charts
-   cannot add a meridian. The exact first-jet algebra is checked by
-   `weinstein_chart_independence.py`; ADK03 is now corroboration rather than
-   a logical input to this boundary-push-off claim. Run 44
-   (`weinstein_chart_check.py`) attacks the same boundary from the
-   construction side: the paper's charts are FORCED by pairing the
-   Liouville primitive `t dtheta1 + K u dtheta2` with the well-defined
-   angle frames (no guessed coordinate change), a second, opposite-shear
-   chart instance yields the same constant-momentum conclusion for both
-   push-offs, every integral angle-basis change preserves constant
-   momentum symbolically, and the closed-1-form momentum shift — the one
-   symplectic move that could add meridian components — is verified to
-   move the zero section, hence is excluded by the chart's defining
-   condition. Runs 43 and 44 are independent arguments for the same
-   independence statement. Run 46 removes the covering-lift theorem as
-   well. Instead of lifting a completed downstairs diffeomorphism, it
-   defines the Moser field directly upstairs as
-   `X_s(theta,t)=a(2 theta,t,s) partial_t`. The exact coordinate audit
-   proves that it projects correctly, is invariant under the half-rotation,
-   fixes the core, and gives the factor-two normalization. ODE uniqueness
-   makes its flow equivariant. Run 47 then removes Picard--Lindelof for the
-   remaining one-dimensional field: the general flow is the unique monotone
-   inverse of `H_s(theta,t)=t+s integral_0^t(f-1)`, with positivity giving a
-   uniform collar. Differentiating this defining identity produces the exact
-   Moser ODE and pullback formula. Consequently Lemma 8.2's normalization
-   now rests only on ordinary one-variable differentiation, integration,
-   and monotone inversion, not on a separately cited smooth theorem.
-   Correct blast radius if the lemma failed: a meridian
-   discrepancy `j` turns `mu + k*lambda_L` into
-   `(1+kj)mu + k*lambda_F`. The machine certificates would remain correct for
-   their literal product-framed presentations, but would no longer identify
-   those presentations with the paper's Lagrangian surgeries. Thus simple
-   connectivity, the Freedman homeomorphism conclusion, and the symplectic
-   exoticness argument for the claimed manifolds would all become unproved.
-2. **Referee-check the PL theorem packet.** Run 36 integrates all 128 flip
-   traces, 5,718 vertex links, the independent equivariant ribbon
-   equivalence, explicit common subdivisions, and all four normal-clutching
-   cases. `notes/pl_bridge_referee_packet_2026-08-25.md` proves the special
-   ribbon/coning and 2--2 trace statements and cites the remaining
-   dimension-four smoothing and intersection-naturality facts precisely.
-3. **Give the remaining complement input the same treatment.** Run 37 now
-   isolates `T_surface_bundle`: because the punctured-torus base retracts to
-   a two-loop graph, the two certified based monodromies determine the marked
-   bundle, with no hidden two-cell coherence condition. The checker binds the
-   base, fiber, both independent beta actions, and the relative `c/e`
-   markings to frozen certificates; the referee packet cites bundle
-   classification and Dehn--Nielsen--Baer precisely. Run 38 then splits the
-   former `T_complement_presentation` boundary: the complement deformation
-   retract is now proved by an explicit simplexwise barycentric formula, and
-   the raw 99,863-generator presentation is derived by maximal-tree van
-   Kampen with an independent count. The only PL-geometric residue there is
-   the standard identification of the derived frontier with the normal
-   boundary of a full locally flat torus subcomplex.
+1. **Second-implement the small proof checkers.** The 99,860-step Tietze
+   chain and all eight filled-group derivation DAGs replay, but a separate
+   implementation of the compact certificate verifier would reduce software
+   trust more efficiently than further GAP/ACE searches.
+
+2. **Leave downstream foundations downstream.** Freedman classification,
+   symplectic Kodaira dimension, Thom, Rokhlin/Arf, and Heegaard Floer inputs
+   remain published-theorem dependencies with audited hypotheses. Formalizing
+   those theories would be a separate foundational project.
+
+## Recently closed high-risk boundaries
+
+* **PL-to-smooth category bridge:** Run 50 constructs the reroute
+  `|K| -> R_top`: the marked bundle homeomorphism transports the certified
+  tori, collars, peripheral data, and Run-28 section cycles into the paper's
+  already smooth target. The source is never smoothed. The transported
+  section and its push-off remain disjoint and homologous, so square zero is
+  proved in the target. Compatible four-dimensional PL smoothing and a
+  separate intersection-naturality theorem are removed from the ledger.
+* **Relative marked monodromies:** Run 51 checks exact alpha equivariance on
+  all three rows of the `c` collar and the entire beta trace on the `e`
+  collar. All 1,536 beta trace cells avoid that collar and its restriction is
+  exactly the 3,072-tetrahedron product. Because the paper and model use the
+  same supported word `T_a o T_b`, no relative isotopy-extension theorem is
+  needed.
+* **Bundle classification bypassed:** Run 52 is an assembly certificate plus
+  an elementary quotient argument, supported by Run 34's marked fiber map,
+  Run 51's actual collar-scale checks, and the ribbon/flip interpretations.
+  It records `[x,t] -> [h(x),t]` on both mapping-cylinder handles and checks
+  symbolic seam and inverse equations. There is no base two-cell.
+  `T_surface_bundle` and Dehn--Nielsen--Baer are no longer load-bearing, but
+  Run 52 is not presented as an independent large-scale machine proof.
+* **Normal boundary/frontier:** Run 48 certifies local flatness at all 1,776
+  torus simplices. Run 49 then gives the explicit level-set normal block
+  neighborhood `sum_T(lambda)>=1/2` and the global PL homeomorphism
+  `b(s) -> (b(s intersect T)+b(s minus T))/2` from the computed derived
+  frontier to its boundary. All 592 dual meridians become literal normal
+  circle fibers. `T_derived_regular_neighborhood` is no longer in the proof
+  ledger.
+* **Lemma 8.2:** Runs 43--44 give independent chart/framing arguments; Run 46
+  constructs the equivariant Moser field upstairs; Run 47 constructs its
+  general flow by monotone inversion. No connected-cover lifting,
+  Picard--Lindelof, or ADK03 chart-independence input remains load-bearing.
+* **Framing-shift robustness:** Run 45 freezes 100 auxiliary cases: 82
+  certified trivial, 18 explicitly inconclusive, and zero nontrivial. These
+  cases do not gate the paper's `j=0` proof.
+* **Main fundamental groups:** all eight paper fillings have independently
+  replayed proof-producing triviality certificates.
+* **The interpretation layer is a bound artifact:** Run 53 collects every
+  convention read from the paper into one dictionary with per-entry
+  discriminating witnesses, and cross-checks it — by AST parse and verbatim
+  relator match, never execution — against the author's own committed
+  `develop.py` and `decide.g`: his psi action, alpha swap, and M1/M2/M3
+  correction shapes (with his own `delta := r^-1`) match the certified
+  package at `eA=+1, eB=-1`. Three entries are declared residual: the beta
+  word order (action pinned, word not), the ribbon figure transcription, and
+  the local twist signs. See `runs/53` and
+  `notes/interpretation_dictionary_2026-08-27.md`.
 
 Optional hygiene, no longer bearing on the conclusion:
 
@@ -614,3 +590,9 @@ Raw console output, in the order produced:
     45  framing-shift robustness table, frozen (82 trivial / 18 open / 0 nontrivial)
     46  direct equivariant Moser field upstairs
     47  cumulative-coordinate Moser flow, ODE citation removed
+    48  exhaustive local flatness of both surgery tori (1,776 link pairs)
+    49  explicit half-weight normal block model and frontier equivalence
+    50  PL-to-smooth reroute through the already-smooth target
+    51  direct relative marked monodromies (c and e collars)
+    52  explicit marked graph clutching (symbolic assembly)
+    53  interpretation dictionary with author-code cross-check

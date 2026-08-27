@@ -95,3 +95,11 @@ recomputes all four clutching cases. Because the radial chain makes the
 disjoint push-off homologous to the section, the smooth conclusion uses only
 naturality of the homological intersection pairing; the literal PL push-off
 does not itself need to be smoothed.
+
+Run-50 update (2026-08-27): the source triangulation no longer needs a
+compatible smoothing at all. The marked surface-bundle homeomorphism carries
+the two actual disjoint cycles and their bounding radial 3-chain into the
+underlying topological manifold of the paper's already smooth bundle. They
+remain disjoint and homologous there, so the target section class has square
+zero directly. This removes the separate intersection-naturality and
+four-dimensional source-smoothing nodes from the proof ledger.

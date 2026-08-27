@@ -1,0 +1,31 @@
+# Run 51: direct relative marked monodromy representatives (2026-08-27)
+
+Command:
+
+`PYTHONPATH=luttinger python3 luttinger/relative_marking_check.py --check`
+
+Terminal result:
+
+```
+PASS: luttinger/relative_marking_certificate.json exactly reproduced
+PASS: full c and e collars are certified annuli
+PASS: alpha is exact on the c collar and fixes p,O
+PASS: all 1536 beta trace cells avoid the e collar
+PASS: 3072 e-collar product tetrahedra checked
+NO RELATIVE ISOTOPY-EXTENSION STEP REQUIRED
+```
+
+The alpha representative is checked literally on every vertex of the full
+three-row `c` collar. The beta representative is the paper's same ordered
+word `T_a o T_b` and its complete flip trace is checked to be the literal
+product on the full `e` collar. The relative representatives are therefore
+constructed directly rather than obtained by altering absolute
+representatives with an isotopy-extension theorem.
+
+Detailed proof:
+
+`notes/relative_marked_monodromy_2026-08-27.md`
+
+Certificate SHA-256:
+
+`13365e912b1c2c85eebf955475cf28f5e8edf4060800c6cbb53edc8e5e1c7fb6`

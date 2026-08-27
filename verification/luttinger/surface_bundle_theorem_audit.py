@@ -60,6 +60,7 @@ def _cyclically_equal(left, right):
 def audit():
     fiber_path, fiber = _read_json("independent_fiber_certificate.json")
     alternative_path, alternative = _read_json("alternative_bundle_certificate.json")
+    relative_path, relative = _read_json("relative_marking_certificate.json")
     based_path = ROOT / "alternative_based_monodromy.json.gz"
     with gzip.open(based_path, "rt", encoding="ascii") as stream:
         based = json.load(stream)
@@ -107,6 +108,17 @@ def audit():
         "marked_crossings_and_whiskers"] == "IDENTICAL"
     assert alternative["peripheral_comparison"]["result"].startswith("PASS:")
 
+    assert relative["format"] == "luttinger-relative-marked-monodromy-v1"
+    assert relative["collars"]["c"]["is_triangulated_annulus"] is True
+    assert relative["collars"]["e"]["is_triangulated_annulus"] is True
+    assert relative["alpha_relative_representative"][
+        "full_c_collar_preserved"] is True
+    assert relative["beta_relative_representative"][
+        "paper_word"] == "T_a o T_b (T_b first)"
+    assert relative["beta_relative_representative"][
+        "literal_e_collar_product_tetrahedra"] == 3072
+    assert relative["conclusion"]["relative_isotopy_extension_required"] is False
+
     # x,y,r,s are 1,2,3,4.  The closed oriented surface relator is checked
     # only as a conjugacy class because closed-surface DNB lands in Out(pi1).
     relator = [1, 2, -1, -2, 3, 4, -3, -4]
@@ -120,6 +132,7 @@ def audit():
         "source_certificates": {
             fiber_path.name: _sha256(fiber_path),
             alternative_path.name: _sha256(alternative_path),
+            relative_path.name: _sha256(relative_path),
             based_path.name: _sha256(based_path),
             str(primary_run.relative_to(REPO)): _sha256(primary_run),
         },
@@ -152,12 +165,12 @@ def audit():
             "T_alpha_core_c_preserved": True,
             "T_beta_core_e_preserved_relative_to_a_neighborhood": True,
             "marked_crossings_and_whiskers_independently_identical": True,
+            "relative_representatives_constructed_directly": True,
+            "relative_isotopy_extension_required": False,
         },
         "external_statements_only": [
             "classification of bundles by homotopy classes into BDiff+(F)",
-            "contractibility of Diff_0(F) for a closed oriented genus-2 surface",
             "Dehn-Nielsen-Baer injectivity into Out(pi1(F))",
-            "isotopy extension relative to the marked curve neighborhoods",
         ],
     }
 

@@ -2,7 +2,9 @@
 
 ## Purpose and conclusion
 
-This note isolates the theorem called `T_surface_bundle` in the proof ledger.
+This note records the former theorem route called `T_surface_bundle`. Run 52
+supersedes that route with an explicit graph-clutching construction, and
+`T_surface_bundle` is no longer in the proof ledger.
 The conclusion needed by the audit is narrow: the combinatorially assembled
 genus-2 bundle, with its marked fiber and the two torus subbundles, is bundle
 equivalent to the bundle specified in the paper.
@@ -47,9 +49,10 @@ condition.  This is the decisive simplification supplied by the boundary of
 the base.
 
 The standard classifying-space formulation is in Steenrod's classification
-theorem for bundles.  For surface bundles specifically, Baykur--Margalit,
-Section 2, state the monodromy classification and use the contractibility of
-the identity components of the diffeomorphism group:
+theorem for bundles. For surface bundles specifically, Baykur--Margalit,
+Section 2, state the monodromy classification. Their broader surface-base
+discussion uses contractibility of identity components, but that stronger
+fact is not needed for the present graph base:
 
 - R. Inanc Baykur and D. Margalit, *Indecomposable surface bundles over
   surfaces*, J. Topol. Anal. 5 (2013), 161--181,
@@ -58,9 +61,10 @@ the identity components of the diffeomorphism group:
   surface*, Bull. Amer. Math. Soc. 73 (1967), 557--559,
   <https://doi.org/10.1090/S0002-9904-1967-11746-4>.
 
-The present graph-base argument actually needs less than the full
-contractibility theorem: only the identification of components with mapping
-classes and homotopy invariance of pullback bundles.
+Indeed, the present argument uses only
+`pi1(BDiff+(F)) = pi0(Diff+(F))`, identification of those components with
+mapping classes, and homotopy invariance of pullback bundles. No claim about
+higher homotopy groups or contractibility of `Diff_0(F)` is load-bearing.
 
 ## 2. Why the certified actions determine the mapping classes
 
@@ -115,23 +119,21 @@ For `T_beta`, both representatives use the same ordered twists supported near
 `a` and `b`, which are disjoint from `e`.  The primary beta trace is a literal
 product on `e` through all 32 interfaces; the alternative 64-interface trace
 has the same marked peripheral semantics.  The comparison isotopy can hence
-be chosen relative to a neighborhood of `e`.  Its mapping torus carries the
-product `e`-subbundle and its product collar to the one used in the paper.
-This last relative choice is the usual isotopy-extension statement applied
-away from the two twist annuli; it does not assert that an arbitrary equality
-in the mapping class group automatically preserves an arbitrary curve.
+be avoided entirely. Run 51 constructs the full three-row `e` collar, checks
+that all 1,536 beta trace cells avoid it, and checks all 3,072 tetrahedra in
+the restricted stack against the literal staircase product. Since the paper
+and model use the same ordered relative twist word `T_a o T_b`, their
+comparison is relative to the `e` collar by construction. Run 51 likewise
+checks exact equivariance of the alpha map on every row of the `c` collar.
 
-## 4. Exact trust boundary
+## 4. Status after Run 52
 
-After the integrated check, the only general facts left in
-`T_surface_bundle` are:
-
-1. classification of `F`-bundles by maps to `BDiff+(F)` and homotopy
-   invariance under the deformation retraction of the base;
-2. identification of genus-2 mapping classes by their outer actions on the
-   surface group (Dehn--Nielsen--Baer);
-3. the elementary relative isotopy-extension choice for maps already equal
-   near the marked curve neighborhoods.
+The classification and Dehn--Nielsen--Baer discussion above is retained as
+an independent conventional route. It is no longer an active trust boundary.
+Run 52 defines `[x,t] -> [h(x),t]` on both mapping-cylinder handles, checks
+the forward and inverse seam equations, and glues the maps along their common
+fiber block. Run 51 supplies the exact relative conjugacies. Since the base
+has no two-cell, no further coherence equation exists.
 
 All construction-specific hypotheses are machine-bound: the topology and
 marking of the fiber, the topology and two-loop spine of the base, both
@@ -143,12 +145,19 @@ whiskers.
 
 - Confirm that annulus plus the stated band is an oriented once-punctured
   torus and that the displayed two loops form its spine.
-- Confirm the standard `BDiff+(F)` classification over that graph.
+- Check the direct two-handle quotient calculation in Run 52.
 - Confirm that the two certified automorphisms are compared with the paper
   using the same multiplication and basepoint conventions.
-- Apply Dehn--Nielsen--Baer injectivity.
-- Check the relative-to-`c` and relative-to-`e` isotopy choices described in
-  Section 3.
+- Treat the based actions and Dehn--Nielsen--Baer as an independent control,
+  not as the construction of the map.
+- Check the direct `c`-collar equivariance and the supported beta twist word
+  certified in Run 51.
 
 No fundamental-group simplification, framing theorem, PL smoothing theorem,
 or four-manifold classification theorem is part of this packet.
+
+Run 50 uses the resulting map only as an orientation-preserving homeomorphism
+from the marked source bundle to the underlying topological manifold of the
+paper's already smooth target. It transports the named tori, collars, and
+section cycles; it does not assert or require a compatible smoothing of the
+source triangulation.

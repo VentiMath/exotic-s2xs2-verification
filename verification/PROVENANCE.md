@@ -69,6 +69,14 @@ mathematical artifact is either inside 6587b7e (Fable) or in a later commit
 | aad6105 | Claude Fable 5 | run 44: second Weinstein route (Liouville-forced momenta, opposite-shear chart, SL2 invariance); softens run 40's "no ODE citation remains" overstatement and declares the sympy dependency |
 | a7a1db4 | OpenAI Codex (GPT-5 family) | runs 46--47: direct equivariant Moser field constructed upstairs (retiring the connected-cover lifting citation) and the cumulative-coordinate flow construction removing the Picard--Lindelof citation |
 | 5da551d | Claude Fable 5 | run 45: framing-shift robustness table frozen — 100 cases, 82 certified trivial, 18 inconclusive, 0 nontrivial; all beta-only shifts certified; scan driver, verdict log, GAP programs, and rewriting systems committed |
+| 1bc4caf | Claude Fable 5 | records the run 45 freeze in STATUS and PROVENANCE and finalizes the outreach draft |
+| 972f7df | OpenAI Codex (GPT-5 family) | run 48: exhaustive local flatness of both surgery tori — 1,776 link pairs classified with replayed collapse witnesses |
+| 2bda20f | OpenAI Codex (GPT-5 family) | run 49: explicit half-weight normal block model and the global PL frontier equivalence; T_derived_regular_neighborhood removed |
+| 8e8a929 | OpenAI Codex (GPT-5 family) | run 50: PL-to-smooth reroute through the already-smooth target; smoothing and intersection-naturality nodes removed |
+| 8e5d7e9 | OpenAI Codex (GPT-5 family) | run 51: direct relative marked monodromies, exact on the c collar with the full beta trace product on the e collar |
+| b4af95d | OpenAI Codex (GPT-5 family) | run 52: explicit marked graph clutching; T_surface_bundle removed, assembly certificate symbolic |
+| 44baf93 | OpenAI Codex (GPT-5 family) | addresses the independent replay review: 82/18 correction, seam-convention repair with a guarding test, honest run-52 weighting, ledger edges, doubled-bundle extension, restored attack surface |
+| e57a71d | Claude Fable 5 | run 53: interpretation dictionary bound with per-entry witnesses and the non-executing author-code cross-check; three residual entries declared |
 
 A separate Claude Fable 5 window is independently building an alternative
 fiber realization (handle model: two 4x4 grid tori joined by an annulus,

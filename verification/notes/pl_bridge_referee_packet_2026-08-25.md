@@ -3,21 +3,23 @@
 ## Purpose
 
 This note isolates the general PL facts used to pass from the finite
-certificates in Runs 28, 33, and 34 to the paper's marked smooth bundle.  Run
-36 integrates and rechecks every finite hypothesis below.  The objective is
-to prevent the phrases "ribbon graph thickens," "flip trace," and "smooth the
-PL bundle" from hiding distinct assumptions.
+certificates in Runs 28, 33, and 34 to the paper's marked bundle. Run 36
+integrates and rechecks the finite hypotheses; Run 50 replaces the former
+source-smoothing step by transport into the paper's already smooth target.
+The objective is to prevent the phrases "ribbon graph thickens," "flip
+trace," and "identify the bundle" from hiding distinct assumptions.
 
-There are four general inputs:
+There are three general inputs:
 
 1. rotation systems determine oriented ribbon thickenings;
 2. the verified labeled cone-ball is the trace of a 2--2 bistellar move;
-3. a PL 4-manifold has an essentially unique compatible smoothing;
-4. oriented intersection pairings are natural under the resulting marked
-   equivalence.
+3. explicit clutching of the two marked mapping cylinders gives an
+   orientation-preserving homeomorphism to the underlying topological bundle
+   of the paper's smooth bundle.
 
-The first two inputs are proved in the special finite form needed here.  The
-last two are cited smoothing and Poincare-duality facts.
+The first two inputs are proved in the special finite form needed here. Run
+52 writes out and certifies the third. No bundle-classification theorem and
+no smoothing of the source triangulation are used.
 
 ## Machine-bound hypotheses
 
@@ -36,8 +38,9 @@ and replays the Run-28 self-intersection construction.  It checks:
 - every ribbon segment has an explicit common subdivision;
 - all four constant normal clutching rotations give a disjoint normal
   push-off, with an exact radial-chain boundary and square zero.
-- the ambient marked bundle in the section replay has dimension four, the
-  dimension used in the smoothing theorem application.
+- the source is a marked oriented four-dimensional topological bundle and
+  the target is the underlying topological bundle of the paper's already
+  smooth bundle.
 
 The integrated result is `luttinger/pl_theorem_hypotheses.json`.
 
@@ -133,36 +136,31 @@ stack is a combinatorial 3-manifold with exactly the two marked fiber
 boundaries.  Hence the construction is not relying only on the local move
 labels.
 
-## 3. From the marked PL bundle to the smooth bundle
+## 3. Transport into the already smooth target
 
-The mapping-cylinder construction gives a compact PL 4-manifold, with the
-marked fiber and torus subbundles carried in explicit product charts.  The
-based monodromy certificates identify its two mapping classes with those of
-the paper.  The already separate marked-surface-bundle theorem therefore
-identifies the PL bundle with the underlying PL bundle of the paper's smooth
-bundle.
+The mapping-cylinder construction gives a compact marked oriented PL
+4-manifold. The based monodromy certificates identify its two mapping
+classes with those of the paper, relative to `c`, `e`, `p`, and the product
+collars. The Run-52 mapping-cylinder construction therefore supplies an
+orientation-preserving bundle homeomorphism
 
-The remaining category change is standard low-dimensional smoothing theory.
-Hirsch--Mazur classify compatible smoothings by maps to `PL/O`; `PL/O` is
-6-connected.  Consequently a PL manifold of dimension four is smoothable
-and its compatible smoothing is unique up to concordance.  Their product
-theorem turns the relevant concordance into a diffeomorphism.  References:
+\[
+H:|K|\longrightarrow R_{\mathrm{top}},
+\]
 
-- M. Hirsch and B. Mazur, *Smoothings of Piecewise Linear Manifolds*, Annals
-  of Mathematics Studies 80, Princeton University Press (1974), Parts I--II,
-  <https://www.jstor.org/stable/j.ctt1bd6m0d>;
-- C. Lange, *Equivariant smoothing of piecewise linear manifolds*,
-  Math. Proc. Cambridge Philos. Soc. 160 (2016), 347--359, introduction and
-  main theorem, <https://arxiv.org/abs/1507.02395>.
+where `R_top` is the underlying topological manifold of the paper's smooth
+bundle. Run 50 binds every finite hypothesis used here and records that `H`
+carries the named tori, collars, peripheral curves, and `p`-section to their
+paper counterparts.
 
-Only ordinary smoothing is needed for the bundle.  The marked curves and
-tori already lie in literal surface/product charts, so those charts may be
-smoothed first and the relative product form of the smoothing theorem used
-away from them.  Alternatively, smooth representatives of the certified
-surface mapping classes give the same marked smooth mapping torus directly.
-There is no appeal here to smoothing an arbitrary wild subcomplex.
+This is the whole category bridge. The source `|K|` is never smoothed.
+Topological and combinatorial data are transported by `H`; Moser, Weinstein,
+Lagrangian-framing, and smooth-intersection statements are then applied only
+inside `R`, which already has the smooth and symplectic structures supplied
+by the paper. Thus no existence, uniqueness, concordance, relative, or
+equivariant smoothing theorem for a four-dimensional PL manifold is needed.
 
-## 4. The square-zero section survives the category change
+## 4. Square zero inside the target
 
 Run 28 constructs a PL section `Gamma_hat`, a disjoint normal push-off
 `Gamma_hat'`, and an oriented radial 3-chain with
@@ -171,41 +169,34 @@ Run 28 constructs a PL section `Gamma_hat`, a disjoint normal push-off
 \partial C=\Gamma_{hat}'-\Gamma_{hat}.
 \]
 
-Thus the two disjoint surfaces represent the same homology class.  Their
-algebraic intersection is zero, so
+Applying `H` gives two actual disjoint, homologous, oriented surfaces in
+`R_top`; the transported chain has
+
+\[
+\partial H(C)=H(\Gamma_{hat}')-H(\Gamma_{hat}).
+\]
+
+Their geometric intersection is empty, so the homological square of the
+target section class is zero:
 
 \[
 [\Gamma_{hat}]^2=0
 \]
 
-in the oriented PL 4-manifold's homological intersection pairing.  This
-conclusion does not require smoothing the particular triangulated push-off:
-the intersection form is the Poincare-duality pairing
-
-\[
-(a,b)\mapsto \langle PD(a)\smile PD(b),[M]\rangle,
-\]
-
-and is natural under orientation-preserving homeomorphisms.  The marked
-bundle equivalence carries the section class to the paper's smooth section
-class, whose smooth self-intersection is the same homological square.
-
-For the PL regular-neighborhood and intersection framework, see
-Rourke--Sanderson, *Introduction to Piecewise-Linear Topology*, Chapter 3,
-especially the derived-neighborhood construction and Theorem 3.8,
-<https://doi.org/10.1007/978-3-642-81735-9>.  Naturality of the final formula
-is ordinary Poincare duality, not an additional dimension-four smoothing
-claim.
+in the oriented topological manifold underlying `R`. Since the marked image
+is the paper's smooth section, its smooth self-intersection is this same
+homological square. The argument does not compare two intersection forms or
+smooth the literal PL push-off; it computes the relevant class after the
+actual cycles and bounding chain have already been moved into the target.
 
 ## Exact remaining trust boundary
 
-After Run 36, the PL boundary consists of these named conventional facts:
+After Run 52, the PL boundary consists of these named conventional facts:
 
 1. compact-surface classification in the sphere/disk cases;
 2. the standard PL interpretation of the explicitly labeled 2--2 trace;
-3. existence and concordance uniqueness of compatible smoothings in
-   dimension four;
-4. naturality of the oriented homological intersection pairing.
+3. no additional bundle-classification boundary: Run 52 certifies the two
+   quotient seam equations and their inverses explicitly.
 
 Every construction-specific hypothesis of those facts is represented in the
 integrated certificate.  No picture-based mapping-class inference, shared
@@ -218,7 +209,7 @@ remains in this bridge.
   extensions.
 - Check that the Run-33 labeled boundary partition is exactly the
   `A*boundary(B)` to `boundary(A)*B` trace.
-- Check that the relative/product smoothing statement applies to the marked
-  bundle charts, or use smooth mapping-torus representatives directly.
-- Check that the marked equivalence sends the Run-28 section class to the
-  paper's fixed-point section class.
+- Check that the marked bundle homeomorphism preserves `c`, `e`, `p`, the
+  two tori, and their product collars.
+- Check that transporting Run 28's two cycles and its bounding chain gives
+  the stated disjoint homologous target representatives.

@@ -75,3 +75,35 @@ smoothing, and oriented-intersection naturality. The new
 Runs 28, 33, and 34. `G_section_square_zero` now uses homological intersection
 naturality rather than suggesting that its explicit PL push-off must itself
 be smoothed.
+
+Update 2026-08-27
+-----------------
+
+Run 50 removes `T_low_dimensional_PL_smoothing` and
+`T_oriented_intersection_naturality`. The marked surface-bundle theorem is
+used to transport the certified tori, collars, peripheral paths, and actual
+Run-28 section cycles into the underlying topological manifold of the
+paper's already smooth target. Smooth and symplectic operations occur only
+there. The two transported section cycles remain disjoint and are joined by
+the transported radial 3-chain, so their common target class has square zero
+without smoothing the source or comparing separately defined intersection
+forms. The current ledger has 13 external-theorem nodes.
+
+Run 51 adds `M_relative_marked_monodromy`. It certifies exact alpha
+equivariance on the full `c` collar and constructs the beta comparison from
+the paper's same ordered, supported twist word, with a literal product on the
+full `e` collar. The former relative-isotopy-extension clause inside
+`T_surface_bundle` is therefore removed. The certificate dependency is
+strictly one-way: independent fiber/flip/section data feed Run 51, Run 51
+feeds the surface-bundle hypothesis certificate, and that certificate feeds
+Run 50. Because the base retracts to a graph, only
+`pi1(BDiff+(F))=pi0(Diff+(F))` is used; contractibility of `Diff_0(F)` is also
+removed from the active hypothesis list.
+
+Run 52 adds `M_explicit_graph_clutching` and removes `T_surface_bundle` plus
+the now-diagnostic `M_surface_bundle_hypotheses` from the active graph. The
+map `[x,t] -> [h(x),t]` and its inverse are checked on both monodromy handles;
+the exact alpha conjugacy and factorwise beta twist conjugacy make the seam
+quotients well-defined. Both handle maps restrict to the same marked fiber
+map, and the base has no two-cell. Dehn--Nielsen--Baer remains a sign- and
+mapping-class-sensitive control but is no longer a proof dependency.
