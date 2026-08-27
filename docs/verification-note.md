@@ -87,11 +87,24 @@ own displayed relations and sign tables.
 Luttinger surgery is performed with respect to the Lagrangian framing; the
 paper's Lemma 8.2 identifies it with the fibered framing used by the
 combinatorial longitudes. The lemma's displayed Weinstein-chart, seam, and
-constant-momentum algebra, and its inline relative-Moser and double-cover
-normalizations, are machine-checked; the chart-independence input is verified
-against ADK03 §2.1 and Proposition 2.2. What remains cited rather than
-mechanized: local flow existence, connected-cover lifting, and
-Lagrangian-neighborhood germ uniqueness.
+constant-momentum algebra are machine-checked, and its inline analytic
+normalizations have been rebuilt constructively rather than cited. The Moser
+flow is produced as the explicit monotone inverse of a cumulative coordinate,
+so no ODE existence theorem is invoked; the equivariant step defines the
+Moser field directly on the double cover with certified projection, deck
+invariance, and factor-two normalization, so no covering-lift theorem is
+invoked; and the covering hypotheses themselves — free involution, genuine
+2:1 simplicial covering, deck group exactly {id, φ₀}, core winding number
+two — are certified on the actual simplicial collar. Chart independence is
+argued twice within the project: a fiber-dilation isotopy takes any
+chart-transition germ to the identity relative to the zero section, and a
+construction-side proof shows the paper's charts are forced by pairing the
+Liouville primitive with the well-defined angle frames, with every integral
+angle-basis change preserving constant momentum and the one symplectic move
+that could add meridian components — the closed-1-form shift — excluded by
+the zero-section condition. ADK03 §2.1 and Proposition 2.2 stand as
+corroboration. What remains cited rather than mechanized:
+Lagrangian-neighborhood (Weinstein) germ uniqueness.
 
 The lemma's exact logical load: if the identification failed by j meridians,
 the machine certificates would remain correct for the product-framed
@@ -128,9 +141,10 @@ computations are executable.
 
 The named standard inputs, applied with checked hypotheses and cited proofs:
 Freedman's simply connected classification; the Hambleton–Kreck finite-cyclic
-classification; Moser stability (relative and equivariant forms) and
-Weinstein-neighborhood uniqueness; chart-independence of the Lagrangian
-framing (ADK03); the classification of surface bundles by based monodromy;
+classification; Weinstein-neighborhood germ uniqueness (the relative and
+equivariant Moser normalizations are constructed rather than cited, and chart
+independence is argued in-project with ADK03 as corroboration — see §6);
+the classification of surface bundles by based monodromy;
 elementary PL thickening, bistellar-trace, and smoothing results; the
 symplectic Thom theorem; Ho–Li on Luttinger surgery; and the Ozsváth–Szabó /
 Lidman–Piccirillo Floer machinery. This note does not reprove them.

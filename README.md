@@ -48,12 +48,16 @@ the paper's coordinates, with proof-producing certificates that replay.
   certificate, a simplex-level verifier of all 128 PL flip traces, and a
   58-vertex marked-fiber realization matched equivariantly to the primary
   86-vertex model.
-* **The framing lemma's algebra.** The displayed Weinstein-chart, seam, and
-  constant-momentum algebra of the paper's Lemma 8.2, and its inline
-  relative-Moser and double-cover calculations, are machine-checked; the
-  chart-independence citation is verified against ADK03 §2.1 and
-  Proposition 2.2. A self-contained referee packet states the lemma's proof
-  with each identity cross-referenced to the executable check.
+* **The framing lemma's analysis.** The displayed Weinstein-chart, seam, and
+  constant-momentum algebra of the paper's Lemma 8.2 are machine-checked, and
+  its inline normalizations are rebuilt constructively: the Moser flow is the
+  explicit monotone inverse of a cumulative coordinate (no ODE citation), the
+  equivariant field is defined directly on the double cover with certified
+  deck invariance (no covering-lift citation), the covering hypotheses are
+  certified on the simplicial collar, and chart independence is argued twice
+  in-project with ADK03 §2.1 / Proposition 2.2 as corroboration. A
+  self-contained referee packet states the lemma's proof with each identity
+  cross-referenced to the executable check.
 * **The downstream chain.** The deductions after simple connectivity —
   Freedman applications, the Hambleton–Kreck classification data, the
   intersection-form calculations, minimality and symplectic Kodaira
@@ -65,10 +69,9 @@ the paper's coordinates, with proof-producing certificates that replay.
 
 The remaining proof dependence is concentrated in standard smooth and
 symplectic topology, applied with hypotheses that have been checked but with
-proofs that are cited, not mechanized: local flow existence, connected-cover
-lifting, Lagrangian-neighborhood germ uniqueness, surface-bundle
-classification, elementary PL thickening and smoothing, and the quoted
-classification and Floer theorems. If the framing identification (Lemma 8.2)
+proofs that are cited, not mechanized: Lagrangian-neighborhood (Weinstein)
+germ uniqueness, surface-bundle classification, elementary PL thickening and
+smoothing, and the quoted classification and Floer theorems. If the framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
 presentations with the paper's Lagrangian surgeries; simple connectivity, the
@@ -98,8 +101,16 @@ asserted computation ships with a replayable artifact.
 
 ## Contents
 
-Code, certificates, run logs, and the verification note are being imported
-from the working repository; the layout will be documented here as it lands.
+* `docs/verification-note.md` — the verification note.
+* `paper/` — the LaTeX source of the arXiv verification note.
+* `verification/` — the working repository at its imported commit: the engine
+  and certificates under `verification/luttinger/` (derivation-DAG
+  certificates in `proof_certificates/`, rewriting systems in `direct_rws/`
+  and `j_rws/`), the run transcripts under `verification/runs/`,
+  referee-packet notes under `verification/notes/`, `STATUS.md` (the honest
+  snapshot of what is and is not certified), `PROVENANCE.md` (the
+  commit-level model ledger), and `IMPORT.md` (what was imported, what was
+  removed, and why).
 
 ## Contact
 
