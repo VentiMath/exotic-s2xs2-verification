@@ -15,6 +15,10 @@ own history. Relative paths referenced by `STATUS.md`, the notes, and the
 run transcripts resolve within this directory. Run 58 and its
 `luttinger/j_certificates/` artifacts originate in this repository rather
 than the working one; runs 59–63 independently reproduce and extend them.
+Run 64 — the downstream proof chain (`luttinger/downstream_chain.py`, its
+certificate, `luttinger/verify_downstream_chain.rb`, the extension of
+`luttinger/proof_ledger.py`, and `notes/downstream_proof_chain_2026-08-28.md`)
+— also originates in this repository.
 
 ## Removed from the import
 

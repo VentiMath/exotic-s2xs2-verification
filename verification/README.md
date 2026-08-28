@@ -86,11 +86,15 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
   remaining filling relator kills its generator. Independent Python and Ruby
   replay of the retained 4,040-record ancestry DAG gives the final auxiliary
   tally: **100/100 certified trivial, 0 inconclusive, 0 nontrivial**.
-* **Downstream implications audited:** conditional on the certified
-  simple-connectivity result, the covering, intersection-form, Freedman,
-  Kodaira-dimension, slicing, and reglued Heegaard Floer arguments have the
-  stated hypotheses.  No further gap was found; see `runs/24` and
-  `notes/downstream_theorem_audit_2026-08-23.md`.
+* **Downstream proof chain:** `downstream_chain.py` carries every
+  implication from the certified simple connectivity to Theorems A, B, C
+  as an explicit item — 25 external theorems with hypotheses and sources,
+  3 hash-bound certificates, 15 computed facts, 16 deduction steps — and
+  freezes it as `downstream_chain_certificate.json`;
+  `verify_downstream_chain.rb` independently recomputes every fact, checks
+  the graph, and verifies the evidence digests. See `runs/64` and
+  `notes/downstream_proof_chain_2026-08-28.md`; the earlier hypothesis
+  audit is `runs/24`.
 * **Proof artifacts:** the 99,860-step target Tietze reduction and all eight
   filled-group derivation DAGs are independently replayed; see `runs/10`--`18`
   and `runs/29`. A separate basis-free implementation also reconstructs both
@@ -117,6 +121,10 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
 | `verify_kbmag_certificate.py` | independent checker; does not import or run KBMAG |
 | `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
+| `downstream_chain.py` | the proof chain from π₁(V)=1 to Theorems A, B, C: external theorems, certificates, computed facts, deduction steps |
+| `downstream_chain_certificate.json` | frozen Run-64 chain with evidence digests |
+| `verify_downstream_chain.rb` | independent Ruby replay of the chain: recomputes every fact, checks the graph and the digests |
+| `proof_ledger.py` | the dependency ledger of the whole verification: external theorems, machine certificates, geometric arguments, derived claims |
 | `paper_bridge.py` | explicit p-whiskered octagon generators, based open-stack monodromy, and drilled-fiber R3 certificates |
 | `peripheral_bridge.py` | exact torus-slope permutation and opposite-side alpha basing checks |
 | `independent_peripheral_extractor.py` | separate derived-frontier, meridian, product-push-off, and literal-whisker extractor; imports none of the original peripheral machinery |
@@ -178,4 +186,7 @@ python3 pl_flip_trace.py --check --output pl_flip_trace_certificate.json
 python3 independent_fiber_audit.py --check --output independent_fiber_certificate.json
 python3 framing_check.py
 python3 pl_theorem_audit.py --check --output pl_theorem_hypotheses.json
+python3 downstream_chain.py --check
+ruby verify_downstream_chain.rb
+python3 proof_ledger.py
 ```
