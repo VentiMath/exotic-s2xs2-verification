@@ -172,7 +172,7 @@ complement with the meridian-shifted longitudes and running the same
 certification pipeline — quantifies which discrepancies j are independently
 excluded. Of 100 shifted cases across both half-drift families, 82 are
 certified trivial (40 by proof-producing Tietze collapse, 42 by complete
-confluent rewriting), 18 remain undecided, and none is nontrivial. The
+confluent rewriting), no nontriviality witness was found, and 18 remain undecided. The
 undecided groups are all perfect, admit no quotient onto the six smallest
 nonabelian simple groups, have no proper subgroup of index at most 8, and
 resist coset enumeration to a 12.5M-coset ceiling. Every shift touching
