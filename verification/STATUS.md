@@ -675,7 +675,9 @@ Raw console output, in the order produced:
     55  Lemma 7.1 equivariant normal form (periodic-disk reduction)
     56  original Lidman--Piccirillo source-figure audit
     57  independent Ruby verifier for all eight filled-group proof DAGs
+    58  undecided scan case certified from its unsimplified presentation (83/17 current)
     59  raw-presentation certificates for 13 framing-scan holdouts (95/5 current)
     60  raised-limit certificate for n1_y2 (+,-), shift (+1,-1) (96/4 current)
     61  raised-limit certificates for two n0_y1 holdouts (98/2 current)
     62  tidyint-sensitive certificate for n1_y2 (+,+), shift (+1,+1) (99/1 current)
+    63  common-core certificate for the hundredth framing case (100/0 final)
