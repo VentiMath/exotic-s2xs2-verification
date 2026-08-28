@@ -6,7 +6,7 @@ web form from drifting from the rendered paper.
 ## Upload
 
 - Upload `arxiv-source-v1.5.1.tar.gz` from the v1.5.1 GitHub release.
-- SHA-256: `71c29ad2b3658bf3e2493053912f666c1d0548581771e51eabbd5bca25b107cb`.
+- SHA-256: `5acc2e134fef9fa29887e300b80f92206554c9befe8c0996e4df3ebc44f5a99f`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
