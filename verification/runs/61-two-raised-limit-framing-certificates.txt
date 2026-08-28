@@ -1,0 +1,68 @@
+Run 61: two more framing holdouts certified at the raised equation limit
+============================================================================
+
+Cases
+-----
+
+  n0_y1_am1_bm1_jam1_jbm1   signs (-1,-1), shift (-1,-1)
+  n0_y1_ap1_bm1_jap1_jbm1   signs (+1,-1), shift (+1,-1)
+
+Both cases were among Run 59's five default-limit holdouts. A parallel
+Claude/Fable sweep first obtained console-level confluent completions from
+their unchanged fill-then-base raw presentations after raising KBMAG's
+equation ceiling from 32,767 to 300,000.
+
+This run independently converted both observations into proof certificates.
+For each case, the exact Run 59 97-relator input was serialized with
+
+  maxeqns = 300000
+  tidyint = 100
+  ordering = shortlex
+
+The proof-producing KBMAG executable then recorded every derived equation and
+its parents. No relator, generator, or alphabet-order change was made.
+
+Results
+-------
+
+  n0_y1_am1_bm1_jam1_jbm1   2,716 proof records, 0 fallback searches
+  n0_y1_ap1_bm1_jap1_jbm1   1,636 proof records, 0 fallback searches
+
+For each certificate:
+
+  Python verifier: VERIFIED TRIVIAL
+  Ruby verifier:   ALL RUBY FILLED-GROUP CHECKS PASSED
+
+Both independent verifiers begin with the certificate's SHA-256-bound
+97-relator presentation, replay every free-group derivation, and check that
+all four original generators have identity roots. The console completion is
+therefore no longer a trust boundary.
+
+Artifacts
+---------
+
+  luttinger/raw_j_certificates/
+    n0_y1_am1_bm1_jam1_jbm1_focus_input.rws
+    n0_y1_am1_bm1_jam1_jbm1_focus.json.gz
+    n0_y1_ap1_bm1_jap1_jbm1_focus_input.rws
+    n0_y1_ap1_bm1_jap1_jbm1_focus.json.gz
+
+The large proof-history streams are reproducible from the focus inputs and
+are intentionally omitted. The compact `.json.gz` files are the proof
+objects.
+
+Current boundary
+----------------
+
+The certified robustness tally is now 98/100 trivial, 2/100 inconclusive,
+and zero nontrivial. The only remaining cases are the same aligned diagonal
+choice in the two half-drift families:
+
+  n0_y1_ap1_bp1_jap1_jbp1   signs (+1,+1), shift (+1,+1)
+  n1_y2_ap1_bp1_jap1_jbp1   signs (+1,+1), shift (+1,+1)
+
+The n0 case has also been tried at the 300,000-equation ceiling in the raw
+fill-then-base ordering without attaining confluence. The n1 case has not yet
+received a completed, measured raised-limit run. Neither has a nontriviality
+witness. These are auxiliary counterfactual framing shifts and do not gate
+the paper's j=0 proof.

@@ -170,17 +170,27 @@ conclusions, and the exoticness argument for the claimed manifolds would
 become unproved. A completed slope-robustness scan — refilling the
 complement with the meridian-shifted longitudes and running the same
 certification pipeline — quantifies which discrepancies j are independently
-excluded. Of 100 shifted cases across both half-drift families, 82 are
-certified trivial (40 by proof-producing Tietze collapse, 42 by complete
-confluent rewriting), no nontriviality witness was found, and 17 remain undecided; one previously undecided case was later certified trivial from its unsimplified 97-relator presentation, which completes confluently where the simplified presentation resists (run 58). The
-undecided groups are all perfect, admit no quotient onto the six smallest
-nonabelian simple groups, have no proper subgroup of index at most 8, and
-resist coset enumeration to a 12.5M-coset ceiling. Every shift touching
-only the second surgery torus is certified trivial in both families; all
-undecided cases involve a shift on the first torus. The full verdict table
-is reported with the artifacts. The 17 undecided counterfactual groups are
-not evidence of a framing error, and they have no bearing on the j=0 proof
-unless the independent framing argument of §6 first fails.
+excluded. The scan comprises 96 shifted cases — twelve nonzero shifts, the
+eight axis shifts of magnitude at most 2 and the four diagonal shifts
+(±1,±1), a cross-and-diagonal sample rather than a full grid, across all
+four sign pairs and both half-drift families — plus four zero-shift
+controls that re-derive the paper's own n=0 fillings through the same
+pipeline. All 100 are certified trivial, and no nontriviality witness was
+found at any stage. The evidence is of two levels. The original pipeline,
+which simplifies each presentation before completion, decided 82 at the
+level of a GAP session (40 by Tietze collapse, 42 by complete confluent
+rewriting) and exported no certificates from those runs. The 18 it left
+open, every one involving a shift on the first torus, carry independently
+replayed derivation-DAG certificates: 17 from confluent completion of the
+unsimplified 97-relator presentation, whose redundant relators are what make
+completion tractable, some only at raised equation limits (runs 58–62); and
+the last from a certified reduction through the 96 relators it shares with
+its neighboring presentation, whose common core is infinite cyclic with the
+omitted relator reducing to its generator (run 63). The full verdict table
+and search history are reported with the artifacts. Within the scanned
+range, no framing error would have produced a nontrivial group; the scan
+bears on the j=0 proof only if the independent framing argument of §6 first
+fails.
 
 ## 7. The downstream audit
 

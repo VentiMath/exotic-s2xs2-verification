@@ -1,4 +1,4 @@
-# Current state (2026-08-27)
+# Current state (2026-08-28)
 
 Model provenance is tracked in PROVENANCE.md; its log table is the authority
 on which model produced which commits (the original "everything after 6587b7e
@@ -7,28 +7,32 @@ is Opus 5" rule is superseded there).
 The original machine derivation was built in one session with Fable 5, starting from
 `luttinger.tar.gz` (the inherited engine + calibrations) and DESIGN.md §4 (the
 not-yet-built case: Wuebben's non-product bundle R). This file is the honest
-snapshot: what is machine-certified, what is not, and exactly where the one
-open question sits.
+snapshot: what is machine-certified, what is not, and where the remaining
+trust boundary sits.
 
 An auxiliary framing-discrepancy scan is complete (`runs/45`, driver
 `luttinger/j_robustness.py`, verdicts `luttinger/j_robustness_results.jsonl`).
 It does not alter the certified `j=0` fillings or prove Lemma 8.2; it maps
-what a hypothetical framing error would do.  Of 100 shifted-slope cases
-across both half-drift families, 83 are certified trivial (40 by Tietze
-collapse, 43 by complete confluent rewriting; run 58 decided a previously
-inconclusive case from its unsimplified presentation), 17 are inconclusive,
-and no nontriviality witness has been found.  All 32 shifts touching only `T_beta` are certified trivial in
-both families; every inconclusive case involves an `alpha`-torus shift.  Each
-inconclusive case is perfect, admits no quotient onto the six small simple
-targets, no proper subgroup of index at most 8, and resists coset enumeration
-to a 12.5M-coset ceiling.  Proof-preserving search shortened the hardest
-case's reproducible compact presentation from 542 to 362 letters, with a
-310-letter temporary-generator target; every stored move chain replays.  See
-`runs/39`.  The adjacent `j_alpha=+2` case has the same negative
-bounded-search profile.  Its exact GAP input is frozen, and replayed
-Nielsen/named-word/Tietze moves reduce it from 9 relators/876 letters to 8
-relators/532 letters, with a 439-letter temporary-generator target.  It also
-remains inconclusive and is documented separately in `runs/41`.
+what a hypothetical framing error would do.  Run 45 originally froze 82
+certified-trivial and 18 inconclusive cases.  Run 59 retries those 18 before
+GAP simplification: the redundant raw relations make 13 additional cases
+complete confluently, including both cases studied in Runs 39 and 41.  Their
+15,973-record derivation DAGs pass both independent verifiers, giving a 95/5
+tally after Run 59.  Run 60 raises the equation ceiling and certifies
+`n1_y2_ap1_bm1_jap1_jbm1` with a separately double-verified 2,417-record
+derivation DAG.  Run 61 independently certifies the two raised-limit `n0_y1`
+completions with 2,716- and 1,636-record DAGs.  Run 62 then certifies
+`n1_y2_ap1_bp1_jap1_jbp1` at `maxeqns=300000`, `tidyint=500`, with a
+double-verified 1,863-record DAG.  Run 63 resolves the last case,
+`n0_y1_ap1_bp1_jap1_jbp1`, by isolating the 96 relators it shares with that
+`n1_y2` presentation.  The common core completes to an infinite-cyclic group:
+`g1`, `g3`, and `g4` vanish, while both differing filling relators reduce to
+`g2^-1`.  The `n0_y1` filling relator therefore kills the last generator.
+The resulting 4,040-record ancestry certificate passes independent Python and
+Ruby replay, including the exact 96/97 source comparison.  The current
+repository tally is therefore **100 certified trivial, 0 inconclusive, and 0
+nontrivial**.  These are auxiliary counterfactual framing shifts; the result
+strengthens robustness but was never needed for the paper's `j=0` proof.
 
 After commit `4bd40fa`, OpenAI Codex added a combinatorial basing-sweep
 diagnostic (`sweep.py`, `beta_basing_sweep` in `r_run.py`).  It constructs the
@@ -533,9 +537,14 @@ the presentation digest; all four are rejected.
   constructs the equivariant Moser field upstairs; Run 47 constructs its
   general flow by monotone inversion. No connected-cover lifting,
   Picard--Lindelof, or ADK03 chart-independence input remains necessary.
-* **Framing-shift robustness:** Run 45 freezes 100 auxiliary cases: 82
-  certified trivial, 18 explicitly inconclusive, and zero nontrivial. These
-  cases do not gate the paper's `j=0` proof.
+* **Framing-shift robustness:** Run 45 freezes the original 100-case table;
+  Runs 59--62 certify 17 of its 18 original holdouts.  Run 63 resolves the
+  final aligned positive-diagonal `n0_y1` case through a 96-relator common-core
+  certificate: the core is infinite cyclic and the case-100 filling relator
+  kills its generator.  Independent Python and Ruby verifiers replay the
+  retained 4,040-record ancestry DAG.  The final tally is 100 certified
+  trivial, 0 inconclusive, and 0 nontrivial. These cases do not gate the
+  paper's `j=0` proof.
 * **Main fundamental groups:** all eight paper fillings have independently
   replayed proof-producing triviality certificates.
 * **The interpretation layer is a bound artifact:** Run 53 collects every
@@ -666,3 +675,7 @@ Raw console output, in the order produced:
     55  Lemma 7.1 equivariant normal form (periodic-disk reduction)
     56  original Lidman--Piccirillo source-figure audit
     57  independent Ruby verifier for all eight filled-group proof DAGs
+    59  raw-presentation certificates for 13 framing-scan holdouts (95/5 current)
+    60  raised-limit certificate for n1_y2 (+,-), shift (+1,-1) (96/4 current)
+    61  raised-limit certificates for two n0_y1 holdouts (98/2 current)
+    62  tidyint-sensitive certificate for n1_y2 (+,+), shift (+1,+1) (99/1 current)

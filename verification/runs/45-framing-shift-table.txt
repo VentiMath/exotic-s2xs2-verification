@@ -13,13 +13,26 @@ would produce under that hypothetical framing error.
 Verdicts (T = trivial by Tietze collapse, K = trivial by complete
 confluent rewriting, . = inconclusive; no case is nontrivial):
 
+The 100 cases are not a 10-by-10 grid.  For each of the two half-drift
+families and four surgery-sign pairs, the scan tests 12 nonzero shifts:
+
+  alpha only: (+1,0) (-1,0) (+2,0) (-2,0)
+  beta only:  (0,+1) (0,-1) (0,+2) (0,-2)
+  joint:      (+1,+1) (+1,-1) (-1,+1) (-1,-1)
+
+This gives 2 * 4 * 12 = 96 perturbed cases.  The four n0_y1 zero-shift
+controls make the reported total 100.  All eight zero-shift paper fillings
+are nevertheless checked for exact word agreement by
+`assert_control_words_match`; the four n1_y2 zero-shift fillings are not
+additional table rows.
+
   n0_y1  (columns: (j_a,j_b) = +0+0 +1+0 -1+0 +2+0 -2+0 +0+1 +0-1 +0+2 +0-2 +1+1 +1-1 -1+1 -1-1)
     signs (+1,+1):  K  .  T  .  K  K  T  K  K  .  T  T  T
     signs (+1,-1):  K  K  T  .  K  T  K  K  K  T  .  T  T
     signs (-1,+1):  K  T  K  K  .  K  T  K  K  T  T  K  T
     signs (-1,-1):  K  T  K  K  K  T  K  K  K  T  T  T  .
 
-  n1_y2  (columns: (j_a,j_b) = +0+0 +1+0 -1+0 +2+0 -2+0 +0+1 +0-1 +0+2 +0-2 +1+1 +1-1 -1+1 -1-1)
+  n1_y2  (columns: (j_a,j_b) = +1+0 -1+0 +2+0 -2+0 +0+1 +0-1 +0+2 +0-2 +1+1 +1-1 -1+1 -1-1)
     signs (+1,+1):     .  T  .  K  K  T  K  K  .  T  T  T
     signs (+1,-1):     .  T  .  K  T  K  K  K  T  .  T  T
     signs (-1,+1):     T  .  K  .  K  T  K  K  T  T  .  T

@@ -77,6 +77,7 @@ mathematical artifact is either inside 6587b7e (Fable) or in a later commit
 | b4af95d | OpenAI Codex (GPT-5 family) | run 52: explicit marked graph clutching; T_surface_bundle removed, assembly certificate symbolic |
 | 44baf93 | OpenAI Codex (GPT-5 family) | addresses the independent replay review: 82/18 correction, seam-convention repair with a guarding test, honest run-52 weighting, ledger edges, doubled-bundle extension, restored attack surface |
 | e57a71d | Claude Fable 5 | run 53: interpretation dictionary bound with per-entry witnesses and the non-executing author-code cross-check; three residual entries declared |
+| 8088574 | OpenAI Codex (GPT-5 family), with independent Claude replay | run 63: final framing-scan case resolved by a 96-relator common-core transfer; 4,040-record certificate and independent Python/Ruby verifiers; Claude separately reconstructed and replayed the common-core GAP computation in the public checkout |
 
 A separate Claude Fable 5 window is independently building an alternative
 fiber realization (handle model: two 4x4 grid tori joined by an annulus,

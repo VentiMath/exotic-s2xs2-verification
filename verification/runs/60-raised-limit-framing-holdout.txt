@@ -1,0 +1,65 @@
+Run 60: a fourteenth framing holdout certified at a raised equation limit
+============================================================================
+
+Selected case
+-------------
+
+  n1_y2_ap1_bm1_jap1_jbm1
+  half drift: n1_y2
+  surgery signs: (+1,-1)
+  counterfactual framing shift: (j_a,j_b)=(+1,-1)
+
+This was one of the five cases left inconclusive by Run 59 at KBMAG's
+default 32,767-equation ceiling in both raw relator orders. The exact same
+fill-then-base 97-relator presentation was retried with
+
+  maxeqns = 300000
+  tidyint = 100
+  ordering = shortlex
+
+No relator, generator, or alphabet-order change was made.
+
+Result
+------
+
+The raised-limit completion returned successfully, the resulting rewrite
+system is confluent, and each of the four original group generators reduces
+to the identity. The proof-producing rerun generated an ancestry history,
+which compiled without fallback searches to a compact certificate containing
+2,417 derivation-DAG records.
+
+Independent replay:
+
+  Python: VERIFIED TRIVIAL 2417 proof records
+  Ruby:   ALL RUBY FILLED-GROUP CHECKS PASSED: 2417 DAG records
+
+Both verifiers start from the exact 97-relator presentation bound into the
+certificate by SHA-256. They independently check every free-group identity,
+every derivation edge, and the four identity roots.
+
+Artifacts
+---------
+
+  luttinger/raw_j_certificates/
+    n1_y2_ap1_bm1_jap1_jbm1_presentation.json
+    n1_y2_ap1_bm1_jap1_jbm1_focus_input.rws
+    n1_y2_ap1_bm1_jap1_jbm1_focus_confluent.rws
+    n1_y2_ap1_bm1_jap1_jbm1_focus.json.gz
+
+The 26 MB `.history` stream is reproducible from the focus input and is
+intentionally omitted. The compact `.json.gz` file is the proof object.
+
+Boundary and tally
+------------------
+
+Before switching to this case, the other n1_y2 diagonal holdout
+n1_y2_ap1_bp1_jap1_jbp1 was tried unchanged at the same 300,000-equation
+ceiling. The wall-clock session spanned roughly two hours, but the host was
+suspended or powered off for most of that interval, so it is not a meaningful
+compute-time measurement. The run was stopped without a verdict; that
+interruption proves neither triviality nor nontriviality and should not be
+read as evidence that this case is harder than the one certified here.
+
+Run 60 changes the repository's current certified robustness tally from 95/5
+to 96/4: 96 trivial, 4 inconclusive, and no nontriviality witness. These are
+auxiliary counterfactual framing shifts and do not gate the paper's j=0 proof.

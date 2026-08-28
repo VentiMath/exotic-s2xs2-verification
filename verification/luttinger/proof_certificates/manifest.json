@@ -23,7 +23,7 @@
     "raw_proof_inputs/n1_y2_m1_p1.rws": "42ee5b097b8393ba518105329c17491c912b8dd2c8685a1fbc9ac578cad9a630",
     "raw_proof_inputs/n1_y2_p1_m1.rws": "475e47a4eb8e144c457b1c4ff66a09bdd6eabcd6aa5d9240282604f5a64c0db8",
     "raw_proof_inputs/n1_y2_p1_p1.rws": "54c58c345583a601b4bc0cd7eb652177ffbc6f69ca66ef63e86065f451a13a1b",
-    "verify_certificates.rb": "7abda4362c4dbe50dfdfc93428b0acccf6601a7ddc601e0dccb17d2ccaebc5ef",
+    "verify_certificates.rb": "6002a6bda8be49e4ab6e217e6792efc762b616679191bd83a8d985a9c379c3a2",
     "verify_kbmag_certificate.py": "23f3cd0d173dd3a33a639a9a79e3c158fc9ac3577a0c7229a45cf2537b592e18"
   }
 }

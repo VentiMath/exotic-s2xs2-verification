@@ -10,3 +10,11 @@ luttinger/r_tietze_bridge.g
 luttinger/tietze_bridge.json
 luttinger/raw_proof_inputs/*.rws.kbprog*
 luttinger/raw_proof_inputs/*.rws.reduce
+luttinger/raw_j_certificates/*.history
+luttinger/raw_j_certificates/*.rws.kbprog*
+luttinger/raw_j_certificates/*.rws.reduce
+luttinger/raw_j_certificates/raw_completion.g
+luttinger/raw_j_certificates_base/*.history
+luttinger/raw_j_certificates_base/*.rws.kbprog*
+luttinger/raw_j_certificates_base/*.rws.reduce
+luttinger/raw_j_certificates_base/raw_completion.g
