@@ -20,11 +20,33 @@ NODES = {
     "T_cyclic_knot_unknot": ("external_theorem", (), None),
     "T_simplicial_pi1_presentation": ("external_theorem", (), None),
     "T_tietze": ("external_theorem", (), None),
-    "T_freedman_HK": ("external_theorem", (), None),
-    "T_symplectic_kodaira": ("external_theorem", (), None),
+    # Downstream external inputs, each stated with its hypotheses in
+    # luttinger/downstream_chain.py (run 64).
+    "T_van_kampen": ("external_theorem", (), None),
+    "T_covering_sequence": ("external_theorem", (), None),
+    "T_duality_uct": ("external_theorem", (), None),
+    "T_lattice_index": ("external_theorem", (), None),
+    "T_wu_formula": ("external_theorem", (), None),
+    "T_freedman": ("external_theorem", (), None),
+    "T_hambleton_kreck": ("external_theorem", (), None),
+    "T_thurston_symplectic": ("external_theorem", (), None),
+    "T_luttinger_symplectic": ("external_theorem", (), None),
+    "T_lp_double_bundle": ("external_theorem", (), None),
+    "T_lp_quotient_spin": ("external_theorem", (), None),
+    "T_kawauchi_B": ("external_theorem", (), None),
+    "T_asphericity": ("external_theorem", (), None),
+    "T_kodaira_dimension": ("external_theorem", (), None),
+    "T_ho_li": ("external_theorem", (), None),
     "T_symplectic_thom": ("external_theorem", (), None),
-    "T_rokhlin_arf": ("external_theorem", (), None),
-    "T_HF_mixed": ("external_theorem", (), None),
+    "T_symplectic_cover_construction": ("external_theorem", (), None),
+    "T_adjunction": ("external_theorem", (), None),
+    "T_klug_relative_rochlin": ("external_theorem", (), None),
+    "T_levine_arf": ("external_theorem", (), None),
+    "T_trace_embedding": ("external_theorem", (), None),
+    "T_ball_isotopy": ("external_theorem", (), None),
+    "T_novikov": ("external_theorem", (), None),
+    "T_lp_regluing": ("external_theorem", (), None),
+    "T_lp_floer": ("external_theorem", (), None),
     "T_periodic_disk_involution": (
         "external_theorem", (),
         "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
@@ -97,6 +119,8 @@ NODES = {
         "machine_certificate", (),
         "runs/47-cumulative-moser-flow.txt"),
     "M_downstream_algebra": ("machine_certificate", (), "runs/24-downstream-theorem-audit.txt"),
+    "M_downstream_chain": (
+        "machine_certificate", (), "runs/64-downstream-proof-chain.txt"),
     "M_section_PL_push_off": ("machine_certificate", (), "runs/28-pl-self-intersection-certificate.txt"),
 
     "G_equivariant_normal_form": (
@@ -171,22 +195,72 @@ NODES = {
         "derived_claim",
         ("C_correct_filled_presentation", "M_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
+    # The downstream chain (run 64): every step below is an item of
+    # luttinger/downstream_chain_certificate.json, replayed by two checkers.
+    "C_homology_of_V": (
+        "derived_claim",
+        ("C_pi1_V_trivial", "M_downstream_chain", "T_duality_uct",
+         "T_wu_formula", "T_lp_double_bundle"), None),
+    "C_pi1_double_trivial": (
+        "derived_claim",
+        ("C_pi1_V_trivial", "T_van_kampen", "T_lp_double_bundle",
+         "T_lp_regluing"), None),
+    "C_Z_form_hyperbolic": (
+        "derived_claim",
+        ("C_pi1_double_trivial", "G_section_square_zero",
+         "M_downstream_chain", "T_lattice_index", "T_wu_formula",
+         "T_duality_uct", "T_lp_double_bundle"), None),
+    "C_Z_homeomorphic_S2xS2": (
+        "derived_claim", ("C_Z_form_hyperbolic", "T_freedman"), None),
+    "C_Z_symplectic": (
+        "derived_claim",
+        ("T_lp_double_bundle", "T_thurston_symplectic",
+         "G_lagrangian_framing", "T_luttinger_symplectic",
+         "C_Z_form_hyperbolic"), None),
+    "C_Z_not_diffeomorphic_S2xS2": (
+        "derived_claim",
+        ("C_Z_symplectic", "T_asphericity", "T_kodaira_dimension",
+         "T_ho_li", "M_downstream_chain"), None),
+    "C_theorem_A_exotic_S2xS2": (
+        "derived_claim",
+        ("C_Z_homeomorphic_S2xS2", "C_Z_not_diffeomorphic_S2xS2"), None),
+    "C_W_invariants": (
+        "derived_claim",
+        ("C_pi1_double_trivial", "T_lp_quotient_spin",
+         "T_covering_sequence", "M_downstream_chain", "C_homology_of_V",
+         "T_duality_uct"), None),
+    "C_W_homeomorphic_B": (
+        "derived_claim",
+        ("C_W_invariants", "T_kawauchi_B", "T_hambleton_kreck",
+         "M_downstream_chain"), None),
     "C_no_square_zero_torus": (
         "derived_claim",
-        ("C_pi1_V_trivial", "G_section_square_zero",
-         "M_downstream_algebra", "T_symplectic_thom"), None),
-    "C_exotic_S2xS2": (
+        ("C_Z_symplectic", "C_Z_form_hyperbolic",
+         "T_symplectic_cover_construction", "T_symplectic_thom",
+         "M_downstream_chain"), None),
+    "C_figure_eight_not_slice_W": (
         "derived_claim",
-        ("C_pi1_V_trivial", "M_downstream_algebra",
-         "T_freedman_HK", "T_symplectic_kodaira"), None),
-    "C_slicing_pair": (
+        ("C_W_invariants", "T_trace_embedding", "T_klug_relative_rochlin",
+         "T_levine_arf", "T_covering_sequence", "T_duality_uct",
+         "C_no_square_zero_torus", "M_downstream_chain"), None),
+    "C_theorem_B_slicing_pair": (
         "derived_claim",
-        ("C_exotic_S2xS2", "C_no_square_zero_torus",
-         "T_rokhlin_arf", "T_freedman_HK"), None),
-    "C_exotic_CP2bar": (
+        ("C_W_homeomorphic_B", "C_figure_eight_not_slice_W",
+         "T_kawauchi_B", "T_ball_isotopy"), None),
+    "C_Zpp_form_odd": (
         "derived_claim",
-        ("C_pi1_V_trivial", "M_downstream_algebra",
-         "T_freedman_HK", "T_HF_mixed"), None),
+        ("C_pi1_double_trivial", "T_novikov", "T_lp_regluing",
+         "T_lattice_index", "M_downstream_chain", "T_duality_uct"), None),
+    "C_Zpp_homeomorphic_CP2": (
+        "derived_claim", ("C_Zpp_form_odd", "T_freedman"), None),
+    "C_Zpp_not_diffeomorphic_CP2": (
+        "derived_claim",
+        ("C_Z_symplectic", "T_adjunction", "C_homology_of_V",
+         "C_Zpp_form_odd", "T_lp_floer", "M_downstream_chain"), None),
+    "C_theorem_C_exotic_CP2": (
+        "derived_claim",
+        ("C_pi1_double_trivial", "C_Zpp_homeomorphic_CP2",
+         "C_Zpp_not_diffeomorphic_CP2"), None),
 }
 
 
