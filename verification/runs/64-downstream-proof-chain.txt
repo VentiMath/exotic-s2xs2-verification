@@ -1,0 +1,134 @@
+Run 64: the downstream proof chain, from Theorem D to Theorems A, B, C
+=======================================================================
+Date: 2026-08-28
+
+Scope
+-----
+
+Run 24 audited the deductions of arXiv:2608.17267 that follow the
+fundamental-group computation and found no gap.  It was a hypothesis audit:
+it checked that the cited theorems' hypotheses match the constructed
+manifolds and executed the finite algebra.  This run replaces it with a
+proof-grade dependency chain.  Every implication from the certified
+statement pi_1(V) = 1 (Theorem D) to the paper's Theorems A, B and C is an
+explicit item of one of four kinds:
+
+  external     a theorem from the literature, stated with its hypotheses
+               and source (25 items; Klug's Theorem 2, Hambleton's
+               Theorem 5.1, Ho--Li's Theorem 1.1 and Lidman--Piccirillo's
+               Lemmas 9 and 10 are quoted verbatim from the sources);
+  certificate  a machine certificate of this repository bound by SHA-256
+               (3 items: Theorem D through the proof manifest and its two
+               checker runs; the run-28 section self-intersection
+               Gamma_hat.Gamma_hat = 0; the run-35/43/46/47 framing
+               identification);
+  computed     a finite calculation executed by downstream_chain.py and
+               recomputed from scratch by verify_downstream_chain.rb
+               (15 items: Euler characteristics and Betti numbers of V, Z,
+               W over Z and Z/2; the w_2 pairing on the fiber; the
+               hyperbolic basis (F, Gamma_hat) with the certified
+               Gamma_hat^2 = 0 and the index argument; the square-zero axes
+               of H; the genus k+1 of k-fold covers; adjunction K.F = 2;
+               the odd basis diagonalizing <1>+<-1> for every parity
+               witness n; the two square-zero lines of <1>+<-1>; Arf(4_1)
+               = 1 by Levine's criterion and by the Seifert quadratic form;
+               the instantiated Klug formula; the covering order; the
+               Hambleton--Kreck invariant tuple; the signatures; the
+               orientation reversal of S^2 x S^2);
+  step         a deduction whose premises are earlier items (16 steps,
+               ending in S7 = Theorem A, S12 = Theorem B, S16 = Theorem C).
+
+Both checkers verify that every citation resolves, that the dependency
+graph is acyclic, that each conclusion depends on the certified pi_1(V) = 1,
+that every external item carries a statement and a source, and that every
+evidence file is present with its recorded SHA-256.
+
+Differences from the paper's route worth recording
+--------------------------------------------------
+
+* H_1(V) = 0 is taken from the certificate (pi_1(V) = 1), not from the
+  paper's Lemma 4.2 and the surgery relations; Lemma 4.2 is needed only
+  for the "forcing" direction of Proposition 1.3, which no theorem uses.
+* The intersection form of Z is identified as H from the certified
+  Gamma_hat.Gamma_hat = 0 (run 28) together with F.F = 0 and F.Gamma_hat
+  = 1, so that Z is spin because its form is even; the paper's route
+  (Z spin as a double cover of the spin W, then Gamma_hat^2 even) is not
+  needed for Theorem A.  W spin still enters, through Lidman--Piccirillo's
+  Lemma 7, for the Hambleton--Kreck invariants and for Klug's theorem.
+* The non-diffeomorphism Z != S^2 x S^2 records the orientation step
+  explicitly: the independence of kappa from the symplectic form is over
+  forms inducing a fixed orientation, so a hypothetical diffeomorphism is
+  first made orientation-preserving with a reflection of one S^2 factor.
+* The sliceness dichotomy is taken over Z/2 coefficients throughout, which
+  is what makes the null-homologous case exactly Klug's characteristic
+  case in the spin manifold W - B^4, and what makes the lifted torus in Z
+  nonzero integrally (H_2(Z; Z/2) = H_2(Z) (x) Z/2 since H_1(Z) = 0).
+* For Z'' the diagonalization of the odd form is an explicit change of
+  basis valid for every odd Gamma''.Gamma'' = 2n+1, not an appeal to the
+  classification of indefinite odd forms.
+
+Commands and output
+-------------------
+
+  cd luttinger
+  python3 downstream_chain.py
+    downstream_chain_certificate.json: certificate=3, computed=15,
+    external=25, step=16; 15 evidence files bound
+      S7_theorem_A: Theorem A: Z is homeomorphic but not diffeomorphic to
+        S^2 x S^2.
+      S12_theorem_B: Theorem B: W is homeomorphic to B, and the pair (B, W)
+        is distinguished by the smooth sliceness of the figure-eight knot,
+        hence not diffeomorphic.
+      S16_theorem_C: Theorem C: Z'' is a closed simply connected 4-manifold
+        homeomorphic but not diffeomorphic to CP^2 # -CP^2.
+  python3 downstream_chain.py --check
+    PASS: downstream proof chain replays (certificate=3, computed=15,
+    external=25, step=16); 15 evidence digests match
+  ruby verify_downstream_chain.rb
+    ALL RUBY DOWNSTREAM-CHAIN CHECKS PASSED: certificate=3, computed=15,
+    external=25, step=16; 15 computed facts replayed; 15 evidence digests
+    verified
+
+Negative controls: a copy of the certificate with Arf(4_1) changed to 0 is
+rejected by the Ruby checker ("Arf(4_1)"), and a copy in which S7 cites no
+premises is rejected ("S7_theorem_A does not rest on the certified
+pi_1(V) = 1").
+
+  python3 proof_ledger.py
+    PASS: proof ledger is closed, acyclic, and all evidence files exist
+    nodes: derived_claim=18, external_theorem=33, geometric_argument=11,
+    machine_certificate=32
+    bound evidence files: 45
+
+Ledger
+------
+
+proof_ledger.py now carries the 25 downstream external inputs as separate
+named nodes, the certificate of this run as M_downstream_chain, and sixteen
+derived-claim nodes mirroring the chain's steps, ending in
+C_theorem_A_exotic_S2xS2, C_theorem_B_slicing_pair and
+C_theorem_C_exotic_CP2.  The former coarse nodes T_freedman_HK,
+T_symplectic_kodaira, T_rokhlin_arf and T_HF_mixed are replaced by the
+finer list; T_symplectic_thom is retained.  The run-24 node
+M_downstream_algebra stays as a historical certificate but no derived claim
+depends on it.
+
+Artifacts
+---------
+
+  luttinger/downstream_chain.py
+  luttinger/downstream_chain_certificate.json
+  luttinger/verify_downstream_chain.rb
+  luttinger/proof_ledger.py                         (extended)
+  notes/downstream_proof_chain_2026-08-28.md        (the chain in prose)
+
+Trust boundary after this run
+-----------------------------
+
+Theorems A, B and C of arXiv:2608.17267 are verified for the specified
+piece V relative to the 25 named external theorems listed in the
+certificate, with every hypothesis of every external theorem discharged by
+a named computation, certificate, or earlier step.  None of Freedman theory,
+the Hambleton--Kreck classification, symplectic Kodaira dimension, the
+symplectic Thom theorem, Klug's relative Rochlin theorem, or the Heegaard
+Floer mixed-invariant argument of Lidman--Piccirillo is reproved here.
