@@ -53,13 +53,12 @@ extracted combinatorially; and the four theorem-critical filled
 presentations are proved trivial by complete confluent rewriting, with
 every computation emitting a replayable proof certificate validated by
 two independently written checkers. Four adjacent half-drift
-presentations pass the same certification as an auxiliary check. The
-author's committed scripts enter at exactly one point, parsed and never
-executed, as a cross-check of the dictionary of conventions read from the
-paper. The paper's framing lemma is machine-checked with its analytic
+presentations pass the same certification as an auxiliary check. Wuebben's committed scripts enter at exactly one point, parsed and never
+executed: after the independently reconstructed dictionary of conventions
+was frozen, selected entries were compared diagnostically against them,
+and no verified conclusion consumes script-derived data. The paper's framing lemma is machine-checked with its analytic
 normalizations rebuilt constructively and chart independence proved
-between the paper's displayed charts, and a finite 100-case robustness
-scan quantifies the consequences of any framing discrepancy. Stated
+between the paper's displayed charts. Stated
 carefully: the simple-connectivity proof appears complete relative to
 explicitly named standard topology theorems, with no known
 project-specific gap. The theorem is Wuebben's; this note claims only the
@@ -105,7 +104,7 @@ depends on trusting a model: every asserted computation ships with a
 replayable certificate.
 
 \begin{mainresult}
-From a fresh checkout of release \texttt{v1.1} of the verification
+From a fresh checkout of release \texttt{v1.2} of the verification
 repository (Section~\ref{sec:trust}):
 (i) the four theorem-critical filled presentations --- the $n{=}0$ sign
 pairs of the paper's double surgery, imposed with independently certified
@@ -158,10 +157,11 @@ orientation conventions --- would each be caught by at least one
 independent reconstruction. What redundancy cannot exclude, a shared
 misreading of the paper's conventions, is addressed by a bound
 interpretation dictionary: every convention read from the paper carries
-the certified computation that would fail under a rival reading, with the
-central entries cross-checked --- parsed, never executed --- against the
-author's own committed scripts, and the remaining transcription-level
-entries audited by a quarantined extractor against the hash-pinned
+the certified computation that would fail under a rival reading, with
+selected entries compared diagnostically --- parsed, never executed ---
+against Wuebben's committed scripts after the dictionary was frozen, so
+that no verified conclusion consumes script-derived data, and the
+remaining transcription-level entries audited by a quarantined extractor against the hash-pinned
 immutable Lidman--Piccirillo v1 arXiv source \cite{LidmanPiccirillo}, in
 both its prose and its vector-figure layers. The one interpretation
 remaining at that boundary is the ordinary convention that dashed arcs in
@@ -202,14 +202,14 @@ one symplectic move that could introduce meridian components --- the
 closed-1-form shift --- excluded by the zero-section condition;
 \cite{ADK} (\S2.1 and Proposition~2.2) stands as corroboration.
 
-Independently of the lemma, a finite 100-case robustness scan refills the
-complement with meridian-shifted longitudes and runs the identical
-certification pipeline on each counterfactual: 82 of the 100 cases are
-certified trivial, none is nontrivial, every shift touching only
-$T_\beta$ is certified trivial in both families, and each of the 18
-undecided cases is perfect, admits no epimorphism onto the six smallest
-nonabelian simple groups, and resists coset enumeration to a ceiling of
-$12{,}499{,}998$ cosets. These are counterfactual groups: the paper's own
+Independently of the lemma, a finite 100-case scan over selected small
+framing shifts refills the complement with meridian-shifted longitudes
+and runs the identical certification pipeline on each counterfactual: 82
+of the 100 cases are certified trivial, no nontriviality witness was
+found, and 18 remain undecided. Every shift touching only $T_\beta$ is
+certified trivial in both families, and each undecided case is perfect,
+admits no epimorphism onto the six smallest nonabelian simple groups, and
+resists coset enumeration to a ceiling of $12{,}499{,}998$ cosets. These are counterfactual groups: the paper's own
 fillings are the certified controls, and the undecided cases have no
 bearing on the proof unless the framing argument above first fails. The
 full table and methods are in the repository.
@@ -304,8 +304,8 @@ it.
 
 All code, certificates, run transcripts, referee packets, and the
 provenance ledger are contained, with clean-checkout replay
-instructions, in the tagged release \texttt{v1.1} of
-\url{https://github.com/VentiMath/exotic-s2xs2-verification}; the
+instructions, in the tagged release \texttt{v1.2} of the repository:
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.2}; the
 certificate manifest binds every artifact by SHA-256. The paper's own code is at
 \url{https://github.com/bwuebben/exotic-s2xs2}; nothing in the
 verification derives from it except where explicitly cited.
