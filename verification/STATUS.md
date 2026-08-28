@@ -192,17 +192,21 @@ replay to **3 gens / 78 relators** in 49s.
   final surface Dehn reduction. Thus every additional relation imposed in
   the paper's epimorphism `G -> pi1(V)` now has an independent path-level
   geometric certificate. See `runs/23`.
-* **The deductions after simple connectivity have been audited.**  The
-  covering exact sequence, finite-cyclic homeomorphism classification data,
-  even and odd rank-two intersection forms, Freedman applications,
-  minimality/Kodaira-dimension argument, essential square-zero torus lift,
-  and reuse of the Lidman--Piccirillo relative-invariant argument all have the
-  required hypotheses.  The elementary Euler, lattice, cover-genus, and
-  adjunction calculations are executable in `downstream_audit.py`; in
-  particular adjunction directly gives `K.F=2`, avoiding any delicate claim
-  about tracking the canonical class through surgery.  No downstream gap was
-  found.  See `runs/24` and
-  `notes/downstream_theorem_audit_2026-08-23.md`.
+* **The deductions from simple connectivity to Theorems A, B, C are a
+  proof-grade dependency chain.**  `downstream_chain.py` records every
+  implication from the certified `pi_1(V) = 1` to the three theorems as an
+  explicit item: 25 external theorems stated with hypotheses and sources
+  (Klug's Theorem 2, Hambleton's Theorem 5.1, Ho--Li's Theorem 1.1 and
+  Lidman--Piccirillo's Lemmas 9 and 10 quoted verbatim), 3 hash-bound
+  certificates of this repository, 15 computed facts, and 16 deduction
+  steps ending in `S7_theorem_A`, `S12_theorem_B`, `S16_theorem_C`.
+  `verify_downstream_chain.rb`, written independently, re-derives every
+  computed fact from scratch, checks acyclicity and that each theorem
+  depends on `K_pi1_V_trivial`, and verifies every evidence digest.  This
+  supersedes the run-24 hypothesis audit (`downstream_audit.py`,
+  `notes/downstream_theorem_audit_2026-08-23.md`), which stays as a
+  historical certificate that no derived claim depends on.  See `runs/64`
+  and `notes/downstream_proof_chain_2026-08-28.md`.
 * **The remaining trust boundary is explicit and machine-checked.**
   `proof_ledger.py` records an acyclic dependency graph from local certificate
   files and named external inputs to the three exoticness conclusions. It
@@ -421,11 +425,12 @@ blocker for the specified manifold and both half-drift representatives.
 It does not, by itself, formalize every ingredient of the full
 exotic-manifold claim. The global marked-bundle comparison and the displayed
 inline calculus of Lemma 8.2 now pass, but its three isolated standard smooth
-theorem inputs remain cited rather than formally proved. The downstream
-Freedman/Kodaira-dimension reduction has passed a hypothesis audit with no gap
-found (runs/24, notes/downstream_theorem_audit_2026-08-23.md); the external
-classification, symplectic, Rokhlin, and Floer theorems it invokes are checked
-against their hypotheses there, not reproven.
+theorem inputs remain cited rather than formally proved. The deductions from
+simple connectivity to Theorems A, B, C are an explicit proof-grade chain
+(runs/64, notes/downstream_proof_chain_2026-08-28.md) relative to 25 named
+external theorems; each is stated with its hypotheses, each hypothesis is
+discharged by a named certificate, computation, or earlier step, and the
+theorems themselves are cited, not reproven.
 
 The translation risk ("the encoding is ours") is no longer a single point of
 failure. The peripheral data, bundle assembly, based monodromy, PL flip
@@ -500,8 +505,9 @@ the presentation digest; all four are rejected.
    original four-generator filled presentations.
 
 2. **Leave downstream foundations downstream.** Freedman classification,
-   symplectic Kodaira dimension, Thom, Rokhlin/Arf, and Heegaard Floer inputs
-   remain published-theorem dependencies with audited hypotheses. Formalizing
+   Hambleton--Kreck, symplectic Kodaira dimension, Thom, Klug/Levine, and
+   Heegaard Floer inputs remain published-theorem dependencies, now with
+   their hypotheses discharged item by item in the run-64 chain. Formalizing
    those theories would be a separate foundational project.
 
 ## Recently closed high-risk boundaries
@@ -592,7 +598,8 @@ Optional hygiene, no longer bearing on the conclusion:
 
 Done since this list was first written: the downstream
 Freedman/Kodaira-dimension reduction has been audited at hypothesis level
-with no gap found (runs/24, notes/downstream_theorem_audit_2026-08-23.md),
+with no gap found (runs/24, notes/downstream_theorem_audit_2026-08-23.md)
+and then replaced by the proof-grade chain of runs/64,
 and the certificate-producing group searches reached their goal — all eight
 filled groups carry complete confluent rewriting certificates verified by the
 independent checker (runs/16--21, 25), so further search batteries would add
@@ -681,3 +688,4 @@ Raw console output, in the order produced:
     61  raised-limit certificates for two n0_y1 holdouts (98/2 current)
     62  tidyint-sensitive certificate for n1_y2 (+,+), shift (+1,+1) (99/1 current)
     63  common-core certificate for the hundredth framing case (100/0 final)
+    64  downstream proof chain from Theorem D to Theorems A, B, C
