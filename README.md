@@ -1,7 +1,6 @@
-# Machine verification: the fundamental-group computation in Wuebben's exotic S²×S²
+# Independent machine verification of Wuebben's exotic S²×S²
 
-This repository documents an independent, machine-driven verification of the
-fundamental-group step in
+This repository documents an independent, machine-driven verification of
 
 > B. J. Wuebben, *An exotic S²×S² and an exotic ℂP²#C̄P²*, arXiv:2608.17267,
 
@@ -12,12 +11,20 @@ This project rebuilt the geometry from scratch and checked the paper against
 the rebuild.
 
 **What this repository is:** a verification, by people and machines who are
-not the paper's author, of the historically most failure-prone step in claimed
-small exotic 4-manifolds — the fundamental-group computation — together with a
-hypothesis audit of everything downstream of it.
+not the paper's author, of the paper's three theorems: the historically most
+failure-prone step in claimed small exotic 4-manifolds — the
+fundamental-group computation — is proved by replayable certificates, and
+every deduction from it to the theorems (the double is homeomorphic but not
+diffeomorphic to S²×S²; the quotient is homeomorphic to Kawauchi's B and
+distinguished from it by the sliceness of the figure-eight knot; the regluing
+is an exotic ℂP²#C̄P²) is carried through as an explicit dependency chain
+relative to twenty-five named external theorems, each stated with its
+hypotheses and each hypothesis discharged by a named certificate or
+computation.
 
-**What this repository is not:** a claim on the theorem, which is Wuebben's,
-or a formal proof of the entire paper.
+**What this repository is not:** a claim on the theorems, which are
+Wuebben's, or a reproof of the classification, symplectic, and
+Floer-theoretic theorems the chain cites.
 
 ## What is verified, from an independent triangulation
 
@@ -94,12 +101,26 @@ the paper's coordinates, with proof-producing certificates that replay.
   in-project with ADK03 §2.1 / Proposition 2.2 as corroboration. A
   self-contained referee packet states the lemma's proof with each identity
   cross-referenced to the executable check.
-* **The downstream chain.** The deductions after simple connectivity —
-  Freedman applications, the Hambleton–Kreck classification data, the
-  intersection-form calculations, minimality and symplectic Kodaira
-  dimension, the square-zero torus lift, and the reuse of the
-  Lidman–Piccirillo Floer argument — pass a hypothesis audit with no gap
-  found; the elementary lattice and adjunction calculations are executable.
+* **The downstream chain.** The deductions from simple connectivity to the
+  three theorems are an explicit proof-grade dependency chain
+  (`verification/luttinger/downstream_chain.py`, run 64): 25 external
+  theorems stated with their hypotheses and sources (Klug's relative
+  Rochlin theorem, Hambleton's classification statement, Ho–Li's Kodaira
+  invariance, and Lidman–Piccirillo's Floer lemmas quoted verbatim), 3
+  hash-bound certificates of this repository (π₁(V)=1, the section's
+  self-intersection Γ̂·Γ̂=0, the framing identification), 15 computed
+  facts (Euler characteristics and Betti numbers, the hyperbolic and odd
+  intersection-form bases, cover genera, adjunction, Arf(4₁)=1 two ways,
+  the instantiated Klug formula, the Hambleton–Kreck invariant tuple), and
+  16 deduction steps ending in Theorems A, B, and C. A Ruby checker written
+  independently re-derives every computed fact from scratch, checks the
+  graph is acyclic and that each theorem depends on the certified
+  π₁(V)=1, and verifies every evidence digest. The dependency ledger
+  (`proof_ledger.py`) binds the whole verification — 33 named external
+  theorems, 32 machine certificates, 11 geometric arguments, 18 derived
+  claims — with every evidence file hashed. The chain is written out in
+  prose in `verification/notes/downstream_proof_chain_2026-08-28.md` and in
+  the paper's Section 6.
 
 ## What is not claimed
 
@@ -111,8 +132,17 @@ classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
 criteria behind the local-flatness certificates; simplicial
 fundamental-group presentation and Tietze theory; the Kerékjártó
 periodic-disk involution theorem behind Lemma 7.1's disk extension; and the
-quoted Freedman–Hambleton–Kreck, symplectic Kodaira-dimension, symplectic
-Thom, Rokhlin/Arf, and Heegaard Floer theorems. Surface-bundle classification,
+twenty-five external theorems of the downstream chain — Freedman's and the
+Hambleton–Kreck classifications, Thurston's symplectic form on surface
+bundles, Luttinger surgery, symplectic Kodaira dimension (Li) and its
+invariance under Luttinger surgery (Ho–Li), the symplectic Thom theorem and
+the symplectic cover construction, Klug's relative Rochlin theorem with
+Levine's Arf criterion, Palais's ball isotopy, Kawauchi's manifold B, and
+Lidman–Piccirillo's constructions and Floer lemmas (with the Ozsváth–Szabó
+theorems behind them), together with the elementary algebraic topology the
+chain names (van Kampen, the covering sequence, duality and universal
+coefficients, the lattice index formula, Wu's formula, Novikov additivity,
+asphericity, adjunction). Surface-bundle classification,
 four-dimensional smoothing, intersection-form naturality, and
 derived-regular-neighborhood theory are no longer dependencies: the bundle
 identification is an explicit clutching, the smooth and symplectic arguments
@@ -137,11 +167,11 @@ neighbor. Within the scanned range, no framing error would have produced a
 nontrivial group; the scan bears on the j=0 proof only if the independent
 framing argument first fails.
 
-The accurate one-sentence status: **the proof appears complete relative to
-explicitly named standard topology theorems, with no known project-specific
-gap.** That is a statement about verification depth, not a substitute for
-review by symplectic and 4-manifold topologists — which this repository is
-built to make cheap.
+The accurate one-sentence status: **the three theorems are verified relative
+to explicitly named standard theorems, with no known project-specific gap.**
+That is a statement about verification depth, not a substitute for review by
+symplectic and 4-manifold topologists — which this repository is built to
+make cheap.
 
 ## Provenance
 
@@ -159,7 +189,9 @@ asserted computation ships with a replayable artifact.
 * `verification/` — the working repository at its imported commit: the engine
   and certificates under `verification/luttinger/` (derivation-DAG
   certificates in `proof_certificates/`, rewriting systems in `direct_rws/`
-  and `j_rws/`), the run transcripts under `verification/runs/`,
+  and `j_rws/`, the downstream proof chain in `downstream_chain.py` with
+  its certificate and Ruby checker), the run transcripts under
+  `verification/runs/`,
   referee-packet notes under `verification/notes/`, `STATUS.md` (the honest
   snapshot of what is and is not certified), `PROVENANCE.md` (the
   commit-level model ledger), and `IMPORT.md` (what was imported, what was
