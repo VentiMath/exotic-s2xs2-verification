@@ -1,0 +1,89 @@
+Run 58: an undecided scan case certified trivial from its unsimplified
+presentation (2026-08-27)
+======================================================================
+
+Case
+----
+
+  n1_y2_ap1_bm1_jap2_jbp0
+
+Chosen uniformly at random from the sixteen undecided robustness-scan
+cases outside the two already examined in runs 39 and 41.  This is the
+auxiliary j_alpha=+2 framing-discrepancy filling of the half-drift
+family at signs (+,-).  Its status has no bearing on the certified j=0
+fillings; the purpose of the dig was to assess whether an undecided
+counterfactual could be decided at larger bounds.
+
+Frozen input
+------------
+
+The presentation is the inline relator list of
+j_gap/n1_y2_ap1_bm1_jap2_jbp0.fill_then_base.g (97 relators on 4
+generators: the 95 complement relators and the two shifted filling
+relators).  SHA-256 at the time of the dig:
+
+  ab85ca28ac54a4bb9d0a66285dacf5d6048f18f20c6d51ab7a505dea16ace3c1
+    j_gap/n1_y2_ap1_bm1_jap2_jbp0.fill_then_base.g
+  ad9daa49dfac9fcc5b1c539bf5b5b4484ed1a079945735524e6ccbcbffa06a5d
+    extracted two-line presentation (FreeGroup + rels)
+
+Negative reconnaissance (all bounded, no witness)
+-------------------------------------------------
+
+H1 trivial.  Trivial p-quotients (class 3) for p in {2,3,5,7,11,13}.
+No epimorphism onto any of the 23 nonabelian simple groups tried,
+through order 32,736: A5, PSL(2,7), A6, PSL(2,8), PSL(2,11),
+PSL(2,13), PSL(2,17), A7, PSL(2,19), PSL(2,16), PSL(3,3), PSU(3,3),
+PSL(2,23), PSL(2,25), M11, PSL(2,27), PSL(2,29), PSL(2,31), A8,
+PSL(3,4), PSL(2,37), Sz(8), PSL(2,32).
+
+Failed completion attempts on the simplified presentation
+---------------------------------------------------------
+
+The simplified presentation (2 generators, 8 relators, total length
+804) does not complete: Knuth-Bendix is nonconfluent in all four
+configurations (both generator orders, shortlex and recursive
+orderings) at maxeqns=300000, maxstates=500000, and remains
+nonconfluent under wtlex weightings.
+
+Decisive computation
+--------------------
+
+Knuth-Bendix on the UNSIMPLIFIED 97-relator presentation completes
+confluently at default limits, and every generator reduces to the
+identity.  The scan pipeline never saw this because it applies
+IsomorphismSimplifiedFpGroup before completion; the redundant
+relators are what make the completion tractable.
+
+Certificate
+-----------
+
+The patched kbprog (-ve, image luttinger-kbmag-proof:4) was run on
+the exported input rewriting system; compile_kbmag_certificate.py
+compiled its history into a derivation-DAG certificate of 759 proof
+records with zero fallback searches, input-bound by SHA-256 to
+j_certificates/presentation.json (the 97 relators in the exact
+j_gap order).  verify_kbmag_certificate.py: VERIFIED TRIVIAL.
+verify_certificates.rb (which demands exactly eight certificate
+paths; it was given this certificate's path eight times against a
+root whose r_presentations.json is the case presentation, so the
+certificate was fully verified without modifying the frozen
+checker): VERIFIED FILLED GROUP, all checks passed.
+
+Artifacts in j_certificates/: certify.g, presentation.json,
+n1_y2_ap1_bm1_jap2_jbp0_input.rws,
+n1_y2_ap1_bm1_jap2_jbp0_confluent.rws,
+n1_y2_ap1_bm1_jap2_jbp0.json.gz.  The kbprog history (1,964,762
+bytes) is regenerable:
+  python3 kbmag_history.py j_certificates/..._input.rws OUT --image luttinger-kbmag-proof:4
+
+Consequence
+-----------
+
+The robustness-scan tally moves from 82 certified trivial / 18
+undecided to 83 certified trivial (40 by Tietze collapse, 43 by
+complete confluent rewriting) / 17 undecided.  Every remaining
+undecided case still involves an alpha-torus shift, and no
+nontriviality witness has been found anywhere in the scan.  A natural
+follow-up is to retry the remaining 17 from their unsimplified
+presentations.
