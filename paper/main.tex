@@ -43,34 +43,26 @@ $S^2\times S^2$}
 
 \begin{abstract}
 Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo
-(arXiv:2505.14387v1), proves that a specified Lidman--Piccirillo piece $V$
---- a symplectic 4-manifold with the homology of $S^2\times D^2$, built
-from a non-product genus-2 surface bundle over a once-punctured torus by
-two Luttinger surgeries --- is simply connected, and deduces three
-theorems: the symplectic double of $V$ is homeomorphic but not
-diffeomorphic to $S^2\times S^2$; the quotient of $V$ by its boundary
-involution is homeomorphic to Kawauchi's manifold $B$, the pair being
-distinguished by the smooth sliceness of the figure-eight knot; and the
-Lidman--Piccirillo regluing of the double is a simply connected 4-manifold
-homeomorphic but not diffeomorphic to $\CPbar$. We report an independent
-machine verification of the whole argument. The simple connectivity is
-verified by an independent implementation: the bundle is rebuilt as a
-simplicial complex from the paper's marked-fiber data alone; the surgery
-tori, based meridians, and framed longitudes are extracted
-combinatorially; and the four theorem-critical filled presentations are
-proved trivial by complete confluent rewriting, each computation emitting
-a replayable derivation certificate that two independently written
-checkers accept. The framing lemma connecting those combinatorial
-longitudes to the Lagrangian framing is machine-checked. The deductions
-from simple connectivity to the three theorems are then carried through as
-an explicit dependency chain: twenty-five external theorems are stated
-with their hypotheses, every hypothesis is discharged by a named
-certificate or computation, every finite calculation is executed and
-replayed by two checkers, and the chain ends in the three theorems. Stated
-carefully: the three theorems are verified relative to explicitly named
-standard theorems, with no known project-specific gap. The theorems are
-Wuebben's; this note claims only the verification. All certificates, code,
-and provenance are public in a pinned release.
+(arXiv:2505.14387v1), proves that a specified symplectic 4-manifold $V$
+with the homology of $S^2\times D^2$ is simply connected and deduces three
+theorems: its symplectic double is an exotic $S^2\times S^2$; its quotient
+is homeomorphic to Kawauchi's manifold $B$ but distinguished from it by
+the smooth sliceness of the figure-eight knot; and the
+Lidman--Piccirillo regluing is an exotic $\CPbar$. We independently
+machine-verify this argument. We rebuild the bundle as a simplicial
+complex from the paper's marked-fiber data, extract the surgery tori and
+based peripheral curves, and prove the four theorem-critical filled
+presentations trivial by complete confluent rewriting. Each computation
+emits a derivation certificate accepted by two independently written
+checkers. The framing lemma identifying the combinatorial and Lagrangian
+longitudes is machine-checked. We then express the deductions to the three
+theorems as an explicit dependency chain: twenty-five external theorems
+are stated with their hypotheses; every hypothesis is discharged by a
+named certificate, computation, or earlier step; and two checkers replay
+every finite calculation. Thus the three theorems are verified relative
+to explicitly named standard results, with no known project-specific gap.
+The theorems are Wuebben's; this note claims only the verification. All
+artifacts are public in a pinned release.
 \end{abstract}
 
 \section{Introduction}
