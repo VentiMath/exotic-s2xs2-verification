@@ -3,7 +3,7 @@
 %
 % Numbers are taken from the imported certificates in this repository
 % (verification/). Every bibliography entry is verified against the paper's
-% own reference list (arXiv:2608.17267, printed pages 31-32) or the arXiv
+% own reference list (arXiv:2608.17267v1, printed pages 31-32) or the arXiv
 % API; none is reconstructed from memory.
 \documentclass[11pt]{article}
 \usepackage[margin=1.15in]{geometry}
@@ -42,8 +42,8 @@ $S^2\times S^2$}
 \maketitle
 
 \begin{abstract}
-Wuebben (arXiv:2608.17267), building on Lidman--Piccirillo
-(arXiv:2505.14387), proves that a specified Lidman--Piccirillo piece $V$
+Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo
+(arXiv:2505.14387v1), proves that a specified Lidman--Piccirillo piece $V$
 --- a symplectic 4-manifold with the homology of $S^2\times D^2$, built
 from a non-product genus-2 surface bundle over a once-punctured torus by
 two Luttinger surgeries --- is simply connected, and deduces three
@@ -122,7 +122,7 @@ relators of the $n{=}0$ double surgery with signs
 $(\epsilon_a,\epsilon_b)$, imposed with the certified based meridians and
 framed longitudes. Each $P_{\epsilon_a\epsilon_b}$ presents the trivial
 group. The proof is a derivation certificate, contained in release
-\texttt{v1.5} of the verification repository, that replays from a fresh
+\texttt{v1.5.1} of the verification repository, that replays from a fresh
 checkout and is accepted by two independently written checkers.
 \end{theorem}
 
@@ -404,7 +404,7 @@ intersection form and the Kirby--Siebenmann invariant; every unimodular
 form is realized, uniquely if even (with $\mathrm{KS}\equiv
 \sigma/8$), and by exactly two manifolds if odd, one per value of
 $\mathrm{KS}$.
-\item \textbf{Hambleton--Kreck} \cite{HK88,HK93}, in the form of
+\item \textbf{Hambleton--Kreck} \cite{HK88,HK93,HKcorr}, in the form of
 \cite[Theorem~5.1]{Hambleton}: ``Closed, oriented topological
 4-manifolds with finite cyclic fundamental groups are classified up to
 homeomorphism by $\pi_1(M)$, $q_M$, the $w_2$-type, and $\mathrm{KS}(M)$,''
@@ -690,11 +690,15 @@ with every evidence file bound by hash.
 
 \subsection*{Data availability}
 
-All permanent certificates, frozen inputs, replay scripts, hash
+This verification targets Wuebben's arXiv:2608.17267v1 (18 August 2026),
+whose PDF has SHA-256
+\begin{center}\small\texttt{16a6cef4998699f76ee508e062f8192cf80eeb478b7e077bfa35ccc25350186a}\end{center}
+The target-version ledger in \texttt{TARGET.md} also records the
+Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.1}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.1}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
 \begin{center}\small\texttt{a0adbce359f0fbfb29872087afc6eb0fc0c5412b}\end{center}
@@ -714,12 +718,12 @@ verification derives from it except where explicitly cited.
 B.~J.~Wuebben,
 \emph{An exotic $S^2\times S^2$ and an exotic
 $\CP^2\#\overline{\CP}{}^2$},
-arXiv:2608.17267 (2026).
+arXiv:2608.17267v1 (2026).
 
 \bibitem{LidmanPiccirillo}
 T.~Lidman and L.~Piccirillo,
 \emph{Distinguishing closed 4-manifolds by slicing},
-arXiv:2505.14387 (2025).
+arXiv:2505.14387v1 (2025).
 
 \bibitem{ADK}
 D.~Auroux, S.~K.~Donaldson, and L.~Katzarkov,
@@ -754,6 +758,12 @@ I.~Hambleton and M.~Kreck,
 \emph{Cancellation, elliptic surfaces and the topology of certain
 four-manifolds},
 J. Reine Angew. Math. \textbf{444} (1993), 79--100.
+
+\bibitem{HKcorr}
+I.~Hambleton and M.~Kreck,
+\emph{On the classification of topological 4-manifolds with finite
+fundamental group: corrigendum},
+Math. Ann. \textbf{372} (2018), 527--530.
 
 \bibitem{Hambleton}
 I.~Hambleton,
