@@ -1,0 +1,22 @@
+_RWS.reductionFSA := rec(
+           isFSA := true,
+        alphabet := rec(
+                type := "identifiers",
+                size := 8,
+              format := "dense",
+               names := [_g1,_g2,_g3,_g4,_g5,_g6,_g7,_g8]
+               ),
+          states := rec(
+                type := "simple",
+                size := 1
+               ),
+           flags := ["DFA","trim","RWS"],
+         initial := [1],
+       accepting := [1],
+           table := rec(
+              format := "dense deterministic",
+      numTransitions := 8,
+         transitions := [[-3,-5,-1,-2,-8,-7,-6,-4] 
+                        ]
+               )
+);

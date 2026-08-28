@@ -14,9 +14,10 @@ An auxiliary framing-discrepancy scan is complete (`runs/45`, driver
 `luttinger/j_robustness.py`, verdicts `luttinger/j_robustness_results.jsonl`).
 It does not alter the certified `j=0` fillings or prove Lemma 8.2; it maps
 what a hypothetical framing error would do.  Of 100 shifted-slope cases
-across both half-drift families, 82 are certified trivial (40 by Tietze
-collapse, 42 by complete confluent rewriting), 18 are inconclusive, and none
-is nontrivial.  All 32 shifts touching only `T_beta` are certified trivial in
+across both half-drift families, 83 are certified trivial (40 by Tietze
+collapse, 43 by complete confluent rewriting; run 58 decided a previously
+inconclusive case from its unsimplified presentation), 17 are inconclusive,
+and no nontriviality witness has been found.  All 32 shifts touching only `T_beta` are certified trivial in
 both families; every inconclusive case involves an `alpha`-torus shift.  Each
 inconclusive case is perfect, admits no quotient onto the six small simple
 targets, no proper subgroup of index at most 8, and resists coset enumeration

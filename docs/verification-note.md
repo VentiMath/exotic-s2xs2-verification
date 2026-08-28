@@ -172,13 +172,13 @@ complement with the meridian-shifted longitudes and running the same
 certification pipeline — quantifies which discrepancies j are independently
 excluded. Of 100 shifted cases across both half-drift families, 82 are
 certified trivial (40 by proof-producing Tietze collapse, 42 by complete
-confluent rewriting), no nontriviality witness was found, and 18 remain undecided. The
+confluent rewriting), no nontriviality witness was found, and 17 remain undecided; one previously undecided case was later certified trivial from its unsimplified 97-relator presentation, which completes confluently where the simplified presentation resists (run 58). The
 undecided groups are all perfect, admit no quotient onto the six smallest
 nonabelian simple groups, have no proper subgroup of index at most 8, and
 resist coset enumeration to a 12.5M-coset ceiling. Every shift touching
 only the second surgery torus is certified trivial in both families; all
 undecided cases involve a shift on the first torus. The full verdict table
-is reported with the artifacts. The 18 undecided counterfactual groups are
+is reported with the artifacts. The 17 undecided counterfactual groups are
 not evidence of a framing error, and they have no bearing on the j=0 proof
 unless the independent framing argument of §6 first fails.
 
