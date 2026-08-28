@@ -1,8 +1,8 @@
-# Independent machine verification of the fundamental-group computation in Wuebben's "An exotic S²×S² and an exotic ℂP²#C̄P²"
+# Independent machine verification of Wuebben's exotic S²×S²
 
-*Draft — numbers and artifact references are finalized against the imported
-certificates before any submission. Author: John Clyde (VentiMath), with
-AI assistance disclosed in the provenance section.*
+*This is the prose companion of the arXiv note in `paper/`; the paper is the
+authoritative text and carries the numbered theorems. Author: John Clyde
+(VentiMath), with AI assistance disclosed in the provenance section.*
 
 ## 1. Introduction
 
@@ -11,30 +11,37 @@ one place: the fundamental-group computation. Wuebben (arXiv:2608.17267),
 building on Lidman–Piccirillo (arXiv:2505.14387), proves that a specified
 Lidman–Piccirillo piece V — a symplectic 4-manifold with the homology of
 S²×D², built from a non-product genus-2 surface bundle over a once-punctured
-torus by two Luttinger surgeries — is simply connected; the symplectic double
-of V is then an exotic S²×S², and Lidman–Piccirillo regluing yields an exotic
-ℂP²#C̄P². The proof's critical step is the triviality of the filled
-fundamental groups for the paper's permitted surgery parametrizations: the
-four sign choices of the double surgery in the paper's principal coordinate
-system are the theorem-critical family, and four adjacent half-drift
-presentations of the same fillings serve as re-indexing checks with no
-independent logical load.
+torus by two Luttinger surgeries — is simply connected, and deduces three
+theorems: (A) the symplectic double Z = V ∪_σ V is homeomorphic but not
+diffeomorphic to S²×S²; (B) the quotient W = V/σ is homeomorphic to
+Kawauchi's manifold B, and the pair (B, W) is distinguished by the smooth
+sliceness of the figure-eight knot; (C) the Lidman–Piccirillo regluing Z'' is
+a simply connected 4-manifold homeomorphic but not diffeomorphic to ℂP²#C̄P².
+The proof's critical step is the triviality of the filled fundamental groups
+for the paper's permitted surgery parametrizations: the four sign choices of
+the double surgery in the paper's principal coordinate system are the
+theorem-critical family, and four adjacent half-drift presentations of the
+same fillings serve as re-indexing checks with no independent logical load.
 
-This note reports a verification of that step that is independent of the
-paper's coordinates, software, and author: the bundle is rebuilt as a
-simplicial complex from the paper's marked-fiber data alone, the surgery
-tori, meridians, and framed longitudes are extracted combinatorially, and the
-resulting filled presentations are proved trivial by complete confluent
-rewriting, with every computation emitting a replayable proof certificate
-checked by a small independent verifier. The deductions downstream of simple
-connectivity are audited against the hypotheses of the classification,
-symplectic, and Floer-theoretic results they cite.
+This note reports a verification of the whole argument. The simple
+connectivity is verified independently of the paper's coordinates, software,
+and author: the bundle is rebuilt as a simplicial complex from the paper's
+marked-fiber data alone, the surgery tori, meridians, and framed longitudes
+are extracted combinatorially, and the resulting filled presentations are
+proved trivial by complete confluent rewriting, with every computation
+emitting a replayable proof certificate checked by two independently written
+verifiers. The deductions from simple connectivity to the three theorems are
+then carried through as an explicit dependency chain (§7): twenty-five
+external theorems are stated with their hypotheses, every hypothesis is
+discharged by a named certificate or computation, every finite calculation
+is executed and replayed by two checkers, and the chain ends in the three
+theorems.
 
-The conclusion, stated carefully: the proof appears complete relative to
-explicitly named standard topology theorems, with no known project-specific
-gap. Section 8 lists the named theorems; none of them is project-specific,
-and each is applied with hypotheses that have been checked mechanically or by
-direct audit.
+The conclusion, stated carefully: the three theorems are verified relative
+to explicitly named standard theorems, with no known project-specific gap.
+Section 8 lists the named theorems; none of them is project-specific, and
+each is applied with hypotheses that are discharged mechanically. The
+theorems are Wuebben's; this note claims only the verification.
 
 ## 2. The independent model
 
@@ -192,32 +199,87 @@ range, no framing error would have produced a nontrivial group; the scan
 bears on the j=0 proof only if the independent framing argument of §6 first
 fails.
 
-## 7. The downstream audit
+## 7. From simple connectivity to the three theorems
 
-Conditional on the certified simple connectivity, the deductions of the
-paper's main theorem pass a hypothesis audit: the covering exact sequence and
-Hambleton–Kreck classification data; the even and odd rank-two intersection
-form calculations feeding Freedman's classification; minimality and
-symplectic Kodaira dimension (two independent routes); the symplectic Thom
-genus bound behind the no-torus lemma; the lifted-torus and Rokhlin/Arf steps
-of the slicing argument; and the reuse of the Lidman–Piccirillo relative
-Floer argument, including why the stronger π₁ statement is the one the
-regluing needs. The elementary lattice, Euler, cover-genus, and adjunction
-computations are executable.
+The deductions from π₁(V) = 1 to Theorems A, B, C are carried through as an
+explicit dependency chain, itself a machine artifact
+(`verification/luttinger/downstream_chain.py`, run 64). Every item is one of
+four kinds: an external theorem, stated with its hypotheses and source (25
+items; Klug's Theorem 2, Hambleton's Theorem 5.1, Ho–Li's Theorem 1.1, and
+Lidman–Piccirillo's Lemmas 9 and 10 quoted verbatim); a certificate of this
+repository, bound by SHA-256 (3 items: π₁(V) = 1 through the proof manifest
+and its two checker runs; the section's self-intersection Γ̂·Γ̂ = 0 from
+run 28; the framing identification of runs 35, 43, 46, 47); a computed fact
+executed by the script (15 items); or a deduction step from earlier items
+(16 steps, ending in the three theorems). A Ruby checker written
+independently re-derives every computed fact from scratch, checks that every
+citation resolves and that the graph is acyclic, verifies that each theorem
+depends on the certified π₁(V) = 1, and checks every evidence digest. The
+chain in prose, with the quoted statements and the proofs of the sixteen
+steps, is `verification/notes/downstream_proof_chain_2026-08-28.md`; the
+paper's Section 6 gives it as eight propositions.
+
+In outline: π₁(V) = 1 with χ(V) = 2 gives H₂(V) = ℤ⟨F⟩, F·F = 0, and V spin
+by Wu's formula; van Kampen gives π₁(Z) = π₁(Z'') = 1 (this is where the
+stronger statement π₁(V) = 1, rather than π₁(Z) = 1, is needed, since the
+regluing twists the amalgam). In Z, the certified Γ̂·Γ̂ = 0 with F·F = 0 and
+F·Γ̂ = 1 makes (F, Γ̂) a basis of the hyperbolic form by the index formula,
+so Z is spin because its form is even, and Freedman gives Z ≅ S²×S²
+topologically. Z carries the Thurston-type form of the closed bundle
+R ∪_σ R, with the surgery tori Lagrangian and the surgeries the certified
+Luttinger surgeries; R ∪_σ R is aspherical, hence minimal with κ ≠ −∞,
+Ho–Li carries κ ≠ −∞ through the surgeries, and a diffeomorphism to
+S²×S² — made orientation-preserving by a reflection of one factor — would
+pull back a form with κ = −∞, contradicting Li's independence of κ from
+the form. That is Theorem A. For Theorem B, the covering sequence gives
+π₁(W) = ℤ/2, χ(W) = 2 gives b₂(W) = 0, Lidman–Piccirillo's Lemma 7 gives W
+spin, and Hambleton–Kreck gives W ≅ B; the symplectic k-fold covers of F and
+Γ̂ with the symplectic Thom theorem show no nonzero square-zero class of Z
+contains a torus; and a slice disk for 4₁ in W is either characteristic in
+W − B⁴ — where Klug's theorem with σ = [D]² = 0 forces Arf(4₁) = 0, but
+Δ(−1) = −5 ≡ 3 mod 8 gives Arf(4₁) = 1 — or caps to a square-zero torus
+nonzero mod 2 that lifts to Z, contradicting the previous step. For Theorem
+C, Novikov additivity and the odd square of Γ'' give the form
+⟨1⟩ ⊕ ⟨−1⟩ by an explicit change of basis valid for every parity witness,
+Freedman gives Z'' ≅ ℂP²#C̄P², and Lidman–Piccirillo's Lemmas 9 and 10 give a
+nonvanishing mixed invariant along the square-zero line of F, whereas both
+square-zero lines of ℂP²#C̄P² split over S²×S¹ with vanishing mixed
+invariants.
+
+Three points where the chain's route differs from the paper's: H₁(V) = 0 is
+taken from the certificate rather than from the surgery relations; the form
+of Z is identified from the certified Γ̂·Γ̂ = 0, so Z is spin by evenness and
+the spin quotient is not needed for Theorem A; and the sliceness dichotomy
+is taken over ℤ/2 throughout, which is what makes the null-homologous case
+exactly Klug's characteristic case and the lifted torus nonzero integrally.
 
 ## 8. Trust boundary
 
-The named standard inputs, applied with checked hypotheses and cited proofs:
-the elementary ribbon-thickening and bistellar-trace interpretations that
-read the paper's figures into complexes; the classification of surfaces; the
-collapsible-3-ball and cyclic-knot-unknot criteria behind the local-flatness
-certificates; simplicial fundamental-group presentation and Tietze theory;
-the Kerékjártó periodic-disk involution theorem behind Lemma 7.1's disk
-extension; Freedman's simply connected classification with the Hambleton–Kreck
-finite-cyclic classification; symplectic Kodaira dimension and minimality
-(via the audited ADK / Ho–Li Luttinger-surgery constructions); the
-symplectic Thom theorem; the Rokhlin/Arf input of the slicing argument; and
-the Ozsváth–Szabó / Lidman–Piccirillo Floer machinery. This note does not
+The named standard inputs behind the simple-connectivity certificate and
+its identification with the paper, applied with checked hypotheses and cited
+proofs: the elementary ribbon-thickening and bistellar-trace interpretations
+that read the paper's figures into complexes; the classification of
+surfaces; the collapsible-3-ball and cyclic-knot-unknot criteria behind the
+local-flatness certificates; simplicial fundamental-group presentation and
+Tietze theory; the Kerékjártó periodic-disk involution theorem behind
+Lemma 7.1's disk extension; and ADK03 as corroboration of the framing
+identification.
+
+The named inputs behind the downstream chain are its twenty-five external
+theorems, each stated in the chain with its hypotheses: Seifert–van Kampen;
+the covering exact sequence; Poincaré–Lefschetz duality with universal
+coefficients and the Euler characteristic; the lattice index formula; Wu's
+formula; Novikov additivity; asphericity of bundles; the adjunction
+formula; Palais's ball isotopy; Freedman's classification; the
+Hambleton–Kreck classification (Hambleton 2008, Theorem 5.1); Thurston's
+symplectic form on surface bundles; Luttinger surgery (Luttinger, ADK);
+symplectic Kodaira dimension (Li 2006) and Ho–Li's invariance theorem; the
+symplectic Thom theorem (Ozsváth–Szabó 2000) and the symplectic cover
+construction (after Stipsicz–Szabó); Klug's relative Rochlin theorem and
+Levine's Arf criterion; the slice-disk/0-trace embedding; Lidman–Piccirillo's
+constructions (their Lemmas 4, 6, 7, the regluing of their Theorem 2) and
+Floer lemmas (their Lemmas 9 and 10, with Ozsváth–Szabó 2004, 2006 behind
+them); and Kawauchi's manifold B. This note does not
 reprove them. The ribbon-interpretation input is narrower than the phrase
 suggests: §5's classification certifies the implication from the paper's
 stated marked five-chain data to the equivariant normal form, and the
@@ -248,5 +310,7 @@ this note depends on trusting a model.
 ## 10. Data availability
 
 All code, certificates, run logs, and the provenance ledger:
-https://github.com/VentiMath/exotic-s2xs2-verification. The paper's own
-code: https://github.com/bwuebben/exotic-s2xs2.
+https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
+tagged release v1.5 (the paper's Data Availability section records the
+commit and the SHA-256 of the proof manifest and of the downstream-chain
+certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.
