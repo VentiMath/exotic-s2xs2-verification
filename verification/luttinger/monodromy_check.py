@@ -17,7 +17,6 @@ triangulation alone.
 Run:  python3 monodromy_check.py            (writes monodromy.g, runs gap)
 """
 import subprocess
-import sys
 import time
 from complex import Complex
 from pi1 import Presentation

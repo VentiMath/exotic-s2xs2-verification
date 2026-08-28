@@ -3,7 +3,7 @@ Repeatedly pick a generator g that occurs exactly once in some relator r
 (r = u g v, so g = u^-1 v^-1), substitute for g everywhere (relators and the
 tracked words), delete r.  Prefer short r and rarely-used g to limit growth."""
 from pi1 import free_reduce, inverse
-from collections import Counter, defaultdict
+from collections import Counter
 
 
 def cyclic_reduce(w):

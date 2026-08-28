@@ -13,8 +13,7 @@ Rigorous basis (Rourke-Sanderson, ch. 3):
     loops in Ndot, push them to C through r, and compute in pi_1(C).
 """
 from collections import deque
-from complex import Complex
-from pi1 import Presentation, free_reduce, inverse
+from pi1 import Presentation
 
 
 class TorusComplement:

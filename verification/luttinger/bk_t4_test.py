@@ -8,7 +8,8 @@ depending on the relative sign.  The fingerprints below must land on those.
 from complex import grid_torus, product
 from complement import TorusComplement
 from tietze import simplify, renumber
-import subprocess, time
+import subprocess
+import time
 
 n = 4
 S, B = grid_torus(n), grid_torus(n)
