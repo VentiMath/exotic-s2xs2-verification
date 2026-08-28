@@ -23,6 +23,7 @@
 \newcommand{\CP}{\mathbb{CP}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\pione}{\pi_1}
+\newtheorem*{mainresult}{Main verification result}
 
 \title{Independent machine verification of the fundamental-group
 computation in Wuebben's exotic $S^2\times S^2$}
@@ -35,63 +36,92 @@ computation in Wuebben's exotic $S^2\times S^2$}
 
 \begin{abstract}
 Wuebben (arXiv:2608.17267), building on Lidman--Piccirillo
-(arXiv:2505.14387), constructs a candidate exotic $S^2\times S^2$ and a
-candidate exotic $\CP^2\#\overline{\CP}{}^2$ by Luttinger surgery on a
-non-product genus-2 surface bundle over a genus-2 surface. The critical
-step, historically the failure point of claimed small exotic 4-manifolds,
-is the triviality of eight fundamental groups obtained by filling the
-surgered complement. We report a verification of that step independent of
-the paper's coordinates, software, and author: the bundle is rebuilt as a
-simplicial complex from the paper's marked-fiber data alone; the surgery
-tori, based meridians, and framed longitudes are extracted combinatorially;
-and the eight filled presentations are proved trivial by complete confluent
-rewriting, with every computation emitting a replayable proof certificate
-validated by two independently written checkers. The author's committed scripts
-enter at exactly one point, parsed and never executed, as a cross-check of
-the dictionary of conventions read from the paper. The paper's framing lemma is
-machine-checked with its analytic normalizations rebuilt constructively and
-chart independence proved between the paper's displayed charts, and an
-exhaustive robustness scan quantifies the consequences of any framing
-discrepancy.
-The deductions downstream of simple connectivity pass a hypothesis audit.
-Stated carefully: the proof appears complete relative to explicitly named
-standard topology theorems, with no known project-specific gap. The
-theorem is Wuebben's; this note claims only the verification. All
-certificates, code, and provenance are public.
+(arXiv:2505.14387), proves that a specified Lidman--Piccirillo piece $V$
+--- a symplectic 4-manifold with the homology of $S^2\times D^2$, built
+from a non-product genus-2 surface bundle over a once-punctured torus by
+two Luttinger surgeries --- is simply connected; the symplectic double of
+$V$ is then homeomorphic but not diffeomorphic to $S^2\times S^2$, and
+Lidman--Piccirillo regluing yields an exotic
+$\CP^2\#\overline{\CP}{}^2$. The critical step, historically the failure
+point of claimed small exotic 4-manifolds, is the simple connectivity:
+the triviality of the filled fundamental groups for the paper's permitted
+surgery parametrizations. We report a verification of that step
+independent of the paper's coordinates, software, and author: the bundle
+is rebuilt as a simplicial complex from the paper's marked-fiber data
+alone; the surgery tori, based meridians, and framed longitudes are
+extracted combinatorially; and the four theorem-critical filled
+presentations are proved trivial by complete confluent rewriting, with
+every computation emitting a replayable proof certificate validated by
+two independently written checkers. Four adjacent half-drift
+presentations pass the same certification as an auxiliary check. The
+author's committed scripts enter at exactly one point, parsed and never
+executed, as a cross-check of the dictionary of conventions read from the
+paper. The paper's framing lemma is machine-checked with its analytic
+normalizations rebuilt constructively and chart independence proved
+between the paper's displayed charts, and a finite 100-case robustness
+scan quantifies the consequences of any framing discrepancy. Stated
+carefully: the simple-connectivity proof appears complete relative to
+explicitly named standard topology theorems, with no known
+project-specific gap. The theorem is Wuebben's; this note claims only the
+verification. All certificates, code, and provenance are public in a
+pinned release.
 \end{abstract}
 
 \section{Introduction}
 
-Claimed constructions of small exotic 4-manifolds have repeatedly failed in
-one place: the fundamental-group computation. The manifolds of
-\cite{Wuebben} are obtained by two Luttinger surgeries \cite{Luttinger,ADK}
-on Lagrangian tori in a symplectic non-product genus-2 surface bundle $R$
-over a genus-2 surface, following the framework of
-\cite{LidmanPiccirillo}. Exoticness rests on the surgered manifolds being
-simply connected: eight groups --- the four sign choices of the double
-surgery in the paper's principal coordinate system, and four adjacent
-``half-drift'' systems --- must be trivial.
+Claimed constructions of small exotic 4-manifolds have repeatedly failed
+in one place: the fundamental-group computation. The manifolds of
+\cite{Wuebben} rest on a specified Lidman--Piccirillo piece $V$, obtained
+by two Luttinger surgeries \cite{Luttinger,ADK} on Lagrangian tori in a
+symplectic non-product genus-2 surface bundle $R$ over a once-punctured
+torus, following the framework of \cite{LidmanPiccirillo}. Exoticness of
+the double of $V$ rests on $V$ being simply connected: the filled
+fundamental groups of the paper's permitted surgery parametrizations ---
+the four sign choices of the double surgery in the paper's principal
+coordinate system --- must be trivial. Four adjacent ``half-drift''
+presentations of the same fillings serve as re-indexing checks; they
+carry no independent logical load.
 
-This note reports an independent verification of that step, together with
-a machine audit of the framing lemma that connects the group theory to the
-symplectic geometry and a hypothesis audit of everything downstream of
-simple connectivity. Independence here is concrete: nothing in the
-verification reuses the paper's coordinates, code, or intermediate data.
-The geometry was rebuilt from the paper's stated marked-fiber data alone,
-and the paper's displayed relations, sign tables, and Table~1 filling words
-were then \emph{compared against} the rebuild rather than assumed.
+This note reports an independent verification of that step, together
+with a machine audit of the framing lemma that connects the group theory
+to the symplectic geometry. Independence here is concrete: nothing in
+the verification reuses the paper's coordinates, code, or intermediate
+data. The geometry was rebuilt from the paper's stated marked-fiber data
+alone, and the paper's displayed relations, sign tables, and Table~1
+filling words were then \emph{compared against} the rebuild rather than
+assumed. The downstream deductions --- from simple connectivity to the
+homeomorphism classifications and the exoticness conclusions --- are
+Wuebben's; this note verifies the simple-connectivity input and its
+geometric framing bridge, and a hypothesis audit of the downstream
+deductions is recorded in the repository.
 
 Two disclosures frame everything that follows. First, the theorem is
 Wuebben's; this note asserts nothing about priority or authorship of the
-mathematics and claims only the verification. Second, the verification was
-carried out by AI systems (Anthropic's Claude models and OpenAI's Codex)
-under the author's direction, with commit-level provenance;
-Section~\ref{sec:provenance} describes the method, and mathematical
-responsibility rests with the human author. No claim below depends on
-trusting a model: every asserted computation ships with a replayable
-certificate.
+mathematics and claims only the verification. Second, the verification
+was carried out by generative-AI systems under the author's direction,
+with commit-level provenance recorded in the repository's ledger;
+mathematical responsibility rests with the human author. No claim below
+depends on trusting a model: every asserted computation ships with a
+replayable certificate.
 
-\section{The independent model}\label{sec:model}
+\begin{mainresult}
+From a fresh checkout of release \texttt{v1.1} of the verification
+repository (Section~\ref{sec:trust}):
+(i) the four theorem-critical filled presentations --- the $n{=}0$ sign
+pairs of the paper's double surgery, imposed with independently certified
+based meridians and framed longitudes --- carry complete confluent
+rewriting certificates proving each group trivial, and the certificates
+replay and are accepted by two independently written checkers;
+(ii) the four adjacent $n{=}1$ half-drift presentations carry the same
+certificates, as an auxiliary check;
+(iii) the external inputs are the named standard theorems of
+Section~\ref{sec:trust}, which this note does not reprove;
+(iv) every certificate, transcript, and the provenance ledger are
+contained in that pinned release.
+\end{mainresult}
+
+\section{The independent model and the interpretation
+dictionary}\label{sec:model}
 
 The genus-2 fiber is realized as a regular neighborhood of the paper's
 five-chain of curves: five plumbed annular bands and two cone discs, with
@@ -99,299 +129,184 @@ the hyperelliptic-type involution $\varphi_0$ realized simplicially. Its
 fixed points, the curve actions $a\leftrightarrow e$,
 $b\leftrightarrow d$, and the free half-rotation of the middle curve $c$
 are executable assertions about the complex, not assumptions. The bundle
-$R$ is assembled from simplicial mapping cylinders over a once-punctured
+$R$ is assembled from simplicial mapping cylinders over the once-punctured
 torus base; the two surgery tori $T_\alpha$, $T_\beta$ arise as induced
-subcomplexes. The assembled 4-complex, with f-vector
-$[9156,\,116714,\,356728,\,403152,\,153984]$, passes manifold checks down
-to the vertex-link level.
+subcomplexes, and the assembled 4-complex passes manifold checks down to
+the vertex-link level.
 
 The identification with the paper's marked bundle is by literal based
 monodromy action: the based mapping classes of both monodromies are
 certified as equalities of vertex paths, transported by proof-producing
-Tietze chains that replay step by step ($17{,}839$ elementary steps for
-the primary model; $34{,}735$ for an independently built second
-triangulation). The identification is completed by an explicit marked
-mapping-cylinder clutching over the base graph: the relative monodromy
-comparisons are exact on the marked collars, so the identification is a
-constructed fiberwise homeomorphism into the paper's bundle rather than an
-appeal to the classification of surface bundles. Everything the surgery
-argument needs is transported through that map into the paper's
-already-smooth manifold, where the smooth and symplectic arguments run; no
-smoothing of the triangulation is ever chosen.
+Tietze chains that replay step by step. The identification is completed
+by an explicit marked mapping-cylinder clutching over the base graph: the
+relative monodromy comparisons are exact on the marked collars, so the
+identification is a constructed fiberwise homeomorphism into the paper's
+bundle rather than an appeal to the classification of surface bundles.
+Everything the surgery argument needs is transported through that map
+into the paper's already-smooth manifold, where the smooth and symplectic
+arguments run; no smoothing of the triangulation is ever chosen.
 
-\section{Peripheral data}
+Because the machine certifies properties of a model, the model itself is
+the residual risk. Five structurally different implementations
+reconstruct it independently --- among them an independent peripheral
+extractor built only from the bundle, an alternative triangulation with
+its own based-monodromy certificate, and a second marked-fiber
+realization built directly from the abstract ribbon graph --- and they
+are structured so that the classes of translation error they can detect
+--- subdivision artifacts, monodromy transcription, ordering, sign, and
+orientation conventions --- would each be caught by at least one
+independent reconstruction. What redundancy cannot exclude, a shared
+misreading of the paper's conventions, is addressed by a bound
+interpretation dictionary: every convention read from the paper carries
+the certified computation that would fail under a rival reading, with the
+central entries cross-checked --- parsed, never executed --- against the
+author's own committed scripts, and the remaining transcription-level
+entries audited by a quarantined extractor against the hash-pinned
+immutable Lidman--Piccirillo v1 arXiv source \cite{LidmanPiccirillo}, in
+both its prose and its vector-figure layers. The one interpretation
+remaining at that boundary is the ordinary convention that dashed arcs in
+a handle picture depict hidden projection rather than extra crossings.
+The full inventory of the redundant implementations and the dictionary is
+in the repository.
 
-Based meridians and product-framing longitudes for both tori are traced as
-literal simplicial loops carrying the paper's own basing whiskers. The
+\section{Peripheral data and the framing
+identification}\label{sec:peripheral}
+
+Based meridians and product-framing longitudes for both tori are traced
+as literal simplicial loops carrying the paper's own basing whiskers. The
 paper's sign-correction package (its \S7.4 fix) is reproduced
-independently. A combinatorial sweep of the relevant transport square
+independently, and a combinatorial sweep of the relevant transport square
 resolves the basing double-count question in the direction the paper's
-corrected convention requires: the directly computed boundary longitude
-already contains the geometric basing effect, and must not be multiplied
-by an extra meridian.
+corrected convention requires. Both surgery tori are certified locally
+flat at every one of their simplex links, each classified against the
+correct unknotted model, and every extracted dual meridian is checked to
+be a literal normal-circle fiber of an explicit normal block model, with
+no regular-neighborhood theorem invoked.
 
-Both surgery tori are certified locally flat at all $1{,}776$ of their
-simplex links --- $296$ vertex, $888$ edge, and $592$ triangle links, each
-classified against the correct unknotted model --- and the boundary
-carrying the peripheral curves is an explicit half-weight normal block
-model with a global PL identification of the computed frontier: every
-extracted dual meridian is checked to be a literal normal-circle fiber,
-with no regular-neighborhood theorem invoked.
+Luttinger surgery is performed with respect to the Lagrangian framing;
+the paper's Lemma~8.2 identifies it with the fibered framing carried by
+the combinatorial longitudes above. This lemma carries an exact logical
+load: if the identification failed by $j$ meridians, the certificates of
+Section~\ref{sec:groups} would remain correct for the product-framed
+presentations they literally describe, but would no longer identify
+those presentations with the paper's surgeries. The lemma's displayed
+Weinstein-chart, seam, and constant-momentum algebra are machine-checked
+symbolically, and its inline analytic normalizations have been rebuilt
+constructively rather than cited: the relative Moser flow is produced as
+the explicit monotone inverse of a cumulative coordinate, so no ODE
+existence theorem is invoked, and the equivariant step defines the Moser
+field directly on the double cover with certified projection and deck
+invariance, so no covering-lift theorem is invoked. Chart independence
+is proved between the paper's displayed charts by two routes, with the
+one symplectic move that could introduce meridian components --- the
+closed-1-form shift --- excluded by the zero-section condition;
+\cite{ADK} (\S2.1 and Proposition~2.2) stands as corroboration.
 
-\section{The eight filled groups}\label{sec:groups}
+Independently of the lemma, a finite 100-case robustness scan refills the
+complement with meridian-shifted longitudes and runs the identical
+certification pipeline on each counterfactual: 82 of the 100 cases are
+certified trivial, none is nontrivial, every shift touching only
+$T_\beta$ is certified trivial in both families, and each of the 18
+undecided cases is perfect, admits no epimorphism onto the six smallest
+nonabelian simple groups, and resists coset enumeration to a ceiling of
+$12{,}499{,}998$ cosets. These are counterfactual groups: the paper's own
+fillings are the certified controls, and the undecided cases have no
+bearing on the proof unless the framing argument above first fails. The
+full table and methods are in the repository.
+
+\section{Certified triviality of the four theorem-critical
+groups}\label{sec:groups}
 
 Filling the triangulation-derived complement presentation (4 generators,
 95 relators) with the certified coherent peripheral pairs yields, for all
-four $n=0$ sign pairs and the four adjacent half-drift systems, complete
-confluent rewriting systems in which every generator reduces to the
-identity. Knuth--Bendix completion (KBMAG \cite{KBMAG}, run under GAP
-\cite{GAP}) is used only as an \emph{untrusted certificate generator}: the
-exported derivation DAGs are validated by a small independent checker that
+four $n{=}0$ sign pairs, complete confluent rewriting systems in which
+every generator reduces to the identity.
+
+\begin{center}
+\begin{tabular}{llr}
+\toprule
+system & signs & derivation records\\
+\midrule
+$n{=}0$ & $(-,-)$ & 1123\\
+$n{=}0$ & $(-,+)$ & 1075\\
+$n{=}0$ & $(+,-)$ &  804\\
+$n{=}0$ & $(+,+)$ & 1504\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\small Derivation-DAG certificates for the four theorem-critical filled
+groups; each verifies \textsc{trivial} from a fresh clone of the
+repository.
+\end{center}
+
+The four adjacent $n{=}1$ half-drift presentations pass the identical
+certification as an auxiliary check; their certificates sit beside these
+in the same manifest.
+
+\section{Certificate verification and
+reproducibility}\label{sec:certificates}
+
+Knuth--Bendix completion (KBMAG \cite{KBMAG}, run under GAP \cite{GAP})
+is used only as an \emph{untrusted certificate generator}: the exported
+derivation DAGs are validated by a small independent checker that
 re-verifies every input-relator axiom, inverse axiom, critical overlap,
 rewrite trace, and final generator-to-identity rule, and binds the input
-presentation by SHA-256. The checker neither imports nor runs KBMAG. A second
-implementation, written independently in Ruby, re-verifies all 14{,}115
+presentation by SHA-256. The checker neither imports nor runs KBMAG. A
+second implementation, written independently in Ruby, re-verifies all
 retained derivation records against the same hash-bound DAGs and accepts,
-importing neither the Python checker nor any project group code.
+importing neither the first checker nor any project group code. All
+artifacts --- the certificates, the exported rewriting systems, and a
+hash manifest --- replay from a clean checkout, and the stored rewriting
+systems reload and re-verify under GAP/KBMAG independently of the
+certificate path.
 
-\begin{center}
-\begin{tabular}{llr@{\qquad}llr}
-\toprule
-system & signs & records & system & signs & records\\
-\midrule
-$n{=}0$ & $(-,-)$ & 1123 & $n{=}1$ & $(-,-)$ & 1709\\
-$n{=}0$ & $(-,+)$ & 1075 & $n{=}1$ & $(-,+)$ & 3408\\
-$n{=}0$ & $(+,-)$ &  804 & $n{=}1$ & $(+,-)$ & 1975\\
-$n{=}0$ & $(+,+)$ & 1504 & $n{=}1$ & $(+,+)$ & 2517\\
-\bottomrule
-\end{tabular}
-
-\smallskip
-\small Derivation-DAG certificates for the eight filled groups; each
-verifies \textsc{trivial} from a fresh clone of the repository.
-\end{center}
-
-All artifacts --- the eight certificates, the exported rewriting systems,
-and a 23-hash manifest --- replay from a clean checkout, and the stored
-rewriting systems reload and re-verify under GAP/KBMAG independently of
-the certificate path.
-
-\section{Redundancy against translation error}
-
-Because the machine certifies properties of a model, the model itself is
-the residual risk. Five structurally different implementations attack it:
-an independent peripheral extractor built only from the bundle; an
-alternative bundle triangulation with a different subdivision; a second
-based-monodromy certificate on that alternative; a simplex-level verifier
-of all 128 PL flip traces; and a second marked-fiber realization, built
-directly from the abstract ribbon graph with a different vertex count (58
-versus 86) and matched equivariantly to the primary model. A single
-translation mistake would need to survive all of them. What redundancy
-cannot exclude --- a shared misreading of the paper's conventions --- is
-attacked separately by exact reproduction of the paper's displayed
-relations and sign tables, re-audited against the typeset PDF rather than
-any text extraction. The translation layer is itself a bound artifact:
-an interpretation dictionary in which every convention read from the paper
-carries the certified computation that would fail under a rival reading,
-with the central entries cross-checked --- parsed, never executed ---
-against the author's own committed scripts, which define the same monodromy
-action, corrected relations, and sign conjugators. The three entries that
-reading could pin only by transcription --- the ordered beta twists, the
-five-chain ribbon labels, and the local twist signs --- were then attacked
-at the raw-paper level: a quarantined extractor reads only the paper's
-plain text, reconstructs the five-chain, involution, ordered twists,
-surgery tori, whiskers, and direction words, and a separate process
-compares its frozen output with the independently built model
-certificates, with reversed-order and reversed-sign mutations
-distinguished. No discrepancy was found: the previously identified
-transcription residuals are closed relative to the paper's stated marked
-data. The source itself was then audited directly rather than accepted
-through the paper's restatement: a checker reading only the hash-pinned
-\texttt{main.tex} and original vector Figure~1 of the immutable
-Lidman--Piccirillo v1 arXiv source \cite{LidmanPiccirillo}, importing no
-project module, confirms the ordered five-chain $a,b,c,d,e$, the
-chain-reversing involution with $c$ fixed with orientation, the single
-consecutive crossings with all required disjointness, and the two fixed
-points, in both the prose and the vector layers. The one interpretation
-remaining at that boundary is the ordinary convention that dashed arcs in
-a handle picture depict hidden projection rather than extra crossings.
-The project-specific content of the paper's Lemma~7.1 is certified in the
-same sense: all 36 candidate equivariant ribbon rotations are enumerated,
-exactly four survive and all normalize to one marked ribbon with two
-invariant free-half-turn boundary disks, so the lemma's finite ribbon
-classification and its extension hypotheses are machine-checked, with the
-Ker\'ekj\'art\'o periodic-disk involution theorem \cite{ConstantinKolev}
-the remaining named input now that the source marked data are audited. Each of these checks freezes its output as a certificate and logs its run
-transcript; all of it replays directly from the repository.
-
-\section{The framing lemma}\label{sec:framing}
-
-Luttinger surgery is performed with respect to the Lagrangian framing; the
-paper's Lemma~8.2 identifies it with the fibered framing carried by the
-combinatorial longitudes of Section~\ref{sec:groups}. This lemma carries
-an exact logical load: if the identification failed by $j$ meridians, the
-certificates of Section~\ref{sec:groups} would remain correct for the
-product-framed presentations they literally describe, but would no longer
-identify those presentations with the paper's surgeries, and simple
-connectivity, the homeomorphism conclusions, and the exoticness argument
-would all become unproved.
-
-The lemma's displayed Weinstein-chart, seam, and constant-momentum algebra
-are machine-checked symbolically, and its inline analytic normalizations
-have been rebuilt constructively rather than cited. The relative Moser
-flow is produced as the explicit monotone inverse of the cumulative
-coordinate $H_s(\theta,t)=t+s\!\int_0^t(f-1)$, whose positivity yields a
-uniform invariant collar; differentiating the defining identity produces
-the Moser equation and the pullback formula, so no ODE existence theorem
-is invoked. The equivariant step defines the Moser field directly on the
-double cover, with certified projection, deck invariance, and the
-factor-two normalization, so no covering-lift theorem is invoked; the
-covering hypotheses themselves --- free involution, genuine 2:1 simplicial
-covering, deck group exactly $\{\mathrm{id},\varphi_0\}$, core winding
-number two --- are certified on the actual simplicial collar.
-
-Chart independence is argued twice within the project: a fiber-dilation
-isotopy takes any chart-transition germ to the identity relative to the
-zero section, and a construction-side proof shows the paper's charts are
-forced by pairing the Liouville primitive
-$t\,d\theta_1 + Ku\,d\theta_2$ with the well-defined angle frames, with
-every integral change of angle basis preserving constant momentum and the
-one symplectic move that could introduce meridian components --- the
-closed-1-form shift --- excluded by the zero-section condition.
-\cite{ADK} (\S2.1 and Proposition~2.2) stands as corroboration. After
-this program, no standard input to the lemma remains cited rather than
-mechanized: the only form of Weinstein germ uniqueness the argument uses is
-the statement proved above, the independence of the constant-momentum
-push-off between the paper's displayed charts.
-
-\section{The framing-robustness scan}\label{sec:scan}
-
-Independently of the lemma, we quantify what a framing discrepancy would
-do. For each discrepancy pair $(j_a,j_b)$, the complement is refilled with
-the meridian-shifted longitudes $\lambda\mu^{j}$, imposed with each
-torus's own certified based meridian, and the identical certification
-pipeline is run: Tietze collapse, Knuth--Bendix completion, and --- for
-resistant cases --- abelianization, quotient search onto $A_5$,
-$\mathrm{PSL}(2,7)$, $A_6$, $\mathrm{PSL}(2,8)$, $\mathrm{PSL}(2,11)$,
-$\mathrm{PSL}(2,13)$, low-index subgroups to index 8, and coset
-enumeration (ACE \cite{ACE}) to a ceiling of $12{,}499{,}998$ cosets. The
-$(0,0)$ controls reproduce the certified filling relators word for word.
-
-\begin{center}
-\small\setlength{\tabcolsep}{4.4pt}
-\begin{tabular}{llccccccccccccc}
-\toprule
-& $(j_a,j_b)$: & \tiny$0,0$ & \tiny$1,0$ & \tiny$\text{-}1,0$ & \tiny$2,0$
-& \tiny$\text{-}2,0$ & \tiny$0,1$ & \tiny$0,\text{-}1$ & \tiny$0,2$
-& \tiny$0,\text{-}2$ & \tiny$1,1$ & \tiny$1,\text{-}1$
-& \tiny$\text{-}1,1$ & \tiny$\text{-}1,\text{-}1$\\
-\midrule
-$n{=}0$ & $(+,+)$ & K & $\cdot$ & T & $\cdot$ & K & K & T & K & K & $\cdot$ & T & T & T\\
-        & $(+,-)$ & K & K & T & $\cdot$ & K & T & K & K & K & T & $\cdot$ & T & T\\
-        & $(-,+)$ & K & T & K & K & $\cdot$ & K & T & K & K & T & T & K & T\\
-        & $(-,-)$ & K & T & K & K & K & T & K & K & K & T & T & T & $\cdot$\\
-\midrule
-$n{=}1$ & $(+,+)$ & --- & $\cdot$ & T & $\cdot$ & K & K & T & K & K & $\cdot$ & T & T & T\\
-        & $(+,-)$ & --- & $\cdot$ & T & $\cdot$ & K & T & K & K & K & T & $\cdot$ & T & T\\
-        & $(-,+)$ & --- & T & $\cdot$ & K & $\cdot$ & K & T & K & K & T & T & $\cdot$ & T\\
-        & $(-,-)$ & --- & T & K & K & $\cdot$ & T & K & K & K & T & T & T & $\cdot$\\
-\bottomrule
-\end{tabular}
-
-\smallskip
-\small T = trivial by proof-producing Tietze collapse; K = trivial by
-complete confluent rewriting; $\cdot$ = undecided (perfect, witness-free,
-enumeration-resistant); --- = the $n{=}1$ controls are the certified
-half-drift fillings of Section~\ref{sec:groups}.
-\end{center}
-
-Of 100 cases, 82 are certified trivial (40 by Tietze collapse, 42 by
-confluent rewriting), 18 are undecided, and \emph{none is nontrivial}.
-Every undecided group is perfect, admits no epimorphism onto the six
-smallest nonabelian simple groups, has no proper subgroup of index at most
-8, and resists coset enumeration to the stated ceiling. The scan's
-structural finding: all 32 shifts touching only $T_\beta$ are certified
-trivial in both families --- a framing error on the second torus alone
-provably cannot change the simple-connectivity conclusion --- and every
-undecided case involves a shift on $T_\alpha$. We emphasize that these
-are counterfactual groups: the paper's own fillings are the certified
-$(0,0)$ column. The 18 undecided counterfactual groups are not evidence of
-a framing error, and they have no bearing on the $j_a=j_b=0$ proof unless
-the independent framing argument of Section~\ref{sec:framing} first
-fails.
-
-\section{The downstream audit}
-
-Conditional on the certified simple connectivity, the deductions of the
-paper's main theorem pass a hypothesis audit: the covering exact sequence
-and Hambleton--Kreck classification data \cite{HK88,HK93}, as summarized
-in \cite{Ham08}; the even
-and odd rank-two intersection-form computations feeding Freedman's
-classification \cite{Freedman}; minimality and symplectic Kodaira
-dimension by two independent routes; the symplectic Thom genus bound
-behind the no-torus lemma; the lifted-torus and Rokhlin/Arf steps of the
-slicing argument; and the reuse of the Lidman--Piccirillo relative Floer
-argument \cite{LidmanPiccirillo}, including why the stronger $\pione$
-statement is the one the regluing needs. The elementary lattice, Euler
-characteristic, cover-genus, and adjunction computations are executable.
-
-\section{Trust boundary}\label{sec:trust}
-
-The named standard inputs, applied with checked hypotheses and cited
-proofs: the elementary ribbon-thickening and bistellar-trace
-interpretations that read the paper's figures into complexes; the
-classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
-criteria behind the local-flatness certificates; simplicial
-fundamental-group presentation and Tietze theory; the Ker\'ekj\'art\'o
-periodic-disk involution theorem \cite{ConstantinKolev} behind
-Lemma~7.1's disk extension; Freedman's simply
-connected classification \cite{Freedman} with the Hambleton--Kreck
-finite-cyclic classification \cite{HK88,HK93}; symplectic Kodaira
-dimension and minimality, via the audited Luttinger-surgery constructions
-\cite{ADK,HoLi}; the symplectic Thom theorem; the Rokhlin/Arf input of
-the slicing argument; and the Ozsv\'ath--Szab\'o / Lidman--Piccirillo
-Floer machinery \cite{LidmanPiccirillo}. This note does not reprove them.
-The ribbon-interpretation input is narrower than the phrase suggests: the
-redundancy section's classification certifies the implication from the
-paper's stated marked five-chain data to the equivariant normal form, and
-the stated data themselves are audited in the original Lidman--Piccirillo
-source, so what this boundary retains is the thickening of that data into
-complexes together with the ordinary dashed-arc hidden-projection
-convention of the audited figure.
-
-Formerly listed inputs that are no longer dependencies: surface-bundle
-classification, replaced by the explicit clutching; four-dimensional
-smoothing and intersection naturality, since the smooth arguments run
-entirely in the paper's already-smooth manifold; derived
-regular-neighborhood theory, since the tubular boundary is constructed;
-and Weinstein germ uniqueness, since chart independence is proved between
-the paper's verified charts (Section~\ref{sec:framing}), with \cite{ADK}
-as corroboration. The accurate one-sentence
-status is: \emph{the proof appears complete relative to explicitly named
-standard topology theorems, with no known project-specific gap} --- a
-statement about verification depth, offered to make expert review cheap,
-not to replace it.
-
-\section{Provenance and method}\label{sec:provenance}
-
-The verification was AI-assisted throughout: Anthropic's Claude models
-(Fable~5 and Opus~5) and OpenAI's Codex, working under the author's
-direction, with a commit-level provenance ledger recording which model
-produced which artifact. Cross-model review was adversarial by design,
-and several decisive corrections in the record came from one model
-refuting the other's assessment; the ledger preserves those corrections
-rather than rewriting them. Mathematical responsibility rests with the
-human author. The design principle throughout is that certificates are
-checked, not trusted: search and completion tools are treated as untrusted
-generators, and every claim rests on a replayable artifact validated by
+The verification was AI-assisted throughout, by generative-AI systems
+working under the author's direction; the repository's provenance ledger
+records which system produced which artifact, and preserves the
+corrections that adversarial cross-model review produced rather than
+rewriting them. Mathematical responsibility rests with the human author.
+The design principle throughout is that certificates are checked, not
+trusted: search and completion tools are treated as untrusted generators,
+and every computational claim rests on a replayable artifact validated by
 small independent code.
 
-\section{Data availability}
+\section{Trust boundary and data availability}\label{sec:trust}
+
+The named standard inputs, applied with checked hypotheses: Freedman's
+simply connected classification \cite{Freedman} with the
+Hambleton--Kreck finite-cyclic classification \cite{HK88,HK93};
+symplectic Kodaira dimension and minimality, via the audited
+Luttinger-surgery constructions \cite{ADK,HoLi}; the symplectic Thom
+theorem \cite{OzsvathSzabo}; the Rokhlin/Arf input of the slicing
+argument, as used in \cite{LidmanPiccirillo}; the Ozsv\'ath--Szab\'o /
+Lidman--Piccirillo Floer machinery \cite{LidmanPiccirillo}; and the
+Ker\'ekj\'art\'o periodic-disk involution theorem \cite{ConstantinKolev}
+behind the disk extension of the paper's Lemma~7.1. Alongside these sit
+elementary inputs of PL topology retained as standard without a specific
+citation: the ribbon-thickening and bistellar-trace interpretations that
+read the paper's figures into complexes, the classification of surfaces,
+the collapsible-3-ball and cyclic-knot-unknot criteria behind the
+local-flatness certificates, and simplicial fundamental-group
+presentation with Tietze theory. This note reproves none of these. The
+ribbon-interpretation input is narrower than the phrase suggests: the
+certified classification of equivariant ribbon rotations pins the
+implication from the paper's stated marked five-chain data to the
+equivariant normal form, and the stated data themselves are audited in
+the original Lidman--Piccirillo source, so what this boundary retains is
+the thickening of that data into complexes together with the ordinary
+dashed-arc hidden-projection convention of the audited figure. The
+accurate one-sentence status is: \emph{the simple-connectivity proof
+appears complete relative to explicitly named standard topology
+theorems, with no known project-specific gap} --- a statement about
+verification depth, offered to facilitate expert review, not to replace
+it.
 
 All code, certificates, run transcripts, referee packets, and the
-provenance ledger are at
-\url{https://github.com/VentiMath/exotic-s2xs2-verification}, including
-clean-checkout replay instructions. The paper's own code is at
+provenance ledger are contained, with clean-checkout replay
+instructions, in the tagged release \texttt{v1.1} of
+\url{https://github.com/VentiMath/exotic-s2xs2-verification}; the
+certificate manifest binds every artifact by SHA-256. The paper's own code is at
 \url{https://github.com/bwuebben/exotic-s2xs2}; nothing in the
 verification derives from it except where explicitly cited.
 
@@ -442,16 +357,15 @@ I.~Hambleton and M.~Kreck,
 four-manifolds},
 J. Reine Angew. Math. \textbf{444} (1993), 79--100.
 
-\bibitem{Ham08}
-I.~Hambleton,
-\emph{Intersection forms, fundamental groups and 4-manifolds},
-Proceedings of the 15th G\"okova Geometry-Topology Conference (2008),
-137--150.
-
 \bibitem{HoLi}
 C.-I.~Ho and T.-J.~Li,
 \emph{Luttinger surgery and Kodaira dimension},
 Asian J. Math. \textbf{16} (2012), 299--318.
+
+\bibitem{OzsvathSzabo}
+P.~Ozsv\'ath and Z.~Szab\'o,
+\emph{The symplectic Thom conjecture},
+Ann. of Math. (2) \textbf{151} (2000), no.~1, 93--124.
 
 \bibitem{KBMAG}
 D.~F.~Holt,
@@ -462,11 +376,6 @@ software package, version 1.5.9.
 The GAP~Group,
 \emph{GAP --- Groups, Algorithms, and Programming},
 \mbox{\url{https://www.gap-system.org}}.
-
-\bibitem{ACE}
-G.~Havas and C.~Ramsay,
-\emph{ACE --- Advanced Coset Enumerator},
-software package, version 5.3.
 
 \end{thebibliography}
 
