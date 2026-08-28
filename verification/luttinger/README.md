@@ -1,6 +1,6 @@
 # luttinger — combinatorial π₁ of torus complements and Luttinger surgeries
 
-Status (updated 2026-08-25; see `../STATUS.md` for the precise caveats):
+Status (updated 2026-08-28; see `../STATUS.md` for the precise caveats):
 
 * **Engine (working, calibrated):** triangulated 4-manifold `K` + full
   2-dimensional torus subcomplex `T` → presentation of π₁(K − T), based
@@ -45,14 +45,15 @@ Status (updated 2026-08-25; see `../STATUS.md` for the precise caveats):
   A separately triangulated ribbon-graph fiber has the identical equivariant
   marked code; see `../runs/34`. Run 36 integrates the finite hypotheses of
   the residual PL theorems and supplies a cited referee packet.
-* **Auxiliary framing-shift search:** the `j_alpha=+1` robustness case has
-  been reduced by replayable Nielsen/Tietze moves from GAP's 542-letter
-  compact presentation to 362 letters (310 with a temporary generator).  The
-  adjacent `j_alpha=+2` case has independently fallen from 9 relators/876
-  letters to 8 relators/532 letters (439 with a temporary generator).  Both
-  remain inconclusive: no nontrivial quotient or triviality certificate is
-  known.  These stress-test hypothetical framing errors and are not inputs to
-  the paper's certified `j=0` groups; see `../runs/39` and `../runs/40`.
+* **Auxiliary framing-shift scan closed:** Runs 59--62 certify 17 of the 18
+  cases left open by the original 100-case scan. Run 63 resolves the final
+  `n0_y1` aligned positive-diagonal case through the 96 relators it shares
+  with the neighboring `n1_y2` presentation. The common core is infinite
+  cyclic and the case-100 filling relator kills its generator. Independent
+  Python and Ruby replay of the retained 4,040-record ancestry DAG gives the
+  final tally: **100/100 certified trivial, 0 inconclusive, 0 nontrivial**.
+  These stress-test hypothetical framing errors and are not inputs to the
+  paper's certified `j=0` groups; see `../runs/59`--`../runs/63`.
 
 ## Files
 | file | what |
@@ -68,6 +69,7 @@ Status (updated 2026-08-25; see `../STATUS.md` for the precise caveats):
 | `verify_certificates.rb` | independent Ruby/standard-library checker for the same eight DAGs, with corruption controls |
 | `compile_kbmag_certificate.py` | untrusted history compiler and dependency-cone pruner |
 | `kbmag-proof/` | minimal KBMAG logging patch used only to generate complete histories |
+| `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `presentation_search.py` | proof-oriented Nielsen and relator-multiplication search |
 | `case1_compact_attack.py` | replayable named-word/Nielsen/Tietze search for the hardest auxiliary framing-shift case |
 | `case2_compact_attack.py` | exact compact export and replayable attack for the adjacent `j_alpha=+2` framing-shift case |

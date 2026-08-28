@@ -208,12 +208,21 @@ end
 
 options = {
   root: File.expand_path(__dir__),
+  input: nil,
+  expected_count: 8,
   negative_controls: false
 }
 OptionParser.new do |parser|
   parser.banner = "Usage: ruby verify_certificates.rb [options] [filled-proof.json.gz ...]"
   parser.on("--root DIR", "directory containing r_presentations.json and proof artifacts") do |value|
     options[:root] = File.expand_path(value)
+  end
+  parser.on("--input FILE", "presentation source JSON (defaults to ROOT/r_presentations.json)") do |value|
+    options[:input] = File.expand_path(value)
+  end
+  parser.on("--expected-count N", Integer,
+            "required certificate count (defaults to 8)") do |value|
+    options[:expected_count] = value
   end
   parser.on("--negative-controls", "also prove that two deliberate corruptions are rejected") do
     options[:negative_controls] = true
@@ -222,7 +231,7 @@ end.parse!
 
 begin
   root = options[:root]
-  presentation_path = File.join(root, "r_presentations.json")
+  presentation_path = options[:input] || File.join(root, "r_presentations.json")
   source_bytes = File.binread(presentation_path)
   source = JSON.parse(source_bytes)
   source_digest = Digest::SHA256.hexdigest(source_bytes)
@@ -231,7 +240,9 @@ begin
                 else
                   ARGV.map { |path| File.expand_path(path) }
                 end
-  demand(proof_paths.length == 8, "expected exactly eight filled-group certificates")
+  demand(options[:expected_count].positive?, "expected count must be positive")
+  demand(proof_paths.length == options[:expected_count],
+         "expected exactly #{options[:expected_count]} filled-group certificates")
   total_records = 0
   proof_paths.each do |path|
     count = verify_filled_certificate(path, source, source_digest)

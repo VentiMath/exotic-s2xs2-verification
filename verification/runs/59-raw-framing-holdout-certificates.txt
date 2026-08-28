@@ -1,0 +1,95 @@
+Run 59: thirteen framing-scan holdouts certified from raw presentations
+=======================================================================
+
+Scope and relation to Run 58
+----------------------------
+
+The original Run 45 pipeline simplified each filled group before invoking
+Knuth--Bendix.  A parallel Claude/Fable investigation (public-repository Run
+58) discovered that one holdout completes from its unsimplified
+4-generator/97-relator presentation even though its simplified presentation
+does not.  This run independently reproduced that exact case, applied the
+strategy to all 18 holdouts in both raw relator orders, and compiled every
+successful completion to a derivation-DAG certificate.  The number 59 is
+intentional: it avoids colliding with that already-committed Run 58.
+
+Independent reproduction of Run 58
+----------------------------------
+
+For n1_y2_ap1_bm1_jap2_jbp0, the generated scan program, input rewriting
+system, and confluent rewriting system are byte-for-byte identical across the
+two repositories.  The RWS SHA-256 values are:
+
+  input       710852f8c12c3c9e6a8c294731089fb2d8d504a44e678a3c179418ea8a66f2d5
+  confluent   8c660f38501be3119cfac62d1e4347de244ce219884561d96b47bf5e85e25fe2
+
+Raw-completion sweep
+--------------------
+
+At default KBMAG limits, the fill-then-base raw ordering certified 12 of the
+18 holdouts.  Retrying the six survivors in base-then-fill order certified one
+more.  In every successful case the system is confluent and every one of the
+four original generators reduces to the identity.
+
+Certificate records (all Python- and Ruby-verified):
+
+  n0_y1_am1_bp1_jam2_jbp0       975
+  n0_y1_ap1_bm1_jap2_jbp0       759
+  n0_y1_ap1_bp1_jap1_jbp0      1367
+  n0_y1_ap1_bp1_jap2_jbp0       976
+  n1_y2_am1_bm1_jam1_jbm1      2421
+  n1_y2_am1_bm1_jam2_jbp0       756
+  n1_y2_am1_bp1_jam1_jbp0      1398  (base-then-fill)
+  n1_y2_am1_bp1_jam1_jbp1      2062
+  n1_y2_am1_bp1_jam2_jbp0       824
+  n1_y2_ap1_bm1_jap1_jbp0      1010
+  n1_y2_ap1_bm1_jap2_jbp0       759  (Run 58 reproduction)
+  n1_y2_ap1_bp1_jap1_jbp0      1843
+  n1_y2_ap1_bp1_jap2_jbp0       823  (independent random selection)
+
+Total: 15,973 proof records.  Each certificate is input-bound by SHA-256 to
+its exact 97-relator presentation.  The Python verifier and the independently
+implemented Ruby verifier both replay every derivation and identity root.  The
+Ruby CLI now accepts --input and --expected-count while retaining its original
+eight-certificate defaults; this removes Run 58's need to repeat a single
+certificate path eight times against a temporary root.
+
+Remaining cases
+---------------
+
+Five cases remain inconclusive at the tested default raw bounds and in both
+raw relator orders:
+
+  n0_y1_am1_bm1_jam1_jbm1      signs (-,-), shift (-1,-1)
+  n0_y1_ap1_bm1_jap1_jbm1      signs (+,-), shift (+1,-1)
+  n0_y1_ap1_bp1_jap1_jbp1      signs (+,+), shift (+1,+1)
+  n1_y2_ap1_bm1_jap1_jbm1      signs (+,-), shift (+1,-1)
+  n1_y2_ap1_bp1_jap1_jbp1      signs (+,+), shift (+1,+1)
+
+All five have the aligned magnitude-one diagonal shift
+(j_a,j_b)=(sign_a,sign_b), although other cases with that pattern have been
+certified, so this is a search clue rather than a group-theoretic conclusion.
+No nontriviality witness is known for any of the five.
+
+Consequence
+-----------
+
+The current certified robustness tally is 95/100 trivial and 5/100
+inconclusive, with no nontriviality witness.  This supersedes the current-tally
+use of Run 45's frozen 82/18 table.  These are all auxiliary counterfactual
+framing shifts; the paper's eight j=0 groups were already certified and are
+unchanged.
+
+Artifacts
+---------
+
+  luttinger/raw_j_completion.py
+  luttinger/certify_raw_j_completions.py
+  luttinger/raw_j_certificate_results.json
+  luttinger/raw_j_certificates/
+  luttinger/raw_j_certificates_base/
+  luttinger/verify_certificates.rb
+
+The large kbprog .history streams are regenerable and intentionally omitted;
+the compact .json.gz certificates are the independently replayable proof
+objects.

@@ -1,0 +1,77 @@
+Run 62: the ninety-ninth framing case is certified trivial
+===========================================================
+
+Power-state correction
+----------------------
+
+Earlier wall-clock durations spanning host suspension or shutdown are not
+meaningful compute-time measurements. This run uses only completed process
+outcomes and replayable certificates. A suspended or interrupted search is
+not counted as evidence in either direction.
+
+Certified case
+--------------
+
+  n1_y2_ap1_bp1_jap1_jbp1
+  half drift: n1_y2
+  surgery signs: (+1,+1)
+  counterfactual framing shift: (j_a,j_b)=(+1,+1)
+
+A fresh fill-then-base shortlex attempt with `maxeqns=300000` and
+`tidyint=100` terminated nonconfluently. A parallel fresh attempt on the
+same unchanged 97-relator presentation with `maxeqns=300000` and
+`tidyint=500` completed confluently, and all four original generators reduced
+to the identity. The change in tidying interval is the only mathematical
+input difference; it illustrates the documented parameter sensitivity of
+Knuth--Bendix completion.
+
+The exact winning parameters were serialized into
+
+  luttinger/raw_j_certificates/
+    n1_y2_ap1_bp1_jap1_jbp1_tidy500_input.rws
+
+The proof-producing KBMAG executable generated a 270 MB ancestry stream.
+The compiler reduced it, with zero fallback searches, to
+
+  n1_y2_ap1_bp1_jap1_jbp1_tidy500.json.gz
+  1,863 proof records
+
+Independent replay:
+
+  Python: VERIFIED TRIVIAL 1863 proof records
+  Ruby:   ALL RUBY FILLED-GROUP CHECKS PASSED: 1863 DAG records
+
+Both verifiers begin from the SHA-256-bound 97-relator presentation, replay
+every retained free-group derivation, and check identity roots for all four
+generators. The KBMAG console result and its parameter sensitivity are not
+part of the final trust boundary.
+
+The sole remaining case
+-----------------------
+
+Only the matching n0_y1 case remains inconclusive:
+
+  n0_y1_ap1_bp1_jap1_jbp1
+  signs (+1,+1), shift (+1,+1)
+
+A fresh uninterrupted ladder completed all four branches without obtaining
+confluence:
+
+  base-then-fill  shortlex   maxeqns=300000
+  fill-then-base  recursive  maxeqns=300000
+  base-then-fill  recursive  maxeqns=300000
+  fill-then-base  shortlex   maxeqns=700000
+
+These are completed negative search outcomes, not proofs of nontriviality.
+No nontriviality witness is known. The current certified robustness tally is
+therefore 99/100 trivial, 1/100 inconclusive, and zero nontrivial.
+
+As throughout the scan, the remaining case is an auxiliary counterfactual
+framing shift. It does not gate the paper's j=0 fundamental-group proof.
+
+Artifact policy
+---------------
+
+The 270 MB ancestry stream and kbprog sidecars are reproducible from the
+committed winning input and intentionally omitted. The compact `.json.gz`
+file is the replayable proof object.

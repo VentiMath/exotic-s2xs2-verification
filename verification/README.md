@@ -1,6 +1,6 @@
 # luttinger — combinatorial π₁ of torus complements and Luttinger surgeries
 
-Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
+Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
 
 * **Engine (working, calibrated):** triangulated 4-manifold `K` + full
   2-dimensional torus subcomplex `T` → presentation of π₁(K − T), based
@@ -79,6 +79,13 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
   language runtime, or group implementation with the Python checker and
   independently accepts all 14,115 records. Four deliberate corruptions are
   rejected at the relevant trust boundaries.
+* **Framing robustness scan closed:** Runs 59--62 certify 17 of the 18
+  cases left open by the original 100-case scan. Run 63 resolves the final
+  `n0_y1` aligned positive-diagonal case through its 96-relator common core
+  with the neighboring `n1_y2` case. The core is infinite cyclic and the
+  remaining filling relator kills its generator. Independent Python and Ruby
+  replay of the retained 4,040-record ancestry DAG gives the final auxiliary
+  tally: **100/100 certified trivial, 0 inconclusive, 0 nontrivial**.
 * **Downstream implications audited:** conditional on the certified
   simple-connectivity result, the covering, intersection-form, Freedman,
   Kodaira-dimension, slicing, and reglued Heegaard Floer arguments have the
@@ -109,6 +116,7 @@ Status (updated 2026-08-27; see the root `STATUS.md` for the precise caveats):
 | `proof_certificates/` | eight compressed derivation DAGs and a SHA-256 manifest for the original presentations |
 | `verify_kbmag_certificate.py` | independent checker; does not import or run KBMAG |
 | `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs |
+| `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `paper_bridge.py` | explicit p-whiskered octagon generators, based open-stack monodromy, and drilled-fiber R3 certificates |
 | `peripheral_bridge.py` | exact torus-slope permutation and opposite-side alpha basing checks |
 | `independent_peripheral_extractor.py` | separate derived-frontier, meridian, product-push-off, and literal-whisker extractor; imports none of the original peripheral machinery |

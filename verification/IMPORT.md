@@ -1,15 +1,20 @@
 # Import provenance
 
 This directory is a curated import of the working verification repository at
-its commit `a9b6cb8` ("Add an independent Ruby proof verifier",
-2026-08-27), superseding the earlier `1bc4caf` and `58b4fa8` imports.
-Replaying the second checker (`luttinger/verify_certificates.rb`, run 57)
-needs only a stock Ruby 3 interpreter. Everything here — the engine under
+its commit `3c01e24` ("Clarify the 100-case framing-scan count",
+2026-08-28), superseding the earlier `1bc4caf`, `58b4fa8`, and `a9b6cb8`
+imports. Replaying the second checker (`luttinger/verify_certificates.rb`,
+run 57) and the case-100 transfer verifier
+(`luttinger/case100_transfer/verify_transfer_certificate.rb`, run 63) needs
+only a stock Ruby 3 interpreter. Everything here — the engine under
 `luttinger/`, the certificates, the run transcripts under `runs/`, the
 referee-packet notes under `notes/`, and the provenance ledger — is the
 committed state of that repository, imported without modification except for
-the removals listed below. Relative paths referenced by `STATUS.md`, the
-notes, and the run transcripts resolve within this directory.
+the removals listed below and the lint pass recorded in this repository's
+own history. Relative paths referenced by `STATUS.md`, the notes, and the
+run transcripts resolve within this directory. Run 58 and its
+`luttinger/j_certificates/` artifacts originate in this repository rather
+than the working one; runs 59–63 independently reproduce and extend them.
 
 ## Removed from the import
 
@@ -21,9 +26,19 @@ notes, and the run transcripts resolve within this directory.
   `ea1fc13d1f641678a228a8c7fdf8cce18da350a4` (2026-08-17). Where our runs
   invoked those scripts, the transcripts record the invocation and output.
 * `luttinger.tar.gz` — the inherited starting tarball (contains the above).
-* Two files under `notes/` recording private correspondence drafts and
-  user-relayed community reactions. They contain no mathematics; the
-  provenance ledger's references to them describe what they were.
+* Three files under `notes/` recording private correspondence drafts,
+  user-relayed community reactions, and a work-packet handoff for an
+  unrelated formalization project. They contain no mathematics of this
+  verification; the provenance ledger's references to them describe what
+  they were.
+* `academy-curriculum/` — teaching material derived from the verification
+  for VentiMath's academy, not part of the verification itself.
+* `luttinger/hello.g`, `luttinger/pkgtest.g`, `luttinger/bk_out.txt` —
+  environment smoke tests and a scratch transcript.
+* The large KBMAG ancestry `.history` streams and `kbprog` sidecars behind
+  the run 59–63 certificates — reproducible build products (the working
+  repository ignores them too); the compact `.json.gz` certificates and their
+  exact input rewriting systems ship.
 
 `luttinger/paper_data.md` ships: a per-line review (2026-08-27) confirmed
 every line is mathematical construction data in our own notation with
