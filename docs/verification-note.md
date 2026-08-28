@@ -8,11 +8,17 @@ AI assistance disclosed in the provenance section.*
 
 Claimed constructions of small exotic 4-manifolds have historically failed in
 one place: the fundamental-group computation. Wuebben (arXiv:2608.17267),
-building on Lidman–Piccirillo (arXiv:2505.14387), constructs a candidate
-exotic S²×S² and a candidate exotic ℂP²#C̄P² by Luttinger surgery on a
-non-product genus-2 surface bundle over a genus-2 surface, and the proof's
-critical step is the triviality of eight fundamental groups obtained by
-filling the surgered complement.
+building on Lidman–Piccirillo (arXiv:2505.14387), proves that a specified
+Lidman–Piccirillo piece V — a symplectic 4-manifold with the homology of
+S²×D², built from a non-product genus-2 surface bundle over a once-punctured
+torus by two Luttinger surgeries — is simply connected; the symplectic double
+of V is then an exotic S²×S², and Lidman–Piccirillo regluing yields an exotic
+ℂP²#C̄P². The proof's critical step is the triviality of the filled
+fundamental groups for the paper's permitted surgery parametrizations: the
+four sign choices of the double surgery in the paper's principal coordinate
+system are the theorem-critical family, and four adjacent half-drift
+presentations of the same fillings serve as re-indexing checks with no
+independent logical load.
 
 This note reports a verification of that step that is independent of the
 paper's coordinates, software, and author: the bundle is rebuilt as a
