@@ -7,8 +7,8 @@ authoritative text and carries the numbered theorems. Author: John Clyde
 ## 1. Introduction
 
 Claimed constructions of small exotic 4-manifolds have historically failed in
-one place: the fundamental-group computation. Wuebben (arXiv:2608.17267),
-building on Lidman–Piccirillo (arXiv:2505.14387), proves that a specified
+one place: the fundamental-group computation. Wuebben (arXiv:2608.17267v1),
+building on Lidman–Piccirillo (arXiv:2505.14387v1), proves that a specified
 Lidman–Piccirillo piece V — a symplectic 4-manifold with the homology of
 S²×D², built from a non-product genus-2 surface bundle over a once-punctured
 torus by two Luttinger surgeries — is simply connected, and deduces three
@@ -309,8 +309,11 @@ this note depends on trusting a model.
 
 ## 10. Data availability
 
-All code, certificates, run logs, and the provenance ledger:
+The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
+`16a6cef4998699f76ee508e062f8192cf80eeb478b7e077bfa35ccc25350186a`;
+`TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
+certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5 (the paper's Data Availability section records the
+tagged release v1.5.1 (the paper's Data Availability section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.

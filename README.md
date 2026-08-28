@@ -2,13 +2,14 @@
 
 This repository documents an independent, machine-driven verification of
 
-> B. J. Wuebben, *An exotic S²×S² and an exotic ℂP²#C̄P²*, arXiv:2608.17267,
+> B. J. Wuebben, *An exotic S²×S² and an exotic ℂP²#C̄P²*, arXiv:2608.17267v1,
 
-which builds on Lidman–Piccirillo, arXiv:2505.14387. The author's own code and
+which builds on Lidman–Piccirillo, arXiv:2505.14387v1. The author's own code and
 certificates are at [bwuebben/exotic-s2xs2](https://github.com/bwuebben/exotic-s2xs2);
 nothing here is derived from that repository except where explicitly cited.
 This project rebuilt the geometry from scratch and checked the paper against
-the rebuild.
+the rebuild. The immutable target versions and their SHA-256 digests are
+recorded in [`TARGET.md`](TARGET.md).
 
 **What this repository is:** a verification, by people and machines who are
 not the paper's author, of the paper's three theorems: the historically most
@@ -186,6 +187,7 @@ asserted computation ships with a replayable artifact.
 
 * `docs/verification-note.md` — the verification note.
 * `paper/` — the LaTeX source of the arXiv verification note.
+* `TARGET.md` — immutable target-paper versions and SHA-256 digests.
 * `verification/` — the working repository at its imported commit: the engine
   and certificates under `verification/luttinger/` (derivation-DAG
   certificates in `proof_certificates/`, rewriting systems in `direct_rws/`
@@ -203,5 +205,6 @@ John Clyde — verification@ventimath.org — [VentiMath](https://ventimath.org)
 
 ## License
 
-MIT for everything in this repository. The paper and its contents are
-copyright B. J. Wuebben; this repository does not redistribute them.
+Everything authored for this repository, including the verification note, is
+licensed under the MIT License. Wuebben's target paper remains copyright its
+author and is linked, not redistributed.
