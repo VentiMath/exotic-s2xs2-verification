@@ -270,7 +270,7 @@ check("the total space core is a single connected cycle (connected cover)",
       len(set(core)) == k)
 
 print()
-print("subgroup criterion: pi1 is carried by the cores (both collapses");
+print("subgroup criterion: pi1 is carried by the cores (both collapses")
 print("above), pi_* [c] = [c-bar]^2, so pi_*(pi1(A_c)) is the index-two")
 print("subgroup; a map fixing c-bar pointwise fixes [c-bar] and therefore")
 print("preserves that subgroup. Only the continuous lifting principle")

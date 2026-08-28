@@ -20,7 +20,6 @@ from complement import TorusComplement
 from bundle import build_bundle, check_bundle
 from fast_tietze import (simplify, renumber, save_certificate,
                          verify_certificate)
-from fiber import K_BAND
 from pi1 import Presentation, free_reduce, inverse
 from paper_bridge import build_paper_loops
 from sweep import (certify_grid_sweep, grid_intersection_sign,

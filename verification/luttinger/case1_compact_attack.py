@@ -19,7 +19,7 @@ import random
 
 from fast_tietze import cyclic_reduce, renumber, verify_certificate
 from pi1 import inverse
-from presentation_search import attack, nielsen_image, nielsen_search, rotations
+from presentation_search import attack, nielsen_image, nielsen_search
 
 
 RELATORS = [

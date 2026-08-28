@@ -278,7 +278,6 @@ if __name__ == '__main__':
     # regression against the calibrated slow version on the T^4 case
     from complex import grid_torus, product
     from complement import TorusComplement
-    import tietze as slow
 
     n = 3
     S, B = grid_torus(n), grid_torus(n)
