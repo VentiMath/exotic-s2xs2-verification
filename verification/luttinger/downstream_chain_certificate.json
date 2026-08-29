@@ -5,7 +5,7 @@
     "S16_theorem_C"
   ],
   "evidence_sha256": {
-    "luttinger/proof_certificates/manifest.json": "c79ab0fe97049a7e437f540b274d6425d0bfae2d5a53753e2c349c5351f92da5",
+    "luttinger/proof_certificates/manifest.json": "0c9993613e8b2099e7da0b15369ec0b7c9c575bf28ce751a4e72dc60e66a6fb2",
     "luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
     "notes/downstream_theorem_audit_2026-08-23.md": "e4fe2e26f96d2f643ea0e778ab7fb310935f2dcd8aee72870911028a7511f2af",
     "notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",

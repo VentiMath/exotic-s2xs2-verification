@@ -1,0 +1,116 @@
+Run 65: batch inventory checks in the filled-group checkers and the manifest
+=============================================================================
+Date: 2026-08-29
+
+Scope
+-----
+
+Before this run, each filled-group checker validated every certificate it
+was given individually — format, input digest, case index and slug against
+the hash-bound presentation, every derivation record, every identity root —
+but neither driver made any batch-level assertion.  Supplying one valid
+certificate eight times satisfied both drivers (the Ruby driver's
+--expected-count only counts files).  The released certificates were and are
+correct — eight distinct files covering case indices 0..7 — but the paper's
+statement that a replay verifies exactly the four n=0 sign pairs and the
+four n=1 controls relied on the manifest's file list, not on anything the
+drivers checked.  An external reviewer demonstrated the duplicated-batch
+acceptance on 2026-08-29.  This run closes it.
+
+Changes
+-------
+
+verify_kbmag_certificate.py
+  * Per-certificate verification is now verify_certificate(); main() collects
+    (path, case index, slug) for the batch and calls check_inventory().
+  * check_inventory() always rejects a batch that verifies any case index or
+    slug twice.  With --full-inventory it further requires: indices exactly
+    0..len(paper_fillings)-1; each file named <slug>.json.gz; source with 4
+    generators, 95 complement relators, 8 fillings, 2 filling relators per
+    case; and the batch's slugs equal to the input's filling inventory.
+  * --negative-controls proves that a duplicated batch and a corrupted
+    identity root are rejected.
+
+verify_certificates.rb
+  * Same check_inventory, same rules.  --[no-]full-inventory; on by default
+    when no certificate paths and no --input are given (the documented
+    eight-certificate invocation), off for the single-certificate
+    --input/--expected-count 1 replays of runs 59-62.
+  * --negative-controls gains a fourth control: a duplicated batch is
+    rejected.
+
+make_proof_manifest.py
+  * check_inventory() refuses to write or --check a manifest unless
+    proof_certificates/ holds exactly one file per filling of
+    r_presentations.json, named by its case slug.
+
+Because the manifest hashes both checkers, proof_certificates/manifest.json
+is regenerated (24 files; the eight certificates and every other hashed
+file are byte-identical to v1.5).  Because the downstream chain binds the
+manifest as evidence, downstream_chain_certificate.json is regenerated; its
+mathematical content (25 external, 3 certificate, 15 computed, 16 step
+items) is unchanged.
+
+Commands and output
+-------------------
+
+  cd luttinger
+  python3 verify_kbmag_certificate.py --full-inventory --negative-controls proof_certificates/*.json.gz
+    proof_certificates/n0_y1_m1_m1.json.gz VERIFIED TRIVIAL 1123 proof records
+    ... (eight VERIFIED TRIVIAL lines)
+    INVENTORY OK: 8 distinct certificates, one per filling, named by slug
+    REJECTED DUPLICATED CERTIFICATE BATCH
+    REJECTED DELIBERATELY CORRUPTED IDENTITY ROOT
+  f=proof_certificates/n0_y1_m1_m1.json.gz
+  python3 verify_kbmag_certificate.py $f $f                       -> exit 1
+    VerificationError: duplicate certificate case in the batch
+  python3 verify_kbmag_certificate.py --full-inventory proof_certificates/n0_*.json.gz  -> exit 1
+    VerificationError: batch does not cover every filling exactly once
+  python3 verify_kbmag_certificate.py --input raw_j_certificates/n0_y1_ap1_bm1_jap1_jbm1_presentation.json \
+      raw_j_certificates/n0_y1_ap1_bm1_jap1_jbm1_focus.json.gz
+    raw_j_certificates/n0_y1_ap1_bm1_jap1_jbm1_focus.json.gz VERIFIED TRIVIAL 1636 proof records
+
+  ruby verify_certificates.rb --negative-controls
+    VERIFIED FILLED GROUP n0_y1_m1_m1.json.gz (1123 records)
+    ... (eight lines)
+    INVENTORY OK: 8 distinct certificates, one per filling, named by slug
+    REJECTED DELIBERATELY CORRUPTED IDENTITY ROOT
+    REJECTED DELIBERATELY CORRUPTED INPUT-RELATOR EQUATION
+    REJECTED DELIBERATELY CORRUPTED REWRITE TRACE
+    REJECTED DUPLICATED CERTIFICATE BATCH
+    REJECTED WRONG PRESENTATION DIGEST
+    ALL RUBY FILLED-GROUP CHECKS PASSED: 14115 DAG records
+  ruby verify_certificates.rb --expected-count 8 $f $f $f $f $f $f $f $f   -> exit 1
+    VERIFICATION FAILED: duplicate certificate case in the batch
+  ruby verify_certificates.rb --expected-count 4 --full-inventory proof_certificates/n0_*.json.gz  -> exit 1
+    VERIFICATION FAILED: batch does not cover every filling exactly once
+  ruby verify_certificates.rb --root . --input raw_j_certificates/n0_y1_ap1_bm1_jap1_jbm1_presentation.json \
+      --expected-count 1 raw_j_certificates/n0_y1_ap1_bm1_jap1_jbm1_focus.json.gz
+    ALL RUBY FILLED-GROUP CHECKS PASSED: 1636 DAG records
+
+  python3 make_proof_manifest.py
+    proof_certificates/manifest.json 24 hashed files
+  python3 make_proof_manifest.py --check
+    PASS: proof_certificates/manifest.json 24 hashes match; 8 certificates, one per filling
+  python3 downstream_chain.py && python3 downstream_chain.py --check
+    PASS: downstream proof chain replays (certificate=3, computed=15, external=25, step=16); 15 evidence digests match
+  ruby verify_downstream_chain.rb
+    ALL RUBY DOWNSTREAM-CHAIN CHECKS PASSED: certificate=3, computed=15, external=25, step=16; 15 computed facts replayed; 15 evidence digests verified
+  python3 proof_ledger.py
+    PASS: proof ledger is closed, acyclic, and all evidence files exist
+    nodes: derived_claim=18, external_theorem=33, geometric_argument=11, machine_certificate=32
+    bound evidence files: 45
+
+Digests after this run
+----------------------
+
+  proof_certificates/manifest.json      0c9993613e8b2099e7da0b15369ec0b7c9c575bf28ce751a4e72dc60e66a6fb2
+  downstream_chain_certificate.json     ef2c5cd7c4824771236dab4df56ae57017c108d9e689432325600319388d5cb0
+
+Trust boundary after this run
+-----------------------------
+
+Unchanged in substance.  What a successful replay of the documented commands
+establishes is now exactly what the paper says: the eight certificates are
+distinct, cover the input's eight fillings exactly once, are named by their
+case slugs, and each verifies its filled presentation trivial.

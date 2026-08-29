@@ -210,8 +210,33 @@ options = {
   root: File.expand_path(__dir__),
   input: nil,
   expected_count: 8,
+  full_inventory: nil,
   negative_controls: false
 }
+
+# Batch-level coverage.  Duplicates are never legitimate; with full inventory
+# the batch must be exactly the input's eight fillings, one file per case slug,
+# and the source must have the shape the paper states.
+def check_inventory(entries, source, full_inventory)
+  indices = entries.map { |e| e[:index] }
+  demand(indices.uniq.length == indices.length, "duplicate certificate case in the batch")
+  slugs = entries.map { |e| e[:slug] }
+  demand(slugs.uniq.length == slugs.length, "duplicate case slug in the batch")
+  return unless full_inventory
+  fillings = source.fetch("paper_fillings")
+  demand(indices.sort == (0...fillings.length).to_a,
+         "batch does not cover every filling exactly once")
+  entries.each do |e|
+    demand(File.basename(e[:path]) == "#{e[:slug]}.json.gz",
+           "certificate file #{File.basename(e[:path])} is not named by its case slug #{e[:slug]}")
+  end
+  demand(source.fetch("ngens") == 4, "expected 4 generators")
+  demand(source.fetch("relators").length == 95, "expected 95 complement relators")
+  demand(fillings.length == 8, "expected 8 fillings")
+  demand(fillings.all? { |f| f.fetch("relators").length == 2 }, "expected 2 filling relators per case")
+  demand(fillings.map { |f| case_slug(f) }.sort == slugs.sort,
+         "batch slugs do not match the input's filling inventory")
+end
 OptionParser.new do |parser|
   parser.banner = "Usage: ruby verify_certificates.rb [options] [filled-proof.json.gz ...]"
   parser.on("--root DIR", "directory containing r_presentations.json and proof artifacts") do |value|
@@ -224,10 +249,16 @@ OptionParser.new do |parser|
             "required certificate count (defaults to 8)") do |value|
     options[:expected_count] = value
   end
-  parser.on("--negative-controls", "also prove that two deliberate corruptions are rejected") do
+  parser.on("--[no-]full-inventory",
+            "require the batch to be exactly the input's eight fillings, one file per " \
+            "case slug (default: on when no paths and no --input are given)") do |value|
+    options[:full_inventory] = value
+  end
+  parser.on("--negative-controls", "also prove that deliberate corruptions are rejected") do
     options[:negative_controls] = true
   end
 end.parse!
+options[:full_inventory] = (ARGV.empty? && options[:input].nil?) if options[:full_inventory].nil?
 
 begin
   root = options[:root]
@@ -244,10 +275,17 @@ begin
   demand(proof_paths.length == options[:expected_count],
          "expected exactly #{options[:expected_count]} filled-group certificates")
   total_records = 0
+  entries = []
   proof_paths.each do |path|
     count = verify_filled_certificate(path, source, source_digest)
     total_records += count
+    header = read_json(path).fetch("case")
+    entries << { path: path, index: header.fetch("index"), slug: header.fetch("slug") }
     puts "VERIFIED FILLED GROUP #{File.basename(path)} (#{count} records)"
+  end
+  check_inventory(entries, source, options[:full_inventory])
+  if options[:full_inventory]
+    puts "INVENTORY OK: #{entries.length} distinct certificates, one per filling, named by slug"
   end
 
   if options[:negative_controls]
@@ -292,6 +330,15 @@ begin
     demand(trace, "negative control could not find a nonempty rewrite trace")
     trace.first[1] += 1
     reject_mutation.call("rewrite trace", bad_trace)
+
+    begin
+      check_inventory([entries.first] * proof_paths.length, source, options[:full_inventory])
+      raise VerificationError, "duplicated certificate batch was accepted"
+    rescue VerificationError => error
+      demand(error.message != "duplicated certificate batch was accepted",
+             "duplicated certificate batch was accepted")
+      puts "REJECTED DUPLICATED CERTIFICATE BATCH"
+    end
 
     begin
       verify_filled_certificate(proof_paths.first, source, "0" * 64)

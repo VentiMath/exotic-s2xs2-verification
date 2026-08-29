@@ -51,7 +51,7 @@ Status (updated 2026-08-28; see `../STATUS.md` for the precise caveats):
   with the neighboring `n1_y2` presentation. The common core is infinite
   cyclic and the case-100 filling relator kills its generator. Independent
   Python and Ruby replay of the retained 4,040-record ancestry DAG gives the
-  final tally: **100/100 certified trivial, 0 inconclusive, 0 nontrivial**.
+  final tally: **100/100 reported trivial — 22 certificate-backed, 78 retained GAP-session verdicts — 0 inconclusive, 0 nontrivial**.
   These stress-test hypothetical framing errors and are not inputs to the
   paper's certified `j=0` groups; see `../runs/59`--`../runs/63`.
 
