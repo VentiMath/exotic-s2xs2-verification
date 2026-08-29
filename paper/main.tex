@@ -135,7 +135,7 @@ relators of the $n{=}0$ double surgery with relation-sheet exponents
 $(\epsilon_A,\epsilon_B)$, imposed with the certified based meridians and
 framed longitudes. Each $P_\epsilon$ presents the trivial
 group. The proof is a derivation certificate, contained in release
-\texttt{v1.5.1} of the verification repository, that replays from a fresh
+\texttt{v1.5.2} of the verification repository, that replays from a fresh
 checkout and is accepted by independently implemented Python and Ruby
 checkers.
 \end{theorem}
@@ -263,7 +263,8 @@ identification}\label{sec:peripheral}
 
 Based meridians and product-framing longitudes for both tori are traced
 as literal simplicial loops carrying the paper's own basing whiskers. The
-paper's sign-correction package (its \S7.4 fix) is reproduced
+paper's sign-correction package (the corrected relations of its \S8.3
+and the push-off basing correction of its \S8.5) is reproduced
 independently, and a combinatorial sweep of the relevant transport square
 resolves the basing double-count question in the direction the paper's
 corrected convention requires. Both surgery tori are certified locally
@@ -358,9 +359,11 @@ filled groups; each verifies \textsc{trivial} from a fresh clone of the
 repository.
 \end{center}
 
-Four adjacent $n{=}1$ half-drift presentations of the same fillings ---
-re-indexings that carry no independent logical load --- pass the
-identical certification as an auxiliary check; their certificates sit
+Four adjacent $n{=}1$ half-drift control presentations, obtained by
+replacing $Ax$ with the adjacent minimal representative
+$Ar^{-1}=Ax(rx)^{-1}$ --- Wuebben's $n{=}1$ member --- also pass the
+identical certification. They verify his one-step re-indexing and carry
+no logical load for the fixed $n{=}0$ target; their certificates sit
 beside these in the same manifest.
 
 \section{Certificate verification}\label{sec:certificates}
@@ -552,8 +555,9 @@ signature $0$; and $Z$ is homeomorphic to $S^2\times S^2$.
 \begin{proof}
 $\chi(Z)=2\chi(V)-\chi(S^3_0(Q))=4$ and $\pione(Z)=1$ give $b_2(Z)=2$
 with $H_2(Z)$ torsion-free. $F\cdot F=0$, $F\cdot\Ghat=1$ (a fiber meets
-a section once), and $\Ghat\cdot\Ghat=0$ by the run-28 certificate of
-Section~\ref{sec:peripheral}. The Gram determinant is $-1$ and the form
+a section once), and $\Ghat\cdot\Ghat=0$ by the certified
+self-intersection computation of Section~\ref{sec:peripheral}. The Gram
+determinant is $-1$ and the form
 is unimodular, so the index formula makes $(F,\Ghat)$ a basis and the
 form is $H$. $H$ is even, so $w_2(Z)=0$ by Wu's formula. For even forms
 $\mathrm{KS}\equiv\sigma/8=0$ is determined, so Freedman's classification
@@ -748,9 +752,9 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.1}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.2}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.1}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.2}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
 \begin{center}\small\texttt{a0adbce359f0fbfb29872087afc6eb0fc0c5412b}\end{center}

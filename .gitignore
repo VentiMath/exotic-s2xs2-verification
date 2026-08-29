@@ -1,4 +1,4 @@
 __pycache__/
 *.pyc
 .DS_Store
-paper/arxiv-source-v1.5.1.tar.gz
+paper/arxiv-source-v*.tar.gz

@@ -43,7 +43,8 @@ the paper's coordinates, with proof-producing certificates that replay.
   classification of surface bundles is no longer invoked.
 * **The peripheral data.** Based meridians and longitudes for both surgery
   tori are traced as literal simplicial loops with the paper's own whiskers.
-  The paper's sign-correction package (its §7.4 fix) is reproduced and
+  The paper's sign-correction package (its §8.3 corrected relations and §8.5
+  push-off basing correction) is reproduced and
   certified, and a combinatorial sweep resolves the basing double-count
   question in the direction the paper needs. Both surgery tori are certified
   locally flat at all 1,776 of their simplex links, and the boundary the

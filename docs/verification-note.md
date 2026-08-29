@@ -20,8 +20,11 @@ a simply connected 4-manifold homeomorphic but not diffeomorphic to ℂP²#C̄P�
 The proof's critical step is the triviality of the filled fundamental group
 for the single specified manifold. Wuebben's four relation-sheet sign pairs
 are orientation-convention specializations for that target, not four claimed
-manifolds; all four are certified. Four adjacent half-drift presentations
-serve as re-indexing checks with no independent logical load.
+manifolds; all four are certified. Four adjacent n=1 half-drift control
+presentations — Ax replaced by the adjacent minimal representative
+Ar⁻¹ = Ax(rx)⁻¹, Wuebben's n=1 member — also pass the identical
+certification; they verify his one-step re-indexing and carry no logical
+load for the fixed n=0 target.
 
 This note reports a verification of the whole argument. The simple
 connectivity is verified independently of the paper's coordinates, software,
@@ -326,6 +329,6 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5.1 (the paper's Data Availability section records the
+tagged release v1.5.2 (the paper's Data Availability section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.
