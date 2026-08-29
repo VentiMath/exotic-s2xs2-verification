@@ -184,7 +184,7 @@ nontrivial group; the scan bears on the j=0 proof only if the independent
 framing argument first fails.
 
 The accurate one-sentence status: **the three theorems are verified relative
-to explicitly named standard theorems, with no known project-specific gap.**
+to explicitly named external results, with no known project-specific gap.**
 That is a statement about verification depth, not a substitute for review by
 symplectic and 4-manifold topologists — which this repository is built to
 make cheap.

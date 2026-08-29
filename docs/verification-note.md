@@ -44,7 +44,7 @@ is executed and replayed by two checkers, and the chain ends in the three
 theorems.
 
 The conclusion, stated carefully: the three theorems are verified relative
-to explicitly named standard theorems, with no known project-specific gap.
+to explicitly named external results, with no known project-specific gap.
 Section 8 lists the named theorems; none of them is project-specific, and
 each is applied with hypotheses that are discharged mechanically. The
 theorems are Wuebben's; this note claims only the verification.
@@ -329,6 +329,6 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5.2 (the paper's Data Availability section records the
+tagged release v1.5.3 (the paper's Data Availability section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.

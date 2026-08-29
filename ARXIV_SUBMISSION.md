@@ -1,17 +1,17 @@
 # arXiv submission packet
 
-This packet fixes the metadata for the v1.5.2 manuscript and prevents the
+This packet fixes the metadata for the v1.5.3 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v1.5.2 tag, run
+- From a clean checkout of the v1.5.3 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v1.5.2.tar.gz` as the v1.5.2 GitHub release asset
+- Upload `paper/arxiv-source-v1.5.3.tar.gz` as the v1.5.3 GitHub release asset
   and to arXiv.
-- SHA-256: `babd3a23b951750aa639c8ea0b03215a23292ad5fe7d8e69fe15762b10228416`.
+- SHA-256: `4cc4bcae85b3cd54b9c8897ffbb923a5f1cf9da347cb92711e78118366e5ee85`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
@@ -37,13 +37,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo (arXiv:2505.14387v1), proves that a specified symplectic 4-manifold $V$ with the homology of $S^2 \times D^2$ is simply connected and deduces three theorems, including an exotic $S^2 \times S^2$. We give a certificate-based verification of the theorem-critical fundamental-group and framing steps and a machine-replayed audit of the downstream argument. Starting from the paper's marked-fiber data, we independently rebuild the bundle, extract the surgery tori and based peripheral curves, and compare the resulting relations, sign tables, and filling words with the paper; every compared item agrees. The four convention-specialized relator sheets containing the paper's single fixed filling are proved trivial by complete confluent rewriting, with derivation certificates accepted by independently implemented Python and Ruby checkers. Exact-rational Python programs verify the displayed calculus of the framing lemma and finite scripts check its stated combinatorial hypotheses. Finally, an explicit dependency chain states twenty-five external theorems with their hypotheses and discharges each hypothesis by a named certificate, computation, or earlier step. Thus the three theorems are verified relative to explicitly named standard results, with no known project-specific gap. The theorems are Wuebben's; this note claims only the verification.
+Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo (arXiv:2505.14387v1), proves that a specified symplectic 4-manifold $V$ with the homology of $S^2 \times D^2$ is simply connected and deduces three theorems, including an exotic $S^2 \times S^2$. We give a certificate-based verification of the theorem-critical fundamental-group and framing steps and a machine-replayed audit of the downstream argument. Starting from the paper's marked-fiber data, we independently rebuild the bundle, extract the surgery tori and based peripheral curves, and compare the resulting relations, sign tables, and filling words with the paper; every compared item agrees. The four convention-specialized relator sheets containing the paper's single fixed filling are proved trivial by complete confluent rewriting, with derivation certificates accepted by independently implemented Python and Ruby checkers. Exact-rational Python programs verify the displayed calculus of the framing lemma and finite scripts check its stated combinatorial hypotheses. Finally, an explicit dependency chain states twenty-five external theorems with their hypotheses and discharges each hypothesis by a named certificate, computation, or earlier step. Thus the three theorems are verified relative to explicitly named external results, with no known project-specific gap. The theorems are Wuebben's; this note claims only the verification.
 ```
 
 **Comments**
 
 ```text
-12 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.2 . Verifies arXiv:2608.17267v1 relative to explicitly named standard results.
+13 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.3 . Verifies arXiv:2608.17267v1 relative to explicitly named external results.
 ```
 
 **Classification**
@@ -62,7 +62,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 12 pages, no missing references, and the
+3. Confirm the generated PDF has 13 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.
