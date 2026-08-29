@@ -57,14 +57,15 @@ the paper's coordinates, with proof-producing certificates that replay.
   complement presentation with the certified peripheral pairs proves all
   four sheets, and four adjacent half-drift controls, trivial by complete
   confluent rewriting. KBMAG is used only as an untrusted certificate
-  generator: a Python checker produced by OpenAI Codex verifies every axiom,
-  overlap, rewrite trace, and final generator-to-identity rule in the
-  exported derivation DAGs, and a Ruby checker produced separately by
-  Anthropic Claude Fable 5 re-verifies all 14,115 retained records without
-  importing the Python implementation. They are implementation-independent,
-  not asserted to be statistically uncorrelated, and no independent human
-  line-by-line checker audit is claimed. All artifacts are hash-bound and
-  replay.
+  generator: separate Python and Ruby checkers produced by OpenAI Codex
+  (GPT-5 family) verify every axiom, overlap, rewrite trace, and final
+  generator-to-identity rule in the exported derivation DAGs. They share no
+  implementation code but do share the certificate specification and model
+  family: independence here means implementation independence, not cross-model
+  authorship or statistically uncorrelated errors. A Claude Fable 5 session
+  independently reconstructed and replayed the Run 63 common-core computation;
+  it did not author either checker. No independent human line-by-line checker
+  audit is claimed. All artifacts are hash-bound and replay.
 * **Redundant second routes.** A translation mistake would have to survive
   several structurally different implementations: an independent peripheral
   extractor, an alternative bundle triangulation, the second based-monodromy
@@ -118,8 +119,10 @@ the paper's coordinates, with proof-producing certificates that replay.
   facts (Euler characteristics and Betti numbers, the hyperbolic and odd
   intersection-form bases, cover genera, adjunction, Arf(4₁)=1 two ways,
   the instantiated Klug formula, the Hambleton–Kreck invariant tuple), and
-  16 deduction steps ending in Theorems A, B, and C. A Ruby checker written
-  independently re-derives every computed fact from scratch, checks the
+  16 deduction steps ending in Theorems A, B, and C. Both the Python chain
+  builder and the separately implemented Ruby checker were produced by Claude
+  Fable 5; this is implementation independence, not cross-model authorship.
+  The Ruby checker re-derives every computed fact from scratch, checks the
   graph is acyclic and that each theorem depends on the certified
   π₁(V)=1, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external

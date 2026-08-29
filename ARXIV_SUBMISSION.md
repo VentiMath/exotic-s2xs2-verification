@@ -3,10 +3,15 @@
 This packet fixes the metadata for the v1.5.1 manuscript and prevents the
 web form from drifting from the rendered paper.
 
-## Upload
+## Build and upload
 
-- Upload `arxiv-source-v1.5.1.tar.gz` from the v1.5.1 GitHub release.
-- SHA-256: `e8934464b1859d54352399dc77cfaef6891498aefc64f86861c32b5602e833c0`.
+- From a clean checkout of the v1.5.1 tag, run
+  `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
+  numeric owner, archive format, and gzip header, so repeated builds from the
+  same `paper/main.tex` are byte-for-byte identical.
+- Upload `paper/arxiv-source-v1.5.1.tar.gz` as the v1.5.1 GitHub release asset
+  and to arXiv.
+- SHA-256: `c25c1e5870fbf0f6c8db55a44b71592569977ba05ad553bc80e2fa8afb5e808c`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and

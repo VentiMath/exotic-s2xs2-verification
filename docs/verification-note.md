@@ -6,7 +6,7 @@ authoritative text and carries the numbered theorems. Author: John Clyde
 
 ## 1. Introduction
 
-For Wuebben's construction the theorem-critical unresolved step is the
+For Wuebben's construction the theorem-critical step is the
 fundamental-group computation. Wuebben (arXiv:2608.17267v1),
 building on Lidman–Piccirillo (arXiv:2505.14387v1), proves that a specified
 Lidman–Piccirillo piece V — a symplectic 4-manifold with the homology of
@@ -30,8 +30,10 @@ marked-fiber data alone, the surgery tori, meridians, and framed longitudes
 are extracted combinatorially, and the resulting filled presentations are
 proved trivial by complete confluent rewriting, with every computation
 emitting a replayable proof certificate checked by independently implemented
-Python and Ruby verifiers; no independent human line-by-line audit of those
-checkers is claimed. The deductions from simple connectivity to the three
+Python and Ruby verifiers. Both verifiers were produced by OpenAI Codex
+(GPT-5 family); independence means separate implementations, not cross-model
+authorship. No independent human line-by-line audit of those checkers is
+claimed. The deductions from simple connectivity to the three
 theorems are then carried through as an explicit dependency chain (§7): twenty-five
 external theorems are stated with their hypotheses, every hypothesis is
 discharged by a named certificate or computation, every finite calculation
@@ -94,8 +96,12 @@ are verified by an independent checker that re-validates every input-relator
 axiom, inverse axiom, critical overlap, rewrite trace, and final
 generator-to-identity rule. A second checker, written independently in Ruby,
 re-verifies all 14,115 retained derivation records without importing the
-Python implementation, the compiler, GAP, or KBMAG; both accept. All
-artifacts are bound by SHA-256 and replay.
+Python implementation, the compiler, GAP, or KBMAG; both accept. Both
+filled-group checkers were produced by OpenAI Codex (GPT-5 family), so
+“independent” means implementation-independent, not cross-model authorship
+or statistically uncorrelated errors. A Claude Fable 5 session independently
+reconstructed and replayed the Run 63 common-core computation but did not
+author either checker. All artifacts are bound by SHA-256 and replay.
 
 ## 5. Redundancy against translation error
 
@@ -215,8 +221,10 @@ repository, bound by SHA-256 (3 items: π₁(V) = 1 through the proof manifest
 and its two checker runs; the section's self-intersection Γ̂·Γ̂ = 0 from
 run 28; the framing identification of runs 35, 43, 46, 47); a computed fact
 executed by the script (15 items); or a deduction step from earlier items
-(16 steps, ending in the three theorems). A Ruby checker written
-independently re-derives every computed fact from scratch, checks that every
+(16 steps, ending in the three theorems). Both the Python chain builder and
+the separately implemented Ruby checker were produced by Claude Fable 5;
+independence here is implementation independence, not cross-model authorship.
+The Ruby checker re-derives every computed fact from scratch, checks that every
 citation resolves and that the graph is acyclic, verifies that each theorem
 depends on the certified π₁(V) = 1, and checks every evidence digest. The
 chain in prose, with the quoted statements and the proofs of the sixteen
