@@ -21,7 +21,8 @@
     "runs/46-direct-equivariant-moser.txt": "8b8d19de4ce9fa8994c50dd4f321dadaf27c89edd2ae0f52564ff0a94725ff0e",
     "runs/47-cumulative-moser-flow.txt": "2867003047d48eb4cc866ae98d3637b2f189d8168eadc2fa7c463db37708956d",
     "runs/57-second-certificate-verifier.txt": "18b12c770dab047c8a4d797b95fee86cee256b34696b01baad8abb496108f84a",
-    "runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89"
+    "runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89",
+    "runs/67-r3-complement-and-lp-disagreement.txt": "106be7052127f8c28b9e6fd88b50202a74e826c56788eac1ca30c1c9a9ed3d83"
   },
   "format": "luttinger-downstream-proof-chain-v1",
   "items": [
@@ -278,6 +279,7 @@
         "luttinger/sealed_transport/r_presentations.json",
         "luttinger/r_presentations.json",
         "runs/66-sealed-tietze-transport.txt",
+        "runs/67-r3-complement-and-lp-disagreement.txt",
         "runs/29-independent-filled-group-certificates.txt",
         "runs/57-second-certificate-verifier.txt",
         "runs/20-direct-peripheral-fillings-trivial.txt",

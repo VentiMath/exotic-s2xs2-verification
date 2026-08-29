@@ -418,6 +418,24 @@ fi;
         tracked = data["tracked_words"]
         A, s = tracked["geom_A"], tracked["geom_s"]
         N, y = tracked["geom_N"], tracked["geom_y"]
+        # Directly test Wuebben's load-bearing drilled-fiber relation R3 in
+        # the independently triangulated two-torus complement.  Earlier runs
+        # checked the same transport in the unpunctured mapping cylinder and
+        # compared only low-index fingerprints for the complement; neither is
+        # an equality test in pi_1(C).  In the paper's coordinates:
+        #
+        #   B (s^-1 r^-1 y x) B^-1 = r^-1 s^-1 x.
+        #
+        # The tracked geom_* loops are all based in the actual complement, so
+        # an identity reduction here would be a direct complement-level
+        # algebraic certificate; a nonempty partial normal form is only
+        # inconclusive unless the system is confluent.
+        x, r, B = (tracked["geom_x"], tracked["geom_r"],
+                   tracked["geom_B"])
+        kappa3 = inv(s) + inv(r) + y + x
+        psi_kappa3 = inv(r) + inv(s) + x
+        selected["table_R3_complement"] = red(
+            B + kappa3 + inv(B) + inv(psi_kappa3))
         # A genuine peripheral meridian/longitude pair lies in one boundary
         # three-torus and therefore commutes.  This is a necessary,
         # basing-sensitive diagnostic for the literal pairs used by the
@@ -511,7 +529,8 @@ for i in [1..Length(names)] do
   else Print("  INCONCLUSIVE\n"); fi;
 od;
 probeNames := ["peripheral_alpha_commutator",
-               "peripheral_beta_commutator"];;
+               "peripheral_beta_commutator",
+               "table_R3_complement"];;
 for p in [2,3,5] do
   attemptP := CALL_WITH_CATCH(EpimorphismPGroup,[H,p,6]);;
   if attemptP[1] <> true then

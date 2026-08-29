@@ -1,0 +1,49 @@
+Run 67: R3 in the actual torus complement and the public LP disagreement
+===========================================================================
+
+Command
+-------
+
+  PYTHONHASHSEED=0 python3 luttinger/r3_complement_audit.py
+
+Checker SHA-256
+--------------
+
+  76e579c182278e29dc0ec402ba5a867f395334f785198612525f823159eefb79
+
+Exact output
+------------
+
+  bundle checks: T = two disjoint closed tori, K 4-manifold near T: OK
+  R3 COMPLEMENT AUDIT
+    kappa3: path length=31, c-hits=0, e-hits=1
+    parallel beta stack: tetrahedra=17664, vertices=2966, T_alpha vertices=0, T_beta vertices=0
+    core beta stack sensitivity: T_beta vertices=264
+    parallel-to-core homotopy at p: shape=[2, 35], T_alpha hits=0, T_beta hits=0
+    based monodromy target: r^-1 s^-1 x
+  ALL R3 COMPLEMENT CHECKS PASSED
+
+Interpretation
+--------------
+
+The old Run 23 equality lives in the beta mapping cylinder. This run embeds
+that entire mapping cylinder at the paper's parallel beta level in the full
+triangulated bundle and proves it is disjoint from both surgery tori. The
+basepoint strip then identifies its parallel beta loop with the whiskered B
+loop. Hence the Run 23 based action supplies R3 inside the actual complement.
+
+The core-level sensitivity control is essential: kappa3 meets e once and the
+core beta stack contains 264 T_beta vertices. Merely sweeping on the core
+would therefore be invalid; the parallel stated in the paper is doing real
+work.
+
+Public-record finding
+---------------------
+
+Wuebben's repository disclosed the contrary Lidman--Piccirillo computation
+at its first visible commit (7ee4f196, 2026-08-06) and still does so at
+82fbf7ef. This project recorded the report on 2026-08-23 but did not carry it
+into the final ledger or manuscript. No public relation sheet or nontriviality
+witness for the contrary computation exists in the inspected repositories or
+LP v1 source. See notes/lp_disagreement_reconciliation_2026-08-29.md.
+

@@ -113,6 +113,14 @@ NODES = {
         "machine_certificate", (),
         "runs/30-independent-peripheral-extractor.txt"),
     "M_R3": ("machine_certificate", (), "runs/23-drilled-fiber-relation.txt"),
+    # Run 67: the run-23 based monodromy identity lives in the unpunctured
+    # beta mapping cylinder.  This node is the missing complement-level
+    # check: the whole mapping cylinder embeds at the paper's parallel beta
+    # level with zero vertices on either surgery torus, and a basepoint grid
+    # identifies its beta loop with the presentation's whiskered B.
+    "M_R3_complement": (
+        "machine_certificate", (),
+        "runs/67-r3-complement-and-lp-disagreement.txt"),
     "M_RWS_replay": ("machine_certificate", (), "runs/21-rewriting-system-export-and-replay.txt"),
     "M_filled_group_derivations": (
         "machine_certificate", (),
@@ -202,7 +210,7 @@ NODES = {
     "C_correct_filled_presentation": (
         "derived_claim",
         ("G_peripheral_identification", "S_unseeded_transport_generation",
-         "M_R3",
+         "M_R3", "M_R3_complement",
          "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
@@ -215,6 +223,7 @@ NODES = {
     "C_correct_sealed_filled_presentation": (
         "derived_claim",
         ("G_peripheral_identification", "M_sealed_tietze_transport", "M_R3",
+         "M_R3_complement",
          "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),

@@ -22,6 +22,11 @@ certificate, `luttinger/verify_downstream_chain.rb`, the extension of
 So does run 65, the batch inventory checks in `luttinger/verify_kbmag_certificate.py`,
 `luttinger/verify_certificates.rb`, and `luttinger/make_proof_manifest.py`, with the
 regenerated proof manifest and downstream-chain certificate.
+Run 67 — the complement-level R3 audit (`luttinger/r3_complement_audit.py`,
+the `table_R3_complement` residual in `luttinger/group_attack.py`, and
+`notes/lp_disagreement_reconciliation_2026-08-29.md`) — is imported from the
+working repository, where it is numbered run 65; it is renumbered here to keep
+this repository's run index consecutive.
 Run 66 — the sealed Tietze transport (`luttinger/sealed_transport/`,
 `luttinger/verify_tietze_transport.py`, `luttinger/verify_tietze_transport.rb`)
 — originates here as well; it also records that the committed four-generator

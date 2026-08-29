@@ -56,6 +56,8 @@ EVIDENCE = [
     "luttinger/sealed_transport/r_presentations.json",
     "luttinger/r_presentations.json",
     "runs/66-sealed-tietze-transport.txt",
+    # The complement-level R3 certificate behind the peripheral identification.
+    "runs/67-r3-complement-and-lp-disagreement.txt",
     "runs/29-independent-filled-group-certificates.txt",
     "runs/57-second-certificate-verifier.txt",
     # The certified section self-intersection Gamma_hat . Gamma_hat = 0.
@@ -91,6 +93,7 @@ CERTIFICATES = [
                      "luttinger/sealed_transport/r_presentations.json",
                      "luttinger/r_presentations.json",
                      "runs/66-sealed-tietze-transport.txt",
+                     "runs/67-r3-complement-and-lp-disagreement.txt",
                      "runs/29-independent-filled-group-certificates.txt",
                      "runs/57-second-certificate-verifier.txt",
                      "runs/20-direct-peripheral-fillings-trivial.txt",
