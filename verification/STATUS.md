@@ -30,7 +30,7 @@ double-verified 1,863-record DAG.  Run 63 resolves the last case,
 `g2^-1`.  The `n0_y1` filling relator therefore kills the last generator.
 The resulting 4,040-record ancestry certificate passes independent Python and
 Ruby replay, including the exact 96/97 source comparison.  The current
-repository tally is therefore **100 certified trivial, 0 inconclusive, and 0
+repository tally is therefore **100 reported trivial (22 certificate-backed, 78 retained GAP-session verdicts), 0 inconclusive, and 0
 nontrivial**.  These are auxiliary counterfactual framing shifts; the result
 strengthens robustness but was never needed for the paper's `j=0` proof.
 
@@ -548,8 +548,8 @@ the presentation digest; all four are rejected.
   final aligned positive-diagonal `n0_y1` case through a 96-relator common-core
   certificate: the core is infinite cyclic and the case-100 filling relator
   kills its generator.  Independent Python and Ruby verifiers replay the
-  retained 4,040-record ancestry DAG.  The final tally is 100 certified
-  trivial, 0 inconclusive, and 0 nontrivial. These cases do not gate the
+  retained 4,040-record ancestry DAG.  The final tally is 100 reported
+  trivial (22 certificate-backed, 78 retained GAP-session verdicts), 0 inconclusive, and 0 nontrivial. These cases do not gate the
   paper's `j=0` proof.
 * **Main fundamental groups:** all eight paper fillings have independently
   replayed proof-producing triviality certificates.
