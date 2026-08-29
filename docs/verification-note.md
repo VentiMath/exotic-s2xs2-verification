@@ -103,8 +103,8 @@ Python implementation, the compiler, GAP, or KBMAG; both accept. Both
 filled-group checkers were produced by OpenAI Codex (GPT-5 family), so
 “independent” means implementation-independent, not cross-model authorship
 or statistically uncorrelated errors. A Claude Fable 5 session independently
-reconstructed and replayed the Run 63 common-core computation but did not
-author either checker. All artifacts are bound by SHA-256 and replay.
+reconstructed and replayed the 96-relator common-core computation behind
+the last framing-scan case (§6, run 63) but did not author either checker. All artifacts are bound by SHA-256 and replay.
 
 ## 5. Redundancy against translation error
 

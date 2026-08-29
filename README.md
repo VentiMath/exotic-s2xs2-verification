@@ -64,8 +64,9 @@ the paper's coordinates, with proof-producing certificates that replay.
   implementation code but do share the certificate specification and model
   family: independence here means implementation independence, not cross-model
   authorship or statistically uncorrelated errors. A Claude Fable 5 session
-  independently reconstructed and replayed the Run 63 common-core computation;
-  it did not author either checker. No independent human line-by-line checker
+  independently reconstructed and replayed the 96-relator common-core
+  computation behind the last framing-scan case (run 63); it did not author
+  either checker. No independent human line-by-line checker
   audit is claimed. All artifacts are hash-bound and replay.
 * **Redundant second routes.** A translation mistake would have to survive
   several structurally different implementations: an independent peripheral
