@@ -19,6 +19,9 @@ Run 64 — the downstream proof chain (`luttinger/downstream_chain.py`, its
 certificate, `luttinger/verify_downstream_chain.rb`, the extension of
 `luttinger/proof_ledger.py`, and `notes/downstream_proof_chain_2026-08-28.md`)
 — also originates in this repository.
+So does run 65, the batch inventory checks in `luttinger/verify_kbmag_certificate.py`,
+`luttinger/verify_certificates.rb`, and `luttinger/make_proof_manifest.py`, with the
+regenerated proof manifest and downstream-chain certificate.
 
 ## Removed from the import
 

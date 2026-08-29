@@ -207,6 +207,15 @@ replay to **3 gens / 78 relators** in 49s.
   `notes/downstream_theorem_audit_2026-08-23.md`), which stays as a
   historical certificate that no derived claim depends on.  See `runs/64`
   and `notes/downstream_proof_chain_2026-08-28.md`.
+* **The certified inventory is enforced, not assumed.**  Both filled-group
+  checkers reject a batch that verifies any case twice, and in full-inventory
+  mode (the default for the Ruby driver with no paths; `--full-inventory` for
+  the Python checker) require the batch to be exactly the input's eight
+  fillings, one file per case slug, over a source with 4 generators, 95
+  complement relators, and 2 filling relators per case.  A duplicated batch
+  is a negative control in both.  `make_proof_manifest.py` refuses to write
+  or check a manifest unless `proof_certificates/` holds exactly one file per
+  filling.  See `runs/65`.
 * **The remaining trust boundary is explicit and machine-checked.**
   `proof_ledger.py` records an acyclic dependency graph from local certificate
   files and named external inputs to the three exoticness conclusions. It
@@ -689,3 +698,4 @@ Raw console output, in the order produced:
     62  tidyint-sensitive certificate for n1_y2 (+,+), shift (+1,+1) (99/1 current)
     63  common-core certificate for the hundredth framing case (100/0 final)
     64  downstream proof chain from Theorem D to Theorems A, B, C
+    65  batch inventory checks in both filled-group checkers and the manifest generator

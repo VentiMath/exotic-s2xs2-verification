@@ -118,8 +118,8 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
 | `group_attack.py` | reproducible GAP/KBMAG/ACE/finite-quotient attacks, including export and replay of certified paper-coordinate fillings |
 | `direct_rws/` | eight simplified presentations, completed rewriting systems, result records, and a SHA-256 manifest |
 | `proof_certificates/` | eight compressed derivation DAGs and a SHA-256 manifest for the original presentations |
-| `verify_kbmag_certificate.py` | independent checker; does not import or run KBMAG |
-| `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs |
+| `verify_kbmag_certificate.py` | independent checker; does not import or run KBMAG; `--full-inventory` enforces the eight-case batch |
+| `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs; enforces the eight-case batch by default |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `downstream_chain.py` | the proof chain from π₁(V)=1 to Theorems A, B, C: external theorems, certificates, computed facts, deduction steps |
 | `downstream_chain_certificate.json` | frozen Run-64 chain with evidence digests |
@@ -176,7 +176,7 @@ python3 group_attack.py direct-paper-kb-all   # eight literal peripheral filling
 python3 group_attack.py direct-paper-kb-hard  # alternate ordering for one holdout
 python3 group_attack.py direct-paper-export   # durable completed systems + hashes
 python3 group_attack.py direct-paper-replay   # verify hashes, reload, and replay all eight
-python3 verify_kbmag_certificate.py proof_certificates/*.json.gz
+python3 verify_kbmag_certificate.py --full-inventory --negative-controls proof_certificates/*.json.gz
 ruby verify_certificates.rb --negative-controls
 python3 make_proof_manifest.py --check
 python3 independent_peripheral_extractor.py --check --output independent_peripheral_certificate.json
