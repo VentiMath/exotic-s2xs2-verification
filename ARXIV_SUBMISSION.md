@@ -1,17 +1,17 @@
 # arXiv submission packet
 
-This packet fixes the metadata for the v1.5.1 manuscript and prevents the
+This packet fixes the metadata for the v1.5.2 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v1.5.1 tag, run
+- From a clean checkout of the v1.5.2 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v1.5.1.tar.gz` as the v1.5.1 GitHub release asset
+- Upload `paper/arxiv-source-v1.5.2.tar.gz` as the v1.5.2 GitHub release asset
   and to arXiv.
-- SHA-256: `c25c1e5870fbf0f6c8db55a44b71592569977ba05ad553bc80e2fa8afb5e808c`.
+- SHA-256: `1cc844ed0a4f3e8ba534652f2c856e3cb197c3f5475ede34fcbb252594094904`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
@@ -43,7 +43,7 @@ Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo (arXiv:2505.14387v1
 **Comments**
 
 ```text
-12 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.1 . Verifies arXiv:2608.17267v1 relative to explicitly named standard results.
+12 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.2 . Verifies arXiv:2608.17267v1 relative to explicitly named standard results.
 ```
 
 **Classification**
