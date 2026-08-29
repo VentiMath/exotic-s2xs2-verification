@@ -1,4 +1,4 @@
-# Independent machine verification of Wuebben's exotic S²×S²
+# Certificate-based verification of Wuebben's exotic S²×S² construction
 
 This repository documents an independent, machine-driven verification of
 
@@ -12,9 +12,8 @@ the rebuild. The immutable target versions and their SHA-256 digests are
 recorded in [`TARGET.md`](TARGET.md).
 
 **What this repository is:** a verification, by people and machines who are
-not the paper's author, of the paper's three theorems: the historically most
-failure-prone step in claimed small exotic 4-manifolds — the
-fundamental-group computation — is proved by replayable certificates, and
+not the paper's author, of the paper's three theorems: the theorem-critical
+fundamental-group computation is proved by replayable certificates, and
 every deduction from it to the theorems (the double is homeomorphic but not
 diffeomorphic to S²×S²; the quotient is homeomorphic to Kawauchi's B and
 distinguished from it by the sliceness of the figure-eight knot; the regluing
@@ -52,15 +51,20 @@ the paper's coordinates, with proof-producing certificates that replay.
   with a global PL identification of the computed frontier: every extracted
   dual meridian is checked to be a literal normal-circle fiber, with no
   regular-neighborhood theorem invoked.
-* **The eight filled groups.** Filling the triangulation-derived complement
-  presentation with the certified peripheral pairs proves all four n=0 sign
-  pairs, and the four adjacent half-drift systems, trivial by complete
+* **The eight filled groups.** Wuebben fixes one geometric n=0 manifold; the
+  four n=0 sign pairs are convention-specialized relation sheets for that
+  target, not four claimed manifolds. Filling the triangulation-derived
+  complement presentation with the certified peripheral pairs proves all
+  four sheets, and four adjacent half-drift controls, trivial by complete
   confluent rewriting. KBMAG is used only as an untrusted certificate
-  generator: a small independent checker verifies every axiom, overlap,
-  rewrite trace, and final generator-to-identity rule in the exported
-  derivation DAGs, and a second checker, written independently in Ruby,
-  re-verifies all 14,115 retained records without importing the Python
-  implementation. All artifacts are hash-bound and replay.
+  generator: a Python checker produced by OpenAI Codex verifies every axiom,
+  overlap, rewrite trace, and final generator-to-identity rule in the
+  exported derivation DAGs, and a Ruby checker produced separately by
+  Anthropic Claude Fable 5 re-verifies all 14,115 retained records without
+  importing the Python implementation. They are implementation-independent,
+  not asserted to be statistically uncorrelated, and no independent human
+  line-by-line checker audit is claimed. All artifacts are hash-bound and
+  replay.
 * **Redundant second routes.** A translation mistake would have to survive
   several structurally different implementations: an independent peripheral
   extractor, an alternative bundle triangulation, the second based-monodromy
@@ -93,7 +97,8 @@ the paper's coordinates, with proof-producing certificates that replay.
   — with the classical Kerékjártó periodic-disk theorem the remaining
   named input.
 * **The framing lemma's analysis.** The displayed Weinstein-chart, seam, and
-  constant-momentum algebra of the paper's Lemma 8.2 are machine-checked, and
+  constant-momentum algebra of the paper's Lemma 8.2 are checked by
+  exact-rational Python programs, and
   its inline normalizations are rebuilt constructively: the Moser flow is the
   explicit monotone inverse of a cumulative coordinate (no ODE citation), the
   equivariant field is defined directly on the double cover with certified
@@ -119,9 +124,12 @@ the paper's coordinates, with proof-producing certificates that replay.
   π₁(V)=1, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
   theorems, 32 machine certificates, 11 geometric arguments, 18 derived
-  claims — with every evidence file hashed. The chain is written out in
-  prose in `verification/notes/downstream_proof_chain_2026-08-28.md` and in
-  the paper's Section 6.
+  claims — with every evidence file hashed. The first four counts describe
+  the compact downstream chain; the latter four describe the larger
+  project-wide ledger, so they are not competing tallies. The chain is
+  written out in prose in
+  `verification/notes/downstream_proof_chain_2026-08-28.md` and in the
+  paper's Section 6.
 
 ## What is not claimed
 
@@ -159,9 +167,11 @@ manifolds would then be unproved. A completed slope-robustness scan
 quantifies which discrepancies j are independently excluded: 96
 meridian-shifted refillings (twelve nonzero shifts, a cross-and-diagonal
 sample rather than a full grid, across four sign pairs and both half-drift
-families) plus four zero-shift controls, all 100 certified trivial and none
-nontrivial. The original pipeline decided 82 at the level of a GAP session;
-the 18 it left open, every one a shift on the first surgery torus, carry
+families) plus four zero-shift controls. The completed scan reports all 100
+trivial and none nontrivial, but 22 are certificate-backed while the other 78
+retain only GAP session verdicts. The original pipeline decided 82 at the
+level of a GAP session; the 18 it left open, every one a shift on the first
+surgery torus, carry
 independently replayed derivation-DAG certificates (runs 58–63), the last
 by a certified reduction through the 96 relators it shares with its
 neighbor. Within the scanned range, no framing error would have produced a

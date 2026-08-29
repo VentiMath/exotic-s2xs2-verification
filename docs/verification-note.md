@@ -1,4 +1,4 @@
-# Independent machine verification of Wuebben's exotic S²×S²
+# Certificate-based verification of Wuebben's exotic S²×S² construction
 
 *This is the prose companion of the arXiv note in `paper/`; the paper is the
 authoritative text and carries the numbered theorems. Author: John Clyde
@@ -6,8 +6,8 @@ authoritative text and carries the numbered theorems. Author: John Clyde
 
 ## 1. Introduction
 
-Claimed constructions of small exotic 4-manifolds have historically failed in
-one place: the fundamental-group computation. Wuebben (arXiv:2608.17267v1),
+For Wuebben's construction the theorem-critical unresolved step is the
+fundamental-group computation. Wuebben (arXiv:2608.17267v1),
 building on Lidman–Piccirillo (arXiv:2505.14387v1), proves that a specified
 Lidman–Piccirillo piece V — a symplectic 4-manifold with the homology of
 S²×D², built from a non-product genus-2 surface bundle over a once-punctured
@@ -17,11 +17,11 @@ diffeomorphic to S²×S²; (B) the quotient W = V/σ is homeomorphic to
 Kawauchi's manifold B, and the pair (B, W) is distinguished by the smooth
 sliceness of the figure-eight knot; (C) the Lidman–Piccirillo regluing Z'' is
 a simply connected 4-manifold homeomorphic but not diffeomorphic to ℂP²#C̄P².
-The proof's critical step is the triviality of the filled fundamental groups
-for the paper's permitted surgery parametrizations: the four sign choices of
-the double surgery in the paper's principal coordinate system are the
-theorem-critical family, and four adjacent half-drift presentations of the
-same fillings serve as re-indexing checks with no independent logical load.
+The proof's critical step is the triviality of the filled fundamental group
+for the single specified manifold. Wuebben's four relation-sheet sign pairs
+are orientation-convention specializations for that target, not four claimed
+manifolds; all four are certified. Four adjacent half-drift presentations
+serve as re-indexing checks with no independent logical load.
 
 This note reports a verification of the whole argument. The simple
 connectivity is verified independently of the paper's coordinates, software,
@@ -29,9 +29,10 @@ and author: the bundle is rebuilt as a simplicial complex from the paper's
 marked-fiber data alone, the surgery tori, meridians, and framed longitudes
 are extracted combinatorially, and the resulting filled presentations are
 proved trivial by complete confluent rewriting, with every computation
-emitting a replayable proof certificate checked by two independently written
-verifiers. The deductions from simple connectivity to the three theorems are
-then carried through as an explicit dependency chain (§7): twenty-five
+emitting a replayable proof certificate checked by independently implemented
+Python and Ruby verifiers; no independent human line-by-line audit of those
+checkers is claimed. The deductions from simple connectivity to the three
+theorems are then carried through as an explicit dependency chain (§7): twenty-five
 external theorems are stated with their hypotheses, every hypothesis is
 discharged by a named certificate or computation, every finite calculation
 is executed and replayed by two checkers, and the chain ends in the three
@@ -148,8 +149,9 @@ being wrong — not a declared unverified reading.
 Luttinger surgery is performed with respect to the Lagrangian framing; the
 paper's Lemma 8.2 identifies it with the fibered framing used by the
 combinatorial longitudes. The lemma's displayed Weinstein-chart, seam, and
-constant-momentum algebra are machine-checked, and its inline analytic
-normalizations have been rebuilt constructively rather than cited. The Moser
+constant-momentum algebra are checked by exact-rational Python programs, and
+its inline analytic normalizations have been rebuilt constructively rather
+than cited. The Moser
 flow is produced as the explicit monotone inverse of a cumulative coordinate,
 so no ODE existence theorem is invoked; the equivariant step defines the
 Moser field directly on the double cover with certified projection, deck
@@ -182,8 +184,10 @@ eight axis shifts of magnitude at most 2 and the four diagonal shifts
 (±1,±1), a cross-and-diagonal sample rather than a full grid, across all
 four sign pairs and both half-drift families — plus four zero-shift
 controls that re-derive the paper's own n=0 fillings through the same
-pipeline. All 100 are certified trivial, and no nontriviality witness was
-found at any stage. The evidence is of two levels. The original pipeline,
+pipeline. The scan reports all 100 trivial, but only 22 are backed by
+independently replayed derivation certificates; the other 78 retain GAP
+session verdicts. No nontriviality witness was found at any stage. The
+evidence is of two levels. The original pipeline,
 which simplifies each presentation before completion, decided 82 at the
 level of a GAP session (40 by Tietze collapse, 42 by complete confluent
 rewriting) and exported no certificates from those runs. The 18 it left
