@@ -1,15 +1,15 @@
 # arXiv submission packet
 
-This packet fixes the metadata for the v1.5.5 manuscript and prevents the
+This packet fixes the metadata for the v1.5.6 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v1.5.5 tag, run
+- From a clean checkout of the v1.5.6 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v1.5.5.tar.gz` as the v1.5.5 GitHub release asset
+- Upload `paper/arxiv-source-v1.5.6.tar.gz` as the v1.5.6 GitHub release asset
   and to arXiv.
 - SHA-256: `d743e193f55ec7fb3fdff1a048b8e636b06663e22797289134e8bcc9bd9f5e2e`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
@@ -43,7 +43,7 @@ Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo (arXiv:2505.14387v1
 **Comments**
 
 ```text
-13 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.5 . Verifies arXiv:2608.17267v1 relative to explicitly named external results.
+14 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.6 . Verifies arXiv:2608.17267v1 relative to explicitly named external results.
 ```
 
 **Classification**
@@ -62,7 +62,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 13 pages, no missing references, and the
+3. Confirm the generated PDF has 14 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.

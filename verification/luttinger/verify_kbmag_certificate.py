@@ -86,10 +86,13 @@ def load_certificate(certificate_path):
         return json.load(stream)
 
 
-def check_inventory(entries, source, full_inventory):
+def check_inventory(entries, source, full_inventory,
+                    expect_generators=4, expect_relators=95):
     """Batch-level coverage: no case verified twice; with --full-inventory,
     every filling of the input verified exactly once, each file named by
-    its slug, and the source of the shape the paper states."""
+    its slug, and the source of the stated shape (by default the committed
+    four-generator presentation; the sealed transport's presentation has
+    3 generators and 78 relators)."""
     indices = [index for _, index, _ in entries]
     require(len(set(indices)) == len(indices),
             "duplicate certificate case in the batch")
@@ -104,8 +107,10 @@ def check_inventory(entries, source, full_inventory):
         require(Path(path).name == slug + ".json.gz",
                 f"certificate file {Path(path).name} is not named by its "
                 f"case slug {slug}")
-    require(source["ngens"] == 4, "expected 4 generators")
-    require(len(source["relators"]) == 95, "expected 95 complement relators")
+    require(source["ngens"] == expect_generators,
+            f"expected {expect_generators} generators")
+    require(len(source["relators"]) == expect_relators,
+            f"expected {expect_relators} complement relators")
     require(len(fillings) == 8, "expected 8 fillings")
     require(all(len(f["relators"]) == 2 for f in fillings),
             "expected 2 filling relators per case")
@@ -113,14 +118,16 @@ def check_inventory(entries, source, full_inventory):
             "batch slugs do not match the input's filling inventory")
 
 
-def negative_controls(certificate_paths, source, source_digest, full_inventory):
+def negative_controls(certificate_paths, source, source_digest, full_inventory,
+                      expect_generators=4, expect_relators=95):
     """Prove that the batch checks reject a duplicated certificate and that
     the record checks reject a corrupted identity root."""
     first = certificate_paths[0]
     proof = load_certificate(first)
     entry = (first, proof["case"]["index"], proof["case"]["slug"])
     try:
-        check_inventory([entry] * len(certificate_paths), source, full_inventory)
+        check_inventory([entry] * len(certificate_paths), source, full_inventory,
+                        expect_generators, expect_relators)
     except VerificationError:
         print("REJECTED DUPLICATED CERTIFICATE BATCH")
     else:
@@ -145,6 +152,14 @@ def main():
     parser.add_argument("--negative-controls", action="store_true",
                         help="also prove that a duplicated batch and a "
                              "corrupted identity root are rejected")
+    parser.add_argument("--expect-generators", type=int, default=4,
+                        help="generator count the full-inventory check "
+                             "requires of the source (default 4; the sealed "
+                             "transport's presentation has 3)")
+    parser.add_argument("--expect-relators", type=int, default=95,
+                        help="complement relator count the full-inventory "
+                             "check requires of the source (default 95; the "
+                             "sealed transport's presentation has 78)")
     args = parser.parse_args()
 
     input_bytes = args.input.read_bytes()
@@ -157,13 +172,15 @@ def main():
         verify_certificate(certificate_path, proof, source, source_digest)
         entries.append((certificate_path, proof["case"]["index"],
                         proof["case"]["slug"]))
-    check_inventory(entries, source, args.full_inventory)
+    check_inventory(entries, source, args.full_inventory,
+                    args.expect_generators, args.expect_relators)
     if args.full_inventory:
         print("INVENTORY OK:", len(entries),
               "distinct certificates, one per filling, named by slug")
     if args.negative_controls:
         negative_controls(args.certificates, source, source_digest,
-                          args.full_inventory)
+                          args.full_inventory, args.expect_generators,
+                          args.expect_relators)
 
 
 def verify_certificate(certificate_path, proof, source, source_digest):

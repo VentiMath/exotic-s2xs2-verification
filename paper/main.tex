@@ -137,16 +137,18 @@ named inputs.
 For $\epsilon=(\epsilon_A,\epsilon_B)\in\{\pm1\}^2$, let $P_\epsilon$ be
 the corresponding convention-specialized filled presentation of
 Section~\ref{sec:groups}: the
-exported 4-generator, 95-relator presentation of the complement of the
-two surgery tori in the simplicial model, together with the two filling
+sealed 3-generator, 78-relator presentation of the complement of the
+two surgery tori in the simplicial model --- the frozen output of the
+replayed Tietze transport of Section~\ref{sec:certificates} --- together with the two filling
 relators of the $n{=}0$ double surgery with relation-sheet exponents
 $(\epsilon_A,\epsilon_B)$, imposed with the certified based meridians and
 framed longitudes. Each $P_\epsilon$ presents the trivial
 group. The proof consists of four derivation certificates, contained in
-release \texttt{v1.5.5} of the verification repository, which replay from
+release \texttt{v1.5.6} of the verification repository, which replay from
 a fresh checkout and are accepted by independently implemented Python and
-Ruby
-checkers.
+Ruby checkers; the transport from the frozen raw simplicial presentation
+to the complement presentation they fill is likewise replayed from frozen
+files by two standalone checkers.
 \end{theorem}
 
 \begin{lemma}[certificate soundness]\label{lem:sound}
@@ -241,7 +243,9 @@ the vertex-link level.
 The identification with the paper's marked bundle is by literal based
 monodromy action: the based mapping classes of both monodromies are
 certified as equalities of vertex paths, transported by proof-producing
-Tietze chains that replay step by step, and completed by an explicit
+Tietze chains whose recorded eliminations are replayed in-process by a
+verifier separate from the generator (these chains are not sealed
+certificates), and completed by an explicit
 marked mapping-cylinder clutching over the base graph. The identification
 is thus a constructed fiberwise homeomorphism into the paper's bundle
 rather than an appeal to the classification of surface bundles.
@@ -348,29 +352,36 @@ history are in the repository.
 \section{Certified triviality of the four convention-specialized
 groups}\label{sec:groups}
 
-Filling the triangulation-derived complement presentation (4 generators,
-95 relators) with the certified coherent peripheral pairs yields, for all
-four $n{=}0$ sign pairs, complete confluent rewriting systems in which
-every generator reduces to the identity. Each completion is exported as a
-derivation certificate, and Theorem~\ref{thm:main} is the statement that
-the four certificates verify.
+Filling the sealed complement presentation (3 generators, 78 relators)
+with the certified coherent peripheral pairs yields, for all four $n{=}0$
+sign pairs, complete confluent rewriting systems in which every generator
+reduces to the identity. Each completion is exported as a derivation
+certificate, and Theorem~\ref{thm:main} is the statement that the four
+certificates verify. An earlier export of the same complement
+(4 generators, 95 relators), produced by a run whose interpreter hash seed
+was not recorded, carries its own four certificates reaching the same
+verdicts; because the engine's generator numbering depends on that seed,
+the input of its Tietze trace cannot be regenerated, so that export is
+retained as corroborating historical evidence and carries no logical
+load.
 
 \begin{center}
-\begin{tabular}{llr}
+\begin{tabular}{llrr}
 \toprule
-system & signs & derivation records\\
+system & signs & sealed chain & earlier export\\
 \midrule
-$n{=}0$ & $(-,-)$ & 1123\\
-$n{=}0$ & $(-,+)$ & 1075\\
-$n{=}0$ & $(+,-)$ &  804\\
-$n{=}0$ & $(+,+)$ & 1504\\
+$n{=}0$ & $(-,-)$ & 3620 & 1123\\
+$n{=}0$ & $(-,+)$ & 3803 & 1075\\
+$n{=}0$ & $(+,-)$ & 2470 &  804\\
+$n{=}0$ & $(+,+)$ & 6672 & 1504\\
 \bottomrule
 \end{tabular}
 
 \smallskip
-\small Derivation-DAG certificates for the four convention-specialized
-filled groups; each verifies triviality from a fresh clone of the
-repository.
+\small Derivation-DAG records for the four convention-specialized
+filled groups, over the sealed presentation and over the earlier
+four-generator export; each certificate verifies triviality from a fresh
+clone of the repository.
 \end{center}
 
 Four adjacent $n{=}1$ half-drift control presentations, obtained by
@@ -394,8 +405,9 @@ Lemma~\ref{lem:sound}, binding the input presentation by SHA-256. The
 certified set is enforced, not assumed: both checkers reject a batch that
 verifies any case twice, and in full-inventory mode --- the documented
 invocation --- require the batch to be exactly the input's eight fillings,
-one file named by each case slug, over a source with four generators, 95
-complement relators, and two filling relators per case; the manifest
+one file named by each case slug, over a source of the stated shape
+(three generators and 78 complement relators for the sealed chain, four and
+95 for the earlier export) with two filling relators per case; the manifest
 generator refuses to hash a certificate directory that is not exactly one
 file per filling. A successful replay therefore verifies exactly the four
 $n{=}0$ sign pairs and the four $n{=}1$ controls. A small
@@ -407,15 +419,33 @@ derivation records against the same hash-bound certificates and accepts,
 importing neither the first checker nor any project group code. All
 certificates, the exported rewriting systems, and a hash manifest replay
 from a clean checkout, and the stored rewriting systems reload and
-re-verify under GAP/KBMAG independently of the certificate path. The
-design principle throughout is that certificates are checked, not
+re-verify under GAP/KBMAG independently of the certificate path.
+
+The transport from the raw simplicial presentation to the presentation
+whose fillings are certified is sealed in the same sense. The canonical
+seeded run serializes the raw complement presentation (99,863 generators,
+321,702 relators) together with its 89 tracked peripheral and coordinate
+words, records the 99,860 elementary eliminations that reduce it to the
+3-generator, 78-relator presentation, and freezes that output. Two
+standalone checkers --- one in Python, one in Ruby, importing neither the
+geometry nor the simplifier --- replay the eliminations from those three
+frozen files alone: a step is accepted only if the eliminated generator
+occurs exactly once in the named current relator and the recorded
+replacement is the one that relator implies, input and output are bound by
+SHA-256, and the renumbered result must equal the frozen presentation
+relator by relator and tracked word by tracked word. Both reject
+corrupted-input, omitted-step, altered-substitution, and altered-output
+controls. The chain from the frozen raw complex to the eight triviality
+verdicts (39,163 retained derivation records over the sealed presentation)
+therefore replays end to end from committed files. The design principle throughout is that certificates are checked, not
 trusted: search and completion tools are untrusted generators, and every
 computational claim rests on a replayable artifact validated by small
 independent code.
 
 The machinery does not only produce trivial groups, and the checkers do
 not only accept. Abelianization is only a sanity check here: the
-95-relator complement presentation has $H_1=\Z^2$, and each pair of
+78-relator sealed complement presentation has $H_1=\Z^2$ (as does the
+earlier 95-relator export), and each pair of
 filling relators kills it, so every filled presentation has trivial
 abelianization; that the filled groups are trivial rather than merely
 perfect is carried entirely by the certificates. The same
@@ -802,9 +832,9 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.5}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.6}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.5}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.6}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
 \begin{center}\small\texttt{d7152d269c54bb60d85fa1a11da09530b75c3119}\end{center}

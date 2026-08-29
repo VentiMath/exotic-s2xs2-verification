@@ -94,6 +94,20 @@ NODES = {
         "machine_certificate", (),
         "runs/56-lp-source-figure-audit.txt"),
     "M_complement_tietze": ("machine_certificate", (), "runs/11-proof-certificate-and-group-attacks.txt"),
+    # Run 66: the seeded raw-complex-to-reduced-presentation transport is
+    # sealed with its serialized input and replays under two standalone
+    # checkers.  The committed four-generator transport certificate was
+    # produced by an unseeded run whose input cannot be regenerated, so the
+    # four-generator presentation's link to the raw complex rests on that
+    # run's own replay of its fresh certificate — a software-trust node,
+    # not a machine certificate.
+    "M_sealed_tietze_transport": (
+        "machine_certificate", (), "runs/66-sealed-tietze-transport.txt"),
+    "S_unseeded_transport_generation": (
+        "software_trust", ("M_complement_tietze",),
+        "runs/20-direct-peripheral-fillings-trivial.txt"),
+    "M_sealed_filled_group_derivations": (
+        "machine_certificate", (), "runs/66-sealed-tietze-transport.txt"),
     "M_peripheral_slopes": ("machine_certificate", (), "runs/20-direct-peripheral-fillings-trivial.txt"),
     "M_independent_peripheral_extraction": (
         "machine_certificate", (),
@@ -187,11 +201,29 @@ NODES = {
 
     "C_correct_filled_presentation": (
         "derived_claim",
-        ("G_peripheral_identification", "M_complement_tietze", "M_R3",
+        ("G_peripheral_identification", "S_unseeded_transport_generation",
+         "M_R3",
+         "G_derived_frontier_identification",
+         "T_simplicial_pi1_presentation", "T_tietze"),
+        "notes/complement_presentation_referee_packet_2026-08-26.md"),
+    # The load-bearing chain is the sealed one (run 66): serialized raw
+    # complex -> replayed Tietze transport -> 3-generator presentation ->
+    # eight derivation certificates, all replayed from frozen files by two
+    # checkers each.  The earlier four-generator chain reaches the same
+    # eight verdicts through the unseeded transport and is retained as an
+    # independent corroborating derivation that nothing depends on.
+    "C_correct_sealed_filled_presentation": (
+        "derived_claim",
+        ("G_peripheral_identification", "M_sealed_tietze_transport", "M_R3",
          "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
     "C_pi1_V_trivial": (
+        "derived_claim",
+        ("C_correct_sealed_filled_presentation",
+         "M_sealed_filled_group_derivations",
+         "M_second_filled_group_verifier"), None),
+    "C_pi1_V_trivial_unseeded_chain": (
         "derived_claim",
         ("C_correct_filled_presentation", "M_filled_group_derivations",
          "M_second_filled_group_verifier"), None),

@@ -19,7 +19,18 @@ FILES = [
     ROOT / "kbmag-proof" / "Dockerfile",
     ROOT / "kbmag-proof" / "kbfns-proof.patch",
 ] + sorted((ROOT / "raw_proof_inputs").glob("*.rws")) \
-  + sorted((ROOT / "proof_certificates").glob("*.json.gz"))
+  + sorted((ROOT / "proof_certificates").glob("*.json.gz")) \
+  + [
+    # Run 66: the sealed raw-complex transport and the derivation
+    # certificates of its own eight fillings.
+    ROOT / "verify_tietze_transport.py",
+    ROOT / "verify_tietze_transport.rb",
+    ROOT / "sealed_transport" / "r_tietze_input.json.gz",
+    ROOT / "sealed_transport" / "r_tietze_certificate.json.gz",
+    ROOT / "sealed_transport" / "r_presentations.json",
+    ROOT / "sealed_transport" / "kbprog_options.json",
+] + sorted((ROOT / "sealed_transport" / "raw_proof_inputs").glob("*.rws")) \
+  + sorted((ROOT / "sealed_transport" / "proof_certificates").glob("*.json.gz"))
 
 
 def case_slug(filling):
@@ -28,14 +39,17 @@ def case_slug(filling):
             f'{"p" if filling["sign_b"] > 0 else "m"}1')
 
 
-def check_inventory():
+def check_inventory(base=ROOT):
     """The certificate directory must hold exactly one file per filling of
-    r_presentations.json, named by its case slug."""
-    source = json.loads((ROOT / "r_presentations.json").read_text(encoding="ascii"))
+    the presentation beside it, named by its case slug; checked for the
+    committed four-generator chain and for the sealed transport's chain."""
+    source = json.loads((base / "r_presentations.json").read_text(encoding="ascii"))
     expected = sorted(case_slug(f) + ".json.gz" for f in source["paper_fillings"])
-    present = sorted(p.name for p in (ROOT / "proof_certificates").glob("*.json.gz"))
+    present = sorted(p.name for p in (base / "proof_certificates").glob("*.json.gz"))
     assert present == expected, \
-        f"certificate inventory mismatch: expected {expected}, found {present}"
+        f"certificate inventory mismatch under {base.name}: expected {expected}, found {present}"
+    if base == ROOT:
+        return len(expected) + check_inventory(ROOT / "sealed_transport")
     return len(expected)
 
 
@@ -59,7 +73,7 @@ def main():
         assert json.loads(OUTPUT.read_text(encoding="ascii")) == current, \
             "proof manifest mismatch"
         print("PASS:", OUTPUT, len(FILES), "hashes match;",
-              inventory, "certificates, one per filling")
+              inventory, "certificates, one per filling in each chain")
         return
     OUTPUT.write_text(json.dumps(current, indent=2, sort_keys=True) + "\n",
                       encoding="ascii")

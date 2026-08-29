@@ -211,13 +211,15 @@ options = {
   input: nil,
   expected_count: 8,
   full_inventory: nil,
-  negative_controls: false
+  negative_controls: false,
+  expect_generators: 4,
+  expect_relators: 95
 }
 
 # Batch-level coverage.  Duplicates are never legitimate; with full inventory
 # the batch must be exactly the input's eight fillings, one file per case slug,
 # and the source must have the shape the paper states.
-def check_inventory(entries, source, full_inventory)
+def check_inventory(entries, source, full_inventory, expect_generators = 4, expect_relators = 95)
   indices = entries.map { |e| e[:index] }
   demand(indices.uniq.length == indices.length, "duplicate certificate case in the batch")
   slugs = entries.map { |e| e[:slug] }
@@ -230,8 +232,9 @@ def check_inventory(entries, source, full_inventory)
     demand(File.basename(e[:path]) == "#{e[:slug]}.json.gz",
            "certificate file #{File.basename(e[:path])} is not named by its case slug #{e[:slug]}")
   end
-  demand(source.fetch("ngens") == 4, "expected 4 generators")
-  demand(source.fetch("relators").length == 95, "expected 95 complement relators")
+  demand(source.fetch("ngens") == expect_generators, "expected #{expect_generators} generators")
+  demand(source.fetch("relators").length == expect_relators,
+         "expected #{expect_relators} complement relators")
   demand(fillings.length == 8, "expected 8 fillings")
   demand(fillings.all? { |f| f.fetch("relators").length == 2 }, "expected 2 filling relators per case")
   demand(fillings.map { |f| case_slug(f) }.sort == slugs.sort,
@@ -256,6 +259,14 @@ OptionParser.new do |parser|
   end
   parser.on("--negative-controls", "also prove that deliberate corruptions are rejected") do
     options[:negative_controls] = true
+  end
+  parser.on("--expect-generators N", Integer,
+            "generator count the full-inventory check requires (default 4; sealed transport: 3)") do |value|
+    options[:expect_generators] = value
+  end
+  parser.on("--expect-relators N", Integer,
+            "complement relator count the full-inventory check requires (default 95; sealed transport: 78)") do |value|
+    options[:expect_relators] = value
   end
 end.parse!
 options[:full_inventory] = (ARGV.empty? && options[:input].nil?) if options[:full_inventory].nil?
@@ -283,7 +294,8 @@ begin
     entries << { path: path, index: header.fetch("index"), slug: header.fetch("slug") }
     puts "VERIFIED FILLED GROUP #{File.basename(path)} (#{count} records)"
   end
-  check_inventory(entries, source, options[:full_inventory])
+  check_inventory(entries, source, options[:full_inventory],
+                  options[:expect_generators], options[:expect_relators])
   if options[:full_inventory]
     puts "INVENTORY OK: #{entries.length} distinct certificates, one per filling, named by slug"
   end
@@ -332,7 +344,8 @@ begin
     reject_mutation.call("rewrite trace", bad_trace)
 
     begin
-      check_inventory([entries.first] * proof_paths.length, source, options[:full_inventory])
+      check_inventory([entries.first] * proof_paths.length, source, options[:full_inventory],
+                      options[:expect_generators], options[:expect_relators])
       raise VerificationError, "duplicated certificate batch was accepted"
     rescue VerificationError => error
       demand(error.message != "duplicated certificate batch was accepted",

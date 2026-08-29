@@ -95,9 +95,16 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
   the graph, and verifies the evidence digests. See `runs/64` and
   `notes/downstream_proof_chain_2026-08-28.md`; the earlier hypothesis
   audit is `runs/24`.
-* **Proof artifacts:** the 99,860-step target Tietze reduction and all eight
-  filled-group derivation DAGs are independently replayed; see `runs/10`--`18`
-  and `runs/29`. A separate basis-free implementation also reconstructs both
+* **Proof artifacts:** the seeded 99,860-step raw-complex Tietze transport
+  is sealed with its serialized input and replays under standalone Python
+  and Ruby checkers, and the eight fillings of the resulting 3-generator
+  presentation carry derivation DAGs (39,163 records) replayed by both
+  filled-group checkers, so the chain from the frozen raw complex to the
+  eight triviality verdicts replays end to end; see `runs/66`. The earlier
+  four-generator export's eight DAGs (`runs/29`, `runs/57`) reach the same
+  verdicts and are retained as superseded corroborating evidence: that
+  export's transport certificate came from an unseeded run and is not
+  replayable. A separate basis-free implementation also reconstructs both
   commonly based peripheral pairs directly from the marked triangulation; see
   `runs/30`. A second bundle builder, independent of the original bundle and
   layer modules, reproduces the marked beta homology action and peripheral
@@ -120,6 +127,8 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
 | `proof_certificates/` | eight compressed derivation DAGs and a SHA-256 manifest for the original presentations |
 | `verify_kbmag_certificate.py` | independent checker; does not import or run KBMAG; `--full-inventory` enforces the eight-case batch |
 | `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs; enforces the eight-case batch by default |
+| `sealed_transport/` | serialized raw-complex presentation (99,863 generators, 321,702 relators, 89 named tracked words), the 99,860-step Tietze certificate, the resulting 3-generator presentation of the canonical seeded run, and the eight derivation certificates of its fillings with their rewriting systems and kbprog options |
+| `verify_tietze_transport.py`, `verify_tietze_transport.rb` | standalone replay of the sealed transport from those three files, with corruption controls |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `downstream_chain.py` | the proof chain from π₁(V)=1 to Theorems A, B, C: external theorems, certificates, computed facts, deduction steps |
 | `downstream_chain_certificate.json` | frozen Run-64 chain with evidence digests |
@@ -178,6 +187,10 @@ python3 group_attack.py direct-paper-export   # durable completed systems + hash
 python3 group_attack.py direct-paper-replay   # verify hashes, reload, and replay all eight
 python3 verify_kbmag_certificate.py --full-inventory --negative-controls proof_certificates/*.json.gz
 ruby verify_certificates.rb --negative-controls
+python3 verify_tietze_transport.py --negative-controls
+ruby verify_tietze_transport.rb --negative-controls
+python3 verify_kbmag_certificate.py --input sealed_transport/r_presentations.json --full-inventory --expect-generators 3 --expect-relators 78 --negative-controls sealed_transport/proof_certificates/*.json.gz
+ruby verify_certificates.rb --root sealed_transport --full-inventory --expect-generators 3 --expect-relators 78 --negative-controls
 python3 make_proof_manifest.py --check
 python3 independent_peripheral_extractor.py --check --output independent_peripheral_certificate.json
 python3 alternative_bundle_audit.py --check --output alternative_bundle_certificate.json

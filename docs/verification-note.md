@@ -63,7 +63,8 @@ manifold checks down to the vertex-link level.
 The identification with the paper's marked bundle is by literal based
 monodromy action — the based mapping classes of both monodromies are
 certified as equalities of vertex paths, transported by proof-producing
-Tietze chains that replay step by step — and then by an explicit
+Tietze chains whose recorded eliminations are replayed in-process by a
+verifier separate from the generator (not sealed certificates) — and then by an explicit
 marked mapping-cylinder clutching over the base graph: the relative
 monodromy comparisons are exact on the marked collars, so the identification
 is a constructed fiberwise homeomorphism into the paper's bundle rather than
@@ -98,7 +99,7 @@ used only as an untrusted certificate generator: the exported derivation DAGs
 are verified by an independent checker that re-validates every input-relator
 axiom, inverse axiom, critical overlap, rewrite trace, and final
 generator-to-identity rule. A second checker, written independently in Ruby,
-re-verifies all 14,115 retained derivation records without importing the
+re-verifies all retained derivation records (39,163 over the sealed presentation, 14,115 over the earlier four-generator export) without importing the
 Python implementation, the compiler, GAP, or KBMAG; both accept. Both
 filled-group checkers were produced by OpenAI Codex (GPT-5 family), so
 “independent” means implementation-independent, not cross-model authorship
@@ -332,6 +333,6 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5.5 (the paper's Data Availability section records the
+tagged release v1.5.6 (the paper's Data Availability section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.

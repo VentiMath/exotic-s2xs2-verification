@@ -1,0 +1,60 @@
+{
+  "cases": {
+    "n0_y1_m1_m1": {
+      "extra_kbprog_args": [],
+      "index": 3,
+      "relator_order": "fill_then_base"
+    },
+    "n0_y1_m1_p1": {
+      "extra_kbprog_args": [],
+      "index": 2,
+      "relator_order": "fill_then_base"
+    },
+    "n0_y1_p1_m1": {
+      "extra_kbprog_args": [],
+      "index": 1,
+      "relator_order": "fill_then_base"
+    },
+    "n0_y1_p1_p1": {
+      "extra_kbprog_args": [
+        "-me",
+        "300000",
+        "-t",
+        "100"
+      ],
+      "index": 0,
+      "relator_order": "fill_then_base"
+    },
+    "n1_y2_m1_m1": {
+      "extra_kbprog_args": [],
+      "index": 7,
+      "relator_order": "fill_then_base"
+    },
+    "n1_y2_m1_p1": {
+      "extra_kbprog_args": [
+        "-me",
+        "300000",
+        "-t",
+        "100"
+      ],
+      "index": 6,
+      "relator_order": "fill_then_base"
+    },
+    "n1_y2_p1_m1": {
+      "extra_kbprog_args": [],
+      "index": 5,
+      "relator_order": "fill_then_base"
+    },
+    "n1_y2_p1_p1": {
+      "extra_kbprog_args": [],
+      "index": 4,
+      "relator_order": "fill_then_base"
+    }
+  },
+  "format": "luttinger-sealed-kbprog-options-v1",
+  "image": "luttinger-kbmag-proof (kbmag-proof/Dockerfile with kbfns-proof.patch)",
+  "kbprog_base_args": [
+    "-ve"
+  ],
+  "note": "Relator order of each raw_proof_inputs/<slug>.rws and the extra kbprog arguments that produced the retained history; the certificates verify against sealed_transport/r_presentations.json independently of either."
+}

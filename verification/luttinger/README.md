@@ -31,9 +31,15 @@ Status (updated 2026-08-28; see `../STATUS.md` for the precise caveats):
   depends on it. Run 35 checks the framing lemma's full inline calculus and
   isolates its remaining standard smooth-theorem inputs; it does not
   formalize those theorems or every global exoticness input.
-* **Proof artifacts:** all 99,860 target Tietze eliminations and all eight
-  filled-group derivation DAGs are independently replayed; see
-  `../runs/10`--`18` and `../runs/29`. Run 57 independently checks the same
+* **Proof artifacts:** the seeded 99,860-step raw-complex Tietze transport
+  is sealed with its serialized input in `sealed_transport/` and replays
+  under standalone Python and Ruby checkers, and the eight fillings of the
+  resulting 3-generator presentation carry derivation DAGs (39,163 records)
+  replayed by both filled-group checkers; see `../runs/66`. The earlier
+  four-generator export's eight DAGs (`../runs/29`, `../runs/57`) reach the
+  same verdicts and are retained as superseded corroborating evidence: that
+  export's transport certificate came from an unseeded run and is not
+  replayable. Run 57 independently checks the same
   14,115 DAG records in Ruby, sharing neither code nor runtime with the Python
   verifier. A separate basis-free implementation
   reconstructs both commonly based peripheral pairs directly from the marked
@@ -67,6 +73,8 @@ Status (updated 2026-08-28; see `../STATUS.md` for the precise caveats):
 | `proof_certificates/` | eight compressed, independently checked derivation DAGs plus SHA-256 manifest |
 | `verify_kbmag_certificate.py` | small checker for the derivation DAGs; does not import or run KBMAG |
 | `verify_certificates.rb` | independent Ruby/standard-library checker for the same eight DAGs, with corruption controls |
+| `sealed_transport/` | serialized raw-complex presentation, 99,860-step Tietze certificate, 3-generator result of the canonical seeded run, and the derivation certificates of its eight fillings (`proof_certificates/`, `raw_proof_inputs/`, `kbprog_options.json`) |
+| `verify_tietze_transport.py`, `verify_tietze_transport.rb` | standalone replay of the sealed transport, with corruption controls |
 | `compile_kbmag_certificate.py` | untrusted history compiler and dependency-cone pruner |
 | `kbmag-proof/` | minimal KBMAG logging patch used only to generate complete histories |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
@@ -120,6 +128,10 @@ python3 group_attack.py direct-paper-export   # durable completed systems + hash
 python3 group_attack.py direct-paper-replay   # verify hashes, reload, and replay all eight
 python3 verify_kbmag_certificate.py proof_certificates/*.json.gz
 ruby verify_certificates.rb --negative-controls
+python3 verify_tietze_transport.py --negative-controls
+ruby verify_tietze_transport.rb --negative-controls
+python3 verify_kbmag_certificate.py --input sealed_transport/r_presentations.json --full-inventory --expect-generators 3 --expect-relators 78 --negative-controls sealed_transport/proof_certificates/*.json.gz
+ruby verify_certificates.rb --root sealed_transport --full-inventory --expect-generators 3 --expect-relators 78 --negative-controls
 python3 make_proof_manifest.py --check
 python3 independent_peripheral_extractor.py --check --output independent_peripheral_certificate.json
 python3 alternative_bundle_audit.py --check --output alternative_bundle_certificate.json
