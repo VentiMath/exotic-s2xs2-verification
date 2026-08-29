@@ -85,7 +85,7 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
   with the neighboring `n1_y2` case. The core is infinite cyclic and the
   remaining filling relator kills its generator. Independent Python and Ruby
   replay of the retained 4,040-record ancestry DAG gives the final auxiliary
-  tally: **100/100 certified trivial, 0 inconclusive, 0 nontrivial**.
+  tally: **100/100 reported trivial — 22 certificate-backed, 78 retained GAP-session verdicts — 0 inconclusive, 0 nontrivial**.
 * **Downstream proof chain:** `downstream_chain.py` carries every
   implication from the certified simple connectivity to Theorems A, B, C
   as an explicit item — 25 external theorems with hypotheses and sources,
