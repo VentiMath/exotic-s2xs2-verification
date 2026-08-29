@@ -202,7 +202,7 @@ def certify():
             "id": "sign-package-M1-M2-M3",
             "reading": "AsA^-1 = N*y; ByB^-1 = M^-1*(yx); "
                        "BsB^-1 = (r^-1*M^-1*r)*s",
-            "paper_locus": "the section 7.4 sign-correction package",
+            "paper_locus": "the section 8.3 corrected-relations package",
             "witnesses": ["runs/13", "runs/14 (empty residuals)",
                           "runs/30 (basing sweep)"],
             "author_code": {"file": "author_scripts/decide.g",
