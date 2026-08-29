@@ -64,7 +64,7 @@ theorems as an explicit dependency chain: twenty-five external theorems
 are stated with their hypotheses; every hypothesis is discharged by a
 named certificate, computation, or earlier step; and two checkers replay
 every finite calculation. Thus the three theorems are verified relative
-to explicitly named standard results, with no known project-specific gap.
+to explicitly named external results, with no known project-specific gap.
 The theorems are Wuebben's; this note claims only the verification. All
 artifacts are public in a pinned release.
 \end{abstract}
@@ -118,8 +118,7 @@ computation.
 For the notation below, ``$n=0$'' means Wuebben's $Ax$ half-drift label on
 $T_\alpha$; the adjacent ``$n=1$'' control replaces $Ax$ by $Ar^{-1}$.
 The letters $M,N$ denote based meridians of $T_\alpha,T_\beta$, while
-$A,B$ are the two base generators. These labels are unrelated to the odd
-integer introduced later in Proposition~\ref{prop:Zpp}.
+$A,B$ are the two base generators.
 
 The result separates into an unconditional computational theorem, an
 identification that connects it to the paper, and a chain relative to
@@ -135,23 +134,27 @@ relators of the $n{=}0$ double surgery with relation-sheet exponents
 $(\epsilon_A,\epsilon_B)$, imposed with the certified based meridians and
 framed longitudes. Each $P_\epsilon$ presents the trivial
 group. The proof is a derivation certificate, contained in release
-\texttt{v1.5.2} of the verification repository, that replays from a fresh
+\texttt{v1.5.3} of the verification repository, that replays from a fresh
 checkout and is accepted by independently implemented Python and Ruby
 checkers.
 \end{theorem}
 
 \begin{lemma}[certificate soundness]\label{lem:sound}
-A certificate is a finite sequence of records, each an input relator, an
-inverse axiom of the free group, a critical-pair overlap of two earlier
-records, or a rewrite of an earlier record by earlier records, ending in
-the rules $g\to 1$ for every generator $g$ in the hash-bound input
-presentation. The checker reads the generator count from the certificate,
-requires it to equal the count in the hash-bound input presentation, and
-then requires an identity root for each numbered generator. A checker
-accepts only if every record is derived as stated from records preceding
-it. Every
-accepted record is then an equality holding in the group presented by
-the input relators, so acceptance implies that this group is trivial.
+A certificate is a finite sequence of records, each an equation between
+words in the generators and their inverses, of four kinds: an
+\emph{input relator} of the hash-bound presentation; an \emph{inverse
+axiom} $gg^{-1}=1$ of the free group; an \emph{overlap}, the critical pair
+of two earlier records, in which each branch is reduced by a recorded
+trace of rewrites by earlier records; or a \emph{change}, an earlier
+record whose two sides are each reduced by such a trace. An \emph{identity
+root} for a generator $g$ is an index into the sequence at which the
+record is $g\to 1$. The checker reads the generator count from the
+certificate, requires it to equal the count in the hash-bound input
+presentation, and then requires an identity root for each numbered
+generator and its inverse. A checker accepts only if every record is
+derived as stated from records preceding it. Every accepted record is
+then an equality holding in the group presented by the input relators,
+so acceptance implies that this group is trivial.
 Neither the confluence of the completed rewriting system nor the
 correctness of the program that produced it enters the argument.
 \end{lemma}
@@ -196,7 +199,7 @@ in a different way: its external inputs are deep theorems that are
 cited, not reproved, and the verification consists in the exactness of
 the bookkeeping between them. The accurate summary of the status of the
 whole is: \emph{the three theorems are verified relative to explicitly
-named standard theorems, with no known project-specific gap} --- a
+named external results, with no known project-specific gap} --- a
 statement about verification depth, offered to facilitate expert review,
 not to replace it.
 
@@ -389,7 +392,26 @@ re-verify under GAP/KBMAG independently of the certificate path. The
 design principle throughout is that certificates are checked, not
 trusted: search and completion tools are untrusted generators, and every
 computational claim rests on a replayable artifact validated by small
-independent code. Both filled-group checkers were produced by OpenAI Codex
+independent code.
+
+The machinery does not only produce trivial groups, and the checkers do
+not only accept. Abelianization detects nothing here --- the 95-relator
+complement presentation already has trivial abelianization, so every
+filling does too --- and the certificates carry the whole load. The same
+pipeline, run as a calibration on the standard $T^4$ Luttinger example,
+returns the complement group $\Z^2\times F_2$ and the textbook surgery
+quotient $\Z^4$; on a Baldridge--Kirk example it separates the two sign
+conventions by the trace fingerprints $1$ and $3$, never their negatives;
+the 96-relator common core of Section~\ref{sec:peripheral} completes to an
+infinite cyclic group; and a mapping-torus control during the fiber
+construction reported $H_1=\Z^2$ against $\Z^3$ for the identity, which
+is what exposed the one construction error found and fixed in the
+project. On the checker side, four deliberate corruptions of an accepted
+certificate --- an identity root pointed at the wrong record, an altered
+input-relator equation, an altered rewrite trace, and a wrong generator
+count --- are each rejected.
+
+Both filled-group checkers were produced by OpenAI Codex
 (GPT-5 family), as separate Python and Ruby implementations. They use
 different languages and share no implementation code, but they do share the
 published certificate specification and input format; ``independent'' here
@@ -505,9 +527,11 @@ on which the surgeries act by Luttinger surgery on four disjoint tori
 missing $F$ and $\Ghat$ (Lemma~6, proof of Theorem~8); $W=V/\sigma$ is a
 closed smooth oriented 4-manifold, double covered by $Z$, and is spin by
 the hyperbolic-pair argument of Lemma~7, whose hypotheses are the
-homology of $V$; the regluing diffeomorphism $f$ of $S^3_0(Q)$ exists and
-makes $\Gpp=\Gamma\cup_A\Gamma$ a closed surface of odd square meeting
-$F$ once (proof of Theorem~2); and the Floer-theoretic input, Lemmas~9
+homology of $V$; the regluing diffeomorphism $f$ of $S^3_0(Q)$ exists,
+and with $\mathcal A\subset S^3_0(Q)$ the framed annulus joining
+$\partial\Gamma$ to its image under $f\circ\sigma$, the closed surface
+$\Gpp=\Gamma\cup_{\mathcal A}\Gamma$ has odd square and meets $F$ once
+(proof of Theorem~2); and the Floer-theoretic input, Lemmas~9
 and~10 with the vanishing of all mixed invariants of $\CPbar$ (and of its
 sum with any homology 4-sphere) along both square-zero lines, via
 splittings over $S^2\times S^1$ (proof of Theorem~2, using
@@ -521,7 +545,8 @@ and $b_2(B)=0$, in which the figure-eight knot is smoothly slice.
 
 Throughout, $F$ is a fiber of $R$ disjoint from the surgery tori, $\Gamma$
 a section through a fixed point of $\varphi_0$, $\Ghat=\Gamma\cup_\sigma
-\Gamma\subset Z$ and $\Gpp=\Gamma\cup_A\Gamma\subset\Zpp$ its closures.
+\Gamma\subset Z$ and $\Gpp=\Gamma\cup_{\mathcal A}\Gamma\subset\Zpp$ its
+closures, $\mathcal A$ the framed annulus above.
 The finite calculations cited are those of the chain's certificate.
 
 \begin{proposition}\label{prop:V}
@@ -753,9 +778,9 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.2}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.3}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.2}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.3}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
 \begin{center}\small\texttt{a0adbce359f0fbfb29872087afc6eb0fc0c5412b}\end{center}
