@@ -1,6 +1,19 @@
 # luttinger — combinatorial π₁ of torus complements and Luttinger surgeries
 
-Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
+Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
+
+> **Known unreconciled external computation.** Wuebben's repository has stated
+> since its first visible commit that Lidman and Piccirillo report a
+> computation of π₁(V) disagreeing with his, and that the disagreement is
+> unresolved. Their published v1 never asserts π₁(V) ≠ 1 — it proves H₁(V) = 0
+> and normal generation by π₁(F) — and no relation sheet or nontriviality
+> witness for the contrary computation is public. Their v1 source also
+> explicitly declines to fix the surgery parametrization, so `V` names a
+> manifold only after choices that Wuebben's theorem fixes and the reported
+> computation may not. The certificates here decide the presented groups of a
+> sealed, hash-bound model; they do not reconcile that report. See `runs/67`
+> and `notes/lp_disagreement_reconciliation_2026-08-29.md`.
+
 
 * **Engine (working, calibrated):** triangulated 4-manifold `K` + full
   2-dimensional torus subcomplex `T` → presentation of π₁(K − T), based
@@ -129,6 +142,7 @@ Status (updated 2026-08-28; see the root `STATUS.md` for the precise caveats):
 | `verify_certificates.rb` | second-language, standard-library checker for all eight filled-group derivation DAGs; enforces the eight-case batch by default |
 | `sealed_transport/` | serialized raw-complex presentation (99,863 generators, 321,702 relators, 89 named tracked words), the 99,860-step Tietze certificate, the resulting 3-generator presentation of the canonical seeded run, and the eight derivation certificates of its fillings with their rewriting systems and kbprog options |
 | `verify_tietze_transport.py`, `verify_tietze_transport.rb` | standalone replay of the sealed transport from those three files, with corruption controls |
+| `r3_complement_audit.py` | embeds the R3 mapping-cylinder certificate at the parallel beta level in the actual two-torus complement and checks the basepoint homotopy to `B` |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `downstream_chain.py` | the proof chain from π₁(V)=1 to Theorems A, B, C: external theorems, certificates, computed facts, deduction steps |
 | `downstream_chain_certificate.json` | frozen Run-64 chain with evidence digests |
