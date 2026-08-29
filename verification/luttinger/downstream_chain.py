@@ -49,10 +49,13 @@ OUTPUT = HERE / "downstream_chain_certificate.json"
 # --------------------------------------------------------------------------
 
 EVIDENCE = [
-    # Theorem D: the four theorem-critical derivation certificates, bound
-    # through the proof manifest that hashes them and their input.
+    # Theorem D: the four theorem-critical derivation certificates of the
+    # sealed chain (run 66) and of the earlier four-generator export, all
+    # bound through the proof manifest that hashes them and their inputs.
     "luttinger/proof_certificates/manifest.json",
+    "luttinger/sealed_transport/r_presentations.json",
     "luttinger/r_presentations.json",
+    "runs/66-sealed-tietze-transport.txt",
     "runs/29-independent-filled-group-certificates.txt",
     "runs/57-second-certificate-verifier.txt",
     # The certified section self-intersection Gamma_hat . Gamma_hat = 0.
@@ -77,12 +80,17 @@ CERTIFICATES = [
     {
         "id": "K_pi1_V_trivial",
         "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled "
-                 "presentations carries a derivation-DAG certificate accepted "
-                 "by two independent checkers, and the peripheral "
-                 "identification shows they present pi_1 of the paper's "
-                 "surgeries.",
+                 "presentations of the sealed complement presentation "
+                 "(whose Tietze transport from the serialized raw complex "
+                 "replays from frozen files) carries a derivation-DAG "
+                 "certificate accepted by two independent checkers, the "
+                 "four fillings of the earlier four-generator export reach "
+                 "the same verdicts, and the peripheral identification "
+                 "shows they present pi_1 of the paper's surgeries.",
         "evidence": ["luttinger/proof_certificates/manifest.json",
+                     "luttinger/sealed_transport/r_presentations.json",
                      "luttinger/r_presentations.json",
+                     "runs/66-sealed-tietze-transport.txt",
                      "runs/29-independent-filled-group-certificates.txt",
                      "runs/57-second-certificate-verifier.txt",
                      "runs/20-direct-peripheral-fillings-trivial.txt",

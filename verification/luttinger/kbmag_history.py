@@ -22,6 +22,9 @@ def main():
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--image", default=IMAGE)
+    parser.add_argument("--kbprog-args", default="",
+                        help="extra kbprog options, e.g. '-me 300000 -t 100' "
+                             "(see sealed_transport/kbprog_options.json)")
     args = parser.parse_args()
 
     root = Path.cwd().resolve()
@@ -37,7 +40,7 @@ def main():
     command = [
         "docker", "run", "--rm", "-i",
         "-v", f"{root}:/w", "-w", "/w", args.image,
-        KBPROG, "-ve", str(Path("/w") / relative),
+        KBPROG, "-ve", *args.kbprog_args.split(), str(Path("/w") / relative),
     ]
     with output.open("wb") as stream:
         result = subprocess.run(command, stdout=stream, stderr=subprocess.STDOUT)

@@ -1,0 +1,221 @@
+Run 66: sealed raw-complex-to-reduced-presentation Tietze transport (2026-08-29)
+================================================================================
+
+Question
+--------
+
+The proof-producing Tietze reduction from the raw simplicial complement
+presentation (99,863 generators, 321,702 relators) to the small presentation
+on which the filled-group derivation certificates are built was recorded as
+`luttinger/r_tietze_certificate.json.gz`, but its input was never
+serialized: `r_run.py` rebuilds the raw presentation and immediately
+generates and self-checks a fresh certificate.  This run asked whether the
+committed 99,859-step trace can be replayed from a sealed input by a
+standalone checker that imports no geometry or simplification code.
+
+Finding: the committed trace's input cannot be regenerated
+----------------------------------------------------------
+
+The committed `r_presentations.json` (4 generators, 95 relators) and
+`r_tietze_certificate.json.gz` (99,859 steps; input digest `3fe3de86...`,
+output digest `3b86f486...`) were written by the `python3 r_run.py`
+invocation recorded in `runs/20` (2026-08-23) and committed to the working
+repository on 2026-08-24 (commit `661e810`).  Runs 12, 15, and 20 invoke
+`r_run.py` without fixing `PYTHONHASHSEED`.  Runs 10 and 11 used
+`PYTHONHASHSEED=0` and report 99,860 eliminations reducing to 3 generators
+and 78 relators.
+
+The engine's raw presentation depends on the interpreter's string hash
+seed.  `complex.py` stores every simplex as a `frozenset` of vertex tuples
+that contain string labels (`('t', 0)`, `('c', 0, i)`, ...) inside Python
+`set`s, and `pi1.py` (`Presentation.__init__`) builds the breadth-first
+spanning tree, numbers the non-tree edges, and orders the triangle relators
+by iterating those sets.  A different seed therefore gives a different
+spanning tree, a different generator numbering, and a different relator
+order — a different presentation of the same group, not a relabelling.
+
+Probes, with `r_run.py` and every engine module unchanged (the public copies
+differ from the working repository only by removed unused imports):
+
+  PYTHONHASHSEED=0, Python 3.12.0 (three runs) and 3.14.6 (one run):
+      raw input digest      433455b627e32ce208bb78437262224dc17c2b0ef9455a2d4f80a4f280d8df8c
+      eliminations          99,860
+      reduced presentation  3 generators, 78 relators
+      output digest         1a9e256fbca6d2f99ea86a0418292d690abf3629f8df0511d93300e0675bbb37
+      The decompressed certificate and serialized input were byte-identical
+      across all four runs (`r_presentations.json` identical as a file).
+  PYTHONHASHSEED=1, Python 3.12.0:
+      raw input digest      2c2d441dab95ff51b536b72bea06d91a7382fbe3222f4c0b0e4622f6544b7c13
+      eliminations          99,860
+      reduced presentation  3 generators, 82 relators
+      output digest         6cf33a4291a2dcf42564c594c5dd44402f1ec5124f379fb30431a08b85948b12
+  committed (runs/20, seed not recorded):
+      raw input digest      3fe3de86d0d37791c65cb8c08a614f60ea3e3973a00114815f768095423156eb
+      eliminations          99,859
+      reduced presentation  4 generators, 95 relators
+      output digest         3b86f48602e4e9bbe2c6a12c959c7a28f44682629b2ace12c5a1befd3e46b220
+
+So the pipeline is deterministic for a fixed seed and interpreter-version
+independent, but the seed of the run that produced the committed
+four-generator artifacts was not recorded, and the 32-bit seed space cannot
+be searched at two minutes per trial.  The input bound by the committed
+certificate is unrecoverable.  That certificate was verified only inside
+its own generating process (`r_run.py` replays the certificate it has just
+produced before writing it) and has never been replayed independently.  The
+earlier STATUS statement that the committed trace "is checked while
+`r_run.py` reconstructs its large input" was wrong: `r_run.py` never loads
+the committed certificate; it overwrites it.  The two step counts in the
+documentation were both real — 99,860 from the seeded runs 10–11, 99,859
+from the unseeded run 20 — and are now explained rather than reconciled.
+
+What is unaffected
+------------------
+
+The eight committed filled-group derivation certificates
+(`proof_certificates/*.json.gz`) bind the committed four-generator
+presentation by digest and prove its eight filled presentations trivial;
+nothing in this run touches them, their manifest, or the downstream chain.
+The path-level peripheral identification (`runs/30`) compares literal
+simplicial loops and does not depend on any spanning-tree numbering.  What
+is not independently certified is precisely the transport from the raw
+simplicial presentation and its geometric loops to the committed
+four-generator presentation and its tracked words.
+
+The sealed transport
+--------------------
+
+`luttinger/sealed_transport/` freezes the three objects of the canonical
+seeded run — `PYTHONHASHSEED=0 python3 r_run.py`, the invocation documented
+in runs 10 and 11 — with the raw input serialized before simplification:
+
+  r_tietze_input.json.gz        9ca302c69de30454c5047dc49d41aa7233568287f5887a287b83a17275ae47d8
+      format `luttinger-tietze-input-v1`: `ngens` 99863, `relators`
+      (321,702 words), `words` (the 89 tracked peripheral, coordinate, and
+      diagnostic words in the order `r_run.py` tracks them), `word_names`
+      (their 89 names).  Decompressed SHA-256
+      28c0b2c66438a164900fb730b65e1a58c1dad647b78ced647b25303ac67f1dcf.
+  r_tietze_certificate.json.gz  551e2103435bc72f5c1256939dc260c8895ba5d121560d4243107d1de17e4e30
+      format `luttinger-fast-tietze-v1`, 99,860 steps, `max_len` 200,
+      `input_sha256` = SHA-256 of the compact sorted-key JSON of
+      `[ngens, relators, words]` = 433455b6..., `output_sha256` 1a9e256f....
+      Decompressed SHA-256
+      59de0b74e340d8f231e6cd9d25aef1f19ce470972160e88c3aa2f456430e12d7.
+  r_presentations.json          1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c
+      the reduced presentation: 3 generators, 78 relators, 89 tracked
+      words, renumbering {21240: 1, 28226: 2, 50551: 3}, and its eight
+      `fillings` and eight `paper_fillings`.
+
+Two standalone verifiers, `luttinger/verify_tietze_transport.py` and
+`luttinger/verify_tietze_transport.rb`, load exactly these three files and
+import nothing from the geometry, the simplifier, or each other (Python:
+`argparse`, `gzip`, `hashlib`, `json`, `pathlib`; Ruby: `json`, `zlib`,
+`digest`, `optparse`).  Each checks the input format and generator count,
+recomputes the input digest, replays every recorded step `[i, g, rep]` —
+accepting it only if generator `g` occurs exactly once in the current
+relator `i` and `rep` is the replacement that relator itself implies (the
+inverse of the prefix followed by the inverse of the suffix, inverted when
+the occurrence is negative) — applies the substitution to every relator
+containing `g` (cyclically reduced, empties dropped) and to every tracked
+word (freely reduced), drops duplicate and inverse-duplicate relators,
+recomputes the surviving generator set and the output digest, and finally
+renumbers and compares the result with the committed presentation: the
+renumbering map, the generator count, every relator in order, and every
+tracked word by name.
+
+  python3 luttinger/verify_tietze_transport.py --negative-controls
+  ruby luttinger/verify_tietze_transport.rb --negative-controls
+
+  TIETZE TRANSPORT VERIFIED: 99863 generators, 321702 relators -> 3 generators, 78 relators, 89 tracked words after 99860 certified eliminations; committed r_presentations.json matches
+  REJECTED CORRUPTED INPUT RELATOR: certificate does not belong to this input
+  REJECTED OMITTED ELIMINATION STEP: step 4546: replacement is not implied by the relator
+  REJECTED ALTERED SUBSTITUTION: step 1: replacement is not implied by the relator
+  REJECTED ALTERED COMMITTED OUTPUT: committed complement relators differ from the replayed output
+  REJECTED ALTERED COMMITTED TRACKED WORD: committed tracked word table_M1_sign+1 differs from the replayed output
+
+  RUBY TIETZE TRANSPORT VERIFIED: 99863 generators, 321702 relators -> 3 generators, 78 relators, 89 tracked words after 99860 certified eliminations; committed r_presentations.json matches
+  (the same five rejections, same step numbers and messages)
+
+Python 45 s, Ruby 38 s on an Apple M-series laptop.  The negative controls
+negate the first letter of the first input relator, delete the first
+recorded step, append a letter to the first recorded replacement, reverse
+the first committed relator, and reverse the longest committed tracked word.
+
+Fillings of the sealed presentation
+-----------------------------------
+
+The eight `paper_fillings` of the sealed 3-generator presentation were
+certified with the run-29 pipeline unchanged: `export_kbmag_proof_inputs.py`
+(GAP, `../bin/gap`) wrote the rewriting systems, the patched image
+`luttinger-kbmag-proof` (`kbmag-proof/Dockerfile`) ran `kbprog -ve`,
+`compile_kbmag_certificate.py` pruned each history, and both checkers
+verified the result.  Six cases complete confluently with the export's
+default filling-first relator order and kbprog defaults; the two default-
+order holdouts, cases 0 (`n0_y1_p1_p1`) and 6 (`n1_y2_m1_p1`), halt at the
+default equation limit and complete with `-me 300000 -t 100` (the raised
+limit of runs 60–62), case 0 in filling-first order.  The exact rewriting
+systems are in `sealed_transport/raw_proof_inputs/`, the per-case options in
+`sealed_transport/kbprog_options.json`; the certificates verify against
+`sealed_transport/r_presentations.json` independently of either.
+
+  case  slug          order            kbprog extras       kbprog   compile   records
+  0     n0_y1_p1_p1   fill_then_base   -me 300000 -t 100   108 s    353 s      6672
+  1     n0_y1_p1_m1   fill_then_base   (default)             7 s    558 s      2470
+  2     n0_y1_m1_p1   fill_then_base   (default)            10 s    384 s      3803
+  3     n0_y1_m1_m1   fill_then_base   (default)            11 s    294 s      3620
+  4     n1_y2_p1_p1   fill_then_base   (default)            23 s    468 s      4972
+  5     n1_y2_p1_m1   fill_then_base   (default)            13 s    396 s      3573
+  6     n1_y2_m1_p1   fill_then_base   -me 300000 -t 100   313 s    407 s     10143
+  7     n1_y2_m1_m1   fill_then_base   (default)            15 s    401 s      3910
+
+  python3 verify_kbmag_certificate.py --input sealed_transport/r_presentations.json \
+      --full-inventory --expect-generators 3 --expect-relators 78 \
+      --negative-controls sealed_transport/proof_certificates/*.json.gz
+  ruby verify_certificates.rb --root sealed_transport --full-inventory \
+      --expect-generators 3 --expect-relators 78 --negative-controls
+
+  INVENTORY OK: 8 distinct certificates, one per filling, named by slug
+  REJECTED DUPLICATED CERTIFICATE BATCH
+  REJECTED DELIBERATELY CORRUPTED IDENTITY ROOT
+  ALL RUBY FILLED-GROUP CHECKS PASSED: 39163 DAG records
+
+`--expect-generators`/`--expect-relators` are new in both checkers (the
+full-inventory shape was previously fixed at 4 and 95); the committed
+four-generator chain still verifies with the defaults.  Abelianization of
+the sealed complement presentation is Z^2 and every filling pair kills it
+(Smith normal form), as for the four-generator export.
+
+Consequences
+------------
+
+`make_proof_manifest.py` now hashes both chains (46 files) and checks the
+certificate inventory of each; `downstream_chain.py` binds the sealed
+presentation and this transcript as evidence for `K_pi1_V_trivial`;
+`proof_ledger.py` makes `C_pi1_V_trivial` depend on the sealed chain
+(`M_sealed_tietze_transport`, `M_sealed_filled_group_derivations`) and
+records the unseeded four-generator transport as the ledger's single
+`software_trust` node, on which no claim depends
+(`C_pi1_V_trivial_unseeded_chain` is the retained corroborating derivation).
+
+Not re-derived here: the 100-case framing scan (runs 58–63) and the
+based-monodromy Tietze chains (runs 12, 23, 32) are built on the
+four-generator export or replayed only in-process by the generator's own
+verifier; they are documented as such.
+
+Commands
+--------
+
+  PYTHONHASHSEED=0 python3 r_run.py          # with the input serialized before simplify()
+  python3 luttinger/verify_tietze_transport.py --negative-controls
+  ruby luttinger/verify_tietze_transport.rb --negative-controls
+  cd luttinger
+  python3 export_kbmag_proof_inputs.py --input sealed_transport/r_presentations.json \
+      --output-dir sealed_transport/raw_proof_inputs
+  docker build -t luttinger-kbmag-proof:local kbmag-proof
+  python3 kbmag_history.py sealed_transport/raw_proof_inputs/CASE.rws \
+      sealed_transport/raw_proof_history/CASE.proof.log      # kbprog extras per kbprog_options.json
+  python3 compile_kbmag_certificate.py sealed_transport/raw_proof_history/CASE.proof.log \
+      sealed_transport/proof_certificates/CASE.json.gz --case INDEX \
+      --input sealed_transport/r_presentations.json
+  python3 make_proof_manifest.py --check
+  python3 downstream_chain.py --check && ruby verify_downstream_chain.rb
+  python3 proof_ledger.py

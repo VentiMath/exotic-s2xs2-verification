@@ -22,6 +22,10 @@ certificate, `luttinger/verify_downstream_chain.rb`, the extension of
 So does run 65, the batch inventory checks in `luttinger/verify_kbmag_certificate.py`,
 `luttinger/verify_certificates.rb`, and `luttinger/make_proof_manifest.py`, with the
 regenerated proof manifest and downstream-chain certificate.
+Run 66 — the sealed Tietze transport (`luttinger/sealed_transport/`,
+`luttinger/verify_tietze_transport.py`, `luttinger/verify_tietze_transport.rb`)
+— originates here as well; it also records that the committed four-generator
+transport certificate was produced by an unseeded run and cannot be replayed.
 
 ## Removed from the import
 

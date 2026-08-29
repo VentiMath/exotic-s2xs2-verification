@@ -93,8 +93,11 @@ replay to **3 gens / 78 relators** in 49s.
   It proves `phi0(x,y)=(r,s)` as equality of vertex paths, certifies
   `[x,y][r,s]`, and proves `x,y,r` freely generate the drilled-e fiber group.
   Transporting the complete whiskered paths through the open beta stack gives
-  `x->y^-1`, `y->yx`, `r->r`, `s->s`; 17,839 elementary Tietze steps replay
-  successfully and the remaining surface words Dehn-reduce to the identity.
+  `x->y^-1`, `y->yx`, `r->r`, `s->s`; the 17,839 elementary Tietze steps
+  are replayed in-process by the verifier on the certificate the generator
+  has just produced (an in-memory self-check, not a sealed committed
+  certificate — see `runs/66`), and the remaining surface words
+  Dehn-reduce to the identity.
   This directly tests, and does not reproduce, the reported unbased-vs-based
   monodromy objection for the current model.  The Table 1 puncture lassos are
   still separate work.
@@ -188,8 +191,9 @@ replay to **3 gens / 78 relators** in 49s.
   deterministic 31-edge loop avoids `c` vertex by vertex, represents
   `s^-1 r^-1 y x`, and together with `x,r` freely generates
   `pi1(F-nu(c))`. Transporting that literal loop through the open beta stack
-  gives `r^-1 s^-1 x` after a replayed 17,839-step Tietze certificate and
-  final surface Dehn reduction. Thus every additional relation imposed in
+  gives `r^-1 s^-1 x` after an in-process replay of the 17,839-step Tietze
+  certificate (an in-memory self-check, not a sealed committed certificate)
+  and final surface Dehn reduction. Thus every additional relation imposed in
   the paper's epimorphism `G -> pi1(V)` now has an independent path-level
   geometric certificate. See `runs/23`.
 * **The deductions from simple connectivity to Theorems A, B, C are a
@@ -211,17 +215,39 @@ replay to **3 gens / 78 relators** in 49s.
   checkers reject a batch that verifies any case twice, and in full-inventory
   mode (the default for the Ruby driver with no paths; `--full-inventory` for
   the Python checker) require the batch to be exactly the input's eight
-  fillings, one file per case slug, over a source with 4 generators, 95
-  complement relators, and 2 filling relators per case.  A duplicated batch
+  fillings, one file per case slug, over a source of the stated shape
+  (`--expect-generators`/`--expect-relators`: 3 and 78 for the sealed chain,
+  4 and 95 for the earlier export) with 2 filling relators per case.  A
+  duplicated batch
   is a negative control in both.  `make_proof_manifest.py` refuses to write
   or check a manifest unless `proof_certificates/` holds exactly one file per
   filling.  See `runs/65`.
+* **The raw-to-reduced Tietze transport is sealed; the committed four-generator
+  transport is not replayable.**  `luttinger/sealed_transport/` freezes the
+  serialized 99,863-generator input, the 99,860-step certificate, and the
+  resulting 3-generator presentation of the canonical seeded run
+  (`PYTHONHASHSEED=0 python3 r_run.py`); `verify_tietze_transport.py` and
+  `verify_tietze_transport.rb` replay it from those three files alone and
+  reject corrupted-input, omitted-step, altered-substitution, and
+  altered-output controls.  The committed four-generator presentation came
+  from an unseeded invocation (run 20) and the engine's raw presentation
+  depends on the interpreter's hash seed, so the input its 99,859-step
+  certificate binds cannot be regenerated; that transport rests on the
+  generating run's self-check only.  The eight fillings of the sealed
+  presentation are certified trivial by the same derivation-DAG pipeline
+  (39,163 retained records, both checkers), so the load-bearing chain from
+  the serialized raw complex to the eight verdicts now replays end to end
+  and the four-generator chain is superseded corroborating evidence
+  (`proof_ledger.py`: `C_pi1_V_trivial` depends on the sealed chain; the
+  unseeded transport is the single `software_trust` node, on which nothing
+  depends).  See `runs/66`.
 * **The remaining trust boundary is explicit and machine-checked.**
   `proof_ledger.py` records an acyclic dependency graph from local certificate
   files and named external inputs to the three exoticness conclusions. It
   distinguishes geometric arguments from machine certificates. The former
-  KBMAG software assumption is now removed: all eight original four-generator
-  filled presentations have pruned derivation DAGs, and the small independent
+  KBMAG software assumption is now removed: all eight fillings of the sealed
+  presentation, and all eight of the earlier four-generator export, have
+  pruned derivation DAGs, and the small independent
   checker verifies every input-relator axiom, inverse axiom, critical overlap,
   rewrite trace, equation-tidying change, and final generator-to-identity rule.
   KBMAG is used only as an untrusted certificate generator. The former top-ranked
@@ -275,11 +301,17 @@ replay to **3 gens / 78 relators** in 49s.
   fingerprint as the Prop 3.5 model of pi1(R): `[[0,0],[1,3,7,26]]`.
 * **Certificate section 2**: pi1(C) matches the author's drilled relation
   sheet fingerprint.
-* **Tietze provenance**: all 99,860 elementary eliminations in the target run
-  are logged and independently replayed.  Each replay step recomputes its
-  substitution from a current relator in which the eliminated generator occurs
-  exactly once; input/output SHA-256 digests bind the log to the presentation.
-  The T4 regression deliberately corrupts a step and confirms rejection.
+* **Tietze provenance**: the elementary eliminations of the target run are
+  logged as a certificate whose replay recomputes each substitution from a
+  current relator in which the eliminated generator occurs exactly once, with
+  input/output SHA-256 digests binding the log to the presentation; the T4
+  regression deliberately corrupts a step and confirms rejection.  The
+  *committed* four-generator certificate (99,859 steps, from the unseeded
+  run 20) was replayed only inside its own generating process and its input
+  cannot be regenerated — the raw presentation depends on `PYTHONHASHSEED`.
+  The seeded transport (99,860 steps, 3 generators, 78 relators) is sealed
+  with its serialized input in `luttinger/sealed_transport/` and replays
+  under two standalone checkers; see `runs/66`.
 
 ## The caveat on sections 1 and 2 (read this before trusting them)
 
@@ -347,7 +379,9 @@ standard boundary-whisker conjugacy.
 
 ### Proof-certificate and group-attack follow-up
 
-`r_run.py` now emits `r_tietze_certificate.json.gz` (99,860 verified moves),
+`r_run.py` now emits `r_tietze_certificate.json.gz` (99,860 verified moves in
+this seeded run; the unseeded run 20 later rewrote the committed artifacts
+with a 99,859-move certificate to a four-generator presentation — `runs/66`),
 `r_presentations.json` (the complement, all tracked paths, and all eight
 fillings), and explicit geometric candidate paths for the paper's
 `x,y,r,s,A,B`.  The latter use five-chain cores in an unobstructed fiber slice
@@ -505,13 +539,21 @@ the presentation digest; all four are rejected.
 
 ## Next steps, in order
 
-1. **Make the large preliminary Tietze trace standalone.** The 99,859-step
-   committed trace is checked while `r_run.py` reconstructs its large input,
-   but that 99,863-generator input was not serialized in the committed
-   package. A clean second-language replay therefore requires a deterministic
-   sealed input/output bundle. This concerns the preliminary presentation
-   transport, not the Run-57 triviality proofs, which start from the committed
-   original four-generator filled presentations.
+1. **Carry the sealed transport through to the derivation certificates.**
+   The seeded raw-complex-to-reduced-presentation transport is now sealed and
+   replays in two languages (`runs/66`), but it lands on a 3-generator
+   presentation, whereas the eight committed derivation certificates and the
+   framing scan are built on the four-generator presentation of the unseeded
+   run 20, whose transport input is unrecoverable.  Run 66 closes this for
+   the eight fillings: the sealed presentation's eight filled groups carry
+   their own derivation certificates (`luttinger/sealed_transport/proof_certificates/`,
+   39,163 retained records, both checkers, full-inventory mode), so the
+   chain from the serialized raw complex to the eight triviality verdicts
+   replays end to end; the four-generator chain is retained as superseded
+   corroborating evidence.  Still open: the 100-case framing scan
+   (runs 58–63) and the based-monodromy Tietze chains (runs 12, 23, 32)
+   are built on the four-generator export or replayed only in-process;
+   re-deriving them over the sealed presentation is the next step.
 
 2. **Leave downstream foundations downstream.** Freedman classification,
    Hambleton--Kreck, symplectic Kodaira dimension, Thom, Klug/Levine, and
@@ -699,3 +741,4 @@ Raw console output, in the order produced:
     63  common-core certificate for the hundredth framing case (100/0 final)
     64  downstream proof chain from Theorem D to Theorems A, B, C
     65  batch inventory checks in both filled-group checkers and the manifest generator
+    66  sealed raw-complex Tietze transport and derivation certificates for its eight fillings

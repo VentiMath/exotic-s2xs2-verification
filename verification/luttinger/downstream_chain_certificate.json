@@ -5,8 +5,9 @@
     "S16_theorem_C"
   ],
   "evidence_sha256": {
-    "luttinger/proof_certificates/manifest.json": "0c9993613e8b2099e7da0b15369ec0b7c9c575bf28ce751a4e72dc60e66a6fb2",
+    "luttinger/proof_certificates/manifest.json": "0cec91193c19b50d496a6d2230d6b6e1dcecb52df60b25117231f31ed21cdae6",
     "luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
+    "luttinger/sealed_transport/r_presentations.json": "1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c",
     "notes/downstream_theorem_audit_2026-08-23.md": "e4fe2e26f96d2f643ea0e778ab7fb310935f2dcd8aee72870911028a7511f2af",
     "notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",
     "notes/pl_self_intersection_certificate_2026-08-24.md": "b8048089e84c651bfcc5dc0bb945da2837e58fe1587886ed6a90c6f6c2d76eb4",
@@ -19,7 +20,8 @@
     "runs/43-weinstein-chart-independence.txt": "58f09c26e13edf39fc7e9ba3a4976790beb8f20fa3cb42a22b6eeeb54725d8e7",
     "runs/46-direct-equivariant-moser.txt": "8b8d19de4ce9fa8994c50dd4f321dadaf27c89edd2ae0f52564ff0a94725ff0e",
     "runs/47-cumulative-moser-flow.txt": "2867003047d48eb4cc866ae98d3637b2f189d8168eadc2fa7c463db37708956d",
-    "runs/57-second-certificate-verifier.txt": "18b12c770dab047c8a4d797b95fee86cee256b34696b01baad8abb496108f84a"
+    "runs/57-second-certificate-verifier.txt": "18b12c770dab047c8a4d797b95fee86cee256b34696b01baad8abb496108f84a",
+    "runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89"
   },
   "format": "luttinger-downstream-proof-chain-v1",
   "items": [
@@ -270,10 +272,12 @@
       "statement": "quoted (LP25 Lemma 9): \"Let t be a spin^c structure on V with |<c_1(t), F>| = 2. Then Psi_{V,t} != 0.\"  Its proof uses: Z symplectic, |<c_1(k), F>| = 2 for the canonical class k, H^2(V) = Z, the nonvanishing of the mixed invariant of a symplectic 4-manifold for the line spanned by F [OS04], and conjugation symmetry [OS06, Thm 3.6].  quoted (LP25 Lemma 10): \"Let (M_1, t_1) and (M_2, t_2) be two spin^c four-manifolds glued along S^3_0(Q) so that t_1| = t_2| = s_+-. If Psi_{M_1,t_1} and Psi_{M_2,t_2} are non-zero, then Phi_{M_1 u M_2, span{F}, t} != 0 for any t restricting to t_i.\"  (HF_red(S^3_0(Q), s_+-) is one-dimensional because S^3_0(Q) is fibered with genus-2 fiber, OS04 Thm 5.2.)  Finally (LP25, proof of Theorem 2): CP^2 # -CP^2, and CP^2 # -CP^2 # D for any homology 4-sphere D, admits for each of its two square-zero lines a splitting along S^2 x S^1, and HF_red(S^2 x S^1) = 0 in every non-torsion spin^c structure, so every mixed invariant of it vanishes; the mixed invariant is an invariant of the triple (M, L, t)."
     },
     {
-      "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled presentations carries a derivation-DAG certificate accepted by two independent checkers, and the peripheral identification shows they present pi_1 of the paper's surgeries.",
+      "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the peripheral identification shows they present pi_1 of the paper's surgeries.",
       "evidence": [
         "luttinger/proof_certificates/manifest.json",
+        "luttinger/sealed_transport/r_presentations.json",
         "luttinger/r_presentations.json",
+        "runs/66-sealed-tietze-transport.txt",
         "runs/29-independent-filled-group-certificates.txt",
         "runs/57-second-certificate-verifier.txt",
         "runs/20-direct-peripheral-fillings-trivial.txt",
