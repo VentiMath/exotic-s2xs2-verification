@@ -6,9 +6,11 @@ Wuebben's public repository has stated, since its first visible commit
 (`7ee4f196`, 2026-08-07) and continuously through the current
 `82fbf7ef`, that Lidman and Piccirillo report a computation of
 `pi_1(V)` that disagrees with his, and that the disagreement is
-unresolved.  The statement is present verbatim in the README at
-`ea1fc13d`, the commit this import pins and the paper cites.  This
-project recorded the report on 2026-08-23
+unresolved.  It is recorded in the README at `ea1fc13d`, the commit this
+import pins and the paper cites, where the reported computation is said
+to disagree; the sharper `pi_1(V) != 1` phrasing appears in the current
+README, rewritten later.  The wording differs between those two commits;
+the substance does not.  This project recorded the report on 2026-08-23
 (`notes/community_reactions_2026-08-23.md`), answered the specific
 based-versus-unbased monodromy objection for its own marked model, and
 then failed to carry the unresolved report into this file, the ledger,
