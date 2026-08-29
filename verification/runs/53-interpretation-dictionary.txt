@@ -37,9 +37,18 @@ unchanged), the ribbon figure transcription (mitigated by the two
 independent realizations of runs 22 and 34), and the local twist signs
 (discriminated only through the run-12 calibration).
 
+Correction (2026-08-29): the `sign-package-M1-M2-M3` entry's `paper_locus`
+read "the section 7.4 sign-correction package". The paper has no section 7.4
+-- section 7 ends at 7.3, and the corrected relations are section 8.3 (with
+the push-off basing correction at 8.5). The label is now "the section 8.3
+corrected-relations package". Only that string changed; every extracted
+reading, witness, and digest is unchanged, and the regenerated certificate
+still replays from the author's pinned scripts. The certificate digest below
+is the corrected one.
+
 Certificate SHA-256:
 
-`7b11ccbb903d321adcabfe6dbb4636d1e86bdcffef702e4d537a7f48e90d22fd`
+`d19da1b2a27896685c19e967cf8eae6cc45313651391b6d218645b88ea7e2e8e`
 
 Upstream verification (2026-08-27): both parsed files are byte-identical to
 the author's public repository at the pinned commit —
