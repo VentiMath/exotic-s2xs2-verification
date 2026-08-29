@@ -568,25 +568,6 @@ both tori at every simplex, and the explicit block-frontier map checks every
 dual loop as a normal-circle fiber; these are the finite facts behind the
 geometric words ``meridian'' and ``push-off.''
 
-\subsection*{The drilled-fiber relation in the complement}
-
-The final displayed relation above is load-bearing for tractability.  The
-original audit established its based monodromy identity in the unpunctured
-mapping cylinder but did not show that the homotopy avoids both surgery
-tori.  The omitted distinction matters: the transported path meets $e$
-once, so sweeping it along the \emph{core} of the beta curve meets
-$T_\beta$ in 264 vertices.  Wuebben uses a parallel beta loop.  At that
-level the complete 17{,}664-tetrahedron mapping-cylinder stack has no vertex
-on either torus, and a $2\times35$ simplicial grid at $p$ identifies its
-based loop with the whiskered generator, also without meeting either torus.
-Together with the based monodromy replay this proves
-\[
- B(s^{-1}r^{-1}yx)B^{-1}=r^{-1}s^{-1}x
-\]
-in the actual two-torus complement of the specified model.  This repairs an
-earlier omission in the identification argument, not in the finite
-certificates of Theorem~\ref{thm:main}.
-
 \subsection*{From product framing to Lagrangian framing}
 
 Luttinger surgery is performed with respect to the Lagrangian framing;
@@ -651,11 +632,36 @@ The local-flatness and normal-block checks identify the two oriented dual
 loops as meridians.  The worked extractions build their common-whisker
 product push-offs as the paper's $Ax$ and $(r^{-1}Mr)B$ directions --- by
 construction, subject to the algebraic caveat recorded there --- with the
-punctured beta sweep accounting for the conjugated meridian.  The complement-level grid proves
-the drilled-fiber relation without crossing either torus.  Finally, the
-coordinate calculation above and the stated relative Moser and
-Lagrangian-neighborhood inputs identify the product and Lagrangian
-framings.  Therefore the two normal closures added to the model are exactly
+punctured beta sweep accounting for the conjugated meridian.  
+
+It remains to place the drilled-fiber relation
+$B(s^{-1}r^{-1}yx)B^{-1}=r^{-1}s^{-1}x$ in the complement rather than in
+the mapping cylinder.  This step is load-bearing, since Wuebben's
+presentations become tractable only after it is adjoined, and an earlier
+form of this audit established only the based monodromy identity in the
+\emph{unpunctured} mapping cylinder, comparing a non-discriminating
+low-index fingerprint in the complement; neither step showed that the
+transport homotopy avoids the surgery tori, which is where the relation is
+used.  The distinction is not vacuous, and the checker exhibits why: the
+transported loop $\kappa_3$, of edge length $31$, misses $c$ entirely but
+meets $e$ once, so sweeping it along the \emph{core} of the beta curve
+would meet $T_\beta$ in $264$ vertices.  Wuebben specifies the parallel
+push-off, not the core.  Carried along the push-off, the complete
+mapping-cylinder stack --- $17{,}664$ tetrahedra on $2{,}966$ vertices ---
+has no vertex on $T_\alpha$ and none on $T_\beta$; a $2\times35$ simplicial
+homotopy grid at $p$ then joins the push-off basepoint loop to the core one
+and identifies it with the presentation's whiskered generator, again meeting
+neither torus; and the based monodromy target reduces to $r^{-1}s^{-1}x$ as
+required.  The relation therefore holds in
+$R\smallsetminus(T_\alpha\cup T_\beta)$.  This repairs an omission in the
+identification argument, not in the certificates of
+Theorem~\ref{thm:main}, which are finite objects about explicit
+presentations.  The audit is \repopath{luttinger/r3_complement_audit.py},
+SHA-256 \texttt{76e579c18227\ldots eefb79}.
+
+Finally, the coordinate calculation above, together with
+the stated relative Moser and Lagrangian neighborhood inputs, identifies
+the product and Lagrangian framings.  Therefore the two normal closures added to the model are exactly
 \[
  \big\langle\!\big\langle
  M\lambda_\alpha^{\epsilon_A},
