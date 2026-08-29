@@ -140,12 +140,17 @@ whose SHA-256 digest is
 Read a positive integer $j$ in \texttt{S} as the generator $g_j$ and a
 negative integer $-j$ as $g_j^{-1}$.  The top-level fields
 \texttt{ngens=3} and \texttt{relators} define a 3-generator,
-78-relator presentation $Q$.  For each of the four entries in
-\texttt{fillings} having \texttt{paper\_half\_drift=n0\_y1}, append that
-entry's two word lists to the relators of $Q$; call the resulting
-presentation $P_{\epsilon_A,\epsilon_B}$, using the entry's two
-\texttt{paper\_sign} fields.  Every one of these four explicitly defined
-presentations presents the trivial group.
+78-relator presentation $Q$.  Take the four entries of the top-level
+array \texttt{paper\_fillings} whose \texttt{half\_drift} field is
+\texttt{"n0\_y1"}; these are entries $0$--$3$, and their
+$(\texttt{sign\_a},\texttt{sign\_b})$ fields run over
+$(+1,+1)$, $(+1,-1)$, $(-1,+1)$, $(-1,-1)$ in that order.  Append the two
+word lists of such an entry, of lengths $94$ and $132$, to the $78$
+relators of $Q$, and call the resulting 3-generator, 80-relator
+presentation $P_{\epsilon_A,\epsilon_B}$ for
+$\epsilon_A=\texttt{sign\_a}$ and $\epsilon_B=\texttt{sign\_b}$.  Every
+one of these four explicitly defined presentations presents the trivial
+group.
 
 The proof consists of four derivation certificates in release
 \texttt{v1.5.7}.  Both the Python and Ruby checkers accept them, and two
@@ -312,7 +317,7 @@ the vertex-link level.
   \coordinate (cs) at (1.53,1.87);
   \coordinate (cy) at (-1.63,-1.77);
   \draw[very thick] (cs) .. controls (-0.35,1.55) and (-1.95,0.45) .. (cy);
-  \fill (cs) circle (1.6pt); \node[left=2pt] at (cs) {\small $c_s$};
+  \fill (cs) circle (1.6pt); \node at (1.14,2.05) {\small $c_s$};
   \fill (cy) circle (1.6pt); \node[right=2pt] at (cy) {\small $c_y$};
   \node at (-1.55,0.95) {\small $c$};
   \coordinate (se) at (1.91,1.49);
@@ -321,7 +326,7 @@ the vertex-link level.
   \fill (se) circle (1.6pt); \node[right=2pt] at (se) {\small $s_e$};
   \node at (1.55,-0.55) {\small $e$};
   \draw[->,gray!70!black,thick] (V4) -- (cy);
-  \node[gray!70!black] at (-1.72,-1.12) {\small $y_1$};
+  \node[gray!70!black] at (-2.76,-0.72) {\small $y_1$};
   \node at (0,-3.75) {(a) the marked fiber $F$};
 \end{scope}
 \begin{scope}[xshift=7.6cm]
@@ -385,7 +390,8 @@ $A,B$ & $[\bar\alpha]^{-1},[\bar\beta]^{-1}$ & literal based loops from $q$
 & path export \\
 $M,N$ & meridians based along $y_1,s_2$ & oriented dual normal circles with
 the same literal whiskers & all 592 normal fibers checked \\
-$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1} & elementary Tietze replay \\
+$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1} & explicit construction; see the
+caveat below \\
 $\lambda_\beta$ & $(r^{-1}Mr)B$ in the displayed orientation &
 \texttt{lb\_b\_s2}, exported without substitution & punctured sweep and
 independent extraction \\
@@ -514,22 +520,48 @@ to $c_y$, makes a normal jog to the frontier of the explicit normal block,
 and traverses the oriented dual normal circle.  Returning along the same
 whisker gives $M$.  The longitude uses that identical whisker and normal
 jog, traverses the base direction $A$, and closes along the selected half
-of $c$.  The path-level transport and its elementary Tietze replay give
-\[
- \texttt{geom\_M}=M,\qquad \texttt{lb\_a\_y1}=Ax.
-\]
-Because the two loops use the same whisker, there is no independent
-conjugation hidden in the filling word $M(Ax)^{\epsilon_A}$.
+of $c$.  The stored words are \texttt{geom\_M} and \texttt{lb\_a\_y1}; they are
+what $M$ and $\lambda_\alpha$ denote throughout, and they are what
+Theorem~\ref{thm:main} literally fills with.
+
+That the two loops use the same whisker is not an inference but a fact one
+can read off the sealed transport input: there
+$\texttt{geom\_M}=y_1\,\mu_\alpha\,y_1^{-1}$ and
+$\texttt{lb\_a\_y1}=y_1\,\lambda_\alpha^{\circ}\,y_1^{-1}$ with the
+\emph{identical} four-edge whisker
+$y_1=e_{24046}e_{90328}e_{79763}e_{72645}$, seven- and six-edge circles
+$\mu_\alpha,\lambda_\alpha^{\circ}$, and fifteen and fourteen letters in
+all.  So no independent conjugation is hidden in the filling word
+$M\lambda_\alpha^{\epsilon_A}$.
+
+One caveat must be stated precisely, because it is the sharpest
+interpretive edge in this note.  The identification of the stored word
+$\texttt{lb\_a\_y1}$ with the paper's symbol $Ax$ is \emph{geometric},
+resting on how the path is built --- based on the $y$ rail at the unique
+crossing $c_y$, whiskered by $y_1$, jogged to the normal-block frontier,
+lifting the base generator $A$, and closed along the selected half of $c$.
+It is not, in the presentations this note ships, an algebraically certified
+word identity: over the sealed presentation the elementary elimination pass
+reduces $\texttt{lb\_a\_y1}^{-1}Ax$ to a $72$-letter word rather than to the
+empty word, and likewise
+$\texttt{lb\_b\_s2}^{-1}(r^{-1}Mr)B$ to a $113$-letter word.  Neither
+residual is refuted --- both die in $H_1(C)=\Z^2$ --- but neither is
+certified, and elementary elimination is not a word solver, so a nonempty
+residual is inconclusive in both directions.  An earlier run reported the
+$\alpha$ residual as empty over a presentation that predates both exports
+in the repository; that reduction does not reproduce over either committed
+export, and nothing in this note relies on it.  Theorem~\ref{thm:main}
+is untouched either way: it fills with the stored words, never with $Ax$.
 
 The beta extraction is the sign-sensitive case.  The corresponding path
 uses the initial segment $s_2$ to the unique crossing $s_e$, the base loop
 $B$, and the fiber-normal push-off.  Its swept basing square crosses
 $T_\alpha$ once.  Puncturing that square contributes the conjugated
-meridian $r^{-1}Mr$, yielding
-\[
- \texttt{geom\_N}=N,\qquad
- \texttt{lb\_b\_s2}=(r^{-1}Mr)B.
-\]
+meridian $r^{-1}Mr$, which is why the paper's word for this direction is
+$(r^{-1}Mr)B$ and not $B$.  The stored words are \texttt{geom\_N} and
+\texttt{lb\_b\_s2}, exported without substitution; they are what $N$ and
+$\lambda_\beta$ denote, and the identification with $(r^{-1}Mr)B$ carries
+the same caveat as the $\alpha$ case.
 An independently written extractor recovers both pairs without importing
 the complement, sweep, or peripheral modules.  Local link checks certify
 both tori at every simplex, and the explicit block-frontier map checks every
@@ -616,9 +648,10 @@ subbundles and carries the induced tori and their product collars to
 $T_\alpha$ and $T_\beta$.
 
 The local-flatness and normal-block checks identify the two oriented dual
-loops as meridians.  The worked extractions show that their common-whisker
-product push-offs are $Ax$ and $(r^{-1}Mr)B$, with the punctured beta sweep
-accounting for the conjugated meridian.  The complement-level grid proves
+loops as meridians.  The worked extractions build their common-whisker
+product push-offs as the paper's $Ax$ and $(r^{-1}Mr)B$ directions --- by
+construction, subject to the algebraic caveat recorded there --- with the
+punctured beta sweep accounting for the conjugated meridian.  The complement-level grid proves
 the drilled-fiber relation without crossing either torus.  Finally, the
 coordinate calculation above and the stated relative Moser and
 Lagrangian-neighborhood inputs identify the product and Lagrangian
