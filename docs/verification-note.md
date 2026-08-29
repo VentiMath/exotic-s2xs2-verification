@@ -1,5 +1,16 @@
 # Certificate-based verification of Wuebben's exotic S²×S² construction
 
+> **Known unreconciled external computation.** Wuebben's repository has stated,
+> since its first visible commit and continuously since, that Lidman and
+> Piccirillo report a computation of π₁(V) that disagrees with his, and that the
+> disagreement is unresolved. Their published v1 never asserts π₁(V) ≠ 1 — it
+> proves H₁(V) = 0 and normal generation by π₁(F) — and no relation sheet or
+> nontriviality witness for the contrary computation is public. Their v1 source
+> also explicitly declines to fix the surgery parametrization, while Wuebben's
+> theorem is for one fixed member. The certificates below decide the presented
+> groups of a sealed, hash-bound model; they do not reconcile that report.
+
+
 *This is the prose companion of the arXiv note in `paper/`; the paper is the
 authoritative text and carries the numbered theorems. Author: John Clyde
 (VentiMath), with AI assistance disclosed in the provenance section.*
@@ -44,7 +55,9 @@ is executed and replayed by two checkers, and the chain ends in the three
 theorems.
 
 The conclusion, stated carefully: the three theorems are verified relative
-to explicitly named external results, with no known project-specific gap.
+to explicitly named external results, and no internal discrepancy has been
+found by the reproducible checks. A reported contrary computation of the same
+group is disclosed and not resolved; see the note above and `runs/67`.
 Section 8 lists the named theorems; none of them is project-specific, and
 each is applied with hypotheses that are discharged mechanically. The
 theorems are Wuebben's; this note claims only the verification.
