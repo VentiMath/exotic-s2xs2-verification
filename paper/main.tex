@@ -53,8 +53,9 @@ certificate-based verification of the theorem-critical fundamental-group
 and framing steps and a machine-replayed audit of the downstream argument.
 We rebuild the bundle as a simplicial
 complex from the paper's marked-fiber data, extract the surgery tori and
-based peripheral curves, and prove trivial the four convention-specialized
-relator sheets that contain the paper's fixed filling. Each computation
+based peripheral curves, and prove that the four convention-specialized
+filled presentations containing the paper's fixed filling are trivial.
+Each computation
 emits a derivation certificate accepted by independently implemented Python
 and Ruby checkers. Exact-rational Python programs verify the displayed
 calculus in the framing lemma identifying the combinatorial and Lagrangian
@@ -97,7 +98,15 @@ presentation conventions, not four geometric parametrizations; he allows
 either sign for each. We certify all four convention specializations, so in
 particular the relator sheet for the fixed $V$ is included. The other three
 specializations are convention-robustness checks, not claims about three
-further manifolds.
+further manifolds. Wuebben's own 4{,}096-system grid varies, besides these
+two exponents, the three meridian signs of his transport corrections, the
+left/right placement of those corrections, the choice of conjugating arc
+for the $Bs$ correction, and the arc, sign, and placement of the
+$T_\beta$ push-off. In the rebuilt model none of these is a free choice:
+the corrections, basings, and push-off are computed as literal certified
+loops (Section~\ref{sec:peripheral}), so only $\epsilon_A,\epsilon_B$
+remain as conventions, and the four certificates cover his grid at the
+fixed member.
 
 This note reports an independent implementation of that step, a machine
 audit of the framing lemma that connects the group theory to the
@@ -133,8 +142,9 @@ two surgery tori in the simplicial model, together with the two filling
 relators of the $n{=}0$ double surgery with relation-sheet exponents
 $(\epsilon_A,\epsilon_B)$, imposed with the certified based meridians and
 framed longitudes. Each $P_\epsilon$ presents the trivial
-group. The proof is a derivation certificate, contained in release
-\texttt{v1.5.3} of the verification repository, that replays from a fresh
+group. The proof consists of four derivation certificates, contained in
+release
+\texttt{v1.5.4} of the verification repository, that replays from a fresh
 checkout and is accepted by independently implemented Python and Ruby
 checkers.
 \end{theorem}
@@ -175,8 +185,9 @@ Section~\ref{sec:peripheral}.
 
 \begin{theorem}[downstream implication, relative to named inputs]\label{thm:full}
 For the specified piece $V$, relative to the twenty-five external
-theorems listed in Section~\ref{sec:downstream} and the certificates of
-Theorem~\ref{thm:main}, Proposition~\ref{prop:ident}, and
+theorems listed in Section~\ref{sec:downstream}, the certificates of
+Theorem~\ref{thm:main}, the geometric identification of
+Proposition~\ref{prop:ident}, and the dependency certificate of
 Section~\ref{sec:downstream}: (A) $Z$ is homeomorphic but not
 diffeomorphic to $S^2\times S^2$; (B) $W$ is homeomorphic to $B$, and the
 pair $(B,W)$ is homeomorphic but not diffeomorphic, distinguished by the
@@ -358,7 +369,7 @@ $n{=}0$ & $(+,+)$ & 1504\\
 
 \smallskip
 \small Derivation-DAG certificates for the four convention-specialized
-filled groups; each verifies \textsc{trivial} from a fresh clone of the
+filled groups; each verifies triviality from a fresh clone of the
 repository.
 \end{center}
 
@@ -379,7 +390,13 @@ is distributed as
 \repopath{verification/luttinger/kbmag-proof/kbfns-proof.patch}. An
 untrusted compiler prunes that history to the dependency cone of the
 final identity rules and emits a certificate of the form in
-Lemma~\ref{lem:sound}, binding the input presentation by SHA-256. A small
+Lemma~\ref{lem:sound}, binding the input presentation by SHA-256. The
+certified set is fixed by the hash manifest, which lists the eight
+certificate files by name and SHA-256, one per case; each certificate
+records its case index and slug, which the checkers validate against the
+filling list of the hash-bound input, so replaying the manifest's files
+verifies exactly the four $n{=}0$ sign pairs and the four $n{=}1$
+controls. A small
 independent checker then re-verifies every input-relator axiom, inverse
 axiom, critical overlap, rewrite trace, tidying change, and final
 generator-to-identity rule; it neither imports nor runs KBMAG. A second
@@ -395,9 +412,11 @@ computational claim rests on a replayable artifact validated by small
 independent code.
 
 The machinery does not only produce trivial groups, and the checkers do
-not only accept. Abelianization detects nothing here --- the 95-relator
-complement presentation already has trivial abelianization, so every
-filling does too --- and the certificates carry the whole load. The same
+not only accept. Abelianization is only a sanity check here: the
+95-relator complement presentation has $H_1=\Z^2$, and each pair of
+filling relators kills it, so every filled presentation has trivial
+abelianization; that the filled groups are trivial rather than merely
+perfect is carried entirely by the certificates. The same
 pipeline, run as a calibration on the standard $T^4$ Luttinger example,
 returns the complement group $\Z^2\times F_2$ and the textbook surgery
 quotient $\Z^4$; on a Baldridge--Kirk example it separates the two sign
@@ -665,8 +684,10 @@ $\Delta_{4_1}(-1)=-5\equiv3\pmod 8$, so $\mathrm{Arf}(4_1)=1$. Otherwise
 the 0-trace $X_0(4_1)$ embeds in $W$ and the torus $T$ obtained by capping
 a Seifert surface with $D$ has square $0$ and $[T]\ne0$ in $H_2(W;\Z/2)$.
 Since $X_0(4_1)$ is simply connected it lifts to $Z$, and $T$ lifts to a
-torus $\tilde T$ with $p_*[\tilde T]=[T]\ne0$; so $[\tilde T]\ne0$ in
-$H_2(Z;\Z/2)=H_2(Z)\otimes\Z/2$, hence in $H_2(Z;\Z)$, and $\tilde
+torus $\tilde T$ with $p_*[\tilde T]=[T]\ne0$ in $\Z/2$ coefficients; so
+$[\tilde T]\ne0$ in $H_2(Z;\Z/2)=H_2(Z;\Z)\otimes\Z/2$ (as $H_1(Z)=0$),
+and a class with nonzero mod-2 reduction is nonzero in the torsion-free
+$H_2(Z;\Z)$; and $\tilde
 T\cdot\tilde T=T\cdot T=0$ because $p$ is a local diffeomorphism. This
 contradicts Proposition~\ref{prop:torus}.
 \end{proof}
@@ -778,12 +799,12 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.3}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.4}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.3}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.4}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
-\begin{center}\small\texttt{a0adbce359f0fbfb29872087afc6eb0fc0c5412b}\end{center}
+\begin{center}\small\texttt{9142c9a0f486190880021a10c7d59e87a4d712d6}\end{center}
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{c79ab0fe97049a7e437f540b274d6425d0bfae2d5a53753e2c349c5351f92da5}\end{center}
 and its downstream-chain certificate has SHA-256

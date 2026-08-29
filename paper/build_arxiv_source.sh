@@ -4,7 +4,7 @@ set -eu
 umask 022
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-output=${1:-"$script_dir/arxiv-source-v1.5.3.tar.gz"}
+output=${1:-"$script_dir/arxiv-source-v1.5.4.tar.gz"}
 stage=$(mktemp -d "${TMPDIR:-/tmp}/arxiv-source.XXXXXX")
 
 cleanup() {
