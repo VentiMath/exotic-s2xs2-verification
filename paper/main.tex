@@ -143,9 +143,9 @@ relators of the $n{=}0$ double surgery with relation-sheet exponents
 $(\epsilon_A,\epsilon_B)$, imposed with the certified based meridians and
 framed longitudes. Each $P_\epsilon$ presents the trivial
 group. The proof consists of four derivation certificates, contained in
-release
-\texttt{v1.5.4} of the verification repository, that replays from a fresh
-checkout and is accepted by independently implemented Python and Ruby
+release \texttt{v1.5.5} of the verification repository, which replay from
+a fresh checkout and are accepted by independently implemented Python and
+Ruby
 checkers.
 \end{theorem}
 
@@ -391,12 +391,14 @@ is distributed as
 untrusted compiler prunes that history to the dependency cone of the
 final identity rules and emits a certificate of the form in
 Lemma~\ref{lem:sound}, binding the input presentation by SHA-256. The
-certified set is fixed by the hash manifest, which lists the eight
-certificate files by name and SHA-256, one per case; each certificate
-records its case index and slug, which the checkers validate against the
-filling list of the hash-bound input, so replaying the manifest's files
-verifies exactly the four $n{=}0$ sign pairs and the four $n{=}1$
-controls. A small
+certified set is enforced, not assumed: both checkers reject a batch that
+verifies any case twice, and in full-inventory mode --- the documented
+invocation --- require the batch to be exactly the input's eight fillings,
+one file named by each case slug, over a source with four generators, 95
+complement relators, and two filling relators per case; the manifest
+generator refuses to hash a certificate directory that is not exactly one
+file per filling. A successful replay therefore verifies exactly the four
+$n{=}0$ sign pairs and the four $n{=}1$ controls. A small
 independent checker then re-verifies every input-relator axiom, inverse
 axiom, critical overlap, rewrite trace, tidying change, and final
 generator-to-identity rule; it neither imports nor runs KBMAG. A second
@@ -428,7 +430,8 @@ is what exposed the one construction error found and fixed in the
 project. On the checker side, four deliberate corruptions of an accepted
 certificate --- an identity root pointed at the wrong record, an altered
 input-relator equation, an altered rewrite trace, and a wrong generator
-count --- are each rejected.
+count --- are each rejected, as is a batch that supplies the same
+certificate twice.
 
 Both filled-group checkers were produced by OpenAI Codex
 (GPT-5 family), as separate Python and Ruby implementations. They use
@@ -799,16 +802,16 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.4}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.5}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.4}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.5}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
-\begin{center}\small\texttt{9142c9a0f486190880021a10c7d59e87a4d712d6}\end{center}
+\begin{center}\small\texttt{d7152d269c54bb60d85fa1a11da09530b75c3119}\end{center}
 its filled-group proof manifest has SHA-256
-\begin{center}\small\texttt{c79ab0fe97049a7e437f540b274d6425d0bfae2d5a53753e2c349c5351f92da5}\end{center}
+\begin{center}\small\texttt{0c9993613e8b2099e7da0b15369ec0b7c9c575bf28ce751a4e72dc60e66a6fb2}\end{center}
 and its downstream-chain certificate has SHA-256
-\begin{center}\small\texttt{64c1bdfad1d53cbb1e276c54530fe5315444abbcaae946ac2d59288571e6bb12}\end{center}
+\begin{center}\small\texttt{ef2c5cd7c4824771236dab4df56ae57017c108d9e689432325600319388d5cb0}\end{center}
 The repository itself is public at
 \repopath{https://github.com/VentiMath/exotic-s2xs2-verification}; the versioned
 release link above, rather than search-engine indexing, is the artifact to

@@ -104,7 +104,10 @@ filled-group checkers were produced by OpenAI Codex (GPT-5 family), so
 “independent” means implementation-independent, not cross-model authorship
 or statistically uncorrelated errors. A Claude Fable 5 session independently
 reconstructed and replayed the 96-relator common-core computation behind
-the last framing-scan case (§6, run 63) but did not author either checker. All artifacts are bound by SHA-256 and replay.
+the last framing-scan case (§6, run 63) but did not author either checker.
+Both checkers enforce the certificate inventory: no case verified twice, and
+in the documented invocation exactly the eight fillings, one file per case
+slug (run 65). All artifacts are bound by SHA-256 and replay.
 
 ## 5. Redundancy against translation error
 
@@ -329,6 +332,6 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5.4 (the paper's Data Availability section records the
+tagged release v1.5.5 (the paper's Data Availability section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.
