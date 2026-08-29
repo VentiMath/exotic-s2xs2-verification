@@ -1,17 +1,17 @@
 # arXiv submission packet
 
-This packet fixes the metadata for the v1.5.7 manuscript and prevents the
+This packet fixes the metadata for the v1.5.8 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v1.5.7 tag, run
+- From a clean checkout of the v1.5.8 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v1.5.7.tar.gz` as the v1.5.7 GitHub release asset
+- Upload `paper/arxiv-source-v1.5.8.tar.gz` as the v1.5.8 GitHub release asset
   and to arXiv.
-- SHA-256: `9a95e91cef7e436188ec3fbb1a01152a8d808a574f42f000bfc9c50ef1d3e7f6`.
+- SHA-256: `20a163de266552c4bf3a63c70257a419c17e66ebbac484d37343afbd7a32dca2`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
@@ -25,7 +25,7 @@ All fields below are ASCII, as required by arXiv.
 **Title**
 
 ```text
-Certificate-based verification of the fundamental-group and framing steps in Wuebben's exotic $S^2 \times S^2$ construction
+A certificate-based audit of the fundamental-group and framing computations in Wuebben's proposed exotic $S^2 \times S^2$ construction
 ```
 
 **Authors**
@@ -37,13 +37,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-Wuebben (arXiv:2608.17267v1), building on Lidman--Piccirillo (arXiv:2505.14387v1), proves that a specified symplectic 4-manifold $V$ with the homology of $S^2 \times D^2$ is simply connected and deduces three theorems, including an exotic $S^2 \times S^2$. We give a certificate-based verification of the theorem-critical fundamental-group and framing steps and a machine-replayed audit of the downstream argument. Starting from the paper's marked-fiber data, we independently rebuild the bundle, extract the surgery tori and based peripheral curves, and compare the resulting relations, sign tables, and filling words with the paper; every compared item agrees. The four convention-specialized relator sheets containing the paper's single fixed filling are proved trivial by complete confluent rewriting, with derivation certificates accepted by independently implemented Python and Ruby checkers. Exact-rational Python programs verify the displayed calculus of the framing lemma and finite scripts check its stated combinatorial hypotheses. Finally, an explicit dependency chain states twenty-five external theorems with their hypotheses and discharges each hypothesis by a named certificate, computation, or earlier step. Thus, inside the specified model, the three theorems are verified relative to explicitly named external results, and the reproducible checks find no internal discrepancy. We also disclose, and do not resolve, a reported contrary computation: Wuebben's repository states that Lidman and Piccirillo obtain $\pi_1(V)\neq1$. That report is not accompanied by a public presentation or nontriviality witness, and Lidman--Piccirillo's own paper neither asserts it nor fixes the surgery parametrization that makes $V$ a single manifold. The theorems are Wuebben's; this note claims only the verification.
+We audit the theorem-critical computations in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four explicit, hash-identified finite presentations associated with his fixed surgery parametrization are proved trivial by derivation certificates accepted by separate Python and Ruby checkers. This finite statement concerns only words and relations. To connect it to geometry, we independently reconstruct the marked genus-two bundle, surgery tori, common whiskers, meridians, and product-framed longitudes, and compare the resulting dictionary with the paper. We expose that dictionary and a worked peripheral extraction here. Exact-rational programs audit the framing calculation that identifies the product and Lagrangian longitudes; its remaining inputs are stated differential- and PL-topological results. Conditional on this geometric identification and twenty-five named external results, a replayed dependency chain recovers the paper's three manifold conclusions. We also record an unresolved contrary computation reported by Wuebben: Lidman and Piccirillo reportedly obtain $\pi_1(V)\neq1$, but no presentation or nontriviality witness is public, and their paper does not fix the parametrization needed to determine whether the same manifold was computed. Thus the finite presentation theorem is mechanically checkable, while the model-to-manifold identification remains an explicit human trust boundary. The theorems are Wuebben's; this note claims only the audit.
 ```
 
 **Comments**
 
 ```text
-15 pages. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.7 . Verifies arXiv:2608.17267v1 relative to explicitly named external results.
+18 pages, one figure, two tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
 ```
 
 **Classification**
@@ -62,7 +62,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 15 pages, no missing references, and the
+3. Confirm the generated PDF has 18 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.

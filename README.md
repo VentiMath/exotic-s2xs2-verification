@@ -1,4 +1,4 @@
-# Certificate-based verification of Wuebben's exotic S²×S² construction
+# Certificate-based audit of Wuebben's proposed exotic S²×S² construction
 
 This repository documents an independent, machine-driven verification of
 
@@ -151,7 +151,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   graph is acyclic and that each theorem depends on the certified
   π₁(V)=1, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
-  theorems, 32 machine certificates, 11 geometric arguments, 18 derived
+  theorems, 35 machine certificates, 11 geometric arguments, 20 derived
   claims — with every evidence file hashed. The first four counts describe
   the compact downstream chain; the latter four describe the larger
   project-wide ledger, so they are not competing tallies. The chain is
