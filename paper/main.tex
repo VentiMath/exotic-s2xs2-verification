@@ -74,7 +74,7 @@ artifacts are public in a pinned release.
 
 \section{Introduction}
 
-For the construction of \cite{Wuebben}, the theorem-critical unresolved
+For the construction of \cite{Wuebben}, the theorem-critical
 step is the fundamental-group computation. The manifolds there rest on a
 specified Lidman--Piccirillo piece $V$, obtained
 by two Luttinger surgeries \cite{Luttinger,ADK} on Lagrangian tori in a
@@ -145,9 +145,11 @@ A certificate is a finite sequence of records, each an input relator, an
 inverse axiom of the free group, a critical-pair overlap of two earlier
 records, or a rewrite of an earlier record by earlier records, ending in
 the rules $g\to 1$ for every generator $g$ in the hash-bound input
-presentation. The checker reads that generator list from the input
-presentation, not from the certificate. A checker accepts only if
-every record is derived as stated from records preceding it. Every
+presentation. The checker reads the generator count from the certificate,
+requires it to equal the count in the hash-bound input presentation, and
+then requires an identity root for each numbered generator. A checker
+accepts only if every record is derived as stated from records preceding
+it. Every
 accepted record is then an equality holding in the group presented by
 the input relators, so acceptance implies that this group is trivial.
 Neither the confluence of the completed rewriting system nor the
@@ -384,14 +386,17 @@ re-verify under GAP/KBMAG independently of the certificate path. The
 design principle throughout is that certificates are checked, not
 trusted: search and completion tools are untrusted generators, and every
 computational claim rests on a replayable artifact validated by small
-independent code. The Python checker was produced in an OpenAI Codex
-session; the Ruby checker was produced separately by Anthropic Claude
-Fable~5. They use different languages and share no implementation code, but
-they do share the published certificate specification and input format;
-``independent'' here means implementation-independent, not a claim that
-model-generated software has statistically uncorrelated errors. The code,
-not that provenance, is the object offered for review. No claim is made that
-either checker has yet received an independent human line-by-line audit.
+independent code. Both filled-group checkers were produced by OpenAI Codex
+(GPT-5 family), as separate Python and Ruby implementations. They use
+different languages and share no implementation code, but they do share the
+published certificate specification and input format; ``independent'' here
+means implementation-independent, not cross-model authorship or a claim that
+model-generated software has statistically uncorrelated errors. A Claude
+Fable~5 session independently reconstructed and replayed the Run~63
+common-core computation; that was a cross-model replay of one case, not
+authorship of either checker. The code, not that provenance, is the object
+offered for review. No claim is made that either checker has yet received an
+independent human line-by-line audit.
 
 \section{From simple connectivity to the three
 theorems}\label{sec:downstream}
@@ -411,7 +416,9 @@ each of the three conclusions depends on Theorem~\ref{thm:main}, and
 checks every evidence file against its recorded digest. The chain has 25
 external theorems, 3 certificates, 15 computed facts, and 16 steps; its
 prose form is in the repository, and what follows is the mathematics,
-with the inputs first.
+with the inputs first. Both scripts in this downstream pair were produced
+by Claude Fable~5; independence here likewise means separate implementations,
+not cross-model authorship.
 
 \subsection*{External inputs}
 
