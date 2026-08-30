@@ -1,5 +1,10 @@
 # Peripheral identification lemma
 
+> **v2.0.0 semantic clarification.** This note proves the peripheral
+> identification inside the audit-defined model. Applying the paper's names
+> to those paths is the source-semantic assumption S3, not a conclusion of the
+> certificate alone.
+
 > **Evidence correction (2026-08-29).** The original version cited Run 15 as
 > an elementary-Tietze proof that `lb_a_y1 = A x`. That historical reduction
 > was tied to a pre-export coordinate state and does not reproduce over either

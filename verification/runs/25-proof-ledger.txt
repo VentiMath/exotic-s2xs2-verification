@@ -1,6 +1,11 @@
 Run 25: explicit proof-dependency ledger
 Date: 2026-08-23
 
+v2.0.0 semantic clarification: this historical ledger predates the explicit
+`V_*`/Wuebben split. References below to the paper's smooth target now apply
+internally to audit-defined `R_*`; transferring them to Wuebben is conditional
+on S1--S4 in the live ledger.
+
 Command:
 
     cd luttinger

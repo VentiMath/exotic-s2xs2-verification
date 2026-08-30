@@ -1,18 +1,19 @@
-"""Audit the global correspondence between the paper's marked bundle and K.
+"""Audit the global correspondence between the audit-defined marked bundle and K.
 
 This module deliberately checks structural data *before* any surgery-group
 calculation.  It certifies the combinatorial part of the following dictionary:
 
-  paper F                 <-> fiber.py's closed marked genus-2 surface L
-  paper phi_0             <-> the simplicial half-turn ``phi0``
-  paper psi_0=T_a T_b     <-> the open flip stack with directions (b,+),(a,-)
-  paper T_alpha=c x alpha <-> the induced Ta component in bundle.py
-  paper T_beta=e x beta   <-> the induced Tb component in bundle.py
+  audit F                 <-> fiber.py's closed marked genus-2 surface L
+  audit phi_0             <-> the simplicial half-turn ``phi0``
+  audit psi_0=T_a T_b     <-> the open flip stack with directions (b,+),(a,-)
+  audit T_alpha=c x alpha <-> the induced Ta component in bundle.py
+  audit T_beta=e x beta   <-> the induced Tb component in bundle.py
 
 The remaining non-combinatorial bridge is stated explicitly in the returned
 report: the PL bundle assembled from mapping cylinders must be identified with
-the smooth bundle used by Lidman--Piccirillo, and the product framing must be
-identified with the Lagrangian framing (paper Lemma 8.2).
+the audit-defined smooth bundle, and the product framing must be identified
+with its Lagrangian framing.  Comparing those objects with Wuebben's intended
+ones is the separate source boundary S1--S4.
 """
 
 from collections import defaultdict

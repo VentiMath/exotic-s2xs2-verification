@@ -1,5 +1,9 @@
 # Direct PL self-intersection certificate (2026-08-24)
 
+> **v2.0.0 semantic clarification.** The target of the transport discussed
+> below is the audit-defined smooth bundle `R_*`. Its comparison with
+> Wuebben's intended target is conditional on S1--S4.
+
 ## Result
 
 The closed fixed-point section `Gamma_hat` in the doubled marked bundle has

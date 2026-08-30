@@ -1,5 +1,10 @@
 # The PL-to-smooth bridge without smoothing the source
 
+> **v2.0.0 semantic clarification.** The smooth target constructed here is
+> the audit-defined bundle `R_*`. References below to “the paper's” target
+> mean the extracted marked object used to define `R_*`; equality with
+> Wuebben's intended object is the separate conditional boundary S1--S4.
+
 The verification does not need to put a smooth structure on its
 four-dimensional triangulation. The smooth manifold of interest already
 exists: it is the paper's smooth genus-2 bundle `R`, with its specified smooth

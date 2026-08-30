@@ -1,5 +1,10 @@
 # Referee packet for the PL bridge
 
+> **v2.0.0 semantic clarification.** This packet proves transport into the
+> audit-defined smooth bundle `R_*`. Its older phrases “the paper's bundle”
+> refer to the extracted reading used to define `R_*`; identifying that reading
+> with Wuebben's intended denotation is now isolated as S1--S4.
+
 ## Purpose
 
 This note isolates the general PL facts used to pass from the finite

@@ -1,5 +1,9 @@
 # Formalization and risk register (2026-08-23)
 
+> **v2.0.0 semantic clarification.** This historical register predates the
+> explicit `V_*`/Wuebben split. Its claims internal to the model now concern
+> `V_*`; the source comparison is recorded separately as S1--S4.
+
 ## Bottom line
 
 The proof can be formalized further, but the useful target is not to formalize

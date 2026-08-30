@@ -1,5 +1,9 @@
 # Referee packet for the marked surface-bundle identification
 
+> **v2.0.0 semantic clarification.** The construction below proves the
+> bundle statement for the audit-defined `R_*`. Comparing `R_*` with the
+> object intended by Wuebben is not part of this packet; it is S1--S4.
+
 ## Purpose and conclusion
 
 This note records the former theorem route called `T_surface_bundle`. Run 52

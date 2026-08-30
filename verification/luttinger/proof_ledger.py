@@ -2,8 +2,8 @@
 """Check the explicit dependency boundary of the arXiv:2608.17267 audit.
 
 This is a proof ledger, not a proof assistant. It prevents a machine result,
-a cited theorem, and a geometric identification from silently being treated
-as the same kind of evidence.
+a cited theorem, a geometric argument, and a source-identification assumption
+from silently being treated as the same kind of evidence.
 """
 
 from hashlib import sha256
@@ -50,6 +50,15 @@ NODES = {
     "T_periodic_disk_involution": (
         "external_theorem", (),
         "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
+
+    # These are not mathematical theorems about the audit model.  They are
+    # the four semantic assertions S1--S4 needed to identify that explicit
+    # model with the geometric object intended by Wuebben's prose and
+    # figures.  Keeping them as their own evidence kind prevents the ledger
+    # from silently treating a source reading as a machine certificate.
+    "A_Wuebben_source_identification": (
+        "source_assumption", (),
+        "notes/source_identification_assumptions_2026-08-29.md"),
 
     "M_marked_fiber": ("machine_certificate", (), "runs/22-model-correspondence-and-framing.txt"),
     "M_based_monodromy": ("machine_certificate", (), "runs/12-based-generators-and-table-relations.txt"),
@@ -157,14 +166,12 @@ NODES = {
          "T_periodic_disk_involution"),
         "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
 
-    "G_marked_bundle_identification": (
+    "G_audit_model_identification": (
         "geometric_argument",
         ("M_marked_fiber", "M_independent_marked_fiber",
          "M_based_monodromy", "M_bundle_tori",
          "M_alternative_bundle", "M_alternative_based_monodromy",
          "M_PL_flip_trace", "M_PL_theorem_hypotheses",
-         "M_interpretation_dictionary",
-         "G_equivariant_normal_form",
          "G_topological_smooth_reroute",
          "T_elementary_bistellar_trace"),
         "notes/surface_bundle_referee_packet_2026-08-26.md"),
@@ -193,14 +200,20 @@ NODES = {
         "notes/framing_lemma_referee_packet_2026-08-25.md"),
     "G_peripheral_identification": (
         "geometric_argument",
-        ("G_marked_bundle_identification", "G_lagrangian_framing",
+        ("G_audit_model_identification", "G_lagrangian_framing",
          "M_peripheral_slopes", "M_independent_peripheral_extraction",
-         "M_independent_paper_dictionary", "M_alpha_coordinate_identity",
+         "M_alpha_coordinate_identity",
          "M_beta_coordinate_identity"),
         "notes/peripheral_identification_lemma_2026-08-24.md"),
+    "G_Wuebben_comparison": (
+        "geometric_argument",
+        ("G_audit_model_identification", "G_peripheral_identification",
+         "G_equivariant_normal_form", "M_interpretation_dictionary",
+         "M_independent_paper_dictionary", "M_lp_source_figure",
+         "A_Wuebben_source_identification"), None),
     "G_section_square_zero": (
         "geometric_argument",
-        ("G_marked_bundle_identification", "M_section_PL_push_off",
+        ("G_audit_model_identification", "M_section_PL_push_off",
          "M_PL_theorem_hypotheses", "G_topological_smooth_reroute"),
         "notes/pl_self_intersection_certificate_2026-08-24.md"),
     "G_torus_local_flatness": (
@@ -234,15 +247,18 @@ NODES = {
          "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
-    "C_pi1_V_trivial": (
+    "C_pi1_Vstar_trivial": (
         "derived_claim",
         ("C_correct_sealed_filled_presentation",
          "M_sealed_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
-    "C_pi1_V_trivial_unseeded_chain": (
+    "C_pi1_Vstar_trivial_unseeded_chain": (
         "derived_claim",
         ("C_correct_filled_presentation", "M_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
+    "C_pi1_V_trivial": (
+        "derived_claim",
+        ("C_pi1_Vstar_trivial", "G_Wuebben_comparison"), None),
     # The downstream chain (run 64): every step below is an item of
     # luttinger/downstream_chain_certificate.json, replayed by two checkers.
     "C_homology_of_V": (
@@ -353,7 +369,8 @@ def main():
                               for kind, count in sorted(kinds.items())))
     print("explicit trust boundary:")
     for name, (kind, _, _) in NODES.items():
-        if kind in {"external_theorem", "software_trust", "geometric_argument"}:
+        if kind in {"external_theorem", "software_trust", "source_assumption",
+                    "geometric_argument"}:
             print(f"  {kind}: {name}")
     print(f"bound evidence files: {len(evidence)}")
 

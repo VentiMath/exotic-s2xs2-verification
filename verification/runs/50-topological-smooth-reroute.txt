@@ -1,5 +1,10 @@
 # Run 50: PL-to-smooth reroute through the already-smooth target (2026-08-27)
 
+v2.0.0 semantic clarification: throughout this record, the smooth target is
+now denoted the audit-defined `R_*`. Identifying it with Wuebben's intended
+`R` is the separate source boundary S1--S4; Run 50 proves only the internal
+PL-to-smooth transport.
+
 Command:
 
 `python3 luttinger/topological_smooth_bridge.py --check`
@@ -8,7 +13,7 @@ Expected result:
 
 ```
 PASS: luttinger/topological_smooth_bridge_certificate.json exactly reproduced
-PASS: marked PL bundle maps to the underlying paper smooth bundle
+PASS: marked PL bundle maps to the audit-defined smooth bundle
 PASS: tori, collars, peripheral data, and p-section are preserved
 PASS: section square zero transported by disjoint homologous cycles
 NO FOUR-DIMENSIONAL SOURCE SMOOTHING THEOREM REQUIRED
@@ -16,7 +21,7 @@ NO FOUR-DIMENSIONAL SOURCE SMOOTHING THEOREM REQUIRED
 
 The bridge is an orientation-preserving fiberwise homeomorphism from the
 certified PL surface bundle to the underlying topological bundle of the
-paper's already-smooth `R`. It is relative to `c`, `e`, `p`, and the product
+audit-defined already-smooth `R_*`. It is relative to `c`, `e`, `p`, and the product
 collars. Topological complement/peripheral data are transported through that
 map; the Lagrangian and symplectic arguments are performed only on the
 existing smooth target.
