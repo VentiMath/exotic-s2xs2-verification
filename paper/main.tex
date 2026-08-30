@@ -206,7 +206,8 @@ $B=[\bar\beta]^{-1}$ be the based inverse base loops.  Base the oriented
 meridians $M,N$ along the initial fiber arcs $y_1$ to $c_y$ and $s_2$ to
 $s_e$, respectively.  In the product normal boundaries let
 $\lambda_\alpha$ be the $y_1$-whiskered push-off that lifts the inverse
-$\alpha$ direction and closes along the selected half of $c$, and let
+$\alpha$ direction and closes along the half of $c$ running from
+$c_s=\varphi_0(c_y)$ to $c_y$, oriented from $c_s$ to $c_y$, and let
 $\lambda_\beta$ be the $s_2$-whiskered push-off of the inverse $\beta$
 direction along $e$.  Their based words $Ax$ and $(r^{-1}Mr)B$ are
 conclusions of Lemmas~\ref{lem:alpha-peripheral} and
@@ -311,6 +312,21 @@ $\epsilon_A=\texttt{sign\_a}$ and $\epsilon_B=\texttt{sign\_b}$.  Every
 one of these four explicitly defined presentations presents the trivial
 group.
 \end{theorem}
+
+\paragraph{Normative root.}
+Every file this theorem depends on is bound by one manifest,
+\repopath{verification/luttinger/proof_certificates/manifest.json}, whose
+SHA-256 is
+\begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
+and which lists the digest of each certificate, each frozen input, and each
+checker.  The archived \texttt{verification/} tree of this release has git
+tree object
+\begin{center}\small\texttt{0e10551f20bc8f326e4476e550c8ce7fc2fac81f}\end{center}
+recoverable from a clean checkout as
+\texttt{git rev-parse v2.2.1:verification}.  Verifying the manifest and then
+replaying the certificates it names is the whole of the finite claim; nothing
+else in this paper is needed to check it.
+
 
 \begin{definition}[letters, words, and equation keys]\label{def:keys}
 Fix generators $g_1,\ldots,g_n$.  Source relators are signed words in
@@ -923,8 +939,8 @@ $c_y$.  Starting at $p$, the stored path follows the initial segment $y_1$
 to $c_y$, makes a normal jog to the frontier of the explicit normal block,
 and traverses the oriented dual normal circle.  Returning along the same
 whisker gives $M$.  The longitude uses that identical whisker and normal
-jog, traverses the base direction $A$, and closes along the selected half
-of $c$.  The stored words are \texttt{geom\_M} and \texttt{lb\_a\_y1}; they are
+jog, traverses the base direction $A$, and closes along that same half of
+$c$, from $c_s=\varphi_0(c_y)$ to $c_y$.  The stored words are \texttt{geom\_M} and \texttt{lb\_a\_y1}; they are
 what $M$ and $\lambda_\alpha$ denote throughout, and they are what
 Theorem~\ref{thm:main} literally fills with.
 
@@ -942,7 +958,7 @@ The identification of the stored word $\texttt{lb\_a\_y1}$ with the paper's
 symbol $Ax$ has two independent supports.  Geometrically it follows from how
 the path is built --- based on the $y$ rail at the unique crossing $c_y$,
 whiskered by $y_1$, jogged to the normal-block frontier, lifting the base
-generator $A$, and closed along the selected half of $c$.  Algebraically,
+generator $A$, and closed along the half of $c$ from $c_s$ to $c_y$.  Algebraically,
 the elementary elimination pass over the sealed presentation leaves the
 $72$-letter residual $\texttt{lb\_a\_y1}^{-1}Ax$, but a proof-producing
 completion reduces that exact word to the identity in $61$ steps.  Independent
@@ -1021,12 +1037,12 @@ low-index fingerprint is used to supply it.
 \subsection{Simple connectivity of the product-filled audit model}
 
 \begin{theorem}[audit-model identification]\label{prop:ident}
-For the fixed audit sheet $(\epsilon_A,\epsilon_B)=(+1,+1)$, there is a
-natural surjection
+For the fixed audit sheet $(\epsilon_A,\epsilon_B)=(+1,+1)$ the natural map
+is an isomorphism
 \[
- P_{+,+}\twoheadrightarrow\pione(V_{\mathrm{aud}}).
+ P_{+,+}\;\cong\;\pione(V_{\mathrm{aud}}).
 \]
-In fact the map is an isomorphism.  No geometric identification of $P_{+,-},
+No geometric identification of $P_{+,-},
 P_{-,+},P_{-,-}$ is part of this statement.  No clause of Source
 Comparison Hypotheses~D1--D14 enters this theorem.
 \end{theorem}
@@ -1049,10 +1065,11 @@ pieces adds exactly the normal closure
  N\lambda_\beta
  \big\rangle\!\big\rangle.
 \]
-Cellular van Kampen therefore gives the asserted surjection from the filled
+Cellular van Kampen therefore gives a surjection from the filled
 presentation.  Lemma~\ref{lem:complement} gives an actual presentation of
 the complement, not merely a list of valid relations; applying van Kampen
-with the two filling relations proves that the surjection is an isomorphism.
+with the two filling relations upgrades that surjection to the asserted
+isomorphism.
 Changing a common whisker simultaneously conjugates both elements of a
 peripheral pair and does not change their normal closure.
 Lemma~\ref{lem:sign-conventions} records the different, simultaneous
@@ -1065,8 +1082,8 @@ figures.
 \begin{proof}[Proof of Theorem~\ref{thm:audit-manifold}]
 Use the $(+,+)$ sheet in Theorem~\ref{prop:ident}.  Its source is trivial
 by Theorem~\ref{thm:main}; a quotient of the trivial
-group is trivial.  Notice that this conclusion uses only the surjective part
-of Theorem~\ref{prop:ident}, no symplectic or Lagrangian-framing result, and
+group is trivial.  Notice that this conclusion needs only surjectivity in
+Theorem~\ref{prop:ident}, no symplectic or Lagrangian-framing result, and
 no source-identification assumption.
 \end{proof}
 
@@ -1556,10 +1573,10 @@ inputs, certificate checkers, manifests, run transcripts, and reconstruction
 programs are in the public repository and its archival deposit
 \cite{ClydeArtifact}:
 \begin{center}
-\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.0},\\[.3em]
-\small\url{https://doi.org/10.5281/zenodo.22181233}.
+\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.1},\\[.3em]
+\small\url{https://doi.org/10.5281/zenodo.22181589}.
 \end{center}
-That version DOI identifies the exact v2.2.0 archival deposit of the
+That version DOI identifies the exact v2.2.1 archival deposit of the
 artifacts described here.  The concept DOI
 \url{https://doi.org/10.5281/zenodo.22169753} resolves to the newest
 archived version.
@@ -1609,8 +1626,8 @@ arXiv:2608.17267v1 (2026).
 J.~Clyde,
 \emph{A certificate-based audit of simple connectivity for an explicit model
 associated with Wuebben's proposed exotic $S^2\times S^2$ construction},
-verification artifact v2.2.0, Zenodo (2026),
-\url{https://doi.org/10.5281/zenodo.22181233}.
+verification artifact v2.2.1, Zenodo (2026),
+\url{https://doi.org/10.5281/zenodo.22181589}.
 
 \bibitem{LidmanPiccirillo}
 T.~Lidman and L.~Piccirillo,

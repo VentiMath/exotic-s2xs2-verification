@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Check that the v2.2.0 paper, supplement, metadata, and release agree.
+"""Check that the v2.2.1 paper, supplement, metadata, and release agree.
 
 Candidate mode verifies everything that can be fixed before reserving the
 version DOI and cutting the tag.  Final mode additionally requires the exact
-DOI, final wording, a clean tagged checkout, and v2.2.0 release URLs in every
+DOI, final wording, a clean tagged checkout, and v2.2.1 release URLs in every
 public-facing document.  The script deliberately has no network access; the
 release URL and DOI must still be opened from a logged-out browser.
 """
@@ -20,7 +20,7 @@ import tempfile
 from pathlib import Path
 
 
-VERSION = "v2.2.0"
+VERSION = "v2.2.1"
 TITLE_FRAGMENT = "A certificate-based audit of simple connectivity"
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper"
@@ -234,11 +234,11 @@ def main() -> None:
             fail(f"contrary-computation overclaim survives: {overclaim!r}")
 
     if not args.final:
-        print("PASS: the local v2.2.0 candidate is internally synchronized")
+        print("PASS: the local v2.2.1 candidate is internally synchronized")
         print("  main=25 pages/3 figures/5 tables; supplement=14 pages")
         print("  PDF, source-archive, proof-manifest, and downstream hashes agree")
         print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
-        print("  v2.2.0 tag, publish the release/deposit, then rerun with --final")
+        print("  v2.2.1 tag, publish the release/deposit, then rerun with --final")
         return
 
     forbidden = ("[INSERT AFTER DEPOSIT]", "release candidate", "release candidates")
@@ -246,7 +246,7 @@ def main() -> None:
         for phrase in forbidden:
             if phrase.lower() in text.lower():
                 fail(f"final-mode placeholder {phrase!r} survives in {name}")
-        for stale in ("v2.1.0", "v2.0.1"):
+        for stale in ("v2.2.0", "v2.1.0", "v2.0.1"):
             if stale in text:
                 fail(f"obsolete release {stale} survives in final-facing file {name}")
         require(
