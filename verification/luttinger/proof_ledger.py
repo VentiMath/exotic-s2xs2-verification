@@ -64,44 +64,44 @@ NODES = {
     "M_based_monodromy": ("machine_certificate", (), "runs/12-based-generators-and-table-relations.txt"),
     "M_bundle_tori": ("machine_certificate", (), "runs/22-model-correspondence-and-framing.txt"),
     "M_alternative_bundle": (
-        "machine_certificate", (), "runs/31-alternative-marked-bundle.txt"),
+        "machine_certificate", (), "luttinger/alternative_bundle_certificate.json"),
     "M_alternative_based_monodromy": (
         "machine_certificate", (),
         "runs/32-alternative-based-monodromy.txt"),
     "M_PL_flip_trace": (
-        "machine_certificate", (), "runs/33-local-pl-flip-trace.txt"),
+        "machine_certificate", (), "luttinger/pl_flip_trace_certificate.json"),
     "M_independent_marked_fiber": (
-        "machine_certificate", (), "runs/34-independent-marked-fiber.txt"),
+        "machine_certificate", (), "luttinger/independent_fiber_certificate.json"),
     "M_PL_theorem_hypotheses": (
-        "machine_certificate", (), "runs/36-pl-theorem-boundary.txt"),
+        "machine_certificate", (), "luttinger/pl_theorem_hypotheses.json"),
     "M_complement_theorem_hypotheses": (
-        "machine_certificate", (), "runs/38-complement-presentation-boundary.txt"),
+        "machine_certificate", (), "luttinger/complement_theorem_hypotheses.json"),
     "M_torus_local_flatness": (
-        "machine_certificate", (), "runs/48-torus-local-flatness.txt"),
+        "machine_certificate", (), "luttinger/torus_local_flatness_certificate.json"),
     "M_frontier_normal_equivalence": (
         "machine_certificate", (),
-        "runs/49-frontier-normal-equivalence.txt"),
+        "luttinger/frontier_normal_equivalence_certificate.json"),
     "M_topological_smooth_reroute": (
         "machine_certificate", (),
-        "runs/50-topological-smooth-reroute.txt"),
+        "luttinger/topological_smooth_bridge_certificate.json"),
     "M_relative_marked_monodromy": (
         "machine_certificate", (),
-        "runs/51-relative-marked-monodromy.txt"),
+        "luttinger/relative_marking_certificate.json"),
     "M_explicit_graph_clutching": (
         "machine_certificate", (),
-        "runs/52-explicit-graph-clutching.txt"),
+        "luttinger/graph_clutching_certificate.json"),
     "M_interpretation_dictionary": (
         "machine_certificate", (),
-        "runs/53-interpretation-dictionary.txt"),
+        "luttinger/interpretation_dictionary_certificate.json"),
     "M_independent_paper_dictionary": (
         "machine_certificate", (),
         "runs/54-independent-paper-dictionary.txt"),
     "M_lemma71_normal_form": (
         "machine_certificate", (),
-        "runs/55-lemma71-equivariant-normal-form.txt"),
+        "luttinger/lemma71_normal_form_certificate.json"),
     "M_lp_source_figure": (
         "machine_certificate", (),
-        "runs/56-lp-source-figure-audit.txt"),
+        "luttinger/lp_source_figure_certificate.json"),
     "M_complement_tietze": ("machine_certificate", (), "runs/11-proof-certificate-and-group-attacks.txt"),
     # Run 66: the seeded raw-complex-to-reduced-presentation transport is
     # sealed with its serialized input and replays under two standalone
@@ -126,7 +126,7 @@ NODES = {
         "luttinger/beta_residual/certificate.json.gz"),
     "M_independent_peripheral_extraction": (
         "machine_certificate", (),
-        "runs/30-independent-peripheral-extractor.txt"),
+        "luttinger/independent_peripheral_certificate.json"),
     "M_R3": ("machine_certificate", (), "runs/23-drilled-fiber-relation.txt"),
     # Run 67: the run-23 based monodromy identity lives in the unpunctured
     # beta mapping cylinder.  This node is the missing complement-level
@@ -157,7 +157,7 @@ NODES = {
         "runs/47-cumulative-moser-flow.txt"),
     "M_downstream_algebra": ("machine_certificate", (), "runs/24-downstream-theorem-audit.txt"),
     "M_downstream_chain": (
-        "machine_certificate", (), "runs/64-downstream-proof-chain.txt"),
+        "machine_certificate", (), "luttinger/downstream_chain_certificate.json"),
     "M_section_PL_push_off": ("machine_certificate", (), "runs/28-pl-self-intersection-certificate.txt"),
 
     "G_equivariant_normal_form": (
