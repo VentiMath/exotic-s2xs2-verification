@@ -29,6 +29,17 @@ The immutable v2.0.1 verification snapshot is archived at
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
+**v2.1.0 release gate.** The manuscript, supplement, and this README are the
+v2.1.0 candidate, while v2.0.1 remains the newest public immutable release.
+Run `python3 paper/check_release_sync.py` to verify the candidate's hashes,
+counts, terminology, and bound manifests. Before arXiv submission, reserve
+the exact v2.1.0 archive DOI, replace every candidate placeholder, cut and
+publish the matching tag and deposit, and run
+`python3 paper/check_release_sync.py --final` from that clean tagged
+checkout. Final mode is designed to fail until all public-facing files name
+the same release and DOI. The release and DOI must then also be opened from a
+logged-out browser.
+
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
 Floer-theoretic theorems the chain cites; or a substitute for independent
