@@ -74,7 +74,7 @@ reported outcomes are not known to concern the same manifold — and not known
 to concern different ones either. The certificates in this repository decide
 the presented groups of a sealed, hash-bound model; **they do not reconcile
 that report, and nothing here should be read as claiming they do.** This
-project recorded the report on 2026-08-23 and failed to carry it into its
+project recorded the report on 2026-08-23 and did not carry it into its
 status file, ledger, and manuscript until 2026-08-29; that omission is
 documented in [`verification/runs/67-r3-complement-and-lp-disagreement.txt`](verification/runs/67-r3-complement-and-lp-disagreement.txt)
 and [`verification/notes/lp_disagreement_reconciliation_2026-08-29.md`](verification/notes/lp_disagreement_reconciliation_2026-08-29.md).

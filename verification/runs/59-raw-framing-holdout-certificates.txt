@@ -5,10 +5,9 @@ Scope and relation to Run 58
 ----------------------------
 
 The original Run 45 pipeline simplified each filled group before invoking
-Knuth--Bendix.  A parallel Claude/Fable investigation (public-repository Run
-58) discovered that one holdout completes from its unsimplified
-4-generator/97-relator presentation even though its simplified presentation
-does not.  This run independently reproduced that exact case, applied the
+Knuth--Bendix.  Run 58 established that one holdout completes from its
+unsimplified 4-generator/97-relator presentation even though its simplified
+presentation does not.  This run independently reproduced that exact case, applied the
 strategy to all 18 holdouts in both raw relator orders, and compiled every
 successful completion to a derivation-DAG certificate.  The number 59 is
 intentional: it avoids colliding with that already-committed Run 58.

@@ -1,13 +1,11 @@
 Run 62: the ninety-ninth framing case is certified trivial
 ===========================================================
 
-Power-state correction
-----------------------
+Evidence convention
+-------------------
 
-Earlier wall-clock durations spanning host suspension or shutdown are not
-meaningful compute-time measurements. This run uses only completed process
-outcomes and replayable certificates. A suspended or interrupted search is
-not counted as evidence in either direction.
+This run uses only completed process outcomes and replayable certificates.
+An interrupted search is not counted as evidence in either direction.
 
 Certified case
 --------------

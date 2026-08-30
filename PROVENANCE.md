@@ -41,6 +41,10 @@ certificates in this repository are designed to be replayed without trusting
 any model; this document exists so that a reader can also ask the weaker
 question — who wrote this, and who checked it — and get a precise answer.
 
-The certificates do not depend on the answer. Every claim in
-`verification/STATUS.md` is carried by an artifact a reader can replay with
-two independent checkers.
+The certificates do not depend on the answer. The finite certificate
+assertions — that the named presentations present the trivial group, and that
+each derivation record follows from earlier ones — are carried by artifacts a
+reader can replay with two separately implemented checkers. The geometric
+identifications, the Source Comparison Hypotheses, and the applications of
+cited external theorems are not of that kind, and are not replayable in that
+sense; `verification/STATUS.md` states which is which.

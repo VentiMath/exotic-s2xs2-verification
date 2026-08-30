@@ -54,10 +54,8 @@ Boundary and tally
 
 Before switching to this case, the other n1_y2 diagonal holdout
 n1_y2_ap1_bp1_jap1_jbp1 was tried unchanged at the same 300,000-equation
-ceiling. The wall-clock session spanned roughly two hours, but the host was
-suspended or powered off for most of that interval, so it is not a meaningful
-compute-time measurement. The run was stopped without a verdict; that
-interruption proves neither triviality nor nontriviality and should not be
+ceiling. That attempt was stopped without a verdict; the interruption
+proves neither triviality nor nontriviality and should not be
 read as evidence that this case is harder than the one certified here.
 
 Run 60 changes the repository's current certified robustness tally from 95/5
