@@ -1,0 +1,40 @@
+{
+  "title": "A certificate-based audit of the fundamental-group and framing computations in Wuebben's proposed exotic S^2 x S^2 construction",
+  "upload_type": "software",
+  "description": "<p>We audit the fundamental-group and framing calculations in Wuebben's proposed exotic S^2 x S^2 construction. Four explicit, hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. From the marked data we define an explicit audit manifold V* and prove, in separate geometric steps, that those presentations are presentations of pi_1(V*); this makes the common whiskers, meridians, product longitudes, drilled transport relation, and product-to-Lagrangian framing bridge inspectable. We then isolate four source-identification assumptions S1-S4 under which V* is Wuebben's intended fixed surgery member. Thus V* is simply connected, while the transfer of that conclusion to Wuebben's member is explicitly conditional on S1-S4. Conditional also on twenty-five named external results, the three manifold conclusions of Wuebben's paper follow. A reported contrary fundamental-group computation is stated separately and bears on the source comparison, not on the finite certificate theorem. The theorems are Wuebben's; this note claims only the audit.</p><p>This deposit archives the complete verification artifact: the manuscript and its computational supplement, the frozen presentations and sealed Tietze transport, every derivation certificate, the independently implemented Python and Ruby checkers with their negative controls, the certificate specification, the hash manifests, the dependency ledger, and the full run transcripts.</p><p>Replay has three levels. The certificate-only path reads frozen files and needs only standard Python and Ruby runtimes. The geometric-audit path recomputes the finite marked-fiber, torus, frontier, peripheral, and framing checks. The full reconstruction path additionally requires the locked GAP 4.11.1 and KBMAG 1.5.9 environment together with the proof-producing KBMAG patch.</p><p>Scope: the unconditional result is that four hash-identified finite presentations are trivial. That an explicit audit manifold V* has those presentations, and is therefore simply connected, is proved geometrically. Transferring the conclusion to Wuebben's intended surgery member is conditional on four stated source-identification assumptions S1-S4, and his three manifold conclusions further depend on twenty-five named external results. A reported contrary fundamental-group computation remains unreconciled and is disclosed in the manuscript.</p>",
+  "creators": [
+    {
+      "name": "Clyde, John",
+      "affiliation": "VentiMath"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "version": "v2.0.0",
+  "language": "eng",
+  "keywords": [
+    "4-manifolds",
+    "exotic smooth structures",
+    "Luttinger surgery",
+    "fundamental group",
+    "Knuth-Bendix completion",
+    "proof certificates",
+    "computer-assisted proof",
+    "reproducibility",
+    "geometric topology"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:2608.17267",
+      "relation": "references",
+      "scheme": "arxiv",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "arXiv:2505.14387",
+      "relation": "references",
+      "scheme": "arxiv",
+      "resource_type": "publication-preprint"
+    }
+  ]
+}
