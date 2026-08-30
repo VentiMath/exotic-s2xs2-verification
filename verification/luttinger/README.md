@@ -83,9 +83,10 @@ Status (updated 2026-08-29; see `../STATUS.md` for the precise caveats):
 | `sweep.py` | simplicial basing-sweep and torus-incidence certificates |
 | `group_attack.py` | reproducible GAP/KBMAG/ACE/finite-quotient attacks, including export and replay of certified paper-coordinate fillings |
 | `direct_rws/` | eight simplified presentations, completed rewriting systems, result records, and a SHA-256 manifest |
-| `proof_certificates/` | eight compressed, independently checked derivation DAGs plus SHA-256 manifest |
+| `CERTIFICATE_SPEC.md` | normative mathematical grammar and soundness proof for `luttinger-kbmag-proof-v1` |
+| `proof_certificates/` | eight compressed, separately checked derivation DAGs plus SHA-256 manifest |
 | `verify_kbmag_certificate.py` | small checker for the derivation DAGs; does not import or run KBMAG |
-| `verify_certificates.rb` | independent Ruby/standard-library checker for the same eight DAGs, with corruption controls |
+| `verify_certificates.rb` | separate Ruby/standard-library checker for the same eight DAGs, with corruption controls |
 | `sealed_transport/` | serialized raw-complex presentation, 99,860-step Tietze certificate, 3-generator result of the canonical seeded run, and the derivation certificates of its eight fillings (`proof_certificates/`, `raw_proof_inputs/`, `kbprog_options.json`) |
 | `verify_tietze_transport.py`, `verify_tietze_transport.rb` | standalone replay of the sealed transport, with corruption controls |
 | `r3_complement_audit.py` | embeds the R3 mapping-cylinder certificate at the parallel beta level in the actual two-torus complement and checks the basepoint homotopy to `B` |

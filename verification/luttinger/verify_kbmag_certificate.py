@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Small independent checker for ``luttinger-kbmag-proof-v1`` files."""
+"""Small standalone checker for ``luttinger-kbmag-proof-v1`` files."""
 
 import argparse
 import gzip
@@ -72,7 +72,7 @@ def apply_trace(word, trace, records, before):
                 "rewrite uses a rule that has not yet been proved")
         rule = records[rule_id]
         left = rule["lhs"]
-        require(isinstance(position, int) and 0 <= position,
+        require(isinstance(position, int) and 0 <= position <= len(word),
                 "bad rewrite position")
         require(word[position:position + len(left)] == left,
                 f"rewrite step {step_number} does not match")
@@ -189,6 +189,9 @@ def verify_certificate(certificate_path, proof, source, source_digest):
     require(proof["input_sha256"] == source_digest,
             "input digest mismatch")
     case = proof["case"]["index"]
+    require(isinstance(case, int) and
+            0 <= case < len(source["paper_fillings"]),
+            "invalid filling index")
     filling = source["paper_fillings"][case]
     require(proof["case"]["slug"] == case_slug(filling),
             "case label mismatch")

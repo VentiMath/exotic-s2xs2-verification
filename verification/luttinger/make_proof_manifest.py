@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "proof_certificates" / "manifest.json"
 FILES = [
     ROOT / "r_presentations.json",
+    ROOT / "CERTIFICATE_SPEC.md",
     ROOT / "compile_kbmag_certificate.py",
     ROOT / "verify_kbmag_certificate.py",
     ROOT / "verify_certificates.rb",

@@ -1,6 +1,7 @@
 {
   "format": "luttinger-filled-group-proof-manifest-v1",
   "sha256": {
+    "CERTIFICATE_SPEC.md": "ed2661526a0c8236ccc519a08f03752d4bb6307b3454f50bebb02d07e10a9ca1",
     "compile_kbmag_certificate.py": "b5bf9e3815102849e74453235965885bc76a5afdedd3d4bf07dd2b7bd8dd9a45",
     "export_kbmag_proof_inputs.py": "75e6d02bbd87c1a25a46079f57decc4e47c53372f5096e7ca9b64df492530c00",
     "kbmag-proof/Dockerfile": "9bcd932713837d26882399bdfacdce34cb04620e503d7469d0f55e5d3b484dfd",
@@ -43,8 +44,8 @@
     "sealed_transport/raw_proof_inputs/n1_y2_m1_p1.rws": "9649e6d5a90a1befdc5544cb253f73508e47c41bff3cc15a63ea5f3adc592171",
     "sealed_transport/raw_proof_inputs/n1_y2_p1_m1.rws": "dcba24fdf0645b441867ccca8e2539ff85b6a066a3d5c7afdb1c5f143e34e142",
     "sealed_transport/raw_proof_inputs/n1_y2_p1_p1.rws": "914d2ea61d8ee7a64fcd1729e87a69b7a12c72c5ac711fdb5c45d8c3e915e4f1",
-    "verify_certificates.rb": "5bdb6778d0bce477b9d7a431ef71711b4357dc56c16a2f30b17638fc9debe3b3",
-    "verify_kbmag_certificate.py": "98fd98252ffe233c1a305e335e1409be179a10c1d5778d689ec802744204b248",
+    "verify_certificates.rb": "945d96f8ec6cfa63b81579f60629c19e7a586158ea83aca08d1d0bbb9ab374ab",
+    "verify_kbmag_certificate.py": "aeed7b496190d2b50d1e254c598c9c45695a14b9c66b7cc4ada8e2aab28182f9",
     "verify_tietze_transport.py": "790ef852d7441144a7091efd482e50f0bf903937c74cde34dab540bbb4152efc",
     "verify_tietze_transport.rb": "65e116da4e9dd24364df92c8b12f74f34ee796acbeda89be20401a0434794297"
   }
