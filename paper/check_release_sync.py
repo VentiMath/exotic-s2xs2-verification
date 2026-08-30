@@ -146,16 +146,16 @@ def main() -> None:
     require(main_pdf_text, pdf_title, "v2.1 title in main PDF")
     require(supp_pdf_text, pdf_title, "v2.1 title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 27 or pdf_pages(SUPP_PDF) != 12:
-        fail("PDF page counts are not main=27 and supplement=12")
-    require(metadata, "27 pages, three figures, six tables", "arXiv counts")
+    if pdf_pages(MAIN_PDF) != 25 or pdf_pages(SUPP_PDF) != 14:
+        fail("PDF page counts are not main=25 and supplement=14")
+    require(metadata, "25 pages, three figures, five tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 3:
         fail("main.tex does not contain exactly three figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
         r"\begin{longtable}"
     )
-    if table_count != 6:
-        fail("main.tex does not contain exactly six table/longtable environments")
+    if table_count != 5:
+        fail("main.tex does not contain exactly five table/longtable environments")
 
     manifest = ROOT / "verification/luttinger/proof_certificates/manifest.json"
     downstream = ROOT / "verification/luttinger/downstream_chain_certificate.json"
@@ -206,7 +206,7 @@ def main() -> None:
 
     if not args.final:
         print("PASS: the local v2.1.0 candidate is internally synchronized")
-        print("  main=27 pages/3 figures/6 tables; supplement=12 pages")
+        print("  main=25 pages/3 figures/5 tables; supplement=14 pages")
         print("  PDF, source-archive, proof-manifest, and downstream hashes agree")
         print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
         print("  v2.1.0 tag, publish the release/deposit, then rerun with --final")

@@ -45,7 +45,7 @@ historical exports supporting the main paper.  None of the material here
 changes the logical status stated there: finite certificates are replayable,
 the audit-defined manifold $V_{\mathrm{aud}}$ is simply connected, the comparison
 $V_{\mathrm{aud}}\cong V$ is conditional on the fourteen clauses of Source
-Formalization~D, and the downstream manifold conclusions are additionally
+Comparison Hypotheses D1--D14, and the downstream manifold conclusions are additionally
 relative to named external results.
 \end{abstract}
 
@@ -54,13 +54,115 @@ The main paper contains the mathematical certificate specification and the
 proof of the product-filled audit-model identification.  It then proves a
 logically separate bridge from product framing to Lagrangian framing before
 the explicitly conditional comparison with Wuebben.
-Section~\ref{sec:certificates}
+Section~\ref{sec:detailed-boundaries} preserves the full source-comparison
+ledger, and Section~\ref{sec:certificates}
 below records the concrete certificate batches and replay architecture.
 Appendix~\ref{sec:downstream} gives the full proposition-by-proposition
 downstream chain; Appendix~\ref{sec:trust} records provenance, trust, and data
 availability; Appendix~\ref{app:engineering} preserves calibrations and
 historical computations.  The machine-readable ledger and every bound digest
 remain normative for exact inventories.
+
+\section{Detailed Source Comparison Hypotheses D1--D14}
+\label{sec:detailed-boundaries}
+
+The main paper keeps a compact source-comparison table.  The full
+clause-by-clause ledger follows; the geometric layer inventory, including
+filenames and checker sizes, remains in Section~\ref{sec:geometric-inventory}.
+
+\begingroup
+\scriptsize
+\setlength{\LTpre}{.6em}
+\setlength{\LTpost}{.8em}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.05\textwidth}
+ >{\raggedright\arraybackslash}p{.18\textwidth}
+ >{\raggedright\arraybackslash}p{.245\textwidth}
+ >{\raggedright\arraybackslash}p{.245\textwidth}
+ >{\raggedright\arraybackslash}p{.17\textwidth}@{}}
+\caption{Detailed source-to-audit comparison dictionary.  The final column,
+rather than the supporting evidence, is the conditional boundary.}
+\label{tab:source-formalization-full}\\
+\toprule
+ & Target location & Audit interpretation & Mechanical or cited support &
+Residual assertion \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\textit{Table~\thetable\ continued}}\\
+\toprule
+ & Target location & Audit interpretation & Mechanical or cited support &
+Residual assertion \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{continued on next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+D1 & \cite[Convention~2.1(C8), \S7.1, Fig.~1]{Wuebben} & ordered curves are
+the audit five-chain $(a,b,c,d,e)$ & independent text extraction; ribbon
+intersection and filling checks; source-figure hash & textual transcription
+of labels and order \\
+D2 & \cite[Lemma~7.1]{Wuebben} & chain-reversing involution exchanges
+$a\leftrightarrow e$, $b\leftrightarrow d$, preserves $c$, and has fixed
+points $p,O$ & exhaustive equivariant ribbon rotations; periodic-disk normal
+form; independent subdivision & diagrammatic identification of the marked
+complementary disks \\
+D3 & \cite[\S7.1, Fig.~1]{Wuebben} and imported source figure & hidden,
+dashed, or paired segments continue displayed curves rather than adding
+crossings & vector-source and planar-incidence extraction; mutation controls
+& diagrammatic continuation convention \\
+D4 & \cite{Wuebben};\newline Conv.~2.1\newline (C2,C5); \S\S3.1,7.2 &
+$\psi_0=T_a\circ T_b$ applies $T_b$ first with the displayed right-twist
+normalization & based action in two subdivisions; reversed-order and
+reversed-sign controls & textual convention and realization by the chosen
+representatives \\
+D5 & \cite[Convention~2.1(C4), \S7.3]{Wuebben} & cut square assigns
+$\varphi_0$ to $\alpha$ holonomy and $\psi_0$ to $\beta$ holonomy & explicit
+graph-clutching map and inverse; seam checks & textual cut and orientation
+convention \\
+D6 & \cite[\S\S7.2--7.3]{Wuebben} & $T_\alpha$ is the
+$c$-over-$\alpha$ subbundle and $T_\beta$ the $e$-over-$\beta$ product
+subbundle, relative to full collars & relative-monodromy certificates;
+disjoint induced-torus and local-flatness checks & identification of target
+curve subbundles with the audit tori \\
+D7 & \cite{Wuebben};\newline Conv.~2.1\newline (C1,C3,C6) & paths compose left to right;
+$A=[\bar\alpha]^{-1}$, $B=[\bar\beta]^{-1}$; peripheral loops use the stated
+whiskers & literal path development and conjugation-sensitive calibrations &
+textual path and base-generator conventions \\
+D8 & \cite[\S8.3 and Table~1]{Wuebben} & $M,N$ are oriented meridians based
+along $y_1,s_2$, with named correction paths & independent peripheral
+extractors; local normal-circle fibers; punctured-sweep checks &
+identification of target basing arcs with extracted arcs \\
+D9 & \cite[\S8.4]{Wuebben} & reference $T_\alpha$ base direction is the
+$y_1$-based half-drift with word $Ax$ & complement-only 72-letter identity
+certificate; side-sensitive controls & textual choice of reference
+half-drift \\
+D10 & \cite[\S9.1 and Table~1]{Wuebben} & fixed member is $(m,n)=(0,0)$ and
+uses displayed F1 and F2 slopes & independent relation-sheet extraction and
+exact comparison & textual member selection and relation-sheet transcription \\
+D11 & \cite[Convention~2.1(C7), Remark~11.1]{Wuebben} &
+$\epsilon_A,\epsilon_B$ index algebraic relation sheets; fixed audit basis
+uses $(+,+)$ & four finite certificates; convention-change lemma;
+sign-sensitive calibrations & textual status of signs and target-sheet
+identification \\
+D12 & \cite[\S8.7, Lemma~8.2]{Wuebben} & target uses the two smooth
+Lagrangian tori represented by marked curve subbundles & local-flatness,
+normal-frontier, and topological-to-smooth transport certificates & smooth
+identification of target tori with audit tori \\
+D13 & \cite[\S\S2.1,8.7,9]{Wuebben} & geometric $+1$ surgeries use the F1/F2
+Lagrangian-framing classes and, in the audit basis, kill
+$M\lambda_\alpha,N\lambda_\beta$ & Weinstein charts; relative Moser checks;
+framing-class independence & correspondence between target coefficient
+convention and fixed attaching maps \\
+D14 & \cite[\S\S7.1--8.7]{Wuebben} & marked bundle equivalence is an
+orientation-preserving diffeomorphism relative to the $c,e$ collars and
+boundary marking & explicit PL homeomorphism and inverse; collar data;
+standard smoothing of surface maps & smooth relative upgrade of the
+source-to-audit bundle equivalence \\
+\end{longtable}
+\endgroup
 
 \section{Certificate inventory and replay}\label{sec:certificates}
 
@@ -127,6 +229,23 @@ importing neither the first checker nor any project group code. All
 certificates, the exported rewriting systems, and a hash manifest replay
 from a clean checkout, and the stored rewriting systems reload and
 re-verify under GAP/KBMAG independently of the certificate path.
+
+\paragraph{Reference verification algorithm.}
+The main paper gives the normative four-record mathematical specification.
+For comparison with the implementations, its complete control flow is:
+\begin{quote}
+\small\ttfamily
+bind source bytes, SHA-256, case, relators, generator count, inverse table;\par
+for each record in order:\par
+\quad validate both words over the certificate alphabet;\par
+\quad dispatch to inverse-axiom, input-relator, overlap, or change;\par
+\quad replay every trace using only earlier record numbers;\par
+\quad compare the required literal outputs and equation keys;\par
+check one literal [letter] $\to$ [] root for every letter; accept.
+\end{quote}
+The standalone file
+\repopath{verification/luttinger/CERTIFICATE_SPEC.md} fixes the concrete
+serialization and validation order.
 
 The transport from the raw simplicial presentation to the presentation
 whose fillings are certified is sealed in the same sense. The canonical
