@@ -4,13 +4,19 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Mathematical and computational supplement to A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic S2 x S2 construction},
+  pdfauthor={John Clyde},
+  pdfsubject={Supplementary certificate inventory, source-comparison ledger, and conditional topology deductions},
+  pdfkeywords={geometric topology, 4-manifolds, proof certificates, computational supplement, Luttinger surgery}
+}
 \DeclareUrlCommand\repopath{\urlstyle{tt}\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
 \def\UrlBreakPenalty{0}\def\UrlBigBreakPenalty{0}
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \emergencystretch=3em
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
-\usepackage{booktabs,tabularx,array,enumitem,longtable}
+\usepackage{booktabs,tabularx,array,enumitem,longtable,pdflscape}
 \setlist[itemize]{leftmargin=*,itemsep=.35em,topsep=.45em}
 \clubpenalty=10000
 \widowpenalty=10000
@@ -32,7 +38,8 @@ A certificate-based audit of simple connectivity for an explicit\\
 model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
-\date{August 2026}
+\date{Working revision for v2.2.2 --- 30 August 2026\\
+\small Artifact base v2.2.1: \url{https://doi.org/10.5281/zenodo.22181589}}
 
 \begin{document}
 \renewcommand{\thetable}{S\arabic{table}}
@@ -70,17 +77,18 @@ The main paper keeps a compact source-comparison table.  The full
 clause-by-clause ledger follows; the geometric layer inventory, including
 filenames and checker sizes, remains in Section~\ref{sec:geometric-inventory}.
 
+\begin{landscape}
 \begingroup
-\scriptsize
+\small
 \setlength{\LTpre}{.6em}
 \setlength{\LTpost}{.8em}
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.12}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.05\textwidth}
- >{\raggedright\arraybackslash}p{.18\textwidth}
- >{\raggedright\arraybackslash}p{.245\textwidth}
- >{\raggedright\arraybackslash}p{.245\textwidth}
- >{\raggedright\arraybackslash}p{.17\textwidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.05\linewidth}
+ >{\raggedright\arraybackslash}p{.18\linewidth}
+ >{\raggedright\arraybackslash}p{.245\linewidth}
+ >{\raggedright\arraybackslash}p{.245\linewidth}
+ >{\raggedright\arraybackslash}p{.17\linewidth}@{}}
 \caption{Detailed source-to-audit comparison dictionary.  The final column,
 rather than the supporting evidence, is the conditional boundary.}
 \label{tab:source-formalization-full}\\
@@ -153,16 +161,17 @@ normal-frontier, and topological-to-smooth transport certificates & smooth
 identification of target tori with audit tori \\
 D13 & \cite[\S\S2.1,8.7,9]{Wuebben} & geometric $+1$ surgeries use the F1/F2
 Lagrangian-framing classes and, in the audit basis, kill
-$M\lambda_\alpha,N\lambda_\beta$ & Weinstein charts; relative Moser checks;
-framing-class independence & correspondence between target coefficient
+$M\lambda_\alpha,N\lambda_\beta$ & global split-form construction;
+Weinstein charts; relative Moser checks; framing-class independence & correspondence between target coefficient
 convention and fixed attaching maps \\
 D14 & \cite[\S\S7.1--8.7]{Wuebben} & marked bundle equivalence is an
 orientation-preserving diffeomorphism relative to the $c,e$ collars and
 boundary marking & explicit PL homeomorphism and inverse; collar data;
-standard smoothing of surface maps & smooth relative upgrade of the
+no smoothing theorem is claimed to discharge D14 & smooth relative upgrade of the
 source-to-audit bundle equivalence \\
 \end{longtable}
 \endgroup
+\end{landscape}
 
 \section{Certificate inventory and replay}\label{sec:certificates}
 
@@ -285,13 +294,14 @@ predicate in the third column; the last column names the mathematical
 conversion still performed in prose.  Thus ``checked'' never silently means
 ``formalized in a foundational proof assistant.''
 
+\begin{landscape}
 \begingroup
-\scriptsize
-\renewcommand{\arraystretch}{1.12}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.15\textwidth}
- >{\raggedright\arraybackslash}p{.27\textwidth}
- >{\raggedright\arraybackslash}p{.28\textwidth}
- >{\raggedright\arraybackslash}p{.22\textwidth}@{}}
+\footnotesize
+\renewcommand{\arraystretch}{1.04}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.15\linewidth}
+ >{\raggedright\arraybackslash}p{.27\linewidth}
+ >{\raggedright\arraybackslash}p{.28\linewidth}
+ >{\raggedright\arraybackslash}p{.22\linewidth}@{}}
 \caption{Geometric artifact and trust inventory.  Paths are relative to
 \texttt{verification/luttinger/}.}\label{tab:geometric-inventory}\\
 \toprule
@@ -349,10 +359,34 @@ seam, exterior-algebra, momentum, Liouville-pairing, and first-jet identities
 hold & Lagrangian-neighborhood theorem and compact push-off isotopy \\
 smooth bridge & \repopath{topological_smooth_bridge_certificate.json};
 \repopath{topological_smooth_bridge.py} (181 lines) & orientation, collar,
-and compatibility hypotheses are present & standard smoothing and isotopy
-theorems for surfaces and surface bundles \\
+and compatibility hypotheses are present & D14 itself; no smoothing theorem
+is claimed to prove the relative smooth upgrade \\
 \end{longtable}
 \endgroup
+\end{landscape}
+
+The main paper suppresses literal edge identifiers and ancestry sizes so that
+its geometric argument is not interrupted by implementation inventory.  For
+exact replay, the alpha meridian and longitude use the same four-edge whisker
+\[
+ y_1=e_{24046}e_{90328}e_{79763}e_{72645}.
+\]
+Put
+\[
+ w_\alpha=\texttt{lb\_a\_y1}^{-1}\texttt{geom\_A}\texttt{geom\_x},
+ \qquad
+ w_\beta=\texttt{lb\_b\_s2}^{-1}\texttt{geom\_r}^{-1}
+          \texttt{geom\_M}\texttt{geom\_r}\texttt{geom\_B}.
+\]
+The complement-only target $w_\alpha$ has length $72$
+in the sealed input and is reduced to the identity by a $61$-step target
+trace whose full ancestry cone contains $2{,}506$ records.  Its frozen source,
+compiler, certificate, and separate Python and Ruby verifiers are in
+\repopath{verification/luttinger/alpha_residual/}.  The beta target
+$w_\beta$ has length $113$ and is reduced by an
+$82$-step target trace with a $1{,}540$-record ancestry cone; the analogous
+files are in \repopath{verification/luttinger/beta_residual/}.  Each source
+contains the $78$ sealed complement relators and no filling relation.
 
 The line counts are descriptive rather than evidentiary.  The release
 manifest binds exact bytes, and \texttt{proof\_ledger.py} binds the logical
@@ -741,19 +775,27 @@ bistellar traces; classification of compact surfaces; local-flatness and
 normal-block criteria; and simplicial fundamental-group presentations with
 Tietze theory.  The regular-neighborhood
 and local-flatness conventions are those of
-\cite[Chapters~2--4]{RourkeSanderson} and \cite[Chapters~3--5]{Hudson}; the
-presentation moves are the standard ones of \cite{LyndonSchupp}.  The
-standard Lagrangian-neighborhood theorem supplies the Weinstein charts used
-by the framing theorem.  This note applies rather than reproves those general
-results.
+\cite[Chapters~2--4, especially Corollary~4.2]{RourkeSanderson} and
+\cite[Chapters~3--5]{Hudson}; the periodic-disk input is
+\cite[Theorem~3.1 and Proposition~3.2]{ConstantinKolev}, and the torus-boundary
+linearization is \cite[case~(IV), pp.~464--465]{HatcherLinearization}.  The
+presentation moves are the standard ones of \cite{LyndonSchupp}.  The exact
+Lagrangian-neighborhood statement used for the Weinstein charts is the
+opening statement of \cite[\S2.1]{ADK}.  No smoothing theorem is claimed to
+establish D14: that relative smooth comparison remains an explicit source
+hypothesis.  This note applies rather than reproves the cited general results.
 
 \subsection*{External specialist-review target for the framing bridge}
 
 No external symplectic or PL specialist audit of the Framing Bridge Theorem
 is claimed.  Because that theorem is the highest-risk internal geometric
-bridge, an independent review should answer the following five concrete
+bridge, an independent review should answer the following six concrete
 questions against the named curves and boundary bases of the main paper:
 \begin{enumerate}[label=(\roman*)]
+\item Does the global vertical area form descend through both clutching maps,
+  does its sum with the base area form give the stated orientation, and can
+  the two protected collars be standardized simultaneously without mixed
+  terms?
 \item Do the product push-offs of both named curves map to the exact
   Lagrangian-framing classes used by the stated surgery convention?
 \item Do the relative Moser map, the alpha quotient, and the mapping-torus
@@ -765,9 +807,10 @@ questions against the named curves and boundary bases of the main paper:
 \item Is one sufficiently small nonzero push-off defined over the entire
   named curve for the full fiber-dilation isotopy, and does the compact
   isotopy remain uniformly in the punctured neighborhood?
-\item Are the relative smoothing statements and hypotheses D12--D14 strong
-  enough to transport these particular framing classes into the source
-  surgery application?
+\item Do the smooth comparison assertions D12--D14 actually hold for the
+source object, so that these particular framing classes transport into the
+source surgery application?  No smoothing theorem is claimed to answer this
+question automatically.
 \end{enumerate}
 The main paper now states the boundary-class calculation, the compactness
 argument for the punctured isotopy, and the exact torus-filling extension
@@ -830,8 +873,9 @@ extractors requires supplying hash-matching copies as directed in
 \texttt{verification/IMPORT.md}; their frozen outputs and all subsequent
 comparisons ship. No certificate used for the finite or Audit-Manifold
 Theorem depends on downloading those files.
-The v2.2.1 manuscript and supplement correspond to the tagged release and
-its archival deposit named above.
+The archived v2.2.1 manuscript and supplement correspond to that tagged
+release and archival deposit.  This visibly labeled working revision is not
+represented as a new immutable release.
 The \texttt{verification/} tree of that release has git tree object hash
 \begin{center}\small\texttt{edb24057eb60a831b618bd103ab05c3ad13c92ae}\end{center}
 recoverable from a clean checkout as
@@ -925,6 +969,12 @@ Springer-Verlag, 1972.
 \bibitem{Hudson}
 J.~F.~P.~Hudson,
 \emph{Piecewise Linear Topology}, W.~A.~Benjamin, 1969.
+
+\bibitem{HatcherLinearization}
+A.~E.~Hatcher,
+\emph{Linearization in 3-dimensional topology},
+Proceedings of the International Congress of Mathematicians
+(Helsinki, 1978), pp.~463--468, Academia Scientiarum Fennica, 1980.
 
 \bibitem{LyndonSchupp}
 R.~C.~Lyndon and P.~E.~Schupp,

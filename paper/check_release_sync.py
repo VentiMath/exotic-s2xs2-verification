@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Check that the v2.2.1 paper, supplement, metadata, and release agree.
+"""Check the v2.2.2 working paper, supplement, metadata, and release packet.
 
 Candidate mode verifies everything that can be fixed before reserving the
-version DOI and cutting the tag.  Final mode additionally requires the exact
-DOI, final wording, a clean tagged checkout, and v2.2.1 release URLs in every
+version DOI and cutting the tag, and permits explicitly marked TBD hashes.
+Final mode additionally requires the exact DOI, recorded hashes, final
+wording, a clean tagged checkout, and v2.2.2 release URLs in every
 public-facing document.  The script deliberately has no network access; the
 release URL and DOI must still be opened from a logged-out browser.
 """
@@ -20,7 +21,7 @@ import tempfile
 from pathlib import Path
 
 
-VERSION = "v2.2.1"
+VERSION = "v2.2.2"
 TITLE_FRAGMENT = "A certificate-based audit of simple connectivity"
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper"
@@ -71,10 +72,14 @@ def source_archive(stack: contextlib.ExitStack) -> Path:
     return built
 
 
-def recorded_hash(metadata: str, label: str) -> str:
+def recorded_hash(metadata: str, label: str, *, required: bool) -> str | None:
     match = re.search(
         rf"{re.escape(label)}:\s*\n\s*`([0-9a-f]{{64}})`", metadata
     )
+    if not match and not required and re.search(
+        rf"{re.escape(label)}:\s*\*\*TBD\b", metadata
+    ):
+        return None
     if not match:
         fail(f"missing {label} in ARXIV_SUBMISSION.md")
     return match.group(1)
@@ -137,8 +142,10 @@ def main() -> None:
         if re.search(r"S1\s*(?:--|–|---)\s*S4", text):
             fail(f"obsolete S1--S4 formulation survives in {name}")
 
+    candidate_source_digest = ""
     with contextlib.ExitStack() as stack:
         source = source_archive(stack)
+        candidate_source_digest = sha256(source)
 
         expected = {
             "Source-archive SHA-256": source,
@@ -147,8 +154,8 @@ def main() -> None:
         }
         for label, path in expected.items():
             actual = sha256(path)
-            recorded = recorded_hash(metadata, label)
-            if actual != recorded:
+            recorded = recorded_hash(metadata, label, required=args.final)
+            if recorded is not None and actual != recorded:
                 fail(f"{label} mismatch: recorded {recorded}, actual {actual}")
 
         with tarfile.open(source, "r:gz") as archive:
@@ -165,9 +172,9 @@ def main() -> None:
     require(main_pdf_text, pdf_title, "v2.1 title in main PDF")
     require(supp_pdf_text, pdf_title, "v2.1 title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 25 or pdf_pages(SUPP_PDF) != 14:
-        fail("PDF page counts are not main=25 and supplement=14")
-    require(metadata, "25 pages, three figures, five tables", "arXiv counts")
+    if pdf_pages(MAIN_PDF) != 27 or pdf_pages(SUPP_PDF) != 16:
+        fail("PDF page counts are not main=27 and supplement=16")
+    require(metadata, "27 pages, three figures, five tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 3:
         fail("main.tex does not contain exactly three figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
@@ -234,14 +241,25 @@ def main() -> None:
             fail(f"contrary-computation overclaim survives: {overclaim!r}")
 
     if not args.final:
-        print("PASS: the local v2.2.1 candidate is internally synchronized")
-        print("  main=25 pages/3 figures/5 tables; supplement=14 pages")
-        print("  PDF, source-archive, proof-manifest, and downstream hashes agree")
+        print("PASS: the local v2.2.2 working candidate is internally synchronized")
+        print("  main=27 pages/3 figures/5 tables; supplement=16 pages")
+        print("  source archive matches main.tex; proof-manifest and downstream pins agree")
+        print(f"  candidate source SHA-256: {candidate_source_digest}")
+        print(f"  candidate main PDF SHA-256: {sha256(MAIN_PDF)}")
+        print(f"  candidate supplement PDF SHA-256: {sha256(SUPP_PDF)}")
         print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
-        print("  v2.2.1 tag, publish the release/deposit, then rerun with --final")
+        print("  v2.2.2 tag, publish the release/deposit, then rerun with --final")
         return
 
-    forbidden = ("[INSERT AFTER DEPOSIT]", "release candidate", "release candidates")
+    forbidden = (
+        "[INSERT AFTER DEPOSIT]",
+        "release candidate",
+        "release candidates",
+        "working revision",
+        "artifact base",
+        "TBD after",
+        "planned as a release asset",
+    )
     for name, text in public_texts.items():
         for phrase in forbidden:
             if phrase.lower() in text.lower():
