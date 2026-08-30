@@ -264,7 +264,7 @@ def main() -> None:
         for phrase in forbidden:
             if phrase.lower() in text.lower():
                 fail(f"final-mode placeholder {phrase!r} survives in {name}")
-        for stale in ("v2.2.0", "v2.1.0", "v2.0.1"):
+        for stale in ("v2.2.1", "v2.2.0", "v2.1.0", "v2.0.1"):
             if stale in text:
                 fail(f"obsolete release {stale} survives in final-facing file {name}")
         require(

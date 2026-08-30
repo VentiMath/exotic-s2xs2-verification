@@ -1,14 +1,13 @@
 # arXiv submission packet
 
-> **WORKING-DRAFT GATE:** the manuscript and supplement are now visibly
-> labeled as an unreleased v2.2.2 working revision built on the immutable
-> v2.2.1 artifact. Do not upload this packet to arXiv until a new exact-version
-> DOI has been reserved, the title pages and data sections have been updated,
-> all PDFs and archives have been rebuilt, and the final release gate passes.
+> **RELEASE GATE:** this packet describes the v2.2.2 release. Do not upload
+> it until the v2.2.2 release URL and archive DOI resolve from a logged-out
+> browser and `python3 paper/check_release_sync.py --final` passes from a
+> clean checkout of the v2.2.2 tag.
 
 This file preserves the intended arXiv metadata while preventing the web form
-from drifting from the rendered paper.  Release-specific hashes below must be
-regenerated after the prose is frozen; no v2.2.2 release is claimed here.
+from drifting from the rendered paper.  The hashes below are those of the
+v2.2.2 build.
 
 ## Build and upload
 
@@ -18,15 +17,18 @@ regenerated after the prose is frozen; no v2.2.2 release is claimed here.
   same `paper/main.tex` are byte-for-byte identical.
 - Upload `paper/arxiv-source-v2.2.2.tar.gz` as the v2.2.2 GitHub release asset
   and to arXiv.
-- Source-archive SHA-256: **TBD after the final deterministic build.**
+- Source-archive SHA-256:
+  `140142210c037b6f3e60e72a24c40a1b486aa783ea3bd494684305405959b058`
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
   release assets alongside the main paper. The arXiv comments field points to
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
-- Main PDF SHA-256: **TBD after the final build.**
-- Supplement PDF SHA-256: **TBD after the final build.**
+- Main PDF SHA-256:
+  `347b148dcb9c1524b9e3b431f3cd9097fb7666485edbdaed8fcf14d73c9bce36`
+- Supplement PDF SHA-256:
+  `9cdab611f9e4122b283dc48414aca6bf4ef30d0240068371f81eefd656557c2d`
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -68,7 +70,7 @@ We define an explicit marked surface-bundle surgery manifold $V_aud$ modeled on 
 **Comments**
 
 ```text
-27 pages, three figures, five tables, with a 16-page mathematical and computational supplement planned as a release asset. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. The present working revision is built on the immutable v2.2.1 verification artifact, https://doi.org/10.5281/zenodo.22181589; replace this sentence with the exact v2.2.2 release URL and DOI before submission. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
+27 pages, three figures, five tables, with a 16-page mathematical and computational supplement in the release assets. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.2 . Exact v2.2.2 archive DOI: https://doi.org/10.5281/zenodo.22182187. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
 ```
 
 **Classification**
