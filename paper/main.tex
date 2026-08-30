@@ -396,11 +396,11 @@ $A,B$ & $[\bar\alpha]^{-1},[\bar\beta]^{-1}$ & literal based loops from $q$
 & path export \\
 $M,N$ & meridians based along $y_1,s_2$ & oriented dual normal circles with
 the same literal whiskers & all 592 normal fibers checked \\
-$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1} & explicit construction; see the
-caveat below \\
+$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1} & construction, plus the
+certified complement identity of Run 68 \\
 $\lambda_\beta$ & $(r^{-1}Mr)B$ in the displayed orientation &
-\texttt{lb\_b\_s2}, exported without substitution & punctured sweep and
-independent extraction \\
+\texttt{lb\_b\_s2}, exported without substitution & punctured sweep,
+independent extraction, and the certified identity of Run 69 \\
 \bottomrule
 \end{tabularx}
 \caption{Paper-to-model dictionary for the fixed $n=0$ member.  Reversing
@@ -575,8 +575,8 @@ $T_\alpha$ once.  Puncturing that square contributes the conjugated
 meridian $r^{-1}Mr$, which is why the paper's word for this direction is
 $(r^{-1}Mr)B$ and not $B$.  The stored words are \texttt{geom\_N} and
 \texttt{lb\_b\_s2}, exported without substitution; they are what $N$ and
-$\lambda_\beta$ denote, and the identification with $(r^{-1}Mr)B$ carries
-the same caveat as the $\alpha$ case.
+$\lambda_\beta$ denote, and the identification with $(r^{-1}Mr)B$ is
+certified in the complement exactly as in the $\alpha$ case.
 An independently written extractor recovers both pairs without importing
 the complement, sweep, or peripheral modules.  Local link checks certify
 both tori at every simplex, and the explicit block-frontier map checks every
@@ -645,9 +645,10 @@ $T_\alpha$ and $T_\beta$.
 
 The local-flatness and normal-block checks identify the two oriented dual
 loops as meridians.  The worked extractions build their common-whisker
-product push-offs as the paper's $Ax$ and $(r^{-1}Mr)B$ directions --- by
-construction, subject to the algebraic caveat recorded there --- with the
-punctured beta sweep accounting for the conjugated meridian.  
+product push-offs as the paper's $Ax$ and $(r^{-1}Mr)B$ directions, by
+construction and, independently, as complement identities carrying their own
+replayed certificates (Runs 68 and 69), with the punctured beta sweep
+accounting for the conjugated meridian.  
 
 It remains to place the drilled-fiber relation
 $B(s^{-1}r^{-1}yx)B^{-1}=r^{-1}s^{-1}x$ in the complement rather than in
@@ -1169,7 +1170,7 @@ Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay 
 manifests, run transcripts, and provenance records are contained, with
 clean-checkout replay instructions, prepared for release as \texttt{v1.5.8}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8}.
+\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8}\end{center}
 This draft must not be circulated until that URL resolves. Once published,
 the \texttt{verification/} tree of that release will be identical to that of
 the repository commit

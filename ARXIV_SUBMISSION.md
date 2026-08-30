@@ -16,7 +16,7 @@ web form from drifting from the rendered paper.
   same `paper/main.tex` are byte-for-byte identical.
 - Upload `paper/arxiv-source-v1.5.8.tar.gz` as the v1.5.8 GitHub release asset
   and to arXiv.
-- SHA-256: `e39cb69481a354352d1591e5a09000deec055cfbe9678e6f21a20841dda097ba`.
+- SHA-256: `67b0039349a3d0c3c2f2dde16b800aaa881af02848340d8823ae3e9816b6a4dd`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
