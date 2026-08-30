@@ -146,9 +146,9 @@ def main() -> None:
     require(main_pdf_text, pdf_title, "v2.1 title in main PDF")
     require(supp_pdf_text, pdf_title, "v2.1 title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 25 or pdf_pages(SUPP_PDF) != 12:
-        fail("PDF page counts are not main=25 and supplement=12")
-    require(metadata, "25 pages, three figures, six tables", "arXiv counts")
+    if pdf_pages(MAIN_PDF) != 27 or pdf_pages(SUPP_PDF) != 12:
+        fail("PDF page counts are not main=27 and supplement=12")
+    require(metadata, "27 pages, three figures, six tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 3:
         fail("main.tex does not contain exactly three figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
@@ -186,10 +186,27 @@ def main() -> None:
         "The preceding proof of $\\pione(V_{\\mathrm{aud}})=1$ is complete before this",
         "logical separation of simple connectivity from the framing bridge",
     )
+    require(
+        main_tex,
+        "does not publish this\ncontrary presentation",
+        "neutral statement that the contrary presentation is unavailable",
+    )
+    require(
+        main_tex,
+        "Relation-by-relation\nreconciliation requires the missing artifact.",
+        "unresolved contrary-computation boundary",
+    )
+    for overclaim in (
+        "resolves the contrary computation",
+        "proves the contrary computation wrong",
+        "refutes the contrary computation",
+    ):
+        if overclaim in main_tex.lower():
+            fail(f"contrary-computation overclaim survives: {overclaim!r}")
 
     if not args.final:
         print("PASS: the local v2.1.0 candidate is internally synchronized")
-        print("  main=25 pages/3 figures/6 tables; supplement=12 pages")
+        print("  main=27 pages/3 figures/6 tables; supplement=12 pages")
         print("  PDF, source-archive, proof-manifest, and downstream hashes agree")
         print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
         print("  v2.1.0 tag, publish the release/deposit, then rerun with --final")
