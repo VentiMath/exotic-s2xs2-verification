@@ -168,9 +168,13 @@ replay to **3 gens / 78 relators** in 49s.
   actual `c_y` starting corner, the literal initial segment `y_1` from `p`, a
   checked two-edge normal jog to the boundary, and the lift of `A` (the inverse
   of the displayed positive alpha loop).  Of the two half-arcs of `c`, the
-  paper's `y_1` side gives `dir_base(T_alpha)=A*x` with an empty residual after
-  the proof-producing Tietze pass and independent replay.  This identifies the
-  paper's `n=0` section directly; see `runs/15`.
+  paper's `y_1` side gives `dir_base(T_alpha)=A*x`. Run 15 originally reported
+  an empty residual in a pre-export coordinate state, but that evidence did
+  not reproduce over either committed export. Run 68 now proves the exact
+  72-letter sealed-presentation residual trivial in the complement itself:
+  2,506 retained ancestry records and a 61-step target reduction replay under
+  independent Python and Ruby verifiers. This identifies the paper's `n=0`
+  section directly without using a filling relation.
 * **The `T_beta` filling direction:** starting at the actual `s_e` crossing,
   using the literal `s_2` whisker and the lift of `B`, the direct boundary
   word is positively certified as `(r^-1 M r)B`.  This is exactly the sign
@@ -670,6 +674,12 @@ the presentation digest; all four are rejected.
   paper's `j=0` proof.
 * **Main fundamental groups:** all eight paper fillings have independently
   replayed proof-producing triviality certificates.
+* **The alpha paper-coordinate equality is now certificate-backed:** Run 68
+  proves `lb_a_y1 = geom_A * geom_x` in the sealed 3-generator complement.
+  The 72-letter target reduces to the identity in 61 steps whose complete
+  2,506-record ancestry cone is independently replayed in Python and Ruby.
+  This corrects the evidence trail of Run 15; the analogous 113-letter beta
+  coordinate residual remains uncertified and is not used as a filling word.
 * **The interpretation layer is a bound artifact:** Run 53 collects every
   convention read from the paper into one dictionary with per-entry
   discriminating witnesses, and cross-checks it — by AST parse and verbatim
@@ -809,3 +819,4 @@ Raw console output, in the order produced:
     65  batch inventory checks in both filled-group checkers and the manifest generator
     66  sealed raw-complex Tietze transport and derivation certificates for its eight fillings
     67  R3 in the actual torus complement; public LP-disagreement audit
+    68  alpha longitude identity in the sealed complement

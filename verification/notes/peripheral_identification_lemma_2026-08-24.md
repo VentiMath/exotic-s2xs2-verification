@@ -1,5 +1,14 @@
 # Peripheral identification lemma
 
+> **Evidence correction (2026-08-29).** The original version cited Run 15 as
+> an elementary-Tietze proof that `lb_a_y1 = A x`. That historical reduction
+> was tied to a pre-export coordinate state and does not reproduce over either
+> committed export. The equality itself is now proved over the sealed
+> 3-generator, 78-relator complement by Run 68: a 61-step reduction of the
+> literal 72-letter residual, backed by a 2,506-record KBMAG ancestry DAG and
+> replayed independently in Python and Ruby. References below have been
+> corrected to distinguish the valid conclusion from the superseded evidence.
+
 Date: 2026-08-24
 
 Evidence snapshot: commits `661e810` and `dad49cf`.
@@ -287,13 +296,14 @@ geometric surgery family being checked nor the validity of the identification.
 
 The alpha loop `lb_a_y1` is constructed at the unique `c_y` crossing, uses
 the same `y_1` whisker as `geom_M`, traverses `A`, and closes along the
-chosen half of `c`. The replayed elementary Tietze certificate gives
+chosen half of `c`. The sealed complement certificate gives
 
 ```text
 lb_a_y1 = A x
 ```
 
-in the complement group (Run 15). This is the paper's reference `n = 0`
+in the complement group (Run 68; Run 15's earlier evidence is superseded).
+This is the paper's reference `n = 0`
 section `lambda_alpha`, not the adjacent `A r^-1` section.
 
 The beta loop `lb_b_s2` starts at the unique `s_e` crossing, uses the same
@@ -384,7 +394,7 @@ This proves the displayed equality of normal closures and the lemma. `square`
 | Two torus subbundles | `bundle.py`; `model_correspondence.py`; Runs 22, 51--52 | finite combinatorics plus explicit mapping-cylinder clutching |
 | `M` with `y_1` basing | `r_run.py`; Run 12 | derived-neighborhood dual meridian |
 | `N` with `s_2` basing and orientation | `r_run.py`; Runs 13-14 | local rank-one and boundary-chain certificates |
-| `lambda_alpha = Ax` | `r_run.py`; Run 15 | replayed elementary Tietze certificate |
+| `lambda_alpha = Ax` | sealed presentation; Run 68 | 2,506-record KBMAG ancestry certificate, replayed in Python and Ruby |
 | Literal `lambda_beta` with `s_2` basing | `r_run.py`; Runs 10, 12, and 20 | punctured sweep and direct boundary path |
 | Fibered equals Lagrangian framing | paper Lemma 8.2; `framing_check.py`; Run 35 | three named smooth theorems plus full inline-calculus audit |
 | Four direct `n = 0` filling pairs | `r_presentations.json`; Run 20 | literal path export; no coordinate substitution |

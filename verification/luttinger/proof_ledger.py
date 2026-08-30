@@ -109,6 +109,9 @@ NODES = {
     "M_sealed_filled_group_derivations": (
         "machine_certificate", (), "runs/66-sealed-tietze-transport.txt"),
     "M_peripheral_slopes": ("machine_certificate", (), "runs/20-direct-peripheral-fillings-trivial.txt"),
+    "M_alpha_coordinate_identity": (
+        "machine_certificate", (),
+        "luttinger/alpha_residual/certificate.json.gz"),
     "M_independent_peripheral_extraction": (
         "machine_certificate", (),
         "runs/30-independent-peripheral-extractor.txt"),
@@ -189,7 +192,7 @@ NODES = {
         "geometric_argument",
         ("G_marked_bundle_identification", "G_lagrangian_framing",
          "M_peripheral_slopes", "M_independent_peripheral_extraction",
-         "M_independent_paper_dictionary"),
+         "M_independent_paper_dictionary", "M_alpha_coordinate_identity"),
         "notes/peripheral_identification_lemma_2026-08-24.md"),
     "G_section_square_zero": (
         "geometric_argument",
