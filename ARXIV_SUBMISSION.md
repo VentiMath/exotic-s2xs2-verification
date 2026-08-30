@@ -11,7 +11,7 @@ web form from drifting from the rendered paper.
   same `paper/main.tex` are byte-for-byte identical.
 - Upload `paper/arxiv-source-v1.5.8.tar.gz` as the v1.5.8 GitHub release asset
   and to arXiv.
-- SHA-256: `20a163de266552c4bf3a63c70257a419c17e66ebbac484d37343afbd7a32dca2`.
+- SHA-256: `a6328cd4d83017ebc3407eb61bbec9d77752861da23020ec595bee16926fd97d`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
@@ -43,7 +43,7 @@ We audit the theorem-critical computations in Wuebben's proposed exotic $S^2 \ti
 **Comments**
 
 ```text
-18 pages, one figure, two tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
+19 pages, one figure, two tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
 ```
 
 **Classification**
@@ -62,7 +62,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 18 pages, no missing references, and the
+3. Confirm the generated PDF has 19 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.

@@ -153,7 +153,7 @@ one of these four explicitly defined presentations presents the trivial
 group.
 
 The proof consists of four derivation certificates in release
-\texttt{v1.5.7}.  Both the Python and Ruby checkers accept them, and two
+\texttt{v1.5.8}.  Both the Python and Ruby checkers accept them, and two
 standalone checkers replay the frozen 99{,}860-step transport that produced
 \texttt{S}.  No geometric interpretation of \texttt{S} is part of this
 statement.
@@ -534,24 +534,29 @@ $\mu_\alpha,\lambda_\alpha^{\circ}$, and fifteen and fourteen letters in
 all.  So no independent conjugation is hidden in the filling word
 $M\lambda_\alpha^{\epsilon_A}$.
 
-One caveat must be stated precisely, because it is the sharpest
-interpretive edge in this note.  The identification of the stored word
-$\texttt{lb\_a\_y1}$ with the paper's symbol $Ax$ is \emph{geometric},
-resting on how the path is built --- based on the $y$ rail at the unique
-crossing $c_y$, whiskered by $y_1$, jogged to the normal-block frontier,
-lifting the base generator $A$, and closed along the selected half of $c$.
-It is not, in the presentations this note ships, an algebraically certified
-word identity: over the sealed presentation the elementary elimination pass
-reduces $\texttt{lb\_a\_y1}^{-1}Ax$ to a $72$-letter word rather than to the
-empty word, and likewise
-$\texttt{lb\_b\_s2}^{-1}(r^{-1}Mr)B$ to a $113$-letter word.  Neither
-residual is refuted --- both die in $H_1(C)=\Z^2$ --- but neither is
-certified, and elementary elimination is not a word solver, so a nonempty
-residual is inconclusive in both directions.  An earlier run reported the
-$\alpha$ residual as empty over a presentation that predates both exports
-in the repository; that reduction does not reproduce over either committed
-export, and nothing in this note relies on it.  Theorem~\ref{thm:main}
-is untouched either way: it fills with the stored words, never with $Ax$.
+The identification of the stored word $\texttt{lb\_a\_y1}$ with the paper's
+symbol $Ax$ has two independent supports.  Geometrically it follows from how
+the path is built --- based on the $y$ rail at the unique crossing $c_y$,
+whiskered by $y_1$, jogged to the normal-block frontier, lifting the base
+generator $A$, and closed along the selected half of $c$.  Algebraically,
+the elementary elimination pass over the sealed presentation leaves the
+$72$-letter residual $\texttt{lb\_a\_y1}^{-1}Ax$, but a proof-producing
+completion reduces that exact word to the identity in $61$ steps.  Independent
+Python and Ruby verifiers replay the complete $2{,}506$-record ancestry cone
+from the sealed three-generator, $78$-relator complement; neither filling
+relation is present.  The frozen source, certificate, compiler, and both
+verifiers are in
+\repopath{verification/luttinger/alpha_residual/} (Run 68).  An earlier run
+had reported an empty elementary
+residual over a presentation predating both committed exports.  That evidence
+does not reproduce and is superseded by the sealed certificate just described.
+
+The analogous beta-coordinate word
+$\texttt{lb\_b\_s2}^{-1}(r^{-1}Mr)B$ still leaves a $113$-letter residual
+under elementary elimination.  It dies in $H_1(C)=\Z^2$ but is not certified,
+and a nonempty partial normal form is inconclusive in both directions.  This
+does not affect Theorem~\ref{thm:main}: its beta filling uses the literal
+stored boundary longitude, not the coordinate substitution.
 
 The beta extraction is the sign-sensitive case.  The corresponding path
 uses the initial segment $s_2$ to the unique crossing $s_e$, the base loop
@@ -1137,7 +1142,7 @@ lemmas of Lidman--Piccirillo with the Ozsv\'ath--Szab\'o nonvanishing
 theorem behind them; the rest are elementary or are constructions of
 \cite{LidmanPiccirillo} that this note takes as stated. None is reproved.
 The repository's dependency ledger records the whole verification as an
-acyclic graph of 33 named external theorems, 35 machine certificates, 11
+acyclic graph of 33 named external theorems, 36 machine certificates, 11
 geometric arguments, and 20 derived claims ending in the three theorems,
 with every evidence file bound by hash. These are not competing counts: the
 25/3/15/16 figures in Appendix~\ref{sec:downstream} describe only the compact
@@ -1152,16 +1157,16 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.7}
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.8}
 of the repository:
-\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.7}.
+\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8}.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
-\begin{center}\small\texttt{ba05ff395f0900cb5ed653b7dfa5bc5e829a78ae}\end{center}
+\begin{center}\small\texttt{8cc9549dfe0289b7f8f73e6d7529e35dcaace73c}\end{center}
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{0cec91193c19b50d496a6d2230d6b6e1dcecb52df60b25117231f31ed21cdae6}\end{center}
 and its downstream-chain certificate has SHA-256
-\begin{center}\small\texttt{5f37b3d10bb253c9d8abd3969b026faaf27d5db863a8b9d3b2d1b1c5e614d056}\end{center}
+\begin{center}\small\texttt{835016cd587351ca07107a8fd2d16a614fc4f32ddbd7e9070b9190c681a253dd}\end{center}
 The repository itself is public at
 \repopath{https://github.com/VentiMath/exotic-s2xs2-verification}; the versioned
 release link above, rather than search-engine indexing, is the artifact to
