@@ -26,7 +26,6 @@ ARXIV = ROOT / "ARXIV_SUBMISSION.md"
 README = ROOT / "README.md"
 MAIN_TEX = PAPER / "main.tex"
 SUPP_TEX = PAPER / "supplement.tex"
-COMPANION = ROOT / "docs/verification-note.md"
 CITATION = ROOT / "CITATION.cff"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
@@ -91,7 +90,6 @@ def main() -> None:
         README,
         MAIN_TEX,
         SUPP_TEX,
-        COMPANION,
         CITATION,
         MAIN_PDF,
         SUPP_PDF,
@@ -104,14 +102,12 @@ def main() -> None:
     readme = README.read_text(encoding="utf-8")
     main_tex = MAIN_TEX.read_text(encoding="utf-8")
     supplement = SUPP_TEX.read_text(encoding="utf-8")
-    companion = COMPANION.read_text(encoding="utf-8")
     citation = CITATION.read_text(encoding="utf-8")
     public_texts = {
         "README.md": readme,
         "ARXIV_SUBMISSION.md": metadata,
         "paper/main.tex": main_tex,
         "paper/supplement.tex": supplement,
-        "docs/verification-note.md": companion,
         "CITATION.cff": citation,
     }
 
