@@ -1,0 +1,14 @@
+{
+  "format": "exotic-s2xs2-publication-semantics-v1",
+  "facts": {
+    "slice(4_1,B)": true,
+    "slice(4_1,W)": false,
+    "comparison(V_*,Wuebben_V)_requires": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "pi_1(V_*)": "trivial"
+  }
+}
