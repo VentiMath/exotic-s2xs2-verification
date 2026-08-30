@@ -49,6 +49,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Source-identification assumptions}
 
 \title{A certificate-based audit of the fundamental-group and framing
 computations in Wuebben's proposed exotic $S^2\times S^2$ construction}
@@ -63,19 +64,20 @@ computations in Wuebben's proposed exotic $S^2\times S^2$ construction}
 We audit the fundamental-group and framing calculations in Wuebben's
 proposed exotic $S^2\times S^2$ construction.  Four explicit,
 hash-identified finite presentations are proved trivial by replayable
-derivation certificates under a published certificate specification.  We
-then reconstruct the marked genus-two bundle and surgery tori independently
-and prove, in separate geometric steps, that the certified presentations
-surject onto the fundamental group of Wuebben's fixed surgery manifold.  The
-proof makes explicit the common whiskers, meridians, product longitudes,
-drilled transport relation, and the product-to-Lagrangian framing bridge.
-Consequently the fixed manifold is simply connected, conditional on this
-geometric identification; twenty-five named external results then yield the
-three manifold conclusions claimed in Wuebben's paper.  The finite
-certificate theorem is mechanically checkable, whereas the marked
-model-to-manifold identification remains the principal human-review
-boundary.  We state separately an unresolved contrary computation reported
-by Wuebben.  The theorems are Wuebben's; this note claims only the audit.
+derivation certificates under a published certificate specification.  From
+the marked data we define an explicit audit manifold $V_*$ and prove, in
+separate geometric steps, that those presentations are presentations of
+$\pione(V_*)$; this makes the common whiskers, meridians, product longitudes,
+drilled transport relation, and product-to-Lagrangian framing bridge
+inspectable.  We then isolate four source-identification assumptions
+S1--S4 under which $V_*$ is Wuebben's intended fixed surgery member.  Thus
+$V_*$ is simply connected, while the transfer of that conclusion to
+Wuebben's member is explicitly conditional on S1--S4.  Conditional also on
+twenty-five named external results, the three manifold conclusions of
+Wuebben's paper follow.  A reported contrary fundamental-group computation
+is stated separately and bears on the source comparison, not on the finite
+certificate theorem.  The theorems are Wuebben's; this note claims only the
+audit.
 \end{abstract}
 
 \noindent\textit{2020 Mathematics Subject Classification.}
@@ -86,14 +88,16 @@ by Wuebben.  The theorems are Wuebben's; this note claims only the audit.
 \small
 \hrule\medskip
 \textbf{Status of the claims.}
-The unconditional result is the triviality of four explicitly
-hash-identified finite presentations, witnessed by replayable derivation
-certificates.  The implication $\pione(V)=1$ additionally uses the geometric
-identification of those presentations with the fixed Luttinger-surgery
-manifold; this is the principal human-review boundary.  The three manifold
-conclusions further use the cited classification, symplectic, and
-Floer-theoretic results.  An unpublished contrary fundamental-group
-calculation reported by Wuebben remains unreconciled.
+The four hash-identified presentations are trivial, and the audit-defined
+manifold $V_*$ is simply connected, relative only to the displayed
+geometric proofs, named standard topology inputs, and checker correctness.
+The further assertion that $V_*$ is Wuebben's intended fixed member uses the
+four source-identification assumptions S1--S4 stated in
+Section~\ref{sec:source-assumptions}.  The three manifold conclusions also
+use the cited classification, symplectic, and Floer-theoretic results.  An
+unpublished contrary fundamental-group calculation reported by Wuebben
+remains unreconciled and bears precisely on the conditional source
+comparison.
 \medskip\hrule
 \end{minipage}
 
@@ -139,27 +143,30 @@ to the three theorems. Nothing in the implementation reuses the paper's
 coordinates, code, or intermediate data: the geometry was rebuilt from
 the paper's stated marked-fiber data alone, and the paper's displayed
 relations, sign tables, and Table~1 filling words were then \emph{compared
-against} the rebuild rather than assumed. Every compared item agreed, and
-the independent raw-paper extractor found no paper-to-model dictionary
-discrepancy. The downstream deductions are
+against} the rebuild rather than assumed. Every mechanically comparable
+item agreed, and the independent raw-paper extractor found no dictionary
+discrepancy.  That agreement does not prove what the author's prose and
+figures are intended to denote.  Section~\ref{sec:source-assumptions}
+therefore states the remaining semantic assertions as S1--S4 instead of
+hiding them inside a geometric theorem.  The downstream deductions are
 Wuebben's, and this note reproves none of the classification, symplectic,
 or Floer-theoretic theorems they invoke; what it adds is that each
 deduction is written out, each theorem invoked is stated with its
-hypotheses, and each hypothesis is discharged by a named certificate or
-computation.
+hypotheses, and each hypothesis is discharged by a named certificate,
+computation, source assumption, or earlier step.
 
 For the notation below, ``$n=0$'' means Wuebben's $Ax$ half-drift label on
 $T_\alpha$; the adjacent ``$n=1$'' control replaces $Ax$ by $Ar^{-1}$.
 The letters $M,N$ denote based meridians of $T_\alpha,T_\beta$, while
 $A,B$ are the two base generators.
 
-The argument has three deliberately separate layers: a finite theorem about
-explicit presentations, a geometric identification of those presentations
-with the fixed surgery manifold, and conditional consequences obtained from
-named external results.  The first is formalized next.  The geometric layer
-is the center of Sections~\ref{sec:target}--\ref{sec:peripheral}, and the
-downstream consequences are summarized only after that bridge has been
-proved.
+The argument has four deliberately separate layers: a finite theorem about
+explicit presentations; a geometric identification with the explicitly
+defined $V_*$; a source comparison, conditional on S1--S4, with Wuebben's
+intended member; and consequences conditional on named external results.
+The first is formalized next.  The audit-model geometry is the center of
+Sections~\ref{sec:target}--\ref{sec:peripheral}; no source assumption enters
+its simple-connectivity conclusion.
 
 \section{The finite certificate theorem}\label{sec:certificates}
 
@@ -321,10 +328,11 @@ The finite theorem is now relative only to the published certificate
 specification and to the proposition that at least one implementation
 conforms to it.  The rest of the paper addresses the mathematically different
 question of what the hash-bound presentations describe.  The principal
-result there is Theorem~\ref{prop:ident}, the Geometric Identification
-Theorem.  Theorem~\ref{thm:full} records the downstream consequences only
-after that theorem has been proved.  Table~\ref{tab:evidence} keeps these
-evidentiary levels separate.
+result there is Theorem~\ref{prop:ident}, which identifies them with the
+explicitly defined $V_*$.  Proposition~\ref{prop:paper-comparison} is the
+separate, S1--S4-conditional comparison with Wuebben.  Theorem~\ref{thm:full}
+records the downstream consequences only after both levels have been stated.
+Table~\ref{tab:evidence} keeps these evidentiary levels separate.
 
 \begin{table}[!htbp]
 \centering
@@ -344,14 +352,17 @@ elimination is valid and all 89 tracked words are transported & the raw
 presentation describes the geometric complement \\
 peripheral pairs & simplicial paths and normal blocks & paths, common
 whiskers, orientations, local flatness, and normal-circle fibers & the
-marked PL model represents the paper's bundle and tori \\
+standard PL interpretations stated in the proofs \\
 framing agreement & exact-rational identities and finite hypotheses &
 constructive collar normalization, chart calculations, and first-jet
 independence & the Lagrangian-neighborhood theorem and the interpretation of
-the named push-offs \\
+the named push-offs inside $V_*$ \\
+$V_*=$ Wuebben's fixed member & source dictionary, independent extraction,
+mutation controls, and author-script comparison & every mechanically
+comparable convention agrees & S1--S4 \\
 three manifold conclusions & dependency ledger & hashes, finite
 calculations, hypotheses recorded, and acyclic dependency & the cited
-theorems and the semantic correctness of their applications \\
+theorems, S1--S4, and the semantic correctness of their applications \\
 \bottomrule
 \end{tabularx}
 \caption{Evidence levels.  A replayed finite derivation, a checked
@@ -391,12 +402,14 @@ Inside $R_*$ put
 Fix the basepoint $q=(p,*)$.  Let $A=[\bar\alpha]^{-1}$ and
 $B=[\bar\beta]^{-1}$ be the based inverse base loops.  Base the oriented
 meridians $M,N$ along the initial fiber arcs $y_1$ to $c_y$ and $s_2$ to
-$s_e$, respectively.  In the product normal boundaries use the commonly
-based longitudes
-\[
- \lambda_\alpha=Ax,\qquad
- \lambda_\beta=(r^{-1}Mr)B.
-\]
+$s_e$, respectively.  In the product normal boundaries let
+$\lambda_\alpha$ be the $y_1$-whiskered push-off that lifts the inverse
+$\alpha$ direction and closes along the selected half of $c$, and let
+$\lambda_\beta$ be the $s_2$-whiskered push-off of the inverse $\beta$
+direction along $e$.  These are geometric boundary curves; their based words
+$Ax$ and $(r^{-1}Mr)B$ are conclusions of
+Lemmas~\ref{lem:alpha-peripheral} and \ref{lem:beta-peripheral}, not part of
+this definition.
 Define $V_*$ by the two product-framed fillings
 \[
  M\lambda_\alpha=1,\qquad N\lambda_\beta=1
@@ -409,11 +422,80 @@ $(\epsilon_A,\epsilon_B)\in\{\pm1\}^2$.
 The definition singles out one manifold.  The four sign labels in
 Theorem~\ref{thm:main} are therefore convention sheets for this one object,
 not four nearby surgeries.  The geometric work below has two logically
-distinct tasks: construct $V_*$ from the simplicial model, and identify the
+distinct tasks: construct $V_*$ from the simplicial model, and compare the
 marked smooth data of Definition~\ref{def:Vstar} with the fixed member
-described by Wuebben.  Group collapse is not used in either task.
+described by Wuebben.  The first task is proved without the assumptions
+below.  The second cannot be a theorem about a byte string alone, because it
+includes assertions about what another author's prose and figures denote.
 
-The genus-2 fiber is realized as a regular neighborhood of the paper's
+\subsection{Source-identification assumptions}
+\label{sec:source-assumptions}
+
+\begin{assumption}\label{ass:source}
+The comparison with Wuebben's intended fixed member uses exactly the
+following four semantic assertions.
+\begin{enumerate}[label=\textup{(S\arabic*)},leftmargin=3.4em,itemsep=.45em]
+\item \textbf{Marked-fiber fidelity.}  Wuebben's imported marked fiber is
+the ordered five-chain $(a,b,c,d,e)$ with the two marked complementary
+disks, chain-reversing orientation-preserving involution, and curve
+orientations used in Definition~\ref{def:Vstar}.  In particular dashed arcs
+in the source figure depict hidden portions of the same curves, not
+additional crossings.
+\item \textbf{Marked-bundle fidelity.}  The symbols
+$\varphi_0$ and $\psi_0=T_a\circ T_b$ mean the supported right-twist
+representatives used here, with $T_b$ applied first, relative to the full
+$c$ and $e$ collars; the target tori are the resulting $c$-over-$\alpha$
+and $e$-over-$\beta$ curve subbundles.
+\item \textbf{Peripheral and member fidelity.}  The paper's symbols
+$y_1,s_2,A,B,M,N$ denote the same oriented, commonly whiskered paths as in
+Definition~\ref{def:Vstar}; its fixed $(m,n)=(0,0)$ member uses the two
+displayed filling slopes; and $(\epsilon_A,\epsilon_B)$ changes only the
+allowed orientation sheet, not the geometric surgery.
+\item \textbf{Smooth-surgery fidelity.}  Wuebben's smooth surgery tori are
+the images of those marked curve subbundles, and his geometric $+1$
+Luttinger surgeries use their Lagrangian-framing classes with the
+orientations encoded by the relation sheet.
+\end{enumerate}
+\end{assumption}
+
+These are not placeholders for four missing computations.  They are the
+four source-semantic statements at which the audit must say ``this is what
+the target paper means.''  Table~\ref{tab:source-assumptions} records how
+far each has nevertheless been tested.  The finite certificates, the
+construction of $V_*$, and the proof that $\pione(V_*)=1$ do not use
+S1--S4.
+
+\begin{table}[!htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.07\textwidth}
+ >{\raggedright\arraybackslash}p{.39\textwidth}X@{}}
+\toprule
+Item & Finite or cited support & What is still assumed \\
+\midrule
+S1 & independent extraction from immutable source; exhaustive ribbon
+rotation check; periodic-disk theorem & intended identification of the
+source symbols and drawing convention \\
+S2 & relative collar checks, explicit graph clutching, based monodromy in
+two subdivisions, order/sign mutation controls & intended mapping-class and
+subbundle conventions \\
+S3 & two peripheral extractors; punctured beta sweep; complement-only
+certificates for both longitude words; author-script comparison & intended
+names, orientations, sign sheets, and selected family member \\
+S4 & constructive relative Moser normalization, two Weinstein-chart
+calculations, first-jet chart independence, Lagrangian-neighborhood theorem
+& intended smooth tori and surgery parametrizations \\
+\bottomrule
+\end{tabularx}
+\caption{The complete source-comparison boundary.  The middle column is
+evidence for each reading; it is not silently promoted into proof of the
+semantic assertion in the last column.}
+\label{tab:source-assumptions}
+\end{table}
+\FloatBarrier
+
+The genus-2 fiber is realized as a regular neighborhood of the specified
 five-chain of curves --- five plumbed annular bands and two cone discs
 --- with the hyperelliptic-type involution $\varphi_0$ realized
 simplicially; its fixed points, the curve actions $a\leftrightarrow e$,
@@ -482,7 +564,7 @@ additional input to the computation.}
 \end{figure}
 \FloatBarrier
 
-The dictionary used by Theorem~\ref{prop:ident} is displayed in
+The dictionary tested before Proposition~\ref{prop:paper-comparison} is displayed in
 Table~\ref{tab:dictionary}; it is not reconstructed from the fact that the
 filled groups happen to collapse.  Here ``literal'' means a stored edge path
 in the triangulation, with its basepoint and orientation retained.
@@ -612,20 +694,23 @@ Under $H$, the induced subcomplexes
 $c\rtimes_{\varphi_K}S^1_\alpha$ and $e\times S^1_\beta$ map to
 $T_\alpha,T_\beta$, together with their product collars and the $p$-section.
 All smooth and symplectic arguments may therefore be performed in the
-paper's already smooth target $R_*$; no smoothing of $|K|$ is chosen.
+audit-defined smooth target $R_*$; no smoothing of $|K|$ is chosen.
 \end{corollary}
 
-The paper-to-model comparison is itself exposed as an interpretation
-boundary rather than inferred from the later group collapse.  Five
+The model results through Corollary~\ref{cor:tori} concern $V_*$ and use no
+source-identification assumption.  The paper-to-model comparison is exposed
+separately as an interpretation boundary rather than inferred from the later
+group collapse.  Five
 structurally different constructions test subdivision, monodromy order,
 twist sign, labels, and orientations.  A quarantined extractor checks the
 immutable Lidman--Piccirillo source and vector figure, and the frozen
 dictionary was compared diagnostically with Wuebben's scripts only after it
 was fixed; no proof input is derived from those scripts.  Every compared
-entry agreed.  The surviving transcription convention is the ordinary one
-that a dashed arc in the handle figure records hidden projection rather than
-an additional crossing.  The complete comparison inventory is in the
-supplement and repository.
+entry agreed.  Assumption~\ref{ass:source}(S1) records, rather than conceals,
+the surviving semantic convention that a dashed arc in the handle figure
+records hidden projection rather than an additional crossing.  The complete
+comparison inventory and the S1--S4 audit are in the supplement and
+repository.
 
 \section{Peripheral data and the framing
 identification}\label{sec:peripheral}
@@ -1045,16 +1130,16 @@ the charts; the argument above supplies the precise chart-independence
 consequence needed here.
 \end{proof}
 
-\begin{theorem}[Geometric Identification Theorem]\label{prop:ident}
+\begin{theorem}[audit-model identification]\label{prop:ident}
 For each coherent convention sheet
 $(\epsilon_A,\epsilon_B)\in\{\pm1\}^2$, there is a natural surjection
 \[
  P_{\epsilon_A,\epsilon_B}\twoheadrightarrow\pione(V_*).
 \]
-In fact the map is an isomorphism.  Under the marked homeomorphism of
-Lemma~\ref{lem:clutching}, $V_*$ is the fixed $(m,n)=(0,0)$ Luttinger-surgery
-member described by Wuebben.  Thus the four sheets express peripheral
-orientation conventions for one manifold, not four geometric targets.
+In fact the map is an isomorphism.  The four sheets express peripheral
+orientation conventions for the one audit-defined manifold $V_*$, not four
+geometric targets.  No source-identification assumption S1--S4 enters this
+statement.
 \end{theorem}
 
 \begin{proof}
@@ -1083,21 +1168,54 @@ with the two filling relations proves that the surjection is an isomorphism.
 Changing a common whisker simultaneously conjugates both elements of a
 peripheral pair, while changing an allowed orientation replaces the
 corresponding displayed exponent.  Neither operation changes the filled
-manifold.  Finally, Definition~\ref{def:Vstar} uses Wuebben's marked fiber,
-ordered monodromies, tori, basing arcs, and fixed surgery member, whose
-paper-to-model identification was proved in the preceding lemmas.
+manifold.  This completes the identification with Definition~\ref{def:Vstar}
+without comparing that definition to the intended denotation of Wuebben's
+symbols.
 \end{proof}
 
-\begin{corollary}\label{cor:pi1}
-The audit-defined manifold $V_*$, and hence Wuebben's fixed member under
-Theorem~\ref{prop:ident}, is simply connected.
+\begin{corollary}\label{cor:pi1-vstar}
+The audit-defined manifold $V_*$ is simply connected.
 \end{corollary}
 
 \begin{proof}
 Use any convention sheet in Theorem~\ref{prop:ident}.  Its source is trivial
 by Theorem~\ref{thm:main}; a quotient of the trivial
 group is trivial.  Notice that this conclusion uses only the surjective part
-of the Geometric Identification Theorem.
+of Theorem~\ref{prop:ident} and no source-identification assumption.
+\end{proof}
+
+\begin{proposition}[conditional comparison with Wuebben]
+\label{prop:paper-comparison}
+Assume S1--S4 of Assumption~\ref{ass:source}.  Then the marked smooth surgery
+data defining $V_*$ agree with the data of Wuebben's fixed $(m,n)=(0,0)$
+member.  In particular the resulting filled manifolds are orientation-
+preservingly diffeomorphic, with their peripheral and framing data identified.
+\end{proposition}
+
+\begin{proof}
+By S1, Lemma~\ref{lem:fiber} identifies the ordered marked fiber and
+involution.  By S2, Lemma~\ref{lem:clutching} and
+Corollary~\ref{cor:tori} identify the relative monodromies, bundle, tori, and
+product collars.  By S3, Lemmas~\ref{lem:normal},
+\ref{lem:alpha-peripheral}, \ref{lem:beta-peripheral}, and
+\ref{lem:drilled} identify the commonly based meridians, longitudes,
+transport relation, sign sheets, and selected family member.  By S4,
+Theorem~\ref{thm:framing} identifies the product push-offs with the smooth
+Lagrangian-framing classes used in the two $+1$ surgeries.  These marked
+identifications carry both attaching maps and therefore the filled manifold
+of Definition~\ref{def:Vstar} to the fixed member named in the target paper.
+The source-extraction and mutation checks in
+Table~\ref{tab:source-assumptions} are evidence for S1--S4, but are not used
+here as proofs of authorial intent.
+\end{proof}
+
+\begin{corollary}\label{cor:pi1}
+Assuming S1--S4, Wuebben's intended fixed member is simply connected.
+\end{corollary}
+
+\begin{proof}
+Combine Corollary~\ref{cor:pi1-vstar} with
+Proposition~\ref{prop:paper-comparison}.
 \end{proof}
 
 \section{Conditional manifold consequences}\label{sec:consequences}
@@ -1107,7 +1225,7 @@ classification, symplectic, and Floer-theoretic results; the machine ledger
 checks dependency bookkeeping and evidence hashes, not those theorems.
 
 \begin{theorem}[conditional consequences]\label{thm:full}
-Assume the twenty-five external results enumerated in the companion
+Assume S1--S4 and the twenty-five external results enumerated in the companion
 supplement and their stated applications.  Then Corollary~\ref{cor:pi1}
 implies Wuebben's three conclusions:
 \begin{enumerate}[label=\textup{(\Alph*)},leftmargin=2.5em]
@@ -1152,8 +1270,8 @@ $3$ project certificates, $15$ recomputed facts, and $16$ deductions.  Two
 separate implementations verify its acyclicity, evidence digests, and the
 dependence of all three conclusions on Corollary~\ref{cor:pi1}.  The full
 statements and hypothesis ledger are retained in the supplement so that this
-bookkeeping does not receive the same visual weight as the Geometric
-Identification Theorem.
+bookkeeping does not receive the same visual weight as the audit-model
+identification and the separate S1--S4 source comparison.
 \end{proof}
 
 \section{Limitations and the unresolved contrary computation}
@@ -1173,8 +1291,9 @@ It is consequently unknown whether the two computations concern the same
 member of the parametrized family, and equally unknown that they concern
 different members.  The finite Theorem~\ref{thm:main} is unaffected: its
 objects are explicit strings.  A contrary computation of the same fixed
-member would instead bear on Theorem~\ref{prop:ident}, where this paper
-locates the construction-specific risk.  Relation-by-relation reconciliation
+member would instead bear on Proposition~\ref{prop:paper-comparison} and
+Assumption~\ref{ass:source}, where this paper locates the
+construction-specific risk.  Relation-by-relation reconciliation
 requires the missing artifact.  The repository contains a dated inventory
 of the public search and is ready to ingest such an artifact if supplied.
 
@@ -1185,32 +1304,34 @@ published mathematical specification reduce ordinary software risk but do
 not constitute an independent human line-by-line audit.  Second, the marked
 fiber, peripheral, and framing arguments have been decomposed above so that a
 PL or symplectic topologist can audit them locally, but no such external audit
-is claimed.  Theorem~\ref{thm:full} is expressly conditional on its cited
-external results and on the semantic correctness of their applications.
+is claimed.  The transfer from $V_*$ to Wuebben's member is expressly
+conditional on S1--S4; Theorem~\ref{thm:full} is additionally conditional
+on its cited external results and on the semantic correctness of their
+applications.
 
 The $100$-case framing scan is not an answer to either limitation.  All
 sampled shifted presentations were reported trivial, so the scan does not
 discriminate the correct framing and has no logical role in
-Theorem~\ref{prop:ident}.  It is retained only as computational history in
-the supplement.
+Theorem~\ref{prop:ident} or Proposition~\ref{prop:paper-comparison}.  It is
+retained only as computational history in the supplement.
 
 \section{Conclusion}
 
 The revision isolates two theorem-level achievements.  First, four
 hash-identified presentations are trivial under a complete published
 certificate specification, with the raw transport and all retained
-derivations replayable from frozen inputs.  Second, the geometric bridge is
-no longer one narrative proposition: the marked fiber, relative clutching,
-torus collars, normal frontier, complement presentation, two peripheral
-pairs, drilled-fiber relation, and Lagrangian framing are separate results
-whose finite and conventional inputs are visible.
+derivations replayable from frozen inputs.  Second, those presentations
+identify the fundamental group of the explicitly defined $V_*$, which is
+therefore simply connected.  The marked fiber, relative clutching, torus
+collars, normal frontier, complement presentation, two peripheral pairs,
+drilled-fiber relation, and Lagrangian framing are separate results whose
+finite and conventional inputs are visible.
 
-The remaining uncertainty is correspondingly sharp.  It is not whether the
-certificate files reduce the groups they name; it is whether the marked
-geometric identification should survive independent expert review and how it
-compares with the unavailable contrary computation.  The artifacts are
-released to make those questions finite and inspectable, not to replace the
-community process that decides them.
+The remaining construction-specific uncertainty is S1--S4: whether the
+source symbols and diagrams denote exactly the marked data defining $V_*$.
+The paper-to-$V_*$ transfer and the unavailable contrary computation meet at
+that boundary.  The artifacts are released to make those assumptions finite
+and inspectable, not to promote source interpretation into a certificate.
 
 \section{Data and reproducibility}\label{sec:data}
 

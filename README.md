@@ -13,18 +13,19 @@ recorded in [`TARGET.md`](TARGET.md).
 
 **What this repository is:** a version-specific, certificate-based audit by
 people and machines who are not the paper's author. Its unconditional theorem
-is that four explicit, hash-identified presentations are trivial. A separate
-Geometric Identification Theorem argues that those presentations surject onto
-the fundamental group of the fixed surgery manifold; this is the principal
-human-review boundary. The three manifold conclusions are then recovered
-conditionally from twenty-five named external results. The paper, its
-computational supplement, and the repository keep those three evidence levels
-separate.
+is that four explicit, hash-identified presentations are trivial.  A separate
+audit-model theorem identifies them with the explicitly defined manifold
+`V_*`, which is therefore simply connected.  Identifying `V_*` with
+Wuebben's intended fixed member is conditional on four source-identification
+assumptions S1--S4, recorded individually in the paper and ledger. The three
+manifold conclusions are then recovered conditionally from S1--S4 and
+twenty-five named external results. The paper, its computational supplement,
+and the repository keep those evidence levels separate.
 
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
 Floer-theoretic theorems the chain cites; or a substitute for independent
-human review of the marked geometric identification.
+human review of S1--S4 and their source semantics.
 
 **Known unreconciled external computation.** Wuebben's repository has stated,
 since its first visible commit and continuously since, that Lidman and
@@ -51,18 +52,19 @@ and [`verification/notes/lp_disagreement_reconciliation_2026-08-29.md`](verifica
 Everything below is computed from a triangulated model built independently of
 the paper's coordinates, with proof-producing certificates that replay.
 
-* **The bundle.** The genus-2 fiber, its involution with the paper's fixed
-  points and curve actions, and the full surface bundle R are realized
-  simplicially (f-vector [9156, 116714, 356728, 403152, 153984]) and matched
-  to the paper's marked bundle by literal based monodromy action — not by
-  fingerprints. The based monodromy certificate replays 17,839 elementary
+* **The bundle.** The genus-2 fiber, its involution, marked points and curve
+  actions, and the full audit bundle `R_*` are realized simplicially
+  (f-vector [9156, 116714, 356728, 403152, 153984]) and matched to its marked
+  smooth definition by literal based monodromy action — not by fingerprints.
+  The based monodromy certificate replays 17,839 elementary
   Tietze steps; an independently built second triangulation replays 34,735.
-  The identification with the paper's bundle is realized by an explicit
+  This internal identification is realized by an explicit
   marked mapping-cylinder clutching over the base graph, with the relative
   monodromy comparisons checked exactly on the marked collars — the
-  classification of surface bundles is no longer invoked.
+  classification of surface bundles is no longer invoked. Comparing this
+  marked object with Wuebben's intended bundle is the separate assumption S2.
 * **The peripheral data.** Based meridians and longitudes for both surgery
-  tori are traced as literal simplicial loops with the paper's own whiskers.
+  tori are traced as literal simplicial loops with the audit's named whiskers.
   The alpha coordinate identity `lb_a_y1 = A x` is additionally certified in
   the sealed complement itself by a 2,506-record ancestry DAG, independently
   replayed in Python and Ruby (run 68); the beta identity
@@ -156,20 +158,23 @@ the paper's coordinates, with proof-producing certificates that replay.
   graph is acyclic and that each theorem depends on the certified
   π₁(V)=1, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
-  theorems, 37 machine certificates, 11 geometric arguments, 20 derived
-  claims — with every evidence file hashed. The first four counts describe
-  the compact downstream chain; the latter four describe the larger
-  project-wide ledger, so they are not competing tallies. The chain is
+  theorems, 37 machine certificates, 12 geometric arguments, one explicit
+  source-assumption node, and 21 derived claims — with every evidence file
+  hashed. The first four counts describe the compact downstream chain; the
+  larger figures describe the project-wide ledger, so they are not competing
+  tallies. The chain is
   written out in prose in
   `verification/notes/downstream_proof_chain_2026-08-28.md` and in the
   computational supplement.
 
 ## What is not claimed
 
-The remaining proof dependence is concentrated in named classical inputs,
-applied with hypotheses that have been checked but with proofs that are
-cited, not mechanized: the elementary ribbon-thickening and bistellar-trace
-interpretations that read the paper's figures into complexes; the
+The remaining proof dependence has two different kinds.  First, S1--S4 are
+source-semantic assumptions: marked-fiber fidelity, marked-bundle fidelity,
+peripheral/member fidelity, and smooth-surgery fidelity.  Their independent
+extractors and mutation controls are evidence, not proofs of authorial intent.
+Second, named classical inputs are applied with checked hypotheses but cited
+rather than mechanized: elementary ribbon thickening and bistellar traces; the
 classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
 criteria behind the local-flatness certificates; simplicial
 fundamental-group presentation and Tietze theory; the Kerékjártó
@@ -184,14 +189,16 @@ Lidman–Piccirillo's constructions and Floer lemmas (with the Ozsváth–Szabó
 theorems behind them), together with the elementary algebraic topology the
 chain names (van Kampen, the covering sequence, duality and universal
 coefficients, the lattice index formula, Wu's formula, Novikov additivity,
-asphericity, adjunction). Surface-bundle classification,
-four-dimensional smoothing, intersection-form naturality, and
+asphericity, adjunction). Inside the audit-defined object,
+surface-bundle classification, four-dimensional smoothing, intersection-form naturality, and
 derived-regular-neighborhood theory are no longer dependencies: the bundle
 identification is an explicit clutching, the smooth and symplectic arguments
-run entirely in the paper's already-smooth manifold, and the tubular
+run entirely in the audit-defined smooth manifold, and the tubular
 boundary is constructed rather than cited. Weinstein germ uniqueness is
 corroborating rather than necessary — chart independence is proved
-in-project between the paper's verified charts. If the framing identification (Lemma 8.2)
+in-project between the audit's verified charts. The comparison of those
+objects and charts with Wuebben's intended ones remains S1--S4. If the
+framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
 presentations with the paper's Lagrangian surgeries; simple connectivity, the
@@ -212,9 +219,9 @@ nontrivial group; the scan bears on the j=0 proof only if the independent
 framing argument first fails.
 
 The accurate one-sentence status: **the finite presentations are certified
-trivial; the implication for Wuebben's fixed manifold rests on the separately
-stated marked geometric identification; and the three manifold conclusions
-are conditional on named external results** — with the reported contrary
+trivial and the audit-defined `V_*` is simply connected; the implication for
+Wuebben's fixed manifold is conditional on S1--S4; and the three manifold
+conclusions are additionally conditional on named external results** — with the reported contrary
 computation of π₁(V) disclosed above and not resolved. That is a statement
 about verification depth, not a substitute for review by symplectic and
 4-manifold topologists — which this repository is built to make cheaper.
