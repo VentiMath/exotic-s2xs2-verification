@@ -183,6 +183,16 @@ def main() -> None:
         if digest not in supplement:
             fail(f"supplement does not record the digest of {path.relative_to(ROOT)}")
 
+    # The supplement pins the archived verification/ tree by its git tree
+    # object.  Pinning a commit goes stale on every later commit; the tree
+    # object only changes when verification/ itself changes.
+    tree = run("git", "rev-parse", "HEAD:verification")
+    if tree not in supplement:
+        fail(
+            "supplement does not pin the current verification/ tree object "
+            f"{tree}; rebuild the supplement after changing verification/"
+        )
+
     require(
         metadata,
         "The primary result is the source-independent theorem $\\pi_1(V_aud)=1$.",
