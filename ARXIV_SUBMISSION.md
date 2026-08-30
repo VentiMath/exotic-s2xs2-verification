@@ -1,23 +1,23 @@
 # arXiv submission packet
 
-> **RELEASE GATE:** this re-typeset manuscript is prepared for v1.5.9. Do not
-> upload the packet until the v1.5.9 release URL resolves and the source and
+> **RELEASE GATE:** this major revision is prepared for v2.0.0. Do not
+> upload the packet until the v2.0.0 release URL resolves and the source and
 > PDF assets match the final digests recorded below. Any further edit to
 > `paper/main.tex` changes the packet digest, so rebuild and re-pin first.
 
-This packet fixes the metadata for the v1.5.9 manuscript and prevents the
+This packet fixes the metadata for the v2.0.0 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v1.5.9 tag, run
+- From a clean checkout of the v2.0.0 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v1.5.9.tar.gz` as the v1.5.9 GitHub release asset
+- Upload `paper/arxiv-source-v2.0.0.tar.gz` as the v2.0.0 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `e7e59c1e242217a81096135f098b5eef7986cd427456c4e66493634f6f51e3a6`.
+  `cc1879c8151a96ecc152d6eb23db50e888246c587eaa91d624fc7da19dd7c876`.
   Two independent invocations of the deterministic build script produced
   byte-for-byte identical archives.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
@@ -27,9 +27,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Final local PDF SHA-256 digests are
-  `cc8fb84f2b5ca7daf92d5e55c3a1878562bbdaf9fb818e80be854b7d25de2da2`
+  `79e05ef8ff6addf339fa42ea68ddac7a39718a4f54ce7ac9424564283afc5e87`
   for `paper/main.pdf` and
-  `5f9edd6579464c5e677c3bde5872f285a9473f5442f72941830c461541dacba9`
+  `892823769623d6cfa50d69cfa4e1c14d08aea71d006c0467bea74cfa353de0e9`
   for `paper/supplement.pdf`. Recompute both after any source edit.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
@@ -60,7 +60,7 @@ We audit the fundamental-group and framing calculations in Wuebben's proposed ex
 **Comments**
 
 ```text
-19 pages, two figures, three tables, with a 10-page computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.9 . Audits arXiv:2608.17267v1 relative to a stated geometric identification and explicitly named external results.
+19 pages, two figures, three tables, with a 10-page computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0 . Audits arXiv:2608.17267v1 relative to a stated geometric identification and explicitly named external results.
 ```
 
 **Classification**

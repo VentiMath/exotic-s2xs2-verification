@@ -10,7 +10,7 @@
 \exhyphenpenalty=10000
 \emergencystretch=3em
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
-\usepackage{booktabs,tabularx,array,multicol,enumitem}
+\usepackage{booktabs,tabularx,array,enumitem}
 \setlist[itemize]{leftmargin=*,itemsep=.35em,topsep=.45em}
 \clubpenalty=10000
 \widowpenalty=10000
@@ -529,9 +529,9 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.9}
+clean-checkout replay instructions, in the tagged release \texttt{v2.0.0}
 of the repository:
-\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.9}\end{center}
+\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0}\end{center}
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
 \begin{center}\small\texttt{8efbe7c2f43e01041263378dd836008e9747dcda}\end{center}
@@ -586,13 +586,10 @@ soundness claim remains the Certificate Soundness Theorem of the main paper.
 \addcontentsline{toc}{section}{References}
 \begingroup
 \small
-\linespread{.98}\selectfont
-\setlength{\columnsep}{1.25em}
-\raggedcolumns
-\begin{multicols}{2}
+\linespread{1.02}\selectfont
 \renewcommand{\section}[2]{}
 \begin{thebibliography}{99}
-\setlength{\itemsep}{0pt}
+\setlength{\itemsep}{.25em}
 \setlength{\parsep}{0pt}
 
 \bibitem{Wuebben}
@@ -734,7 +731,6 @@ The GAP~Group,
 \url{https://www.gap-system.org}.
 
 \end{thebibliography}
-\end{multicols}
 \endgroup
 
 
