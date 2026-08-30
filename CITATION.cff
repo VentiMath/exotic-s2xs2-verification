@@ -3,38 +3,33 @@ message: >-
   If you use these certificates, checkers, or the audit itself, please cite
   both this archived artifact and the accompanying manuscript.
 title: >-
-  A certificate-based audit of the fundamental-group and framing computations
-  in Wuebben's proposed exotic S^2 x S^2 construction
+  Certified simple connectivity of an audit model for Wuebben's proposed
+  exotic S^2 x S^2 construction
 abstract: >-
-  We audit the fundamental-group and framing calculations in Wuebben's proposed
-  exotic S^2 x S^2 construction. Four explicit, hash-identified finite
-  presentations are proved trivial by replayable derivation certificates under a
-  published certificate specification. From the marked data we define an
-  explicit audit manifold V* and prove, in separate geometric steps, that those
-  presentations are presentations of pi_1(V*); this makes the common whiskers,
-  meridians, product longitudes, drilled transport relation, and product-to-
-  Lagrangian framing bridge inspectable. We then isolate four source-
-  identification assumptions S1-S4 under which V* is Wuebben's intended fixed
-  surgery member. Thus V* is simply connected, while the transfer of that
-  conclusion to Wuebben's member is explicitly conditional on S1-S4. Conditional
-  also on twenty-five named external results, the three manifold conclusions of
-  Wuebben's paper follow. A reported contrary fundamental-group computation is
-  stated separately and bears on the source comparison, not on the finite
-  certificate theorem. The three exotic-manifold conclusions originate in
-  Wuebben's work, while the finite-certificate theorem, the audit-model theorem,
-  and the conditional source comparison are contributions of this note.
+  We define an explicit marked surface-bundle surgery manifold V_aud modeled on
+  the data in Wuebben's proposed exotic S^2 x S^2 construction. Four
+  hash-identified finite presentations are proved trivial by replayable
+  derivation certificates, and separate geometric arguments identify those
+  presentations with pi_1(V_aud). Consequently V_aud is simply connected.
+  Comparison with Wuebben's fixed surgery member is isolated as a fourteen-
+  clause Source Formalization D, with each clause tied to a target location,
+  mechanical evidence, and its remaining non-mechanical content. The downstream
+  manifold conclusions are conditional on that formalization and the cited
+  classification, symplectic, and Floer-theoretic results. A reported contrary
+  fundamental-group computation remains unreconciled; the paper lists all live
+  failure locations without assigning the discrepancy in advance.
 type: software
 authors:
   - family-names: Clyde
     given-names: John
     affiliation: VentiMath
     email: verification@ventimath.org
-version: v2.0.1
+version: v2.1.0
 date-released: '2026-08-30'
 license: MIT
 repository-code: 'https://github.com/VentiMath/exotic-s2xs2-verification'
 url: >-
-  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.1
+  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.1.0
 keywords:
   - 4-manifolds
   - exotic smooth structures

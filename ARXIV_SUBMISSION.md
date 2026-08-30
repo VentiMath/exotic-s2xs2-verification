@@ -1,23 +1,23 @@
 # arXiv submission packet
 
-> **RELEASE GATE:** this correction is prepared for v2.0.1. Do not
-> upload the packet until the v2.0.1 release URL resolves and the source and
+> **RELEASE GATE:** this major revision is prepared for v2.1.0. Do not
+> upload or circulate the packet until the v2.1.0 release URL resolves and the source and
 > PDF assets match the final digests recorded below. Any further edit to
 > `paper/main.tex` changes the packet digest, so rebuild and re-pin first.
 
-This packet fixes the metadata for the v2.0.1 manuscript and prevents the
+This packet fixes the metadata for the v2.1.0 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v2.0.1 tag, run
+- From a clean checkout of the v2.1.0 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v2.0.1.tar.gz` as the v2.0.1 GitHub release asset
+- Upload `paper/arxiv-source-v2.1.0.tar.gz` as the v2.1.0 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `6bea1b8752845ee706f190425fe15830d6d704bc7c32186372d6f272156ae748`.
+  `[REBUILD AFTER FINAL v2.1.0 COMMIT]`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
@@ -25,9 +25,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Main PDF SHA-256:
-  `eb488bdb72d2e487528e35b299c59e40099e9a7b82cf33671607da015c98bd76`.
+  `[REBUILD AFTER FINAL v2.1.0 COMMIT]`.
 - Supplement PDF SHA-256:
-  `aaea2b47c63f7d2c8d1ca1182559f2bb8b4fa7cc87f6aa8b0cc9eb7081544047`.
+  `[REBUILD AFTER FINAL v2.1.0 COMMIT]`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -39,7 +39,7 @@ All fields below are ASCII, as required by arXiv.
 **Title**
 
 ```text
-A certificate-based audit of the fundamental-group and framing computations in Wuebben's proposed exotic $S^2 \times S^2$ construction
+Certified simple connectivity of an audit model for Wuebben's proposed exotic $S^2 \times S^2$ construction
 ```
 
 **Authors**
@@ -51,13 +51,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-We audit the fundamental-group and framing calculations in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four explicit, hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. From the marked data we define an explicit audit manifold $V_*$ and prove, in separate geometric steps, that those presentations are presentations of $\pi_1(V_*)$; this makes the common whiskers, meridians, product longitudes, drilled transport relation, and product-to-Lagrangian framing bridge inspectable. We then isolate four source-identification assumptions S1--S4 under which $V_*$ is Wuebben's intended fixed surgery member. Thus $V_*$ is simply connected, while the transfer of that conclusion to Wuebben's member is explicitly conditional on S1--S4. Conditional also on twenty-five named external results, the three manifold conclusions of Wuebben's paper follow. A reported contrary fundamental-group computation is stated separately and bears on the source comparison, not on the finite certificate theorem. The three exotic-manifold conclusions originate in Wuebben's work, while the finite-certificate theorem, the audit-model theorem, and the conditional source comparison are contributions of this note.
+We define an explicit marked surface-bundle surgery manifold $V_aud$ modeled on the data in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. Separate combinatorial and geometric arguments identify those presentations with $\pi_1(V_aud)$, including the marked clutching, normal frontiers, commonly based peripheral curves, drilled transport relation, and product-to-Lagrangian framing bridge. Consequently $V_aud$ is simply connected. Comparison with Wuebben's fixed surgery member is isolated as a fourteen-clause Source Formalization D, with each clause tied to a target location, mechanical evidence, and its remaining non-mechanical content. The three downstream manifold conclusions are then conditional on that formalization and the cited classification, symplectic, and Floer-theoretic results. A reported contrary fundamental-group computation remains unreconciled; the paper lists all live failure locations rather than assigning the discrepancy in advance.
 ```
 
 **Comments**
 
 ```text
-21 pages, two figures, four tables, with a 10-page mathematical and computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.1 . Archived v2.0.0 core verification snapshot: https://doi.org/10.5281/zenodo.22169754 . The comparison with arXiv:2608.17267v1 is conditional on four explicitly stated source-identification assumptions; downstream consequences are additionally relative to named external results.
+23 pages, three figures, six tables, with an 11-page mathematical and computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.1.0 . Exact v2.1.0 archive DOI: [INSERT AFTER DEPOSIT]. The comparison with arXiv:2608.17267v1 is conditional on the fourteen clauses of Source Formalization D; downstream consequences are additionally relative to named external results.
 ```
 
 **Classification**
@@ -76,7 +76,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 21 pages, no missing references, and the
+3. Confirm the generated PDF has 23 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.

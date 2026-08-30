@@ -10,7 +10,7 @@
 \exhyphenpenalty=10000
 \emergencystretch=3em
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
-\usepackage{booktabs,tabularx,array,enumitem}
+\usepackage{booktabs,tabularx,array,enumitem,longtable}
 \setlist[itemize]{leftmargin=*,itemsep=.35em,topsep=.45em}
 \clubpenalty=10000
 \widowpenalty=10000
@@ -28,13 +28,14 @@
 \newtheorem{proposition}{Proposition}[section]
 
 \title{Mathematical and computational supplement to\\
-A certificate-based audit of Wuebben's proposed\\
-exotic $S^2\times S^2$ construction}
+Certified simple connectivity of an audit model for\\
+Wuebben's proposed exotic $S^2\times S^2$ construction}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
 \date{August 2026}
 
 \begin{document}
+\renewcommand{\thetable}{S\arabic{table}}
 \maketitle
 
 \begin{abstract}
@@ -42,10 +43,10 @@ This supplement preserves the implementation inventory, complete downstream
 dependency exposition, trust boundary, data pins, calibration cases, and
 historical exports supporting the main paper.  None of the material here
 changes the logical status stated there: finite certificates are replayable,
-the audit-defined manifold $V_*$ is simply connected, the comparison
-$V_*\cong V$ is conditional on the four source-identification assumptions
-S1--S4, and the downstream manifold conclusions are additionally relative to
-named external results.
+the audit-defined manifold $V_{\mathrm{aud}}$ is simply connected, the comparison
+$V_{\mathrm{aud}}\cong V$ is conditional on the fourteen clauses of Source
+Formalization~D, and the downstream manifold conclusions are additionally
+relative to named external results.
 \end{abstract}
 
 \section*{How to use this supplement}
@@ -151,6 +152,89 @@ nontrivial groups and that both checkers reject altered records and incomplete
 inventories.  Those controls test implementation behavior; they are not
 substitutes for the soundness argument above.
 
+\section{Geometric audit inventory}\label{sec:geometric-inventory}
+
+The geometric part of the main paper has a different trusted-computing
+boundary from the derivation certificates.  The following table expands the
+geometric artifact theorem there.  A successful replay proves the finite
+predicate in the third column; the last column names the mathematical
+conversion still performed in prose.  Thus ``checked'' never silently means
+``formalized in a foundational proof assistant.''
+
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.15\textwidth}
+ >{\raggedright\arraybackslash}p{.27\textwidth}
+ >{\raggedright\arraybackslash}p{.28\textwidth}
+ >{\raggedright\arraybackslash}p{.22\textwidth}@{}}
+\caption{Geometric artifact and trust inventory.  Paths are relative to
+\texttt{verification/luttinger/}.}\label{tab:geometric-inventory}\\
+\toprule
+Layer & Artifact and checker & Finite replay claim & Remaining input \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\textit{Table~\thetable\ continued}}\\
+\toprule
+Layer & Artifact and checker & Finite replay claim & Remaining input \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\textit{continued on next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+marked fiber & \repopath{independent_fiber_certificate.json};
+\repopath{independent_fiber_audit.py} (473 lines) & closed genus-two
+surface, ordered five-chain, complementary faces, involution, and rotation
+systems pass exhaustive finite tests & oriented ribbon classification;
+periodic-disk theorem \\
+relative bundle & \repopath{relative_marking_certificate.json} with its
+249-line checker; \repopath{graph_clutching_certificate.json} with its
+273-line checker & based monodromy, seams, inverse maps, marked sections,
+and both protected collars agree & mapping-cylinder gluing and relative
+isotopy \\
+independent monodromy & \repopath{alternative_based_monodromy.json.gz};
+\repopath{alternative_based_monodromy.py} & based path images and elementary
+moves replay in a separately subdivided stack & simplicial homotopy
+interpretation \\
+local flatness & \repopath{torus_local_flatness_certificate.json};
+\repopath{torus_local_flatness.py} (413 lines) & all 296 vertex, 888 edge,
+and 592 triangle link pairs have the recorded standard types & PL
+local-flatness criterion \\
+normal frontier & \repopath{frontier_normal_equivalence_certificate.json};
+\repopath{frontier_normal_equivalence.py} (312 lines) & all 113,336 mixed
+vertices, 769,256 comparabilities, and normal-circle fibers match & standard
+block-bundle meaning \\
+complement & \repopath{complement_theorem_audit.py} (151 lines); sealed
+Tietze transport and its two checkers & full-subcomplex deformation data,
+cellular presentation, 99,860 eliminations, and 89 tracked words replay &
+cellular van Kampen and Tietze theory \\
+peripheral data & \repopath{independent_peripheral_certificate.json};
+\repopath{independent_peripheral_extractor.py} (939 lines); alpha and beta
+residual certificates with two checkers each & common whiskers, oriented
+dual circles, literal slopes, and both complement-only coordinate identities
+replay & geometric interpretation as meridians and product push-offs \\
+drilled relation & \repopath{r3_complement_audit.py} (162 lines) & the full
+transport stack and basepoint homotopy avoid both tori & simplicial homotopy
+inside the complement \\
+framing & \repopath{framing_check.py} (243 lines),
+\repopath{weinstein_chart_check.py} (257 lines), and
+\repopath{weinstein_chart_independence.py} (113 lines) & relative Moser,
+seam, exterior-algebra, momentum, Liouville-pairing, and first-jet identities
+hold & Lagrangian-neighborhood theorem and compact push-off isotopy \\
+smooth bridge & \repopath{topological_smooth_bridge_certificate.json};
+\repopath{topological_smooth_bridge.py} (181 lines) & orientation, collar,
+and compatibility hypotheses are present & standard smoothing and isotopy
+theorems for surfaces and surface bundles \\
+\end{longtable}
+\endgroup
+
+The line counts are descriptive rather than evidentiary.  The release
+manifest binds exact bytes, and \texttt{proof\_ledger.py} binds the logical
+dependencies.  In particular, the finite predicates above do not resolve
+the source-comparison clauses of Source Formalization~D.
+
 
 \appendix
 \section{From simple connectivity to the three
@@ -158,12 +242,14 @@ theorems}\label{sec:downstream}
 
 The deductions from $\pione(V)=1$ to Theorems A, B, C occupy Part~I of
 \cite{Wuebben}, whose Theorem~1.2 reduces them to the simple connectivity
-of $V$.  Throughout this appendix, S1--S4 of the main paper are standing
-assumptions, so its audit-defined $V_*$ has been identified with this $V$.
+of $V$.  Throughout this appendix, Source Formalization~D of the main paper
+is a standing hypothesis, so its audit-defined $V_{\mathrm{aud}}$ has been
+identified with this $V$.
 This section carries the subsequent deductions through as an explicit
 dependency chain. The chain is itself a machine artifact: a script
-records every item as one of four kinds --- an \emph{external theorem}
-stated with its hypotheses and source; a \emph{certificate} of this
+records every item as one of five kinds --- an \emph{external theorem}
+stated with its hypotheses and source; the explicit source-comparison
+\emph{assumption} D; a \emph{certificate} of this
 repository, bound by SHA-256; a \emph{computed} fact, executed by the
 script; or a \emph{step}, a deduction from earlier items --- and freezes
 the result as a certificate. A second script, separately implemented in
@@ -171,7 +257,8 @@ Ruby, re-derives every computed fact from scratch, checks that every
 citation resolves and that the dependency graph is acyclic, verifies that
 each of the three conclusions depends on the finite theorem of the main paper, and
 checks every evidence file against its recorded digest. The chain has 25
-external theorems, 3 certificates, 15 computed facts, and 16 steps; its
+external theorems, one source-comparison assumption, 3 certificates, 15
+computed facts, and 17 steps; its
 prose form is in the repository, and what follows is the mathematics,
 with the inputs first. Both scripts in this downstream pair were produced
 by Claude Fable~5; independence here likewise means separate implementations,
@@ -335,7 +422,8 @@ $R\cup_\sigma R$ is a closed surface bundle whose fiber is homologically
 essential ($F\cdot\Ghat=1$), so it carries the Thurston-type form,
 positive on $F$ and $\Ghat$. The surgery tori are Lagrangian for it and
 the surgeries are the certified Luttinger surgeries
-(the audit-model theorem together with S1--S4 of the main paper), and
+(the audit-model theorem together with Source Formalization~D of the main
+paper), and
 Luttinger surgery preserves the form
 away from the surgered neighborhoods, which miss $F$ and $\Ghat$. For the
 non-diffeomorphism: $R\cup_\sigma R$ is aspherical, hence minimal (an
@@ -478,7 +566,7 @@ and every mixed invariant vanishes.
 \end{proof}
 
 Propositions~\ref{prop:V}, \ref{prop:Zpp} and~\ref{prop:Zppnot} are
-Theorem~C, and the Conditional Consequences Theorem of the main paper is proved.
+Theorem~C, and the Conditional Downstream Corollary of the main paper follows.
 
 Three points where the chain's route differs from the paper's are worth
 recording. $H_1(V)=0$ is taken from the certificate rather than from the
@@ -517,7 +605,7 @@ this remaining software-review task is explicit.
 The finite theorem of the main paper has no mathematical input beyond
 its Certificate Soundness Theorem; its implementation trust rests on the two
 small checkers.  The audit-model identification with the explicitly defined
-$V_*$ rests on standard inputs of PL topology: ribbon thickening and
+$V_{\mathrm{aud}}$ rests on standard inputs of PL topology: ribbon thickening and
 bistellar traces; classification of compact surfaces; local-flatness and
 normal-block criteria; and simplicial fundamental-group presentations with
 Tietze theory.  The regular-neighborhood
@@ -530,19 +618,18 @@ results.
 
 \subsection*{Source comparison with Wuebben}
 
-The main paper's S1--S4 are a separate evidence kind, not external theorems
-and not machine certificates.  They assert marked-fiber fidelity,
-marked-bundle fidelity, peripheral/member fidelity, and smooth-surgery
-fidelity.  Runs 51--56 and 68--69, the independent extractors, mutation
-controls, and the parsed author-script comparison give substantial evidence
-for those readings.  They cannot prove what the target author's prose and
-figures are intended to denote.  The exact residual and the evidence for
-each item are recorded in
-\texttt{verification/notes/source\_identification\_assumptions\_2026-08-29.md}.
-Only the conditional comparison $V_*\cong V$ and the downstream conclusions
-depend on S1--S4; the finite theorem and $\pione(V_*)=1$ do not.
+Source Formalization~D in the main paper is a separate evidence kind, not an
+external theorem and not a machine certificate.  Its fourteen clauses split
+the marked-fiber, marked-bundle, peripheral/member, coefficient, and
+smooth-surgery comparisons into target-located assertions.  Runs 51--56 and
+68--69, the independent extractors, mutation controls, and the parsed
+author-script comparison give evidence for those readings; they cannot prove
+that a source diagram denotes the audit's marked smooth object.  Only the
+conditional comparison $V_{\mathrm{aud}}\cong V$ and the downstream conclusions
+depend on Source Formalization~D; the finite theorem and
+$\pione(V_{\mathrm{aud}})=1$ do not.
 
-\subsection*{Inputs to the Conditional Consequences Theorem of the main paper}
+\subsection*{Inputs to the Conditional Downstream Corollary of the main paper}
 
 The twenty-five external theorems of Appendix~\ref{sec:downstream}, each
 stated there with its hypotheses. The deep ones are Freedman's
@@ -557,7 +644,7 @@ acyclic graph of 33 named external theorems, 37 machine certificates, 12
 geometric arguments, one source-assumption node, and 21 derived claims ending
 in the three theorems,
 with every evidence file bound by hash. These are not competing counts: the
-25/3/15/16 figures in Appendix~\ref{sec:downstream} describe only the compact
+25/1/3/15/17 figures in Appendix~\ref{sec:downstream} describe only the compact
 downstream chain, while the larger figures describe the project-wide ledger
 that also contains the model, source comparison, peripheral, framing, and PL
 verification.
@@ -573,17 +660,27 @@ manifests, run transcripts, and provenance records are contained, with
 clean-checkout replay instructions, in the tagged release \texttt{v2.0.1}
 of the repository:
 \begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.1}\end{center}
-The preceding v2.0.0 core verification snapshot is permanently archived at
-\begin{center}\small\url{https://doi.org/10.5281/zenodo.22169754}\end{center}
+The v2.0.1 verification snapshot is permanently archived at
+\begin{center}\small\url{https://doi.org/10.5281/zenodo.22171309}\end{center}
 with concept DOI
 \begin{center}\small\url{https://doi.org/10.5281/zenodo.22169753}.\end{center}
+The release deliberately does not redistribute three third-party source
+inputs: Wuebben's paper text, two files from his public code repository, and
+the Lidman--Piccirillo source figure. Replaying the corresponding source
+extractors requires supplying hash-matching copies as directed in
+\texttt{verification/IMPORT.md}; their frozen outputs and all subsequent
+comparisons ship. No certificate used for the finite or Audit-Manifold
+Theorem depends on downloading those files.
+The v2.1.0 manuscript and supplement are release candidates until the
+corresponding tag and archival deposit are created; the arXiv packet forbids
+submission before that gate is closed.
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
-\begin{center}\small\texttt{a5ff4d4a7e90a2f34279aa9bd6777f018a6ce312}\end{center}
+\begin{center}\small\texttt{a18760ad2ed5d1c0443552aa78df965343866d5d}\end{center}
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
 and its downstream-chain certificate has SHA-256
-\begin{center}\small\texttt{05a6f0726666a5926ec4824714e49bb8b7c65437b8227cb40b1f0065fd406349}\end{center}
+\begin{center}\small\texttt{63c1c8d514b661f2fea79a5a7467f2884ae3732e8e1929f88769803138c0043e}\end{center}
 The repository itself is public at
 \begin{center}\small
 \url{https://github.com/VentiMath/exotic-s2xs2-verification}
@@ -631,10 +728,10 @@ soundness claim remains the Certificate Soundness Theorem of the main paper.
 \addcontentsline{toc}{section}{References}
 \begingroup
 \small
-\linespread{1.02}\selectfont
+\linespread{1.00}\selectfont
 \renewcommand{\section}[2]{}
 \begin{thebibliography}{99}
-\setlength{\itemsep}{.25em}
+\setlength{\itemsep}{0pt}
 \setlength{\parsep}{0pt}
 
 \bibitem{Wuebben}
