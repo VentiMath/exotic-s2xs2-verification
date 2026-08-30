@@ -1,4 +1,4 @@
-% Computational supplement to the certificate-based audit.
+% Mathematical and computational supplement to the certificate-based audit.
 \documentclass[11pt]{article}
 \usepackage[margin=1.05in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -27,7 +27,7 @@
 \theoremstyle{definition}
 \newtheorem{proposition}{Proposition}[section]
 
-\title{Computational supplement to\\
+\title{Mathematical and computational supplement to\\
 A certificate-based audit of Wuebben's proposed\\
 exotic $S^2\times S^2$ construction}
 \author{John Clyde\\ \small VentiMath\\
@@ -361,7 +361,16 @@ homeomorphic to $B$.
 \begin{proof}
 $Z\to W$ is a connected 2-fold covering, so $|\pione(W)|=2$.
 $\chi(W)=\chi(Z)/2=2$ and $b_1(W)=0$ give $b_2(W)=0$, hence signature
-$0$. $W$ is spin by Lidman--Piccirillo's Lemma~7, whose hypotheses
+$0$.  More precisely, $H_1(W;\Z)=\Z/2$ and Poincar\'e duality give
+$H_3(W;\Z)=H^1(W;\Z)=0$.  The integral universal-coefficient sequence and
+duality then identify
+\[
+ H_2(W;\Z)\cong H^2(W;\Z)
+ \cong \operatorname{Ext}(H_1(W;\Z),\Z)=\Z/2,
+\]
+because $H_2(W;\Z)$ has rank zero.  Thus the vanishing of $b_2$ hides one
+torsion class that is used in the sliceness argument below.  The manifold
+$W$ is spin by Lidman--Piccirillo's Lemma~7, whose hypotheses
 Proposition~\ref{prop:V} supplies, and $\mathrm{KS}(W)=0$ since $W$ is
 smooth. $W$ and $B$ are then closed oriented topological 4-manifolds with
 the same Hambleton--Kreck invariants: $\pione=\Z/2$, the zero form on
@@ -394,15 +403,35 @@ framing. If $[D,\partial D]=0$ in $H_2(W^\circ,\partial;\Z/2)$, then $D$
 is characteristic in the spin manifold $W^\circ$, and Klug's theorem with
 $\mathrm{Arf}(D)=0$, $\sigma(W^\circ)=0$, $[D]^2=0$, $\mu(S^3)=0$ forces
 $\mathrm{Arf}(4_1)=0$; but $\Delta_{4_1}(t)=-t^2+3t-1$ gives
-$\Delta_{4_1}(-1)=-5\equiv3\pmod 8$, so $\mathrm{Arf}(4_1)=1$. Otherwise
-the 0-trace $X_0(4_1)$ embeds in $W$ and the torus $T$ obtained by capping
-a Seifert surface with $D$ has square $0$ and $[T]\ne0$ in $H_2(W;\Z/2)$.
-Since $X_0(4_1)$ is simply connected it lifts to $Z$, and $T$ lifts to a
-torus $\tilde T$ with $p_*[\tilde T]=[T]\ne0$ in $\Z/2$ coefficients; so
-$[\tilde T]\ne0$ in $H_2(Z;\Z/2)=H_2(Z;\Z)\otimes\Z/2$ (as $H_1(Z)=0$),
+$\Delta_{4_1}(-1)=-5\equiv3\pmod 8$, so $\mathrm{Arf}(4_1)=1$.
+
+It remains to make the other branch explicit.  With $\Z/2$ coefficients,
+the long exact sequence of $(W^\circ,\partial W^\circ)$ and
+$H_2(S^3)=H_1(S^3)=0$ gives
+\[
+ H_2(W^\circ;\Z/2)\xrightarrow{\cong}
+ H_2(W^\circ,\partial W^\circ;\Z/2),
+\]
+and Mayer--Vietoris for $W=W^\circ\cup_{S^3}B^4$ gives
+$H_2(W^\circ;\Z/2)\cong H_2(W;\Z/2)$.  Consequently, if
+$[D,\partial D]\ne0$, capping $D$ by a Seifert surface in the removed ball
+produces a torus $T\subset W$ with $[T]\ne0$ in $H_2(W;\Z/2)$.  The
+Seifert framing gives $T\cdot T=0$, equivalently the 0-trace
+$X_0(4_1)$ embeds in $W$.
+
+The inclusion $i:X_0(4_1)\hookrightarrow W$ lifts through the connected
+cover $p:Z\to W$, because $\pione(X_0(4_1))=1$.  For a chosen lift
+$\widetilde i$ one has $p\circ\widetilde i=i$; hence $\widetilde i$ remains
+an embedding and $T$ lifts to a torus $\widetilde T$ on which $p$ has degree
+one.  Therefore
+\[
+ p_*[\widetilde T]=[T]\ne0\quad\text{in }H_2(W;\Z/2).
+\]
+In particular
+$[\widetilde T]\ne0$ in $H_2(Z;\Z/2)=H_2(Z;\Z)\otimes\Z/2$ (as $H_1(Z)=0$),
 and a class with nonzero mod-2 reduction is nonzero in the torsion-free
-$H_2(Z;\Z)$; and $\tilde
-T\cdot\tilde T=T\cdot T=0$ because $p$ is a local diffeomorphism. This
+$H_2(Z;\Z)$; and $\widetilde T\cdot\widetilde T=T\cdot T=0$ because $p$
+is a local diffeomorphism. This
 contradicts Proposition~\ref{prop:torus}.
 \end{proof}
 
@@ -541,12 +570,16 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v2.0.0}
+clean-checkout replay instructions, in the tagged release \texttt{v2.0.1}
 of the repository:
-\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0}\end{center}
+\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.1}\end{center}
+The preceding v2.0.0 core verification snapshot is permanently archived at
+\begin{center}\small\url{https://doi.org/10.5281/zenodo.22169754}\end{center}
+with concept DOI
+\begin{center}\small\url{https://doi.org/10.5281/zenodo.22169753}.\end{center}
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
-\begin{center}\small\texttt{10f78c7a2afef381e22fab52eb195e916d37e347}\end{center}
+\begin{center}\small\texttt{a5ff4d4a7e90a2f34279aa9bd6777f018a6ce312}\end{center}
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
 and its downstream-chain certificate has SHA-256

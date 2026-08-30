@@ -19,8 +19,14 @@ audit-model theorem identifies them with the explicitly defined manifold
 Wuebben's intended fixed member is conditional on four source-identification
 assumptions S1--S4, recorded individually in the paper and ledger. The three
 manifold conclusions are then recovered conditionally from S1--S4 and
-twenty-five named external results. The paper, its computational supplement,
+twenty-five named external results. The paper, its mathematical and
+computational supplement,
 and the repository keep those evidence levels separate.
+
+The immutable v2.0.0 verification snapshot is archived at
+[doi:10.5281/zenodo.22169754](https://doi.org/10.5281/zenodo.22169754);
+[doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
+concept DOI for the newest archived version.
 
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
@@ -165,7 +171,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   tallies. The chain is
   written out in prose in
   `verification/notes/downstream_proof_chain_2026-08-28.md` and in the
-  computational supplement.
+  mathematical and computational supplement.
 
 ## What is not claimed
 

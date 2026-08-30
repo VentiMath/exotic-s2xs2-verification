@@ -1,23 +1,23 @@
 # arXiv submission packet
 
-> **RELEASE GATE:** this major revision is prepared for v2.0.0. Do not
-> upload the packet until the v2.0.0 release URL resolves and the source and
+> **RELEASE GATE:** this correction is prepared for v2.0.1. Do not
+> upload the packet until the v2.0.1 release URL resolves and the source and
 > PDF assets match the final digests recorded below. Any further edit to
 > `paper/main.tex` changes the packet digest, so rebuild and re-pin first.
 
-This packet fixes the metadata for the v2.0.0 manuscript and prevents the
+This packet fixes the metadata for the v2.0.1 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v2.0.0 tag, run
+- From a clean checkout of the v2.0.1 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v2.0.0.tar.gz` as the v2.0.0 GitHub release asset
+- Upload `paper/arxiv-source-v2.0.1.tar.gz` as the v2.0.1 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `4ae6b0a2575af6e7c6975df671d0c669aa5283fc44747fd3b21bccb198021f7b`.
+  `6bea1b8752845ee706f190425fe15830d6d704bc7c32186372d6f272156ae748`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
@@ -25,9 +25,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Main PDF SHA-256:
-  `12672d0c31dc2f300e850852460c5224b74dadd42fcd8946afd7722145dec0b4`.
+  `eb488bdb72d2e487528e35b299c59e40099e9a7b82cf33671607da015c98bd76`.
 - Supplement PDF SHA-256:
-  `b9e496d676681b1d7c8f6f6417d6fdbb3bf2bac93697aa434889dc3a5aa83d5b`.
+  `aaea2b47c63f7d2c8d1ca1182559f2bb8b4fa7cc87f6aa8b0cc9eb7081544047`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -51,13 +51,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-We audit the fundamental-group and framing calculations in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four explicit, hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. From the marked data we define an explicit audit manifold $V_*$ and prove, in separate geometric steps, that those presentations are presentations of $\pi_1(V_*)$; this makes the common whiskers, meridians, product longitudes, drilled transport relation, and product-to-Lagrangian framing bridge inspectable. We then isolate four source-identification assumptions S1--S4 under which $V_*$ is Wuebben's intended fixed surgery member. Thus $V_*$ is simply connected, while the transfer of that conclusion to Wuebben's member is explicitly conditional on S1--S4. Conditional also on twenty-five named external results, the three manifold conclusions of Wuebben's paper follow. A reported contrary fundamental-group computation is stated separately and bears on the source comparison, not on the finite certificate theorem. The theorems are Wuebben's; this note claims only the audit.
+We audit the fundamental-group and framing calculations in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four explicit, hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. From the marked data we define an explicit audit manifold $V_*$ and prove, in separate geometric steps, that those presentations are presentations of $\pi_1(V_*)$; this makes the common whiskers, meridians, product longitudes, drilled transport relation, and product-to-Lagrangian framing bridge inspectable. We then isolate four source-identification assumptions S1--S4 under which $V_*$ is Wuebben's intended fixed surgery member. Thus $V_*$ is simply connected, while the transfer of that conclusion to Wuebben's member is explicitly conditional on S1--S4. Conditional also on twenty-five named external results, the three manifold conclusions of Wuebben's paper follow. A reported contrary fundamental-group computation is stated separately and bears on the source comparison, not on the finite certificate theorem. The three exotic-manifold conclusions originate in Wuebben's work, while the finite-certificate theorem, the audit-model theorem, and the conditional source comparison are contributions of this note.
 ```
 
 **Comments**
 
 ```text
-21 pages, two figures, four tables, with a 10-page computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0 . The comparison with arXiv:2608.17267v1 is conditional on four explicitly stated source-identification assumptions; downstream consequences are additionally relative to named external results.
+21 pages, two figures, four tables, with a 10-page mathematical and computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.1 . Archived v2.0.0 core verification snapshot: https://doi.org/10.5281/zenodo.22169754 . The comparison with arXiv:2608.17267v1 is conditional on four explicitly stated source-identification assumptions; downstream consequences are additionally relative to named external results.
 ```
 
 **Classification**
