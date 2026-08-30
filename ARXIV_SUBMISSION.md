@@ -32,6 +32,18 @@ web form from drifting from the rendered paper.
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
 
+## Synchronization gate
+
+Run `python3 paper/check_release_sync.py` while preparing the candidate.  It
+checks the PDF/source hashes, page/figure/table counts, Source Formalization D
+terminology, and the two theorem-artifact manifests.  After reserving the
+exact version DOI and replacing every candidate placeholder, run
+`python3 paper/check_release_sync.py --final` from the clean checkout that is
+tagged `v2.1.0`.  Final mode must pass before arXiv upload; it also requires
+the same release URL and version DOI in the manuscript, supplement, README,
+and this packet.  The script does not make a network request, so open both
+links from a logged-out browser as the last release check.
+
 ## Metadata
 
 All fields below are ASCII, as required by arXiv.
@@ -76,7 +88,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 23 pages, no missing references, and the
+3. Confirm the generated PDF has 24 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.
