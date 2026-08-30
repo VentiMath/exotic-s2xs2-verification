@@ -19,12 +19,21 @@ FACTS = json.loads((HERE / "publication_semantics.json").read_text())
 CHAIN = json.loads((HERE / "downstream_chain_certificate.json").read_text())
 
 
+def normalize_space(text):
+    """Ignore editorial line wrapping while preserving token order."""
+    return " ".join(text.split())
+
+
 def require(text, fragment, label):
-    assert fragment in text, f"missing {label}: {fragment!r}"
+    assert normalize_space(fragment) in normalize_space(text), (
+        f"missing {label}: {fragment!r}"
+    )
 
 
 def forbid(text, fragment, label):
-    assert fragment not in text, f"forbidden {label}: {fragment!r}"
+    assert normalize_space(fragment) not in normalize_space(text), (
+        f"forbidden {label}: {fragment!r}"
+    )
 
 
 def main():
@@ -37,22 +46,22 @@ def main():
     ]
     assert facts["pi_1(V_aud)"] == "trivial"
 
-    require(MAIN, "smoothly slice in $B$ and not smoothly slice in\n  $W$",
+    require(MAIN, "smoothly slice in $B$ and not smoothly slice in $W$",
             "Theorem B polarity in the main theorem")
-    require(MAIN, "The\nfigure-eight knot is smoothly slice in $B$ by "
+    require(MAIN, "The figure-eight knot is smoothly slice in $B$ by "
                   "construction.",
             "Theorem B polarity in the dependency audit")
-    require(MAIN, "It is not\nsmoothly slice in $W$",
+    require(MAIN, "It is not smoothly slice in $W$",
             "non-sliceness in W")
     forbid(MAIN, "figure-eight knot bounds the constructed disk in $W$",
            "reversed W sliceness claim")
-    forbid(MAIN, "If it bounded\nsmoothly in $B$",
+    forbid(MAIN, "If it bounded smoothly in $B$",
            "reversed B nonsliceness claim")
 
     require(SUPPLEMENT,
             "The figure-eight knot is not smoothly slice in $W$.",
             "supplemental nonsliceness proposition")
-    require(SUPPLEMENT, "the sliceness of\nthe figure-eight knot in $B$",
+    require(SUPPLEMENT, "the sliceness of the figure-eight knot in $B$",
             "supplemental sliceness input")
     require(MAIN, "Under Source Formalization~D", "conditional Wuebben comparison")
     require(MAIN, "The manifold $V_{\\mathrm{aud}}$ is simply connected.",
