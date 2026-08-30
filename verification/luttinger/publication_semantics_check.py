@@ -63,12 +63,12 @@ def main():
             "supplemental nonsliceness proposition")
     require(SUPPLEMENT, "the sliceness of the figure-eight knot in $B$",
             "supplemental sliceness input")
-    require(MAIN, "Under Source Formalization~D", "conditional Wuebben comparison")
+    require(MAIN, "Under Hypotheses D1--D14", "conditional Wuebben comparison")
     require(MAIN, "The manifold $V_{\\mathrm{aud}}$ is simply connected.",
             "unconditional audit-model conclusion")
     require(MAIN, "D1 &", "first atomic source clause")
     require(MAIN, "D14 &", "last atomic source clause")
-    require(MAIN, "No clause of Source Formalization~D enters this",
+    require(MAIN, "No clause of Source Comparison Hypotheses~D1--D14 enters this",
             "source-independent audit-model theorem")
 
     nodes = {node["id"]: node for node in CHAIN["items"]}

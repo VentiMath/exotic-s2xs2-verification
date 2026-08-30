@@ -51,8 +51,10 @@ relative to named external results.
 
 \section*{How to use this supplement}
 The main paper contains the mathematical certificate specification and the
-proof of the audit-model identification, followed by the explicitly
-conditional comparison with Wuebben.  Section~\ref{sec:certificates}
+proof of the product-filled audit-model identification.  It then proves a
+logically separate bridge from product framing to Lagrangian framing before
+the explicitly conditional comparison with Wuebben.
+Section~\ref{sec:certificates}
 below records the concrete certificate batches and replay architecture.
 Appendix~\ref{sec:downstream} gives the full proposition-by-proposition
 downstream chain; Appendix~\ref{sec:trust} records provenance, trust, and data
@@ -62,13 +64,16 @@ remain normative for exact inventories.
 
 \section{Certificate inventory and replay}\label{sec:certificates}
 
-\subsection{The four convention-specialized groups}
+\subsection{The four algebraic sign specializations}
 
 For each of the four $n=0$ entries defined in the finite theorem of the main
 paper, KBMAG produced a complete rewriting system in which
 all three numbered generators reduce to the identity.  Completion is only
 the discovery method: each verdict is exported as a derivation DAG and
-proved by the Certificate Soundness Theorem in the main paper.  The certificate sizes are shown below.
+proved by the Certificate Soundness Theorem in the main paper.  Only the
+$(+,+)$ entry is geometrically identified there with $V_{\mathrm{aud}}$; the
+other three are algebraic robustness checks.  The certificate sizes are
+shown below.
 
 \begin{center}
 \begin{tabular}{llr}
@@ -233,7 +238,13 @@ theorems for surfaces and surface bundles \\
 The line counts are descriptive rather than evidentiary.  The release
 manifest binds exact bytes, and \texttt{proof\_ledger.py} binds the logical
 dependencies.  In particular, the finite predicates above do not resolve
-the source-comparison clauses of Source Formalization~D.
+the source-comparison clauses of Source Comparison Hypotheses~D1--D14.
+
+For compatibility with the frozen dependency certificate, its machine node
+retains the identifier \texttt{A\_source\_formalization\_D} and the legacy
+phrase ``Source Formalization D.''  In this revision both denote exactly the
+conjunction of Source Comparison Hypotheses D1--D14; no frozen claim or digest
+is changed by the terminological refinement.
 
 
 \appendix
@@ -242,8 +253,9 @@ theorems}\label{sec:downstream}
 
 The deductions from $\pione(V)=1$ to Theorems A, B, C occupy Part~I of
 \cite{Wuebben}, whose Theorem~1.2 reduces them to the simple connectivity
-of $V$.  Throughout this appendix, Source Formalization~D of the main paper
-is a standing hypothesis, so its audit-defined $V_{\mathrm{aud}}$ has been
+of $V$.  Throughout this appendix, Source Comparison Hypotheses~D1--D14 of
+the main paper are standing hypotheses, so the audit-defined
+$V_{\mathrm{aud}}$ has been
 identified with this $V$.
 This section carries the subsequent deductions through as an explicit
 dependency chain. The chain is itself a machine artifact: a script
@@ -422,7 +434,7 @@ $R\cup_\sigma R$ is a closed surface bundle whose fiber is homologically
 essential ($F\cdot\Ghat=1$), so it carries the Thurston-type form,
 positive on $F$ and $\Ghat$. The surgery tori are Lagrangian for it and
 the surgeries are the certified Luttinger surgeries
-(the audit-model theorem together with Source Formalization~D of the main
+(the audit-model theorem together with Source Comparison Hypotheses~D1--D14 of the main
 paper), and
 Luttinger surgery preserves the form
 away from the surgered neighborhoods, which miss $F$ and $\Ghat$. For the
@@ -618,7 +630,7 @@ results.
 
 \subsection*{Source comparison with Wuebben}
 
-Source Formalization~D in the main paper is a separate evidence kind, not an
+Source Comparison Hypotheses~D1--D14 in the main paper are a separate evidence kind, not an
 external theorem and not a machine certificate.  Its fourteen clauses split
 the marked-fiber, marked-bundle, peripheral/member, coefficient, and
 smooth-surgery comparisons into target-located assertions.  Runs 51--56 and
@@ -626,7 +638,7 @@ smooth-surgery comparisons into target-located assertions.  Runs 51--56 and
 author-script comparison give evidence for those readings; they cannot prove
 that a source diagram denotes the audit's marked smooth object.  Only the
 conditional comparison $V_{\mathrm{aud}}\cong V$ and the downstream conclusions
-depend on Source Formalization~D; the finite theorem and
+depend on Source Comparison Hypotheses~D1--D14; the finite theorem and
 $\pione(V_{\mathrm{aud}})=1$ do not.
 
 \subsection*{Inputs to the conditional target application in the main paper}

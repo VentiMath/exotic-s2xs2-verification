@@ -2,6 +2,11 @@
 
 Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
 
+> **Terminology in v2.1.** The manuscript now calls D1--D14 the **Source
+> Comparison Hypotheses** and separates them into textual, diagrammatic, and
+> smooth/framing classes. Frozen machine artifacts retain the legacy node
+> name `A_source_formalization_D`; it denotes the same conjunction.
+
 > **Known unreconciled external computation.** Wuebben's repository has stated
 > since its first visible commit that Lidman and Piccirillo report a
 > computation of π₁(V) disagreeing with his, and that the disagreement is
@@ -75,7 +80,7 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
   target, proving square zero there and removing compatible 4D source
   smoothing and separate intersection naturality from the proof ledger.
   Comparing `R_aud` with Wuebben's intended `R` is the separate fourteen-clause
-  Source Formalization D boundary.
+  Source Comparison Hypotheses D1--D14 boundary.
 * **Relative markings made direct:** Run 51 certifies the full `c` and `e`
   collars. Alpha agrees exactly on the `c` collar; the beta twist trace avoids
   the `e` collar in all 1,536 trace cells and restricts to its literal product
@@ -113,7 +118,7 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
   tally: **100/100 reported trivial — 22 certificate-backed, 78 retained GAP-session verdicts — 0 inconclusive, 0 nontrivial**.
 * **Downstream proof chain:** `downstream_chain.py` carries every
   implication from certified simple connectivity of the audit manifold to
-  Theorems A, B, C as an explicit item — Source Formalization D as one
+  Theorems A, B, C as an explicit item — Source Comparison Hypotheses D1--D14 as one
   source-comparison assumption, 25 external theorems with hypotheses and
   sources, 3 hash-bound certificates, 15 computed facts, and 17 deduction
   steps — and

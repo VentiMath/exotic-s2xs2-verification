@@ -1,5 +1,10 @@
 # Current state (2026-08-29)
 
+> **Terminology in v2.1.** The manuscript now calls D1--D14 the **Source
+> Comparison Hypotheses** and separates them into textual, diagrammatic, and
+> smooth/framing classes. Frozen dependency artifacts retain the legacy node
+> name `A_source_formalization_D`; it denotes the same conjunction.
+
 ## Known unreconciled external computation (read first)
 
 Wuebben's public repository has stated, since its first visible commit
@@ -222,7 +227,7 @@ replay to **3 gens / 78 relators** in 49s.
   This replaces the earlier fingerprint-only comparison without invoking
   surface-bundle classification or Dehn--Nielsen--Baer. The further claim
   that this is the marked bundle specified by Wuebben is now isolated as
-  Source Formalization D rather than asserted by this computation.
+  Source Comparison Hypotheses D1--D14 rather than asserted by this computation.
   `framing_check.py` now
   verifies the relative-Moser coefficient calculus, double-cover
   normalization, Weinstein coordinates, seam, half-drift, and
@@ -255,7 +260,7 @@ replay to **3 gens / 78 relators** in 49s.
 * **The deductions from simple connectivity to Theorems A, B, C are a
   proof-grade dependency chain.**  `downstream_chain.py` records every
   implication from certified `pi_1(V_aud) = 1` to the three theorems as an
-  explicit item: Source Formalization D as one source-comparison assumption,
+  explicit item: Source Comparison Hypotheses D1--D14 as one source-comparison assumption,
   25 external theorems stated with hypotheses and sources
   (Klug's Theorem 2, Hambleton's Theorem 5.1, Ho--Li's Theorem 1.1 and
   Lidman--Piccirillo's Lemmas 9 and 10 quoted verbatim), 3 hash-bound
@@ -351,7 +356,7 @@ replay to **3 gens / 78 relators** in 49s.
   intersection-naturality theorem from the ledger: the marked bundle
   homeomorphism transports the actual certified cycles and collars into the
   audit-defined already smooth target `R_aud`. Comparing that target with
-  Wuebben's bundle is now the separate Source Formalization D boundary. See
+  Wuebben's bundle is now the separate Source Comparison Hypotheses D1--D14 boundary. See
   `runs/25`, `runs/27`--`36`, `runs/50`, and
   `notes/pl_bridge_referee_packet_2026-08-25.md`.
 * **The Acorn formalization path is specified against current GitHub.**  The
@@ -585,7 +590,7 @@ The source comparison is different and is isolated below.
 The v2.1.0 release candidate makes the residual sharper still. It proves
 `pi_1(V_aud) = 1` for an explicitly defined audit manifold and places the
 comparison with Wuebben's fixed member behind the fourteen clauses D1--D14
-of Source Formalization D. Their checks are evidence for exact mathematical
+of Source Comparison Hypotheses D1--D14. Their checks are evidence for exact mathematical
 readings, not certificates that a diagram denotes the audit object. The
 project-wide ledger records that boundary as the distinct
 `source_assumption` node `A_Source_Formalization_D`; see
@@ -632,7 +637,7 @@ the presentation digest; all four are rejected.
 
 ## Next steps, in order
 
-1. **Audit Source Formalization D, not more group theory.** Every
+1. **Audit Source Comparison Hypotheses D1--D14, not more group theory.** Every
    mechanically comparable component has an independent extraction or
    mutation control. What cannot be manufactured internally is proof of what
    the source diagram and conventions denote. A future formal source

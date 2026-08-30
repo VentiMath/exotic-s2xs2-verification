@@ -16,16 +16,27 @@ people and machines who are not the paper's author. Its source-independent
 finite theorem is that four explicit, hash-identified presentations are
 trivial under the published certificate specification; automated acceptance
 of the stored derivations assumes that at least one checker conforms to that
-specification.  A separate
-audit-model theorem identifies them with the explicitly defined manifold
-`V_aud`, which is therefore simply connected.  Identifying `V_aud` with
+specification.  A separate audit-model theorem identifies the fixed
+`(+, +)` presentation with the explicitly defined manifold `V_aud`, which is
+therefore simply connected; the other three sign sheets are algebraic
+robustness checks.  Identifying `V_aud` with
 Wuebben's fixed member is conditional on the fourteen clauses of Source
 Formalization D, each tied to an exact target location, audit interpretation,
 mechanical support, and residual assertion. The three manifold conclusions
-are then recovered conditionally from Source Formalization D and named
+are then recovered conditionally from Source Comparison Hypotheses D1--D14 and named
 classification, symplectic, and Floer-theoretic results. The paper, its mathematical and
 computational supplement,
 and the repository keep those evidence levels separate.
+
+The proof that `pi_1(V_aud)=1` uses only the product-framed filling defined in
+the paper.  The separate product-to-Lagrangian framing theorem is not an input
+to simple connectivity; it is used only in the conditional comparison with
+Wuebben's symplectic surgery.
+
+Legacy machine artifacts retain the identifier `A_source_formalization_D`
+and the earlier phrase “Source Formalization D.” In v2.1 these names denote
+exactly the conjunction of Source Comparison Hypotheses D1--D14; the rename
+does not change the frozen dependency node or its digest.
 
 The immutable v2.0.1 verification snapshot is archived at
 [doi:10.5281/zenodo.22171309](https://doi.org/10.5281/zenodo.22171309);
@@ -46,7 +57,7 @@ logged-out browser.
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
 Floer-theoretic theorems the chain cites; or a substitute for independent
-human review of Source Formalization D and the displayed geometric arguments.
+human review of Source Comparison Hypotheses D1--D14 and the displayed geometric arguments.
 
 **Known unreconciled external computation.** Wuebben's repository has stated,
 since its first visible commit and continuously since, that Lidman and
@@ -84,7 +95,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   monodromy comparisons checked exactly on the marked collars — the
   classification of surface bundles is no longer invoked. Comparing this
   marked object with Wuebben's bundle is the separate comparison in clauses
-  D1--D6 of Source Formalization D.
+  Source Comparison Hypotheses D1--D6.
 * **The peripheral data.** Based meridians and longitudes for both surgery
   tori are traced as literal simplicial loops with the audit's named whiskers.
   The alpha coordinate identity `lb_a_y1 = A x` is additionally certified in
@@ -101,11 +112,12 @@ the paper's coordinates, with proof-producing certificates that replay.
   with a global PL identification of the computed frontier: every extracted
   dual meridian is checked to be a literal normal-circle fiber, with no
   regular-neighborhood theorem invoked.
-* **The eight filled groups.** Wuebben fixes one geometric n=0 manifold; the
-  four n=0 sign pairs are convention-specialized relation sheets for that
-  target, not four claimed manifolds. Filling the triangulation-derived
-  complement presentation with the certified peripheral pairs proves all
-  four sheets, and four adjacent half-drift controls, trivial by complete
+* **The eight filled groups.** The audit manifold uses the fixed n=0 `(+, +)`
+  filling. The other three n=0 sign pairs are algebraic relation sheets; no
+  geometric identification is claimed for them. Filling the
+  triangulation-derived complement presentation proves the fixed sheet,
+  those three robustness sheets, and four adjacent half-drift controls
+  trivial by complete
   confluent rewriting. KBMAG is used only as an untrusted certificate
   generator: separate Python and Ruby checkers produced by OpenAI Codex
   (GPT-5 family) verify every axiom, overlap, rewrite trace, and final
@@ -181,7 +193,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   Fable 5; this is implementation independence, not cross-model authorship.
   The Ruby checker re-derives every computed fact from scratch, checks the
   graph is acyclic and that each theorem depends on both the certified
-  π₁(V_aud)=1 and Source Formalization D, and verifies every evidence digest. The dependency ledger
+  π₁(V_aud)=1 and Source Comparison Hypotheses D1--D14, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
   theorems, 37 machine certificates, 12 geometric arguments, one explicit
   source-assumption node, and 21 derived claims — with every evidence file
@@ -195,8 +207,9 @@ the paper's coordinates, with proof-producing certificates that replay.
 ## What is not claimed
 
 The remaining proof dependence has two different kinds.  First, Source
-Formalization D contains fourteen source-comparison clauses: marked-fiber,
-marked-bundle, peripheral/member, coefficient, and smooth-surgery fidelity.
+Comparison Hypotheses D1--D14 comprise textual, diagrammatic, and
+smooth/framing assumptions about marked-fiber, marked-bundle,
+peripheral/member, coefficient, and smooth-surgery fidelity.
 Their independent extractors and mutation controls are evidence for exact
 mathematical interpretations, not certificates that a diagram denotes the
 audit object.
@@ -224,7 +237,7 @@ run entirely in the audit-defined smooth manifold, and the tubular
 boundary is constructed rather than cited. Weinstein germ uniqueness is
 corroborating rather than necessary — chart independence is proved
 in-project between the audit's verified charts. The comparison of those
-objects and charts with Wuebben's ones remains Source Formalization D. If the
+objects and charts with Wuebben's ones remains Source Comparison Hypotheses D1--D14. If the
 framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
@@ -247,7 +260,7 @@ framing argument first fails.
 
 The accurate one-sentence status: **the finite presentations are certified
 trivial and the audit-defined `V_aud` is simply connected; the implication for
-Wuebben's fixed manifold is conditional on Source Formalization D; and the three manifold
+Wuebben's fixed manifold is conditional on Source Comparison Hypotheses D1--D14; and the three manifold
 conclusions are additionally conditional on named external results** — with the reported contrary
 computation of π₁(V) disclosed above and not resolved. That is a statement
 about verification depth, not a substitute for review by symplectic and
