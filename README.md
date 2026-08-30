@@ -43,8 +43,7 @@ The immutable v2.2.1 verification snapshot is archived at
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
-**v2.2.1 release.** The manuscript, supplement, and this README describe
-v2.2.1, the newest public immutable release:
+**v2.2.1 release.** The newest public immutable release is:
 [releases/tag/v2.2.1](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.1),
 archived under version DOI
 [10.5281/zenodo.22181589](https://doi.org/10.5281/zenodo.22181589). Run
@@ -52,6 +51,9 @@ archived under version DOI
 terminology, bound manifests, and the pinned `verification/` tree object; the
 gate rebuilds the deterministic arXiv archive itself, so it runs from a clean
 clone. The release URL and both DOIs resolve from a logged-out browser.
+The worktree may contain a title-page-labeled post-v2.2.1 revision; until it
+has its own tag, archive deposit, and regenerated hashes, v2.2.1 remains the
+only immutable packet and the newer draft must not be described as released.
 
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
@@ -186,7 +188,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   intersection-form bases, cover genera, adjunction, Arf(4₁)=1 two ways,
   the instantiated Klug formula, the Hambleton–Kreck invariant tuple), and
   17 deduction steps ending in Theorems A, B, and C. The first step is the
-  conditional transfer from V_aud to Wuebben's V; no certificate itself is
+  source-comparison sufficiency argument from V_aud to Wuebben's V; no certificate itself is
   described as proving that source comparison. Both the Python chain
   builder and the separately implemented Ruby checker were produced by Claude
   Fable 5; this is implementation independence, not cross-model authorship.
