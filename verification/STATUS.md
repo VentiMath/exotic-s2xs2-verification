@@ -173,8 +173,10 @@ replay to **3 gens / 78 relators** in 49s.
   not reproduce over either committed export. Run 68 now proves the exact
   72-letter sealed-presentation residual trivial in the complement itself:
   2,506 retained ancestry records and a 61-step target reduction replay under
-  independent Python and Ruby verifiers. This identifies the paper's `n=0`
-  section directly without using a filling relation.
+  independent Python and Ruby verifiers. This identifies the audit's `n=0`
+  coordinate directly without using a filling relation; comparing that
+  coordinate with the paper's intended `n=0` section is the semantic part of
+  S3.
 * **The `T_beta` filling direction:** starting at the actual `s_e` crossing,
   using the literal `s_2` whisker and the lift of `B`, the direct boundary
   word is positively certified as `(r^-1 M r)B`. Run 69 proves the exact
@@ -210,7 +212,7 @@ replay to **3 gens / 78 relators** in 49s.
   `direct-paper-replay` verifies those digests, reloads each saved system,
   rebuilds its reducer from the stored equations, and again obtains identity
   normal forms for every generator. All eight replays pass; see `runs/21`.
-* **The triangulated model is now matched globally to the paper's marked
+* **The triangulated model is now matched globally to the audit-defined marked
   bundle.** `model_correspondence.py` combines the filling-five-chain test,
   literal based actions of both monodromies, the free half-rotation on `c`,
   the pointwise product restriction on `e`, a global codimension-one manifold
@@ -218,7 +220,10 @@ replay to **3 gens / 78 relators** in 49s.
   has two generator handles, Run 52 now constructs the bundle map directly
   on their mapping cylinders and checks both seam equations and inverses.
   This replaces the earlier fingerprint-only comparison without invoking
-  surface-bundle classification or Dehn--Nielsen--Baer. `framing_check.py` now
+  surface-bundle classification or Dehn--Nielsen--Baer. The further claim
+  that this is the marked bundle intended by Wuebben is now isolated as
+  source assumptions S1--S4 rather than asserted by this computation.
+  `framing_check.py` now
   verifies the relative-Moser coefficient calculus, double-cover
   normalization, Weinstein coordinates, seam, half-drift, and
   constant-momentum assertions in Lemma 8.2; no framing discrepancy was
@@ -343,7 +348,9 @@ replay to **3 gens / 78 relators** in 49s.
   removes compatible four-dimensional source smoothing and a separate
   intersection-naturality theorem from the ledger: the marked bundle
   homeomorphism transports the actual certified cycles and collars into the
-  paper's already smooth target. See `runs/25`, `runs/27`--`36`, `runs/50`, and
+  audit-defined already smooth target `R_*`. Comparing that target with
+  Wuebben's intended bundle is now the separate S1--S4 boundary. See
+  `runs/25`, `runs/27`--`36`, `runs/50`, and
   `notes/pl_bridge_referee_packet_2026-08-25.md`.
 * **The Acorn formalization path is specified against current GitHub.**  The
   live `acornlib` baseline is pinned at `bd1e602` (2026-08-20), not the stale
@@ -567,10 +574,21 @@ computations have never been compared relation by relation, and the phrase
 claim while that remains so. Lemma 8.2's former lifting, flow, and chart-independence boundaries are
 closed by Runs 43--47, and Run 49 closes the derived-frontier/normal-boundary
 interpretation constructively. Run 50 bypasses the former PL/smooth source
-smoothing boundary by transport into the paper's already smooth target. This
+smoothing boundary by transport into the audit-defined already smooth target
+`R_*`. This
 is not a foundational formal proof, but every construction-specific
-hypothesis currently used at the remaining theorem boundaries has a finite
-certificate.
+hypothesis internal to the audit-defined manifold has a finite certificate.
+The source comparison is different and is isolated below.
+
+The v2.0.0 manuscript now makes the residual sharper still. It proves
+`pi_1(V_*) = 1` for an explicitly defined audit manifold and places the
+comparison `V_* = Wuebben's intended fixed member` behind four named
+source-identification assumptions S1--S4: marked-fiber fidelity,
+marked-bundle fidelity, peripheral/member fidelity, and smooth-surgery
+fidelity. Their checks are evidence for the readings, not proofs of
+authorial intent. The project-wide ledger records that boundary as the
+distinct `source_assumption` node `A_Wuebben_source_identification`; see
+`notes/source_identification_assumptions_2026-08-29.md`.
 
 Run 54 independently reconstructs the paper-to-model dictionary without
 importing or reading the existing model, correspondence code, authors'
@@ -613,7 +631,15 @@ the presentation digest; all four are rejected.
 
 ## Next steps, in order
 
-1. **Carry the sealed transport through to the derivation certificates.**
+1. **Audit S1--S4 as source semantics, not as more group theory.** Every
+   mechanically comparable component has an independent extraction or
+   mutation control. What cannot be manufactured internally is proof of what
+   another author's diagram and conventions intend. A future formal source
+   specification or a relation-by-relation contrary artifact can discharge
+   or refute these assumptions; until then publication language must remain
+   conditional on them.
+
+2. **Carry optional historical controls onto the sealed transport if useful.**
    The seeded raw-complex-to-reduced-presentation transport is now sealed and
    replays in two languages (`runs/66`), but it lands on a 3-generator
    presentation, whereas the eight committed derivation certificates and the
@@ -629,7 +655,7 @@ the presentation digest; all four are rejected.
    are built on the four-generator export or replayed only in-process;
    re-deriving them over the sealed presentation is the next step.
 
-2. **Leave downstream foundations downstream.** Freedman classification,
+3. **Leave downstream foundations downstream.** Freedman classification,
    Hambleton--Kreck, symplectic Kodaira dimension, Thom, Klug/Levine, and
    Heegaard Floer inputs remain published-theorem dependencies, now with
    their hypotheses discharged item by item in the run-64 chain. Formalizing

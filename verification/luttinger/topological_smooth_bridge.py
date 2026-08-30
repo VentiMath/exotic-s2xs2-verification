@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
-"""Audit the reroute from the PL model into the paper's smooth bundle.
+"""Audit the reroute from the PL model into the audit-defined smooth bundle.
 
 No smoothing of the 4-dimensional source triangulation is required.  Forget
-the smooth structure on the paper's bundle R. The explicit graph-clutching
+the smooth structure on the audit-defined bundle R_*. The explicit graph-clutching
 construction gives an orientation-preserving fiberwise homeomorphism from
 the certified PL bundle |K| to this underlying topological bundle, relative
 to c, e, p, and their product collars. All combinatorial conclusions are
 transported by that homeomorphism; symplectic/Lagrangian statements are then
-made only on the already-smooth target R.
+made only on the already-smooth target R_*.
 
 For the section, Run 28 supplies disjoint homologous locally flat cycles
-Gamma and Gamma'.  Their images are still disjoint and homologous in R, so
-the target section class has square zero directly in R.  This avoids a
+Gamma and Gamma'.  Their images are still disjoint and homologous in R_*, so
+the target section class has square zero directly in R_*.  This avoids a
 separate naturality theorem for comparing PL and smooth intersections.
+
+This certificate is internal to the audit model.  Identifying R_* and its
+marked tori with Wuebben's intended objects is the separate source boundary
+S1--S4; it is not asserted here.
 """
 
 import argparse
@@ -109,7 +113,7 @@ def certify():
         },
         "marked_bundle_homeomorphism": {
             "source": "certified oriented PL genus-2 bundle |K|",
-            "target": "underlying topological bundle of the paper's smooth R",
+            "target": "underlying topological bundle of the audit-defined smooth R_*",
             "base_spine_rank": 2,
             "same_ordered_monodromy_mapping_classes": True,
             "fiber_orientation_preserved": True,
@@ -125,8 +129,8 @@ def certify():
             "local_flat_torus_simplices": flatness["total_simplices_checked"],
         },
         "smooth_target_only": {
-            "paper_R_is_already_smooth": True,
-            "paper_tori_are_the_smooth_Lagrangian_tori": True,
+            "audit_Rstar_is_already_smooth": True,
+            "audit_tori_are_the_smooth_Lagrangian_tori": True,
             "fibered_equals_Lagrangian_framing_runs": [43, 44, 46, 47],
             "smooth_operations_performed_on_source_PL_complex": False,
         },
@@ -147,7 +151,7 @@ def certify():
         },
         "conclusion": (
             "the proof transports the certified topological data into the "
-            "paper's already-smooth marked bundle; no compatible smoothing "
+            "audit-defined already-smooth marked bundle; no compatible smoothing "
             "or smoothing-uniqueness theorem for |K| is required"
         ),
     }
@@ -167,7 +171,7 @@ def main():
     else:
         args.output.write_text(encoded, encoding="ascii")
         print(f"wrote {args.output}")
-    print("PASS: marked PL bundle maps to the underlying paper smooth bundle")
+    print("PASS: marked PL bundle maps to the audit-defined smooth bundle")
     print("PASS: tori, collars, peripheral data, and p-section are preserved")
     print("PASS: section square zero transported by disjoint homologous cycles")
     print("NO FOUR-DIMENSIONAL SOURCE SMOOTHING THEOREM REQUIRED")

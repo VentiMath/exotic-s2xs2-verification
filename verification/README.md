@@ -70,10 +70,12 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
 * **PL-to-smooth bridge rerouted:** Run 50 transports the certified marked
   tori, collars, peripheral data, and section cycles by an
   orientation-preserving homeomorphism into the underlying topological
-  manifold of the paper's already smooth bundle. The source triangulation is
+  manifold of the audit-defined already smooth bundle `R_*`. The source triangulation is
   never smoothed. The disjoint homologous section pair remains so in the
   target, proving square zero there and removing compatible 4D source
   smoothing and separate intersection naturality from the proof ledger.
+  Comparing `R_*` with Wuebben's intended `R` is the separate source boundary
+  S1--S4.
 * **Relative markings made direct:** Run 51 certifies the full `c` and `e`
   collars. Alpha agrees exactly on the `c` collar; the beta twist trace avoids
   the `e` collar in all 1,536 trace cells and restricts to its literal product
@@ -177,7 +179,7 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
 | `independent_fiber_certificate.json` | reproducible marked-fiber equivalence certificate |
 | `pl_theorem_audit.py` | integrated checker binding flip, ribbon, bundle, and section hypotheses to finite certificates |
 | `pl_theorem_hypotheses.json` | reproducible integrated PL-boundary certificate |
-| `topological_smooth_bridge.py` | verifies transport into the paper's already smooth target and replays square zero there |
+| `topological_smooth_bridge.py` | verifies transport into the audit-defined already smooth target and replays square zero there |
 | `topological_smooth_bridge_certificate.json` | bound Run-50 transport and section certificate |
 | `relative_marking_check.py` | exact alpha-collar and supported beta-relative representative checker |
 | `relative_marking_certificate.json` | reproducible Run-51 relative-monodromy certificate |

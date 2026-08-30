@@ -1,6 +1,11 @@
 Run 22: marked-bundle correspondence and framing audit (2026-08-23)
 ==================================================================
 
+v2.0.0 semantic clarification: the finite checks below establish the
+correspondence with the audit-defined marked bundle. Their agreement with
+the target paper is evidence for, but not a proof of, source assumptions
+S1--S4.
+
 Commands:
 
   python3 model_correspondence.py
@@ -21,9 +26,10 @@ Results:
   half-drift seam and constant-momentum push-offs              PASS
   restored Moser interpolation signs                          PASS
 
-No mismatch with the paper's marked bundle or Lemma 8.2 was found. The
-surface-bundle classification argument now identifies the triangulated model
-with the paper's marked bundle, rather than only comparing fingerprints.
+No mismatch with the extracted reading of the paper's marked bundle or
+Lemma 8.2 was found. The surface-bundle classification argument identifies
+the triangulated model with the audit-defined marked bundle, rather than only
+comparing fingerprints; the paper-to-audit comparison remains S1--S4.
 
 The exact output of model_correspondence.py ended with:
 
