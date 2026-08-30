@@ -118,6 +118,7 @@ Status (updated 2026-08-29; see `../STATUS.md` for the precise caveats):
 | `pl_self_intersection.py` | extracted fixed-point section, doubled PL normal neighborhood, and explicit square-zero push-off |
 | `downstream_audit.py` | finite Euler, rank-two lattice, square-zero, cover-genus, and adjunction checks for Theorem 1.2 |
 | `proof_ledger.py` | checks the dependency graph while keeping source assumptions, cited theorems, geometric arguments, software trust, and machine certificates distinct |
+| `publication_semantics_check.py` | regression-checks Theorem B's sliceness polarity and the $V_*$ versus Wuebben scope boundary against the manuscript, supplement, and downstream certificate |
 | `tietze.py` | Tietze elimination (865 → 4 generators in ~3 s) |
 | `t4_test.py`, `t4_run.py`, `t4_gap_tail.g` | calibration 1 |
 | `bk_t4_test.py` | calibration 2 (Baldridge–Kirk) |
@@ -155,4 +156,8 @@ python3 pl_flip_trace.py --check --output pl_flip_trace_certificate.json
 python3 independent_fiber_audit.py --check --output independent_fiber_certificate.json
 python3 framing_check.py
 python3 pl_theorem_audit.py --check --output pl_theorem_hypotheses.json
+python3 downstream_chain.py --check
+ruby verify_downstream_chain.rb
+python3 proof_ledger.py
+python3 publication_semantics_check.py
 ```
