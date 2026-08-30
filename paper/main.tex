@@ -19,8 +19,19 @@
 \emergencystretch=3em
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
 \usepackage{booktabs,tabularx,array}
+\usepackage[section]{placeins}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage[font=small,labelfont=bf]{caption}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,decorations.markings,positioning}
+
+\setlist[itemize]{leftmargin=*,itemsep=.45em,topsep=.55em}
+\setlength{\textfloatsep}{1.15em plus .2em minus .2em}
+\setlength{\intextsep}{1.15em plus .2em minus .2em}
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
 
 \newcommand{\CP}{\mathbb{CP}}
 \newcommand{\CPbar}{\CP^2\#\overline{\CP}{}^2}
@@ -69,6 +80,22 @@ claims only the audit.
 
 \noindent\textit{2020 Mathematics Subject Classification.}
 57R55 (primary); 57K40, 57M05 (secondary).
+
+\medskip
+\noindent\begin{minipage}{\textwidth}
+\small
+\hrule\medskip
+\textbf{Status of the claims.}
+The unconditional result is the triviality of four explicitly
+hash-identified finite presentations, witnessed by replayable derivation
+certificates.  The implication $\pione(V)=1$ additionally uses the geometric
+identification of those presentations with the fixed Luttinger-surgery
+manifold; this is the principal human-review boundary.  The three manifold
+conclusions further use the cited classification, symplectic, and
+Floer-theoretic results.  An unpublished contrary fundamental-group
+calculation reported by Wuebben remains unreconciled.
+\medskip\hrule
+\end{minipage}
 
 \section{Introduction}
 
@@ -175,6 +202,13 @@ generator and its inverse. A checker accepts only if every record is
 derived as stated from records preceding it. Every accepted record is
 then an equality holding in the group presented by the input relators,
 so acceptance implies that this group is trivial.
+
+For an input-relator record with sides $u,v$, the checker forms
+$uv^{-1}$, freely and cyclically reduces it, and compares its least cyclic
+conjugate --- allowing inversion --- with the corresponding canonical form
+of a hash-bound relator.  Free reduction, cyclic conjugation, and inversion
+do not change membership in the relators' normal closure, so this exact
+implementation convention preserves the asserted group equality.
 Neither the confluence of the completed rewriting system nor the
 correctness of the program that produced it enters the argument.
 \end{lemma}
@@ -219,7 +253,7 @@ relative in a different way, since it invokes deep results from the
 literature.  Table~\ref{tab:evidence} records these different evidentiary
 levels rather than grouping all of them under the word ``certified.''
 
-\begin{table}[ht]
+\begin{table}[!htbp]
 \centering
 \small
 \renewcommand{\arraystretch}{1.18}
@@ -251,6 +285,7 @@ combinatorial construction, and a dependency audit are intentionally not
 treated as the same kind of evidence.}
 \label{tab:evidence}
 \end{table}
+\FloatBarrier
 
 \subsection*{The reported contrary computation}
 
@@ -301,9 +336,9 @@ torus base; the two surgery tori $T_\alpha$, $T_\beta$ arise as induced
 subcomplexes, and the assembled 4-complex passes manifold checks down to
 the vertex-link level.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\begin{tikzpicture}[scale=0.90]
+\begin{tikzpicture}[scale=1.02]
 \begin{scope}
   \foreach \i in {1,...,8} { \coordinate (V\i) at ({67.5+45*(\i-1)}:2.6); }
   \draw[thick] (V1)--(V2)--(V3)--(V4)--(V5)--(V6)--(V7)--(V8)--cycle;
@@ -357,51 +392,46 @@ path and incidence assertions; the drawing is explanatory rather than an
 additional input to the computation.}
 \label{fig:marked-data}
 \end{figure}
+\FloatBarrier
 
 The dictionary used by Proposition~\ref{prop:ident} is displayed in
 Table~\ref{tab:dictionary}; it is not reconstructed from the fact that the
 filled groups happen to collapse.  Here ``literal'' means a stored edge path
 in the triangulation, with its basepoint and orientation retained.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
 \centering
-\footnotesize
-\renewcommand{\arraystretch}{1.16}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.15\textwidth}
- >{\raggedright\arraybackslash}p{.22\textwidth}
- >{\raggedright\arraybackslash}p{.36\textwidth}X@{}}
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.17\textwidth}
+ >{\raggedright\arraybackslash}p{.31\textwidth}X@{}}
 \toprule
-Paper datum & Marked word or action & Simplicial realization & Check \\
+Paper datum & Mathematical role & Certified realization \\
 \midrule
-$F,p,O$ & genus two; two fixed marks & 86-vertex closed surface; two fixed
-vertices & surface and link tests \\
-$a,b,c,d,e$ & $a\sim x$, $b\sim y$, $c\sim xr$, $d\sim s$, $e\sim r$ &
-ordered filling five-chain; oriented $c$ at $V_2$ is $(rx)^{-1}$ & independent
-ribbon reconstruction \\
+$F,p,O$ & genus-two fiber with two fixed marks & 86-vertex closed surface;
+both fixed vertices pass surface- and link-level tests \\
+$a,b,c,d,e$ & ordered filling five-chain & independently reconstructed
+ribbon; oriented $c$ at $V_2$ represents $(rx)^{-1}$ \\
 $\varphi_0$ & $x\leftrightarrow r$, $y\leftrightarrow s$ & simplicial
-half-turn fixing $p,O$ & based path equalities \\
+half-turn fixing $p,O$, checked on based paths \\
 $\psi_0=T_aT_b$ & $x\mapsto y^{-1}$, $y\mapsto yx$, $r\mapsto r$,
-$s\mapsto s$ & ordered flip stack, $T_b$ first & based monodromy replay \\
+$s\mapsto s$ & ordered flip stack with $T_b$ first; based monodromy replay \\
 $T_\alpha$ & $c\rtimes_{\varphi_0}S^1_\alpha$ & induced torus on the
-$c$-stack & local flatness and subbundle check \\
-$T_\beta$ & $e\times S^1_\beta$ & induced product torus on the $e$-stack &
-local flatness and product check \\
-$A,B$ & $[\bar\alpha]^{-1},[\bar\beta]^{-1}$ & literal based loops from $q$
-& path export \\
+$c$-stack; local-flatness and subbundle checks \\
+$T_\beta$ & $e\times S^1_\beta$ & induced product torus on the $e$-stack;
+local-flatness and product checks \\
+$A,B$ & $[\bar\alpha]^{-1},[\bar\beta]^{-1}$ & literal based edge paths
+from $q$, retaining their orientations \\
 $M,N$ & meridians based along $y_1,s_2$ & oriented dual normal circles with
-the same literal whiskers & all 592 normal fibers checked \\
-$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1} & construction, plus the
-certified complement identity of Run 68 \\
-$\lambda_\beta$ & $(r^{-1}Mr)B$ in the displayed orientation &
-\texttt{lb\_b\_s2}, exported without substitution & punctured sweep,
-independent extraction, and the certified identity of Run 69 \\
+the same literal whiskers; all 592 normal fibers checked \\
 \bottomrule
 \end{tabularx}
-\caption{Paper-to-model dictionary for the fixed $n=0$ member.  Reversing
-an allowed orientation reverses the corresponding displayed element and is
-accounted for by $(\epsilon_A,\epsilon_B)$.}
+\caption{Marked-bundle dictionary for the fixed $n=0$ member.  Peripheral
+longitudes, which carry the sign-sensitive part of the identification, are
+displayed separately in Table~\ref{tab:longitudes}.}
 \label{tab:dictionary}
 \end{table}
+\FloatBarrier
 
 The identification with the paper's marked bundle is by literal based
 monodromy action: the based mapping classes of both monodromies are
@@ -512,7 +542,73 @@ the frozen Tietze images of these literal path presentations, but that
 geometric assertion is part of Proposition~\ref{prop:ident}, not of the
 finite theorem.
 
+\begin{table}[!htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.12\textwidth}
+ >{\raggedright\arraybackslash}p{.20\textwidth}
+ >{\raggedright\arraybackslash}p{.24\textwidth}X@{}}
+\toprule
+Direction & Paper word & Stored based loop & Independent evidence \\
+\midrule
+$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1}, based by $y_1$ at $c_y$ &
+literal path construction; Run 68's 2,506-record complement certificate \\
+$\lambda_\beta$ & $(r^{-1}Mr)B$ & \texttt{lb\_b\_s2}, based by $s_2$ at
+$s_e$ & punctured transport square and independent extraction; Run 69's
+1,540-record complement certificate \\
+\bottomrule
+\end{tabularx}
+\caption{The two sign-sensitive longitude identifications.  Neither
+certificate contains a filling relation.  Reversing an allowed orientation
+inverts the corresponding displayed element and is recorded by
+$(\epsilon_A,\epsilon_B)$.}
+\label{tab:longitudes}
+\end{table}
+\FloatBarrier
+
 \subsection*{Worked peripheral extraction}
+
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[>=Latex,scale=.92]
+\begin{scope}
+  \node[circle,fill,inner sep=1.4pt,label=below:$p$] (pa) at (0,0) {};
+  \node[circle,fill,inner sep=1.4pt,label=below:$c_y$] (ca) at (2.2,0) {};
+  \draw[->,thick] (pa) -- node[above] {$y_1$} (ca);
+  \draw[rounded corners,thick] (2.7,-1.0) rectangle (5.5,1.0);
+  \draw[->,very thick] (ca) -- (3.15,0);
+  \draw[->,thick] (3.45,0) arc[start angle=180,end angle=-150,radius=.42];
+  \node at (3.45,-.72) {$M$};
+  \draw[->,very thick] (3.15,.55) -- node[above] {$A$} (5.05,.55);
+  \node at (4.1,-1.35) {$\lambda_\alpha=Ax$};
+  \node[font=\bfseries] at (2.75,1.55) {alpha};
+\end{scope}
+\begin{scope}[xshift=7.1cm]
+  \node[circle,fill,inner sep=1.4pt,label=below:$p$] (pb) at (0,0) {};
+  \node[circle,fill,inner sep=1.4pt,label=below:$s_e$] (cb) at (2.2,0) {};
+  \draw[->,thick] (pb) -- node[above] {$s_2$} (cb);
+  \draw[rounded corners,thick] (2.7,-1.0) rectangle (5.5,1.0);
+  \draw[->,very thick] (cb) -- (3.15,0);
+  \draw[->,thick] (3.45,0) arc[start angle=180,end angle=-150,radius=.42];
+  \node at (3.45,-.72) {$N$};
+  \draw[->,very thick] (3.15,.55) -- node[above] {$B$} (5.05,.55);
+  \fill[gray!65] (4.1,.12) circle (2.2pt);
+  \node[gray!70!black,anchor=west] at (4.25,.08)
+    {$\mapsto r^{-1}Mr$};
+  \node at (4.1,-1.35) {$\lambda_\beta=(r^{-1}Mr)B$};
+  \node[font=\bfseries] at (2.75,1.55) {beta};
+\end{scope}
+\end{tikzpicture}
+\caption{Common-whisker peripheral construction.  On the alpha side the
+meridian and longitude use the same $y_1$ path to $c_y$.  On the beta side
+they use the same $s_2$ path to $s_e$; the swept basing square meets
+$T_\alpha$ once, and puncturing that intersection contributes the conjugated
+meridian $r^{-1}Mr$.  The diagram records basing and word order, not metric
+geometry.}
+\label{fig:peripheral}
+\end{figure}
+\FloatBarrier
 
 Consider $T_\alpha$.  The curve $c$ meets the oriented $y$ edge once, at
 $c_y$.  Starting at $p$, the stored path follows the initial segment $y_1$
@@ -694,8 +790,9 @@ framing from the sampled incorrect ones, it carries no logical load for
 Proposition~\ref{prop:ident}; the complete inventory and search history are
 kept in the repository rather than repeated here.
 
-\section{Certified triviality of the four convention-specialized
-groups}\label{sec:groups}
+\section{Certificate theorem and verification}\label{sec:certificates}
+
+\subsection{The four convention-specialized groups}
 
 For each of the four $n=0$ entries defined in
 Theorem~\ref{thm:main}, KBMAG produced a complete rewriting system in which
@@ -725,7 +822,7 @@ examples, deliberate corruptions, and the full framing-scan history are
 summarized in Appendix~\ref{app:engineering}.  None carries logical load for
 the fixed $n=0$ target.
 
-\section{Certificate verification}\label{sec:certificates}
+\subsection{Verifier architecture}
 
 Knuth--Bendix completion (KBMAG~1.5.9 \cite{KBMAG}, run under GAP~4.11.1
 \cite{GAP})
@@ -783,6 +880,19 @@ Appendix~\ref{app:engineering} show that the pipeline also produces
 nontrivial groups and that both checkers reject altered records and incomplete
 inventories.  Those controls test implementation behavior; they are not
 substitutes for the soundness argument above.
+
+\section{Conclusion}
+
+The finite audit is closed: four explicit presentations are trivial, their
+transport and derivation certificates replay from frozen inputs, and both
+longitude identities hold in the sealed complement without a filling
+relation.  KBMAG generated finite proofs checked by two small verifiers.  The
+geometric interpretation remains the principal human review boundary;
+conditional on it and the results named in Appendix~\ref{sec:downstream}, the
+dependency chain recovers Wuebben's manifold conclusions.  The reported
+contrary computation cannot yet be compared relation by relation because no
+presentation or nontriviality witness for it is public.  The released
+artifacts make both the finite theorem and this boundary inspectable.
 
 \appendix
 \section{From simple connectivity to the three
@@ -1212,7 +1322,14 @@ inventory, and a duplicated certificate batch.  These tests show that the
 pipeline neither collapses every input nor accepts every file; the positive
 soundness claim remains Lemma~\ref{lem:sound}.
 
-\begin{small}
+\section*{References}
+\addcontentsline{toc}{section}{References}
+\begingroup
+\footnotesize
+\setlength{\columnsep}{1.6em}
+\raggedcolumns
+\begin{multicols}{2}
+\renewcommand{\section}[2]{}
 \begin{thebibliography}{99}
 
 \bibitem{Wuebben}
@@ -1354,6 +1471,7 @@ The GAP~Group,
 \url{https://www.gap-system.org}.
 
 \end{thebibliography}
-\end{small}
+\end{multicols}
+\endgroup
 
 \end{document}

@@ -1,24 +1,22 @@
 # arXiv submission packet
 
-> **RELEASE GATE:** the PDF is release-ready -- the unreleased-draft notice is
-> removed and the verification-tree pin below is the final release content
-> (`05bda8e`, byte-identical to the current `verification/` tree). One
-> condition remains: do not circulate or upload this packet until the v1.5.8
-> release URL resolves. Any further edit to `paper/main.tex` changes the
-> packet digest below, so rebuild and re-pin before uploading.
+> **RELEASE GATE:** this re-typeset manuscript is prepared for v1.5.9. Do not
+> upload the packet until the v1.5.9 release URL resolves and the source and
+> PDF assets match the final digests recorded below. Any further edit to
+> `paper/main.tex` changes the packet digest, so rebuild and re-pin first.
 
-This packet fixes the metadata for the v1.5.8 manuscript and prevents the
+This packet fixes the metadata for the v1.5.9 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v1.5.8 tag, run
+- From a clean checkout of the v1.5.9 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v1.5.8.tar.gz` as the v1.5.8 GitHub release asset
+- Upload `paper/arxiv-source-v1.5.9.tar.gz` as the v1.5.9 GitHub release asset
   and to arXiv.
-- SHA-256: `4bf7e887de49f6d96bd9731c6d7cbbbff53b78ec97353aa22784209f82bb8586`.
+- SHA-256: `9784d874fe7096021c74d3c471c8dc515370b51b86551eee6009568db834dca8`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
@@ -50,7 +48,7 @@ We audit the theorem-critical computations in Wuebben's proposed exotic $S^2 \ti
 **Comments**
 
 ```text
-19 pages, one figure, two tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
+20 pages, two figures, three tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.9 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
 ```
 
 **Classification**
