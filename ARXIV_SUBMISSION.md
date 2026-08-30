@@ -27,7 +27,7 @@ web form from drifting from the rendered paper.
 - Main PDF SHA-256:
   `ad01e7387bde105de1a233e3f042e358183cf88d6d1d8563565d8a49a10ded6d`.
 - Supplement PDF SHA-256:
-  `122be4365ce6beefea39a9f82890e5d772666e4869ed23633d0b5f218285f3e2`.
+  `535671f94158c965200f2ad8d182e4880daa8f4d2e6c47682bff0edf3a8982ce`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
