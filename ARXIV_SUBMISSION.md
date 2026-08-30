@@ -25,9 +25,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Main PDF SHA-256:
-  `a3c31badad21ee03e405b529813577e4b671c6c32976f494da8cf98e80142d48`.
+  `12672d0c31dc2f300e850852460c5224b74dadd42fcd8946afd7722145dec0b4`.
 - Supplement PDF SHA-256:
-  `75345ecb1358b0d15e5bfb84bfb214cee9f82b1b06d0cd8651c13eaeee059a1e`.
+  `b9e496d676681b1d7c8f6f6417d6fdbb3bf2bac93697aa434889dc3a5aa83d5b`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
