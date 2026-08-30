@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+message: >-
+  If you use these certificates, checkers, or the audit itself, please cite
+  both this archived artifact and the accompanying manuscript.
+title: >-
+  A certificate-based audit of the fundamental-group and framing computations
+  in Wuebben's proposed exotic S^2 x S^2 construction
+abstract: >-
+  We audit the fundamental-group and framing calculations in Wuebben's proposed
+  exotic S^2 x S^2 construction. Four explicit, hash-identified finite
+  presentations are proved trivial by replayable derivation certificates under a
+  published certificate specification. From the marked data we define an
+  explicit audit manifold V* and prove, in separate geometric steps, that those
+  presentations are presentations of pi_1(V*); this makes the common whiskers,
+  meridians, product longitudes, drilled transport relation, and product-to-
+  Lagrangian framing bridge inspectable. We then isolate four source-
+  identification assumptions S1-S4 under which V* is Wuebben's intended fixed
+  surgery member. Thus V* is simply connected, while the transfer of that
+  conclusion to Wuebben's member is explicitly conditional on S1-S4. Conditional
+  also on twenty-five named external results, the three manifold conclusions of
+  Wuebben's paper follow. A reported contrary fundamental-group computation is
+  stated separately and bears on the source comparison, not on the finite
+  certificate theorem. The theorems are Wuebben's; this note claims only the
+  audit.
+type: software
+authors:
+  - family-names: Clyde
+    given-names: John
+    affiliation: VentiMath
+    email: verification@ventimath.org
+version: v2.0.0
+date-released: '2026-08-29'
+license: MIT
+repository-code: 'https://github.com/VentiMath/exotic-s2xs2-verification'
+url: >-
+  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0
+keywords:
+  - 4-manifolds
+  - exotic smooth structures
+  - Luttinger surgery
+  - fundamental group
+  - Knuth-Bendix completion
+  - proof certificates
+  - computer-assisted proof
+  - reproducibility
+references:
+  - type: article
+    title: 'An exotic S^2 x S^2 and an exotic CP^2 # conjugate-CP^2'
+    authors:
+      - family-names: Wuebben
+        given-names: B. J.
+    year: 2026
+    notes: 'arXiv:2608.17267v1 -- the audited manuscript'
+  - type: article
+    title: Distinguishing closed 4-manifolds by slicing
+    authors:
+      - family-names: Lidman
+        given-names: T.
+      - family-names: Piccirillo
+        given-names: L.
+    notes: 'arXiv:2505.14387v1'
