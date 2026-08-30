@@ -5,12 +5,13 @@ Date: 2026-08-28
 Postscript (2026-08-29)
 -----------------------
 
-Run 68 added the sealed-complement alpha-coordinate certificate to the
-evidence of `K_pi1_V_trivial`. The logical inventory remains 3 certificates,
-15 computed facts, 25 external inputs, and 16 steps, but the frozen chain now
-binds 21 rather than 15 evidence files. The project ledger has since grown to
-36 machine certificates and 51 bound evidence files. The command output below
-is retained as the historical output of Run 64, not as the current count.
+Runs 68--69 added the sealed-complement alpha- and beta-coordinate
+certificates to the evidence of `K_pi1_V_trivial`. The logical inventory
+remains 3 certificates, 15 computed facts, 25 external inputs, and 16 steps,
+but the frozen chain now binds 24 rather than 15 evidence files. The project
+ledger has since grown to 37 machine certificates and 52 bound evidence
+files. The command output below is retained as the historical output of Run
+64, not as the current count.
 
 Scope
 -----

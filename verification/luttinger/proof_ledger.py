@@ -112,6 +112,9 @@ NODES = {
     "M_alpha_coordinate_identity": (
         "machine_certificate", (),
         "luttinger/alpha_residual/certificate.json.gz"),
+    "M_beta_coordinate_identity": (
+        "machine_certificate", (),
+        "luttinger/beta_residual/certificate.json.gz"),
     "M_independent_peripheral_extraction": (
         "machine_certificate", (),
         "runs/30-independent-peripheral-extractor.txt"),
@@ -192,7 +195,8 @@ NODES = {
         "geometric_argument",
         ("G_marked_bundle_identification", "G_lagrangian_framing",
          "M_peripheral_slopes", "M_independent_peripheral_extraction",
-         "M_independent_paper_dictionary", "M_alpha_coordinate_identity"),
+         "M_independent_paper_dictionary", "M_alpha_coordinate_identity",
+         "M_beta_coordinate_identity"),
         "notes/peripheral_identification_lemma_2026-08-24.md"),
     "G_section_square_zero": (
         "geometric_argument",

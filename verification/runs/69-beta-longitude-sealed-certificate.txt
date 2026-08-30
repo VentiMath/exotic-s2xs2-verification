@@ -1,0 +1,78 @@
+Run 69: sealed complement certificate for the beta longitude (2026-08-29)
+===========================================================================
+
+Question
+--------
+
+Does the literal word `lb_b_s2` in the sealed 3-generator complement
+presentation equal the paper-coordinate word `(geom_r^-1 * geom_M * geom_r) *
+geom_B`?  The elementary elimination pass leaves a nonempty 113-letter
+residual, so the earlier status was correctly reported as inconclusive.
+
+Frozen input
+------------
+
+`luttinger/beta_residual/build_input.py` reads only
+`luttinger/sealed_transport/r_presentations.json` and writes
+`luttinger/beta_residual/source.json`. The source binds the exact 3-generator,
+78-relator complement presentation, the four named word factors, and the
+113-letter target
+
+    lb_b_s2^-1 * geom_r^-1 * geom_M * geom_r * geom_B.
+
+No filling relator is present. The target and all 78 relators are copied into
+the certificate and checked against the source by digest and literal equality.
+The proof run uses the same complement-only rewriting input as Run 68.
+
+Permanent artifact SHA-256
+-------------------------
+
+    source.json               50cafd6352652de990b11f6178f82c107488c885ba2577ba3b0f0377ce98b1a2
+    certificate.json.gz       2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604
+    verify_certificate.py     7335234c3c486d322ad560824bfde2107fa0c7883bb17e622b178b8417de22d3
+    verify_certificate.rb     4fb91eb8ccb2e618a9181eeb74963b0526bfe06e4b2d29b298451dc374d75b0d
+
+Proof generation
+----------------
+
+The patched KBMAG `kbprog -ve` was run on the complement alone with
+`-me 50000 -t 100`. It stopped at the 50,000-equation limit after the final
+tidy pass, leaving 49,990 active rules. Full confluence is neither obtained
+nor required. The untrusted compiler parsed 67,838 historical rule records
+and found an 82-step directed reduction of the target to the empty word. It
+retained the complete ancestry cone of those rules:
+
+    1,540 proof records
+    82 target rewrite steps
+    0 compiler fallback searches
+
+Independent verification
+------------------------
+
+    python3 luttinger/beta_residual/verify_certificate.py \
+      luttinger/beta_residual/certificate.json.gz --negative-controls
+
+    luttinger/beta_residual/certificate.json.gz VERIFIED BETA RESIDUAL IDENTITY 1540 proof records; 82 target steps
+    REJECTED ALTERED TARGET: certificate target mismatch
+    REJECTED FORGED DERIVATION RECORD: overlap does not prove recorded equation
+    REJECTED ALTERED PRESENTATION RELATOR: certificate presentation mismatch
+    REJECTED SPLICED TARGET TRACE: rewrite step 41 does not match
+
+The independent Ruby verifier reaches the same verdicts and rejection
+boundaries. Each verifier uses only its language's standard library. Neither
+imports the compiler, KBMAG, GAP, or any project group code. Both reconstruct
+the target from the four named factors, verify every retained equation from
+the 78 input relators and free-group inverse axioms, replay all ancestry
+traces, and require the literal 113-letter word to end at the identity.
+
+Conclusion
+----------
+
+The complement group itself satisfies
+
+    lb_b_s2 = (geom_r^-1 * geom_M * geom_r) * geom_B.
+
+Thus both paper-coordinate longitude identities are now certificate-backed in
+the sealed complement. No filled-group triviality result is used. The prior
+nonempty elementary residual was not contrary evidence; it only reflected the
+limited elementary elimination pass.

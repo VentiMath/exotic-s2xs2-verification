@@ -7,6 +7,8 @@
   "evidence_sha256": {
     "luttinger/alpha_residual/certificate.json.gz": "5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5",
     "luttinger/alpha_residual/source.json": "4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e",
+    "luttinger/beta_residual/certificate.json.gz": "2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604",
+    "luttinger/beta_residual/source.json": "50cafd6352652de990b11f6178f82c107488c885ba2577ba3b0f0377ce98b1a2",
     "luttinger/proof_certificates/manifest.json": "0cec91193c19b50d496a6d2230d6b6e1dcecb52df60b25117231f31ed21cdae6",
     "luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
     "luttinger/sealed_transport/r_presentations.json": "1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c",
@@ -25,7 +27,8 @@
     "runs/57-second-certificate-verifier.txt": "18b12c770dab047c8a4d797b95fee86cee256b34696b01baad8abb496108f84a",
     "runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89",
     "runs/67-r3-complement-and-lp-disagreement.txt": "106be7052127f8c28b9e6fd88b50202a74e826c56788eac1ca30c1c9a9ed3d83",
-    "runs/68-alpha-longitude-sealed-certificate.txt": "898092103e25feac0b3e633d9f2779cba867b1d2bd9bcfa2afd4bedc643df84f"
+    "runs/68-alpha-longitude-sealed-certificate.txt": "a9ed18ac1e07d82617d448602359a606bf203b36a76a753226c5890c964fd337",
+    "runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b"
   },
   "format": "luttinger-downstream-proof-chain-v1",
   "items": [
@@ -276,7 +279,7 @@
       "statement": "quoted (LP25 Lemma 9): \"Let t be a spin^c structure on V with |<c_1(t), F>| = 2. Then Psi_{V,t} != 0.\"  Its proof uses: Z symplectic, |<c_1(k), F>| = 2 for the canonical class k, H^2(V) = Z, the nonvanishing of the mixed invariant of a symplectic 4-manifold for the line spanned by F [OS04], and conjugation symmetry [OS06, Thm 3.6].  quoted (LP25 Lemma 10): \"Let (M_1, t_1) and (M_2, t_2) be two spin^c four-manifolds glued along S^3_0(Q) so that t_1| = t_2| = s_+-. If Psi_{M_1,t_1} and Psi_{M_2,t_2} are non-zero, then Phi_{M_1 u M_2, span{F}, t} != 0 for any t restricting to t_i.\"  (HF_red(S^3_0(Q), s_+-) is one-dimensional because S^3_0(Q) is fibered with genus-2 fiber, OS04 Thm 5.2.)  Finally (LP25, proof of Theorem 2): CP^2 # -CP^2, and CP^2 # -CP^2 # D for any homology 4-sphere D, admits for each of its two square-zero lines a splitting along S^2 x S^1, and HF_red(S^2 x S^1) = 0 in every non-torsion spin^c structure, so every mixed invariant of it vanishes; the mixed invariant is an invariant of the triple (M, L, t)."
     },
     {
-      "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the peripheral identification shows they present pi_1 of the paper's surgeries; the alpha paper-coordinate identity is separately certified inside the sealed complement (run 68).",
+      "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the peripheral identification shows they present pi_1 of the paper's surgeries; the alpha and beta paper-coordinate identities are separately certified inside the sealed complement (runs 68--69).",
       "evidence": [
         "luttinger/proof_certificates/manifest.json",
         "luttinger/sealed_transport/r_presentations.json",
@@ -286,6 +289,9 @@
         "luttinger/alpha_residual/source.json",
         "luttinger/alpha_residual/certificate.json.gz",
         "runs/68-alpha-longitude-sealed-certificate.txt",
+        "luttinger/beta_residual/source.json",
+        "luttinger/beta_residual/certificate.json.gz",
+        "runs/69-beta-longitude-sealed-certificate.txt",
         "runs/29-independent-filled-group-certificates.txt",
         "runs/57-second-certificate-verifier.txt",
         "runs/20-direct-peripheral-fillings-trivial.txt",

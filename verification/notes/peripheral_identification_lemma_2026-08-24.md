@@ -318,10 +318,12 @@ convention selected by the triangulation, the coordinate expression is
 lambda_beta = (r^-1 M r) B.
 ```
 
-The direct filling does not rely on this word substitution: it uses the
-literal `lb_b_s2` boundary loop. Thus even a failure of a word solver to
-recognize an alternate coordinate expression would not alter the peripheral
-identification.
+Run 69 proves this exact coordinate identity in the sealed complement: the
+113-letter word `lb_b_s2^-1 * geom_r^-1 * geom_M * geom_r * geom_B` reduces
+to the identity in 82 steps, whose full 1,540-record ancestry cone is replayed
+by independent Python and Ruby verifiers. No filling relation is present.
+The direct filling is even more primitive: it uses the literal `lb_b_s2`
+boundary loop rather than relying on the substitution.
 
 The short normal jogs from the fiber whiskers to the derived-neighborhood
 frontier lie in the product collar. Moving such an endpoint within the same
@@ -395,7 +397,7 @@ This proves the displayed equality of normal closures and the lemma. `square`
 | `M` with `y_1` basing | `r_run.py`; Run 12 | derived-neighborhood dual meridian |
 | `N` with `s_2` basing and orientation | `r_run.py`; Runs 13-14 | local rank-one and boundary-chain certificates |
 | `lambda_alpha = Ax` | sealed presentation; Run 68 | 2,506-record KBMAG ancestry certificate, replayed in Python and Ruby |
-| Literal `lambda_beta` with `s_2` basing | `r_run.py`; Runs 10, 12, and 20 | punctured sweep and direct boundary path |
+| `lambda_beta = (r^-1 M r)B` with `s_2` basing | `r_run.py`; Runs 10, 12, 20, and 69 | punctured sweep and direct boundary path; 1,540-record sealed-complement ancestry certificate replayed in Python and Ruby |
 | Fibered equals Lagrangian framing | paper Lemma 8.2; `framing_check.py`; Run 35 | three named smooth theorems plus full inline-calculus audit |
 | Four direct `n = 0` filling pairs | `r_presentations.json`; Run 20 | literal path export; no coordinate substitution |
 

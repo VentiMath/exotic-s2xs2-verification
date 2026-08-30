@@ -78,6 +78,8 @@ The complement group itself satisfies
 Thus the mathematical conclusion of Run 15 is now established over the
 sealed presentation, although Run 15's original evidence was not reproducible
 and is explicitly superseded by this run.  No filled-group triviality result
-is used.  The analogous 113-letter beta coordinate residual remains
-uncertified; the direct beta boundary longitude used by the fillings is
-unaffected.
+is used.
+
+Postscript (2026-08-29): Run 69 subsequently certifies the analogous
+113-letter beta coordinate residual in the sealed complement. Thus both
+coordinate identities now have independent Python and Ruby replay.

@@ -34,12 +34,16 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
   sweeps and local-star calculations certify M1--M3 and the `N` meridian. The
   paper basings give `dir_base(T_alpha)=Ax` and
   `dir_base(T_beta)=(r^-1 M r)B`.
-* **Alpha coordinate identity sealed:** Run 68 proves the literal 72-letter
+* **Both coordinate identities sealed:** Run 68 proves the literal 72-letter
   residual `lb_a_y1^-1 * geom_A * geom_x` equal to the identity in the sealed
   3-generator, 78-relator complement, without a filling relation. Independent
   Python and Ruby verifiers replay its 2,506-record ancestry DAG and 61-step
-  target reduction, and reject a truncated trace. This supersedes Run 15's
-  nonreproducible pre-export evidence while preserving its conclusion.
+  target reduction. Run 69 proves the corresponding 113-letter beta residual
+  `lb_b_s2^-1 * geom_r^-1 * geom_M * geom_r * geom_B` in 82 steps from a
+  1,540-record ancestry DAG. Both verifier pairs reject altered inputs,
+  forged derivations, and damaged target traces. Neither certificate contains
+  a filling relation. Run 68 supersedes Run 15's nonreproducible pre-export
+  evidence while preserving its conclusion.
 * **Fundamental-group blocker resolved:** filling with the literal coherent
   boundary pairs certifies all eight groups (four signs, two half-drifts)
   trivial by independently checked derivation DAGs on the original
@@ -149,6 +153,8 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
 | `sealed_transport/` | serialized raw-complex presentation (99,863 generators, 321,702 relators, 89 named tracked words), the 99,860-step Tietze certificate, the resulting 3-generator presentation of the canonical seeded run, and the eight derivation certificates of its fillings with their rewriting systems and kbprog options |
 | `verify_tietze_transport.py`, `verify_tietze_transport.rb` | standalone replay of the sealed transport from those three files, with corruption controls |
 | `r3_complement_audit.py` | embeds the R3 mapping-cylinder certificate at the parallel beta level in the actual two-torus complement and checks the basepoint homotopy to `B` |
+| `alpha_residual/` | frozen sealed-complement source, proof certificate, compiler, and independent Python/Ruby verifiers for `lb_a_y1 = Ax` (Run 68) |
+| `beta_residual/` | frozen sealed-complement source, proof certificate, compiler, and independent Python/Ruby verifiers for `lb_b_s2 = (r^-1 M r)B` (Run 69) |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `alpha_residual/` | frozen 72-letter alpha-longitude target in the sealed complement, compact 2,506-record ancestry certificate, and independent Python/Ruby verifiers |
 | `downstream_chain.py` | the proof chain from π₁(V)=1 to Theorems A, B, C: external theorems, certificates, computed facts, deduction steps |

@@ -62,6 +62,10 @@ EVIDENCE = [
     "luttinger/alpha_residual/source.json",
     "luttinger/alpha_residual/certificate.json.gz",
     "runs/68-alpha-longitude-sealed-certificate.txt",
+    # The sealed-complement beta-coordinate identity (run 69).
+    "luttinger/beta_residual/source.json",
+    "luttinger/beta_residual/certificate.json.gz",
+    "runs/69-beta-longitude-sealed-certificate.txt",
     "runs/29-independent-filled-group-certificates.txt",
     "runs/57-second-certificate-verifier.txt",
     # The certified section self-intersection Gamma_hat . Gamma_hat = 0.
@@ -93,8 +97,8 @@ CERTIFICATES = [
                  "four fillings of the earlier four-generator export reach "
                  "the same verdicts, and the peripheral identification "
                  "shows they present pi_1 of the paper's surgeries; the "
-                 "alpha paper-coordinate identity is separately certified "
-                 "inside the sealed complement (run 68).",
+                 "alpha and beta paper-coordinate identities are separately "
+                 "certified inside the sealed complement (runs 68--69).",
         "evidence": ["luttinger/proof_certificates/manifest.json",
                      "luttinger/sealed_transport/r_presentations.json",
                      "luttinger/r_presentations.json",
@@ -103,6 +107,9 @@ CERTIFICATES = [
                      "luttinger/alpha_residual/source.json",
                      "luttinger/alpha_residual/certificate.json.gz",
                      "runs/68-alpha-longitude-sealed-certificate.txt",
+                     "luttinger/beta_residual/source.json",
+                     "luttinger/beta_residual/certificate.json.gz",
+                     "runs/69-beta-longitude-sealed-certificate.txt",
                      "runs/29-independent-filled-group-certificates.txt",
                      "runs/57-second-certificate-verifier.txt",
                      "runs/20-direct-peripheral-fillings-trivial.txt",
