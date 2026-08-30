@@ -3,18 +3,20 @@ message: >-
   If you use these certificates, checkers, or the audit itself, please cite
   both this archived artifact and the accompanying manuscript.
 title: >-
-  Certified simple connectivity of an audit model for Wuebben's proposed
-  exotic S^2 x S^2 construction
+  A certificate-based audit of simple connectivity for an explicit model
+  associated with Wuebben's proposed exotic S^2 x S^2 construction
 abstract: >-
   We define an explicit marked surface-bundle surgery manifold V_aud modeled on
   the data in Wuebben's proposed exotic S^2 x S^2 construction. Four
   hash-identified finite presentations are proved trivial by replayable
-  derivation certificates, and separate geometric arguments identify those
-  presentations with pi_1(V_aud). Consequently V_aud is simply connected.
-  Comparison with Wuebben's fixed surgery member is isolated as a fourteen-
-  clause Source Formalization D, with each clause tied to a target location,
-  mechanical evidence, and its remaining non-mechanical content. The downstream
-  manifold conclusions are conditional on that formalization and the cited
+  derivation certificates, and separate geometric arguments identify the
+  fixed (+,+) presentation with pi_1(V_aud). Consequently V_aud is simply
+  connected. The other three sign sheets are algebraic robustness checks. A
+  separate theorem supplies the product-to-Lagrangian framing bridge.
+  Comparison with Wuebben's fixed surgery member is isolated as the
+  Source Comparison Hypotheses D1--D14, classified as textual, diagrammatic, or
+  smooth/framing assumptions. The downstream manifold conclusions are
+  conditional on those hypotheses and the cited
   classification, symplectic, and Floer-theoretic results. A reported contrary
   fundamental-group computation remains unreconciled; the paper lists all live
   failure locations without assigning the discrepancy in advance.

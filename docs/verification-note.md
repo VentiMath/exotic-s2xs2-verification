@@ -29,9 +29,10 @@ Kawauchi's manifold B, and the pair (B, W) is distinguished by the smooth
 sliceness of the figure-eight knot; (C) the Lidman–Piccirillo regluing Z'' is
 a simply connected 4-manifold homeomorphic but not diffeomorphic to ℂP²#C̄P².
 The proof's critical step is the triviality of the filled fundamental group
-for the single specified manifold. Wuebben's four relation-sheet sign pairs
-are orientation-convention specializations for that target, not four claimed
-manifolds; all four are certified. Four adjacent n=1 half-drift control
+for the single specified manifold. The audit manifold uses the fixed
+`(+, +)` relation sheet. The other three n=0 sign sheets are algebraic
+robustness checks with no geometric identification in this note; all four
+are certificate-checked as trivial. Four adjacent n=1 half-drift control
 presentations — Ax replaced by the adjacent minimal representative
 Ar⁻¹ = Ax(rx)⁻¹, Wuebben's n=1 member — also pass the identical
 certification; they verify his one-step re-indexing and carry no logical
@@ -41,9 +42,10 @@ This note reports a version-specific audit of the whole argument. The finite
 certificate theorem is source-independent for its hash-bound presentations;
 automated acceptance of the stored derivations assumes that at least one
 checker conforms to the published specification. The audit-model theorem
-identifies them with an explicitly defined manifold `V_aud`, making `V_aud`
+identifies the fixed `(+, +)` presentation with an explicitly defined
+manifold `V_aud`, making `V_aud`
 simply connected.  The further comparison with Wuebben's intended fixed
-member is conditional on the fourteen clauses of Source Formalization D,
+member is conditional on Source Comparison Hypotheses D1--D14,
 which separately state the marked-fiber, marked-bundle, peripheral/member,
 coefficient, and smooth-surgery comparisons.  The bundle is rebuilt as a
 simplicial complex, the surgery tori,
@@ -69,6 +71,11 @@ computation of the same group is disclosed and not resolved; see the note
 above and `runs/67`. The theorems are Wuebben's; this note claims only the
 audit.
 
+The intrinsic simple-connectivity proof uses the product-framed audit filling
+and no symplectic input.  A separate theorem identifies the named product
+push-offs with Lagrangian-framing classes; that theorem enters only the
+conditional source bridge and downstream symplectic application.
+
 ## 2. The independent model
 
 The audit-defined genus-2 fiber is realized as a regular neighborhood of its
@@ -93,7 +100,7 @@ argument needs is transported through that map into the audit-defined smooth
 manifold, where the symplectic arguments are performed; no smoothing of the
 triangulation is ever chosen. The additional assertion that this marked
 smooth bundle is Wuebben's intended bundle is the separate content of clauses
-D1--D6 and D12--D14 of Source Formalization D.
+Source Comparison Hypotheses D1--D6 and D12--D14.
 
 ## 3. Peripheral data
 
@@ -113,10 +120,11 @@ normal-circle fiber, with no regular-neighborhood theorem invoked.
 
 ## 4. The eight filled groups
 
-Filling the triangulation-derived complement presentation with the certified
-coherent peripheral pairs yields, for all four n=0 sign pairs and the four
-adjacent half-drift systems, complete confluent rewriting systems in which
-every generator reduces to the identity. Knuth–Bendix completion (KBMAG) is
+Filling the triangulation-derived complement presentation in the fixed audit
+basis yields the `(+, +)` presentation of `V_aud`. Three additional n=0 sign
+sheets and four adjacent half-drift systems are algebraic controls. All eight
+have complete confluent rewriting systems in which every generator reduces
+to the identity. Knuth–Bendix completion (KBMAG) is
 used only as an untrusted certificate generator: the exported derivation DAGs
 are verified by a standalone checker that re-validates every input-relator
 axiom, inverse axiom, critical overlap, rewrite trace, and final
@@ -297,7 +305,7 @@ exactly Klug's characteristic case and the lifted torus nonzero integrally.
 
 ## 8. Trust boundary
 
-The source comparison is conditional on Source Formalization D, whose
+The source comparison is conditional on Source Comparison Hypotheses D1--D14, whose
 fourteen clauses are not treated as standard theorems or machine
 certificates. They separate marked-fiber, marked-bundle, peripheral/member,
 coefficient, and smooth-surgery fidelity and bind each reading to a target
@@ -339,8 +347,8 @@ the audit-defined smooth manifold, and the section's square is computed
 there from transported disjoint homologous cycles); derived-regular-
 neighborhood theory (the tubular boundary is constructed — see §3); and
 Weinstein germ uniqueness (chart independence is proved between the audit's
-verified charts — see §6; ADK03 remains corroboration). Source Formalization
-D remains the separate source-comparison boundary.
+verified charts — see §6; ADK03 remains corroboration). Source Comparison
+Hypotheses D1--D14 remain the separate source-comparison boundary.
 
 ## 9. Provenance and method
 

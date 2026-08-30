@@ -27,6 +27,7 @@ README = ROOT / "README.md"
 MAIN_TEX = PAPER / "main.tex"
 SUPP_TEX = PAPER / "supplement.tex"
 COMPANION = ROOT / "docs/verification-note.md"
+CITATION = ROOT / "CITATION.cff"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
 SOURCE = PAPER / f"arxiv-source-{VERSION}.tar.gz"
@@ -91,6 +92,7 @@ def main() -> None:
         MAIN_TEX,
         SUPP_TEX,
         COMPANION,
+        CITATION,
         MAIN_PDF,
         SUPP_PDF,
         SOURCE,
@@ -103,16 +105,18 @@ def main() -> None:
     main_tex = MAIN_TEX.read_text(encoding="utf-8")
     supplement = SUPP_TEX.read_text(encoding="utf-8")
     companion = COMPANION.read_text(encoding="utf-8")
+    citation = CITATION.read_text(encoding="utf-8")
     public_texts = {
         "README.md": readme,
         "ARXIV_SUBMISSION.md": metadata,
         "paper/main.tex": main_tex,
         "paper/supplement.tex": supplement,
         "docs/verification-note.md": companion,
+        "CITATION.cff": citation,
     }
 
     for name, text in public_texts.items():
-        require(text, "Source Formalization", f"Source Formalization D in {name}")
+        require(text, "Source Comparison Hypotheses", f"Source Comparison Hypotheses D in {name}")
         require(text, TITLE_FRAGMENT, f"v2.1 title in {name}")
         if re.search(r"S1\s*(?:--|–|---)\s*S4", text):
             fail(f"obsolete S1--S4 formulation survives in {name}")
@@ -142,9 +146,9 @@ def main() -> None:
     require(main_pdf_text, pdf_title, "v2.1 title in main PDF")
     require(supp_pdf_text, pdf_title, "v2.1 title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 24 or pdf_pages(SUPP_PDF) != 12:
-        fail("PDF page counts are not main=24 and supplement=12")
-    require(metadata, "24 pages, three figures, six tables", "arXiv counts")
+    if pdf_pages(MAIN_PDF) != 25 or pdf_pages(SUPP_PDF) != 12:
+        fail("PDF page counts are not main=25 and supplement=12")
+    require(metadata, "25 pages, three figures, six tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 3:
         fail("main.tex does not contain exactly three figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
@@ -165,10 +169,27 @@ def main() -> None:
         "The primary result is the source-independent theorem $\\pi_1(V_aud)=1$.",
         "primary-result statement in arXiv comments",
     )
+    require(
+        main_tex,
+        r"P_{+,+}\twoheadrightarrow\pione(V_{\mathrm{aud}})",
+        "fixed-sheet audit-model map",
+    )
+    require(
+        main_tex,
+        r"No geometric identification of $P_{+,-},",
+        "scope boundary for the other three sign sheets",
+    )
+    if "For each coherent convention sheet" in main_tex:
+        fail("obsolete all-sheets geometric identification survives in main.tex")
+    require(
+        main_tex,
+        "The preceding proof of $\\pione(V_{\\mathrm{aud}})=1$ is complete before this",
+        "logical separation of simple connectivity from the framing bridge",
+    )
 
     if not args.final:
         print("PASS: the local v2.1.0 candidate is internally synchronized")
-        print("  main=24 pages/3 figures/6 tables; supplement=12 pages")
+        print("  main=25 pages/3 figures/6 tables; supplement=12 pages")
         print("  PDF, source-archive, proof-manifest, and downstream hashes agree")
         print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
         print("  v2.1.0 tag, publish the release/deposit, then rerun with --final")
