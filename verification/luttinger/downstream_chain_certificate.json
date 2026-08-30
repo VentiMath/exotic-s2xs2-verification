@@ -15,6 +15,7 @@
     "notes/downstream_theorem_audit_2026-08-23.md": "e4fe2e26f96d2f643ea0e778ab7fb310935f2dcd8aee72870911028a7511f2af",
     "notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",
     "notes/pl_self_intersection_certificate_2026-08-24.md": "c2f12d6b47cff014073344b5c67e3f0c5013c7b7698bd53ff35d756f45ac7082",
+    "notes/source_identification_assumptions_2026-08-29.md": "4168b778a5acb95700cf4d3a27f972334efb1aa1927a14f4e94a55efe2687f23",
     "runs/20-direct-peripheral-fillings-trivial.txt": "b839216d8b7bbad8b50d699564fcb5dede9962459097328f1b4fdcf43110470b",
     "runs/22-model-correspondence-and-framing.txt": "d88410bfbe13ad319dd4f5c35ee14332c7d998c711625b850c76054e81f0f959",
     "runs/24-downstream-theorem-audit.txt": "20c15082cebb94ffd325bc94fae4cfd455cb8783e9153f2e0f8fda2267731c1d",
@@ -30,7 +31,7 @@
     "runs/68-alpha-longitude-sealed-certificate.txt": "a9ed18ac1e07d82617d448602359a606bf203b36a76a753226c5890c964fd337",
     "runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b"
   },
-  "format": "luttinger-downstream-proof-chain-v1",
+  "format": "luttinger-downstream-proof-chain-v2",
   "items": [
     {
       "hypotheses": [
@@ -279,7 +280,16 @@
       "statement": "quoted (LP25 Lemma 9): \"Let t be a spin^c structure on V with |<c_1(t), F>| = 2. Then Psi_{V,t} != 0.\"  Its proof uses: Z symplectic, |<c_1(k), F>| = 2 for the canonical class k, H^2(V) = Z, the nonvanishing of the mixed invariant of a symplectic 4-manifold for the line spanned by F [OS04], and conjugation symmetry [OS06, Thm 3.6].  quoted (LP25 Lemma 10): \"Let (M_1, t_1) and (M_2, t_2) be two spin^c four-manifolds glued along S^3_0(Q) so that t_1| = t_2| = s_+-. If Psi_{M_1,t_1} and Psi_{M_2,t_2} are non-zero, then Phi_{M_1 u M_2, span{F}, t} != 0 for any t restricting to t_i.\"  (HF_red(S^3_0(Q), s_+-) is one-dimensional because S^3_0(Q) is fibered with genus-2 fiber, OS04 Thm 5.2.)  Finally (LP25, proof of Theorem 2): CP^2 # -CP^2, and CP^2 # -CP^2 # D for any homology 4-sphere D, admits for each of its two square-zero lines a splitting along S^2 x S^1, and HF_red(S^2 x S^1) = 0 in every non-torsion spin^c structure, so every mixed invariant of it vanishes; the mixed invariant is an invariant of the triple (M, L, t)."
     },
     {
-      "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the peripheral identification shows they present pi_1 of the paper's surgeries; the alpha and beta paper-coordinate identities are separately certified inside the sealed complement (runs 68--69).",
+      "evidence": [
+        "notes/source_identification_assumptions_2026-08-29.md"
+      ],
+      "id": "A_source_formalization_D",
+      "kind": "assumption",
+      "ledger": "A_Source_Formalization_D",
+      "statement": "Source Formalization D1--D14 holds: the marked fiber, bundle, torus, based-peripheral, coefficient, framing, and relative smooth data in Wuebben's pinned source identify its fixed (m,n)=(0,0) member with V_aud."
+    },
+    {
+      "claim": "pi_1(V_aud) = 1: each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the audit-model peripheral identification shows they present pi_1(V_aud); the alpha and beta paper-coordinate identities are separately certified inside the sealed complement (runs 68--69).",
       "evidence": [
         "luttinger/proof_certificates/manifest.json",
         "luttinger/sealed_transport/r_presentations.json",
@@ -297,9 +307,9 @@
         "runs/20-direct-peripheral-fillings-trivial.txt",
         "runs/22-model-correspondence-and-framing.txt"
       ],
-      "id": "K_pi1_V_trivial",
+      "id": "K_pi1_Vaud_trivial",
       "kind": "certificate",
-      "ledger": "C_pi1_V_trivial"
+      "ledger": "C_pi1_Vaud_trivial"
     },
     {
       "claim": "The closed section Gamma_hat of the doubled bundle is a closed orientable genus-2 surface with Gamma_hat . Gamma_hat = 0, certified on the simplicial model with an explicit normal push-off (run 28).",
@@ -312,7 +322,7 @@
       "ledger": "G_section_square_zero"
     },
     {
-      "claim": "The paper's Lemma 8.2: for the Thurston-type form on R the tori T_alpha, T_beta are Lagrangian and their Lagrangian framing is the fibered framing of the certified longitudes, so the certified fillings are the paper's Luttinger surgeries.",
+      "claim": "For the Thurston-type form on the audit bundle the tori T_alpha, T_beta are Lagrangian and their Lagrangian framing is the fibered framing of the certified longitudes, so the audit fillings are Luttinger surgeries. Source Formalization D is the separate bridge to the target paper's smooth surgery data.",
       "evidence": [
         "runs/35-framing-lemma-referee-packet.txt",
         "runs/43-weinstein-chart-independence.txt",
@@ -598,12 +608,22 @@
       }
     },
     {
+      "claim": "Under Source Formalization D, Wuebben's fixed target member V is simply connected.",
+      "id": "S00_pi1_V_trivial",
+      "kind": "step",
+      "proof": "The Audit-Manifold Theorem gives pi_1(V_aud)=1.  Source Formalization D supplies a relative orientation-preserving smooth comparison carrying both torus collars, based peripheral classes, framing classes, and filling slopes.  It therefore extends over the two fillings to a diffeomorphism V_aud -> V, which transports the trivial fundamental group.",
+      "uses": [
+        "A_source_formalization_D",
+        "K_pi1_Vaud_trivial"
+      ]
+    },
+    {
       "claim": "H_1(V) = 0, H_3(V) = 0, H_2(V) = Z generated by the fiber F with F.F = 0, and V is spin.",
       "id": "S1_homology_of_V",
       "kind": "step",
       "proof": "pi_1(V) = 1 gives H_1(V) = 0.  The boundary S^3_0(Q) is connected, so Lefschetz duality with universal coefficients gives H_3(V) = H^1(V, dV) = 0 and Tors H_2(V) = Tors H^3(V) = Tors H_1(V, dV) = 0.  chi(V) = 2 then gives b_2(V) = 1.  A section Gamma is a properly embedded surface meeting the fiber once, so [F] pairs to 1 with a relative class and is primitive: H_2(V) = Z<F>.  F.F = 0 since a fiber has trivial normal bundle.  H_2(V; Z/2) = Z/2<F> by universal coefficients, w_2 is detected on it, and <w_2, F> = chi(F) + F.F = 0 (mod 2).",
       "uses": [
-        "K_pi1_V_trivial",
+        "S00_pi1_V_trivial",
         "E_duality_uct",
         "C_euler",
         "C_betti",
@@ -618,7 +638,7 @@
       "kind": "step",
       "proof": "Z = V u_sigma V and Z'' = V u_{f o sigma} V are unions of two copies of V along the connected bicollared boundary S^3_0(Q); by van Kampen each fundamental group is a quotient of pi_1(V) * pi_1(V) = 1.  This is the one place where pi_1(V) = 1, rather than pi_1(Z) = 1, is needed: the regluing twists the amalgam.",
       "uses": [
-        "K_pi1_V_trivial",
+        "S00_pi1_V_trivial",
         "E_van_kampen",
         "E_lp_double",
         "E_lp_regluing"
@@ -815,5 +835,5 @@
       ]
     }
   ],
-  "target": "arXiv:2608.17267 Theorems A, B, C from Theorem D"
+  "target": "arXiv:2608.17267 Theorems A, B, C from the audit theorem under Source Formalization D"
 }

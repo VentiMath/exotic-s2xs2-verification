@@ -1,76 +1,94 @@
-# Source-identification assumptions for the Wuebben comparison
+# Source Formalization D for the Wuebben comparison
 
-The finite certificate theorem and the identification of its presentations
-with the explicitly defined audit manifold `V_*` do not depend on the four
-assumptions below.  They enter only when `V_*` is identified with the fixed
-`(m,n)=(0,0)` member intended by Wuebben.  The assumptions are semantic
-claims about how the target paper's prose, diagrams, and conventions denote
-geometric objects; no certificate about the audit model can prove an
-author's intended denotation.
+The finite certificate theorem and the proof that the explicitly defined
+audit manifold `V_aud` is simply connected do not depend on this document.
+Source Formalization D enters only when `V_aud` is compared with the fixed
+`(m,n)=(0,0)` member specified in Wuebben's pinned v1 text and figures. Its
+clauses are comparison assertions, not machine certificates.
 
-## S1. Marked-fiber fidelity
+The main paper gives the normative table, exact citations, and proofs. This
+file is the repository ledger version of the same boundary.
 
-Wuebben's imported marked fiber is the ordered five-chain
-`(a,b,c,d,e)` with the two marked complementary disks, the chain-reversing
-orientation-preserving involution, and the indicated orientations used by
-the audit.
+## Textual and diagrammatic fiber data
 
-Evidence short of the assumption: Runs 54--56 independently recover the
-ordered chain, intersections, fixed marks, and involution from Wuebben's text
-and the immutable Lidman--Piccirillo v1 TeX/vector figure.  Run 55 enumerates
-all compatible ribbon rotations and reduces the disk extension to the cited
-periodic-disk theorem.  What remains semantic is that these source symbols
-are the data Wuebben intends for his fixed construction, including the
-ordinary convention that dashed arcs depict hidden portions rather than new
-crossings.
+- **D1 — chain labels and order.** Convention 2.1(C8), Section 7.1, and
+  Figure 1 are read as the ordered five-chain `(a,b,c,d,e)` used by the
+  audit. Independent extraction and ribbon tests support the transcription.
+- **D2 — involution and fixed disks.** Lemma 7.1 is read as the
+  chain-reversing involution exchanging `a<->e`, `b<->d`, preserving `c`,
+  with the two marked complementary disks containing `p,O`. Exhaustive
+  rotation-system and periodic-disk checks support the comparison; the
+  marked-disk identification remains diagrammatic.
+- **D3 — hidden arcs.** Dashed, hidden, or paired portions of Figure 1 are
+  continued as the displayed curves and do not introduce extra crossings.
+  Vector-source and planar-incidence extraction plus added-crossing mutation
+  controls support this ordinary drawing convention.
 
-## S2. Marked-bundle fidelity
+## Bundle and torus data
 
-The target paper's `phi_0` and `psi_0 = T_a T_b` mean the audit's supported
-right-twist representatives, with `T_b` applied first, relative to the full
-`c` and `e` collars; its two tori are the corresponding `c`-over-alpha and
-`e`-over-beta curve subbundles.
+- **D4 — twist order and sign.** Convention 2.1(C2,C5) and Sections 3.1 and
+  7.2 are read as `psi_0 = T_a o T_b`, with `T_b` applied first and the
+  displayed right-twist normalization. Two subdivisions and reverse-order /
+  reverse-sign controls test the realization.
+- **D5 — cut-square holonomy.** Convention 2.1(C4) and Section 7.3 are read
+  so that the alpha base loop has `phi_0` holonomy and the beta base loop has
+  `psi_0` holonomy (equivalently, upward crossing of the alpha cut applies
+  `psi_0` and rightward crossing of the beta cut applies `phi_0`). The graph
+  clutching map and inverse check the seams.
+- **D6 — the torus subbundles.** Sections 7.2--7.3 are read as selecting the
+  `c`-over-alpha and product `e`-over-beta subbundles, relative to the full
+  protected collars. Collar, disjointness, and local-flatness certificates
+  support the comparison; identification with the target's displayed tori
+  remains a source-to-audit assertion.
 
-Evidence short of the assumption: Runs 51--52 check the collar restrictions
-and graph clutching; Run 54 independently extracts the factor order and twist
-signs, with reverse-order and reverse-sign mutations failing; the author's
-parsed scripts give the same based action.  What remains semantic is that
-these convention readings are the intended mapping classes and marked
-subbundles of the paper.
+## Based peripheral and member data
 
-## S3. Peripheral and member fidelity
+- **D7 — path convention and base generators.** Convention 2.1(C1,C3,C6)
+  is read literally: paths compose left to right,
+  `A=[bar(alpha)]^-1`, `B=[bar(beta)]^-1`, and named peripheral pairs use
+  common stated whiskers.
+- **D8 — meridian basings.** Section 8.3 and Table 1 are read as the audit's
+  oriented `M,N`, based along `y_1,s_2` with the named correction paths.
+  Two peripheral extractors and the explicit normal fibers support this.
+- **D9 — alpha reference half-drift.** Section 8.4 explicitly selects the
+  `y_1`-based reference word `Ax`; the complement-only 72-letter identity
+  certificate and side mutations test the audit realization.
+- **D10 — fixed family member and slopes.** Section 9.1 and Table 1 select
+  `(m,n)=(0,0)` and the displayed F1/F2 slopes. The independent relation-
+  sheet extractor agrees exactly.
+- **D11 — convention exponents.** Convention 2.1(C7) and Remark 11.1 are
+  read as making `epsilon_A,epsilon_B` relation-sheet orientation exponents,
+  not four different geometric surgeries. All four sheets certify the same
+  audit object under this convention identification.
 
-The paper's symbols `y_1`, `s_2`, `A`, `B`, `M`, and `N` denote the same
-oriented, commonly whiskered paths as the audit, and the paper's fixed
-`(m,n)=(0,0)` member uses the two displayed filling slopes.  The four
-`(epsilon_A,epsilon_B)` sheets record orientation conventions for that one
-member rather than four different surgeries.
+## Smooth surgery data
 
-Evidence short of the assumption: the direct and independent peripheral
-extractors agree; Runs 68--69 certify both coordinate identities in the
-unfilled complement; the punctured beta sweep certifies the conjugated
-meridian; and the relation sheet agrees with the author's parsed scripts.
-What remains semantic is the identification of those literal paths and sign
-sheets with the target paper's names and selected member.
+- **D12 — smooth tori.** Section 8.7 and Lemma 8.2 are read as using the
+  smooth Lagrangian tori represented by the marked curve subbundles. The
+  audit supplies local-flatness, normal-frontier, and topological-to-smooth
+  transport certificates; equality with the source tori remains smooth
+  comparison content.
+- **D13 — coefficients and framings.** Sections 2.1, 8.7, and 9 are read as
+  using the Lagrangian-framing classes and coefficient/orientation
+  conventions encoded by F1/F2. The Moser and Weinstein-chart calculations
+  prove the corresponding statement in `V_aud`.
+- **D14 — relative smooth bundle equivalence.** The comparison throughout
+  Sections 7.1--8.7 is required to be represented by an orientation-
+  preserving diffeomorphism relative to the two torus collars and the
+  boundary marking. Explicit PL maps and collar data support this; standard
+  surface smoothing and relative isotopy supply the stated upgrade once the
+  source comparison is granted.
 
-## S4. Smooth-surgery fidelity
+## Logical consequence and the contrary report
 
-Wuebben's smooth surgery tori are the images of the marked curve subbundles
-above, and his geometric `+1` Luttinger surgeries use the corresponding
-Lagrangian-framing classes with the orientations encoded by the relation
-sheet.
+Under D1--D14, the relative smooth comparison carries meridians, longitude
+classes, and surgery slopes, so it extends over both fillings and identifies
+`V_aud` with the fixed target member. Without D1--D14 the project still
+proves `pi_1(V_aud)=1`.
 
-Evidence short of the assumption: Runs 43--47 and the main paper's framing
-theorem prove, in the audit-defined smooth target, that the product push-offs
-equal the Lagrangian-framing classes and acquire no meridian component.  The
-standard Lagrangian-neighborhood theorem supplies the charts.  What remains
-semantic is that Wuebben's named smooth tori and surgery parametrizations are
-exactly the marked objects to which that calculation applies.
-
-## Logical consequence
-
-Without S1--S4 the project proves that the explicit audit manifold `V_*` is
-simply connected.  With S1--S4 it identifies `V_*` with Wuebben's intended
-fixed member and transfers simple connectivity to that member.  The
-unreconciled computation attributed to Lidman and Piccirillo bears on this
-second implication, not on the finite certificate theorem.
+The contrary computation attributed to Lidman and Piccirillo is not assigned
+solely to this source boundary. If it concerns the same fixed member, live
+possibilities include failure of a D-clause, a defect in a displayed
+geometric identification or checker, a defect in that contrary computation,
+or a mismatch of members or conventions. Reconciliation requires its
+presentation and dictionary.

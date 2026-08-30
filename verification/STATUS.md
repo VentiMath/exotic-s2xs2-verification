@@ -221,8 +221,8 @@ replay to **3 gens / 78 relators** in 49s.
   on their mapping cylinders and checks both seam equations and inverses.
   This replaces the earlier fingerprint-only comparison without invoking
   surface-bundle classification or Dehn--Nielsen--Baer. The further claim
-  that this is the marked bundle intended by Wuebben is now isolated as
-  source assumptions S1--S4 rather than asserted by this computation.
+  that this is the marked bundle specified by Wuebben is now isolated as
+  Source Formalization D rather than asserted by this computation.
   `framing_check.py` now
   verifies the relative-Moser coefficient calculus, double-cover
   normalization, Weinstein coordinates, seam, half-drift, and
@@ -254,15 +254,17 @@ replay to **3 gens / 78 relators** in 49s.
   geometric certificate. See `runs/23`.
 * **The deductions from simple connectivity to Theorems A, B, C are a
   proof-grade dependency chain.**  `downstream_chain.py` records every
-  implication from the certified `pi_1(V) = 1` to the three theorems as an
-  explicit item: 25 external theorems stated with hypotheses and sources
+  implication from certified `pi_1(V_aud) = 1` to the three theorems as an
+  explicit item: Source Formalization D as one source-comparison assumption,
+  25 external theorems stated with hypotheses and sources
   (Klug's Theorem 2, Hambleton's Theorem 5.1, Ho--Li's Theorem 1.1 and
   Lidman--Piccirillo's Lemmas 9 and 10 quoted verbatim), 3 hash-bound
-  certificates of this repository, 15 computed facts, and 16 deduction
+  certificates of this repository, 15 computed facts, and 17 deduction
   steps ending in `S7_theorem_A`, `S12_theorem_B`, `S16_theorem_C`.
   `verify_downstream_chain.rb`, written independently, re-derives every
   computed fact from scratch, checks acyclicity and that each theorem
-  depends on `K_pi1_V_trivial`, and verifies every evidence digest.  This
+  depends on both `K_pi1_Vaud_trivial` and `A_source_formalization_D`, and
+  verifies every evidence digest.  This
   supersedes the run-24 hypothesis audit (`downstream_audit.py`,
   `notes/downstream_theorem_audit_2026-08-23.md`), which stays as a
   historical certificate that no derived claim depends on.  See `runs/64`
@@ -294,7 +296,7 @@ replay to **3 gens / 78 relators** in 49s.
   (39,163 retained records, both checkers), so the load-bearing chain from
   the serialized raw complex to the eight verdicts now replays end to end
   and the four-generator chain is superseded corroborating evidence
-  (`proof_ledger.py`: `C_pi1_V_trivial` depends on the sealed chain; the
+  (`proof_ledger.py`: `C_pi1_Vaud_trivial` depends on the sealed chain; the
   unseeded transport is the single `software_trust` node, on which nothing
   depends).  See `runs/66`.
 * **R3 is now checked in the actual torus complement.**  Wuebben's
@@ -348,8 +350,8 @@ replay to **3 gens / 78 relators** in 49s.
   removes compatible four-dimensional source smoothing and a separate
   intersection-naturality theorem from the ledger: the marked bundle
   homeomorphism transports the actual certified cycles and collars into the
-  audit-defined already smooth target `R_*`. Comparing that target with
-  Wuebben's intended bundle is now the separate S1--S4 boundary. See
+  audit-defined already smooth target `R_aud`. Comparing that target with
+  Wuebben's bundle is now the separate Source Formalization D boundary. See
   `runs/25`, `runs/27`--`36`, `runs/50`, and
   `notes/pl_bridge_referee_packet_2026-08-25.md`.
 * **The Acorn formalization path is specified against current GitHub.**  The
@@ -575,19 +577,18 @@ claim while that remains so. Lemma 8.2's former lifting, flow, and chart-indepen
 closed by Runs 43--47, and Run 49 closes the derived-frontier/normal-boundary
 interpretation constructively. Run 50 bypasses the former PL/smooth source
 smoothing boundary by transport into the audit-defined already smooth target
-`R_*`. This
+`R_aud`. This
 is not a foundational formal proof, but every construction-specific
 hypothesis internal to the audit-defined manifold has a finite certificate.
 The source comparison is different and is isolated below.
 
-The v2.0.0 manuscript now makes the residual sharper still. It proves
-`pi_1(V_*) = 1` for an explicitly defined audit manifold and places the
-comparison `V_* = Wuebben's intended fixed member` behind four named
-source-identification assumptions S1--S4: marked-fiber fidelity,
-marked-bundle fidelity, peripheral/member fidelity, and smooth-surgery
-fidelity. Their checks are evidence for the readings, not proofs of
-authorial intent. The project-wide ledger records that boundary as the
-distinct `source_assumption` node `A_Wuebben_source_identification`; see
+The v2.1.0 release candidate makes the residual sharper still. It proves
+`pi_1(V_aud) = 1` for an explicitly defined audit manifold and places the
+comparison with Wuebben's fixed member behind the fourteen clauses D1--D14
+of Source Formalization D. Their checks are evidence for exact mathematical
+readings, not certificates that a diagram denotes the audit object. The
+project-wide ledger records that boundary as the distinct
+`source_assumption` node `A_Source_Formalization_D`; see
 `notes/source_identification_assumptions_2026-08-29.md`.
 
 Run 54 independently reconstructs the paper-to-model dictionary without
@@ -631,12 +632,12 @@ the presentation digest; all four are rejected.
 
 ## Next steps, in order
 
-1. **Audit S1--S4 as source semantics, not as more group theory.** Every
+1. **Audit Source Formalization D, not more group theory.** Every
    mechanically comparable component has an independent extraction or
    mutation control. What cannot be manufactured internally is proof of what
-   another author's diagram and conventions intend. A future formal source
+   the source diagram and conventions denote. A future formal source
    specification or a relation-by-relation contrary artifact can discharge
-   or refute these assumptions; until then publication language must remain
+   or refute these clauses; until then publication language must remain
    conditional on them.
 
 2. **Carry optional historical controls onto the sealed transport if useful.**
@@ -847,7 +848,7 @@ Raw console output, in the order produced:
     61  raised-limit certificates for two n0_y1 holdouts (98/2 current)
     62  tidyint-sensitive certificate for n1_y2 (+,+), shift (+1,+1) (99/1 current)
     63  common-core certificate for the hundredth framing case (100/0 final)
-    64  downstream proof chain from Theorem D to Theorems A, B, C
+    64  conditional downstream chain from the audit theorem and Source D to Theorems A, B, C
     65  batch inventory checks in both filled-group checkers and the manifest generator
     66  sealed raw-complex Tietze transport and derivation certificates for its eight fillings
     67  R3 in the actual torus complement; public LP-disagreement audit

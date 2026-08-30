@@ -42,27 +42,33 @@ Names follow the paper and Lidman–Piccirillo (LP25, arXiv:2505.14387v1).
   u_sigma Gamma` its closure in `Z`; `Gamma'' = Gamma u_A Gamma` its closure
   in `Z''`.
 
-Item kinds: **K** machine certificates of this repository, **E** external
-theorems, **C** computed facts, **S** steps. The identifiers are those of
+Item kinds: **A** explicit source-comparison assumptions, **K** machine
+certificates of this repository, **E** external theorems, **C** computed
+facts, **S** steps. The identifiers are those of
 `downstream_chain_certificate.json`.
 
-## 1. Certified inputs
+## 1. Source comparison and certified inputs
 
-**K_pi1_V_trivial (Theorem D).** pi_1(V) = 1. The four n=0 filled
+**A_source_formalization_D.** Source Formalization D1--D14 is the explicit
+assumption identifying the audit bundle, marked tori, peripheral classes,
+framing classes, and fillings with Wuebben's fixed target member. It is not
+a machine certificate.
+
+**K_pi1_Vaud_trivial.** pi_1(V_aud) = 1. The four n=0 filled
 presentations carry derivation-DAG certificates accepted by two independent
 checkers (runs 29, 57; bound through `proof_certificates/manifest.json`),
-and the peripheral identification (runs 20, 22) shows they present pi_1 of
-the paper's surgeries.
+and the audit-model peripheral identification (runs 20, 22) shows they
+present pi_1 of the audit fillings.
 
 **K_section_square_zero.** `Gamma_hat` is a closed orientable genus-2
 surface in the doubled simplicial bundle with `Gamma_hat . Gamma_hat = 0`,
 certified with an explicit normal push-off (run 28).
 
-**K_lagrangian_framing.** The paper's Lemma 8.2, machine-checked (runs 35,
-43, 46, 47): for the Thurston-type form on `R` the tori `T_alpha`, `T_beta`
+**K_lagrangian_framing.** The audit-model framing calculation (runs 35,
+43, 46, 47): for the Thurston-type form on `R_aud` the tori `T_alpha`, `T_beta`
 are Lagrangian and their Lagrangian framing is the fibered framing of the
-certified longitudes, so the certified fillings are the paper's Luttinger
-surgeries.
+certified longitudes, so the audit fillings are Luttinger surgeries. Source
+Formalization D is the distinct comparison with the paper.
 
 ## 2. External theorems, as used
 
@@ -189,6 +195,11 @@ the chain applies, with the hypotheses the chain has to discharge.
   `(M, L, t)`.
 
 ## 3. The chain
+
+**S00 (source transfer).** Under Source Formalization D, the relative smooth
+comparison extends over both fillings and identifies `V_aud` with Wuebben's
+fixed target member `V`. Hence certified `pi_1(V_aud)=1` implies
+`pi_1(V)=1`.
 
 **S1 (homology of V).** `H_1(V) = 0`, `H_3(V) = 0`, `H_2(V) = Z<F>` with
 `F.F = 0`, and `V` is spin.
@@ -349,8 +360,9 @@ homeomorphic but not diffeomorphic to `CP^2 # −CP^2`. (S2, S14, S15.)
 
 ## 4. Statement
 
-**Theorem.** For the specified Lidman–Piccirillo piece `V`, relative to the
-25 external theorems of §2 and the three certificates of §1:
+**Theorem.** Under Source Formalization D, for the specified
+Lidman–Piccirillo piece `V`, relative to the 25 external theorems of §2 and
+the three certificates of §1:
 
 * (A) the symplectic double `Z = V u_sigma V` is homeomorphic but not
   diffeomorphic to `S^2 x S^2`;
