@@ -38,16 +38,16 @@ and the earlier phrase “Source Formalization D.” In v2.1 these names denote
 exactly the conjunction of Source Comparison Hypotheses D1--D14; the rename
 does not change the frozen dependency node or its digest.
 
-The immutable v2.0.1 verification snapshot is archived at
-[doi:10.5281/zenodo.22171309](https://doi.org/10.5281/zenodo.22171309);
+The immutable v2.2.0 verification snapshot is archived at
+[doi:10.5281/zenodo.22181233](https://doi.org/10.5281/zenodo.22181233);
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
-**v2.1.0 release gate.** The manuscript, supplement, and this README are the
-v2.1.0 candidate, while v2.0.1 remains the newest public immutable release.
+**v2.2.0 release gate.** The manuscript, supplement, and this README are the
+v2.2.0 candidate, while v2.1.0 remains the newest public immutable release.
 Run `python3 paper/check_release_sync.py` to verify the candidate's hashes,
 counts, terminology, and bound manifests. Before arXiv submission, reserve
-the exact v2.1.0 archive DOI, replace every candidate placeholder, cut and
+the exact v2.2.0 archive DOI, replace every candidate placeholder, cut and
 publish the matching tag and deposit, and run
 `python3 paper/check_release_sync.py --final` from that clean tagged
 checkout. Final mode is designed to fail until all public-facing files name
