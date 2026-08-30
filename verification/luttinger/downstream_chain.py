@@ -58,6 +58,10 @@ EVIDENCE = [
     "runs/66-sealed-tietze-transport.txt",
     # The complement-level R3 certificate behind the peripheral identification.
     "runs/67-r3-complement-and-lp-disagreement.txt",
+    # The sealed-complement alpha-coordinate identity (run 68).
+    "luttinger/alpha_residual/source.json",
+    "luttinger/alpha_residual/certificate.json.gz",
+    "runs/68-alpha-longitude-sealed-certificate.txt",
     "runs/29-independent-filled-group-certificates.txt",
     "runs/57-second-certificate-verifier.txt",
     # The certified section self-intersection Gamma_hat . Gamma_hat = 0.
@@ -88,12 +92,17 @@ CERTIFICATES = [
                  "certificate accepted by two independent checkers, the "
                  "four fillings of the earlier four-generator export reach "
                  "the same verdicts, and the peripheral identification "
-                 "shows they present pi_1 of the paper's surgeries.",
+                 "shows they present pi_1 of the paper's surgeries; the "
+                 "alpha paper-coordinate identity is separately certified "
+                 "inside the sealed complement (run 68).",
         "evidence": ["luttinger/proof_certificates/manifest.json",
                      "luttinger/sealed_transport/r_presentations.json",
                      "luttinger/r_presentations.json",
                      "runs/66-sealed-tietze-transport.txt",
                      "runs/67-r3-complement-and-lp-disagreement.txt",
+                     "luttinger/alpha_residual/source.json",
+                     "luttinger/alpha_residual/certificate.json.gz",
+                     "runs/68-alpha-longitude-sealed-certificate.txt",
                      "runs/29-independent-filled-group-certificates.txt",
                      "runs/57-second-certificate-verifier.txt",
                      "runs/20-direct-peripheral-fillings-trivial.txt",

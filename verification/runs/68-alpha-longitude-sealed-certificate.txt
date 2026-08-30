@@ -1,0 +1,83 @@
+Run 68: sealed complement certificate for the alpha longitude (2026-08-29)
+============================================================================
+
+Question
+--------
+
+Does the literal word `lb_a_y1` in the sealed 3-generator complement
+presentation equal the paper-coordinate word `geom_A * geom_x`?  Run 15
+reported this equality over a pre-export presentation, but that reduction did
+not reproduce over either committed export.  The correct target in the sealed
+presentation freely reduces to a nonempty word of length 72.
+
+Frozen input
+------------
+
+`luttinger/alpha_residual/build_input.py` reads only
+`luttinger/sealed_transport/r_presentations.json` and writes
+`luttinger/alpha_residual/source.json`.  The source binds the exact 3-generator,
+78-relator complement presentation, the three named word factors, and the
+72-letter target
+
+    lb_a_y1^-1 * geom_A * geom_x.
+
+No filling relator is present.  The target and all 78 relators are copied into
+the certificate and checked against the source by digest and literal equality.
+
+Permanent artifact SHA-256
+-------------------------
+
+    source.json               4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e
+    complement_input.rws      663c5039fcc78e822b6d0d986aee2e23d96ba810b69b29a4612f9d47e01cef27
+    certificate.json.gz       5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5
+    verify_certificate.py     a3fa2df4fe5325f8efcd768e731fd24a230e79316b268c466f8c497fb99ac85c
+    verify_certificate.rb     21b60a97a1ccd97b8d1e18ea206f5175195c3c542c065ed4d080fc8cba5a33ff
+
+Proof generation
+----------------
+
+The patched KBMAG `kbprog -ve` was run on the complement alone with
+`-me 50000 -t 100`.  It stopped at the 50,000-equation limit after the final
+tidy pass, leaving 49,990 active rules.  Full confluence is neither obtained
+nor required.  The untrusted compiler parsed 67,838 historical rule records
+and found a 61-step directed reduction of the target to the empty word.  It
+retained the complete ancestry cone of those rules:
+
+    2,506 proof records
+    61 target rewrite steps
+    0 compiler fallback searches
+
+Independent verification
+------------------------
+
+    python3 luttinger/alpha_residual/verify_certificate.py \
+      luttinger/alpha_residual/certificate.json.gz --negative-controls
+
+    luttinger/alpha_residual/certificate.json.gz VERIFIED ALPHA RESIDUAL IDENTITY 2506 proof records; 61 target steps
+    REJECTED TRUNCATED TARGET TRACE
+
+    ruby luttinger/alpha_residual/verify_certificate.rb \
+      luttinger/alpha_residual/certificate.json.gz --negative-controls
+
+    luttinger/alpha_residual/certificate.json.gz VERIFIED ALPHA RESIDUAL IDENTITY 2506 proof records; 61 target steps
+    REJECTED TRUNCATED TARGET TRACE
+
+Each verifier uses only its language's standard library.  Neither imports the
+compiler, KBMAG, GAP, or any project group code.  Both reconstruct the target
+from the three named factors, verify every retained equation from the 78 input
+relators and the free-group inverse axioms, replay all ancestry traces, and
+require the literal 72-letter word to end at the identity.
+
+Conclusion
+----------
+
+The complement group itself satisfies
+
+    lb_a_y1 = geom_A * geom_x.
+
+Thus the mathematical conclusion of Run 15 is now established over the
+sealed presentation, although Run 15's original evidence was not reproducible
+and is explicitly superseded by this run.  No filled-group triviality result
+is used.  The analogous 113-letter beta coordinate residual remains
+uncertified; the direct beta boundary longitude used by the fillings is
+unaffected.
