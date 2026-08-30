@@ -11,10 +11,12 @@ release URL and DOI must still be opened from a logged-out browser.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import re
 import subprocess
 import tarfile
+import tempfile
 from pathlib import Path
 
 
@@ -30,6 +32,7 @@ CITATION = ROOT / "CITATION.cff"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
 SOURCE = PAPER / f"arxiv-source-{VERSION}.tar.gz"
+BUILD_SOURCE = PAPER / "build_arxiv_source.sh"
 
 
 def fail(message: str) -> None:
@@ -48,6 +51,24 @@ def run(*args: str) -> str:
     return subprocess.run(
         args, cwd=ROOT, check=True, text=True, capture_output=True
     ).stdout.strip()
+
+
+def source_archive(stack: contextlib.ExitStack) -> Path:
+    """Return the arXiv source archive, rebuilding it when the tree has none.
+
+    The archive is an ignored, deterministic build product, so a clean
+    checkout carries no copy.  Rebuilding it into a temporary directory lets
+    this gate run from a fresh clone instead of only from a working tree that
+    happens to have built one.
+    """
+    if SOURCE.is_file():
+        return SOURCE
+    if not BUILD_SOURCE.is_file():
+        fail(f"missing release input {BUILD_SOURCE.relative_to(ROOT)}")
+    staging = Path(stack.enter_context(tempfile.TemporaryDirectory()))
+    built = staging / SOURCE.name
+    run("sh", str(BUILD_SOURCE), str(built))
+    return built
 
 
 def recorded_hash(metadata: str, label: str) -> str:
@@ -93,7 +114,6 @@ def main() -> None:
         CITATION,
         MAIN_PDF,
         SUPP_PDF,
-        SOURCE,
     ):
         if not path.is_file():
             fail(f"missing release input {path.relative_to(ROOT)}")
@@ -117,24 +137,27 @@ def main() -> None:
         if re.search(r"S1\s*(?:--|–|---)\s*S4", text):
             fail(f"obsolete S1--S4 formulation survives in {name}")
 
-    expected = {
-        "Source-archive SHA-256": SOURCE,
-        "Main PDF SHA-256": MAIN_PDF,
-        "Supplement PDF SHA-256": SUPP_PDF,
-    }
-    for label, path in expected.items():
-        actual = sha256(path)
-        recorded = recorded_hash(metadata, label)
-        if actual != recorded:
-            fail(f"{label} mismatch: recorded {recorded}, actual {actual}")
+    with contextlib.ExitStack() as stack:
+        source = source_archive(stack)
 
-    with tarfile.open(SOURCE, "r:gz") as archive:
-        names = archive.getnames()
-        if names != ["main.tex"]:
-            fail(f"arXiv source archive inventory is {names!r}, expected ['main.tex']")
-        archived_main = archive.extractfile("main.tex")
-        if archived_main is None or archived_main.read() != MAIN_TEX.read_bytes():
-            fail("arXiv source archive does not contain the current paper/main.tex")
+        expected = {
+            "Source-archive SHA-256": source,
+            "Main PDF SHA-256": MAIN_PDF,
+            "Supplement PDF SHA-256": SUPP_PDF,
+        }
+        for label, path in expected.items():
+            actual = sha256(path)
+            recorded = recorded_hash(metadata, label)
+            if actual != recorded:
+                fail(f"{label} mismatch: recorded {recorded}, actual {actual}")
+
+        with tarfile.open(source, "r:gz") as archive:
+            names = archive.getnames()
+            if names != ["main.tex"]:
+                fail(f"arXiv source archive inventory is {names!r}, expected ['main.tex']")
+            archived_main = archive.extractfile("main.tex")
+            if archived_main is None or archived_main.read() != MAIN_TEX.read_bytes():
+                fail("arXiv source archive does not contain the current paper/main.tex")
 
     main_pdf_text = normalize_space(run("pdftotext", str(MAIN_PDF), "-"))
     supp_pdf_text = normalize_space(run("pdftotext", str(SUPP_PDF), "-"))

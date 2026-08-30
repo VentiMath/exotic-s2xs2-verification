@@ -7,10 +7,10 @@ Cases
   n0_y1_am1_bm1_jam1_jbm1   signs (-1,-1), shift (-1,-1)
   n0_y1_ap1_bm1_jap1_jbm1   signs (+1,-1), shift (+1,-1)
 
-Both cases were among Run 59's five default-limit holdouts. A parallel
-Claude/Fable sweep first obtained console-level confluent completions from
-their unchanged fill-then-base raw presentations after raising KBMAG's
-equation ceiling from 32,767 to 300,000.
+Both cases were among Run 59's five default-limit holdouts. Console-level
+confluent completions were first obtained from their unchanged fill-then-base
+raw presentations after raising KBMAG's equation ceiling from 32,767 to
+300,000.
 
 This run independently converted both observations into proof certificates.
 For each case, the exact Run 59 97-relator input was serialized with

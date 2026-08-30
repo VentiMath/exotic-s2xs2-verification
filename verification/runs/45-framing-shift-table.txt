@@ -51,6 +51,5 @@ Structural findings:
    alpha-shifted slopes.
 2. The j=0 controls reproduce the eight certified fillings exactly
    (word-for-word relator match asserted before every run).
-3. Codex's compact-presentation attacks (runs 39, 41) reduced the two
-   hardest alpha cells to replayable 310- and 439-letter targets;
-   both remain open.
+3. Compact-presentation attacks reduced the two hardest alpha cells to
+   replayable 310- and 439-letter targets; both remain open.

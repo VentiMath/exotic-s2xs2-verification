@@ -56,9 +56,12 @@ Evidence:
 | the dependency structure of every conclusion | `luttinger/proof_ledger.py` |
 | the conditional downstream chain | `luttinger/downstream_chain_certificate.json` |
 
-Each certificate is replayed by two independent checkers, one Python and one
-Ruby, sharing neither source nor runtime. Both reject the negative controls
-distributed with the residual certificates.
+Each certificate is replayed by two separately implemented checkers, one
+Python and one Ruby, sharing neither source code nor runtime. Both reject the
+negative controls distributed with the residual certificates. This is
+implementation independence, not independent authorship: both checkers were
+produced within this project, and neither has received an independent human
+line-by-line audit.
 
 ## What is conditional
 
