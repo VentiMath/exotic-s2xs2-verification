@@ -65,7 +65,9 @@ the paper's coordinates, with proof-producing certificates that replay.
   tori are traced as literal simplicial loops with the paper's own whiskers.
   The alpha coordinate identity `lb_a_y1 = A x` is additionally certified in
   the sealed complement itself by a 2,506-record ancestry DAG, independently
-  replayed in Python and Ruby (run 68); no filling relation is used.
+  replayed in Python and Ruby (run 68); the beta identity
+  `lb_b_s2 = (r^-1 M r) B` has an analogous 1,540-record certificate (run 69).
+  No filling relation is used in either proof.
   The paper's sign-correction package (its §8.3 corrected relations and §8.5
   push-off basing correction) is reproduced and
   certified, and a combinatorial sweep resolves the basing double-count
@@ -154,7 +156,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   graph is acyclic and that each theorem depends on the certified
   π₁(V)=1, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
-  theorems, 36 machine certificates, 11 geometric arguments, 20 derived
+  theorems, 37 machine certificates, 11 geometric arguments, 20 derived
   claims — with every evidence file hashed. The first four counts describe
   the compact downstream chain; the latter four describe the larger
   project-wide ledger, so they are not competing tallies. The chain is
