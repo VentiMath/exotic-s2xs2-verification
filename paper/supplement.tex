@@ -1,0 +1,741 @@
+% Computational supplement to the certificate-based audit.
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\DeclareUrlCommand\repopath{\urlstyle{tt}\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
+\def\UrlBreakPenalty{0}\def\UrlBigBreakPenalty{0}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em
+\AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
+\usepackage{booktabs,tabularx,array,multicol,enumitem}
+\setlist[itemize]{leftmargin=*,itemsep=.35em,topsep=.45em}
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\CPbar}{\CP^2\#\overline{\CP}{}^2}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\pione}{\pi_1}
+\newcommand{\Zpp}{Z''}
+\newcommand{\Ghat}{\widehat{\Gamma}}
+\newcommand{\Gpp}{\Gamma''}
+\theoremstyle{definition}
+\newtheorem{proposition}{Proposition}[section]
+
+\title{Computational supplement to\\
+A certificate-based audit of Wuebben's proposed\\
+exotic $S^2\times S^2$ construction}
+\author{John Clyde\\ \small VentiMath\\
+\small \texttt{verification@ventimath.org}}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This supplement preserves the implementation inventory, complete downstream
+dependency exposition, trust boundary, data pins, calibration cases, and
+historical exports supporting the main paper.  None of the material here
+changes the logical status stated there: finite certificates are replayable,
+the marked geometric identification remains the principal expert-review
+boundary, and the downstream manifold conclusions are relative to named
+external results.
+\end{abstract}
+
+\section*{How to use this supplement}
+The main paper contains the mathematical certificate specification and the
+proof of the Geometric Identification Theorem.  Section~\ref{sec:certificates}
+below records the concrete certificate batches and replay architecture.
+Appendix~\ref{sec:downstream} gives the full proposition-by-proposition
+downstream chain; Appendix~\ref{sec:trust} records provenance, trust, and data
+availability; Appendix~\ref{app:engineering} preserves calibrations and
+historical computations.  The machine-readable ledger and every bound digest
+remain normative for exact inventories.
+
+\section{Certificate inventory and replay}\label{sec:certificates}
+
+\subsection{The four convention-specialized groups}
+
+For each of the four $n=0$ entries defined in the finite theorem of the main
+paper, KBMAG produced a complete rewriting system in which
+all three numbered generators reduce to the identity.  Completion is only
+the discovery method: each verdict is exported as a derivation DAG and
+proved by the Certificate Soundness Theorem in the main paper.  The certificate sizes are shown below.
+
+\begin{center}
+\begin{tabular}{llr}
+\toprule
+system & signs & retained records\\
+\midrule
+$n{=}0$ & $(-,-)$ & 3620\\
+$n{=}0$ & $(-,+)$ & 3803\\
+$n{=}0$ & $(+,-)$ & 2470\\
+$n{=}0$ & $(+,+)$ & 6672\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\small Retained derivation-DAG records over the sealed presentation.  Each
+certificate verifies triviality from a fresh clone.
+\end{center}
+
+An earlier four-generator export, four adjacent $n=1$ controls, calibration
+examples, deliberate corruptions, and the full framing-scan history are
+summarized in Section~\ref{app:engineering}.  None carries logical load for
+the fixed $n=0$ target.
+
+\subsection{Verifier architecture}
+
+Knuth--Bendix completion (KBMAG~1.5.9 \cite{KBMAG}, run under GAP~4.11.1
+\cite{GAP})
+is used only as an \emph{untrusted certificate generator}. A patched
+build of KBMAG records the ancestry of every equation it derives; the patch
+is distributed as
+\repopath{verification/luttinger/kbmag-proof/kbfns-proof.patch}. An
+untrusted compiler prunes that history to the dependency cone of the
+final identity rules and emits a certificate of the form in
+the Certificate Soundness Theorem in the main paper, binding the input presentation by SHA-256. The
+certified set is enforced, not assumed: both checkers reject a batch that
+verifies any case twice, and in full-inventory mode --- the documented
+invocation --- require the batch to be exactly the input's eight fillings,
+one file named by each case slug, over a source of the stated shape
+(three generators and 78 complement relators for the sealed chain, four and
+95 for the earlier export) with two filling relators per case; the manifest
+generator refuses to hash a certificate directory that is not exactly one
+file per filling. A successful replay therefore verifies exactly the four
+$n{=}0$ sign pairs and the four $n{=}1$ controls. A small
+standalone checker then re-verifies every input-relator axiom, inverse
+axiom, critical overlap, rewrite trace, tidying change, and final
+generator-to-identity rule; it neither imports nor runs KBMAG. A second
+checker, separately implemented in Ruby from the same specification,
+re-verifies all retained
+derivation records against the same hash-bound certificates and accepts,
+importing neither the first checker nor any project group code. All
+certificates, the exported rewriting systems, and a hash manifest replay
+from a clean checkout, and the stored rewriting systems reload and
+re-verify under GAP/KBMAG independently of the certificate path.
+
+The transport from the raw simplicial presentation to the presentation
+whose fillings are certified is sealed in the same sense. The canonical
+seeded run serializes the raw complement presentation (99,863 generators,
+321,702 relators) together with its 89 tracked peripheral and coordinate
+words, records the 99,860 elementary eliminations that reduce it to the
+3-generator, 78-relator presentation, and freezes that output. Two
+standalone checkers --- one in Python, one in Ruby, importing neither the
+geometry nor the simplifier --- replay the eliminations from those three
+frozen files alone: a step is accepted only if the eliminated generator
+occurs exactly once in the named current relator and the recorded
+replacement is the one that relator implies, input and output are bound by
+SHA-256, and the renumbered result must equal the frozen presentation
+relator by relator and tracked word by tracked word. Both reject
+corrupted-input, omitted-step, altered-substitution, and altered-output
+controls. The chain from the frozen raw complex to the eight triviality
+verdicts (39,163 retained derivation records over the sealed presentation)
+therefore replays end to end from committed files. The design principle throughout is that certificates are checked, not
+trusted: search and completion tools are untrusted generators, and every
+computational claim rests on a replayable artifact validated by small
+independent code.
+
+The 78-relator input has $H_1=\Z^2$, and each filling pair kills its
+abelianization; triviality rather than mere perfectness is carried by the
+derivation certificates.  The negative controls and calibration examples in
+Section~\ref{app:engineering} show that the pipeline also produces
+nontrivial groups and that both checkers reject altered records and incomplete
+inventories.  Those controls test implementation behavior; they are not
+substitutes for the soundness argument above.
+
+
+\appendix
+\section{From simple connectivity to the three
+theorems}\label{sec:downstream}
+
+The deductions from $\pione(V)=1$ to Theorems A, B, C occupy Part~I of
+\cite{Wuebben}, whose Theorem~1.2 reduces them to the simple connectivity
+of $V$. This section carries those deductions through as an explicit
+dependency chain. The chain is itself a machine artifact: a script
+records every item as one of four kinds --- an \emph{external theorem}
+stated with its hypotheses and source; a \emph{certificate} of this
+repository, bound by SHA-256; a \emph{computed} fact, executed by the
+script; or a \emph{step}, a deduction from earlier items --- and freezes
+the result as a certificate. A second script, separately implemented in
+Ruby, re-derives every computed fact from scratch, checks that every
+citation resolves and that the dependency graph is acyclic, verifies that
+each of the three conclusions depends on the finite theorem of the main paper, and
+checks every evidence file against its recorded digest. The chain has 25
+external theorems, 3 certificates, 15 computed facts, and 16 steps; its
+prose form is in the repository, and what follows is the mathematics,
+with the inputs first. Both scripts in this downstream pair were produced
+by Claude Fable~5; independence here likewise means separate implementations,
+not cross-model authorship.
+
+\subsection*{External inputs}
+
+Elementary algebraic topology enters as: the Seifert--van Kampen theorem
+for a union along a connected bicollared subspace; the exact sequence
+$1\to\pione(Z)\to\pione(W)\to G\to1$ of a connected regular covering with
+deck group $G$; Poincar\'e--Lefschetz duality and universal coefficients,
+with the Euler characteristic as an alternating sum of Betti numbers over
+any field, multiplicative for bundles with compact fiber and additive
+along a common boundary; the index formula $\det(\mathrm{Gram}\,S)=[L:S]^2
+\det(\mathrm{Gram}\,L)$ for a finite-index sublattice, with the
+unimodularity of the intersection form on $H_2/\mathrm{Tors}$; Wu's
+formula $\langle w_2,x\rangle=x\cdot x$ and its consequence
+$\langle w_2(X),[F]\rangle=\chi(F)+F\cdot F \pmod 2$ for an embedded
+oriented surface; Novikov additivity of the signature; asphericity of
+bundles with aspherical fiber and base; the adjunction formula
+$K\cdot S+S\cdot S=2g-2$ for a symplectic surface; and the isotopy of
+any two orientation-preserving smooth embeddings of $B^4$ in a connected
+4-manifold \cite{Palais}, which together with the amphichirality of the
+figure-eight knot makes smooth sliceness in a closed 4-manifold a
+diffeomorphism invariant.
+
+The named theorems are the following.
+\begin{itemize}
+\item \textbf{Freedman} \cite{Freedman}: closed simply connected
+topological 4-manifolds are classified up to homeomorphism by the
+intersection form and the Kirby--Siebenmann invariant; every unimodular
+form is realized, uniquely if even (with $\mathrm{KS}\equiv
+\sigma/8$), and by exactly two manifolds if odd, one per value of
+$\mathrm{KS}$.
+\item \textbf{Hambleton--Kreck} \cite{HK88,HK93,HKcorr}, in the form of
+\cite[Theorem~5.1]{Hambleton}: ``Closed, oriented topological
+4-manifolds with finite cyclic fundamental groups are classified up to
+homeomorphism by $\pi_1(M)$, $q_M$, the $w_2$-type, and $\mathrm{KS}(M)$,''
+where $q_M$ is the form on $H_2/\mathrm{Tors}$ and the $w_2$-type is
+(II) for spin $M$.
+\item \textbf{Thurston} \cite{Thurston} and the paper's Thurston-type
+form (\cite{Wuebben}, proofs of Proposition~1.3 and Lemma~8.2;
+\cite{LidmanPiccirillo}, proof of Theorem~8): a closed surface bundle
+over a closed surface with homologically essential fiber is symplectic,
+and for $R\cup_\sigma R$ the form can be chosen positive on the fiber $F$
+and on the closed section $\Ghat$, with the surgery tori Lagrangian.
+\item \textbf{Luttinger surgery} \cite{Luttinger,ADK}: surgery on a
+Lagrangian torus yields a symplectic manifold, agreeing with the original
+outside the surgered neighborhood and with unchanged Euler
+characteristic.
+\item \textbf{Symplectic Kodaira dimension} \cite{Li}, as summarized in
+\cite[p.~1]{HoLi}: $\kappa$ is defined from a minimal model and ``is
+independent of the choice of symplectic form $\omega$''; a minimal
+symplectic 4-manifold has $\kappa=-\infty$ iff it is rational or ruled,
+and rational and ruled 4-manifolds have $\pi_2\ne0$. \textbf{Ho--Li}
+\cite[Theorem~1.1]{HoLi}: ``The Luttinger surgery preserves the
+symplectic Kodaira dimension.''
+\item \textbf{Symplectic Thom} \cite{OzsvathSzabo}: an embedded
+symplectic surface in a closed symplectic 4-manifold is genus-minimizing
+in its homology class; and the construction (\cite{Wuebben}, proof of
+Lemma~4.3, after \cite{StipsiczSzabo}) of a connected symplectic
+unbranched $k$-fold cover of a square-zero symplectic surface inside its
+tubular neighborhood, representing $k$ times its class.
+\item \textbf{Klug} \cite[Theorem~2]{Klug}: ``Let $X^4$ be a smooth
+compact connected oriented 4-manifold with $\partial X$ an integer
+homology sphere. Let $F^2$ be an orientable characteristic surface with
+connected boundary that is properly embedded in $X$. Then
+$\mathrm{Arf}(F)+\mathrm{Arf}(\partial F)=(\sigma(X)-[F]^2)/8+
+\mu(\partial X) \pmod 2$.'' For spin $X$, characteristic means vanishing
+in $H_2(X,\partial X;\Z/2)$. \textbf{Levine} \cite{Levine}:
+$\mathrm{Arf}(K)=0$ iff $\Delta_K(-1)\equiv\pm1\pmod 8$.
+\item \textbf{Slice disks and the 0-trace} (\cite{LidmanPiccirillo},
+proof of Theorem~1): a smooth slice disk with Seifert-framed normal
+bundle embeds the simply connected 0-trace, in which a capped Seifert
+surface is a closed square-zero surface generating $H_2$; the framing
+condition is automatic when the relative $H_2$ is torsion; the
+figure-eight knot has genus~1.
+\item \textbf{Lidman--Piccirillo's constructions}
+\cite{LidmanPiccirillo}: $\sigma$ is a free orientation-reversing bundle
+involution (Lemma~4); the sections from the fixed points of $\varphi_0$
+survive into $V$, their boundary circles are preserved by $\sigma$, and
+$R\cup_\sigma R$ is a closed genus-2 bundle over a closed genus-2 surface
+on which the surgeries act by Luttinger surgery on four disjoint tori
+missing $F$ and $\Ghat$ (Lemma~6, proof of Theorem~8); $W=V/\sigma$ is a
+closed smooth oriented 4-manifold, double covered by $Z$, and is spin by
+the hyperbolic-pair argument of Lemma~7, whose hypotheses are the
+homology of $V$; the regluing diffeomorphism $f$ of $S^3_0(Q)$ exists,
+and with $\mathcal A\subset S^3_0(Q)$ the framed annulus joining
+$\partial\Gamma$ to its image under $f\circ\sigma$, the closed surface
+$\Gpp=\Gamma\cup_{\mathcal A}\Gamma$ has odd square and meets $F$ once
+(proof of Theorem~2); and the Floer-theoretic input, Lemmas~9
+and~10 with the vanishing of all mixed invariants of $\CPbar$ (and of its
+sum with any homology 4-sphere) along both square-zero lines, via
+splittings over $S^2\times S^1$ (proof of Theorem~2, using
+\cite{OS04,OS06}).
+\item \textbf{Kawauchi's manifold} \cite{Kawauchi,LidmanPiccirillo}: $B$
+is a closed smooth oriented spin 4-manifold with $\pione(B)=H_1(B)=\Z/2$
+and $b_2(B)=0$, in which the figure-eight knot is smoothly slice.
+\end{itemize}
+
+\subsection*{The chain}
+
+Throughout, $F$ is a fiber of $R$ disjoint from the surgery tori, $\Gamma$
+a section through a fixed point of $\varphi_0$, $\Ghat=\Gamma\cup_\sigma
+\Gamma\subset Z$ and $\Gpp=\Gamma\cup_{\mathcal A}\Gamma\subset\Zpp$ its
+closures, $\mathcal A$ the framed annulus above.
+The finite calculations cited are those of the chain's certificate.
+
+\begin{proposition}\label{prop:V}
+$H_1(V)=0$, $H_3(V)=0$, $H_2(V)=\Z\langle F\rangle$ with $F\cdot F=0$,
+and $V$ is spin. Moreover $\pione(Z)=\pione(\Zpp)=1$.
+\end{proposition}
+
+\begin{proof}
+Wuebben's Lemma~4.2 and the two filling relations give $H_1(V)=0$
+independently of simple connectivity; the certificate also implies it. The
+boundary $S^3_0(Q)$ is connected, so
+$H^1(V,\partial V)=0$ and hence $H_3(V)=0$, and $H_1(V,\partial V)=0$ so
+$H_2(V)$ is torsion-free. $\chi(V)=\chi(R)=\chi(F)\chi(\text{base})=
+(-2)(-1)=2$, unchanged by the surgeries, and $b_0=1$, $b_1=b_3=b_4=0$
+give $b_2(V)=1$. A section is a properly embedded surface meeting $F$
+once, so $[F]$ is primitive and generates. $F\cdot F=0$ since a fiber has
+trivial normal bundle. $H_2(V;\Z/2)=\Z/2\langle F\rangle$, $w_2$ is
+detected on it, and $\langle w_2,F\rangle=\chi(F)+F\cdot F=-2+0\equiv0$.
+Finally $Z$ and $\Zpp$ are unions of two copies of $V$ along the connected
+bicollared boundary, so by van Kampen each fundamental group is a
+quotient of $\pione(V)*\pione(V)=1$. This is the one downstream step where
+simple connectivity of $V$, rather than only of $Z$, is needed: the
+regluing twists the amalgam.
+\end{proof}
+
+\begin{proposition}\label{prop:Z}
+$H_2(Z)=\Z\langle F,\Ghat\rangle$ with intersection form the hyperbolic
+form $H$; $Z$ is closed, simply connected, spin, with $b_2=2$ and
+signature $0$; and $Z$ is homeomorphic to $S^2\times S^2$.
+\end{proposition}
+
+\begin{proof}
+$\chi(Z)=2\chi(V)-\chi(S^3_0(Q))=4$ and $\pione(Z)=1$ give $b_2(Z)=2$
+with $H_2(Z)$ torsion-free. $F\cdot F=0$, $F\cdot\Ghat=1$ (a fiber meets
+a section once), and $\Ghat\cdot\Ghat=0$ by the certified
+self-intersection computation in the peripheral section of the main paper.
+The Gram
+determinant is $-1$ and the form
+is unimodular, so the index formula makes $(F,\Ghat)$ a basis and the
+form is $H$. $H$ is even, so $w_2(Z)=0$ by Wu's formula. For even forms
+$\mathrm{KS}\equiv\sigma/8=0$ is determined, so Freedman's classification
+gives $Z\cong S^2\times S^2$. Note that spinness of $Z$ is obtained here
+from the certified $\Ghat\cdot\Ghat=0$; the paper's route through the
+spin quotient $W$ is not needed for this step.
+\end{proof}
+
+\begin{proposition}\label{prop:Znot}
+$Z$ is a closed symplectic 4-manifold in which $F$ and $\Ghat$ are
+symplectic surfaces of genus 2 and square 0, and $Z$ is not
+diffeomorphic to $S^2\times S^2$.
+\end{proposition}
+
+\begin{proof}
+$R\cup_\sigma R$ is a closed surface bundle whose fiber is homologically
+essential ($F\cdot\Ghat=1$), so it carries the Thurston-type form,
+positive on $F$ and $\Ghat$. The surgery tori are Lagrangian for it and
+the surgeries are the certified Luttinger surgeries
+(the Geometric Identification Theorem of the main paper), and Luttinger surgery preserves the form
+away from the surgered neighborhoods, which miss $F$ and $\Ghat$. For the
+non-diffeomorphism: $R\cup_\sigma R$ is aspherical, hence minimal (an
+exceptional sphere would be null-homotopic, hence of square $0$, not
+$-1$) and neither rational nor ruled (those have $\pi_2\neq0$), so
+$\kappa(R\cup_\sigma R)\ne-\infty$; Luttinger surgery preserves $\kappa$,
+so $\kappa(Z)\ne-\infty$. If $\psi\colon Z\to S^2\times S^2$ were a
+diffeomorphism, composing with a reflection of one factor if necessary
+makes it orientation-preserving; $\psi^*$ of a product form is then a
+symplectic form on $Z$ inducing its orientation with $\kappa=
+\kappa(S^2\times S^2)=-\infty$, contradicting the independence of
+$\kappa$ from the form.
+\end{proof}
+
+Propositions~\ref{prop:Z} and~\ref{prop:Znot} are Theorem~A.
+
+\begin{proposition}\label{prop:W}
+$W$ is a closed oriented smooth spin 4-manifold with $\pione(W)=\Z/2$,
+$b_2(W)=0$, signature $0$, and $\mathrm{KS}(W)=0$; and $W$ is
+homeomorphic to $B$.
+\end{proposition}
+
+\begin{proof}
+$Z\to W$ is a connected 2-fold covering, so $|\pione(W)|=2$.
+$\chi(W)=\chi(Z)/2=2$ and $b_1(W)=0$ give $b_2(W)=0$, hence signature
+$0$. $W$ is spin by Lidman--Piccirillo's Lemma~7, whose hypotheses
+Proposition~\ref{prop:V} supplies, and $\mathrm{KS}(W)=0$ since $W$ is
+smooth. $W$ and $B$ are then closed oriented topological 4-manifolds with
+the same Hambleton--Kreck invariants: $\pione=\Z/2$, the zero form on
+$H_2/\mathrm{Tors}=0$, $w_2$-type (II), $\mathrm{KS}=0$.
+\end{proof}
+
+\begin{proposition}\label{prop:torus}
+No nonzero square-zero class in $H_2(Z;\Z)$ is represented by a smoothly
+embedded torus.
+\end{proposition}
+
+\begin{proof}
+For $k\ge1$ the connected symplectic $k$-fold covers of $F$ and of $\Ghat$
+represent $kF$ and $k\Ghat$ and have genus $k+1$, since $\chi=-2k$; by the
+symplectic Thom theorem these genera are minimal, and reversing
+orientation covers $k<0$. Since $(aF+b\Ghat)^2=2ab$, every nonzero
+square-zero class is $kF$ or $k\Ghat$ with $k\ne0$, of minimal genus
+$|k|+1\ge2$.
+\end{proof}
+
+\begin{proposition}\label{prop:slice}
+The figure-eight knot is not smoothly slice in $W$.
+\end{proposition}
+
+\begin{proof}
+Let $D$ be a smooth slice disk in $W^\circ=W\setminus B^4$. The group
+$H_2(W^\circ,\partial;\Z)\cong H^2(W)\cong\Z/2$ is torsion, so the
+relative self-intersection of $D$ is $0$ and its framing is the Seifert
+framing. If $[D,\partial D]=0$ in $H_2(W^\circ,\partial;\Z/2)$, then $D$
+is characteristic in the spin manifold $W^\circ$, and Klug's theorem with
+$\mathrm{Arf}(D)=0$, $\sigma(W^\circ)=0$, $[D]^2=0$, $\mu(S^3)=0$ forces
+$\mathrm{Arf}(4_1)=0$; but $\Delta_{4_1}(t)=-t^2+3t-1$ gives
+$\Delta_{4_1}(-1)=-5\equiv3\pmod 8$, so $\mathrm{Arf}(4_1)=1$. Otherwise
+the 0-trace $X_0(4_1)$ embeds in $W$ and the torus $T$ obtained by capping
+a Seifert surface with $D$ has square $0$ and $[T]\ne0$ in $H_2(W;\Z/2)$.
+Since $X_0(4_1)$ is simply connected it lifts to $Z$, and $T$ lifts to a
+torus $\tilde T$ with $p_*[\tilde T]=[T]\ne0$ in $\Z/2$ coefficients; so
+$[\tilde T]\ne0$ in $H_2(Z;\Z/2)=H_2(Z;\Z)\otimes\Z/2$ (as $H_1(Z)=0$),
+and a class with nonzero mod-2 reduction is nonzero in the torsion-free
+$H_2(Z;\Z)$; and $\tilde
+T\cdot\tilde T=T\cdot T=0$ because $p$ is a local diffeomorphism. This
+contradicts Proposition~\ref{prop:torus}.
+\end{proof}
+
+Proposition~\ref{prop:W}, Proposition~\ref{prop:slice}, the sliceness of
+the figure-eight knot in $B$, and the diffeomorphism invariance of
+sliceness give Theorem~B.
+
+\begin{proposition}\label{prop:Zpp}
+$\Zpp$ is closed, simply connected, smooth, with $b_2=2$, signature $0$,
+and odd intersection form $\langle1\rangle\oplus\langle-1\rangle$; hence
+$\Zpp$ is homeomorphic to $\CPbar$.
+\end{proposition}
+
+\begin{proof}
+$\pione(\Zpp)=1$ and $\chi(\Zpp)=4$ give $b_2=2$ with $H_2$ free. Both
+$Z$ and $\Zpp$ decompose into the same two oriented copies of $V$ along
+their common boundary, so Novikov additivity gives
+$\sigma(\Zpp)=\sigma(Z)=0$, independently of the regluing map.
+$F\cdot F=0$, $F\cdot\Gpp=1$, and
+$\Gpp\cdot\Gpp=2\ell+1$ is odd; the Gram determinant is $-1$, so
+$(F,\Gpp)$ is a basis, and $E=\Gpp-\ell F$, $D=F-E$ satisfy $E\cdot E=1$,
+$D\cdot D=-1$, $E\cdot D=0$ for every $\ell\in\Z$: the form is
+$\langle1\rangle\oplus\langle-1\rangle$. Of Freedman's two manifolds with
+this form the one with $\mathrm{KS}=0$ --- $\Zpp$ is smooth --- is
+$\CPbar$.
+\end{proof}
+
+\begin{proposition}\label{prop:Zppnot}
+$\Zpp$ is not diffeomorphic to $\CPbar$.
+\end{proposition}
+
+\begin{proof}
+$Z$ is symplectic with $|K_Z\cdot F|=2$ by adjunction ($F$ symplectic of
+genus 2 and square 0) and $H^2(V)=\Z$, so Lidman--Piccirillo's Lemma~9
+gives $\Psi_{V,t}\ne0$ for both spin$^c$ structures with
+$|\langle c_1(t),F\rangle|=2$. $\Zpp$ is $V\cup V$ along $S^3_0(Q)$ with
+$t$ restricting to the non-torsion $s_\pm$, $b_2^+(\Zpp)=1$, and
+$\mathrm{span}\{F\}$ a square-zero line, so Lemma~10 gives a nonvanishing
+mixed invariant $\Phi_{\Zpp,\mathrm{span}\{F\},t}$. A diffeomorphism to
+$\CPbar$ would carry $\mathrm{span}\{F\}$ to one of its two square-zero
+lines --- in $\langle1\rangle\oplus\langle-1\rangle$, $a^2-b^2=0$ forces
+$a=\pm b$ --- along each of which the manifold splits over $S^2\times S^1$
+and every mixed invariant vanishes.
+\end{proof}
+
+Propositions~\ref{prop:V}, \ref{prop:Zpp} and~\ref{prop:Zppnot} are
+Theorem~C, and the Conditional Consequences Theorem of the main paper is proved.
+
+Three points where the chain's route differs from the paper's are worth
+recording. $H_1(V)=0$ is taken from the certificate rather than from the
+paper's Lemma~4.2 and the surgery relations, which are needed only for
+the ``forcing'' direction of its Proposition~1.3. The intersection form
+of $Z$ is identified from the certified $\Ghat\cdot\Ghat=0$, so that $Z$
+is spin because its form is even; $W$ spin still enters, for the
+Hambleton--Kreck invariants and for Klug's theorem. And the sliceness
+dichotomy is taken over $\Z/2$ throughout, which is exactly what makes
+the null-homologous case Klug's characteristic case and the lifted torus
+nonzero integrally.
+
+\section{Trust boundary and data availability}\label{sec:trust}
+
+\subsection*{Checker provenance and audit status}
+
+The verification was developed by Anthropic Claude models (Fable~5 and
+Opus~5) and OpenAI Codex (GPT-5 family) under the author's direction, with
+commit-level provenance and cross-model corrections retained in the public
+ledger.  Mathematical responsibility rests with the human author; model
+provenance is not evidence of correctness.
+
+Both filled-group checkers were produced as separate Python and Ruby
+implementations by OpenAI Codex.  They share neither implementation code nor
+runtime libraries beyond their standard libraries, but they do share the
+published certificate specification and input format.  Thus ``independent''
+means implementation-independent, not independent human authorship or
+statistically uncorrelated errors.  The downstream pair was separately
+implemented in Python and Ruby by Claude Fable~5.  No theorem-critical
+checker has yet received an independent human line-by-line audit.  The small
+source files, negative controls, and exact replay commands are public so that
+this remaining software-review task is explicit.
+
+\subsection*{Inputs to the finite theorem of the main paper and
+the Geometric Identification Theorem of the main paper}
+
+the finite theorem of the main paper has no mathematical input beyond
+the Certificate Soundness Theorem of the main paper; its trust rests on the two small checkers.
+the Geometric Identification Theorem of the main paper rests on standard inputs of PL topology: the
+ribbon-thickening and bistellar-trace interpretations that read the
+paper's figures into complexes; classification of compact surfaces;
+local-flatness and normal-block criteria; and simplicial
+fundamental-group presentations with Tietze theory.  The regular-neighborhood
+and local-flatness conventions are those of
+\cite[Chapters~2--4]{RourkeSanderson} and \cite[Chapters~3--5]{Hudson}; the
+presentation moves are the standard ones of \cite{LyndonSchupp}.  These enter
+together with the Ker\'ekj\'art\'o
+periodic-disk involution theorem \cite{ConstantinKolev} behind the disk
+extension of the paper's Lemma~7.1, and \cite{ADK} as corroboration of
+the framing identification. The ribbon-interpretation input is narrower
+than the phrase suggests: the certified classification of equivariant
+ribbon rotations pins the implication from the paper's stated marked
+five-chain data to the equivariant normal form, and the stated data
+themselves are audited in the original Lidman--Piccirillo source, so what
+this boundary retains is the thickening of that data into complexes
+together with the dashed-arc convention explained in the model section of
+the main paper. This note reproves none of these.
+
+\subsection*{Inputs to the Conditional Consequences Theorem of the main paper}
+
+The twenty-five external theorems of Appendix~\ref{sec:downstream}, each
+stated there with its hypotheses. The deep ones are Freedman's
+classification, the Hambleton--Kreck classification, the invariance
+theorems for symplectic Kodaira dimension (Li, Ho--Li), the symplectic
+Thom theorem, Klug's relative Rochlin theorem, and the Floer-theoretic
+lemmas of Lidman--Piccirillo with the Ozsv\'ath--Szab\'o nonvanishing
+theorem behind them; the rest are elementary or are constructions of
+\cite{LidmanPiccirillo} that this note takes as stated. None is reproved.
+The repository's dependency ledger records the whole verification as an
+acyclic graph of 33 named external theorems, 37 machine certificates, 11
+geometric arguments, and 20 derived claims ending in the three theorems,
+with every evidence file bound by hash. These are not competing counts: the
+25/3/15/16 figures in Appendix~\ref{sec:downstream} describe only the compact
+downstream chain, while 33/37/11/20 describe the larger project-wide ledger
+that also contains the model, peripheral, framing, and PL verification.
+
+\subsection*{Data availability}
+
+This verification targets Wuebben's arXiv:2608.17267v1 (18 August 2026),
+whose PDF has SHA-256
+\begin{center}\small\texttt{16a6cef4998699f76ee508e062f8192cf80eeb478b7e077bfa35ccc25350186a}\end{center}
+The target-version ledger in \texttt{TARGET.md} also records the
+Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
+manifests, run transcripts, and provenance records are contained, with
+clean-checkout replay instructions, in the tagged release \texttt{v1.5.9}
+of the repository:
+\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.9}\end{center}
+The \texttt{verification/} tree of that release is identical to that of
+the repository commit
+\begin{center}\small\texttt{8efbe7c2f43e01041263378dd836008e9747dcda}\end{center}
+its filled-group proof manifest has SHA-256
+\begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
+and its downstream-chain certificate has SHA-256
+\begin{center}\small\texttt{fbd31c4abd548093e6d3b73054d54cc0c3588e804a3374911e820abe6b66842e}\end{center}
+The repository itself is public at
+\begin{center}\small
+\url{https://github.com/VentiMath/exotic-s2xs2-verification}
+\end{center}
+The versioned release link above, rather than search-engine indexing, is the
+artifact to check. The raw completion histories from which certificates are compiled are
+reproducible build products and are omitted. The paper's own code is at
+\url{https://github.com/bwuebben/exotic-s2xs2}; nothing in the
+verification derives from it except where explicitly cited.
+
+\section{Supporting computational history}\label{app:engineering}
+
+The proof of the finite theorem of the main paper uses only the sealed three-generator
+chain.  An earlier export of the same marked complement had four generators
+and 95 relators.  Its four $n=0$ certificates contain respectively
+1123, 1075, 804, and 1504 retained records and reach the same verdicts, but
+the interpreter hash seed used to number its raw simplices was not recorded;
+its input Tietze trace therefore cannot be regenerated.  It is retained as
+corroborating history and no ledger node depends on it.
+
+Four adjacent $n=1$ presentations replace $Ax$ by
+$Ar^{-1}=Ax(rx)^{-1}$.  They pass the same full-inventory certificate
+pipeline and check Wuebben's one-step re-indexing, but they are not used for
+the fixed $n=0$ member.  Likewise, the framing-robustness scan tests 96
+cross-and-diagonal meridian shifts plus four zero-shift controls: 22 have
+derivation certificates and 78 have retained GAP session verdicts.  All 100
+were reported trivial.  Since these counterfactuals do not distinguish the
+correct framing, the scan is explicitly auxiliary.
+
+The implementation has both positive and negative calibrations.  On the
+standard $T^4$ Luttinger example it returns the complement
+$\Z^2\times F_2$ and the textbook quotient $\Z^4$; on a
+Baldridge--Kirk example it separates the two sign conventions by trace
+fingerprints $1$ and $3$.  A 96-relator common core completes to an infinite
+cyclic group, and a mapping-torus control distinguished $H_1=\Z^2$ from the
+$H_1=\Z^3$ identity case, exposing a construction error that was then fixed.
+Both filled-group checkers reject a wrong identity root, an altered input
+relator, an altered rewrite trace, a wrong generator count, an incomplete
+inventory, and a duplicated certificate batch.  These tests show that the
+pipeline neither collapses every input nor accepts every file; the positive
+soundness claim remains the Certificate Soundness Theorem of the main paper.
+
+
+\section*{References}
+\addcontentsline{toc}{section}{References}
+\begingroup
+\small
+\linespread{.98}\selectfont
+\setlength{\columnsep}{1.25em}
+\raggedcolumns
+\begin{multicols}{2}
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{99}
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
+
+\bibitem{Wuebben}
+B.~J.~Wuebben,
+\emph{An exotic $S^2\times S^2$ and an exotic
+$\CP^2\#\overline{\CP}{}^2$},
+arXiv:2608.17267v1 (2026).
+
+\bibitem{LidmanPiccirillo}
+T.~Lidman and L.~Piccirillo,
+\emph{Distinguishing closed 4-manifolds by slicing},
+arXiv:2505.14387v1 (2025).
+
+\bibitem{ADK}
+D.~Auroux, S.~K.~Donaldson, and L.~Katzarkov,
+\emph{Luttinger surgery along Lagrangian tori and non-isotopy for singular
+symplectic plane curves},
+Math. Ann. \textbf{326} (2003), 185--203.
+
+\bibitem{ConstantinKolev}
+A.~Constantin and B.~Kolev,
+\emph{The theorem of Ker\'ekj\'art\'o on periodic homeomorphisms of the
+disc and the sphere},
+Enseign.\ Math.\ (2) \textbf{40} (1994), 193--204.
+
+\bibitem{RourkeSanderson}
+C.~P.~Rourke and B.~J.~Sanderson,
+\emph{Introduction to Piecewise-Linear Topology},
+Ergebnisse der Mathematik und ihrer Grenzgebiete, vol.~69,
+Springer-Verlag, 1972.
+
+\bibitem{Hudson}
+J.~F.~P.~Hudson,
+\emph{Piecewise Linear Topology}, W.~A.~Benjamin, 1969.
+
+\bibitem{LyndonSchupp}
+R.~C.~Lyndon and P.~E.~Schupp,
+\emph{Combinatorial Group Theory}, Ergebnisse der Mathematik und ihrer
+Grenzgebiete, vol.~89, Springer-Verlag, 1977.
+
+\bibitem{Luttinger}
+K.~M.~Luttinger,
+\emph{Lagrangian tori in $\R^4$},
+J. Differential Geom. \textbf{42} (1995), 220--228.
+
+\bibitem{Freedman}
+M.~H.~Freedman,
+\emph{The topology of four-dimensional manifolds},
+J. Differential Geom. \textbf{17} (1982), 357--453.
+
+\bibitem{HK88}
+I.~Hambleton and M.~Kreck,
+\emph{On the classification of topological 4-manifolds with finite
+fundamental group},
+Math. Ann. \textbf{280} (1988), 85--104.
+
+\bibitem{HK93}
+I.~Hambleton and M.~Kreck,
+\emph{Cancellation, elliptic surfaces and the topology of certain
+four-manifolds},
+J. Reine Angew. Math. \textbf{444} (1993), 79--100.
+
+\bibitem{HKcorr}
+I.~Hambleton and M.~Kreck,
+\emph{On the classification of topological 4-manifolds with finite
+fundamental group: corrigendum},
+Math. Ann. \textbf{372} (2018), 527--530.
+
+\bibitem{Hambleton}
+I.~Hambleton,
+\emph{Intersection forms, fundamental groups and 4-manifolds},
+Proceedings of the 15th G\"okova Geometry-Topology Conference (2008),
+137--150.
+
+\bibitem{HoLi}
+C.-I.~Ho and T.-J.~Li,
+\emph{Luttinger surgery and Kodaira dimension},
+Asian J. Math. \textbf{16} (2012), 299--318.
+
+\bibitem{Li}
+T.-J.~Li,
+\emph{Symplectic 4-manifolds with Kodaira dimension zero},
+J. Differential Geom. \textbf{74} (2006), 321--352.
+
+\bibitem{Thurston}
+W.~P.~Thurston,
+\emph{Some simple examples of symplectic manifolds},
+Proc. Amer. Math. Soc. \textbf{55} (1976), 467--468.
+
+\bibitem{OzsvathSzabo}
+P.~Ozsv\'ath and Z.~Szab\'o,
+\emph{The symplectic Thom conjecture},
+Ann. of Math. (2) \textbf{151} (2000), no.~1, 93--124.
+
+\bibitem{OS04}
+P.~Ozsv\'ath and Z.~Szab\'o,
+\emph{Holomorphic triangle invariants and the topology of symplectic
+four-manifolds},
+Duke Math. J. \textbf{121} (2004), 1--34.
+
+\bibitem{OS06}
+P.~Ozsv\'ath and Z.~Szab\'o,
+\emph{Holomorphic triangles and invariants for smooth four-manifolds},
+Adv. Math. \textbf{202} (2006), no.~2, 326--400.
+
+\bibitem{StipsiczSzabo}
+A.~I.~Stipsicz and Z.~Szab\'o,
+\emph{On the minimal genus problem in four-manifolds},
+arXiv:2307.04202 (2023).
+
+\bibitem{Klug}
+M.~R.~Klug,
+\emph{A relative version of Rochlin's theorem},
+arXiv:2011.12418 (2021).
+
+\bibitem{Levine}
+J.~Levine,
+\emph{Polynomial invariants of knots of codimension two},
+Ann. of Math. (2) \textbf{84} (1966), 537--554.
+
+\bibitem{Kawauchi}
+A.~Kawauchi,
+\emph{Rational-slice knots via strongly negative-amphicheiral knots},
+Commun. Math. Res. \textbf{25} (2009), 177--192.
+
+\bibitem{Palais}
+R.~S.~Palais,
+\emph{Extending diffeomorphisms},
+Proc. Amer. Math. Soc. \textbf{11} (1960), 274--277.
+
+\bibitem{KBMAG}
+D.~F.~Holt,
+\emph{KBMAG --- Knuth--Bendix in Monoids and Automatic Groups},
+software package, version 1.5.9.
+
+\bibitem{GAP}
+The GAP~Group,
+\emph{GAP --- Groups, Algorithms, and Programming},\newline
+\url{https://www.gap-system.org}.
+
+\end{thebibliography}
+\end{multicols}
+\endgroup
+
+
+\end{document}
