@@ -11,20 +11,20 @@ This project rebuilt the geometry from scratch and checked the paper against
 the rebuild. The immutable target versions and their SHA-256 digests are
 recorded in [`TARGET.md`](TARGET.md).
 
-**What this repository is:** a verification, by people and machines who are
-not the paper's author, of the paper's three theorems: the theorem-critical
-fundamental-group computation is proved by replayable certificates, and
-every deduction from it to the theorems (the double is homeomorphic but not
-diffeomorphic to S²×S²; the quotient is homeomorphic to Kawauchi's B and
-distinguished from it by the sliceness of the figure-eight knot; the regluing
-is an exotic ℂP²#C̄P²) is carried through as an explicit dependency chain
-relative to twenty-five named external theorems, each stated with its
-hypotheses and each hypothesis discharged by a named certificate or
-computation.
+**What this repository is:** a version-specific, certificate-based audit by
+people and machines who are not the paper's author. Its unconditional theorem
+is that four explicit, hash-identified presentations are trivial. A separate
+Geometric Identification Theorem argues that those presentations surject onto
+the fundamental group of the fixed surgery manifold; this is the principal
+human-review boundary. The three manifold conclusions are then recovered
+conditionally from twenty-five named external results. The paper, its
+computational supplement, and the repository keep those three evidence levels
+separate.
 
-**What this repository is not:** a claim on the theorems, which are
-Wuebben's, or a reproof of the classification, symplectic, and
-Floer-theoretic theorems the chain cites.
+**What this repository is not:** a claim of priority on the theorems, which
+are Wuebben's; a formalization of the classification, symplectic, and
+Floer-theoretic theorems the chain cites; or a substitute for independent
+human review of the marked geometric identification.
 
 **Known unreconciled external computation.** Wuebben's repository has stated,
 since its first visible commit and continuously since, that Lidman and
@@ -162,7 +162,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   project-wide ledger, so they are not competing tallies. The chain is
   written out in prose in
   `verification/notes/downstream_proof_chain_2026-08-28.md` and in the
-  paper's Section 6.
+  computational supplement.
 
 ## What is not claimed
 
@@ -211,13 +211,13 @@ neighbor. Within the scanned range, no framing error would have produced a
 nontrivial group; the scan bears on the j=0 proof only if the independent
 framing argument first fails.
 
-The accurate one-sentence status: **inside the specified, hash-bound model,
-the three theorems are verified relative to explicitly named external results,
-and no internal discrepancy has been found by the reproducible checks** — with
-the reported contrary computation of π₁(V) disclosed above and not resolved.
-That is a statement about verification depth, not a substitute for review by
-symplectic and 4-manifold topologists — which this repository is built to
-make cheap.
+The accurate one-sentence status: **the finite presentations are certified
+trivial; the implication for Wuebben's fixed manifold rests on the separately
+stated marked geometric identification; and the three manifold conclusions
+are conditional on named external results** — with the reported contrary
+computation of π₁(V) disclosed above and not resolved. That is a statement
+about verification depth, not a substitute for review by symplectic and
+4-manifold topologists — which this repository is built to make cheaper.
 
 ## Provenance
 
@@ -231,7 +231,8 @@ asserted computation ships with a replayable artifact.
 ## Contents
 
 * `docs/verification-note.md` — the verification note.
-* `paper/` — the LaTeX source of the arXiv verification note.
+* `paper/` — the LaTeX source of the main audit and its computational
+  supplement.
 * `TARGET.md` — immutable target-paper versions and SHA-256 digests.
 * `verification/` — the working repository at its imported commit: the engine
   and certificates under `verification/luttinger/` (derivation-DAG

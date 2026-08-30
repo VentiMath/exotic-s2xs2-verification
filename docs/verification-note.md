@@ -1,4 +1,4 @@
-# Certificate-based verification of Wuebben's exotic S²×S² construction
+# Prose companion to the certificate-based audit of Wuebben's construction
 
 > **Known unreconciled external computation.** Wuebben's repository has stated,
 > since its first visible commit and continuously since, that Lidman and
@@ -37,13 +37,14 @@ Ar⁻¹ = Ax(rx)⁻¹, Wuebben's n=1 member — also pass the identical
 certification; they verify his one-step re-indexing and carry no logical
 load for the fixed n=0 target.
 
-This note reports a verification of the whole argument. The simple
-connectivity is verified independently of the paper's coordinates, software,
-and author: the bundle is rebuilt as a simplicial complex from the paper's
+This note reports a version-specific audit of the whole argument. The finite
+certificate theorem is unconditional for its hash-bound presentations. The
+simple-connectivity conclusion additionally uses the Geometric Identification
+Theorem of the main paper: the bundle is rebuilt as a simplicial complex from the paper's
 marked-fiber data alone, the surgery tori, meridians, and framed longitudes
 are extracted combinatorially, and the resulting filled presentations are
 proved trivial by complete confluent rewriting, with every computation
-emitting a replayable proof certificate checked by independently implemented
+emitting a replayable proof certificate checked by separately implemented
 Python and Ruby verifiers. Both verifiers were produced by OpenAI Codex
 (GPT-5 family); independence means separate implementations, not cross-model
 authorship. No independent human line-by-line audit of those checkers is
@@ -54,13 +55,13 @@ discharged by a named certificate or computation, every finite calculation
 is executed and replayed by two checkers, and the chain ends in the three
 theorems.
 
-The conclusion, stated carefully: the three theorems are verified relative
-to explicitly named external results, and no internal discrepancy has been
-found by the reproducible checks. A reported contrary computation of the same
-group is disclosed and not resolved; see the note above and `runs/67`.
-Section 8 lists the named theorems; none of them is project-specific, and
-each is applied with hypotheses that are discharged mechanically. The
-theorems are Wuebben's; this note claims only the verification.
+The conclusion, stated carefully: the four finite presentations are certified
+trivial; the implication for Wuebben's fixed manifold rests on the separately
+stated marked geometric identification; and the three manifold conclusions
+are conditional on explicitly named external results. A reported contrary
+computation of the same group is disclosed and not resolved; see the note
+above and `runs/67`. The theorems are Wuebben's; this note claims only the
+audit.
 
 ## 2. The independent model
 
@@ -109,9 +110,10 @@ coherent peripheral pairs yields, for all four n=0 sign pairs and the four
 adjacent half-drift systems, complete confluent rewriting systems in which
 every generator reduces to the identity. Knuth–Bendix completion (KBMAG) is
 used only as an untrusted certificate generator: the exported derivation DAGs
-are verified by an independent checker that re-validates every input-relator
+are verified by a standalone checker that re-validates every input-relator
 axiom, inverse axiom, critical overlap, rewrite trace, and final
-generator-to-identity rule. A second checker, written independently in Ruby,
+generator-to-identity rule. A second checker, separately implemented in Ruby
+from the same specification,
 re-verifies all retained derivation records (39,163 over the sealed presentation, 14,115 over the earlier four-generator export) without importing the
 Python implementation, the compiler, GAP, or KBMAG; both accept. Both
 filled-group checkers were produced by OpenAI Codex (GPT-5 family), so
@@ -249,7 +251,7 @@ citation resolves and that the graph is acyclic, verifies that each theorem
 depends on the certified π₁(V) = 1, and checks every evidence digest. The
 chain in prose, with the quoted statements and the proofs of the sixteen
 steps, is `verification/notes/downstream_proof_chain_2026-08-28.md`; the
-paper's Section 6 gives it as eight propositions.
+computational supplement gives the complete proposition-by-proposition chain.
 
 In outline: π₁(V) = 1 with χ(V) = 2 gives H₂(V) = ℤ⟨F⟩, F·F = 0, and V spin
 by Wu's formula; van Kampen gives π₁(Z) = π₁(Z'') = 1 (this is where the
@@ -346,6 +348,6 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5.8 (the paper's Data Availability section records the
+tagged release v1.5.9 (the paper's Data and reproducibility section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.
