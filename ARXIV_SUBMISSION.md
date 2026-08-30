@@ -17,7 +17,7 @@ web form from drifting from the rendered paper.
 - Upload `paper/arxiv-source-v2.2.0.tar.gz` as the v2.2.0 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `ac2ac3c0822f8fd6070c12ee9b7cc9bde4e69eac81910172d19fad4e7057cdf8`.
+  `f4947a7a6e16f6095626d71d007ac4fe166da495601f1e187928e7011475fa0b`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
@@ -25,9 +25,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Main PDF SHA-256:
-  `83a323badb0a020f2fa8fe8805923c20bca7e06ef1b0fb768c6e851dee1bc8e2`.
+  `39d794b830ba8e60ff96777f2f4c4dfe0ee1f88d203125a367a4b0fafd9b0b53`.
 - Supplement PDF SHA-256:
-  `daa5207beb1a23ff6d337796ce4986db9eb6d642e53d9b6bb7944b316b10e3bb`.
+  `b399f4100b4a3c69fb7df68c8bd0859548207fdb881693e7c9138f51209dca9e`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.

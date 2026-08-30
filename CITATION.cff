@@ -28,6 +28,17 @@ authors:
     email: verification@ventimath.org
 version: v2.2.0
 date-released: '2026-08-30'
+doi: 10.5281/zenodo.22181233
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22181233
+    description: 'Version DOI for the v2.2.0 archived artifact'
+  - type: url
+    value: 'https://doi.org/10.5281/zenodo.22181233'
+    description: 'Resolver link for the v2.2.0 version DOI'
+  - type: doi
+    value: 10.5281/zenodo.22169753
+    description: 'Concept DOI, resolving to the newest archived version'
 license: MIT
 repository-code: 'https://github.com/VentiMath/exotic-s2xs2-verification'
 url: >-

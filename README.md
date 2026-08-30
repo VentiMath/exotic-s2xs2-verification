@@ -43,16 +43,15 @@ The immutable v2.2.0 verification snapshot is archived at
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
-**v2.2.0 release gate.** The manuscript, supplement, and this README are the
-v2.2.0 candidate, while v2.1.0 remains the newest public immutable release.
-Run `python3 paper/check_release_sync.py` to verify the candidate's hashes,
-counts, terminology, and bound manifests. Before arXiv submission, reserve
-the exact v2.2.0 archive DOI, replace every candidate placeholder, cut and
-publish the matching tag and deposit, and run
-`python3 paper/check_release_sync.py --final` from that clean tagged
-checkout. Final mode is designed to fail until all public-facing files name
-the same release and DOI. The release and DOI must then also be opened from a
-logged-out browser.
+**v2.2.0 release.** The manuscript, supplement, and this README describe
+v2.2.0, the newest public immutable release:
+[releases/tag/v2.2.0](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.0),
+archived under version DOI
+[10.5281/zenodo.22181233](https://doi.org/10.5281/zenodo.22181233). Run
+`python3 paper/check_release_sync.py` to verify the release's hashes, counts,
+terminology, bound manifests, and the pinned `verification/` tree object; the
+gate rebuilds the deterministic arXiv archive itself, so it runs from a clean
+clone. The release URL and both DOIs resolve from a logged-out browser.
 
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
