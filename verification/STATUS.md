@@ -2,7 +2,7 @@
 
 This file records what the verification tree presently establishes, what
 evidence carries each claim, and where the trust boundary sits. It is a
-status document, not a development history; the published `v2.1.0` tag and
+status document, not a development history; the published release tags and
 the repository history preserve the working record.
 
 ## Known unreconciled external computation (read first)

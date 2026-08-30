@@ -38,16 +38,16 @@ and the earlier phrase “Source Formalization D.” In v2.1 these names denote
 exactly the conjunction of Source Comparison Hypotheses D1--D14; the rename
 does not change the frozen dependency node or its digest.
 
-The immutable v2.2.0 verification snapshot is archived at
-[doi:10.5281/zenodo.22181233](https://doi.org/10.5281/zenodo.22181233);
+The immutable v2.2.1 verification snapshot is archived at
+[doi:10.5281/zenodo.22181589](https://doi.org/10.5281/zenodo.22181589);
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
-**v2.2.0 release.** The manuscript, supplement, and this README describe
-v2.2.0, the newest public immutable release:
-[releases/tag/v2.2.0](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.0),
+**v2.2.1 release.** The manuscript, supplement, and this README describe
+v2.2.1, the newest public immutable release:
+[releases/tag/v2.2.1](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.1),
 archived under version DOI
-[10.5281/zenodo.22181233](https://doi.org/10.5281/zenodo.22181233). Run
+[10.5281/zenodo.22181589](https://doi.org/10.5281/zenodo.22181589). Run
 `python3 paper/check_release_sync.py` to verify the release's hashes, counts,
 terminology, bound manifests, and the pinned `verification/` tree object; the
 gate rebuilds the deterministic arXiv archive itself, so it runs from a clean
