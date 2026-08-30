@@ -200,8 +200,8 @@ def main() -> None:
     )
     require(
         main_tex,
-        r"P_{+,+}\twoheadrightarrow\pione(V_{\mathrm{aud}})",
-        "fixed-sheet audit-model map",
+        r"P_{+,+}\;\cong\;\pione(V_{\mathrm{aud}})",
+        "fixed-sheet audit-model isomorphism",
     )
     require(
         main_tex,
