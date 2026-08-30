@@ -20,7 +20,6 @@
 \AtBeginDocument{\def\UrlBigBreaks{}\def\UrlNoBreaks{\do\(\do\[\do\{\do\<\do\:}}
 \usepackage{booktabs,tabularx,array}
 \usepackage[section]{placeins}
-\usepackage{multicol}
 \usepackage{enumitem}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{tikz}
@@ -1238,7 +1237,7 @@ expected record counts, negative controls, and hashes are listed in the
 companion supplement.  The deterministic source and archive digests are
 recorded in \texttt{ARXIV\_SUBMISSION.md}.
 
-This revision is prepared for repository release \texttt{v1.5.9}; its release
+This revision is prepared for repository release \texttt{v2.0.0}; its release
 gate requires the public tag, paper and supplement PDFs, deterministic source
 archives, manifest, and clean-checkout replay to agree before circulation.
 A DOI-bearing archival deposit is still required before journal submission;
@@ -1249,13 +1248,10 @@ reproducibility target.
 \addcontentsline{toc}{section}{References}
 \begingroup
 \small
-\linespread{.98}\selectfont
-\setlength{\columnsep}{1.25em}
-\raggedcolumns
-\begin{multicols}{2}
+\linespread{1.02}\selectfont
 \renewcommand{\section}[2]{}
 \begin{thebibliography}{99}
-\setlength{\itemsep}{0pt}
+\setlength{\itemsep}{.25em}
 \setlength{\parsep}{0pt}
 
 \bibitem{Wuebben}
@@ -1397,7 +1393,6 @@ The GAP~Group,
 \url{https://www.gap-system.org}.
 
 \end{thebibliography}
-\end{multicols}
 \endgroup
 
 \end{document}

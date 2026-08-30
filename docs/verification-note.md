@@ -348,6 +348,6 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v1.5.9 (the paper's Data and reproducibility section records the
+tagged release v2.0.0 (the paper's Data and reproducibility section records the
 commit and the SHA-256 of the proof manifest and of the downstream-chain
 certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.
