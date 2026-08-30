@@ -8,8 +8,8 @@ with `pi_1(V) != 1` and that the disagreement was unresolved.  The current
 README at `82fbf7ef` repeats that statement.  This was therefore not an
 August 28 discovery or a new objection to release `v1.5.6`.
 
-This project also knew the fact.  It is recorded in
-`notes/community_reactions_2026-08-23.md`.  Subsequent work answered the
+This project also knew the fact; it was recorded in the working notes on
+2026-08-23.  Subsequent work answered the
 specific based-versus-unbased monodromy objection for this project's marked
 model, but the unresolved contrary computation was not promoted into the
 proof ledger, `README.md`, `STATUS.md`, or the verification manuscript.  The

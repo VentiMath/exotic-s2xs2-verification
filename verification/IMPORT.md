@@ -45,19 +45,15 @@ transport certificate was produced by an unseeded run and cannot be replayed.
   `ea1fc13d1f641678a228a8c7fdf8cce18da350a4` (2026-08-17). Where our runs
   invoked those scripts, the transcripts record the invocation and output.
 * `luttinger.tar.gz` — the inherited starting tarball (contains the above).
-* Three files under `notes/` recording private correspondence drafts,
-  user-relayed community reactions, and a work-packet handoff for an
-  unrelated formalization project. They contain no mathematics of this
-  verification; the provenance ledger's references to them describe what
-  they were.
+* Working notes belonging to unrelated project planning. They contain no
+  mathematics of this verification.
 * `academy-curriculum/` — teaching material derived from the verification
   for VentiMath's academy, not part of the verification itself.
 * `luttinger/hello.g`, `luttinger/pkgtest.g`, `luttinger/bk_out.txt` —
   environment smoke tests and a scratch transcript.
 * The large KBMAG ancestry `.history` streams and `kbprog` sidecars behind
-  the run 59–63 certificates — reproducible build products (the working
-  repository ignores them too); the compact `.json.gz` certificates and their
-  exact input rewriting systems ship.
+  the framing-scan certificates — reproducible build products; the compact
+  `.json.gz` certificates and their exact input rewriting systems ship.
 
 `luttinger/paper_data.md` ships: a per-line review (2026-08-27) confirmed
 every line is mathematical construction data in our own notation with

@@ -1,4 +1,0 @@
-felsch cyclic ws=1e8: index 0 tot 24999998 time 12822
-hard cyclic ws=1e8: index 0 tot 24999998 time 13826
-
-[exited with code 0]

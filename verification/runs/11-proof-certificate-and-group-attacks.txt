@@ -2,9 +2,9 @@ Proof-producing reduction and bounded group attacks (2026-08-23)
 ================================================================
 
 Commands:
-  PYTHONHASHSEED=0 PATH=~/luttinger/bin:$PATH python3 r_run.py
+  PYTHONHASHSEED=0 PATH=<gap-install>/bin:$PATH python3 r_run.py
   python3 group_attack.py summary --write-only
-  docker run --rm -i -v ~/luttinger/luttinger:/w -w /w \
+  docker run --rm -i -v <repo>/verification/luttinger:/w -w /w \
     gapsystem/gap-docker gap -q r_group_attack.g
   python3 group_attack.py kb-all --write-only
   python3 group_attack.py automatic --case 7 --write-only

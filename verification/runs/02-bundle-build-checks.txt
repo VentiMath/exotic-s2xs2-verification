@@ -1,6 +1,0 @@
-building bundle (dir_b=1, dir_a=-1, certified by monodromy_check)...
-K f-vector: [9156, 116714, 356728, 403152, 153984]  (12s)
-bundle checks: T = two disjoint closed tori, K 4-manifold near T: OK
-checks: 1s
-
-[exited with code 0]

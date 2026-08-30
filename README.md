@@ -283,13 +283,12 @@ asserted computation ships with a replayable artifact.
 * `TARGET.md` — immutable target-paper versions and SHA-256 digests.
 * `verification/` — the working repository at its imported commit: the engine
   and certificates under `verification/luttinger/` (derivation-DAG
-  certificates in `proof_certificates/`, rewriting systems in `direct_rws/`
-  and `j_rws/`, the downstream proof chain in `downstream_chain.py` with
+  certificates in `proof_certificates/`, rewriting systems in `direct_rws/`,
+  the downstream proof chain in `downstream_chain.py` with
   its certificate and Ruby checker), the run transcripts under
   `verification/runs/`,
-  referee-packet notes under `verification/notes/`, `STATUS.md` (the honest
-  snapshot of what is and is not certified), `PROVENANCE.md` (the
-  commit-level model ledger), and `IMPORT.md` (what was imported, what was
+  referee-packet notes under `verification/notes/`, `STATUS.md` (current
+  status, evidence, and limitations), and `IMPORT.md` (what was imported, what was
   removed, and why).
 
 ## Contact
