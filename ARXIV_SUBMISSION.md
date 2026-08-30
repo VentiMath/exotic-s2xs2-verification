@@ -1,23 +1,23 @@
 # arXiv submission packet
 
-> **RELEASE GATE:** this major revision is prepared for v2.1.0. Do not
-> upload or circulate the packet until the v2.1.0 release URL resolves and the source and
+> **RELEASE GATE:** this major revision is prepared for v2.2.0. Do not
+> upload or circulate the packet until the v2.2.0 release URL resolves and the source and
 > PDF assets match the final digests recorded below. Any further edit to
 > `paper/main.tex` changes the packet digest, so rebuild and re-pin first.
 
-This packet fixes the metadata for the v2.1.0 manuscript and prevents the
+This packet fixes the metadata for the v2.2.0 manuscript and prevents the
 web form from drifting from the rendered paper.
 
 ## Build and upload
 
-- From a clean checkout of the v2.1.0 tag, run
+- From a clean checkout of the v2.2.0 tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v2.1.0.tar.gz` as the v2.1.0 GitHub release asset
+- Upload `paper/arxiv-source-v2.2.0.tar.gz` as the v2.2.0 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `8caf951ac8631198b2a451ae5db6ed010da8bba1db4000e91f93aae202a7119c`.
+  `ac2ac3c0822f8fd6070c12ee9b7cc9bde4e69eac81910172d19fad4e7057cdf8`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
@@ -25,9 +25,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Main PDF SHA-256:
-  `d418132e451660daacc251c10da295c06c43a88d793d84d4a10b721ab33a1c68`.
+  `83a323badb0a020f2fa8fe8805923c20bca7e06ef1b0fb768c6e851dee1bc8e2`.
 - Supplement PDF SHA-256:
-  `8de320935b7997989a95875610bec56d736a6768a6448e8a8d3e36625bf2e644`.
+  `7a9ae2370a7a3fb340cab9c480a7b2e06fea1a2a691a95eecb15c7c1c49cd789`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -39,7 +39,7 @@ checks the PDF/source hashes, page/figure/table counts, Source Comparison Hypoth
 terminology, and the two theorem-artifact manifests.  After reserving the
 exact version DOI and replacing every candidate placeholder, run
 `python3 paper/check_release_sync.py --final` from the clean checkout that is
-tagged `v2.1.0`.  Final mode must pass before arXiv upload; it also requires
+tagged `v2.2.0`.  Final mode must pass before arXiv upload; it also requires
 the same release URL and version DOI in the manuscript, supplement, README,
 and this packet.  The script does not make a network request, so open both
 links from a logged-out browser as the last release check.
@@ -69,7 +69,7 @@ We define an explicit marked surface-bundle surgery manifold $V_aud$ modeled on 
 **Comments**
 
 ```text
-25 pages, three figures, five tables, with a 14-page mathematical and computational supplement in the release assets. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.1.0 . Exact v2.1.0 archive DOI: [INSERT AFTER DEPOSIT]. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
+25 pages, three figures, five tables, with a 14-page mathematical and computational supplement in the release assets. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.0 . Exact v2.2.0 archive DOI: https://doi.org/10.5281/zenodo.22181233. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
 ```
 
 **Classification**

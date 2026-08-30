@@ -1553,15 +1553,16 @@ SHA-256
 The immutable Lidman--Piccirillo v1 source digest and all interpretation
 inputs are recorded in \texttt{TARGET.md}.  The theorem artifacts, frozen
 inputs, certificate checkers, manifests, run transcripts, and reconstruction
-programs are in the public repository and its immutable v2.0.1 archival
-snapshot \cite{ClydeArtifact}:
+programs are in the public repository and its archival deposit
+\cite{ClydeArtifact}:
 \begin{center}
 \small\url{https://github.com/VentiMath/exotic-s2xs2-verification},\\[.3em]
-\small\url{https://doi.org/10.5281/zenodo.22171309}.
+\small\url{https://doi.org/10.5281/zenodo.22181233}.
 \end{center}
-The version DOI identifies the exact v2.0.1 verification snapshot; the
-concept DOI \url{https://doi.org/10.5281/zenodo.22169753} resolves to the
-newest archived version.
+That version DOI identifies the exact v2.2.0 archival deposit of the
+artifacts described here.  The concept DOI
+\url{https://doi.org/10.5281/zenodo.22169753} resolves to the newest
+archived version.
 
 The submission release has three intentionally different replay levels.
 The certificate-only path reads frozen files and requires only standard
@@ -1582,16 +1583,18 @@ outputs, their comparison with the audit model, and every certificate used by
 the Audit-Manifold Theorem are contained in the release and replay without
 those third-party files.
 
-The v2.0.1 release, PDFs, deterministic source archive, manifest, and
-clean-checkout replay were checked before that archival deposit was created.
-The present v2.1.0 revision changes the exposition and the formalized source
-comparison: it defines $V_{\mathrm{aud}}$ before the certificate machinery,
-replaces four omnibus assumptions by Source Comparison Hypotheses~D1--D14, states the
+Each release is checked for PDFs, deterministic source archive, manifest,
+and clean-checkout replay before its archival deposit is created.  The v2.1.0
+revision changed the exposition and the formalized source comparison: it
+defines $V_{\mathrm{aud}}$ before the certificate machinery, replaces four
+omnibus assumptions by Source Comparison Hypotheses~D1--D14, states the
 geometric trusted-computing boundary, makes the smooth relative bridge
 explicit, and rewrites the downstream result as a conventional conditional
-corollary.  Before arXiv submission the v2.1.0 release must itself be archived
-and its exact version DOI added to the submission metadata.  The finite
-filled-group certificates and the sealed transport are unchanged.
+corollary.  The present v2.2.0 revision scopes the published tree to the
+verification artifact, binds fifteen further ledger nodes directly to their
+certificates, and narrows the replay claim to the finite certificate
+assertions.  The finite filled-group certificates and the sealed transport
+are unchanged throughout.
 
 \section*{References}
 \addcontentsline{toc}{section}{References}
@@ -1611,10 +1614,10 @@ arXiv:2608.17267v1 (2026).
 
 \bibitem{ClydeArtifact}
 J.~Clyde,
-\emph{A certificate-based audit of the fundamental-group and framing
-computations in Wuebben's proposed exotic $S^2\times S^2$ construction},
-verification artifact v2.0.1, Zenodo (2026),
-\url{https://doi.org/10.5281/zenodo.22171309}.
+\emph{A certificate-based audit of simple connectivity for an explicit model
+associated with Wuebben's proposed exotic $S^2\times S^2$ construction},
+verification artifact v2.2.0, Zenodo (2026),
+\url{https://doi.org/10.5281/zenodo.22181233}.
 
 \bibitem{LidmanPiccirillo}
 T.~Lidman and L.~Piccirillo,
