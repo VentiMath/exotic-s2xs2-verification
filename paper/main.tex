@@ -50,8 +50,8 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
 
-\title{Certified simple connectivity of an audit model for Wuebben's
-proposed exotic $S^2\times S^2$ construction}
+\title{A certificate-based audit of simple connectivity for an explicit
+model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
 \date{August 2026}
@@ -64,7 +64,10 @@ We define an explicit marked surface-bundle surgery manifold
 $V_{\mathrm{aud}}$ modeled on the data in Wuebben's proposed exotic
 $S^2\times S^2$ construction.  Four hash-identified finite presentations
 are proved trivial by replayable derivation certificates under a published
-certificate specification.  Separate combinatorial and geometric arguments
+certificate specification.  Automated acceptance of the stored derivations
+additionally assumes that at least one checker conforms to that specification;
+the two shipped implementations were developed within the project and have
+not received an independent human line-by-line audit.  Separate combinatorial and geometric arguments
 identify those presentations with $\pione(V_{\mathrm{aud}})$, including the
 marked clutching, normal frontiers, commonly based peripheral curves,
 drilled transport relation, and product-to-Lagrangian framing bridge.
@@ -161,8 +164,9 @@ records consequences originating in Wuebben's work.
 \toprule
 Statement & Status & Trust boundary \\
 \midrule
-Finite Certificate Theorem & unconditional theorem about four byte-bound
-presentations & certificate specification and two small checkers \\
+Finite Certificate Theorem & source-independent theorem about four byte-bound
+presentations & certificate specification; conformance of at least one
+checker for automated replay \\
 Audit-Manifold Theorem & $\pione(V_{\mathrm{aud}})=1$ & displayed geometric
 arguments, finite geometric artifacts, and named standard topology inputs \\
 Source-Comparison Proposition & conditional identification with Wuebben's
@@ -1496,7 +1500,7 @@ contrary computation meet at that boundary.  The artifacts make its clauses
 finite and inspectable; they do not promote source interpretation into a
 certificate.
 
-Even if a clause of Source Formalization~D fails, the unconditional content
+Even if a clause of Source Formalization~D fails, the source-independent content
 does not disappear.  The paper still supplies a complete certificate theorem
 for four explicit presentations, an explicit simply connected audit
 manifold, a proof-producing transport from a large cellular presentation,

@@ -1,4 +1,4 @@
-# Prose companion to the certificate-based audit of Wuebben's construction
+# Prose companion to “A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic S²×S² construction”
 
 > **Known unreconciled external computation.** Wuebben's repository has stated,
 > since its first visible commit and continuously since, that Lidman and
@@ -38,12 +38,15 @@ certification; they verify his one-step re-indexing and carry no logical
 load for the fixed n=0 target.
 
 This note reports a version-specific audit of the whole argument. The finite
-certificate theorem is unconditional for its hash-bound presentations. The
-audit-model theorem identifies them with an explicitly defined manifold
-`V_*`, making `V_*` simply connected.  The further comparison with Wuebben's
-intended fixed member is conditional on four source-identification assumptions
-S1--S4: marked-fiber, marked-bundle, peripheral/member, and smooth-surgery
-fidelity.  The bundle is rebuilt as a simplicial complex, the surgery tori,
+certificate theorem is source-independent for its hash-bound presentations;
+automated acceptance of the stored derivations assumes that at least one
+checker conforms to the published specification. The audit-model theorem
+identifies them with an explicitly defined manifold `V_aud`, making `V_aud`
+simply connected.  The further comparison with Wuebben's intended fixed
+member is conditional on the fourteen clauses of Source Formalization D,
+which separately state the marked-fiber, marked-bundle, peripheral/member,
+coefficient, and smooth-surgery comparisons.  The bundle is rebuilt as a
+simplicial complex, the surgery tori,
 meridians, and framed longitudes are extracted combinatorially, and the
 resulting filled presentations are proved trivial by complete confluent
 rewriting, with every computation emitting a replayable proof certificate
@@ -57,9 +60,10 @@ discharged by a named certificate or computation, every finite calculation
 is executed and replayed by two checkers, and the chain ends in the three
 theorems.
 
-The conclusion, stated carefully: the four finite presentations are certified
-trivial and $\pi_1(V_*)=1$; the implication for Wuebben's fixed manifold is
-conditional on S1--S4; and the three manifold conclusions are additionally
+The conclusion, stated carefully: the four finite presentations are
+certificate-checked as trivial and $\pi_1(V_{\mathrm{aud}})=1$; the
+implication for Wuebben's fixed manifold is conditional on Source
+Formalization D; and the three manifold conclusions are additionally
 conditional on explicitly named external results. A reported contrary
 computation of the same group is disclosed and not resolved; see the note
 above and `runs/67`. The theorems are Wuebben's; this note claims only the
@@ -88,8 +92,8 @@ an appeal to the classification of surface bundles. Everything the surgery
 argument needs is transported through that map into the audit-defined smooth
 manifold, where the symplectic arguments are performed; no smoothing of the
 triangulation is ever chosen. The additional assertion that this marked
-smooth bundle is Wuebben's intended bundle is assumption S2, together with
-the related source assumptions S1, S3, and S4.
+smooth bundle is Wuebben's intended bundle is the separate content of clauses
+D1--D6 and D12--D14 of Source Formalization D.
 
 ## 3. Peripheral data
 
@@ -293,11 +297,12 @@ exactly Klug's characteristic case and the lifted torus nonzero integrally.
 
 ## 8. Trust boundary
 
-The source comparison is conditional on S1--S4, which are not treated as
-standard theorems or machine certificates.  They assert marked-fiber,
-marked-bundle, peripheral/member, and smooth-surgery fidelity.  Their
-independent extraction and mutation controls are evidence for the readings,
-not proofs of what another author's prose and figures intend.
+The source comparison is conditional on Source Formalization D, whose
+fourteen clauses are not treated as standard theorems or machine
+certificates. They separate marked-fiber, marked-bundle, peripheral/member,
+coefficient, and smooth-surgery fidelity and bind each reading to a target
+location. Independent extraction and mutation controls are evidence for the
+readings, not proofs of what another author's prose and figures intend.
 
 The named standard inputs behind the audit-model theorem, applied with
 checked hypotheses and cited proofs, are elementary ribbon thickening and
@@ -334,8 +339,8 @@ the audit-defined smooth manifold, and the section's square is computed
 there from transported disjoint homologous cycles); derived-regular-
 neighborhood theory (the tubular boundary is constructed — see §3); and
 Weinstein germ uniqueness (chart independence is proved between the audit's
-verified charts — see §6; ADK03 remains corroboration). S1--S4 remain the
-separate source-comparison boundary.
+verified charts — see §6; ADK03 remains corroboration). Source Formalization
+D remains the separate source-comparison boundary.
 
 ## 9. Provenance and method
 
@@ -344,8 +349,11 @@ Opus 5; OpenAI Codex), under human direction and with commit-level model
 provenance. Cross-model review was adversarial by design, and several
 decisive corrections in the record came from one model refuting the
 other's assessment. Mathematical responsibility rests with the human author.
-Every asserted computation ships with a replayable certificate; no claim in
-this note depends on trusting a model.
+Every asserted computation ships with a replayable certificate. No claim in
+this note depends on accepting a model's prose as evidence, but automated
+acceptance of the certificates does depend on checker conformance to the
+published specification; no independent human line-by-line code audit is
+claimed.
 
 ## 10. Data availability
 
@@ -354,6 +362,8 @@ The exact target is Wuebben arXiv:2608.17267v1 (18 August 2026), PDF SHA-256
 `TARGET.md` records this and the Lidman–Piccirillo v1 digest. All code,
 certificates, run logs, and the provenance ledger:
 https://github.com/VentiMath/exotic-s2xs2-verification, pinned in the
-tagged release v2.0.0 (the paper's Data and reproducibility section records the
-commit and the SHA-256 of the proof manifest and of the downstream-chain
-certificate). The paper's own code: https://github.com/bwuebben/exotic-s2xs2.
+tagged release v2.0.1 (the paper's Data and reproducibility section records
+the commit and the SHA-256 of the proof manifest and of the downstream-chain
+certificate). The v2.1.0 manuscript and this companion remain release
+candidates until the matching tag and archival DOI are created. The paper's
+own code: https://github.com/bwuebben/exotic-s2xs2.
