@@ -277,7 +277,6 @@ asserted computation ships with a replayable artifact.
 
 ## Contents
 
-* `docs/verification-note.md` — the verification note.
 * `paper/` — the LaTeX source of the main audit and its computational
   supplement.
 * `TARGET.md` — immutable target-paper versions and SHA-256 digests.
