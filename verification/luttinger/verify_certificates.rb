@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Independent, standard-library verifier for the two large group-theory proof
+# Standalone, standard-library verifier for the two large group-theory proof
 # artifacts.  This file intentionally shares no code with the Python
 # compiler, model, search programs, or primary certificate checkers.
 
