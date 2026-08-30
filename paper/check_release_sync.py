@@ -14,16 +14,19 @@ import argparse
 import hashlib
 import re
 import subprocess
+import tarfile
 from pathlib import Path
 
 
 VERSION = "v2.1.0"
+TITLE_FRAGMENT = "A certificate-based audit of simple connectivity"
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper"
 ARXIV = ROOT / "ARXIV_SUBMISSION.md"
 README = ROOT / "README.md"
 MAIN_TEX = PAPER / "main.tex"
 SUPP_TEX = PAPER / "supplement.tex"
+COMPANION = ROOT / "docs/verification-note.md"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
 SOURCE = PAPER / f"arxiv-source-{VERSION}.tar.gz"
@@ -69,6 +72,10 @@ def require(text: str, fragment: str, label: str) -> None:
         fail(f"missing {label}: {fragment!r}")
 
 
+def normalize_space(text: str) -> str:
+    return " ".join(text.split())
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -78,7 +85,16 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    for path in (ARXIV, README, MAIN_TEX, SUPP_TEX, MAIN_PDF, SUPP_PDF, SOURCE):
+    for path in (
+        ARXIV,
+        README,
+        MAIN_TEX,
+        SUPP_TEX,
+        COMPANION,
+        MAIN_PDF,
+        SUPP_PDF,
+        SOURCE,
+    ):
         if not path.is_file():
             fail(f"missing release input {path.relative_to(ROOT)}")
 
@@ -86,15 +102,18 @@ def main() -> None:
     readme = README.read_text(encoding="utf-8")
     main_tex = MAIN_TEX.read_text(encoding="utf-8")
     supplement = SUPP_TEX.read_text(encoding="utf-8")
+    companion = COMPANION.read_text(encoding="utf-8")
     public_texts = {
         "README.md": readme,
         "ARXIV_SUBMISSION.md": metadata,
         "paper/main.tex": main_tex,
         "paper/supplement.tex": supplement,
+        "docs/verification-note.md": companion,
     }
 
     for name, text in public_texts.items():
         require(text, "Source Formalization", f"Source Formalization D in {name}")
+        require(text, TITLE_FRAGMENT, f"v2.1 title in {name}")
         if re.search(r"S1\s*(?:--|–|---)\s*S4", text):
             fail(f"obsolete S1--S4 formulation survives in {name}")
 
@@ -109,8 +128,22 @@ def main() -> None:
         if actual != recorded:
             fail(f"{label} mismatch: recorded {recorded}, actual {actual}")
 
-    if pdf_pages(MAIN_PDF) != 24 or pdf_pages(SUPP_PDF) != 11:
-        fail("PDF page counts are not main=24 and supplement=11")
+    with tarfile.open(SOURCE, "r:gz") as archive:
+        names = archive.getnames()
+        if names != ["main.tex"]:
+            fail(f"arXiv source archive inventory is {names!r}, expected ['main.tex']")
+        archived_main = archive.extractfile("main.tex")
+        if archived_main is None or archived_main.read() != MAIN_TEX.read_bytes():
+            fail("arXiv source archive does not contain the current paper/main.tex")
+
+    main_pdf_text = normalize_space(run("pdftotext", str(MAIN_PDF), "-"))
+    supp_pdf_text = normalize_space(run("pdftotext", str(SUPP_PDF), "-"))
+    pdf_title = "A certificate-based audit of simple connectivity for an explicit"
+    require(main_pdf_text, pdf_title, "v2.1 title in main PDF")
+    require(supp_pdf_text, pdf_title, "v2.1 title in supplement PDF")
+
+    if pdf_pages(MAIN_PDF) != 24 or pdf_pages(SUPP_PDF) != 12:
+        fail("PDF page counts are not main=24 and supplement=12")
     require(metadata, "24 pages, three figures, six tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 3:
         fail("main.tex does not contain exactly three figure environments")
@@ -135,7 +168,7 @@ def main() -> None:
 
     if not args.final:
         print("PASS: the local v2.1.0 candidate is internally synchronized")
-        print("  main=24 pages/3 figures/6 tables; supplement=11 pages")
+        print("  main=24 pages/3 figures/6 tables; supplement=12 pages")
         print("  PDF, source-archive, proof-manifest, and downstream hashes agree")
         print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
         print("  v2.1.0 tag, publish the release/deposit, then rerun with --final")

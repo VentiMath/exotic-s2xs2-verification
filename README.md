@@ -1,4 +1,4 @@
-# Certified simple connectivity of an audit model for Wuebben's proposed exotic S²×S² construction
+# A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic S²×S² construction
 
 This repository documents an independent, machine-driven verification of
 
@@ -12,8 +12,11 @@ the rebuild. The immutable target versions and their SHA-256 digests are
 recorded in [`TARGET.md`](TARGET.md).
 
 **What this repository is:** a version-specific, certificate-based audit by
-people and machines who are not the paper's author. Its unconditional theorem
-is that four explicit, hash-identified presentations are trivial.  A separate
+people and machines who are not the paper's author. Its source-independent
+finite theorem is that four explicit, hash-identified presentations are
+trivial under the published certificate specification; automated acceptance
+of the stored derivations assumes that at least one checker conforms to that
+specification.  A separate
 audit-model theorem identifies them with the explicitly defined manifold
 `V_aud`, which is therefore simply connected.  Identifying `V_aud` with
 Wuebben's fixed member is conditional on the fourteen clauses of Source
