@@ -1,4 +1,4 @@
-# Certificate-based audit of Wuebben's proposed exotic S²×S² construction
+# Certified simple connectivity of an audit model for Wuebben's proposed exotic S²×S² construction
 
 This repository documents an independent, machine-driven verification of
 
@@ -15,23 +15,24 @@ recorded in [`TARGET.md`](TARGET.md).
 people and machines who are not the paper's author. Its unconditional theorem
 is that four explicit, hash-identified presentations are trivial.  A separate
 audit-model theorem identifies them with the explicitly defined manifold
-`V_*`, which is therefore simply connected.  Identifying `V_*` with
-Wuebben's intended fixed member is conditional on four source-identification
-assumptions S1--S4, recorded individually in the paper and ledger. The three
-manifold conclusions are then recovered conditionally from S1--S4 and
-twenty-five named external results. The paper, its mathematical and
+`V_aud`, which is therefore simply connected.  Identifying `V_aud` with
+Wuebben's fixed member is conditional on the fourteen clauses of Source
+Formalization D, each tied to an exact target location, audit interpretation,
+mechanical support, and residual assertion. The three manifold conclusions
+are then recovered conditionally from Source Formalization D and named
+classification, symplectic, and Floer-theoretic results. The paper, its mathematical and
 computational supplement,
 and the repository keep those evidence levels separate.
 
-The immutable v2.0.0 verification snapshot is archived at
-[doi:10.5281/zenodo.22169754](https://doi.org/10.5281/zenodo.22169754);
+The immutable v2.0.1 verification snapshot is archived at
+[doi:10.5281/zenodo.22171309](https://doi.org/10.5281/zenodo.22171309);
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
 **What this repository is not:** a claim of priority on the theorems, which
 are Wuebben's; a formalization of the classification, symplectic, and
 Floer-theoretic theorems the chain cites; or a substitute for independent
-human review of S1--S4 and their source semantics.
+human review of Source Formalization D and the displayed geometric arguments.
 
 **Known unreconciled external computation.** Wuebben's repository has stated,
 since its first visible commit and continuously since, that Lidman and
@@ -59,7 +60,7 @@ Everything below is computed from a triangulated model built independently of
 the paper's coordinates, with proof-producing certificates that replay.
 
 * **The bundle.** The genus-2 fiber, its involution, marked points and curve
-  actions, and the full audit bundle `R_*` are realized simplicially
+  actions, and the full audit bundle `R_aud` are realized simplicially
   (f-vector [9156, 116714, 356728, 403152, 153984]) and matched to its marked
   smooth definition by literal based monodromy action — not by fingerprints.
   The based monodromy certificate replays 17,839 elementary
@@ -68,7 +69,8 @@ the paper's coordinates, with proof-producing certificates that replay.
   marked mapping-cylinder clutching over the base graph, with the relative
   monodromy comparisons checked exactly on the marked collars — the
   classification of surface bundles is no longer invoked. Comparing this
-  marked object with Wuebben's intended bundle is the separate assumption S2.
+  marked object with Wuebben's bundle is the separate comparison in clauses
+  D1--D6 of Source Formalization D.
 * **The peripheral data.** Based meridians and longitudes for both surgery
   tori are traced as literal simplicial loops with the audit's named whiskers.
   The alpha coordinate identity `lb_a_y1 = A x` is additionally certified in
@@ -148,21 +150,24 @@ the paper's coordinates, with proof-producing certificates that replay.
   cross-referenced to the executable check.
 * **The downstream chain.** The deductions from simple connectivity to the
   three theorems are an explicit proof-grade dependency chain
-  (`verification/luttinger/downstream_chain.py`, run 64): 25 external
+  (`verification/luttinger/downstream_chain.py`, run 64): Source
+  Formalization D as one explicit comparison assumption, 25 external
   theorems stated with their hypotheses and sources (Klug's relative
   Rochlin theorem, Hambleton's classification statement, Ho–Li's Kodaira
   invariance, and Lidman–Piccirillo's Floer lemmas quoted verbatim), 3
-  hash-bound certificates of this repository (π₁(V)=1, the section's
+  hash-bound certificates of this repository (π₁(V_aud)=1, the section's
   self-intersection Γ̂·Γ̂=0, the framing identification), 15 computed
   facts (Euler characteristics and Betti numbers, the hyperbolic and odd
   intersection-form bases, cover genera, adjunction, Arf(4₁)=1 two ways,
   the instantiated Klug formula, the Hambleton–Kreck invariant tuple), and
-  16 deduction steps ending in Theorems A, B, and C. Both the Python chain
+  17 deduction steps ending in Theorems A, B, and C. The first step is the
+  conditional transfer from V_aud to Wuebben's V; no certificate itself is
+  described as proving that source comparison. Both the Python chain
   builder and the separately implemented Ruby checker were produced by Claude
   Fable 5; this is implementation independence, not cross-model authorship.
   The Ruby checker re-derives every computed fact from scratch, checks the
-  graph is acyclic and that each theorem depends on the certified
-  π₁(V)=1, and verifies every evidence digest. The dependency ledger
+  graph is acyclic and that each theorem depends on both the certified
+  π₁(V_aud)=1 and Source Formalization D, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
   theorems, 37 machine certificates, 12 geometric arguments, one explicit
   source-assumption node, and 21 derived claims — with every evidence file
@@ -175,10 +180,12 @@ the paper's coordinates, with proof-producing certificates that replay.
 
 ## What is not claimed
 
-The remaining proof dependence has two different kinds.  First, S1--S4 are
-source-semantic assumptions: marked-fiber fidelity, marked-bundle fidelity,
-peripheral/member fidelity, and smooth-surgery fidelity.  Their independent
-extractors and mutation controls are evidence, not proofs of authorial intent.
+The remaining proof dependence has two different kinds.  First, Source
+Formalization D contains fourteen source-comparison clauses: marked-fiber,
+marked-bundle, peripheral/member, coefficient, and smooth-surgery fidelity.
+Their independent extractors and mutation controls are evidence for exact
+mathematical interpretations, not certificates that a diagram denotes the
+audit object.
 Second, named classical inputs are applied with checked hypotheses but cited
 rather than mechanized: elementary ribbon thickening and bistellar traces; the
 classification of surfaces; the collapsible-3-ball and cyclic-knot-unknot
@@ -203,7 +210,7 @@ run entirely in the audit-defined smooth manifold, and the tubular
 boundary is constructed rather than cited. Weinstein germ uniqueness is
 corroborating rather than necessary — chart independence is proved
 in-project between the audit's verified charts. The comparison of those
-objects and charts with Wuebben's intended ones remains S1--S4. If the
+objects and charts with Wuebben's ones remains Source Formalization D. If the
 framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
@@ -225,8 +232,8 @@ nontrivial group; the scan bears on the j=0 proof only if the independent
 framing argument first fails.
 
 The accurate one-sentence status: **the finite presentations are certified
-trivial and the audit-defined `V_*` is simply connected; the implication for
-Wuebben's fixed manifold is conditional on S1--S4; and the three manifold
+trivial and the audit-defined `V_aud` is simply connected; the implication for
+Wuebben's fixed manifold is conditional on Source Formalization D; and the three manifold
 conclusions are additionally conditional on named external results** — with the reported contrary
 computation of π₁(V) disclosed above and not resolved. That is a statement
 about verification depth, not a substitute for review by symplectic and
