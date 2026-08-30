@@ -42,14 +42,16 @@ This supplement preserves the implementation inventory, complete downstream
 dependency exposition, trust boundary, data pins, calibration cases, and
 historical exports supporting the main paper.  None of the material here
 changes the logical status stated there: finite certificates are replayable,
-the marked geometric identification remains the principal expert-review
-boundary, and the downstream manifold conclusions are relative to named
-external results.
+the audit-defined manifold $V_*$ is simply connected, the comparison
+$V_*\cong V$ is conditional on the four source-identification assumptions
+S1--S4, and the downstream manifold conclusions are additionally relative to
+named external results.
 \end{abstract}
 
 \section*{How to use this supplement}
 The main paper contains the mathematical certificate specification and the
-proof of the Geometric Identification Theorem.  Section~\ref{sec:certificates}
+proof of the audit-model identification, followed by the explicitly
+conditional comparison with Wuebben.  Section~\ref{sec:certificates}
 below records the concrete certificate batches and replay architecture.
 Appendix~\ref{sec:downstream} gives the full proposition-by-proposition
 downstream chain; Appendix~\ref{sec:trust} records provenance, trust, and data
@@ -156,7 +158,9 @@ theorems}\label{sec:downstream}
 
 The deductions from $\pione(V)=1$ to Theorems A, B, C occupy Part~I of
 \cite{Wuebben}, whose Theorem~1.2 reduces them to the simple connectivity
-of $V$. This section carries those deductions through as an explicit
+of $V$.  Throughout this appendix, S1--S4 of the main paper are standing
+assumptions, so its audit-defined $V_*$ has been identified with this $V$.
+This section carries the subsequent deductions through as an explicit
 dependency chain. The chain is itself a machine artifact: a script
 records every item as one of four kinds --- an \emph{external theorem}
 stated with its hypotheses and source; a \emph{certificate} of this
@@ -331,7 +335,8 @@ $R\cup_\sigma R$ is a closed surface bundle whose fiber is homologically
 essential ($F\cdot\Ghat=1$), so it carries the Thurston-type form,
 positive on $F$ and $\Ghat$. The surgery tori are Lagrangian for it and
 the surgeries are the certified Luttinger surgeries
-(the Geometric Identification Theorem of the main paper), and Luttinger surgery preserves the form
+(the audit-model theorem together with S1--S4 of the main paper), and
+Luttinger surgery preserves the form
 away from the surgered neighborhoods, which miss $F$ and $\Ghat$. For the
 non-diffeomorphism: $R\cup_\sigma R$ is aspherical, hence minimal (an
 exceptional sphere would be null-homotopic, hence of square $0$, not
@@ -478,30 +483,35 @@ checker has yet received an independent human line-by-line audit.  The small
 source files, negative controls, and exact replay commands are public so that
 this remaining software-review task is explicit.
 
-\subsection*{Inputs to the finite theorem of the main paper and
-the Geometric Identification Theorem of the main paper}
+\subsection*{Inputs to the finite theorem and audit-model theorem}
 
-the finite theorem of the main paper has no mathematical input beyond
-the Certificate Soundness Theorem of the main paper; its trust rests on the two small checkers.
-the Geometric Identification Theorem of the main paper rests on standard inputs of PL topology: the
-ribbon-thickening and bistellar-trace interpretations that read the
-paper's figures into complexes; classification of compact surfaces;
-local-flatness and normal-block criteria; and simplicial
-fundamental-group presentations with Tietze theory.  The regular-neighborhood
+The finite theorem of the main paper has no mathematical input beyond
+its Certificate Soundness Theorem; its implementation trust rests on the two
+small checkers.  The audit-model identification with the explicitly defined
+$V_*$ rests on standard inputs of PL topology: ribbon thickening and
+bistellar traces; classification of compact surfaces; local-flatness and
+normal-block criteria; and simplicial fundamental-group presentations with
+Tietze theory.  The regular-neighborhood
 and local-flatness conventions are those of
 \cite[Chapters~2--4]{RourkeSanderson} and \cite[Chapters~3--5]{Hudson}; the
-presentation moves are the standard ones of \cite{LyndonSchupp}.  These enter
-together with the Ker\'ekj\'art\'o
-periodic-disk involution theorem \cite{ConstantinKolev} behind the disk
-extension of the paper's Lemma~7.1, and \cite{ADK} as corroboration of
-the framing identification. The ribbon-interpretation input is narrower
-than the phrase suggests: the certified classification of equivariant
-ribbon rotations pins the implication from the paper's stated marked
-five-chain data to the equivariant normal form, and the stated data
-themselves are audited in the original Lidman--Piccirillo source, so what
-this boundary retains is the thickening of that data into complexes
-together with the dashed-arc convention explained in the model section of
-the main paper. This note reproves none of these.
+presentation moves are the standard ones of \cite{LyndonSchupp}.  The
+standard Lagrangian-neighborhood theorem supplies the Weinstein charts used
+by the framing theorem.  This note applies rather than reproves those general
+results.
+
+\subsection*{Source comparison with Wuebben}
+
+The main paper's S1--S4 are a separate evidence kind, not external theorems
+and not machine certificates.  They assert marked-fiber fidelity,
+marked-bundle fidelity, peripheral/member fidelity, and smooth-surgery
+fidelity.  Runs 51--56 and 68--69, the independent extractors, mutation
+controls, and the parsed author-script comparison give substantial evidence
+for those readings.  They cannot prove what the target author's prose and
+figures are intended to denote.  The exact residual and the evidence for
+each item are recorded in
+\texttt{verification/notes/source\_identification\_assumptions\_2026-08-29.md}.
+Only the conditional comparison $V_*\cong V$ and the downstream conclusions
+depend on S1--S4; the finite theorem and $\pione(V_*)=1$ do not.
 
 \subsection*{Inputs to the Conditional Consequences Theorem of the main paper}
 
@@ -514,12 +524,14 @@ lemmas of Lidman--Piccirillo with the Ozsv\'ath--Szab\'o nonvanishing
 theorem behind them; the rest are elementary or are constructions of
 \cite{LidmanPiccirillo} that this note takes as stated. None is reproved.
 The repository's dependency ledger records the whole verification as an
-acyclic graph of 33 named external theorems, 37 machine certificates, 11
-geometric arguments, and 20 derived claims ending in the three theorems,
+acyclic graph of 33 named external theorems, 37 machine certificates, 12
+geometric arguments, one source-assumption node, and 21 derived claims ending
+in the three theorems,
 with every evidence file bound by hash. These are not competing counts: the
 25/3/15/16 figures in Appendix~\ref{sec:downstream} describe only the compact
-downstream chain, while 33/37/11/20 describe the larger project-wide ledger
-that also contains the model, peripheral, framing, and PL verification.
+downstream chain, while the larger figures describe the project-wide ledger
+that also contains the model, source comparison, peripheral, framing, and PL
+verification.
 
 \subsection*{Data availability}
 
@@ -534,11 +546,11 @@ of the repository:
 \begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0}\end{center}
 The \texttt{verification/} tree of that release is identical to that of
 the repository commit
-\begin{center}\small\texttt{8efbe7c2f43e01041263378dd836008e9747dcda}\end{center}
+\begin{center}\small\texttt{e3e5dd2d277a39b6b515c6c2c99905c79c5e37bb}\end{center}
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
 and its downstream-chain certificate has SHA-256
-\begin{center}\small\texttt{fbd31c4abd548093e6d3b73054d54cc0c3588e804a3374911e820abe6b66842e}\end{center}
+\begin{center}\small\texttt{05a6f0726666a5926ec4824714e49bb8b7c65437b8227cb40b1f0065fd406349}\end{center}
 The repository itself is public at
 \begin{center}\small
 \url{https://github.com/VentiMath/exotic-s2xs2-verification}

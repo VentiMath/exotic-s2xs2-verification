@@ -39,13 +39,15 @@ load for the fixed n=0 target.
 
 This note reports a version-specific audit of the whole argument. The finite
 certificate theorem is unconditional for its hash-bound presentations. The
-simple-connectivity conclusion additionally uses the Geometric Identification
-Theorem of the main paper: the bundle is rebuilt as a simplicial complex from the paper's
-marked-fiber data alone, the surgery tori, meridians, and framed longitudes
-are extracted combinatorially, and the resulting filled presentations are
-proved trivial by complete confluent rewriting, with every computation
-emitting a replayable proof certificate checked by separately implemented
-Python and Ruby verifiers. Both verifiers were produced by OpenAI Codex
+audit-model theorem identifies them with an explicitly defined manifold
+`V_*`, making `V_*` simply connected.  The further comparison with Wuebben's
+intended fixed member is conditional on four source-identification assumptions
+S1--S4: marked-fiber, marked-bundle, peripheral/member, and smooth-surgery
+fidelity.  The bundle is rebuilt as a simplicial complex, the surgery tori,
+meridians, and framed longitudes are extracted combinatorially, and the
+resulting filled presentations are proved trivial by complete confluent
+rewriting, with every computation emitting a replayable proof certificate
+checked by separately implemented Python and Ruby verifiers. Both verifiers were produced by OpenAI Codex
 (GPT-5 family); independence means separate implementations, not cross-model
 authorship. No independent human line-by-line audit of those checkers is
 claimed. The deductions from simple connectivity to the three
@@ -56,16 +58,16 @@ is executed and replayed by two checkers, and the chain ends in the three
 theorems.
 
 The conclusion, stated carefully: the four finite presentations are certified
-trivial; the implication for Wuebben's fixed manifold rests on the separately
-stated marked geometric identification; and the three manifold conclusions
-are conditional on explicitly named external results. A reported contrary
+trivial and $\pi_1(V_*)=1$; the implication for Wuebben's fixed manifold is
+conditional on S1--S4; and the three manifold conclusions are additionally
+conditional on explicitly named external results. A reported contrary
 computation of the same group is disclosed and not resolved; see the note
 above and `runs/67`. The theorems are Wuebben's; this note claims only the
 audit.
 
 ## 2. The independent model
 
-The genus-2 fiber is realized as a regular neighborhood of the paper's
+The audit-defined genus-2 fiber is realized as a regular neighborhood of its
 five-chain of curves (five plumbed annular bands and two cone discs), with
 the hyperelliptic-type involution realized simplicially: the fixed points,
 the curve actions a↔e, b↔d, and the free half-rotation of the middle curve
@@ -74,18 +76,20 @@ simplicial mapping cylinders over a once-punctured-torus base; the two
 surgery tori arise as induced subcomplexes. The assembled 4-complex passes
 manifold checks down to the vertex-link level.
 
-The identification with the paper's marked bundle is by literal based
+The identification with the audit's marked smooth bundle is by literal based
 monodromy action — the based mapping classes of both monodromies are
 certified as equalities of vertex paths, transported by proof-producing
 Tietze chains whose recorded eliminations are replayed in-process by a
 verifier separate from the generator (not sealed certificates) — and then by an explicit
 marked mapping-cylinder clutching over the base graph: the relative
 monodromy comparisons are exact on the marked collars, so the identification
-is a constructed fiberwise homeomorphism into the paper's bundle rather than
+is a constructed fiberwise homeomorphism into the audit-defined bundle rather than
 an appeal to the classification of surface bundles. Everything the surgery
-argument needs is transported through that map into the paper's
-already-smooth manifold, where the symplectic arguments are performed; no
-smoothing of the triangulation is ever chosen.
+argument needs is transported through that map into the audit-defined smooth
+manifold, where the symplectic arguments are performed; no smoothing of the
+triangulation is ever chosen. The additional assertion that this marked
+smooth bundle is Wuebben's intended bundle is assumption S2, together with
+the related source assumptions S1, S3, and S4.
 
 ## 3. Peripheral data
 
@@ -289,10 +293,15 @@ exactly Klug's characteristic case and the lifted torus nonzero integrally.
 
 ## 8. Trust boundary
 
-The named standard inputs behind the simple-connectivity certificate and
-its identification with the paper, applied with checked hypotheses and cited
-proofs: the elementary ribbon-thickening and bistellar-trace interpretations
-that read the paper's figures into complexes; the classification of
+The source comparison is conditional on S1--S4, which are not treated as
+standard theorems or machine certificates.  They assert marked-fiber,
+marked-bundle, peripheral/member, and smooth-surgery fidelity.  Their
+independent extraction and mutation controls are evidence for the readings,
+not proofs of what another author's prose and figures intend.
+
+The named standard inputs behind the audit-model theorem, applied with
+checked hypotheses and cited proofs, are elementary ribbon thickening and
+bistellar traces; the classification of
 surfaces; the collapsible-3-ball and cyclic-knot-unknot criteria behind the
 local-flatness certificates; simplicial fundamental-group presentation and
 Tietze theory; the Kerékjártó periodic-disk involution theorem behind
@@ -314,22 +323,19 @@ Levine's Arf criterion; the slice-disk/0-trace embedding; Lidman–Piccirillo's
 constructions (their Lemmas 4, 6, 7, the regluing of their Theorem 2) and
 Floer lemmas (their Lemmas 9 and 10, with Ozsváth–Szabó 2004, 2006 behind
 them); and Kawauchi's manifold B. This note does not
-reprove them. The ribbon-interpretation input is narrower than the phrase
-suggests: §5's classification certifies the implication from the paper's
-stated marked five-chain data to the equivariant normal form, and the
-stated data themselves are audited in the original Lidman–Piccirillo
-source, so what this boundary retains is the thickening of that data into
-complexes together with the ordinary dashed-arc hidden-projection
-convention of the audited figure.
+reprove them.  The source-reading evidence is recorded separately from these
+general mathematical inputs.
 
-Formerly listed inputs that are no longer dependencies: surface-bundle
+Formerly listed inputs that are no longer dependencies inside the audit
+model: surface-bundle
 classification (replaced by the explicit clutching of §2); four-dimensional
 smoothing and intersection naturality (the smooth arguments run entirely in
-the paper's already-smooth manifold, and the section's square is computed
+the audit-defined smooth manifold, and the section's square is computed
 there from transported disjoint homologous cycles); derived-regular-
 neighborhood theory (the tubular boundary is constructed — see §3); and
-Weinstein germ uniqueness (chart independence is proved between the paper's
-verified charts — see §6; ADK03 remains corroboration).
+Weinstein germ uniqueness (chart independence is proved between the audit's
+verified charts — see §6; ADK03 remains corroboration). S1--S4 remain the
+separate source-comparison boundary.
 
 ## 9. Provenance and method
 

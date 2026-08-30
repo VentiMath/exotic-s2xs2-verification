@@ -17,20 +17,17 @@ web form from drifting from the rendered paper.
 - Upload `paper/arxiv-source-v2.0.0.tar.gz` as the v2.0.0 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `cc1879c8151a96ecc152d6eb23db50e888246c587eaa91d624fc7da19dd7c876`.
-  Two independent invocations of the deterministic build script produced
-  byte-for-byte identical archives.
+  `4ae6b0a2575af6e7c6975df671d0c669aa5283fc44747fd3b21bccb198021f7b`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
   release assets alongside the main paper. The arXiv comments field points to
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
-- Final local PDF SHA-256 digests are
-  `79e05ef8ff6addf339fa42ea68ddac7a39718a4f54ce7ac9424564283afc5e87`
-  for `paper/main.pdf` and
-  `892823769623d6cfa50d69cfa4e1c14d08aea71d006c0467bea74cfa353de0e9`
-  for `paper/supplement.pdf`. Recompute both after any source edit.
+- Main PDF SHA-256:
+  `a3c31badad21ee03e405b529813577e4b671c6c32976f494da8cf98e80142d48`.
+- Supplement PDF SHA-256:
+  `c95a5877698625fc4d2e5d3deb724dd6dee0db7240862bb37c3b5c76a5212e71`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -54,13 +51,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-We audit the fundamental-group and framing calculations in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four explicit, hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. We then reconstruct the marked genus-two bundle and surgery tori independently and prove, in separate geometric steps, that the certified presentations surject onto the fundamental group of Wuebben's fixed surgery manifold. The proof makes explicit the common whiskers, meridians, product longitudes, drilled transport relation, and the product-to-Lagrangian framing bridge. Consequently the fixed manifold is simply connected, conditional on this geometric identification; twenty-five named external results then yield the three manifold conclusions claimed in Wuebben's paper. The finite certificate theorem is mechanically checkable, whereas the marked model-to-manifold identification remains the principal human-review boundary. We state separately an unresolved contrary computation reported by Wuebben. The theorems are Wuebben's; this note claims only the audit.
+We audit the fundamental-group and framing calculations in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four explicit, hash-identified finite presentations are proved trivial by replayable derivation certificates under a published certificate specification. From the marked data we define an explicit audit manifold $V_*$ and prove, in separate geometric steps, that those presentations are presentations of $\pi_1(V_*)$; this makes the common whiskers, meridians, product longitudes, drilled transport relation, and product-to-Lagrangian framing bridge inspectable. We then isolate four source-identification assumptions S1--S4 under which $V_*$ is Wuebben's intended fixed surgery member. Thus $V_*$ is simply connected, while the transfer of that conclusion to Wuebben's member is explicitly conditional on S1--S4. Conditional also on twenty-five named external results, the three manifold conclusions of Wuebben's paper follow. A reported contrary fundamental-group computation is stated separately and bears on the source comparison, not on the finite certificate theorem. The theorems are Wuebben's; this note claims only the audit.
 ```
 
 **Comments**
 
 ```text
-19 pages, two figures, three tables, with a 10-page computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0 . Audits arXiv:2608.17267v1 relative to a stated geometric identification and explicitly named external results.
+21 pages, two figures, four tables, with a 10-page computational supplement in the release assets. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0 . The comparison with arXiv:2608.17267v1 is conditional on four explicitly stated source-identification assumptions; downstream consequences are additionally relative to named external results.
 ```
 
 **Classification**
@@ -79,7 +76,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 19 pages, no missing references, and the
+3. Confirm the generated PDF has 21 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.
