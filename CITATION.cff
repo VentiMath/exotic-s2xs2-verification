@@ -20,20 +20,21 @@ abstract: >-
   also on twenty-five named external results, the three manifold conclusions of
   Wuebben's paper follow. A reported contrary fundamental-group computation is
   stated separately and bears on the source comparison, not on the finite
-  certificate theorem. The theorems are Wuebben's; this note claims only the
-  audit.
+  certificate theorem. The three exotic-manifold conclusions originate in
+  Wuebben's work, while the finite-certificate theorem, the audit-model theorem,
+  and the conditional source comparison are contributions of this note.
 type: software
 authors:
   - family-names: Clyde
     given-names: John
     affiliation: VentiMath
     email: verification@ventimath.org
-version: v2.0.0
-date-released: '2026-08-29'
+version: v2.0.1
+date-released: '2026-08-30'
 license: MIT
 repository-code: 'https://github.com/VentiMath/exotic-s2xs2-verification'
 url: >-
-  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.0
+  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.0.1
 keywords:
   - 4-manifolds
   - exotic smooth structures

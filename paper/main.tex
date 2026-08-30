@@ -76,8 +76,9 @@ Wuebben's member is explicitly conditional on S1--S4.  Conditional also on
 twenty-five named external results, the three manifold conclusions of
 Wuebben's paper follow.  A reported contrary fundamental-group computation
 is stated separately and bears on the source comparison, not on the finite
-certificate theorem.  The theorems are Wuebben's; this note claims only the
-audit.
+certificate theorem.  The three exotic-manifold conclusions originate in
+Wuebben's work, while the finite-certificate theorem, the audit-model theorem,
+and the conditional source comparison are contributions of this note.
 \end{abstract}
 
 \noindent\textit{2020 Mathematics Subject Classification.}
@@ -424,76 +425,10 @@ Theorem~\ref{thm:main} are therefore convention sheets for this one object,
 not four nearby surgeries.  The geometric work below has two logically
 distinct tasks: construct $V_*$ from the simplicial model, and compare the
 marked smooth data of Definition~\ref{def:Vstar} with the fixed member
-described by Wuebben.  The first task is proved without the assumptions
-below.  The second cannot be a theorem about a byte string alone, because it
-includes assertions about what another author's prose and figures denote.
-
-\subsection{Source-identification assumptions}
-\label{sec:source-assumptions}
-
-\begin{assumption}\label{ass:source}
-The comparison with Wuebben's intended fixed member uses exactly the
-following four semantic assertions.
-\begin{enumerate}[label=\textup{(S\arabic*)},leftmargin=3.4em,itemsep=.45em]
-\item \textbf{Marked-fiber fidelity.}  Wuebben's imported marked fiber is
-the ordered five-chain $(a,b,c,d,e)$ with the two marked complementary
-disks, chain-reversing orientation-preserving involution, and curve
-orientations used in Definition~\ref{def:Vstar}.  In particular dashed arcs
-in the source figure depict hidden portions of the same curves, not
-additional crossings.
-\item \textbf{Marked-bundle fidelity.}  The symbols
-$\varphi_0$ and $\psi_0=T_a\circ T_b$ mean the supported right-twist
-representatives used here, with $T_b$ applied first, relative to the full
-$c$ and $e$ collars; the target tori are the resulting $c$-over-$\alpha$
-and $e$-over-$\beta$ curve subbundles.
-\item \textbf{Peripheral and member fidelity.}  The paper's symbols
-$y_1,s_2,A,B,M,N$ denote the same oriented, commonly whiskered paths as in
-Definition~\ref{def:Vstar}; its fixed $(m,n)=(0,0)$ member uses the two
-displayed filling slopes; and $(\epsilon_A,\epsilon_B)$ changes only the
-allowed orientation sheet, not the geometric surgery.
-\item \textbf{Smooth-surgery fidelity.}  Wuebben's smooth surgery tori are
-the images of those marked curve subbundles, and his geometric $+1$
-Luttinger surgeries use their Lagrangian-framing classes with the
-orientations encoded by the relation sheet.
-\end{enumerate}
-\end{assumption}
-
-These are not placeholders for four missing computations.  They are the
-four source-semantic statements at which the audit must say ``this is what
-the target paper means.''  Table~\ref{tab:source-assumptions} records how
-far each has nevertheless been tested.  The finite certificates, the
-construction of $V_*$, and the proof that $\pione(V_*)=1$ do not use
-S1--S4.
-
-\begin{table}[!htbp]
-\centering
-\small
-\renewcommand{\arraystretch}{1.16}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.07\textwidth}
- >{\raggedright\arraybackslash}p{.39\textwidth}X@{}}
-\toprule
-Item & Finite or cited support & What is still assumed \\
-\midrule
-S1 & independent extraction from immutable source; exhaustive ribbon
-rotation check; periodic-disk theorem & intended identification of the
-source symbols and drawing convention \\
-S2 & relative collar checks, explicit graph clutching, based monodromy in
-two subdivisions, order/sign mutation controls & intended mapping-class and
-subbundle conventions \\
-S3 & two peripheral extractors; punctured beta sweep; complement-only
-certificates for both longitude words; author-script comparison & intended
-names, orientations, sign sheets, and selected family member \\
-S4 & constructive relative Moser normalization, two Weinstein-chart
-calculations, first-jet chart independence, Lagrangian-neighborhood theorem
-& intended smooth tori and surgery parametrizations \\
-\bottomrule
-\end{tabularx}
-\caption{The complete source-comparison boundary.  The middle column is
-evidence for each reading; it is not silently promoted into proof of the
-semantic assertion in the last column.}
-\label{tab:source-assumptions}
-\end{table}
-\FloatBarrier
+described by Wuebben.  The first task is proved without source assumptions.
+The second cannot be a theorem about a byte string alone, because it includes
+assertions about what another author's prose and figures denote; those
+assumptions are stated only after the audit-model theorem has been proved.
 
 The genus-2 fiber is realized as a regular neighborhood of the specified
 five-chain of curves --- five plumbed annular bands and two cone discs
@@ -1184,6 +1119,74 @@ group is trivial.  Notice that this conclusion uses only the surjective part
 of Theorem~\ref{prop:ident} and no source-identification assumption.
 \end{proof}
 
+\subsection{Conditional source comparison}
+\label{sec:source-assumptions}
+
+The finite certificate theorem and the audit-model theorem are now complete.
+Only the comparison of $V_*$ with Wuebben's intended fixed member uses the
+following source-semantic assumptions.
+
+\begin{assumption}\label{ass:source}
+The comparison with Wuebben's intended fixed member uses exactly these four
+assertions.
+\begin{enumerate}[label=\textup{(S\arabic*)},leftmargin=3.4em,itemsep=.45em]
+\item \textbf{Marked-fiber fidelity.}  Wuebben's imported marked fiber is
+the ordered five-chain $(a,b,c,d,e)$ with the two marked complementary
+disks, chain-reversing orientation-preserving involution, and curve
+orientations used in Definition~\ref{def:Vstar}.  In particular dashed arcs
+in the source figure depict hidden portions of the same curves, not
+additional crossings.
+\item \textbf{Marked-bundle fidelity.}  The symbols
+$\varphi_0$ and $\psi_0=T_a\circ T_b$ mean the supported right-twist
+representatives used here, with $T_b$ applied first, relative to the full
+$c$ and $e$ collars; the target tori are the resulting $c$-over-$\alpha$
+and $e$-over-$\beta$ curve subbundles.
+\item \textbf{Peripheral and member fidelity.}  The paper's symbols
+$y_1,s_2,A,B,M,N$ denote the same oriented, commonly whiskered paths as in
+Definition~\ref{def:Vstar}; its fixed $(m,n)=(0,0)$ member uses the two
+displayed filling slopes; and $(\epsilon_A,\epsilon_B)$ changes only the
+allowed orientation sheet, not the geometric surgery.
+\item \textbf{Smooth-surgery fidelity.}  Wuebben's smooth surgery tori are
+the images of those marked curve subbundles, and his geometric $+1$
+Luttinger surgeries use their Lagrangian-framing classes with the
+orientations encoded by the relation sheet.
+\end{enumerate}
+\end{assumption}
+
+These are not placeholders for four missing computations.  They are the
+four statements at which the audit must say ``this is what the target paper
+means.''  Table~\ref{tab:source-assumptions} records how far each has been
+tested.  The middle column is evidence for the readings, not proof of
+authorial intent.
+
+\begin{table}[!htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.07\textwidth}
+ >{\raggedright\arraybackslash}p{.39\textwidth}X@{}}
+\toprule
+Item & Finite or cited support & What is still assumed \\
+\midrule
+S1 & independent extraction from immutable source; exhaustive ribbon
+rotation check; periodic-disk theorem & intended identification of the
+source symbols and drawing convention \\
+S2 & relative collar checks, explicit graph clutching, based monodromy in
+two subdivisions, order/sign mutation controls & intended mapping-class and
+subbundle conventions \\
+S3 & two peripheral extractors; punctured beta sweep; complement-only
+certificates for both longitude words; author-script comparison & intended
+names, orientations, sign sheets, and selected family member \\
+S4 & constructive relative Moser normalization, two Weinstein-chart
+calculations, first-jet chart independence, Lagrangian-neighborhood theorem
+& intended smooth tori and surgery parametrizations \\
+\bottomrule
+\end{tabularx}
+\caption{The complete source-comparison boundary.}
+\label{tab:source-assumptions}
+\end{table}
+\FloatBarrier
+
 \begin{proposition}[conditional comparison with Wuebben]
 \label{prop:paper-comparison}
 Assume S1--S4 of Assumption~\ref{ass:source}.  Then the marked smooth surgery
@@ -1232,8 +1235,8 @@ implies Wuebben's three conclusions:
 \item $Z=V_*\cup_\sigma V_*$ is homeomorphic but not diffeomorphic to
   $S^2\times S^2$;
 \item $W=V_*/\sigma$ is homeomorphic to Kawauchi's manifold $B$, while
-  $(B,W)$ is a homeomorphic non-diffeomorphic pair distinguished by smooth
-  sliceness of the figure-eight knot;
+  the figure-eight knot is smoothly slice in $B$ and not smoothly slice in
+  $W$, so $(B,W)$ is a homeomorphic non-diffeomorphic pair;
 \item $Z''=V_*\cup_{f\circ\sigma}V_*$ is homeomorphic but not
   diffeomorphic to $\CPbar$.
 \end{enumerate}
@@ -1252,10 +1255,11 @@ $S^2\times S^2$.
 For (B), the regular double cover has deck group $\Z/2$, and the recorded
 homology, spin, intersection-form, and Kirby--Siebenmann data meet the
 Hambleton--Kreck hypotheses, identifying $W$ topologically with $B$.  The
-figure-eight knot bounds the constructed disk in $W$.  If it bounded
-smoothly in $B$, the trace embedding and Klug--Levine Arf calculation would
-give the prohibited congruence
-$\Delta_{4_1}(-1)=-5\not\equiv\pm1\pmod8$.
+figure-eight knot is smoothly slice in $B$ by construction.  It is not
+smoothly slice in $W$: a hypothetical slice disk in $W$ either gives the
+Klug--Levine Arf contradiction
+$\Delta_{4_1}(-1)=-5\not\equiv\pm1\pmod8$, or lifts a prohibited nonzero
+square-zero torus to $Z$, as detailed in the supplement.
 
 For (C), the regluing calculation and Corollary~\ref{cor:pi1} give a closed
 simply connected manifold with the odd unimodular rank-two form, hence the
@@ -1343,10 +1347,15 @@ SHA-256
 The immutable Lidman--Piccirillo v1 source digest and all interpretation
 inputs are recorded in \texttt{TARGET.md}.  The theorem artifacts, frozen
 inputs, certificate checkers, manifests, run transcripts, and reconstruction
-programs are in the public repository
+programs are in the public repository and its immutable v2.0.0 archival
+snapshot \cite{ClydeArtifact}:
 \begin{center}
-\small\url{https://github.com/VentiMath/exotic-s2xs2-verification}.
+\small\url{https://github.com/VentiMath/exotic-s2xs2-verification},\\[.3em]
+\small\url{https://doi.org/10.5281/zenodo.22169754}.
 \end{center}
+The version DOI identifies the exact v2.0.0 verification snapshot; the
+concept DOI \url{https://doi.org/10.5281/zenodo.22169753} resolves to the
+newest archived version.
 
 The submission release has three intentionally different replay levels.
 The certificate-only path reads frozen files and requires only standard
@@ -1358,12 +1367,14 @@ expected record counts, negative controls, and hashes are listed in the
 companion supplement.  The deterministic source and archive digests are
 recorded in \texttt{ARXIV\_SUBMISSION.md}.
 
-This revision is prepared for repository release \texttt{v2.0.0}; its release
-gate requires the public tag, paper and supplement PDFs, deterministic source
-archives, manifest, and clean-checkout replay to agree before circulation.
-A DOI-bearing archival deposit is still required before journal submission;
-until that deposit exists, the versioned release and hashes are the precise
-reproducibility target.
+The v2.0.0 release, published PDFs, deterministic source archive, manifest,
+and clean-checkout replay were checked before the archival deposit was
+created.  The present v2.0.1 correction changes no mathematical dependency:
+it repairs the prose direction of Theorem~B, relocates the already stated
+source assumptions to their point of use, expands the recorded mod-$2$
+argument, adds a publication-semantics regression check, and refreshes one
+stale Run~15 evidence digest.  The filled-group certificates, proof-manifest
+digest, and downstream-chain digest are unchanged.
 
 \section*{References}
 \addcontentsline{toc}{section}{References}
@@ -1380,6 +1391,13 @@ B.~J.~Wuebben,
 \emph{An exotic $S^2\times S^2$ and an exotic
 $\CP^2\#\overline{\CP}{}^2$},
 arXiv:2608.17267v1 (2026).
+
+\bibitem{ClydeArtifact}
+J.~Clyde,
+\emph{A certificate-based audit of the fundamental-group and framing
+computations in Wuebben's proposed exotic $S^2\times S^2$ construction},
+verification artifact v2.0.0, Zenodo (2026),
+\url{https://doi.org/10.5281/zenodo.22169754}.
 
 \bibitem{LidmanPiccirillo}
 T.~Lidman and L.~Piccirillo,

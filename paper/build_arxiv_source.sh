@@ -4,7 +4,7 @@ set -eu
 umask 022
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-output=${1:-"$script_dir/arxiv-source-v2.0.0.tar.gz"}
+output=${1:-"$script_dir/arxiv-source-v2.0.1.tar.gz"}
 stage=$(mktemp -d "${TMPDIR:-/tmp}/arxiv-source.XXXXXX")
 
 cleanup() {
@@ -15,7 +15,7 @@ trap cleanup EXIT HUP INT TERM
 
 cp "$script_dir/main.tex" "$stage/main.tex"
 chmod 0644 "$stage/main.tex"
-TZ=UTC touch -t 202608290000 "$stage/main.tex"
+TZ=UTC touch -t 202608300000 "$stage/main.tex"
 
 COPYFILE_DISABLE=1 tar \
   --format=ustar \
