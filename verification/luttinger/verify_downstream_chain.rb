@@ -6,7 +6,8 @@
 # This checker shares no code with downstream_chain.py.  It re-derives every
 # computed fact of the chain from scratch, checks that every dependency the
 # chain cites exists and that the dependency graph is acyclic, that each of
-# the three conclusions depends on the certified triviality of pi_1(V), and
+# the three conclusions depends on certified triviality of pi_1(V_aud) and
+# on the explicit Source Formalization D comparison assumption, and
 # that every evidence file is present with the recorded SHA-256.
 #
 #   ruby verify_downstream_chain.rb [--root DIR] [CERTIFICATE]
@@ -163,7 +164,7 @@ certificate = ARGV.first || File.join(__dir__, "downstream_chain_certificate.jso
 root = options[:root] || File.expand_path("..", __dir__)
 data = JSON.parse(File.read(certificate))
 
-demand(data["format"] == "luttinger-downstream-proof-chain-v1", "unknown format")
+demand(data["format"] == "luttinger-downstream-proof-chain-v2", "unknown format")
 items = data["items"]
 by_id = items.to_h { |item| [item["id"], item] }
 demand(by_id.size == items.size, "duplicate item ids")
@@ -194,8 +195,11 @@ reach = lambda do |name, acc|
 end
 data["conclusions"].each do |conclusion|
   demand(by_id.key?(conclusion), "missing conclusion #{conclusion}")
-  demand(reach.call(conclusion, []).include?("K_pi1_V_trivial"),
-         "#{conclusion} does not rest on the certified pi_1(V) = 1")
+  dependencies = reach.call(conclusion, [])
+  demand(dependencies.include?("K_pi1_Vaud_trivial"),
+         "#{conclusion} does not rest on certified pi_1(V_aud) = 1")
+  demand(dependencies.include?("A_source_formalization_D"),
+         "#{conclusion} does not rest on Source Formalization D")
 end
 demand(data["conclusions"].sort == %w[S12_theorem_B S16_theorem_C S7_theorem_A],
        "conclusions are Theorems A, B, C")
@@ -217,6 +221,13 @@ end
 items.select { |i| i["kind"] == "certificate" }.each do |item|
   item["evidence"].each do |relative|
     demand(data["evidence_sha256"].key?(relative), "#{item['id']} evidence #{relative} unbound")
+  end
+end
+items.select { |i| i["kind"] == "assumption" }.each do |item|
+  demand(!item["statement"].to_s.empty?, "assumption #{item['id']} lacks a statement")
+  item["evidence"].each do |relative|
+    demand(data["evidence_sha256"].key?(relative),
+           "#{item['id']} evidence #{relative} unbound")
   end
 end
 

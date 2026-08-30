@@ -28,14 +28,14 @@ def forbid(text, fragment, label):
 
 
 def main():
-    assert FACTS["format"] == "exotic-s2xs2-publication-semantics-v1"
+    assert FACTS["format"] == "exotic-s2xs2-publication-semantics-v2"
     facts = FACTS["facts"]
     assert facts["slice(4_1,B)"] is True
     assert facts["slice(4_1,W)"] is False
-    assert facts["comparison(V_*,Wuebben_V)_requires"] == [
-        "S1", "S2", "S3", "S4"
+    assert facts["comparison(V_aud,Wuebben_V)_requires"] == [
+        f"D{i}" for i in range(1, 15)
     ]
-    assert facts["pi_1(V_*)"] == "trivial"
+    assert facts["pi_1(V_aud)"] == "trivial"
 
     require(MAIN, "smoothly slice in $B$ and not smoothly slice in\n  $W$",
             "Theorem B polarity in the main theorem")
@@ -54,9 +54,13 @@ def main():
             "supplemental nonsliceness proposition")
     require(SUPPLEMENT, "the sliceness of\nthe figure-eight knot in $B$",
             "supplemental sliceness input")
-    require(MAIN, "Assume S1--S4", "conditional Wuebben comparison")
-    require(MAIN, "The audit-defined manifold $V_*$ is simply connected.",
+    require(MAIN, "Under Source Formalization~D", "conditional Wuebben comparison")
+    require(MAIN, "The manifold $V_{\\mathrm{aud}}$ is simply connected.",
             "unconditional audit-model conclusion")
+    require(MAIN, "D1 &", "first atomic source clause")
+    require(MAIN, "D14 &", "last atomic source clause")
+    require(MAIN, "No clause of Source Formalization~D enters this",
+            "source-independent audit-model theorem")
 
     nodes = {node["id"]: node for node in CHAIN["items"]}
     assert "smoothly slice in B" in nodes["E_kawauchi_B"]["statement"]
@@ -70,7 +74,7 @@ def main():
     print("PASS: publication semantics agree across main paper, supplement, "
           "and downstream certificate")
     print("  slice(4_1,B)=true; slice(4_1,W)=false")
-    print("  pi_1(V_*)=1; Wuebben comparison requires S1--S4")
+    print("  pi_1(V_aud)=1; Wuebben comparison requires D1--D14")
 
 
 if __name__ == "__main__":

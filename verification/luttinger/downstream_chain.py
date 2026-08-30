@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""The downstream proof chain: from the certified triviality of pi_1(V) to
-Wuebben's Theorems A, B and C (arXiv:2608.17267), relative to explicitly
-named external theorems.
+"""The downstream proof chain: from certified triviality of the audit
+manifold V_aud to Wuebben's Theorems A, B and C (arXiv:2608.17267), relative
+to Source Formalization D and explicitly named external theorems.
 
 This is the proof-grade successor of the run-24 hypothesis audit.  Every item
-in the chain is one of four kinds:
+in the chain is one of five kinds:
 
   external     a theorem from the literature, stated with its hypotheses and
                its source, which this project does not reprove;
+  assumption   the explicitly enumerated source-to-audit comparison boundary;
   certificate  a machine certificate of this repository, bound by SHA-256;
   computed     a finite calculation executed here and replayed independently
                by verify_downstream_chain.rb;
@@ -81,22 +82,36 @@ EVIDENCE = [
     # the paper's surgeries.
     "runs/20-direct-peripheral-fillings-trivial.txt",
     "runs/22-model-correspondence-and-framing.txt",
+    # The explicit source-to-audit comparison boundary.
+    "notes/source_identification_assumptions_2026-08-29.md",
     # The run-24 audit this chain supersedes.
     "runs/24-downstream-theorem-audit.txt",
     "notes/downstream_theorem_audit_2026-08-23.md",
 ]
 
+ASSUMPTIONS = [
+    {
+        "id": "A_source_formalization_D",
+        "statement": "Source Formalization D1--D14 holds: the marked fiber, "
+                     "bundle, torus, based-peripheral, coefficient, framing, "
+                     "and relative smooth data in Wuebben's pinned source "
+                     "identify its fixed (m,n)=(0,0) member with V_aud.",
+        "evidence": ["notes/source_identification_assumptions_2026-08-29.md"],
+        "ledger": "A_Source_Formalization_D",
+    },
+]
+
 CERTIFICATES = [
     {
-        "id": "K_pi1_V_trivial",
-        "claim": "pi_1(V) = 1 (Theorem D): each of the four n=0 filled "
+        "id": "K_pi1_Vaud_trivial",
+        "claim": "pi_1(V_aud) = 1: each of the four n=0 filled "
                  "presentations of the sealed complement presentation "
                  "(whose Tietze transport from the serialized raw complex "
                  "replays from frozen files) carries a derivation-DAG "
                  "certificate accepted by two independent checkers, the "
                  "four fillings of the earlier four-generator export reach "
-                 "the same verdicts, and the peripheral identification "
-                 "shows they present pi_1 of the paper's surgeries; the "
+                 "the same verdicts, and the audit-model peripheral "
+                 "identification shows they present pi_1(V_aud); the "
                  "alpha and beta paper-coordinate identities are separately "
                  "certified inside the sealed complement (runs 68--69).",
         "evidence": ["luttinger/proof_certificates/manifest.json",
@@ -114,7 +129,7 @@ CERTIFICATES = [
                      "runs/57-second-certificate-verifier.txt",
                      "runs/20-direct-peripheral-fillings-trivial.txt",
                      "runs/22-model-correspondence-and-framing.txt"],
-        "ledger": "C_pi1_V_trivial",
+        "ledger": "C_pi1_Vaud_trivial",
     },
     {
         "id": "K_section_square_zero",
@@ -128,11 +143,12 @@ CERTIFICATES = [
     },
     {
         "id": "K_lagrangian_framing",
-        "claim": "The paper's Lemma 8.2: for the Thurston-type form on R the "
+        "claim": "For the Thurston-type form on the audit bundle the "
                  "tori T_alpha, T_beta are Lagrangian and their Lagrangian "
                  "framing is the fibered framing of the certified "
-                 "longitudes, so the certified fillings are the paper's "
-                 "Luttinger surgeries.",
+                 "longitudes, so the audit fillings are Luttinger "
+                 "surgeries. Source Formalization D is the separate bridge "
+                 "to the target paper's smooth surgery data.",
         "evidence": ["runs/35-framing-lemma-referee-packet.txt",
                      "runs/43-weinstein-chart-independence.txt",
                      "runs/46-direct-equivariant-moser.txt",
@@ -796,11 +812,24 @@ COMPUTED_FUNCTIONS = [
 
 
 # --------------------------------------------------------------------------
-# The chain.  "uses" lists ids of externals (E_), certificates (K_),
-# computed facts (C_) and earlier steps (S_).
+# The chain.  "uses" lists ids of externals (E_), assumptions (A_),
+# certificates (K_), computed facts (C_) and earlier steps (S_).
 # --------------------------------------------------------------------------
 
 STEPS = [
+    {
+        "id": "S00_pi1_V_trivial",
+        "claim": "Under Source Formalization D, Wuebben's fixed target "
+                 "member V is simply connected.",
+        "proof": "The Audit-Manifold Theorem gives pi_1(V_aud)=1.  Source "
+                 "Formalization D supplies a relative orientation-preserving "
+                 "smooth comparison carrying both torus collars, based "
+                 "peripheral classes, framing classes, and filling slopes.  "
+                 "It therefore extends over the two fillings to a "
+                 "diffeomorphism V_aud -> V, which transports the trivial "
+                 "fundamental group.",
+        "uses": ["A_source_formalization_D", "K_pi1_Vaud_trivial"],
+    },
     {
         "id": "S1_homology_of_V",
         "claim": "H_1(V) = 0, H_3(V) = 0, H_2(V) = Z generated by the fiber F "
@@ -815,7 +844,7 @@ STEPS = [
                  "F.F = 0 since a fiber has trivial normal bundle.  "
                  "H_2(V; Z/2) = Z/2<F> by universal coefficients, w_2 is "
                  "detected on it, and <w_2, F> = chi(F) + F.F = 0 (mod 2).",
-        "uses": ["K_pi1_V_trivial", "E_duality_uct", "C_euler", "C_betti",
+        "uses": ["S00_pi1_V_trivial", "E_duality_uct", "C_euler", "C_betti",
                  "C_w2_fiber", "E_wu", "E_lp_double"],
     },
     {
@@ -827,7 +856,7 @@ STEPS = [
                  "quotient of pi_1(V) * pi_1(V) = 1.  This is the one place "
                  "where pi_1(V) = 1, rather than pi_1(Z) = 1, is needed: the "
                  "regluing twists the amalgam.",
-        "uses": ["K_pi1_V_trivial", "E_van_kampen", "E_lp_double",
+        "uses": ["S00_pi1_V_trivial", "E_van_kampen", "E_lp_double",
                  "E_lp_regluing"],
     },
     {
@@ -1055,14 +1084,15 @@ def check_chain(items):
 
     for name in graph:
         visit(name)
-    # Every external hypothesis-bearing item and every certificate is used.
+    # Every non-step hypothesis-bearing item is used.
     used = {dep for uses in graph.values() for dep in uses}
     for item in items:
         if item["kind"] != "step":
             assert item["id"] in used, f"unused item {item['id']}"
     for conclusion in CONCLUSIONS:
         assert conclusion in ids
-    # Theorem D is reachable from every conclusion.
+    # Both the audit theorem and the source-comparison assumption are
+    # reachable from every conditional conclusion.
     def closure(name, acc):
         for dep in graph[name]:
             if dep not in acc:
@@ -1070,23 +1100,26 @@ def check_chain(items):
                 closure(dep, acc)
         return acc
     for conclusion in CONCLUSIONS:
-        assert "K_pi1_V_trivial" in closure(conclusion, set())
+        dependencies = closure(conclusion, set())
+        assert "K_pi1_Vaud_trivial" in dependencies
+        assert "A_source_formalization_D" in dependencies
 
 
 def payload():
     computed = [fn() for fn in COMPUTED_FUNCTIONS]
     items = ([dict(e, kind="external") for e in EXTERNAL]
+             + [dict(a, kind="assumption") for a in ASSUMPTIONS]
              + [dict(k, kind="certificate") for k in CERTIFICATES]
              + [dict(c, kind="computed") for c in computed]
              + [dict(s, kind="step") for s in STEPS])
     check_chain(items)
     evidence = {relative: file_digest(relative) for relative in EVIDENCE}
-    for cert in CERTIFICATES:
-        for relative in cert["evidence"]:
+    for item in ASSUMPTIONS + CERTIFICATES:
+        for relative in item["evidence"]:
             assert relative in evidence, relative
     return {
-        "format": "luttinger-downstream-proof-chain-v1",
-        "target": "arXiv:2608.17267 Theorems A, B, C from Theorem D",
+        "format": "luttinger-downstream-proof-chain-v2",
+        "target": "arXiv:2608.17267 Theorems A, B, C from the audit theorem under Source Formalization D",
         "conclusions": CONCLUSIONS,
         "items": items,
         "evidence_sha256": evidence,

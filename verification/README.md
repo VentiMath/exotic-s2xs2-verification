@@ -112,9 +112,11 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
   replay of the retained 4,040-record ancestry DAG gives the final auxiliary
   tally: **100/100 reported trivial — 22 certificate-backed, 78 retained GAP-session verdicts — 0 inconclusive, 0 nontrivial**.
 * **Downstream proof chain:** `downstream_chain.py` carries every
-  implication from the certified simple connectivity to Theorems A, B, C
-  as an explicit item — 25 external theorems with hypotheses and sources,
-  3 hash-bound certificates, 15 computed facts, 16 deduction steps — and
+  implication from certified simple connectivity of the audit manifold to
+  Theorems A, B, C as an explicit item — Source Formalization D as one
+  source-comparison assumption, 25 external theorems with hypotheses and
+  sources, 3 hash-bound certificates, 15 computed facts, and 17 deduction
+  steps — and
   freezes it as `downstream_chain_certificate.json`;
   `verify_downstream_chain.rb` independently recomputes every fact, checks
   the graph, and verifies the evidence digests. See `runs/64` and

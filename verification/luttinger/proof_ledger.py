@@ -52,11 +52,11 @@ NODES = {
         "notes/lemma71_equivariant_normal_form_2026-08-27.md"),
 
     # These are not mathematical theorems about the audit model.  They are
-    # the four semantic assertions S1--S4 needed to identify that explicit
-    # model with the geometric object intended by Wuebben's prose and
-    # figures.  Keeping them as their own evidence kind prevents the ledger
-    # from silently treating a source reading as a machine certificate.
-    "A_Wuebben_source_identification": (
+    # the fourteen clauses D1--D14 of Source Formalization D, needed to
+    # compare that explicit model with Wuebben's pinned text and figures.
+    # Keeping them as their own evidence kind prevents the ledger from
+    # silently treating a source reading as a machine certificate.
+    "A_Source_Formalization_D": (
         "source_assumption", (),
         "notes/source_identification_assumptions_2026-08-29.md"),
 
@@ -210,7 +210,7 @@ NODES = {
         ("G_audit_model_identification", "G_peripheral_identification",
          "G_equivariant_normal_form", "M_interpretation_dictionary",
          "M_independent_paper_dictionary", "M_lp_source_figure",
-         "A_Wuebben_source_identification"), None),
+         "A_Source_Formalization_D"), None),
     "G_section_square_zero": (
         "geometric_argument",
         ("G_audit_model_identification", "M_section_PL_push_off",
@@ -247,18 +247,18 @@ NODES = {
          "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
-    "C_pi1_Vstar_trivial": (
+    "C_pi1_Vaud_trivial": (
         "derived_claim",
         ("C_correct_sealed_filled_presentation",
          "M_sealed_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
-    "C_pi1_Vstar_trivial_unseeded_chain": (
+    "C_pi1_Vaud_trivial_unseeded_chain": (
         "derived_claim",
         ("C_correct_filled_presentation", "M_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
     "C_pi1_V_trivial": (
         "derived_claim",
-        ("C_pi1_Vstar_trivial", "G_Wuebben_comparison"), None),
+        ("C_pi1_Vaud_trivial", "G_Wuebben_comparison"), None),
     # The downstream chain (run 64): every step below is an item of
     # luttinger/downstream_chain_certificate.json, replayed by two checkers.
     "C_homology_of_V": (

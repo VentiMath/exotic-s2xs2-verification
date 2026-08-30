@@ -1,14 +1,12 @@
 {
-  "format": "exotic-s2xs2-publication-semantics-v1",
+  "format": "exotic-s2xs2-publication-semantics-v2",
   "facts": {
     "slice(4_1,B)": true,
     "slice(4_1,W)": false,
-    "comparison(V_*,Wuebben_V)_requires": [
-      "S1",
-      "S2",
-      "S3",
-      "S4"
+    "comparison(V_aud,Wuebben_V)_requires": [
+      "D1", "D2", "D3", "D4", "D5", "D6", "D7",
+      "D8", "D9", "D10", "D11", "D12", "D13", "D14"
     ],
-    "pi_1(V_*)": "trivial"
+    "pi_1(V_aud)": "trivial"
   }
 }
