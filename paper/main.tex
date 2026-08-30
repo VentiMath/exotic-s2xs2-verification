@@ -43,6 +43,12 @@ computations in Wuebben's proposed exotic $S^2\times S^2$ construction}
 \begin{document}
 \maketitle
 
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{\centering\bfseries
+UNRELEASED ARTIFACT DRAFT. The v1.5.8 artifact named below is not yet public;
+do not circulate this PDF until that release exists and this notice is removed.}}
+\end{center}
+
 \begin{abstract}
 We audit the theorem-critical computations in Wuebben's proposed exotic
 $S^2\times S^2$ construction.  Four explicit, hash-identified finite
@@ -551,12 +557,16 @@ had reported an empty elementary
 residual over a presentation predating both committed exports.  That evidence
 does not reproduce and is superseded by the sealed certificate just described.
 
-The analogous beta-coordinate word
-$\texttt{lb\_b\_s2}^{-1}(r^{-1}Mr)B$ still leaves a $113$-letter residual
-under elementary elimination.  It dies in $H_1(C)=\Z^2$ but is not certified,
-and a nonempty partial normal form is inconclusive in both directions.  This
-does not affect Theorem~\ref{thm:main}: its beta filling uses the literal
-stored boundary longitude, not the coordinate substitution.
+The beta-coordinate word
+$\texttt{lb\_b\_s2}^{-1}(r^{-1}Mr)B$ likewise leaves a $113$-letter residual
+under elementary elimination.  The same proof-producing complement system
+reduces that exact word to the identity in $82$ steps; independent Python and
+Ruby verifiers replay its $1{,}540$-record ancestry cone.  The frozen source,
+certificate, compiler, and both verifiers are in
+\repopath{verification/luttinger/beta_residual/} (Run 69). Thus both displayed
+coordinate identities are algebraically certified in the complement, although
+Theorem~\ref{thm:main} remains more direct: it fills with the literal stored
+boundary longitudes rather than relying on either coordinate substitution.
 
 The beta extraction is the sign-sensitive case.  The corresponding path
 uses the initial segment $s_2$ to the unique crossing $s_e$, the base loop
@@ -1142,11 +1152,11 @@ lemmas of Lidman--Piccirillo with the Ozsv\'ath--Szab\'o nonvanishing
 theorem behind them; the rest are elementary or are constructions of
 \cite{LidmanPiccirillo} that this note takes as stated. None is reproved.
 The repository's dependency ledger records the whole verification as an
-acyclic graph of 33 named external theorems, 36 machine certificates, 11
+acyclic graph of 33 named external theorems, 37 machine certificates, 11
 geometric arguments, and 20 derived claims ending in the three theorems,
 with every evidence file bound by hash. These are not competing counts: the
 25/3/15/16 figures in Appendix~\ref{sec:downstream} describe only the compact
-downstream chain, while 33/36/11/20 describe the larger project-wide ledger
+downstream chain, while 33/37/11/20 describe the larger project-wide ledger
 that also contains the model, peripheral, framing, and PL verification.
 
 \subsection*{Data availability}
@@ -1157,16 +1167,17 @@ whose PDF has SHA-256
 The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest. All permanent certificates, frozen inputs, replay scripts, hash
 manifests, run transcripts, and provenance records are contained, with
-clean-checkout replay instructions, in the tagged release \texttt{v1.5.8}
+clean-checkout replay instructions, prepared for release as \texttt{v1.5.8}
 of the repository:
 \url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.8}.
-The \texttt{verification/} tree of that release is identical to that of
+This draft must not be circulated until that URL resolves. Once published,
+the \texttt{verification/} tree of that release will be identical to that of
 the repository commit
-\begin{center}\small\texttt{895279a87f0d23f4f50e18e9c801308afc7e80c7}\end{center}
+\begin{center}\small\texttt{05bda8e474d02cdc0bd0c3ecc29a018cf8a2ffb0}\end{center}
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{0cec91193c19b50d496a6d2230d6b6e1dcecb52df60b25117231f31ed21cdae6}\end{center}
 and its downstream-chain certificate has SHA-256
-\begin{center}\small\texttt{835016cd587351ca07107a8fd2d16a614fc4f32ddbd7e9070b9190c681a253dd}\end{center}
+\begin{center}\small\texttt{d564d678b13aec27e9887a508e53c3a1af736436ac3977fe4297297b092daf67}\end{center}
 The repository itself is public at
 \repopath{https://github.com/VentiMath/exotic-s2xs2-verification}; the versioned
 release link above, rather than search-engine indexing, is the artifact to

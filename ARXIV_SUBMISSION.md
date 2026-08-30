@@ -1,5 +1,10 @@
 # arXiv submission packet
 
+> **RELEASE GATE:** do not circulate or upload this packet until the v1.5.8
+> release URL resolves, the verification-tree pin below has been refreshed to
+> the final release content, and the unreleased-draft notice has been removed
+> from the PDF.
+
 This packet fixes the metadata for the v1.5.8 manuscript and prevents the
 web form from drifting from the rendered paper.
 
@@ -11,7 +16,7 @@ web form from drifting from the rendered paper.
   same `paper/main.tex` are byte-for-byte identical.
 - Upload `paper/arxiv-source-v1.5.8.tar.gz` as the v1.5.8 GitHub release asset
   and to arXiv.
-- SHA-256: `fe9082cf34f1b1ababb35dfa46a61215704b205834fc722952346affea20263e`.
+- SHA-256: `e39cb69481a354352d1591e5a09000deec055cfbe9678e6f21a20841dda097ba`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
