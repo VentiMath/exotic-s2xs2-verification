@@ -17,7 +17,7 @@ web form from drifting from the rendered paper.
 - Upload `paper/arxiv-source-v2.1.0.tar.gz` as the v2.1.0 GitHub release asset
   and to arXiv.
 - Source-archive SHA-256:
-  `b710210b8f0d85fefb5dc8aef42474deea7f9f6df23acccba424c4a6e1cde7aa`.
+  `286e2e508ec0a8670e8fb2b1b34d8a18a1b69b64c1022e891ce28816d641933c`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
@@ -25,9 +25,9 @@ web form from drifting from the rendered paper.
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
 - Main PDF SHA-256:
-  `ad01e7387bde105de1a233e3f042e358183cf88d6d1d8563565d8a49a10ded6d`.
+  `685a9cc91e409a5e0318dec6d432c56baab9e85e3afa82fcd079da65bc8a6656`.
 - Supplement PDF SHA-256:
-  `535671f94158c965200f2ad8d182e4880daa8f4d2e6c47682bff0edf3a8982ce`.
+  `8920ca637efed4a529eaa6a479dfc9b5b4ea5af36b6a31e42e279167d7dd0983`.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -69,7 +69,7 @@ We define an explicit marked surface-bundle surgery manifold $V_aud$ modeled on 
 **Comments**
 
 ```text
-25 pages, three figures, six tables, with a 12-page mathematical and computational supplement in the release assets. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.1.0 . Exact v2.1.0 archive DOI: [INSERT AFTER DEPOSIT]. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
+27 pages, three figures, six tables, with a 12-page mathematical and computational supplement in the release assets. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.1.0 . Exact v2.1.0 archive DOI: [INSERT AFTER DEPOSIT]. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
 ```
 
 **Classification**
@@ -88,7 +88,7 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 25 pages, no missing references, and the
+3. Confirm the generated PDF has 27 pages, no missing references, and the
    target/version line `arXiv:2608.17267v1` on page 1.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.

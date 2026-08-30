@@ -743,7 +743,9 @@ made only in Section~\ref{sec:source-assumptions}.
 
 \section{Peripheral data and the product filling}\label{sec:peripheral}
 
-Let $T=T_\alpha\sqcup T_\beta$ and let
+Let $T=T_\alpha\sqcup T_\beta$.  Transport the explicit normal block
+neighborhood $N_{1/2}(T)$ below through the marked homeomorphism $H$, and
+use the resulting product-collared neighborhood as $\nu(T)$.  Put
 $C_{\mathrm{aud}}=R_{\mathrm{aud}}\smallsetminus\operatorname{int}\nu(T)$.
 This section identifies
 the normal boundary of each component, its commonly based peripheral pair,
@@ -796,9 +798,18 @@ circle.  No regular-neighborhood uniqueness or smoothing theorem is used.
 \end{proof}
 
 \begin{lemma}[complement presentation]\label{lem:complement}
-The induced subcomplex on the vertices outside $T$ is a strong deformation
-retract of $|K|\smallsetminus|T|$.  Its maximal-tree edge generators and
-oriented triangle boundaries give a presentation of
+Let $L=K[V(K)\smallsetminus V(T)]$ be the full subcomplex on the vertices
+outside $T$.  There is a homotopy-equivalence diagram
+\[
+ |L|\ \lhook\joinrel\longrightarrow\
+ |K|\smallsetminus\operatorname{int}N_{1/2}(T)\
+ \lhook\joinrel\longrightarrow\ |K|\smallsetminus|T|,
+ \qquad
+ |K|\smallsetminus\operatorname{int}N_{1/2}(T)\cong C_{\mathrm{aud}},
+\]
+in which both spaces on the right strongly deformation retract onto $|L|$.
+Consequently the maximal-tree edge generators of $L$ and its oriented
+triangle boundaries give a presentation of
 $\pione(C_{\mathrm{aud}})$.  The raw
 presentation has $99{,}863$ generators and $321{,}702$ relators; the sealed
 Tietze certificate reduces it to the $3$-generator, $78$-relator complement
@@ -807,10 +818,20 @@ $89$ named peripheral and comparison words.
 \end{lemma}
 
 \begin{proof}
-On each simplex outside the full subcomplex $T$, set the coordinates on
-$T$ to zero and renormalize the remaining barycentric coordinates.  The
-straight-line homotopy stays outside $T$, agrees on faces, and fixes the
-induced complement.  A maximal tree on its $8{,}860$ vertices has $8{,}859$
+On each simplex not contained in the full subcomplex $T$, let $r(x)$ be the
+point obtained by setting the coordinates on $T$ to zero and renormalizing
+the remaining barycentric coordinates.  The straight-line homotopy
+$H_t(x)=(1-t)x+tr(x)$ agrees on faces and fixes $|L|$.  If
+$\rho(x)=\sum_{v\in T}\lambda_v(x)$, then
+$\rho(H_t(x))=(1-t)\rho(x)$.  Thus $H_t$ stays in
+$|K|\smallsetminus|T|$ and also restricts to the block exterior
+$\{\rho\leq1/2\}=|K|\smallsetminus\operatorname{int}N_{1/2}(T)$.
+The homeomorphism $H$ and the chosen product collar identify that block
+exterior with $C_{\mathrm{aud}}$.  This proves all three asserted homotopy
+identifications, including the previously implicit passage from the deleted
+subcomplex to the compact torus exterior.
+
+A maximal tree on $L$'s $8{,}860$ vertices has $8{,}859$
 edges; subtracting from the $108{,}722$ complement edges gives the stated
 $99{,}863$ generators.  Collapsing the tree and applying cellular van Kampen
 to every oriented two-simplex gives the raw presentation.  Each of the
@@ -1254,6 +1275,21 @@ argument below shows that this boundary framing class is intrinsic.}
 \end{figure}
 \FloatBarrier
 
+Here is the boundary-class assertion in coordinates.  Let $\gamma$ be either
+named curve, let $\eta$ complete it to an oriented basis of the zero-section
+torus, and let $\mu$ be the positively oriented circle in a cotangent fiber.
+After radial projection to the unit-covector boundary, a constant nonzero
+covector $p_0$ gives
+\[
+ s\longmapsto \bigl(\gamma(s),p_0/\lVert p_0\rVert\bigr).
+\]
+Its normal-circle coordinate is constant, so its class in the boundary basis
+$(\gamma,\eta,\mu)$ has $\mu$-coefficient zero.  This is the precise sense in
+which ``constant covector'' excludes a meridional component.  The seam map
+and the quotient map above preserve the displayed orientations: their
+pullbacks give the positive forms written there, and the chosen positive
+normal circle is the boundary orientation of the ordered momentum plane.
+
 \emph{Independence of the Weinstein chart.}  It remains to show that the
 constant-momentum conclusion is a framing class rather than a feature of
 the displayed coordinates.  Given two Lagrangian-neighborhood charts, first
@@ -1271,8 +1307,13 @@ is symplectic.  Along the zero section the symplectic condition gives
 \]
 Taylor expansion shows that $\Phi_r$ extends at $r=0$ by the identity.  Hence
 $\Phi_r$ is an isotopy of germs, relative to $T$, from the identity to the
-chart transition.  Applied to a sufficiently small nonzero constant-covector
-copy of either named curve, this compact isotopy stays in
+chart transition.  To make the punctured-neighborhood assertion uniform,
+choose a compact germ domain over the entire named curve and then choose one
+nonzero constant covector copy small enough that every $\Phi_r$ is defined
+on it.  Each $\Phi_r$ fixes the zero section and is injective, so no point of
+that copy can meet the zero section.  Compactness of the copy times
+$[0,1]$ then gives a positive distance from the zero section throughout the
+isotopy.  Thus the whole isotopy lies in one
 $\nu(T)\smallsetminus T$ and proves that the two push-offs have the same
 boundary class.  The first-jet symplectic calculation is replayed in
 \texttt{weinstein\_chart\_independence.py}.  The potentially dangerous
@@ -1431,6 +1472,55 @@ Splitting the former four omnibus assumptions into these three evidence
 classes prevents a verified textual choice from being bundled with a
 genuinely conditional smooth identification.
 
+\begin{samepage}
+\begin{lemma}[extension across a torus filling]\label{lem:torus-extension}
+Let $X=T^2\times D^2$ and order an integral basis of its boundary as
+$(\mu,\gamma_1,\gamma_2)$, where $\mu$ bounds the disk fiber.  A boundary
+diffeomorphism $f:\partial X\to\partial X'$ extends over $X$ if and only if
+$f_*(\mu)=\epsilon\mu'$ for $\epsilon\in\{\pm1\}$.  In these bases its
+matrix then has the form
+\[
+ [f_*]=
+ \begin{pmatrix}
+  \epsilon & u_1 & u_2\\
+  0 & a_{11} & a_{12}\\
+  0 & a_{21} & a_{22}
+ \end{pmatrix}
+ =\begin{pmatrix}\epsilon&u\\0&A\end{pmatrix},
+ \qquad A=(a_{ij})\in GL(2,\mathbb Z),\quad
+ u=(u_1,u_2)\in\mathbb Z^2.
+\]
+Consequently, a diffeomorphism of torus exteriors that carries each killed
+attaching slope to the corresponding slope up to sign extends across the
+filled pieces; the two unfilled boundary directions are accounted for by
+$A$ and $u$.
+\end{lemma}
+\end{samepage}
+
+\begin{proof}
+Necessity follows because the kernel of
+$H_1(\partial X)\to H_1(X)$ is the primitive subgroup generated by $\mu$.
+For sufficiency, write $x\in\mathbb R^2/\mathbb Z^2$ for the base coordinate
+and $z\in D^2\subset\mathbb C$ for the disk coordinate.  Up to translations,
+the displayed matrix is realized by
+\[
+ (x,z)\longmapsto
+ \begin{cases}
+  (Ax,e^{2\pi i\langle u,x\rangle}z),&\epsilon=+1,\\
+  (Ax,e^{2\pi i\langle u,x\rangle}\overline z),&\epsilon=-1.
+ \end{cases}
+\]
+This is a diffeomorphism of $T^2\times D^2$ and restricts to the prescribed
+isotopy class on its boundary.  A diffeomorphism of $T^3$ is isotopic to the
+affine representative with the same integral homology action; extending that
+isotopy through a boundary collar adjusts the displayed extension to the
+original $f$.  For filled exteriors, conjugate the exterior
+boundary map by the two attaching maps.  The hypothesis on the killed slope
+says exactly that the conjugated map sends the filling-piece meridian to
+$\pm\mu'$, so the preceding construction applies.  This also exhibits the
+otherwise implicit third boundary direction.
+\end{proof}
+
 \begin{lemma}[relative smooth source bridge]\label{lem:smooth-source-bridge}
 Under D1--D14, the marked bundle comparison is represented by an
 orientation-preserving diffeomorphism relative to the boundary marking and
@@ -1450,8 +1540,9 @@ whiskers, and oriented meridians.  Clause D13, together with
 Theorem~\ref{thm:framing}, identifies the two longitude classes and surgery
 coefficients.  Thus the boundary diffeomorphisms of each removed
 $T^2\times D^2$ carry meridian and attaching slope to meridian and attaching
-slope.  The product extension over $T^2\times D^2$ on each filling piece
-gives the claimed diffeomorphism of filled manifolds.
+slope.  Lemma~\ref{lem:torus-extension}, including its full boundary matrix,
+extends those maps over each $T^2\times D^2$ filling piece and gives the
+claimed diffeomorphism of filled manifolds.
 \end{proof}
 
 \subsection{The reported contrary computation and live failure locations}
@@ -1565,7 +1656,16 @@ published mathematical specification reduce ordinary software risk but do
 not constitute an independent human line-by-line audit.  Second, the marked
 fiber, peripheral, and framing arguments have been decomposed above so that a
 PL or symplectic topologist can audit them locally, but no such external audit
-is claimed.  Third, the comparison with Wuebben's fixed member remains
+is claimed.  In particular Theorem~\ref{thm:framing} is the highest-risk
+internal geometric bridge.  A specialist review should check (i) that the
+named product push-offs land in the exact boundary classes used by the
+surgery convention, (ii) the seam, quotient, and normal-circle orientations,
+(iii) the zero meridional coefficient of the constant-covector copies,
+(iv) the uniform punctured-neighborhood isotopy in the chart-independence
+argument, and (v) that the relative smoothing hypotheses used in the source
+comparison are sufficient.  The displayed calculations and finite checks
+make those questions local; they do not substitute for that external review.
+Third, the comparison with Wuebben's fixed member remains
 conditional on every clause of Source Comparison Hypotheses~D1--D14.  The downstream
 corollary additionally depends on its cited external results.  The reported
 contrary calculation in Section~\ref{sec:contrary} is therefore an active
