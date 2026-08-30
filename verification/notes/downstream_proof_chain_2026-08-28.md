@@ -1,13 +1,13 @@
 # The downstream proof chain (2026-08-28)
 
-> **v2.0.0 scope clarification.** The finite and audit-model results prove
-> `pi_1(V_*) = 1`. This downstream chain applies to Wuebben's `V` only after
-> the source comparison assumptions S1--S4 identify `V_*` with that fixed
-> member. The external theorem audit below is additionally conditional on the
-> named results and their applications.
+> **v2.1 scope clarification.** The finite and Audit-Manifold Theorems prove
+> `pi_1(V_aud) = 1`. This downstream chain applies to Wuebben's `V` only after
+> Source Formalization D identifies `V_aud` with that fixed member. The
+> external theorem audit below is additionally relative to the named results.
 
-This note is the prose form of `luttinger/downstream_chain.py` (run 64). After
-S1--S4, it transfers the certified statement `pi_1(V_*) = 1` to Wuebben's
+This note is the prose form of `luttinger/downstream_chain.py` (run 64). Under
+Source Formalization D, it transfers the certified statement
+`pi_1(V_aud) = 1` to Wuebben's
 specified Lidman–Piccirillo piece and then to the paper's Theorems A, B and C,
 with every implication written out, every external theorem stated with its
 hypotheses, every hypothesis discharged by a named item, and every finite

@@ -70,12 +70,12 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
 * **PL-to-smooth bridge rerouted:** Run 50 transports the certified marked
   tori, collars, peripheral data, and section cycles by an
   orientation-preserving homeomorphism into the underlying topological
-  manifold of the audit-defined already smooth bundle `R_*`. The source triangulation is
+  manifold of the audit-defined already smooth bundle `R_aud`. The source triangulation is
   never smoothed. The disjoint homologous section pair remains so in the
   target, proving square zero there and removing compatible 4D source
   smoothing and separate intersection naturality from the proof ledger.
-  Comparing `R_*` with Wuebben's intended `R` is the separate source boundary
-  S1--S4.
+  Comparing `R_aud` with Wuebben's intended `R` is the separate fourteen-clause
+  Source Formalization D boundary.
 * **Relative markings made direct:** Run 51 certifies the full `c` and `e`
   collars. Alpha agrees exactly on the `c` collar; the beta twist trace avoids
   the `e` collar in all 1,536 trace cells and restricts to its literal product
