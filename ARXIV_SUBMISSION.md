@@ -16,7 +16,7 @@ web form from drifting from the rendered paper.
   same `paper/main.tex` are byte-for-byte identical.
 - Upload `paper/arxiv-source-v1.5.9.tar.gz` as the v1.5.9 GitHub release asset
   and to arXiv.
-- SHA-256: `9784d874fe7096021c74d3c471c8dc515370b51b86551eee6009568db834dca8`.
+- SHA-256: `8d3ae4eb3a50499c5b8a5c6aff413e1bd9c82f9c3d5bdbf738d3ab71abde40f3`.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Select the automatically detected PDFLaTeX-compatible processor and
@@ -48,7 +48,7 @@ We audit the theorem-critical computations in Wuebben's proposed exotic $S^2 \ti
 **Comments**
 
 ```text
-20 pages, two figures, three tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.9 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
+19 pages, two figures, three tables. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v1.5.9 . Audits arXiv:2608.17267v1 relative to explicitly named external results.
 ```
 
 **Classification**
