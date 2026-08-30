@@ -76,7 +76,8 @@ manifold conclusions are then conditional on that formalization and the
 cited classification, symplectic, and Floer-theoretic results.  A reported
 contrary fundamental-group computation remains unreconciled; the paper
 lists all live failure locations rather than assigning the discrepancy in
-advance.
+advance.  Thus the source-independent audit theorem, not the conditional
+transfer to the proposed exotic manifolds, is the paper's primary result.
 \end{abstract}
 
 \noindent\textit{2020 Mathematics Subject Classification.}
@@ -84,7 +85,18 @@ advance.
 
 \section{Introduction}
 
-For the construction of \cite{Wuebben}, the theorem-critical
+This paper is primarily about an explicitly defined audit object.  Its primary
+result is the source-independent theorem
+\[
+             \pione(V_{\mathrm{aud}})=1.
+\]
+The proof joins finite group certificates to a displayed geometric
+construction of $V_{\mathrm{aud}}$.  Comparison with Wuebben's intended
+manifold is a separate conditional application, and the exotic-manifold
+conclusions are conditional context rather than coequal claims of this note.
+
+The motivating application is the construction of \cite{Wuebben}, whose
+theorem-critical
 step is the fundamental-group computation. The manifolds there rest on a
 specified Lidman--Piccirillo piece $V$, obtained
 by two Luttinger surgeries \cite{Luttinger,ADK} on Lagrangian tori in a
@@ -93,7 +105,7 @@ torus, following the framework of \cite{LidmanPiccirillo}. Write $\sigma$
 for the free orientation-reversing involution of $\partial V=S^3_0(Q)$,
 $Q$ the square knot, $Z=V\cup_\sigma V$ for the symplectic double,
 $W=V/\sigma$ for the quotient, and $\Zpp=V\cup_{f\circ\sigma}V$ for the
-Lidman--Piccirillo regluing. The paper's three theorems are: (A) $Z$ is
+Lidman--Piccirillo regluing. Wuebben's three theorems are: (A) $Z$ is
 homeomorphic but not diffeomorphic to $S^2\times S^2$; (B) $W$ is
 homeomorphic to Kawauchi's manifold $B$, and $(B,W)$ is a
 homeomorphic, non-diffeomorphic pair distinguished by the sliceness of
@@ -155,7 +167,7 @@ Audit-Manifold Theorem & $\pione(V_{\mathrm{aud}})=1$ & displayed geometric
 arguments, finite geometric artifacts, and named standard topology inputs \\
 Source-Comparison Proposition & conditional identification with Wuebben's
 fixed member & the fourteen clauses of Source Formalization~D \\
-Downstream Corollary & conditional recovery of Wuebben's three conclusions &
+Conditional target application & conditional recovery of Wuebben's three conclusions &
 Source Formalization~D and the cited classification, symplectic, and
 Floer-theoretic results \\
 \bottomrule
@@ -1397,17 +1409,19 @@ Combine Theorem~\ref{thm:audit-manifold} with
 Proposition~\ref{prop:paper-comparison}.
 \end{proof}
 
-\section{Conditional downstream corollary}\label{sec:consequences}
+\section{Conditional application to the target construction}
+\label{sec:consequences}
 
-Let $V,\sigma,f,Z,W,Z''$ now denote the fixed member, involution, regluing
-map, and three manifolds in \cite{Wuebben}.  Under Source Formalization~D,
-Proposition~\ref{prop:paper-comparison} transports this entire marked setup
-to the audit object.  The following result is otherwise an ordinary
-conditional application of named theorems, not a formalization of those
-theorems.  Their exact statements and the verification of their hypotheses
-in this setting are collected in the companion supplement.
+This section records why the audit matters to the proposed construction; it
+is not part of the source-independent Audit-Manifold Theorem.  Let
+$V,\sigma,f,Z,W,Z''$ denote the fixed member, involution, regluing map, and
+three manifolds in \cite{Wuebben}.  Source Formalization~D is required even
+to identify $V$ with $V_{\mathrm{aud}}$, and the conclusions below also use
+named classification, symplectic, and Floer-theoretic results.  Their exact
+statements, hypothesis checks, and the full dependency audit are collected
+in the companion supplement.
 
-\begin{corollary}[Conditional Downstream Corollary]\label{thm:full}
+\begin{corollary}[conditional application]\label{thm:full}
 Assume Source Formalization~D and the classification, symplectic, and
 Floer-theoretic results cited in the companion supplement in the forms
 stated there.  Then:
@@ -1423,36 +1437,20 @@ stated there.  Then:
 \end{corollary}
 
 \begin{proof}
-For (A), van Kampen and Corollary~\ref{cor:pi1} make $Z$ simply connected.
-The Euler-characteristic, signature, spin, and square-zero section
-calculations give the even hyperbolic intersection form, so Freedman's
-classification gives the homeomorphism type.  The Thurston form and
-Theorem~\ref{thm:framing} make the surgeries symplectic.  Ho--Li invariance
-of symplectic Kodaira dimension, together with the asphericity and minimality
-inputs recorded in the supplement, excludes the standard smooth
-$S^2\times S^2$.
-
-For (B), the regular double cover has deck group $\Z/2$, and the recorded
-homology, spin, intersection-form, and Kirby--Siebenmann data meet the
-Hambleton--Kreck hypotheses, identifying $W$ topologically with $B$.  The
-figure-eight knot is smoothly slice in $B$ by construction.  It is not
-smoothly slice in $W$: a hypothetical slice disk in $W$ either gives the
-Klug--Levine Arf contradiction
-$\Delta_{4_1}(-1)=-5\not\equiv\pm1\pmod8$, or lifts a prohibited nonzero
-square-zero torus to $Z$, as detailed in the supplement.
-
-For (C), the regluing calculation and Corollary~\ref{cor:pi1} give a closed
-simply connected manifold with the odd unimodular rank-two form, hence the
-homeomorphism type $\CPbar$.  The Lidman--Piccirillo regluing and
-Floer-theoretic inputs give a nonzero mixed invariant, while the connected
-sum has vanishing mixed invariant; the orientation adjustment is made before
-that comparison.  This proves non-diffeomorphism relative to those cited
-inputs.
-
-The proof ledger is a check on this argument's bookkeeping, not an additional
-mathematical hypothesis.  Its two implementations verify the dependency
-graph, evidence digests, and the dependence of every conclusion on
-Corollary~\ref{cor:pi1}; the complete node inventory is in the supplement.
+Under Source Formalization~D, Proposition~\ref{prop:paper-comparison} and
+Corollary~\ref{cor:pi1} supply the marked identification and simple
+connectivity required by all three arguments.  For (A), the recorded
+intersection-form calculation and Freedman's theorem give the homeomorphism
+type, while the symplectic and Kodaira-dimension inputs exclude the standard
+smooth structure.  For (B), the Hambleton--Kreck inputs identify the
+quotient topologically.  The figure-eight knot is smoothly slice in $B$ by
+construction.  The Klug--Levine and lifting alternatives obstruct a slice
+disk in $W$.  It is not smoothly slice in $W$.  For (C), the
+odd rank-two form gives the homeomorphism
+type and the cited Floer-theoretic mixed invariant distinguishes the smooth
+structure.  The supplement states every external result used here and checks
+its hypotheses.  Its proof ledger verifies the dependency bookkeeping; it is
+not an additional mathematical hypothesis.
 \end{proof}
 
 \section{Limitations and independent review}
