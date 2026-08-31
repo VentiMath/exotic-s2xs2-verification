@@ -56,6 +56,12 @@ clone. The release URL and both DOIs resolve from a logged-out browser.
 The worktree may contain a title-page-labeled post-v2.2.2 revision; until it
 has its own tag, archive deposit, and regenerated hashes, v2.2.2 remains the
 only immutable packet and the newer draft must not be described as released.
+The current working proof manifest has SHA-256
+`e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9` and
+binds 48 files, including the revised checkers and the audit-manifold
+invariant checker.  The current `verification/` tree object is
+`57ed025145378a84884c5a63293ae35a8c00f899`; these working identifiers must
+be replaced by the final tagged identifiers during the next release cut.
 
 **What this repository is not:** a verification or refutation of Wuebben's
 fixed manifold; an unconditional proof of the proposed exotic-manifold

@@ -27,6 +27,8 @@ source archive.
 | Standard topology inputs were too broadly cited. | **Resolved to the available source granularity.** The manuscript now cites Rourke--Sanderson Chapter 4 pp. 50--51, Constantin--Kolev Theorem 3.1 and Proposition 3.2, Hatcher case (IV) pp. 464--465, and ADK Section 2.1 first paragraph, Definition 2.1, and Proposition 2.2. Construction-specific star/link and extension arguments are also written out. |
 | The main and supplement needed version identity and PDF metadata. | **Resolved for the working draft.** Both title pages identify the post-v2.2.2 working revision and artifact base; both PDFs carry title, author, subject, and keyword metadata. Final version/DOI replacement remains a release gate. |
 | Public files and the immutable release could drift. | **Blocked from accidental submission, not yet released.** `ARXIV_SUBMISSION.md` and `paper/check_release_sync.py` treat this as an unreleased working revision. A new tag, archive DOI, regenerated manifest, hashes, and clean-tag final replay are mandatory before arXiv upload. |
+| The final gate could accept stale CFF metadata, a stale README “newest release,” an old normative-root sentence, or old supplement recovery instructions. | **Resolved.** Final mode now checks the exact CFF title, abstract, version, top-level DOI, DOI descriptions, and release date; the README newest-release declaration; the main-paper manifest digest, versioned normative root, and self-citation; and the supplement's exact tag and `git rev-parse VERSION:verification` command. The sole permitted old-version occurrence is the explicit historical statement that the invariant checker was absent from the v2.2.2 manifest. |
+| The working manifest did not bind the revised checkers or the invariant checker. | **Resolved for the working revision.** The regenerated 48-file manifest has SHA-256 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9`; both papers record it, the supplement pins verification tree `57ed025145378a84884c5a63293ae35a8c00f899`, and candidate mode now runs the manifest generator in check mode. These are working identifiers until the next immutable release. |
 
 ## External items intentionally not represented as completed
 
@@ -39,4 +41,3 @@ source archive.
 The revised paper does not require any of these five items for the theorem it
 actually states. They determine what further claims could responsibly be
 made and what a journal referee should examine.
-

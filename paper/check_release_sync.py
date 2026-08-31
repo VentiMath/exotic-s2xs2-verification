@@ -19,6 +19,7 @@ import re
 import subprocess
 import tarfile
 import tempfile
+from datetime import date
 from pathlib import Path
 
 
@@ -35,6 +36,9 @@ CITATION = ROOT / "CITATION.cff"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
 BUILD_SOURCE = PAPER / "build_arxiv_source.sh"
+MANIFEST = ROOT / "verification/luttinger/proof_certificates/manifest.json"
+MAKE_MANIFEST = ROOT / "verification/luttinger/make_proof_manifest.py"
+DOWNSTREAM = ROOT / "verification/luttinger/downstream_chain_certificate.json"
 
 
 def fail(message: str) -> None:
@@ -103,6 +107,18 @@ def require(text: str, fragment: str, label: str) -> None:
 
 def normalize_space(text: str) -> str:
     return " ".join(text.split())
+
+
+def folded_cff_field(text: str, field: str) -> str:
+    """Read the simple folded scalar form used for top-level CFF fields."""
+    match = re.search(
+        rf"^{re.escape(field)}:\s*>-\s*\n((?:[ \t]+.*(?:\n|$))+)",
+        text,
+        re.MULTILINE,
+    )
+    if not match:
+        fail(f"CITATION.cff does not give {field!r} as a folded scalar")
+    return normalize_space(match.group(1))
 
 
 def main() -> None:
@@ -210,17 +226,21 @@ def main() -> None:
     if table_count != 2:
         fail("main.tex does not contain exactly two table/longtable environments")
 
-    manifest = ROOT / "verification/luttinger/proof_certificates/manifest.json"
-    downstream = ROOT / "verification/luttinger/downstream_chain_certificate.json"
-    for path in (manifest, downstream):
+    # The generator, not a hand-edited JSON snapshot, defines the current
+    # inventory.  This catches checker drift and omitted new tools.
+    run("python3", str(MAKE_MANIFEST), "--check")
+    for path in (MANIFEST, DOWNSTREAM):
         digest = sha256(path)
         if digest not in supplement:
             fail(f"supplement does not record the digest of {path.relative_to(ROOT)}")
+    manifest_digest = sha256(MANIFEST)
+    if manifest_digest not in main_tex:
+        fail("main paper does not record the current proof-manifest digest")
 
-    # The supplement pins the archived verification/ tree by its git tree
-    # object.  Pinning a commit goes stale on every later commit; the tree
-    # object only changes when verification/ itself changes.
-    tree_ref = "HEAD:verification" if args.final else f"{ARCHIVED_BASE_VERSION}:verification"
+    # The supplement pins the working verification/ tree by its git tree
+    # object.  Pinning a repository commit would go stale after unrelated
+    # paper edits; the subtree object changes only when verification/ changes.
+    tree_ref = "HEAD:verification"
     tree = run("git", "rev-parse", tree_ref)
     if tree not in supplement:
         fail(
@@ -271,12 +291,11 @@ def main() -> None:
     if not args.final:
         print("PASS: the post-v2.2.2 working revision is internally synchronized")
         print("  main=22 pages/4 figures/2 tables; supplement=17 pages")
-        print("  fresh source archive matches main.tex; archived-base manifest pins agree")
+        print("  fresh source archive matches main.tex; working manifest/tree pins agree")
         print(f"  candidate source SHA-256: {candidate_source_digest}")
         print(f"  candidate main PDF SHA-256: {sha256(MAIN_PDF)}")
         print(f"  candidate supplement PDF SHA-256: {sha256(SUPP_PDF)}")
-        print("NOT FINAL: regenerate the proof manifest to bind the modified Python")
-        print("  checker and new invariant checker; reserve a new version DOI, replace")
+        print("NOT FINAL: reserve a new version DOI, replace")
         print("  working wording, cut the new tag, and rerun --final --version VERSION")
         return
 
@@ -313,6 +332,87 @@ def main() -> None:
     version_doi = doi_match.group(1)
     for name, text in final_texts.items():
         require(text, version_doi, f"exact version DOI in {name}")
+
+    # Exact current-release assertions.  These close holes that generic URL
+    # and placeholder checks miss: a stale CFF title/version, a README that
+    # still calls the previous tag newest, an old normative-root sentence,
+    # or an old self-citation/recovery command can no longer pass final mode.
+    if folded_cff_field(citation, "title") != PDF_TITLE:
+        fail("CITATION.cff title is not the exact manuscript title")
+    abstract_match = re.search(
+        r"\*\*Abstract\*\*\s*```text\s*(.*?)\s*```",
+        metadata,
+        re.DOTALL,
+    )
+    if not abstract_match:
+        fail("could not read the arXiv abstract from ARXIV_SUBMISSION.md")
+    if folded_cff_field(citation, "abstract") != normalize_space(abstract_match.group(1)):
+        fail("CITATION.cff abstract does not exactly match the arXiv abstract")
+    require(citation, f"version: {version}", "exact CFF version")
+    doi_value = version_doi.removeprefix("https://doi.org/")
+    if not re.search(rf"^doi:\s*{re.escape(doi_value)}\s*$", citation, re.MULTILINE):
+        fail("CITATION.cff top-level DOI is not the exact version DOI")
+    release_date_match = re.search(
+        r"^date-released:\s*['\"]?(\d{4}-\d{2}-\d{2})['\"]?\s*$",
+        citation,
+        re.MULTILINE,
+    )
+    if not release_date_match:
+        fail("CITATION.cff lacks a valid ISO release date")
+    release_date = date.fromisoformat(release_date_match.group(1))
+    human_date = f"{release_date.day} {release_date.strftime('%B %Y')}"
+    require(main_tex, human_date, "CFF release date on main title page")
+    require(supplement, human_date, "CFF release date on supplement title page")
+    require(
+        citation,
+        f"description: 'Version DOI for the {version} archived artifact'",
+        "version-specific CFF DOI description",
+    )
+    require(
+        citation,
+        f"description: 'Resolver link for the {version} version DOI'",
+        "version-specific CFF resolver description",
+    )
+    require(
+        readme,
+        f"**{version} release.** The newest public immutable release is:",
+        "README newest-release declaration",
+    )
+    require(main_tex, f"the {version} proof manifest", "current normative root")
+    require(
+        main_tex,
+        r"\emph{Certificate-checked simple connectivity of a surface-bundle surgery manifold}",
+        "current artifact title in the bibliography",
+    )
+    require(main_tex, f"verification artifact {version}", "current artifact version")
+    require(
+        supplement,
+        f"tagged release \\texttt{{{version}}}",
+        "current tagged release in supplement",
+    )
+    require(
+        supplement,
+        f"git rev-parse {version}:verification",
+        "current verification-tree recovery command",
+    )
+
+    # v2.2.2 may survive only in the one explicit historical statement that
+    # the newly added invariant checker was absent from that archived manifest.
+    if version != ARCHIVED_BASE_VERSION:
+        for name, text in (
+            ("README.md", readme),
+            ("ARXIV_SUBMISSION.md", metadata),
+            ("paper/main.tex", main_tex),
+            ("CITATION.cff", citation),
+        ):
+            if ARCHIVED_BASE_VERSION in text:
+                fail(f"archived base {ARCHIVED_BASE_VERSION} survives in final-facing {name}")
+        historical = "It is not part of the archived v2.2.2 manifest"
+        normalized_supplement = normalize_space(supplement)
+        if historical not in normalized_supplement:
+            fail("supplement lost the allowed v2.2.2 historical statement")
+        if ARCHIVED_BASE_VERSION in normalized_supplement.replace(historical, ""):
+            fail("v2.2.2 survives outside its one allowed historical statement")
 
     head = run("git", "rev-parse", "HEAD")
     try:
