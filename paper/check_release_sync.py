@@ -23,7 +23,6 @@ from datetime import date
 from pathlib import Path
 
 
-ARCHIVED_BASE_VERSION = "v2.2.2"
 TITLE_FRAGMENT = "Certificate-checked simple connectivity"
 PDF_TITLE = "Certificate-checked simple connectivity of a surface-bundle surgery manifold"
 ROOT = Path(__file__).resolve().parents[1]
@@ -190,7 +189,7 @@ def main() -> None:
     args = parser.parse_args()
     if args.final and not args.version:
         fail("--final requires --version VERSION")
-    version = args.version or ARCHIVED_BASE_VERSION
+    version = args.version
 
     for path in (
         ARXIV,
@@ -345,7 +344,7 @@ def main() -> None:
             fail(f"contrary-computation overclaim survives: {overclaim!r}")
 
     if not args.final:
-        print("PASS: the post-v2.2.2 working revision is internally synchronized")
+        print("PASS: the working revision is internally synchronized")
         print("  main=22 pages/4 figures/2 tables; supplement=17 pages")
         print("  complete replay suite passes; working manifest/tree pins agree")
         print("  fresh source archive matches main.tex and both committed PDFs")
@@ -370,9 +369,14 @@ def main() -> None:
         for phrase in forbidden:
             if phrase.lower() in text.lower():
                 fail(f"final-mode placeholder {phrase!r} survives in {name}")
-        for stale in ("v2.2.1", "v2.2.0", "v2.1.0", "v2.0.1"):
-            if stale in text:
-                fail(f"obsolete release {stale} survives in final-facing file {name}")
+        stale_versions = sorted(
+            set(re.findall(r"\bv\d+\.\d+\.\d+\b", text)) - {version}
+        )
+        if stale_versions:
+            fail(
+                f"obsolete release version(s) {', '.join(stale_versions)} "
+                f"survive in final-facing file {name}"
+            )
         require(
             text,
             f"releases/tag/{version}",
@@ -443,7 +447,7 @@ def main() -> None:
     )
     require(main_tex, f"verification artifact {version}", "current artifact version")
     require(
-        supplement,
+        normalize_space(supplement),
         f"tagged release \\texttt{{{version}}}",
         "current tagged release in supplement",
     )
@@ -452,24 +456,6 @@ def main() -> None:
         f"git rev-parse {version}:verification",
         "current verification-tree recovery command",
     )
-
-    # v2.2.2 may survive only in the one explicit historical statement that
-    # the newly added invariant checker was absent from that archived manifest.
-    if version != ARCHIVED_BASE_VERSION:
-        for name, text in (
-            ("README.md", readme),
-            ("ARXIV_SUBMISSION.md", metadata),
-            ("paper/main.tex", main_tex),
-            ("CITATION.cff", citation),
-        ):
-            if ARCHIVED_BASE_VERSION in text:
-                fail(f"archived base {ARCHIVED_BASE_VERSION} survives in final-facing {name}")
-        historical = "It is not part of the archived v2.2.2 manifest"
-        normalized_supplement = normalize_space(supplement)
-        if historical not in normalized_supplement:
-            fail("supplement lost the allowed v2.2.2 historical statement")
-        if ARCHIVED_BASE_VERSION in normalized_supplement.replace(historical, ""):
-            fail("v2.2.2 survives outside its one allowed historical statement")
 
     head = run("git", "rev-parse", "HEAD")
     try:
