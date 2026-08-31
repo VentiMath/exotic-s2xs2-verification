@@ -65,6 +65,16 @@ def source_archive(stack: contextlib.ExitStack) -> Path:
     return built
 
 
+def rebuilt_pdf(tex: Path, stack: contextlib.ExitStack) -> Path:
+    """Build one TeX source in a temporary directory for freshness checks."""
+    staging = Path(stack.enter_context(tempfile.TemporaryDirectory()))
+    run("tectonic", "--outdir", str(staging), str(tex))
+    built = staging / f"{tex.stem}.pdf"
+    if not built.is_file():
+        fail(f"Tectonic did not produce {built.name} from {tex.relative_to(ROOT)}")
+    return built
+
+
 def recorded_hash(metadata: str, label: str, *, required: bool) -> str | None:
     match = re.search(
         rf"{re.escape(label)}:\s*\n\s*`([0-9a-f]{{64}})`", metadata
@@ -146,6 +156,20 @@ def main() -> None:
     with contextlib.ExitStack() as stack:
         source = source_archive(stack)
         candidate_source_digest = sha256(source)
+
+        for tex, committed in ((MAIN_TEX, MAIN_PDF), (SUPP_TEX, SUPP_PDF)):
+            rebuilt = rebuilt_pdf(tex, stack)
+            rebuilt_text = run("pdftotext", "-layout", str(rebuilt), "-")
+            committed_text = run("pdftotext", "-layout", str(committed), "-")
+            if rebuilt_text != committed_text:
+                fail(
+                    f"{committed.relative_to(ROOT)} is stale relative to "
+                    f"{tex.relative_to(ROOT)}; rebuild the PDF"
+                )
+            if pdf_pages(rebuilt) != pdf_pages(committed):
+                fail(
+                    f"{committed.relative_to(ROOT)} page count differs from a fresh build"
+                )
 
         expected = {
             "Source-archive SHA-256": source,
@@ -251,7 +275,8 @@ def main() -> None:
         print(f"  candidate source SHA-256: {candidate_source_digest}")
         print(f"  candidate main PDF SHA-256: {sha256(MAIN_PDF)}")
         print(f"  candidate supplement PDF SHA-256: {sha256(SUPP_PDF)}")
-        print("NOT FINAL: bind the new checker, reserve a new version DOI, replace")
+        print("NOT FINAL: regenerate the proof manifest to bind the modified Python")
+        print("  checker and new invariant checker; reserve a new version DOI, replace")
         print("  working wording, cut the new tag, and rerun --final --version VERSION")
         return
 

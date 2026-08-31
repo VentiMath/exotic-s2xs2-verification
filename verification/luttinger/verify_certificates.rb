@@ -68,6 +68,14 @@ def check_word(word, nletters, label)
          "#{label} contains an invalid monoid letter")
 end
 
+def check_signed_word(word, ngens, label)
+  demand(word.is_a?(Array), "#{label} is not an array")
+  valid = word.all? do |letter|
+    letter.is_a?(Integer) && !letter.zero? && letter.abs <= ngens
+  end
+  demand(valid, "#{label} contains an invalid signed generator letter")
+end
+
 def relation_key(left, right)
   signed = lambda do |word|
     word.map do |letter|
@@ -109,19 +117,32 @@ def verify_filled_certificate(path, source, source_digest)
   demand(proof["format"] == "luttinger-kbmag-proof-v1", "unknown filled-proof format")
   demand(proof["input_sha256"] == source_digest, "filled-proof input digest mismatch")
 
+  ngens = source.fetch("ngens")
+  demand(ngens.is_a?(Integer) && ngens.positive?, "invalid source generator count")
   index = proof.fetch("case").fetch("index")
   demand(index.is_a?(Integer) && index.between?(0, source.fetch("paper_fillings").length - 1),
          "invalid filling index")
   filling = source.fetch("paper_fillings")[index]
+  demand(filling.fetch("half_drift").is_a?(String), "invalid half-drift label")
+  demand([-1, 1].include?(filling.fetch("sign_a")) &&
+         [-1, 1].include?(filling.fetch("sign_b")), "invalid filling signs")
+  demand(filling.fetch("relators").is_a?(Array) &&
+         filling.fetch("relators").length == 2,
+         "selected filling does not have exactly two relators")
   demand(proof.fetch("case").fetch("slug") == case_slug(filling), "case label mismatch")
   relators = source.fetch("relators") + filling.fetch("relators")
+  relators.each_with_index do |relator, relator_index|
+    check_signed_word(relator, ngens, "source relator #{relator_index}")
+  end
   demand(proof["relators"] == relators, "presentation relators mismatch")
   demand(proof["ngens"] == source["ngens"], "presentation generator count mismatch")
 
-  ngens = proof.fetch("ngens")
   nletters = 2 * ngens
   expected_inverse_letters = (0...ngens).flat_map { |i| [2 * i + 2, 2 * i + 1] }
   inverse_letters = proof.fetch("inverse_letters")
+  demand(inverse_letters.is_a?(Array) &&
+         inverse_letters.all? { |letter| letter.is_a?(Integer) },
+         "invalid inverse-letter table")
   demand(inverse_letters == expected_inverse_letters, "invalid inverse-letter table")
   input_keys = relators.map { |word| cyclic_key(word) }
   records = proof.fetch("records")
@@ -329,6 +350,14 @@ begin
     end
     input_record.fetch("lhs") << input_record.fetch("lhs").first
     reject_mutation.call("input-relator equation", bad_input)
+
+    bad_alphabet = Marshal.load(Marshal.dump(first_proof))
+    bad_alphabet.fetch("records").first.fetch("lhs")[0] = true
+    reject_mutation.call("noninteger word letter", bad_alphabet)
+
+    bad_case = Marshal.load(Marshal.dump(first_proof))
+    bad_case.fetch("case")["index"] = true
+    reject_mutation.call("noninteger case index", bad_case)
 
     bad_trace = Marshal.load(Marshal.dump(first_proof))
     trace = nil

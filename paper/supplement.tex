@@ -344,7 +344,12 @@ Euler-characteristic, Betti-number, and mod-two fiber calculations promoted
 to the Audit-Manifold Theorem.  It is not part of the archived v2.2.2
 manifest and must be bound by the next release before submission.  Its output
 distinguishes finite arithmetic from the topological hypotheses established
-in prose.
+in prose.  The working revision also repairs Python's integer-letter check so
+that JSON booleans are rejected and expands its built-in corruption tests to
+match the Ruby checker's major failure classes.  That revised checker must
+likewise be rebound by the next manifest.  The external checker and geometry
+review guides are versioned with the repository but are not represented as
+completed independent reviews.
 
 \section{Geometric audit inventory}\label{sec:geometric-inventory}
 
@@ -835,22 +840,27 @@ bistellar traces; classification of compact surfaces; local-flatness and
 normal-block criteria; and simplicial fundamental-group presentations with
 Tietze theory.  The regular-neighborhood
 and local-flatness conventions are those of
-\cite[Chapters~2--4, especially Corollary~4.2]{RourkeSanderson} and
+\cite[Chapters~2--4, especially pp.~50--51]{RourkeSanderson} and
 \cite[Chapters~3--5]{Hudson}; the periodic-disk input is
 \cite[Theorem~3.1 and Proposition~3.2]{ConstantinKolev}, and the torus-boundary
 linearization is \cite[case~(IV), pp.~464--465]{HatcherLinearization}.  The
 presentation moves are the standard ones of \cite{LyndonSchupp}.  The exact
 Lagrangian-neighborhood statement used for the Weinstein charts is the
-opening statement of \cite[\S2.1]{ADK}.  No smoothing theorem is claimed to
+first paragraph of \cite[\S2.1]{ADK}; the surgery and persistence of the
+symplectic form are \cite[Definition~2.1 and Proposition~2.2]{ADK}.  No smoothing theorem is claimed to
 establish D14: that relative smooth comparison remains an explicit source
 hypothesis.  This note applies rather than reproves the cited general results.
 
-\subsection*{External specialist-review target for the framing bridge}
+\subsection*{External specialist-review targets}
 
-No external symplectic or PL specialist audit of the Framing Bridge Theorem
-is claimed.  Because that theorem is the highest-risk internal geometric
-bridge, an independent review should answer the following six concrete
-questions against the named curves and boundary bases of the main paper:
+No external PL or symplectic specialist audit is claimed.  For the intrinsic
+simple-connectivity theorem, the highest-risk geometric steps are the marked
+bundle, normal-frontier, peripheral-word, and drilled-transport arguments in
+Sections~4--5 of the main paper.  For the intrinsic symplectic conclusion,
+the highest-risk step is the Framing Bridge Theorem.  The repository's
+external-review guide gives the former a claim-by-claim checklist.  A review
+of the latter should answer the following six concrete questions against the
+named curves and boundary bases of the main paper:
 \begin{enumerate}[label=(\roman*)]
 \item Does the global vertical area form descend through both clutching maps,
   does its sum with the base area form give the stated orientation, and can

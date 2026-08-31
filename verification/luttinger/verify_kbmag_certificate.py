@@ -17,6 +17,11 @@ def require(condition, message="certificate check failed"):
         raise VerificationError(message)
 
 
+def is_integer(value):
+    """JSON integer, excluding Python's integer-subclass booleans."""
+    return type(value) is int
+
+
 def inverse(word):
     return [-letter for letter in reversed(word)]
 
@@ -58,8 +63,16 @@ def case_slug(filling):
 
 def check_word(word, nletters, label):
     require(isinstance(word, list), f"{label} is not a list")
-    require(all(isinstance(x, int) and 1 <= x <= nletters for x in word),
+    # ``bool`` is a subclass of ``int`` in Python, but JSON booleans are not
+    # monoid letters under the certificate specification.
+    require(all(is_integer(x) and 1 <= x <= nletters for x in word),
             f"{label} contains an invalid monoid letter")
+
+
+def check_signed_word(word, ngens, label):
+    require(isinstance(word, list), f"{label} is not a list")
+    require(all(is_integer(x) and 1 <= abs(x) <= ngens for x in word),
+            f"{label} contains an invalid signed generator letter")
 
 
 def apply_trace(word, trace, records, before):
@@ -68,11 +81,11 @@ def apply_trace(word, trace, records, before):
         require(isinstance(step, list) and len(step) == 2,
                 "bad rewrite step")
         rule_id, position = step
-        require(isinstance(rule_id, int) and 0 <= rule_id < before,
+        require(is_integer(rule_id) and 0 <= rule_id < before,
                 "rewrite uses a rule that has not yet been proved")
         rule = records[rule_id]
         left = rule["lhs"]
-        require(isinstance(position, int) and 0 <= position <= len(word),
+        require(is_integer(position) and 0 <= position <= len(word),
                 "bad rewrite position")
         require(word[position:position + len(left)] == left,
                 f"rewrite step {step_number} does not match")
@@ -120,11 +133,19 @@ def check_inventory(entries, source, full_inventory,
 
 def negative_controls(certificate_paths, source, source_digest, full_inventory,
                       expect_generators=4, expect_relators=95):
-    """Prove that the batch checks reject a duplicated certificate and that
-    the record checks reject a corrupted identity root."""
+    """Exercise one failure at every major trust boundary of the checker."""
     first = certificate_paths[0]
     proof = load_certificate(first)
     entry = (first, proof["case"]["index"], proof["case"]["slug"])
+
+    def reject_mutation(label, mutated, digest=source_digest):
+        try:
+            verify_certificate(first, mutated, source, digest)
+        except VerificationError:
+            print(f"REJECTED DELIBERATELY CORRUPTED {label.upper()}")
+        else:
+            raise VerificationError(f"corrupted {label} was accepted")
+
     try:
         check_inventory([entry] * len(certificate_paths), source, full_inventory,
                         expect_generators, expect_relators)
@@ -132,14 +153,43 @@ def negative_controls(certificate_paths, source, source_digest, full_inventory,
         print("REJECTED DUPLICATED CERTIFICATE BATCH")
     else:
         raise VerificationError("duplicated certificate batch was accepted")
-    corrupt = json.loads(json.dumps(proof))
-    corrupt["records"][corrupt["roots"][0]]["rhs"] = [1]
-    try:
-        verify_certificate(first, corrupt, source, source_digest)
-    except VerificationError:
-        print("REJECTED DELIBERATELY CORRUPTED IDENTITY ROOT")
-    else:
-        raise VerificationError("corrupted identity root was accepted")
+
+    bad_root = json.loads(json.dumps(proof))
+    bad_root["records"][bad_root["roots"][0]]["rhs"] = [1]
+    reject_mutation("identity root", bad_root)
+
+    bad_input = json.loads(json.dumps(proof))
+    input_record = next(record for record in bad_input["records"]
+                        if record["proof"]["kind"] == "input_relator")
+    input_record["lhs"].append(input_record["lhs"][0])
+    reject_mutation("input-relator equation", bad_input)
+
+    bad_alphabet = json.loads(json.dumps(proof))
+    bad_alphabet["records"][0]["lhs"][0] = True
+    reject_mutation("noninteger word letter", bad_alphabet)
+
+    bad_case = json.loads(json.dumps(proof))
+    bad_case["case"]["index"] = True
+    reject_mutation("noninteger case index", bad_case)
+
+    bad_trace = json.loads(json.dumps(proof))
+    trace = None
+    for record in bad_trace["records"]:
+        derivation = record["proof"]
+        if derivation["kind"] != "overlap":
+            continue
+        if derivation["trace_a"]:
+            trace = derivation["trace_a"]
+        elif derivation["trace_b"]:
+            trace = derivation["trace_b"]
+        if trace is not None:
+            break
+    require(trace is not None,
+            "negative control could not find a nonempty rewrite trace")
+    trace[0][1] += 1
+    reject_mutation("rewrite trace", bad_trace)
+
+    reject_mutation("presentation digest", proof, "0" * 64)
 
 
 def main():
@@ -150,8 +200,9 @@ def main():
                         help="require the batch to be exactly the input's "
                              "eight fillings, one file per case slug")
     parser.add_argument("--negative-controls", action="store_true",
-                        help="also prove that a duplicated batch and a "
-                             "corrupted identity root are rejected")
+                        help="also exercise the checker against deliberately "
+                             "corrupted metadata, words, records, traces, "
+                             "roots, and batch inventory")
     parser.add_argument("--expect-generators", type=int, default=4,
                         help="generator count the full-inventory check "
                              "requires of the source (default 4; the sealed "
@@ -188,22 +239,37 @@ def verify_certificate(certificate_path, proof, source, source_digest):
             "unknown certificate format")
     require(proof["input_sha256"] == source_digest,
             "input digest mismatch")
+    ngens = source["ngens"]
+    require(is_integer(ngens) and ngens > 0,
+            "invalid source generator count")
     case = proof["case"]["index"]
-    require(isinstance(case, int) and
+    require(is_integer(case) and
             0 <= case < len(source["paper_fillings"]),
             "invalid filling index")
     filling = source["paper_fillings"][case]
+    require(isinstance(filling["half_drift"], str),
+            "invalid half-drift label")
+    require(is_integer(filling["sign_a"]) and filling["sign_a"] in (-1, 1) and
+            is_integer(filling["sign_b"]) and filling["sign_b"] in (-1, 1),
+            "invalid filling signs")
+    require(isinstance(filling["relators"], list) and
+            len(filling["relators"]) == 2,
+            "selected filling does not have exactly two relators")
     require(proof["case"]["slug"] == case_slug(filling),
             "case label mismatch")
     relators = source["relators"] + filling["relators"]
+    for relator_id, relator in enumerate(relators):
+        check_signed_word(relator, ngens, f"source relator {relator_id}")
     require(proof["relators"] == relators,
             "presentation relators mismatch")
-    require(proof["ngens"] == source["ngens"],
+    require(proof["ngens"] == ngens,
             "presentation generator count mismatch")
 
-    ngens = proof["ngens"]
     nletters = 2 * ngens
     inverse_letters = proof["inverse_letters"]
+    require(isinstance(inverse_letters, list) and
+            all(is_integer(letter) for letter in inverse_letters),
+            "invalid inverse-letter table")
     require(inverse_letters == [value for pair in
                                 ((2*i + 2, 2*i + 1)
                                  for i in range(ngens))
@@ -233,19 +299,19 @@ def verify_certificate(certificate_path, proof, source, source_digest):
                     "false inverse axiom")
         elif kind == "input_relator":
             index = derivation["relator"]
-            require(isinstance(index, int) and 0 <= index < len(relators),
+            require(is_integer(index) and 0 <= index < len(relators),
                     "invalid input-relator index")
             require(relation_key(left, right) == input_keys[index],
                     "equation does not match the claimed input relator")
         elif kind == "overlap":
             parent_a, parent_b = derivation["parent_a"], derivation["parent_b"]
-            require(0 <= parent_a < record_id and
-                    0 <= parent_b < record_id,
+            require(is_integer(parent_a) and is_integer(parent_b) and
+                    0 <= parent_a < record_id and 0 <= parent_b < record_id,
                     "overlap parent has not yet been proved")
             first, second = records[parent_a], records[parent_b]
             lhs_a, lhs_b = first["lhs"], second["lhs"]
             offset = derivation["offset"]
-            require(isinstance(offset, int), "nonintegral overlap offset")
+            require(is_integer(offset), "nonintegral overlap offset")
             require(-len(lhs_b) < offset < len(lhs_a), "empty overlap")
             lo, hi = max(0, offset), min(len(lhs_a), offset + len(lhs_b))
             require(lhs_a[lo:hi] == lhs_b[lo-offset:hi-offset],
@@ -268,7 +334,7 @@ def verify_certificate(certificate_path, proof, source, source_digest):
                     "overlap does not prove the recorded equation")
         elif kind == "change":
             old_id = derivation["old"]
-            require(0 <= old_id < record_id,
+            require(is_integer(old_id) and 0 <= old_id < record_id,
                     "changed equation has not yet been proved")
             old = records[old_id]
             reduced_left = apply_trace(
@@ -288,7 +354,7 @@ def verify_certificate(certificate_path, proof, source, source_digest):
     roots = proof["roots"]
     require(len(roots) == nletters, "wrong number of identity roots")
     for letter, record_id in enumerate(roots, 1):
-        require(isinstance(record_id, int) and
+        require(is_integer(record_id) and
                 0 <= record_id < len(records), "invalid identity root")
         require(records[record_id]["lhs"] == [letter],
                 "identity root has the wrong generator")

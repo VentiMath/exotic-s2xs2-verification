@@ -15,6 +15,7 @@ FILES = [
     ROOT / "compile_kbmag_certificate.py",
     ROOT / "verify_kbmag_certificate.py",
     ROOT / "verify_certificates.rb",
+    ROOT / "audit_manifold_invariants.py",
     ROOT / "export_kbmag_proof_inputs.py",
     ROOT / "kbmag_history.py",
     ROOT / "kbmag-proof" / "Dockerfile",
