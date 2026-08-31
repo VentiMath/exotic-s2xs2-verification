@@ -1,37 +1,39 @@
-# A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic S²×S² construction
+# Certificate-checked simple connectivity of a surface-bundle surgery manifold
 
-This repository documents an independent, machine-driven verification of
+This repository contains the manuscript, supplement, and proof artifacts for
+an explicit marked surface-bundle surgery manifold `V_aud`.  Its primary,
+source-independent result is
+
+> `pi_1(V_aud) = 1`, with `chi(V_aud)=2`, `H_2(V_aud)=Z`, spinness, a
+> primitive square-zero genus-two fiber, a relative section, and a symplectic
+> structure.
+
+The construction was motivated by
 
 > B. J. Wuebben, *An exotic S²×S² and an exotic ℂP²#C̄P²*, arXiv:2608.17267v1,
 
-which builds on Lidman–Piccirillo, arXiv:2505.14387v1. The author's own code and
-certificates are at [bwuebben/exotic-s2xs2](https://github.com/bwuebben/exotic-s2xs2);
-nothing here is derived from that repository except where explicitly cited.
-This project rebuilt the geometry from scratch and checked the paper against
-the rebuild. The immutable target versions and their SHA-256 digests are
-recorded in [`TARGET.md`](TARGET.md).
+which builds on Lidman–Piccirillo, arXiv:2505.14387v1.  The comparison
+`V_aud ≅ V` is not a theorem of the manuscript.  The supplement preserves an
+open fourteen-clause checklist for that comparison and the historical
+conditional downstream chain.  Wuebben's own code and certificates are at
+[bwuebben/exotic-s2xs2](https://github.com/bwuebben/exotic-s2xs2); nothing
+here is derived from that repository except where explicitly cited.
 
-**What this repository is:** a version-specific, certificate-based audit by
-people and machines who are not the paper's author. Its source-independent
-finite theorem is that four explicit, hash-identified presentations are
+**What this repository is:** a version-specific, certificate-checked
+computer-assisted topology project.  Its finite theorem is that four
+explicit, manifest-bound presentations are
 trivial under the published certificate specification; automated acceptance
 of the stored derivations assumes that at least one checker conforms to that
 specification.  A separate audit-model theorem identifies the fixed
 `(+, +)` presentation with the explicitly defined manifold `V_aud`, which is
-therefore simply connected; the other three sign sheets are algebraic
-robustness checks.  Identifying `V_aud` with
-Wuebben's fixed member is conditional on the fourteen clauses of Source
-Formalization D, each tied to an exact target location, audit interpretation,
-mechanical support, and residual assertion. The three manifold conclusions
-are then recovered conditionally from Source Comparison Hypotheses D1--D14 and named
-classification, symplectic, and Floer-theoretic results. The paper, its mathematical and
-computational supplement,
-and the repository keep those evidence levels separate.
+therefore simply connected and has the intrinsic topology listed above; the
+other three sign sheets are algebraic robustness checks.  The main paper does
+not assert the proposed exotic-manifold consequences.
 
-The proof that `pi_1(V_aud)=1` uses only the product-framed filling defined in
-the paper.  The separate product-to-Lagrangian framing theorem is not an input
-to simple connectivity; it is used only in the conditional comparison with
-Wuebben's symplectic surgery.
+The proof that `pi_1(V_aud)=1` uses only the product-framed filling.  The
+separate product-to-Lagrangian framing theorem is not an input to simple
+connectivity; it proves the source-independent symplecticity of `V_aud` and
+would also be relevant to any future source comparison.
 
 Legacy machine artifacts retain the identifier `A_source_formalization_D`
 and the earlier phrase “Source Formalization D.” In v2.1 these names denote
@@ -55,10 +57,10 @@ The worktree may contain a title-page-labeled post-v2.2.2 revision; until it
 has its own tag, archive deposit, and regenerated hashes, v2.2.2 remains the
 only immutable packet and the newer draft must not be described as released.
 
-**What this repository is not:** a claim of priority on the theorems, which
-are Wuebben's; a formalization of the classification, symplectic, and
-Floer-theoretic theorems the chain cites; or a substitute for independent
-human review of Source Comparison Hypotheses D1--D14 and the displayed geometric arguments.
+**What this repository is not:** a verification or refutation of Wuebben's
+fixed manifold; an unconditional proof of the proposed exotic-manifold
+conclusions; or a substitute for independent human review of one certificate
+checker, the PL conversion, and the symplectic framing argument.
 
 **Known unreconciled external computation.** Wuebben's repository has stated,
 since its first visible commit and continuously since, that Lidman and
@@ -133,6 +135,15 @@ the paper's coordinates, with proof-producing certificates that replay.
   case verified twice, and in the documented invocation exactly the eight
   fillings, one file per case slug (run 65). All artifacts are hash-bound
   and replay.
+* **Intrinsic audit-manifold invariants.** From simple connectivity,
+  connected boundary, Euler characteristic `2`, a surviving fiber, and the
+  fixed-point section, the manuscript proves
+  `H_0(V_aud)=H_2(V_aud)=Z`, all other integral homology groups zero,
+  spinness, and a primitive square-zero genus-two generator.  The framing
+  theorem then identifies the two fillings as Luttinger surgeries and gives
+  a symplectic structure preserving a disjoint fiber.  The finite arithmetic
+  and the slope-family negative control replay with
+  `python3 verification/luttinger/audit_manifold_invariants.py`.
 * **Redundant second routes.** A translation mistake would have to survive
   several structurally different implementations: an independent peripheral
   extractor, an alternative bundle triangulation, the second based-monodromy
@@ -175,8 +186,9 @@ the paper's coordinates, with proof-producing certificates that replay.
   in-project with ADK03 §2.1 / Proposition 2.2 as corroboration. A
   self-contained referee packet states the lemma's proof with each identity
   cross-referenced to the executable check.
-* **The downstream chain.** The deductions from simple connectivity to the
-  three theorems are an explicit proof-grade dependency chain
+* **The historical downstream chain.** The conditional deductions from
+  simple connectivity of Wuebben's `V` to the three proposed theorems are
+  preserved as an explicit dependency chain
   (`verification/luttinger/downstream_chain.py`, run 64): Source
   Formalization D as one explicit comparison assumption, 25 external
   theorems stated with their hypotheses and sources (Klug's relative

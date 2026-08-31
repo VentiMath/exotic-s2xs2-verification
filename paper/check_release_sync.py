@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Check the v2.2.2 working paper, supplement, metadata, and release packet.
+"""Check the working paper, supplement, metadata, and release packet.
 
 Candidate mode verifies everything that can be fixed before reserving the
 version DOI and cutting the tag, and permits explicitly marked TBD hashes.
-Final mode additionally requires the exact DOI, recorded hashes, final
-wording, a clean tagged checkout, and v2.2.2 release URLs in every
+Final mode additionally requires an explicit version, the exact DOI,
+recorded hashes, final wording, a clean tagged checkout, and that version's
+release URLs in every
 public-facing document.  The script deliberately has no network access; the
 release URL and DOI must still be opened from a logged-out browser.
 """
@@ -21,8 +22,9 @@ import tempfile
 from pathlib import Path
 
 
-VERSION = "v2.2.2"
-TITLE_FRAGMENT = "A certificate-based audit of simple connectivity"
+ARCHIVED_BASE_VERSION = "v2.2.2"
+TITLE_FRAGMENT = "Certificate-checked simple connectivity"
+PDF_TITLE = "Certificate-checked simple connectivity of a surface-bundle surgery manifold"
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper"
 ARXIV = ROOT / "ARXIV_SUBMISSION.md"
@@ -32,7 +34,6 @@ SUPP_TEX = PAPER / "supplement.tex"
 CITATION = ROOT / "CITATION.cff"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
-SOURCE = PAPER / f"arxiv-source-{VERSION}.tar.gz"
 BUILD_SOURCE = PAPER / "build_arxiv_source.sh"
 
 
@@ -55,19 +56,11 @@ def run(*args: str) -> str:
 
 
 def source_archive(stack: contextlib.ExitStack) -> Path:
-    """Return the arXiv source archive, rebuilding it when the tree has none.
-
-    The archive is an ignored, deterministic build product, so a clean
-    checkout carries no copy.  Rebuilding it into a temporary directory lets
-    this gate run from a fresh clone instead of only from a working tree that
-    happens to have built one.
-    """
-    if SOURCE.is_file():
-        return SOURCE
+    """Build and return a fresh deterministic archive of the current source."""
     if not BUILD_SOURCE.is_file():
         fail(f"missing release input {BUILD_SOURCE.relative_to(ROOT)}")
     staging = Path(stack.enter_context(tempfile.TemporaryDirectory()))
-    built = staging / SOURCE.name
+    built = staging / "arxiv-source-working.tar.gz"
     run("sh", str(BUILD_SOURCE), str(built))
     return built
 
@@ -109,7 +102,14 @@ def main() -> None:
         action="store_true",
         help="also require the reserved DOI, final tag, and public-facing final wording",
     )
+    parser.add_argument(
+        "--version",
+        help="exact release version to require in final mode, for example v2.3.0",
+    )
     args = parser.parse_args()
+    if args.final and not args.version:
+        fail("--final requires --version VERSION")
+    version = args.version or ARCHIVED_BASE_VERSION
 
     for path in (
         ARXIV,
@@ -128,17 +128,17 @@ def main() -> None:
     main_tex = MAIN_TEX.read_text(encoding="utf-8")
     supplement = SUPP_TEX.read_text(encoding="utf-8")
     citation = CITATION.read_text(encoding="utf-8")
-    public_texts = {
+    draft_texts = {
         "README.md": readme,
         "ARXIV_SUBMISSION.md": metadata,
         "paper/main.tex": main_tex,
         "paper/supplement.tex": supplement,
-        "CITATION.cff": citation,
     }
 
-    for name, text in public_texts.items():
-        require(text, "Source Comparison Hypotheses", f"Source Comparison Hypotheses D in {name}")
-        require(text, TITLE_FRAGMENT, f"v2.1 title in {name}")
+    for name, text in draft_texts.items():
+        if name != "ARXIV_SUBMISSION.md":
+            require(text, "D1--D14", f"open comparison checklist in {name}")
+        require(text, TITLE_FRAGMENT, f"current title in {name}")
         if re.search(r"S1\s*(?:--|–|---)\s*S4", text):
             fail(f"obsolete S1--S4 formulation survives in {name}")
 
@@ -154,7 +154,11 @@ def main() -> None:
         }
         for label, path in expected.items():
             actual = sha256(path)
-            recorded = recorded_hash(metadata, label, required=args.final)
+            recorded = (
+                recorded_hash(metadata, label, required=True)
+                if args.final
+                else None
+            )
             if recorded is not None and actual != recorded:
                 fail(f"{label} mismatch: recorded {recorded}, actual {actual}")
 
@@ -168,20 +172,19 @@ def main() -> None:
 
     main_pdf_text = normalize_space(run("pdftotext", str(MAIN_PDF), "-"))
     supp_pdf_text = normalize_space(run("pdftotext", str(SUPP_PDF), "-"))
-    pdf_title = "A certificate-based audit of simple connectivity for an explicit"
-    require(main_pdf_text, pdf_title, "v2.1 title in main PDF")
-    require(supp_pdf_text, pdf_title, "v2.1 title in supplement PDF")
+    require(main_pdf_text, PDF_TITLE, "current title in main PDF")
+    require(supp_pdf_text, PDF_TITLE, "current title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 27 or pdf_pages(SUPP_PDF) != 16:
-        fail("PDF page counts are not main=27 and supplement=16")
-    require(metadata, "27 pages, three figures, five tables", "arXiv counts")
-    if main_tex.count(r"\begin{figure}") != 3:
-        fail("main.tex does not contain exactly three figure environments")
+    if pdf_pages(MAIN_PDF) != 22 or pdf_pages(SUPP_PDF) != 17:
+        fail("PDF page counts are not main=22 and supplement=17")
+    require(metadata, "22 pages, four figures, and two tables", "arXiv counts")
+    if main_tex.count(r"\begin{figure}") != 4:
+        fail("main.tex does not contain exactly four figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
         r"\begin{longtable}"
     )
-    if table_count != 5:
-        fail("main.tex does not contain exactly five table/longtable environments")
+    if table_count != 2:
+        fail("main.tex does not contain exactly two table/longtable environments")
 
     manifest = ROOT / "verification/luttinger/proof_certificates/manifest.json"
     downstream = ROOT / "verification/luttinger/downstream_chain_certificate.json"
@@ -193,7 +196,8 @@ def main() -> None:
     # The supplement pins the archived verification/ tree by its git tree
     # object.  Pinning a commit goes stale on every later commit; the tree
     # object only changes when verification/ itself changes.
-    tree = run("git", "rev-parse", "HEAD:verification")
+    tree_ref = "HEAD:verification" if args.final else f"{ARCHIVED_BASE_VERSION}:verification"
+    tree = run("git", "rev-parse", tree_ref)
     if tree not in supplement:
         fail(
             "supplement does not pin the current verification/ tree object "
@@ -219,7 +223,7 @@ def main() -> None:
         fail("obsolete all-sheets geometric identification survives in main.tex")
     require(
         main_tex,
-        "The preceding proof of $\\pione(V_{\\mathrm{aud}})=1$ is complete before this",
+        "The proof of simple connectivity and the intrinsic topological assertions is\ncomplete before this section begins.",
         "logical separation of simple connectivity from the framing bridge",
     )
     require(
@@ -229,7 +233,7 @@ def main() -> None:
     )
     require(
         main_tex,
-        "Relation-by-relation\nreconciliation requires the missing artifact.",
+        "relation-by-relation reconciliation requires the missing presentation",
         "unresolved contrary-computation boundary",
     )
     for overclaim in (
@@ -241,14 +245,14 @@ def main() -> None:
             fail(f"contrary-computation overclaim survives: {overclaim!r}")
 
     if not args.final:
-        print("PASS: the local v2.2.2 working candidate is internally synchronized")
-        print("  main=27 pages/3 figures/5 tables; supplement=16 pages")
-        print("  source archive matches main.tex; proof-manifest and downstream pins agree")
+        print("PASS: the post-v2.2.2 working revision is internally synchronized")
+        print("  main=22 pages/4 figures/2 tables; supplement=17 pages")
+        print("  fresh source archive matches main.tex; archived-base manifest pins agree")
         print(f"  candidate source SHA-256: {candidate_source_digest}")
         print(f"  candidate main PDF SHA-256: {sha256(MAIN_PDF)}")
         print(f"  candidate supplement PDF SHA-256: {sha256(SUPP_PDF)}")
-        print("NOT FINAL: reserve the version DOI, replace candidate wording, cut the")
-        print("  v2.2.2 tag, publish the release/deposit, then rerun with --final")
+        print("NOT FINAL: bind the new checker, reserve a new version DOI, replace")
+        print("  working wording, cut the new tag, and rerun --final --version VERSION")
         return
 
     forbidden = (
@@ -260,7 +264,8 @@ def main() -> None:
         "TBD after",
         "planned as a release asset",
     )
-    for name, text in public_texts.items():
+    final_texts = {**draft_texts, "CITATION.cff": citation}
+    for name, text in final_texts.items():
         for phrase in forbidden:
             if phrase.lower() in text.lower():
                 fail(f"final-mode placeholder {phrase!r} survives in {name}")
@@ -269,32 +274,32 @@ def main() -> None:
                 fail(f"obsolete release {stale} survives in final-facing file {name}")
         require(
             text,
-            f"releases/tag/{VERSION}",
-            f"exact {VERSION} release URL in {name}",
+            f"releases/tag/{version}",
+            f"exact {version} release URL in {name}",
         )
 
     doi_match = re.search(
-        rf"Exact {re.escape(VERSION)} archive DOI:\s*"
+        rf"Exact {re.escape(version)} archive DOI:\s*"
         r"(https://doi\.org/10\.5281/zenodo\.\d+)",
         metadata,
     )
     if not doi_match:
-        fail(f"missing exact {VERSION} archive DOI in ARXIV_SUBMISSION.md")
+        fail(f"missing exact {version} archive DOI in ARXIV_SUBMISSION.md")
     version_doi = doi_match.group(1)
-    for name, text in public_texts.items():
+    for name, text in final_texts.items():
         require(text, version_doi, f"exact version DOI in {name}")
 
     head = run("git", "rev-parse", "HEAD")
     try:
-        tagged = run("git", "rev-list", "-n", "1", VERSION)
+        tagged = run("git", "rev-list", "-n", "1", version)
     except subprocess.CalledProcessError:
-        fail(f"tag {VERSION} does not exist")
+        fail(f"tag {version} does not exist")
     if head != tagged:
-        fail(f"tag {VERSION} does not point at HEAD")
+        fail(f"tag {version} does not point at HEAD")
     if run("git", "status", "--porcelain", "--untracked-files=no"):
         fail("tracked working tree is not clean")
 
-    print(f"PASS: {VERSION} final packet, tag, hashes, counts, and DOI agree")
+    print(f"PASS: {version} final packet, tag, hashes, counts, and DOI agree")
     print("NETWORK CHECK STILL REQUIRED: open the release URL and DOI logged out")
 
 
