@@ -160,4 +160,16 @@ python3 downstream_chain.py --check
 ruby verify_downstream_chain.rb
 python3 proof_ledger.py
 python3 publication_semantics_check.py
+python3 audit_manifold_invariants.py
+python3 alpha_residual/verify_certificate.py --negative-controls alpha_residual/certificate.json.gz
+ruby alpha_residual/verify_certificate.rb --negative-controls alpha_residual/certificate.json.gz
+python3 beta_residual/verify_certificate.py --negative-controls beta_residual/certificate.json.gz
+ruby beta_residual/verify_certificate.rb --negative-controls beta_residual/certificate.json.gz
 ```
+
+The release gate at `../../paper/check_release_sync.py` executes the
+theorem-facing subset above, including both implementations of the transport,
+filled-group, downstream-chain, alpha-residual, and beta-residual replays.  It
+also executes the proof ledger, invariant arithmetic, and publication-scope
+regression checker.  Consequently a command advertised as replayable cannot
+remain broken while a release passes.
