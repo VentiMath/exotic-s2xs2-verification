@@ -37,7 +37,7 @@ would also be relevant to any future source comparison.
 
 Legacy machine artifacts retain the identifier `A_source_formalization_D`
 and the earlier phrase “Source Formalization D.” In v2.1 these names denote
-exactly the conjunction of Source Comparison Hypotheses D1--D14; the rename
+exactly the conjunction of the open source-comparison checklist D1--D14; the rename
 does not change the frozen dependency node or its digest.
 
 The immutable v2.2.2 verification snapshot is archived at
@@ -61,6 +61,16 @@ only immutable packet and the newer draft must not be described as released.
 fixed manifold; an unconditional proof of the proposed exotic-manifold
 conclusions; or a substitute for independent human review of one certificate
 checker, the PL conversion, and the symplectic framing argument.
+
+**Bounded external-review packets.** The remaining reviews are specified in
+[`verification/luttinger/CHECKER_AUDIT_GUIDE.md`](verification/luttinger/CHECKER_AUDIT_GUIDE.md)
+and
+[`verification/notes/EXTERNAL_REVIEW_GUIDE.md`](verification/notes/EXTERNAL_REVIEW_GUIDE.md).
+The first maps every certificate-specification obligation to both checker
+implementations and supplies adversarial replay commands. The second separates
+the PL/peripheral review needed for simple connectivity from the symplectic
+review needed for the framing theorem. Neither file claims that an external
+review has occurred.
 
 **Known unreconciled external computation.** Wuebben's repository has stated,
 since its first visible commit and continuously since, that Lidman and
@@ -97,8 +107,8 @@ the paper's coordinates, with proof-producing certificates that replay.
   marked mapping-cylinder clutching over the base graph, with the relative
   monodromy comparisons checked exactly on the marked collars — the
   classification of surface bundles is no longer invoked. Comparing this
-  marked object with Wuebben's bundle is the separate comparison in clauses
-  Source Comparison Hypotheses D1--D6.
+  marked object with Wuebben's bundle is the separate open comparison in
+  clauses D1--D6.
 * **The peripheral data.** Based meridians and longitudes for both surgery
   tori are traced as literal simplicial loops with the audit's named whiskers.
   The alpha coordinate identity `lb_a_y1 = A x` is additionally certified in
@@ -206,7 +216,7 @@ the paper's coordinates, with proof-producing certificates that replay.
   Fable 5; this is implementation independence, not cross-model authorship.
   The Ruby checker re-derives every computed fact from scratch, checks the
   graph is acyclic and that each theorem depends on both the certified
-  π₁(V_aud)=1 and Source Comparison Hypotheses D1--D14, and verifies every evidence digest. The dependency ledger
+  π₁(V_aud)=1 and the open source-comparison checklist D1--D14, and verifies every evidence digest. The dependency ledger
   (`proof_ledger.py`) binds the whole verification — 33 named external
   theorems, 37 machine certificates, 12 geometric arguments, one explicit
   source-assumption node, and 21 derived claims — with every evidence file
@@ -250,7 +260,7 @@ run entirely in the audit-defined smooth manifold, and the tubular
 boundary is constructed rather than cited. Weinstein germ uniqueness is
 corroborating rather than necessary — chart independence is proved
 in-project between the audit's verified charts. The comparison of those
-objects and charts with Wuebben's ones remains Source Comparison Hypotheses D1--D14. If the
+objects and charts with Wuebben's ones remains the open source-comparison checklist D1--D14. If the
 framing identification (Lemma 8.2)
 failed by j meridians, the machine certificates would remain correct for
 their literal product-framed presentations but would no longer identify those
@@ -273,7 +283,7 @@ framing argument first fails.
 
 The accurate one-sentence status: **the finite presentations are certified
 trivial and the audit-defined `V_aud` is simply connected; the implication for
-Wuebben's fixed manifold is conditional on Source Comparison Hypotheses D1--D14; and the three manifold
+Wuebben's fixed manifold is conditional on the open source-comparison checklist D1--D14; and the three manifold
 conclusions are additionally conditional on named external results** — with the reported contrary
 computation of π₁(V) disclosed above and not resolved. That is a statement
 about verification depth, not a substitute for review by symplectic and

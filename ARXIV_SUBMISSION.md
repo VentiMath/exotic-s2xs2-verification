@@ -28,6 +28,9 @@ only after the next immutable archive is built.
   top-level TeX document.
 - Record the new main and supplement PDF SHA-256 values here during the
   release cut.
+- Regenerate the filled-group proof manifest. It must bind the revised Python
+  checker and `audit_manifold_invariants.py`; rerun both certificate checkers,
+  the invariant checker, and the release gate from the clean tagged checkout.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -35,8 +38,8 @@ only after the next immutable archive is built.
 ## Synchronization gate
 
 Run `python3 paper/check_release_sync.py` while preparing the candidate.  It
-checks the PDF/source hashes, page/figure/table counts, Source Comparison Hypotheses D1--D14
-terminology, and the two theorem-artifact manifests.  After reserving the
+checks the PDF/source hashes, page/figure/table counts, open-checklist
+D1--D14 terminology, and the two theorem-artifact manifests.  After reserving the
 exact version DOI and replacing every candidate placeholder, run
 `python3 paper/check_release_sync.py --final` from the clean checkout carrying
 the new tag.  Final mode must pass before arXiv upload; it also requires
