@@ -1,34 +1,33 @@
 # arXiv submission packet
 
-> **RELEASE GATE:** this packet describes the v2.2.2 release. Do not upload
-> it until the v2.2.2 release URL and archive DOI resolve from a logged-out
-> browser and `python3 paper/check_release_sync.py --final` passes from a
-> clean checkout of the v2.2.2 tag.
+> **WORKING-REVISION GATE:** the metadata below describes the unreleased
+> post-v2.2.2 manuscript. Do not upload it to arXiv until the revision has a
+> new immutable tag and exact archive DOI, every printed identifier has been
+> regenerated, and `python3 paper/check_release_sync.py --final` passes from
+> a clean checkout of that new tag. The v2.2.2 identifiers below are only the
+> archived artifact base, not identifiers for the revised PDFs.
 
 This file preserves the intended arXiv metadata while preventing the web form
-from drifting from the rendered paper.  The hashes below are those of the
-v2.2.2 build.
+from drifting from the rendered paper.  Final release hashes must be inserted
+only after the next immutable archive is built.
 
 ## Build and upload
 
-- From a clean checkout of the eventual v2.2.2 tag, run
+- From a clean checkout of the eventual revision tag, run
   `./paper/build_arxiv_source.sh`. The script fixes the file timestamp,
   numeric owner, archive format, and gzip header, so repeated builds from the
   same `paper/main.tex` are byte-for-byte identical.
-- Upload `paper/arxiv-source-v2.2.2.tar.gz` as the v2.2.2 GitHub release asset
-  and to arXiv.
-- Source-archive SHA-256:
-  `140142210c037b6f3e60e72a24c40a1b486aa783ea3bd494684305405959b058`
+- Upload the newly versioned source archive as a GitHub release asset and to
+  arXiv.
+- Record the new source-archive SHA-256 here during the release cut.
 - The archive contains one necessary file, `main.tex`, at its root. Do not
   upload the generated PDF alongside TeX source.
 - Publish `paper/supplement.pdf` and `paper/supplement.tex` as versioned
   release assets alongside the main paper. The arXiv comments field points to
   that immutable release rather than treating the supplement as a second
   top-level TeX document.
-- Main PDF SHA-256:
-  `347b148dcb9c1524b9e3b431f3cd9097fb7666485edbdaed8fcf14d73c9bce36`
-- Supplement PDF SHA-256:
-  `9cdab611f9e4122b283dc48414aca6bf4ef30d0240068371f81eefd656557c2d`
+- Record the new main and supplement PDF SHA-256 values here during the
+  release cut.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -39,8 +38,8 @@ Run `python3 paper/check_release_sync.py` while preparing the candidate.  It
 checks the PDF/source hashes, page/figure/table counts, Source Comparison Hypotheses D1--D14
 terminology, and the two theorem-artifact manifests.  After reserving the
 exact version DOI and replacing every candidate placeholder, run
-`python3 paper/check_release_sync.py --final` from the clean checkout that is
-tagged `v2.2.2`.  Final mode must pass before arXiv upload; it also requires
+`python3 paper/check_release_sync.py --final` from the clean checkout carrying
+the new tag.  Final mode must pass before arXiv upload; it also requires
 the same release URL and version DOI in the manuscript, supplement, README,
 and this packet.  The script does not make a network request, so open both
 links from a logged-out browser as the last release check.
@@ -52,7 +51,7 @@ All fields below are ASCII, as required by arXiv.
 **Title**
 
 ```text
-A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic $S^2 \times S^2$ construction
+Certificate-checked simple connectivity of a surface-bundle surgery manifold
 ```
 
 **Authors**
@@ -64,13 +63,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-We define an explicit marked surface-bundle surgery manifold $V_aud$ modeled on data in Wuebben's proposed exotic $S^2 \times S^2$ construction. Four hash-identified presentations are trivial under a published derivation-certificate specification. Operational replay assumes that at least one checker conforms to that specification; the two shipped implementations were developed within the project and have not received an independent human line-by-line audit. Separate combinatorial and geometric arguments identify the fixed $(+,+)$ presentation with $\pi_1(V_aud)$, proving that $V_aud$ is simply connected; the other three sign sheets are algebraic robustness checks. A logically separate theorem identifies the product-framing curves with their Lagrangian-framing classes. Transfer to Wuebben's fixed member is isolated behind fourteen Source Comparison Hypotheses, D1--D14: a sufficiency proposition proves that their conjunction would give the transfer but does not discharge them. The downstream manifold conclusions are additionally conditional on cited classification, symplectic, and Floer-theoretic results. A reported contrary fundamental-group computation remains unreconciled. Thus the source-independent audit theorem, not confirmation of the proposed exotic manifolds, is the paper's primary result.
+We define a compact marked surface-bundle surgery manifold $V_{aud}$ and prove that $\pi_1(V_{aud})=1$. Four explicit finite presentations are trivial under a published derivation-certificate specification; a geometric reconstruction identifies one of them with $\pi_1(V_{aud})$. The same construction gives $\chi(V_{aud})=2$, integral homology concentrated in degrees zero and two, spinness, a primitive square-zero genus-two fiber, and a surviving relative section. A separate framing theorem identifies the product push-offs used in the definition with canonical Lagrangian-framing classes, so standard Luttinger surgery gives a symplectic structure on $V_{aud}$. Automated certificate replay assumes that at least one checker conforms to the mathematical specification; the two shipped implementations have not received an independent human line-by-line audit. The construction was motivated by Wuebben's proposed exotic $S^2 \times S^2$, but identifying $V_{aud}$ with Wuebben's fixed member remains an open comparison problem recorded clause by clause in the supplement. No exotic-manifold conclusion is asserted here.
 ```
 
 **Comments**
 
 ```text
-27 pages, three figures, five tables, with a 16-page mathematical and computational supplement in the release assets. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. Verification artifacts and replay instructions: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.2 . Exact v2.2.2 archive DOI: https://doi.org/10.5281/zenodo.22182187. The comparison with arXiv:2608.17267v1 is conditional on Source Comparison Hypotheses D1--D14; downstream consequences are additionally relative to named external results.
+22 pages, four figures, and two tables, with a 17-page mathematical and computational supplement planned as a release asset. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. The comparison with arXiv:2608.17267v1 remains open and is recorded as checklist D1--D14 in the supplement; no exotic-manifold conclusion is asserted. Replace this sentence with the new immutable release URL and exact archive DOI before submission.
 ```
 
 **Classification**
@@ -89,8 +88,8 @@ through the account's endorsement link before submitting.
 
 1. Confirm the title, author, and abstract match this packet exactly.
 2. Confirm the abstract is below arXiv's 1,920-character limit.
-3. Confirm the generated PDF has 27 pages, no missing references, and the
-   target/version line `arXiv:2608.17267v1` on page 1.
+3. Confirm the generated PDF has 22 pages, no missing references, and the
+   target/version line `arXiv:2608.17267v1` in the introduction.
 4. Confirm the source processor selected `main.tex` and did not treat
    `TARGET.md` or a generated PDF as source; neither is in the upload archive.
 5. Choose the arXiv distribution license deliberately and complete the final

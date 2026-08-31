@@ -11,7 +11,7 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic S2 x S2 construction},
+  pdftitle={Certificate-checked simple connectivity of a surface-bundle surgery manifold},
   pdfauthor={John Clyde},
   pdfsubject={Computer-assisted geometric topology and certificate-checked group presentations},
   pdfkeywords={geometric topology, 4-manifolds, fundamental group, Luttinger surgery, proof certificates, computer-assisted proof}
@@ -56,8 +56,8 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
 
-\title{A certificate-based audit of simple connectivity for an explicit
-model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
+\title{Certificate-checked simple connectivity of a
+surface-bundle surgery manifold}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
 \date{Working revision after v2.2.2 --- 30 August 2026\\
@@ -67,25 +67,23 @@ model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
 \maketitle
 
 \begin{abstract}
-We define an explicit marked surface-bundle surgery manifold
-$V_{\mathrm{aud}}$ modeled on data in Wuebben's proposed exotic
-$S^2\times S^2$ construction.  Four hash-identified presentations are
-trivial under a published derivation-certificate specification.  Operational
-replay assumes that at least one checker conforms to that specification; the
-two shipped implementations were developed within the project and have not
-received an independent human line-by-line audit.  Separate combinatorial and
-geometric arguments identify the fixed $(+,+)$ presentation with
-$\pione(V_{\mathrm{aud}})$, proving that $V_{\mathrm{aud}}$ is simply
-connected; the other three sign sheets are algebraic robustness checks.  A
-logically separate theorem identifies the product-framing curves with their
-Lagrangian-framing classes.  Transfer to Wuebben's fixed member is isolated
-behind fourteen Source Comparison Hypotheses, D1--D14: a sufficiency
-proposition proves that their conjunction would give the transfer but does not
-discharge them.  The downstream manifold conclusions are additionally
-conditional on cited classification, symplectic, and Floer-theoretic results.
-A reported contrary fundamental-group computation remains unreconciled.
-Thus the source-independent audit theorem, not confirmation of the proposed
-exotic manifolds, is the paper's primary result.
+We define a compact marked surface-bundle surgery manifold
+$V_{\mathrm{aud}}$ and prove that $\pione(V_{\mathrm{aud}})=1$.
+Four explicit finite presentations are trivial under a published
+derivation-certificate specification; a geometric reconstruction identifies
+one of them with $\pione(V_{\mathrm{aud}})$.  The same construction gives
+$\chi(V_{\mathrm{aud}})=2$, integral homology concentrated in degrees $0$
+and $2$, spinness, a primitive square-zero genus-two fiber, and a surviving
+relative section.  A separate framing theorem identifies the product
+push-offs used in the definition with canonical Lagrangian-framing classes,
+so standard Luttinger surgery gives a symplectic structure on
+$V_{\mathrm{aud}}$.  Automated certificate replay assumes that at least one
+checker conforms to the mathematical specification; the two shipped
+implementations have not received an independent human line-by-line audit.
+The construction was motivated by Wuebben's proposed exotic
+$S^2\times S^2$, but identifying $V_{\mathrm{aud}}$ with Wuebben's fixed
+member remains an open comparison problem, recorded clause by clause in the
+supplement.  No exotic-manifold conclusion is asserted here.
 \end{abstract}
 
 \noindent\textit{2020 Mathematics Subject Classification.}
@@ -93,28 +91,30 @@ exotic manifolds, is the paper's primary result.
 
 \section{Introduction}
 
-The disputed step in Wuebben's proposed construction \cite{Wuebben} is the
-fundamental group of a four-manifold piece $V$ obtained by two Luttinger
-surgeries in a genus-two surface bundle.  Simple connectivity of $V$ is the
-input that drives the proposed exotic $S^2\times S^2$, quotient, and
-$\CPbar$ conclusions.  A contrary computation attributed to Lidman and
-Piccirillo has been reported, but no presentation or nontriviality witness
-for it is publicly available in the materials examined here.  The immediate
-mathematical question is therefore not whether a computer algebra session
-terminates, but whether an explicit, correctly based presentation of the
-intended filling is trivial.
-
-This paper defines a marked surface-bundle surgery manifold
-$V_{\mathrm{aud}}$ independently of that dispute and proves
+This paper defines a compact marked surface-bundle surgery manifold
+$V_{\mathrm{aud}}$ and proves
 \[
              \pione(V_{\mathrm{aud}})=1.
 \]
-The proof has two parts.  First, finite derivation certificates prove that
-four hash-identified presentations are trivial.  Second, a geometric
-argument reconstructs the marked bundle, torus exteriors, peripheral curves,
-and drilled transport relation and identifies the fixed $(+,+)$ presentation
-with $\pione(V_{\mathrm{aud}})$.  The other three sign sheets are algebraic
-robustness checks, not three additional geometric manifolds.
+The proof has two independent-looking but logically consecutive parts.
+Finite derivation certificates first prove that four explicit presentations
+are trivial.  A geometric argument then reconstructs the marked bundle,
+torus exterior, peripheral curves, and drilled transport relation, and
+identifies one fixed presentation with $\pione(V_{\mathrm{aud}})$.  The
+other three presentations are algebraic robustness checks, not additional
+geometric manifolds.  Elementary topology and a separate framing theorem
+then give the intrinsic homology, spin, fiber, section, and symplectic
+statements in Theorem~\ref{thm:audit-manifold}.
+
+The construction was motivated by the disputed fundamental-group step in
+Wuebben's proposed exotic-manifold construction \cite{Wuebben}.  Simple
+connectivity of Wuebben's piece $V$ is an input to the proposed exotic
+$S^2\times S^2$, quotient, and $\CPbar$ conclusions.  A contrary computation
+attributed to Lidman and Piccirillo has been reported, but no presentation or
+nontriviality witness for it is publicly available in the materials examined
+here.  This paper does not resolve that dispute: it proves a theorem about
+the separately defined $V_{\mathrm{aud}}$ and records the remaining
+source-to-audit comparison as an open checklist in the supplement.
 
 Triviality is deliberately not used as evidence that a proposed
 source-to-presentation dictionary is correct.  Wuebben's public
@@ -127,70 +127,43 @@ neighborhood.  They do not support the source comparison.  Instead, the
 identification of the fixed presentation with $V_{\mathrm{aud}}$ is proved
 by the geometric reconstruction in
 Sections~\ref{sec:model}--\ref{sec:peripheral}, and the further transfer to
-Wuebben remains conditional as stated below.
+Wuebben remains an open comparison problem.
 
-The source comparison is deliberately separate.  Fourteen Source Comparison
-Hypotheses D1--D14 state exactly what must hold for the audit object to be
-Wuebben's fixed member.  A separate framing theorem identifies the audit's
-product push-offs with Lagrangian-framing classes; it is needed only for that
-conditional smooth comparison, not for simple connectivity of
-$V_{\mathrm{aud}}$.  The exotic-manifold conclusions are consequently
-conditional implications rather than coequal claims of this note.
+The logical architecture is summarized below.  Solid arrows are proved in
+this article; the dashed arrow is the open comparison with Wuebben.
 
-The audit object is useful even if a source-comparison hypothesis fails.  It
-is a fully specified formal reconstruction of the displayed bundle-and-surgery
-data, an explicit simply connected surgery model, and a demanding test
-case for proof-producing topology.  More broadly, the certificate format and
-the separation between finite derivation, geometric conversion, source
-comparison, and downstream citation are reusable in computations where a
-correct group calculation can still describe the wrong geometric object.
-
-\paragraph{Validation status.}
-The frozen Tietze transport and all theorem-critical derivation certificates
-replay in separate Python and Ruby implementations.  Automated acceptance
-assumes that at least one checker conforms to the published mathematical
-specification; neither implementation has received an independent human
-line-by-line audit.  The PL and symplectic arguments likewise have not
-received an external specialist audit.  Transfer to Wuebben's named object
-depends on D1--D14, and the reported contrary computation remains
-unreconciled.  Section~\ref{sec:limitations} gives the full review boundary.
-
-The paper has five evidence levels, displayed in
-Table~\ref{tab:claim-levels}.  The first two are contributions of this note;
-the framing bridge is a third, logically separate theorem; the fourth is a
-sufficiency statement for the source-comparison hypotheses; the fifth records consequences
-originating in Wuebben's work.
-
-\begin{table}[!htbp]
+\begin{figure}[!htbp]
 \centering
-\small
-\renewcommand{\arraystretch}{1.14}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.24\textwidth}
- >{\raggedright\arraybackslash}p{.27\textwidth}
- >{\raggedright\arraybackslash}X@{}}
-\toprule
-Statement & Status & Trust boundary \\
-\midrule
-Finite Certificate Theorem & source-independent theorem about four byte-bound
-presentations & certificate specification; conformance of at least one
-checker for automated replay \\
-Audit-Manifold Theorem & $\pione(V_{\mathrm{aud}})=1$ & displayed geometric
-arguments, finite geometric artifacts, and named standard topology inputs \\
-Framing Bridge Theorem & product-framing curves represent the corresponding
-Lagrangian-framing classes & split bundle-form construction, relative Moser calculation,
-Lagrangian-neighborhood theorem, and compact push-off isotopy \\
-Source-Comparison Sufficiency Proposition & D1--D14 suffice to identify the
-audit and source members & Source Comparison Hypotheses D1--D14 \\
-Conditional target application & conditional recovery of Wuebben's three conclusions &
-Source Comparison Hypotheses~D1--D14 and the cited classification, symplectic, and
-Floer-theoretic results \\
-\bottomrule
-\end{tabularx}
-\caption{The five claim levels.  No implication changes one evidence type
-into another.}
-\label{tab:claim-levels}
-\end{table}
+\begin{tikzpicture}[>=Latex,node distance=1.0cm and .70cm,
+  box/.style={draw,rounded corners,align=center,inner sep=6pt,
+              text width=2.95cm}]
+\node[box] (cert) {finite presentations\\and derivation certificates};
+\node[box,right=of cert] (geom) {marked bundle, exterior,\\periphery, and filling};
+\node[box,right=of geom] (pi) {$\pione(V_{\mathrm{aud}})=1$\\and intrinsic topology};
+\node[box,below=of geom] (frame) {product-to-\\Lagrangian framing theorem};
+\node[box,right=of frame] (symp) {symplectic\\$V_{\mathrm{aud}}$};
+\node[box,below=of cert] (source) {Wuebben's fixed\\surgery member};
+\draw[->,thick] (cert)--(geom);
+\draw[->,thick] (geom)--(pi);
+\draw[->,thick] (geom)--(frame);
+\draw[->,thick] (frame)--(symp);
+\draw[->,dashed,thick] (source)--node[above,sloped,font=\small,
+  fill=white,inner sep=1pt]{open comparison}(geom);
+\end{tikzpicture}
+\caption{Dependency structure.  Certificate checking, geometric conversion,
+and symplectic framing are different evidence layers.}
+\label{fig:dependencies}
+\end{figure}
 \FloatBarrier
+
+The frozen transport and theorem-critical certificates replay in separate
+Python and Ruby implementations.  Automated acceptance assumes that at
+least one checker conforms to the mathematical specification; neither has
+received an independent human line-by-line audit.  The PL and symplectic
+arguments likewise await external specialist review.  These review targets
+are stated once, in Section~\ref{sec:relation}; implementation inventories,
+source-comparison clauses, and the conditional downstream history are kept
+in the companion supplement.
 
 \section{The audit manifold and principal statements}\label{sec:audit-object}
 
@@ -292,56 +265,52 @@ simplicial paths and incidences.}
 \FloatBarrier
 
 \begin{theorem}[Audit-Manifold Theorem]\label{thm:audit-manifold}
-The manifold $V_{\mathrm{aud}}$ is simply connected.
+The compact oriented smooth four-manifold $V_{\mathrm{aud}}$ has connected
+boundary, Euler characteristic $2$, and
+\[
+ \pione(V_{\mathrm{aud}})=1,\qquad
+ H_k(V_{\mathrm{aud}};\Z)\cong
+ \begin{cases}
+   \Z,&k=0,2,\\
+   0,&k=1,3,4.
+ \end{cases}
+\]
+It is spin.  A genus-two fiber $F$ disjoint from the surgery tori survives
+as a primitive square-zero class generating $H_2(V_{\mathrm{aud}};\Z)$,
+and the fixed point $p$ gives a properly embedded once-punctured-torus
+section $\Gamma$ with $F\cdot\Gamma=1$.  Moreover
+$V_{\mathrm{aud}}$ admits a symplectic form for which $F$ is symplectic.
 \end{theorem}
 
 Theorem~\ref{thm:audit-manifold} is source-independent: it concerns the
-explicit object in Definition~\ref{def:Vaudit}.  Its proof combines the
-finite certificate theorem below with the geometric identification in
-Section~\ref{sec:peripheral}.  Only the later source-comparison sufficiency proposition
-transfers it to the object named in Wuebben's target version.
+explicit object in Definition~\ref{def:Vaudit}.  Simple connectivity and
+the topological assertions are proved at the end of
+Section~\ref{sec:peripheral}; symplecticity is proved after the logically
+separate framing theorem in Section~\ref{sec:framing}.
 
 \section{The finite certificate theorem}\label{sec:certificates}
 
 \begin{theorem}[finite-certificate statement]\label{thm:main}
-Let \texttt{S} be the byte string
-\begin{center}
-\small\texttt{verification/luttinger/sealed\_transport/r\_presentations.json},
-\end{center}
-whose SHA-256 digest is
-\begin{center}
-\small\texttt{1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c}.
-\end{center}
-Read a positive integer $j$ in \texttt{S} as the generator $g_j$ and a
-negative integer $-j$ as $g_j^{-1}$.  The top-level fields
-\texttt{ngens=3} and \texttt{relators} define a 3-generator,
-78-relator presentation $Q$.  Take the four entries of the top-level
-array \texttt{paper\_fillings} whose \texttt{half\_drift} field is
-\texttt{"n0\_y1"}; these are entries $0$--$3$, and their
-$(\texttt{sign\_a},\texttt{sign\_b})$ fields run over
-$(+1,+1)$, $(+1,-1)$, $(-1,+1)$, $(-1,-1)$ in that order.  Append the two
-word lists of such an entry, of lengths $94$ and $132$, to the $78$
-relators of $Q$, and call the resulting 3-generator, 80-relator
-presentation $P_{\epsilon_A,\epsilon_B}$ for
-$\epsilon_A=\texttt{sign\_a}$ and $\epsilon_B=\texttt{sign\_b}$.  Every
-one of these four explicitly defined presentations presents the trivial
-group.
+Let $\mathcal M$ be the manifest identified in the normative-root paragraph
+below.  Its sealed-presentation entry binds a three-generator,
+seventy-eight-relator presentation $Q$ and four ordered pairs of filling
+words indexed by
+$(\epsilon_A,\epsilon_B)\in\{(+,+),(+,-),(-,+),(-,-)\}$.
+Let $P_{\epsilon_A,\epsilon_B}$ be the presentation obtained from $Q$ by
+adjoining the corresponding pair.  Every one of these four explicitly
+manifest-bound presentations presents the trivial group.
 \end{theorem}
 
 \paragraph{Normative root.}
-Every file this theorem depends on is bound by one manifest,
-\repopath{verification/luttinger/proof_certificates/manifest.json}, whose
+Every file this theorem depends on is bound by the v2.2.2 proof manifest
+$\mathcal M$, whose
 SHA-256 is
 \begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
-and which lists the digest of each certificate, each frozen input, and each
-checker.  The archived \texttt{verification/} tree of the v2.2.2 artifact
-base has git
-tree object
-\begin{center}\small\texttt{edb24057eb60a831b618bd103ab05c3ad13c92ae}\end{center}
-recoverable from a clean checkout as
-\texttt{git rev-parse v2.2.2:verification}.  Verifying this manifest and
-replaying the named certificates constitutes the complete operational replay
-of the finite artifact; its mathematical interpretation is fixed by
+and which lists the digest of each certificate, frozen input, and checker.
+The manifest path, sealed-input digest, git tree object, archive DOI, and
+literal replay commands are collected in the supplement.  Verifying
+$\mathcal M$ and replaying its named certificates constitutes the complete
+operational replay of the finite artifact; its mathematical interpretation is fixed by
 Definitions~\ref{def:keys}--\ref{def:grammar} and
 Theorem~\ref{thm:sound}.
 
@@ -453,16 +422,15 @@ project and have not received an independent human line-by-line audit.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 For each of the four selected entries, the certificate bundle prepared with
-this version contains a certificate bound to the displayed source digest,
+this version contains a certificate bound to the manifest-listed source digest,
 case index, slug, complete
 relator list, generator count, and inverse table.  The Python and Ruby
 implementations both accept every record and all six identity roots.  The
-four certificates retain respectively $6672$, $2470$, $3803$, and $3620$
-records in the source order $(+,+),(+,-),(-,+),(-,-)$.  Hence
+corresponding certificate inventory is recorded in the supplement.  Hence
 Theorem~\ref{thm:sound} applies to each selected filling.  Separately, two
-standalone checkers replay the frozen $99{,}860$ elementary Tietze
-eliminations that produced \texttt{S} from its serialized raw input.  No
-geometric interpretation of either byte string enters this proof.
+standalone checkers replay the frozen elementary Tietze transport from its
+serialized raw input to $Q$.  No geometric interpretation of either byte
+string enters this proof.
 \end{proof}
 
 \begin{proposition}[human-readable terminal collapse]
@@ -495,9 +463,22 @@ specification and to the proposition that at least one implementation
 conforms to it.  The rest of the paper asks the different question: what
 geometric object do the hash-bound presentations describe?  The fixed
 $(+,+)$ presentation is identified with $V_{\mathrm{aud}}$ below; comparison
-with Wuebben is postponed to Section~\ref{sec:source-assumptions}.  The
+with Wuebben is postponed to Section~\ref{sec:relation}.  The
 supplement records the complete implementation inventory and the detailed
 layer-by-layer trust boundary.
+
+\paragraph{What the three generators mean.}
+The three generators of $Q$ are not privileged loops drawn in the
+surface-bundle picture.  They are the survivors of a proof-producing Tietze
+transport that starts with one edge generator for each non-tree edge of the
+drilled simplicial exterior.  The seventy-eight relators retain the full
+two-skeleton information after those eliminations.  Geometric meaning is
+carried separately by eighty-nine tracked words: the original fiber and base
+loops, both meridians, both product longitudes, and the comparison paths are
+all expressed in the three survivors.  Thus $Q$ is a compact algebraic
+coordinate system for the torus exterior, while the tracked words are the
+dictionary back to its geometry.  The proof below never assigns a geometric
+name to a survivor merely because it simplifies a relation.
 
 \section{Geometric identification of the audit manifold}
 \label{sec:target}\label{sec:model}
@@ -506,7 +487,8 @@ This section proves that the $(+,+)$ finite presentation of
 Theorem~\ref{thm:main} is a presentation of the explicitly defined
 $V_{\mathrm{aud}}$.  The other three sign sheets remain algebraic robustness
 checks.  This section makes no comparison with the target paper's
-denotation; that logically separate step is Section~\ref{sec:source-assumptions}.
+denotation; that logically separate problem is discussed in
+Section~\ref{sec:relation}.
 
 The genus-2 fiber is realized as a regular neighborhood of the specified
 five-chain of curves --- five plumbed annular bands and two cone discs
@@ -519,60 +501,16 @@ torus base; the two surgery tori $T_\alpha$, $T_\beta$ arise as induced
 subcomplexes, and the assembled 4-complex passes manifold checks down to
 the vertex-link level.
 
-\begin{theorem}[geometric artifact theorem]\label{thm:geometric-artifacts}
-For each row of Table~\ref{tab:geometric-tcb}, the checkers listed in the
-companion supplement accept the corresponding frozen artifacts.  Acceptance
-proves the finite assertion in the second column under the displayed checker
-semantics.  It does not, by itself, prove the topological or smooth conversion
-in the last column; those conversions are supplied in the proofs below.
-\end{theorem}
+The finite artifact inventory and checker acceptance results are kept in the
+supplement.  They establish finite predicates only.  The lemmas below supply
+the mathematical conversions from simplicial incidences, paths, and word
+lists to the stated topological conclusions; successful replay is not used as
+a substitute for those conversions.
 
-\begin{proof}
-Each checker parses its input, verifies the recorded source digest and
-dimensions, exhausts the finite incidences or identities specified in its
-source, and exits successfully only after the asserted predicates have all
-been tested.  The public proof ledger binds the artifacts and checkers by
-digest and records an acyclic dependency from these finite facts to
-Theorem~\ref{prop:ident}.  Table~\ref{tab:geometric-tcb} states the meaning
-assigned to each successful replay; the companion supplement's geometric
-inventory gives the exact filenames, checker sizes, and audit status.  The later lemmas
-supply the mathematical conversion from the finite meaning to the geometric
-conclusion.
-\end{proof}
-
-\begin{table}[!htbp]
-\centering
-\small
-\renewcommand{\arraystretch}{1.14}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.18\textwidth}
- >{\raggedright\arraybackslash}p{.38\textwidth}X@{}}
-\toprule
-Layer & Finite replay & Mathematical input still used \\
-\midrule
-marked bundle & fiber, involution, clutching, tori, collars, and normal
-frontiers pass the recorded tests & ribbon and surface classification;
-relative gluing; PL local flatness \\
-complement and periphery & cellular presentation, Tietze transport, $89$
-named words, common whiskers, normal circles, and drilled homotopy replay &
-cellular van Kampen and the geometric interpretation of the named paths \\
-framing bridge & Moser identities, seam algebra, Weinstein coordinates, and
-first jets replay & Lagrangian-neighborhood theorem and compact push-off
-isotopy \\
-source transfer & every mechanically comparable convention agrees &
-Source Comparison Hypotheses D1--D14, including the diagrammatic and smooth
-identifications \\
-\bottomrule
-\end{tabularx}
-\caption{Concise trusted-computing boundary.  The full layer-by-layer table,
-with filenames and checker status, is in the supplement.}
-\label{tab:geometric-tcb}
-\end{table}
-\FloatBarrier
-
-The dictionary tested before Proposition~\ref{prop:paper-comparison} is displayed in
-Table~\ref{tab:dictionary}; it is not reconstructed from the fact that the
-filled groups happen to collapse.  Here ``literal'' means a stored edge path
-in the triangulation, with its basepoint and orientation retained.
+The audit dictionary is displayed in Table~\ref{tab:dictionary}; it is not
+reconstructed from the fact that the filled groups happen to collapse.
+Here ``literal'' means a stored edge path in the triangulation, with its
+basepoint and orientation retained.
 
 \begin{table}[!htbp]
 \centering
@@ -581,9 +519,9 @@ in the triangulation, with its basepoint and orientation retained.
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.17\textwidth}
  >{\raggedright\arraybackslash}p{.31\textwidth}X@{}}
 \toprule
-Paper datum & Mathematical role & Certified realization \\
+Audit datum & Mathematical role & Finite realization \\
 \midrule
-$F,p,O$ & genus-two fiber with two fixed marks & 86-vertex closed surface;
+$F,p,O$ & genus-two fiber with two fixed marks & closed simplicial surface;
 both fixed vertices pass surface- and link-level tests \\
 $a,b,c,d,e$ & ordered filling five-chain & independently reconstructed
 ribbon; oriented $c$ at $V_2$ represents $(rx)^{-1}$ \\
@@ -598,7 +536,7 @@ local-flatness and product checks \\
 $A,B$ & $[\bar\alpha]^{-1},[\bar\beta]^{-1}$ & literal based edge paths
 from $q$, retaining their orientations \\
 $M,N$ & meridians based along $y_1,s_2$ & oriented dual normal circles with
-the same literal whiskers; all 592 normal fibers checked \\
+the same literal whiskers; every normal fiber checked \\
 \bottomrule
 \end{tabularx}
 \caption{Marked-bundle dictionary for the fixed $n=0$ member.  Peripheral
@@ -643,9 +581,14 @@ would have no fixed point there, contrary to the certified two-point fixed
 set.  The periodic-disk classification
 \cite[Theorem~3.1 and Proposition~3.2]{ConstantinKolev} identifies each
 nontrivial orientation-preserving order-two disk action with a half-turn and
-shows that a periodic disk map fixed on the boundary is the identity.
-Extending over the quotient disks and lifting therefore gives the required
-equivariant marked map relative to the boundary.  The based path comparison
+shows that a periodic disk map fixed on the boundary is the identity.  More
+explicitly, quotient each complementary disk by its half-turn.  Both
+quotients are disks with one marked branch point, and the already constructed
+equivariant boundary map descends to their boundary circles.  The Alexander
+extension, chosen to carry branch point to branch point, lifts uniquely after
+one boundary lift is fixed; the lift is equivariant and agrees with the ribbon
+map on the boundary.  This gives the required equivariant marked map relative
+to the boundary.  The based path comparison
 then reads, literally,
 \[
  \varphi_0:(x,y,r,s)\longmapsto(r,s,x,y).
@@ -674,9 +617,8 @@ The second action is obtained from complete whiskered paths, not free
 homotopy classes, and is replayed in two differently subdivided beta stacks.
 On the three-row $c$ collar the alpha map is exactly the free shift by four
 columns.  The beta representative is the ordered supported word
-$T_a\circ T_b$, with $T_b$ first; all $1{,}536$ trace cells avoid the full
-$e$ collar, and the $3{,}072$ restricted tetrahedra are exactly its product
-staircase.
+$T_a\circ T_b$, with $T_b$ first; every trace cell avoids the full
+$e$ collar, and the restricted tetrahedra form exactly its product staircase.
 
 \emph{Topological conversion.}  Both bundle models are the union of a
 common fiber block and two mapping cylinders over the rank-two spine of
@@ -709,8 +651,8 @@ The model results through Corollary~\ref{cor:tori} concern $V_{\mathrm{aud}}$
 and use no source-comparison clause.  Five structurally different
 constructions test subdivision, monodromy order, twist sign, labels, and
 orientations.  These internal controls support the audit object; they do not
-identify it with the object denoted by a source diagram.  That comparison is
-made only in Section~\ref{sec:source-assumptions}.
+identify it with the object denoted by a source diagram.  That open
+comparison is discussed only in Section~\ref{sec:relation}.
 
 \section{Peripheral data and the product filling}\label{sec:peripheral}
 
@@ -746,12 +688,13 @@ be
  (S^3,\text{unknotted }S^1),\quad(S^2,S^0),\quad
  (S^1,\varnothing)
 \]
-in dimensions $0,1,2$, respectively.  The enumeration covers all $296$
-vertices, $888$ edges, and $592$ triangles.  Vertex-link $3$-spheres and
+in dimensions $0,1,2$, respectively.  The enumeration covers every simplex
+of both tori.  Vertex-link $3$-spheres and
 unknotted link circles carry independently replayed collapse and cyclic-knot
-witnesses.  Thus the codimension-two local pairs are standard, and the
-simplex-link criterion \cite[Corollary~4.2]{RourkeSanderson} gives local
-flatness of the pair.
+witnesses.  Since the star pair of a simplex is the join of that simplex with
+its link pair, these standard links give the required standard local chart at
+every point.  This is the simplex-link formulation of PL local flatness; see
+\cite[Chapter~4, pp.~50--51]{RourkeSanderson}.
 
 In a simplex with torus face $A$ and opposite face $B$, barycentric
 coordinates give the unique block form
@@ -765,9 +708,8 @@ the computed derived frontier, the map
  b(s)\longmapsto\tfrac12b(s\cap T)+\tfrac12b(s\smallsetminus T)
 \]
 extends cellwise to the canonical subdivision map for
-$\Delta_A\times\Delta_B$ and hence gives the global PL homeomorphism.  This
-is checked on $113{,}336$ mixed vertices and $769{,}256$ derived
-comparabilities.  For every torus triangle the alternating dual loop has
+$\Delta_A\times\Delta_B$ and hence gives the global PL homeomorphism.  Every
+mixed vertex and derived comparability is checked.  For every torus triangle the alternating dual loop has
 constant torus coordinate and is precisely the subdivided normal link
 circle.  No regular-neighborhood uniqueness or smoothing theorem is used.
 \end{proof}
@@ -785,11 +727,11 @@ outside $T$.  There is a homotopy-equivalence diagram
 in which both spaces on the right strongly deformation retract onto $|L|$.
 Consequently the maximal-tree edge generators of $L$ and its oriented
 triangle boundaries give a presentation of
-$\pione(C_{\mathrm{aud}})$.  The raw
-presentation has $99{,}863$ generators and $321{,}702$ relators; the sealed
-Tietze certificate reduces it to the $3$-generator, $78$-relator complement
-presentation in the source of Theorem~\ref{thm:main}, while transporting all
-$89$ named peripheral and comparison words.
+$\pione(C_{\mathrm{aud}})$.  A sealed Tietze certificate reduces the raw
+cellular presentation to the three-generator, seventy-eight-relator
+presentation $Q$ of Theorem~\ref{thm:main}, while transporting all named
+peripheral and comparison words.  Exact cellular and transport counts are in
+the supplement.
 \end{lemma}
 
 \begin{proof}
@@ -806,34 +748,31 @@ exterior with $C_{\mathrm{aud}}$.  This proves all three asserted homotopy
 identifications, including the previously implicit passage from the deleted
 subcomplex to the compact torus exterior.
 
-A maximal tree on $L$'s $8{,}860$ vertices has $8{,}859$
-edges; subtracting from the $108{,}722$ complement edges gives the stated
-$99{,}863$ generators.  Collapsing the tree and applying cellular van Kampen
-to every oriented two-simplex gives the raw presentation.  Each of the
-$99{,}860$ recorded Tietze eliminations is replayed against the unique
-current relator that implies it; separate Python and Ruby checker
-implementations agree
-on the final presentation and every tracked word.
+Collapsing a maximal tree and applying cellular van Kampen to every oriented
+two-simplex gives the raw presentation.  Each recorded Tietze elimination is
+replayed against the unique current relator that implies it; separate Python
+and Ruby checker implementations agree on the final presentation and every
+tracked word.
 \end{proof}
 
-Based meridians and product-framing longitudes for both tori are traced
-as literal simplicial loops carrying the paper's own basing whiskers. The
-paper's sign-correction package (the corrected relations of its \S8.3
-and the push-off basing correction of its \S8.5) is reproduced
-independently, and a combinatorial sweep of the relevant transport square
-resolves the basing double-count question in the direction the paper's
-corrected convention requires. Both surgery tori are certified locally
+Based meridians and product-framing longitudes for both tori are traced as
+literal simplicial loops carrying the audit definition's basing whiskers.
+External consistency checks compare the resulting words with Wuebben's
+corrected relation sheet and basing convention, but those comparisons play
+no logical role in any theorem about $V_{\mathrm{aud}}$.  Internally, a
+combinatorial sweep of the relevant transport square resolves the basing
+double-count question from the audit paths themselves.  Both surgery tori are certified locally
 flat at every simplex link, and every extracted dual meridian is checked
 to be a literal normal-circle fiber of an explicit normal block model,
-with no regular-neighborhood theorem invoked.  The separate square-zero
-section datum used only by the conditional downstream application is kept
-with that application in the supplement.
+with no regular-neighborhood theorem invoked.  The doubled-section datum
+used in the historical target application is kept in the supplement; the
+intrinsic section of $V_{\mathrm{aud}}$ is treated directly below.
 
 \subsection{Relation sheet and product fillings}
 
 To make Theorem~\ref{prop:ident} inspectable without opening the
-repository, fix the orientation sheet used by the triangulation and put
-$\delta=r^{-1}$.  Before filling, the paper-coordinate presentation read
+repository, fix the orientation sheet used by the audit triangulation and put
+$\delta=r^{-1}$.  Before filling, the resulting coordinate presentation read
 from the literal paths has the surface relation, the following eight
 transport relations, and the drilled-fiber relation:
 \begin{align*}
@@ -941,10 +880,18 @@ linearization theorem for the flat three-torus
 \cite[case~(IV), pp.~464--465]{HatcherLinearization} says that every
 diffeomorphism of $T^3$ is isotopic to an affine representative; its linear
 part is the induced action on integral first homology.  Extending that isotopy
-through a boundary collar adjusts the displayed extension to $f$.  Conjugating an
-exterior boundary map by the two attaching maps reduces the filled-exterior
-statement to the same meridian criterion.  This also accounts explicitly
-for the third boundary direction.
+through a boundary collar adjusts the displayed extension to $f$.
+
+The orientation sign of the displayed four-dimensional map is
+$\epsilon\det A$, which is also $\det[f_*]$ on the ordered boundary basis.
+Thus an orientation-preserving boundary map has an orientation-preserving
+extension, and an orientation-reversing boundary map has an
+orientation-reversing extension.  In the filled-exterior application one
+conjugates the exterior boundary map by the two attaching maps.  If both
+attaching maps reverse the boundary orientation, their two signs cancel, so
+the conjugated map has the same orientation sign as the exterior map.  This
+reduces the extension problem to the same meridian criterion and accounts
+explicitly for the third boundary direction as well as the orientation.
 \end{proof}
 
 \begin{corollary}[peripheral convention changes]\label{lem:sign-conventions}
@@ -986,17 +933,15 @@ independently on the alpha and beta boundary components.
 \centering
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.12\textwidth}
- >{\raggedright\arraybackslash}p{.20\textwidth}
- >{\raggedright\arraybackslash}p{.24\textwidth}X@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.16\textwidth}
+ >{\raggedright\arraybackslash}p{.26\textwidth}X@{}}
 \toprule
-Direction & Paper word & Stored based loop & Independent evidence \\
+Direction & Based word & Geometric construction and evidence \\
 \midrule
-$\lambda_\alpha$ & $Ax$ & \texttt{lb\_a\_y1}, based by $y_1$ at $c_y$ &
+$\lambda_\alpha$ & $Ax$ & $y_1$-based product push-off at $c_y$;
 literal path construction and complement-only certificate \\
-$\lambda_\beta$ & $(r^{-1}Mr)B$ & \texttt{lb\_b\_s2}, based by $s_2$ at
-$s_e$ & punctured transport square and independent extraction;
-complement-only certificate \\
+$\lambda_\beta$ & $(r^{-1}Mr)B$ & $s_2$-based product push-off at $s_e$;
+punctured transport square and complement-only certificate \\
 \bottomrule
 \end{tabularx}
 \caption{The two sign-sensitive longitude identifications.  Neither
@@ -1052,10 +997,10 @@ geometry.}
 
 \begin{lemma}[the alpha peripheral pair]\label{lem:alpha-peripheral}
 Under the normal-frontier identification of Lemma~\ref{lem:normal}, the
-stored loops \texttt{geom\_M} and \texttt{lb\_a\_y1} are the commonly based
-meridian and product longitude $(M,\lambda_\alpha)$, and
+extracted loops are the commonly based meridian and product longitude
+$(M,\lambda_\alpha)$, and
 \[
- \texttt{lb\_a\_y1}=Ax\quad\text{in }\pione(C_{\mathrm{aud}}).
+ \lambda_\alpha=Ax\quad\text{in }\pione(C_{\mathrm{aud}}).
 \]
 The displayed equality is certified using only the $78$ complement relators,
 with neither filling relation present.
@@ -1068,25 +1013,25 @@ to $c_y$, makes a normal jog to the frontier of the explicit normal block,
 and traverses the oriented dual normal circle.  Returning along the same
 whisker gives $M$.  The longitude uses that identical whisker and normal
 jog, traverses the base direction $A$, and closes along that same half of
-$c$, from $c_s=\varphi_0(c_y)$ to $c_y$.  The stored words are \texttt{geom\_M} and \texttt{lb\_a\_y1}; they are
-what $M$ and $\lambda_\alpha$ denote throughout, and they are what
-Theorem~\ref{thm:main} literally fills with.
+$c$, from $c_s=\varphi_0(c_y)$ to $c_y$.  These two literal based paths are
+what $M$ and $\lambda_\alpha$ denote throughout and what the finite
+presentation fills with.
 
-That the two loops use the same whisker is not an inference but a fact in
-the sealed transport input: there
-$\texttt{geom\_M}=y_1\,\mu_\alpha\,y_1^{-1}$ and
-$\texttt{lb\_a\_y1}=y_1\,\lambda_\alpha^{\circ}\,y_1^{-1}$ with the
-\emph{identical} four-edge whisker $y_1$.  So no independent conjugation is
+That the two loops use the same whisker is not an inference: in the sealed
+transport input they are
+$y_1\mu_\alpha y_1^{-1}$ and
+$y_1\lambda_\alpha^{\circ}y_1^{-1}$ with the identical whisker $y_1$.
+So no independent conjugation is
 hidden in the filling word
 $M\lambda_\alpha^{\epsilon_A}$.
 
-The identification of the stored word $\texttt{lb\_a\_y1}$ with the paper's
-symbol $Ax$ has two independent supports.  Geometrically it follows from how
+The identification of the extracted longitude with $Ax$ has two independent
+supports.  Geometrically it follows from how
 the path is built --- based on the $y$ rail at the unique crossing $c_y$,
 whiskered by $y_1$, jogged to the normal-block frontier, lifting the base
 generator $A$, and closed along the half of $c$ from $c_s$ to $c_y$.  Algebraically,
 the elementary elimination pass over the sealed presentation leaves a
-nonempty residual for $\texttt{lb\_a\_y1}^{-1}Ax$, but a proof-producing
+nonempty residual for $\lambda_\alpha^{-1}Ax$, but a proof-producing
 completion reduces that exact word to the identity.  Independent Python and
 Ruby verifiers replay its complete ancestry cone from the sealed
 three-generator, $78$-relator complement; neither filling relation is
@@ -1095,18 +1040,17 @@ certificate inventory, and frozen source locations.
 \end{proof}
 
 \begin{lemma}[the beta peripheral pair]\label{lem:beta-peripheral}
-Under the same normal-frontier identification, the stored loops
-\texttt{geom\_N} and \texttt{lb\_b\_s2} are the commonly based meridian and
+Under the same normal-frontier identification, the extracted loops are the commonly based meridian and
 product longitude $(N,\lambda_\beta)$, and
 \[
- \texttt{lb\_b\_s2}=(r^{-1}Mr)B\quad\text{in }\pione(C_{\mathrm{aud}}).
+ \lambda_\beta=(r^{-1}Mr)B\quad\text{in }\pione(C_{\mathrm{aud}}).
 \]
 Again the equality is certified in the unfilled complement.
 \end{lemma}
 
 \begin{proof}
 The beta-coordinate word
-$\texttt{lb\_b\_s2}^{-1}(r^{-1}Mr)B$ likewise leaves a nonempty residual
+$\lambda_\beta^{-1}(r^{-1}Mr)B$ likewise leaves a nonempty residual
 under elementary elimination.  The same proof-producing complement system
 reduces that exact word to the identity; separate Python and Ruby verifier
 implementations replay its complete ancestry cone.  Thus both displayed
@@ -1118,10 +1062,10 @@ The beta extraction is the sign-sensitive case.  The corresponding path
 uses the initial segment $s_2$ to the unique crossing $s_e$, the base loop
 $B$, and the fiber-normal push-off.  Its swept basing square crosses
 $T_\alpha$ once.  Puncturing that square contributes the conjugated
-meridian $r^{-1}Mr$, which is why the paper's word for this direction is
-$(r^{-1}Mr)B$ and not $B$.  The stored words are \texttt{geom\_N} and
-\texttt{lb\_b\_s2}, exported without substitution; they are what $N$ and
-$\lambda_\beta$ denote, and the identification with $(r^{-1}Mr)B$ is
+meridian $r^{-1}Mr$, which is why the audit word for this direction is
+$(r^{-1}Mr)B$ and not $B$.  The extracted paths are exported without
+coordinate substitution; they are what $N$ and $\lambda_\beta$ denote, and
+the identification with $(r^{-1}Mr)B$ is
 certified in the complement exactly as in the $\alpha$ case.
 An independently written extractor recovers both pairs without importing
 the complement, sweep, or peripheral modules.  Local link checks certify
@@ -1139,12 +1083,11 @@ holds in $\pione(C_{\mathrm{aud}})$, not merely in the unpunctured mapping cylin
 \end{lemma}
 
 \begin{proof}
-The transported loop $\kappa_3$, of edge length $31$, misses $c$ but meets
+The transported loop $\kappa_3$ misses $c$ but meets
 $e$ once; sweeping it along the core of the beta curve would therefore meet
-$T_\beta$ and would not prove the stated complement relation.  The paper
+$T_\beta$ and would not prove the stated complement relation.  The audit
 uses the specified parallel push-off.  Along that push-off, the complete
-mapping-cylinder stack --- $17{,}664$ tetrahedra on $2{,}966$ vertices ---
-has no vertex on either surgery torus.  A $2\times35$ simplicial homotopy grid
+mapping-cylinder stack has no vertex on either surgery torus.  A simplicial homotopy grid
 at $p$ joins the push-off basepoint loop to the core one and identifies it
 with the presentation's whiskered generator; it too is disjoint from both
 tori.  The based monodromy target then reduces to $r^{-1}s^{-1}x$.
@@ -1201,21 +1144,67 @@ symplectic form, a Weinstein chart, or any comparison with Wuebben's text and
 figures.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:audit-manifold}]
+\begin{proof}[Proof of Theorem~\ref{thm:audit-manifold}, except symplecticity]
 Use the $(+,+)$ sheet in Theorem~\ref{prop:ident}.  Its source is trivial
 by Theorem~\ref{thm:main}; a quotient of the trivial
 group is trivial.  Notice that this conclusion needs only surjectivity in
 Theorem~\ref{prop:ident}, no symplectic or Lagrangian-framing result, and
 no source-identification assumption.
+
+The boundary of $R_{\mathrm{aud}}$ is the $F$-bundle over
+$\partial\Sigma_{1,1}\cong S^1$ whose monodromy is the commutator determined
+by the oriented boundary word in the two clutching maps.  It is connected.
+Both torus surgeries take place in the interior, so this is also
+$\partial V_{\mathrm{aud}}$.  Since
+\[
+ \chi(F)=2-2\cdot2=-2,\qquad
+ \chi(\Sigma_{1,1})=2-2-1=-1,
+\]
+multiplicativity for the bundle gives
+$\chi(R_{\mathrm{aud}})=2$.  Removing and regluing two copies of
+$T^2\times D^2$, each with Euler characteristic zero and boundary $T^3$,
+does not change Euler characteristic.  Hence
+$\chi(V_{\mathrm{aud}})=2$.
+
+Simple connectivity gives $H_1(V_{\mathrm{aud}};\Z)=0$.  Because both the
+manifold and its boundary are connected, the beginning of the cohomology
+sequence of the pair, together with $H^1(V_{\mathrm{aud}};\Z)=0$, gives
+$H^1(V_{\mathrm{aud}},\partial V_{\mathrm{aud}};\Z)=0$.
+Lefschetz duality therefore gives $H_3(V_{\mathrm{aud}};\Z)=0$.
+Similarly the homology sequence of the pair gives
+$H_1(V_{\mathrm{aud}},\partial V_{\mathrm{aud}};\Z)=0$; duality and the
+universal coefficient theorem then show that $H_2(V_{\mathrm{aud}};\Z)$ is
+torsion-free.  These are the cases of the universal coefficient theorem and
+Lefschetz duality stated in \cite[Theorems~3.2 and~3.43]{HatcherAT}.
+Since the boundary is nonempty, $H_4=0$, and the Euler characteristic now
+forces $H_2\cong\Z$.
+
+Choose a base point in the interior of the base away from the two clutching
+loops.  Its fiber $F$ misses both surgery tori, survives the fillings, and
+has trivial normal bundle, hence $F^2=0$.  The fixed point $p$, which lies
+on neither $c$ nor $e$, gives a proper section
+$\Gamma\cong\Sigma_{1,1}$ disjoint from the surgery tori.  It also survives,
+and $F\cdot\Gamma=1$.  Thus $[F]$ is primitive and generates $H_2$.
+Modulo two, $H_2$ is generated by $[F]$.  On $F$ the oriented splitting
+$TV_{\mathrm{aud}}|_F=TF\oplus\nu F$, the Whitney product formula, and
+the mod-two reduction of the two Euler classes give
+\[
+ \langle w_2(V_{\mathrm{aud}}),[F]\rangle
+   =\chi(F)+F^2=-2+0=0\pmod2.
+\]
+See \cite[\S\S4 and~9]{MilnorStasheff}.  Since evaluation on $[F]$
+detects $H^2(V_{\mathrm{aud}};\Z/2)$, it follows that
+$w_2(V_{\mathrm{aud}})=0$, so $V_{\mathrm{aud}}$ is spin.  The remaining
+symplectic assertion is proved after Theorem~\ref{thm:framing}.
 \end{proof}
 
 \section{The product-to-Lagrangian framing bridge}\label{sec:framing}
 
-The preceding proof of $\pione(V_{\mathrm{aud}})=1$ is complete before this
-section begins.  The next theorem is not used in
-Theorem~\ref{prop:ident} or Theorem~\ref{thm:audit-manifold}.  It is needed
-only in Lemma~\ref{lem:smooth-source-bridge}, where the product-framed audit
-filling is compared with the Lagrangian surgery in the source construction.
+The proof of simple connectivity and the intrinsic topological assertions is
+complete before this section begins.  The framing theorem is not used in
+Theorem~\ref{prop:ident}.  It proves the source-independent symplectic
+assertion of Theorem~\ref{thm:audit-manifold}; it is also the relevant bridge
+in any future comparison with a Lagrangian source construction.
 
 \begin{lemma}[bundle symplectic form and protected collars]
 \label{lem:bundle-symplectic-form}
@@ -1331,8 +1320,8 @@ by monotone inversion rather than an abstract flow theorem.  At $s=1$,
 differentiation in $t_0$ gives
 $f(\theta,T_1)\partial_{t_0}T_1=1$, hence
 $T_1^*\Omega=dt_0\wedge d\theta$.  The exact identities, fixed-core
-condition, and a uniform collar bound are replayed in
-\texttt{moser\_cumulative\_flow.py}.
+condition, and a uniform collar bound have a finite symbolic replay listed
+in the supplement.
 Apply this construction independently on the disjoint protected $c$ and $e$
 collars.  It therefore standardizes both neighborhoods simultaneously while
 fixing both torus cores and leaving the form unchanged outside slightly
@@ -1347,8 +1336,8 @@ makes it $\tau$-equivariant, so no covering-lift choice is involved.  Moreover
  \pi_\alpha^*(dt\wedge d\bar\theta)=2\,dt\wedge d\theta
    =d(2t)\wedge d\theta,
 \]
-which is the required factor-two normalization.  These assertions are
-replayed in \texttt{equivariant\_moser\_lift.py}.
+which is the required factor-two normalization.  The corresponding
+equivariance identities are replayed in the supplement's framing inventory.
 
 \emph{The two charts.}  Near $T_\beta$, $\psi_0$ is the identity near $e$,
 and the preceding normalization gives
@@ -1376,8 +1365,8 @@ push-off has momentum $(0,Ku_0)$, both constant.  Hence neither acquires a
 meridian component, which is precisely the equality of framings used in
 \eqref{eq:fillings}.  The Liouville primitive
 $t\,d\theta_1+Ku\,d\theta_2$ forces these momenta by pairing with the
-$\Theta$-frame; \texttt{weinstein\_chart\_check.py} replays that derivation,
-the seam, exterior algebra, and a second opposite-shear chart.
+$\Theta$-frame; the supplement records an independent replay of that
+derivation, the seam, exterior algebra, and a second opposite-shear chart.
 
 \begin{figure}[!htbp]
 \centering
@@ -1448,117 +1437,42 @@ that copy can meet the zero section.  Compactness of the copy times
 $[0,1]$ then gives a positive distance from the zero section throughout the
 isotopy.  Thus the whole isotopy lies in one
 $\nu(T)\smallsetminus T$ and proves that the two push-offs have the same
-boundary class.  The first-jet symplectic calculation is replayed in
-\texttt{weinstein\_chart\_independence.py}.  The potentially dangerous
+boundary class.  The first-jet symplectic calculation is replayed by the
+checker listed in the supplement.  The potentially dangerous
 momentum shift by a closed one-form could alter the pushed-off boundary
 class, but it moves the zero section unless the form vanishes and is therefore
-excluded here.  The Lagrangian-neighborhood statement at the start of
-\cite[\S2.1]{ADK}, applied to each compact torus, supplies the required
+excluded here.  The Lagrangian-neighborhood statement in the first paragraph
+of \cite[\S2.1]{ADK}, applied to each compact torus, supplies the required
 zero-section Weinstein charts; the argument above supplies the precise
 chart-independence consequence needed here.
 \end{proof}
 
-\section{Source-comparison hypotheses and their sufficiency}
-\label{sec:source-assumptions}
-
-The finite certificate and Audit-Manifold Theorems are complete before this
-section begins, and neither uses the Framing Bridge Theorem.  That theorem is
-invoked below only to compare the product filling with the target's
-Lagrangian surgery.  The remaining question is not ``authorial intent'' but a
-precise comparison of two mathematical specifications.  We therefore state
-the comparison assumptions individually and classify them by evidentiary
-type.
-
-\begin{definition}[source comparison hypotheses]\label{def:source-formalization}
-The Source Comparison Hypotheses are clauses D1--D14 in
-Table~\ref{tab:source-formalization}.  Their conjunction is the assumption
-used by Proposition~\ref{prop:paper-comparison}.  The table states their required
-mathematical content and evidentiary type.  Exact target locations,
-mechanical support, and the residual assertion for every clause are recorded
-in the supplement; supporting evidence does not discharge a hypothesis.
-\end{definition}
-
-\begingroup
-\small
-\renewcommand{\arraystretch}{1.12}
-\setlength{\LTpre}{.6em}
-\setlength{\LTpost}{.6em}
-\begin{longtable}{@{}>{\bfseries\raggedright\arraybackslash}p{.10\textwidth}
-  >{\raggedright\arraybackslash}p{.17\textwidth}
-  >{\raggedright\arraybackslash}p{.39\textwidth}
-  >{\raggedright\arraybackslash}p{.21\textwidth}@{}}
-\caption{Compact Source Comparison Hypotheses.  Every row remains an
-assumption of the source-comparison sufficiency proposition; ``agrees'' reports evidence,
-not discharge.  The full fourteen-row ledger is in the supplement.}
-\label{tab:source-formalization}\\
-\toprule
-Clause & Type & Required source-to-audit identification & Status \\
-\midrule
-\endfirsthead
-\multicolumn{4}{l}{\textit{Table~\thetable\ continued}}\\
-\toprule
-Clause & Type & Required source-to-audit identification & Status \\
-\midrule
-\endhead
-\midrule
-\multicolumn{4}{r}{\textit{continued on next page}}\\
-\endfoot
-\bottomrule
-\endlastfoot
-D1 & textual & ordered five-chain labels and marked points & conditional;
-text extraction agrees \\
-D2--D3 & diagrammatic & involution, complementary marked disks, and hidden
-arc continuations & conditional; finite and mutation checks support \\
-D4--D5 & textual & twist order and signs; assignment of the two base
-holonomies & conditional; independent reconstructions agree \\
-D6 & diagrammatic & the two depicted curve subbundles are the audit tori,
-relative to their collars & conditional; subbundle checks support \\
-D7--D8 & diagrammatic & path composition, base generators, oriented meridians, and
-named basing arcs & conditional; peripheral extractors agree \\
-D9--D11 & textual & reference half-drift, fixed member and slopes, and the
-fixed $(+,+)$ audit sheet & conditional; relation sheets agree \\
-D12 & smooth & source Lagrangian tori are smoothly identified with the audit
-tori & assumed by transfer \\
-D13 & smooth & source coefficients and framing classes give the
-audit's two attaching maps & assumed by transfer \\
-D14 & smooth & marked bundle equivalence upgrades to a relative
-orientation-preserving diffeomorphism & assumed by transfer \\
-\end{longtable}
-\endgroup
-
-The textual rows can be checked against the pinned source as transcription
-claims.  The diagrammatic rows remain identifications of depicted objects.
-Most importantly, D12--D14 are smooth and framing comparison hypotheses:
-their cited and mechanical support does not independently construct the
-relative diffeomorphism or prove that it is the one denoted by the source.
-Splitting the former four omnibus assumptions into these three evidence
-classes prevents a verified textual choice from being bundled with a
-genuinely conditional smooth identification.
-
-\begin{lemma}[relative smooth source bridge]\label{lem:smooth-source-bridge}
-Under D1--D14, the marked bundle comparison is represented by an
-orientation-preserving diffeomorphism relative to the boundary marking and
-the two torus collars.  It carries the two product-framed attaching maps of
-Definition~\ref{def:Vaudit} to the two Lagrangian-framed attaching maps of
-the target fixed member, and therefore extends across the two surgeries.
-\end{lemma}
-
-This lemma packages the consequences of the smooth comparison hypotheses.
-In particular it does not independently prove D14, whose relative
-diffeomorphism is one of its assumptions; no general smoothing theorem is
-invoked here to manufacture that relative diffeomorphism from the PL map.
-
-\begin{proof}
-Clause D14 supplies the relative smooth representative of the marked bundle
-equivalence.  Clauses D6, D8, and D12 carry the torus collars, common
-whiskers, and oriented meridians.  Clause D13, together with
-Theorem~\ref{thm:framing}, identifies the two longitude classes and surgery
-coefficients.  Thus the boundary diffeomorphisms of each removed
-$T^2\times D^2$ carry meridian and attaching slope to meridian and attaching
-slope.  Lemma~\ref{lem:torus-extension}, including its full boundary matrix,
-extends those maps over each $T^2\times D^2$ filling piece and gives the
-claimed diffeomorphism of filled manifolds.
+\begin{proof}[Completion of the proof of
+Theorem~\ref{thm:audit-manifold}]
+Lemma~\ref{lem:bundle-symplectic-form} makes the two disjoint audit tori
+Lagrangian, and Theorem~\ref{thm:framing} identifies the two product
+longitudes in Definition~\ref{def:Vaudit} with their Lagrangian-framing
+classes.  The two unit-coefficient fillings are therefore Luttinger
+surgeries in the sense of \cite[Definition~2.1]{ADK}; the symplectic form on
+the filled manifold is the one asserted in \cite[Proposition~2.2]{ADK}.  That construction supplies a
+symplectic form after each surgery which agrees with $\omega_K$ outside the
+chosen torus neighborhood.  Performing the surgeries successively gives a
+symplectic form on $V_{\mathrm{aud}}$.  The fiber $F$ chosen in the proof
+above is disjoint from both surgery neighborhoods, so the resulting form
+still restricts positively to $F$.
 \end{proof}
+
+\section{Relation to Wuebben's construction and review boundary}
+\label{sec:relation}
+
+Nothing in Theorem~\ref{thm:audit-manifold} identifies
+$V_{\mathrm{aud}}$ with Wuebben's fixed surgery member.  The companion
+supplement records fourteen comparison clauses D1--D14: textual and
+diagrammatic clauses D1--D11 specify the proposed dictionary, while D12--D14
+ask for the actual relative smooth identification of the two Lagrangian
+tori, framing conventions, and marked bundles.  Those clauses are a
+checklist for future comparison, not hypotheses of any theorem in this
+article.  In particular, no exotic-manifold conclusion is asserted here.
 
 \subsection{The reported contrary computation and live failure locations}
 \label{sec:contrary}
@@ -1573,209 +1487,79 @@ materials examined here.
 
 The finite Theorem~\ref{thm:main} is unaffected because its objects are
 explicit strings.  If the contrary calculation concerns the same geometric
-member, the live explanations are deliberately left neutral: a clause of
-Source Comparison Hypotheses~D1--D14 may fail; a displayed geometric identification or
-geometric checker may be defective; the contrary calculation may be
-defective; or the two computations may concern different members or
-conventions.  The absence of an external PL and symplectic audit prevents
-assigning the discrepancy to one location in advance.  Relation-by-relation
-reconciliation requires the missing artifact.
+member, the live explanations are deliberately left neutral: a
+source-to-audit clause may fail; a displayed geometric identification or
+finite checker may be defective; the contrary calculation may be defective;
+or the computations may concern different members or conventions.  A
+relation-by-relation reconciliation requires the missing presentation,
+dictionary, and witness.  Until that material exists, this article makes no
+claim about Wuebben's $V$.
 
-\begin{proposition}[sufficiency of the source-comparison hypotheses]
-\label{prop:paper-comparison}
-Under Hypotheses D1--D14, the marked smooth surgery data defining
-$V_{\mathrm{aud}}$ agree with the data defining Wuebben's fixed
-$(m,n)=(0,0)$ member.  The resulting filled manifolds are
-orientation-preservingly diffeomorphic, with their boundary marking,
-peripheral curves, and framing classes identified.
-\end{proposition}
+\subsection{Independent review targets}
 
-This is a sufficiency theorem for an explicit comparison checklist, not an
-independent verification that the source and audit objects coincide.
+Three kinds of independent review remain valuable.  First, both
+theorem-critical filled-group checkers arose within the same AI-assisted
+development process.  Separate languages, negative controls, and the
+mathematical specification reduce ordinary software risk, but do not replace
+an external conformance audit of one checker.
 
-\begin{proof}
-Clauses D1--D3 and Lemma~\ref{lem:fiber} identify the ordered marked fiber,
-the involution, and the complementary marked disks.  Clauses D4--D6,
-Lemma~\ref{lem:clutching}, and Corollary~\ref{cor:tori} identify the two
-relative monodromies, the marked bundle, the two torus subbundles, and their
-collars.  Clauses D7--D11 and Lemmas~\ref{lem:normal},
-\ref{lem:alpha-peripheral}, \ref{lem:beta-peripheral}, and
-\ref{lem:drilled} identify the based meridians, product longitudes, drilled
-transport relation, fixed $(+,+)$ sheet, and fixed member.  Finally D12--D14
-and Lemma~\ref{lem:smooth-source-bridge} promote the relative comparison to
-the smooth category and carry the two attaching maps across the surgeries.
-The resulting diffeomorphism is the one asserted.
-\end{proof}
+Second, the principal geometric risk for simple connectivity lies in
+Sections~\ref{sec:model}--\ref{sec:peripheral}, not in the certificate
+arithmetic.  A PL reviewer should check the equivariant marked-fiber
+extension, relative clutching, simplex-link local-flatness conversion,
+normal-frontier equivalence, both commonly based peripheral words, and the
+claim that the drilled transport homotopy stays in the complement.  Those
+are the steps that turn the finite presentation into
+$\pione(V_{\mathrm{aud}})$.
 
-\begin{corollary}[conditional simple connectivity]\label{cor:pi1}
-Under Hypotheses D1--D14, Wuebben's fixed $(m,n)=(0,0)$ member is simply
-connected.
-\end{corollary}
+Third, a symplectic reviewer should check that the split form in
+Lemma~\ref{lem:bundle-symplectic-form} descends and standardizes both collars,
+that the seam and normal-circle orientations agree with the filling basis,
+that constant-covector copies have zero meridional coefficient, and that the
+chart-independence isotopy remains in a uniform punctured neighborhood.  The
+finite checks localize these questions; they do not replace specialist
+review.  The supplement gives exact files and a longer review checklist.
 
-\begin{proof}
-Combine Theorem~\ref{thm:audit-manifold} with
-Proposition~\ref{prop:paper-comparison}.
-\end{proof}
-
-\clearpage
-\section{Conditional application to the target construction}
-\label{sec:consequences}
-
-This section records why the audit matters to the proposed construction; it
-is not part of the source-independent Audit-Manifold Theorem.  Let
-$V,\sigma,f,Z,W,Z''$ denote the fixed member, involution, regluing map, and
-three manifolds in \cite{Wuebben}.  Source Comparison Hypotheses~D1--D14 are required even
-to identify $V$ with $V_{\mathrm{aud}}$, and the conclusions below also use
-named classification, symplectic, and Floer-theoretic results.  Their exact
-statements, hypothesis checks, and the full dependency audit are collected
-in the companion supplement.
-
-\begin{corollary}[conditional application]\label{thm:full}
-Assume Source Comparison Hypotheses~D1--D14 and the classification, symplectic, and
-Floer-theoretic results cited in the companion supplement in the forms
-stated there.  Then:
-\begin{enumerate}[label=\textup{(\Alph*)},leftmargin=2.5em]
-\item $Z=V\cup_\sigma V$ is homeomorphic but not diffeomorphic to
-  $S^2\times S^2$;
-\item $W=V/\sigma$ is homeomorphic to Kawauchi's manifold $B$, while
-  the figure-eight knot is smoothly slice in $B$ and not smoothly slice in
-  $W$, so $(B,W)$ is a homeomorphic non-diffeomorphic pair;
-\item $Z''=V\cup_{f\circ\sigma}V$ is homeomorphic but not
-  diffeomorphic to $\CPbar$.
-\end{enumerate}
-\end{corollary}
-
-\begin{proof}
-Under Source Comparison Hypotheses~D1--D14, Proposition~\ref{prop:paper-comparison} and
-Corollary~\ref{cor:pi1} supply the marked identification and simple
-connectivity required by all three arguments.  The supplement gives the
-proposition-by-proposition deductions: Freedman and symplectic Kodaira
-dimension for (A), Hambleton--Kreck and the Klug--Levine obstruction for
-(B), and the odd-form classification plus the cited Floer-theoretic mixed
-invariant for (C).  It states every external input and checks its hypotheses;
-the machine ledger verifies only the dependency bookkeeping.  For clarity
-about the polarity in (B): The figure-eight knot is smoothly slice in $B$
-by construction.  It is not smoothly slice in $W$ by the
-relative Rochlin--Arf obstruction recorded in the supplement.
-\end{proof}
-
-\clearpage
-\section{Limitations and independent review}
-\label{sec:limitations}
-
-The project has three principal limitations.  First, both theorem-critical
-filled-group checkers were produced within the same AI-assisted development
-process.  Separate languages and implementations, negative controls, and the
-published mathematical specification reduce ordinary software risk but do
-not constitute an independent human line-by-line audit.  Second, the marked
-fiber, peripheral, and framing arguments have been decomposed above so that a
-PL or symplectic topologist can audit them locally, but no such external audit
-is claimed.  In particular Theorem~\ref{thm:framing} is the highest-risk
-internal geometric bridge.  A specialist review should check (i) that the
-global split form in Lemma~\ref{lem:bundle-symplectic-form} descends and
-standardizes both protected collars simultaneously, (ii) that the named
-product push-offs land in the exact boundary classes used by the surgery
-convention, (iii) the seam, quotient, and normal-circle orientations,
-(iv) the zero meridional coefficient of the constant-covector copies,
-(v) the uniform punctured-neighborhood isotopy in the chart-independence
-argument, and (vi) whether the smooth comparison assertions D12--D14 actually
-hold for the source object.  The displayed calculations and finite checks
-make those questions local; they do not substitute for that external review.
-Accordingly a journal review should combine three distinct competencies:
-certificate-checker conformance and computational group theory for
-Sections~2--3, PL topology for Sections~4--5, and symplectic topology for
-Section~6.  Approval in one layer would not audit the other two.
-Third, the comparison with Wuebben's fixed member remains
-conditional on every clause of Source Comparison Hypotheses~D1--D14.  The downstream
-corollary additionally depends on its cited external results.  The reported
-contrary calculation in Section~\ref{sec:contrary} is therefore an active
-reason to scrutinize both the source comparison and the displayed geometric
-arguments; it is not evidence against a particular one until its underlying
-presentation and dictionary are available.
-
-The $100$-case framing scan is not an answer to either limitation.  All
-sampled shifted presentations were reported trivial, so the scan does not
-discriminate the correct framing and has no logical role in
-Theorem~\ref{prop:ident} or Proposition~\ref{prop:paper-comparison}.  It is
-retained only as computational history in the supplement.
+The $100$-case framing scan is not evidence for the dictionary: every sampled
+shifted presentation was reported trivial.  By contrast,
+Proposition~\ref{prop:slope-family-h1} supplies a transparent negative
+control showing that infinitely many other slope fillings have nontrivial
+abelianization.
 
 \section{Conclusion}
 
-The revision isolates three logically ordered achievements.  First, four
-hash-identified presentations are trivial under a complete published
-certificate specification, with the raw transport and all retained
-derivations replayable from frozen inputs.  Second, the fixed $(+,+)$
-presentation identifies the fundamental group of the explicitly defined
-$V_{\mathrm{aud}}$, which is
-therefore simply connected.  Third, a separate theorem identifies the two
-product-framing curves with their Lagrangian-framing classes.  That third
-result plays no role in simple connectivity; it enters only the conditional
-comparison with the symplectic source construction.  The marked fiber,
-relative clutching, torus collars, normal frontier, complement presentation,
-two peripheral pairs, drilled-fiber relation, and framing bridge remain
-separate results whose finite and conventional inputs are visible.
+Four manifest-bound presentations are trivial under a complete certificate
+specification.  A separate geometric reconstruction identifies one of them
+with the explicitly defined $V_{\mathrm{aud}}$, yielding the intrinsic
+topological statements of Theorem~\ref{thm:audit-manifold}.  The framing
+theorem then supplies its symplectic structure.  This separation between
+finite derivation, geometric conversion, and symplectic framing is the
+article's source-independent contribution.
 
-The remaining construction-specific uncertainty is Source Comparison Hypotheses~D1--D14:
-whether the source text and diagrams define exactly the marked smooth data
-used for $V_{\mathrm{aud}}$.  The source comparison and the unavailable
-contrary computation meet at that boundary.  The artifacts make its clauses
-finite and inspectable; they do not promote source interpretation into a
-certificate.
-
-Even if a clause of Source Comparison Hypotheses~D1--D14 fails, the source-independent content
-does not disappear.  The paper still supplies a complete certificate theorem
-for four explicit presentations, an explicit simply connected audit
-manifold, a proof-producing transport from a large cellular presentation,
-and a reusable separation between finite computation, geometric conversion,
-source comparison, and downstream citation.  What would fail is the transfer
-of those results to Wuebben's named manifold, not the results about the audit
-object itself.
+Whether Wuebben's text and diagrams specify the same marked smooth surgery
+data remains open.  The supplement records that comparison and its historical
+downstream consequences without promoting either into a theorem of this
+article.
 
 \section{Data and reproducibility}\label{sec:data}
 
-The target is Wuebben's arXiv:2608.17267v1 (18 August 2026), whose PDF has
-SHA-256
-\begin{center}
-\small\texttt{16a6cef4998699f76ee508e062f8192cf80eeb478b7e077bfa35ccc25350186a}.
-\end{center}
-The immutable Lidman--Piccirillo v1 source digest and all interpretation
-inputs are recorded in \texttt{TARGET.md}.  The theorem artifacts, frozen
-inputs, certificate checkers, manifests, run transcripts, and reconstruction
-programs are in the public repository and its archival deposit
-\cite{ClydeArtifact}:
+The theorem artifacts, frozen inputs, certificate checkers, manifests, and
+reconstruction programs are in the public repository and its archival
+deposit \cite{ClydeArtifact}:
 \begin{center}
 \small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.2},\\[.3em]
 \small\url{https://doi.org/10.5281/zenodo.22182187}.
 \end{center}
-That version DOI identifies the exact v2.2.2 archival deposit of the
-artifacts described here.  The concept DOI
+The version DOI identifies the exact artifact base described here.  The concept DOI
 \url{https://doi.org/10.5281/zenodo.22169753} resolves to the newest
 archived version.
 
-The submission release has three intentionally different replay levels.
-The certificate-only path reads frozen files and requires only standard
-Python and Ruby runtimes.  The geometric-audit path recomputes the finite
-marked-fiber, torus, frontier, peripheral, and framing checks.  The full
-reconstruction path additionally uses the locked GAP~4.11.1 and
-KBMAG~1.5.9 environment and the proof-producing KBMAG patch.  Commands,
-expected record counts, negative controls, and hashes are listed in the
-companion supplement.  The deterministic source and archive digests are
-recorded in \texttt{ARXIV\_SUBMISSION.md}.
-
-Three source-extraction replays additionally require locally supplied copies
-of third-party material that the release does not redistribute: Wuebben's
-paper text, two files from his public code repository, and the
-Lidman--Piccirillo source figure.  Their expected digests and exact retrieval
-instructions are in \texttt{verification/IMPORT.md}.  The frozen extraction
-outputs, their comparison with the audit model, and every certificate used by
-the Audit-Manifold Theorem are contained in the release and replay without
-those third-party files.
-
-Each release is checked for PDFs, deterministic source archive, manifest,
-and clean-checkout replay before its archival deposit is created.  The
-release notes accompanying each deposit record what changed.  The finite
-filled-group certificates and the sealed transport are unchanged from the
-first archived release.
+The supplement gives the sealed-input digest, git tree object, literal replay
+commands, expected outputs, negative controls, and source-extraction pins.
+Certificate-only replay requires standard Python or Ruby; full reconstruction
+uses the recorded GAP~4.11.1 and KBMAG~1.5.9 environment.  The theorem about
+$V_{\mathrm{aud}}$ replays from frozen files without locally supplied copies
+of either source paper.
 
 \section*{References}
 \addcontentsline{toc}{section}{References}
@@ -1833,120 +1617,20 @@ C.~P.~Rourke and B.~J.~Sanderson,
 Ergebnisse der Mathematik und ihrer Grenzgebiete, vol.~69,
 Springer-Verlag, 1972.
 
-\bibitem{Hudson}
-J.~F.~P.~Hudson,
-\emph{Piecewise Linear Topology}, W.~A.~Benjamin, 1969.
-
 \bibitem{HatcherLinearization}
 A.~E.~Hatcher,
 \emph{Linearization in 3-dimensional topology},
 Proceedings of the International Congress of Mathematicians
 (Helsinki, 1978), pp.~463--468, Academia Scientiarum Fennica, 1980.
 
-\bibitem{LyndonSchupp}
-R.~C.~Lyndon and P.~E.~Schupp,
-\emph{Combinatorial Group Theory}, Ergebnisse der Mathematik und ihrer
-Grenzgebiete, vol.~89, Springer-Verlag, 1977.
+\bibitem{HatcherAT}
+A.~Hatcher,
+\emph{Algebraic Topology}, Cambridge University Press, 2002.
 
-\bibitem{Luttinger}
-K.~M.~Luttinger,
-\emph{Lagrangian tori in $\R^4$},
-J. Differential Geom. \textbf{42} (1995), 220--228.
-
-\bibitem{Freedman}
-M.~H.~Freedman,
-\emph{The topology of four-dimensional manifolds},
-J. Differential Geom. \textbf{17} (1982), 357--453.
-
-\bibitem{HK88}
-I.~Hambleton and M.~Kreck,
-\emph{On the classification of topological 4-manifolds with finite
-fundamental group},
-Math. Ann. \textbf{280} (1988), 85--104.
-
-\bibitem{HK93}
-I.~Hambleton and M.~Kreck,
-\emph{Cancellation, elliptic surfaces and the topology of certain
-four-manifolds},
-J. Reine Angew. Math. \textbf{444} (1993), 79--100.
-
-\bibitem{HKcorr}
-I.~Hambleton and M.~Kreck,
-\emph{On the classification of topological 4-manifolds with finite
-fundamental group: corrigendum},
-Math. Ann. \textbf{372} (2018), 527--530.
-
-\bibitem{Hambleton}
-I.~Hambleton,
-\emph{Intersection forms, fundamental groups and 4-manifolds},
-Proceedings of the 15th G\"okova Geometry-Topology Conference (2008),
-137--150.
-
-\bibitem{HoLi}
-C.-I.~Ho and T.-J.~Li,
-\emph{Luttinger surgery and Kodaira dimension},
-Asian J. Math. \textbf{16} (2012), 299--318.
-
-\bibitem{Li}
-T.-J.~Li,
-\emph{Symplectic 4-manifolds with Kodaira dimension zero},
-J. Differential Geom. \textbf{74} (2006), 321--352.
-
-\bibitem{Thurston}
-W.~P.~Thurston,
-\emph{Some simple examples of symplectic manifolds},
-Proc. Amer. Math. Soc. \textbf{55} (1976), 467--468.
-
-\bibitem{OzsvathSzabo}
-P.~Ozsv\'ath and Z.~Szab\'o,
-\emph{The symplectic Thom conjecture},
-Ann. of Math. (2) \textbf{151} (2000), no.~1, 93--124.
-
-\bibitem{OS04}
-P.~Ozsv\'ath and Z.~Szab\'o,
-\emph{Holomorphic triangle invariants and the topology of symplectic
-four-manifolds},
-Duke Math. J. \textbf{121} (2004), 1--34.
-
-\bibitem{OS06}
-P.~Ozsv\'ath and Z.~Szab\'o,
-\emph{Holomorphic triangles and invariants for smooth four-manifolds},
-Adv. Math. \textbf{202} (2006), no.~2, 326--400.
-
-\bibitem{StipsiczSzabo}
-A.~I.~Stipsicz and Z.~Szab\'o,
-\emph{On the minimal genus problem in four-manifolds},
-arXiv:2307.04202 (2023).
-
-\bibitem{Klug}
-M.~R.~Klug,
-\emph{A relative version of Rochlin's theorem},
-arXiv:2011.12418 (2021).
-
-\bibitem{Levine}
-J.~Levine,
-\emph{Polynomial invariants of knots of codimension two},
-Ann. of Math. (2) \textbf{84} (1966), 537--554.
-
-\bibitem{Kawauchi}
-A.~Kawauchi,
-\emph{Rational-slice knots via strongly negative-amphicheiral knots},
-Commun. Math. Res. \textbf{25} (2009), 177--192.
-
-\bibitem{Palais}
-R.~S.~Palais,
-\emph{Extending diffeomorphisms},
-Proc. Amer. Math. Soc. \textbf{11} (1960), 274--277.
-
-\bibitem{KBMAG}
-D.~F.~Holt,
-\emph{KBMAG --- Knuth--Bendix in Monoids and Automatic Groups},
-software package, version 1.5.9.
-
-\bibitem{GAP}
-The GAP~Group,
-\emph{GAP --- Groups, Algorithms, and Programming},\newline
-\url{https://www.gap-system.org}.
+\bibitem{MilnorStasheff}
+J.~Milnor and J.~Stasheff,
+\emph{Characteristic Classes}, Annals of Mathematics Studies, vol.~76,
+Princeton University Press, 1974.
 
 \end{thebibliography}
 \endgroup

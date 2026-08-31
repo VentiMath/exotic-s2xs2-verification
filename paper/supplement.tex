@@ -5,7 +5,7 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Mathematical and computational supplement to A certificate-based audit of simple connectivity for an explicit model associated with Wuebben's proposed exotic S2 x S2 construction},
+  pdftitle={Supplement to Certificate-checked simple connectivity of a surface-bundle surgery manifold},
   pdfauthor={John Clyde},
   pdfsubject={Supplementary certificate inventory, source-comparison ledger, and conditional topology deductions},
   pdfkeywords={geometric topology, 4-manifolds, proof certificates, computational supplement, Luttinger surgery}
@@ -34,8 +34,8 @@
 \newtheorem{proposition}{Proposition}[section]
 
 \title{Mathematical and computational supplement to\\
-A certificate-based audit of simple connectivity for an explicit\\
-model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
+Certificate-checked simple connectivity of a\\
+surface-bundle surgery manifold}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
 \date{Working revision after v2.2.2 --- 30 August 2026\\
@@ -46,36 +46,39 @@ model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
 \maketitle
 
 \begin{abstract}
-This supplement preserves the implementation inventory, complete downstream
-dependency exposition, trust boundary, data pins, calibration cases, and
-historical exports supporting the main paper.  None of the material here
-changes the logical status stated there: finite certificates are replayable,
-the audit-defined manifold $V_{\mathrm{aud}}$ is simply connected, the comparison
-$V_{\mathrm{aud}}\cong V$ is conditional on the fourteen clauses of Source
-Comparison Hypotheses D1--D14, and the downstream manifold conclusions are additionally
-relative to named external results.
+This supplement preserves the implementation inventory, source-comparison
+checklist, historical conditional applications, trust boundary, data pins,
+calibrations, and superseded exports behind the main paper.  The article
+proves source-independent topological and symplectic statements about
+$V_{\mathrm{aud}}$.  The comparison $V_{\mathrm{aud}}\cong V$ is not a
+theorem there: clauses D1--D14 below record what a future comparison must
+establish.  The former exotic-manifold application is retained only as a
+conditional dependency audit relative to that checklist and named external
+results.
 \end{abstract}
 
 \section*{How to use this supplement}
-The main paper contains the mathematical certificate specification and the
-proof of the product-filled audit-model identification.  It then proves a
-logically separate bridge from product framing to Lagrangian framing before
-the explicitly conditional comparison with Wuebben.
+The main paper contains the mathematical certificate specification, the
+product-filled audit-model identification, the intrinsic topology of
+$V_{\mathrm{aud}}$, and a separate product-to-Lagrangian framing theorem.
 Section~\ref{sec:detailed-boundaries} preserves the full source-comparison
 ledger, and Section~\ref{sec:certificates}
 below records the concrete certificate batches and replay architecture.
-Appendix~\ref{sec:downstream} gives the full proposition-by-proposition
-downstream chain; Appendix~\ref{sec:trust} records provenance, trust, and data
-availability; Appendix~\ref{app:engineering} preserves calibrations and
-historical computations.  The machine-readable ledger and every bound digest
-remain normative for exact inventories.
+Appendix~\ref{sec:downstream} preserves the historical
+proposition-by-proposition conditional chain; Appendix~\ref{sec:trust}
+records provenance, trust, and data availability; Appendix~\ref{app:engineering}
+preserves calibrations and historical computations.  The machine-readable
+ledger and every bound digest remain normative for exact inventories.
 
-\section{Detailed Source Comparison Hypotheses D1--D14}
+\section{Open source-comparison checklist D1--D14}
 \label{sec:detailed-boundaries}
 
-The main paper keeps a compact source-comparison table.  The full
-clause-by-clause ledger follows; the geometric layer inventory, including
-filenames and checker sizes, remains in Section~\ref{sec:geometric-inventory}.
+The main paper deliberately makes no transfer theorem about Wuebben's fixed
+member.  The full clause-by-clause comparison checklist follows; the
+geometric layer inventory, including filenames and checker sizes, remains in
+Section~\ref{sec:geometric-inventory}.  D1--D11 are textual or diagrammatic
+identifications to be checked against the source, while D12--D14 are the
+genuine relative smooth and framing comparison problem.
 
 \begin{landscape}
 \begingroup
@@ -173,7 +176,45 @@ source-to-audit bundle equivalence \\
 \endgroup
 \end{landscape}
 
+\begin{proposition}[conditional sufficiency of the comparison checklist]
+If every clause D1--D14 holds, then the marked smooth surgery data defining
+$V_{\mathrm{aud}}$ agree with the data defining Wuebben's fixed
+$(m,n)=(0,0)$ member, and the filled manifolds are
+orientation-preservingly diffeomorphic.
+\end{proposition}
+
+\begin{proof}
+Clauses D1--D11 identify the ordered marked fiber, monodromies, torus
+subbundles, based peripheral pairs, reference sheet, and filling slopes.
+D12--D14 supply the relative smooth bundle and torus identification and the
+agreement of Lagrangian framing classes.  Conjugating the exterior boundary
+map by the two attaching maps carries meridian to meridian on each filling
+piece.  The torus-filling extension lemma in the main paper, including its
+orientation calculation, therefore extends the comparison across both
+copies of $T^2\times D^2$.  This is only a sufficiency statement: it does not
+prove any clause D1--D14.
+\end{proof}
+
 \section{Certificate inventory and replay}\label{sec:certificates}
+
+The normative manifest is
+\repopath{verification/luttinger/proof_certificates/manifest.json}, with
+SHA-256
+\begin{center}\small
+\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}.
+\end{center}
+It binds the sealed presentation
+{\small\repopath{verification/luttinger/sealed_transport/r_presentations.json}},
+whose SHA-256 is
+\begin{center}\small
+\texttt{1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c}.
+\end{center}
+The archived \texttt{verification/} directory has git tree object
+\begin{center}\small
+\texttt{edb24057eb60a831b618bd103ab05c3ad13c92ae}.
+\end{center}
+These three identifiers are the operational root referenced by the finite
+theorem in the main paper.
 
 \subsection{The four algebraic sign specializations}
 
@@ -296,11 +337,20 @@ nontrivial groups and that both checkers reject altered records and incomplete
 inventories.  Those controls test implementation behavior; they are not
 substitutes for the soundness argument above.
 
+This post-v2.2.2 working revision adds the small checker
+\repopath{verification/luttinger/audit_manifold_invariants.py}.  It binds the
+sealed input and replays the exponent-lattice, slope-family,
+Euler-characteristic, Betti-number, and mod-two fiber calculations promoted
+to the Audit-Manifold Theorem.  It is not part of the archived v2.2.2
+manifest and must be bound by the next release before submission.  Its output
+distinguishes finite arithmetic from the topological hypotheses established
+in prose.
+
 \section{Geometric audit inventory}\label{sec:geometric-inventory}
 
 The geometric part of the main paper has a different trusted-computing
-boundary from the derivation certificates.  The following table expands the
-geometric artifact theorem there.  A successful replay proves the finite
+boundary from the derivation certificates.  The following table records the
+artifact statement moved out of the theorem stream.  A successful replay proves the finite
 predicate in the third column; the last column names the mathematical
 conversion still performed in prose.  Thus ``checked'' never silently means
 ``formalized in a foundational proof assistant.''
@@ -402,13 +452,13 @@ contains the $78$ sealed complement relators and no filling relation.
 The line counts are descriptive rather than evidentiary.  The release
 manifest binds exact bytes, and \texttt{proof\_ledger.py} binds the logical
 dependencies.  In particular, the finite predicates above do not resolve
-the source-comparison clauses of Source Comparison Hypotheses~D1--D14.
+the source-comparison checklist D1--D14.
 
 For compatibility with the frozen dependency certificate, its machine node
 retains the identifier \texttt{A\_source\_formalization\_D} and the legacy
 phrase ``Source Formalization D.''  In this revision both denote exactly the
-conjunction of Source Comparison Hypotheses D1--D14; no frozen claim or digest
-is changed by the terminological refinement.
+conjunction of checklist D1--D14; no frozen claim or digest is changed by the
+terminological refinement.
 
 
 \appendix
@@ -417,10 +467,9 @@ theorems}\label{sec:downstream}
 
 The deductions from $\pione(V)=1$ to Theorems A, B, C occupy Part~I of
 \cite{Wuebben}, whose Theorem~1.2 reduces them to the simple connectivity
-of $V$.  Throughout this appendix, Source Comparison Hypotheses~D1--D14 of
-the main paper are standing hypotheses, so the audit-defined
-$V_{\mathrm{aud}}$ has been
-identified with this $V$.
+of $V$.  This appendix is historical and conditional: assume every clause
+D1--D14 above and thereby identify the audit-defined
+$V_{\mathrm{aud}}$ with this $V$.
 This section carries the subsequent deductions through as an explicit
 dependency chain. The chain is itself a machine artifact: a script
 records every item as one of five kinds --- an \emph{external theorem}
@@ -576,7 +625,7 @@ signature $0$; and $Z$ is homeomorphic to $S^2\times S^2$.
 $\chi(Z)=2\chi(V)-\chi(S^3_0(Q))=4$ and $\pione(Z)=1$ give $b_2(Z)=2$
 with $H_2(Z)$ torsion-free. $F\cdot F=0$, $F\cdot\Ghat=1$ (a fiber meets
 a section once), and $\Ghat\cdot\Ghat=0$ by the certified
-self-intersection computation in the peripheral section of the main paper.
+self-intersection computation listed in the geometric inventory above.
 The Gram
 determinant is $-1$ and the form
 is unimodular, so the index formula makes $(F,\Ghat)$ a basis and the
@@ -597,9 +646,8 @@ diffeomorphic to $S^2\times S^2$.
 $R\cup_\sigma R$ is a closed surface bundle whose fiber is homologically
 essential ($F\cdot\Ghat=1$), so it carries the Thurston-type form,
 positive on $F$ and $\Ghat$. The surgery tori are Lagrangian for it and
-the surgeries are the certified Luttinger surgeries
-(the audit-model theorem together with Source Comparison Hypotheses~D1--D14 of the main
-paper), and
+the surgeries are the asserted Luttinger surgeries under the audit-model
+theorem together with checklist D1--D14, and
 Luttinger surgery preserves the form
 away from the surgered neighborhoods, which miss $F$ and $\Ghat$. For the
 non-diffeomorphism: $R\cup_\sigma R$ is aspherical, hence minimal (an
@@ -742,7 +790,8 @@ and every mixed invariant vanishes.
 \end{proof}
 
 Propositions~\ref{prop:V}, \ref{prop:Zpp} and~\ref{prop:Zppnot} are
-Theorem~C, and the conditional application in the main paper follows.
+Theorem~C.  These deductions explain the original motivation; they are not
+theorems asserted by the main paper.
 
 Three points where the chain's route differs from the paper's are worth
 recording. $H_1(V)=0$ is taken from the certificate rather than from the
@@ -830,18 +879,18 @@ represented as an external audit.
 
 \subsection*{Source comparison with Wuebben}
 
-Source Comparison Hypotheses~D1--D14 in the main paper are a separate evidence kind, not an
-external theorem and not a machine certificate.  Its fourteen clauses split
+Checklist D1--D14 is a separate evidence kind, not an external theorem and
+not a machine certificate.  Its fourteen clauses split
 the marked-fiber, marked-bundle, peripheral/member, coefficient, and
 smooth-surgery comparisons into target-located assertions.  Runs 51--56 and
 68--69, the independent extractors, mutation controls, and the parsed
 author-script comparison give evidence for those readings; they cannot prove
-that a source diagram denotes the audit's marked smooth object.  Only the
-conditional comparison $V_{\mathrm{aud}}\cong V$ and the downstream conclusions
-depend on Source Comparison Hypotheses~D1--D14; the finite theorem and
-$\pione(V_{\mathrm{aud}})=1$ do not.
+that a source diagram denotes the audit's marked smooth object.  A future
+comparison $V_{\mathrm{aud}}\cong V$ and the historical downstream
+implications would depend on every clause; no theorem in the main article
+does.
 
-\subsection*{Inputs to the conditional target application in the main paper}
+\subsection*{Inputs to the historical conditional target application}
 
 The conditional application uses the twenty-five external theorems of
 Appendix~\ref{sec:downstream}, each stated there with its hypotheses. The deep ones are Freedman's
