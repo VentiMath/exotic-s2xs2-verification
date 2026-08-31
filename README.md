@@ -60,8 +60,11 @@ The current working proof manifest has SHA-256
 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9` and
 binds 48 files, including the revised checkers and the audit-manifold
 invariant checker.  The current `verification/` tree object is
-`57ed025145378a84884c5a63293ae35a8c00f899`; these working identifiers must
-be replaced by the final tagged identifiers during the next release cut.
+`d784d5502d414a206bd60e10c0ee995c26688e2c`, and the regenerated historical
+downstream-chain certificate has SHA-256
+`73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca`.
+These working identifiers must be replaced by the final tagged identifiers
+during the next release cut.
 
 **What this repository is not:** a verification or refutation of Wuebben's
 fixed manifold; an unconditional proof of the proposed exotic-manifold
