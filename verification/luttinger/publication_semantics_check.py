@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """Regression-check theorem polarity and scope in the publication sources.
 
-This is deliberately a small, standard-library-only editorial checker. It
-does not prove the mathematical statements; it prevents the main paper from
-reversing or dropping facts already fixed by the downstream certificate and
-the supplement.
+This is deliberately a small, standard-library-only editorial checker.  It
+does not prove the mathematical statements.  The main paper now carries the
+source-independent audit-manifold theorem, while the supplement preserves the
+historical conditional application.  Assertions are therefore located by
+stable theorem labels where possible rather than by obsolete prose from an
+earlier article structure.
 """
 
 import json
+import re
 from pathlib import Path
 
 
@@ -36,6 +39,19 @@ def forbid(text, fragment, label):
     )
 
 
+def labeled_environment(text, environment, label):
+    """Return a labeled TeX environment, independent of editorial wording."""
+    pattern = re.compile(
+        rf"\\begin\{{{re.escape(environment)}\}}"
+        rf"(?:\[[^\]]*\])?.*?\\label\{{{re.escape(label)}\}}"
+        rf".*?\\end\{{{re.escape(environment)}\}}",
+        re.DOTALL,
+    )
+    match = pattern.search(text)
+    assert match is not None, f"missing {environment} labeled {label}"
+    return match.group(0)
+
+
 def main():
     assert FACTS["format"] == "exotic-s2xs2-publication-semantics-v2"
     facts = FACTS["facts"]
@@ -46,30 +62,44 @@ def main():
     ]
     assert facts["pi_1(V_aud)"] == "trivial"
 
-    require(MAIN, "smoothly slice in $B$ and not smoothly slice in $W$",
-            "Theorem B polarity in the main theorem")
-    require(MAIN, "The figure-eight knot is smoothly slice in $B$ by "
-                  "construction.",
-            "Theorem B polarity in the dependency audit")
-    require(MAIN, "It is not smoothly slice in $W$",
-            "non-sliceness in W")
-    forbid(MAIN, "figure-eight knot bounds the constructed disk in $W$",
-           "reversed W sliceness claim")
-    forbid(MAIN, "If it bounded smoothly in $B$",
-           "reversed B nonsliceness claim")
+    audit = labeled_environment(MAIN, "theorem", "thm:audit-manifold")
+    require(audit, r"\pione(V_{\mathrm{aud}})=1",
+            "trivial fundamental group in the Audit-Manifold Theorem")
+    require(audit, r"H_k(V_{\mathrm{aud}};\Z)",
+            "integral homology in the Audit-Manifold Theorem")
 
+    identification = labeled_environment(MAIN, "theorem", "prop:ident")
+    require(identification,
+            "No clause of the open source-comparison checklist D1--D14 "
+            "enters this theorem.",
+            "source-independent audit-model identification")
+    require(MAIN, "member remains an open comparison problem",
+            "open Wuebben comparison in the main paper")
+    require(MAIN, "No exotic-manifold conclusion is asserted here.",
+            "main-paper exoticity scope boundary")
+
+    require(SUPPLEMENT, "D1 &", "first atomic source clause")
+    require(SUPPLEMENT, "D14 &", "last atomic source clause")
     require(SUPPLEMENT,
-            "The figure-eight knot is not smoothly slice in $W$.",
+            "This appendix is historical and conditional: assume every clause "
+            "D1--D14",
+            "conditional downstream appendix")
+    slice_w = labeled_environment(SUPPLEMENT, "proposition", "prop:slice")
+    require(slice_w, "The figure-eight knot is not smoothly slice in $W$.",
             "supplemental nonsliceness proposition")
+    require(SUPPLEMENT,
+            "in which the figure-eight knot is smoothly slice.",
+            "Kawauchi-manifold sliceness input")
     require(SUPPLEMENT, "the sliceness of the figure-eight knot in $B$",
-            "supplemental sliceness input")
-    require(MAIN, "Under Hypotheses D1--D14", "conditional Wuebben comparison")
-    require(MAIN, "The manifold $V_{\\mathrm{aud}}$ is simply connected.",
-            "unconditional audit-model conclusion")
-    require(MAIN, "D1 &", "first atomic source clause")
-    require(MAIN, "D14 &", "last atomic source clause")
-    require(MAIN, "No clause of Source Comparison Hypotheses~D1--D14 enters this",
-            "source-independent audit-model theorem")
+            "Theorem B sliceness polarity")
+
+    # These guards must cover both documents: the conditional statements were
+    # moved from the main article to the supplement during the scope revision.
+    combined = MAIN + "\n" + SUPPLEMENT
+    forbid(combined, "figure-eight knot bounds the constructed disk in $W$",
+           "reversed W sliceness claim")
+    forbid(combined, "If it bounded smoothly in $B$",
+           "reversed B nonsliceness claim")
 
     nodes = {node["id"]: node for node in CHAIN["items"]}
     assert "smoothly slice in B" in nodes["E_kawauchi_B"]["statement"]
