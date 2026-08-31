@@ -302,10 +302,10 @@ manifest-bound presentations presents the trivial group.
 \end{theorem}
 
 \paragraph{Normative root.}
-Every file this theorem depends on is bound by the v2.2.2 proof manifest
+Every file this theorem depends on is bound by the current working proof manifest
 $\mathcal M$, whose
 SHA-256 is
-\begin{center}\small\texttt{668e6dac41ac04340c25ca1eb06272512e8ad92353d94c866730dfefd5878d63}\end{center}
+\begin{center}\small\texttt{e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9}\end{center}
 and which lists the digest of each certificate, frozen input, and checker.
 The manifest path, sealed-input digest, git tree object, archive DOI, and
 literal replay commands are collected in the supplement.  Verifying
@@ -1546,14 +1546,17 @@ article.
 
 \section{Data and reproducibility}\label{sec:data}
 
-The theorem artifacts, frozen inputs, certificate checkers, manifests, and
-reconstruction programs are in the public repository and its archival
-deposit \cite{ClydeArtifact}:
+The immutable predecessor certificate set, frozen inputs, and reconstruction
+programs are in the public repository and its v2.2.2 archival deposit
+\cite{ClydeArtifact}:
 \begin{center}
 \small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.2},\\[.3em]
 \small\url{https://doi.org/10.5281/zenodo.22182187}.
 \end{center}
-The version DOI identifies the exact artifact base described here.  The concept DOI
+That version DOI identifies the preceding immutable artifact base.  The
+current working manifest and verification-tree object are printed in the
+supplement; they bind the revised checkers and invariant checker but do not
+become an archival citation until the next release is cut.  The concept DOI
 \url{https://doi.org/10.5281/zenodo.22169753} resolves to the newest
 archived version.
 

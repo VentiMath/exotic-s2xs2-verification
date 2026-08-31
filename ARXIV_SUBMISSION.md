@@ -3,7 +3,7 @@
 > **WORKING-REVISION GATE:** the metadata below describes the unreleased
 > post-v2.2.2 manuscript. Do not upload it to arXiv until the revision has a
 > new immutable tag and exact archive DOI, every printed identifier has been
-> regenerated, and `python3 paper/check_release_sync.py --final` passes from
+> regenerated, and `python3 paper/check_release_sync.py --final --version VERSION` passes from
 > a clean checkout of that new tag. The v2.2.2 identifiers below are only the
 > archived artifact base, not identifiers for the revised PDFs.
 
@@ -28,9 +28,15 @@ only after the next immutable archive is built.
   top-level TeX document.
 - Record the new main and supplement PDF SHA-256 values here during the
   release cut.
-- Regenerate the filled-group proof manifest. It must bind the revised Python
-  checker and `audit_manifold_invariants.py`; rerun both certificate checkers,
-  the invariant checker, and the release gate from the clean tagged checkout.
+- Confirm or regenerate the filled-group proof manifest after the final code
+  change. It must bind the revised Python checker and
+  `audit_manifold_invariants.py`; rerun both certificate checkers, the
+  invariant checker, and the release gate from the clean tagged checkout.
+- Rewrite `CITATION.cff` as one coherent record for the new release: exact
+  manuscript title, abstract, version, release date, version DOI, DOI
+  descriptions, and tag URL. The abstract must match this packet verbatim,
+  and the ISO release date must match the human-readable date on both PDF
+  title pages. Final mode checks each of these fields.
 - Select the automatically detected PDFLaTeX-compatible processor and
   `main.tex` as the top-level file. Inspect arXiv's generated PDF before the
   final submission step.
@@ -41,7 +47,7 @@ Run `python3 paper/check_release_sync.py` while preparing the candidate.  It
 checks the PDF/source hashes, page/figure/table counts, open-checklist
 D1--D14 terminology, and the two theorem-artifact manifests.  After reserving the
 exact version DOI and replacing every candidate placeholder, run
-`python3 paper/check_release_sync.py --final` from the clean checkout carrying
+`python3 paper/check_release_sync.py --final --version VERSION` from the clean checkout carrying
 the new tag.  Final mode must pass before arXiv upload; it also requires
 the same release URL and version DOI in the manuscript, supplement, README,
 and this packet.  The script does not make a network request, so open both
