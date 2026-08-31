@@ -95,12 +95,25 @@ Frozen dependency artifacts retain the legacy node name
 
     cd luttinger
     python3 make_proof_manifest.py --check
+    python3 verify_tietze_transport.py --negative-controls
+    ruby verify_tietze_transport.rb --negative-controls
+    python3 verify_kbmag_certificate.py --input sealed_transport/r_presentations.json --full-inventory --expect-generators 3 --expect-relators 78 --negative-controls sealed_transport/proof_certificates/*.json.gz
+    ruby verify_certificates.rb --root sealed_transport --full-inventory --expect-generators 3 --expect-relators 78 --negative-controls
+    python3 audit_manifold_invariants.py
     python3 downstream_chain.py --check
     ruby verify_downstream_chain.rb
     python3 proof_ledger.py
     python3 publication_semantics_check.py
     python3 alpha_residual/verify_certificate.py --negative-controls alpha_residual/certificate.json.gz
+    ruby alpha_residual/verify_certificate.rb --negative-controls alpha_residual/certificate.json.gz
     python3 beta_residual/verify_certificate.py --negative-controls beta_residual/certificate.json.gz
+    ruby beta_residual/verify_certificate.rb --negative-controls beta_residual/certificate.json.gz
+
+The repository-level gate `python3 ../../paper/check_release_sync.py` executes
+this theorem-facing block in addition to rebuilding and comparing the PDFs,
+checking the working manifest and tree pins, and rebuilding the deterministic
+arXiv source archive.  A documented replay failure is therefore a release
+failure rather than an optional diagnostic.
 
 `luttinger/README.md` documents the individual drivers. `IMPORT.md` records
 what the imported tree does and does not contain.
