@@ -38,8 +38,8 @@ A certificate-based audit of simple connectivity for an explicit\\
 model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
-\date{Version 2.2.2 --- 30 August 2026\\
-\small \url{https://doi.org/10.5281/zenodo.22182187}}
+\date{Working revision after v2.2.2 --- 30 August 2026\\
+\small Artifact base: \url{https://doi.org/10.5281/zenodo.22182187}}
 
 \begin{document}
 \renewcommand{\thetable}{S\arabic{table}}
@@ -277,9 +277,20 @@ trusted: search and completion tools are untrusted generators, and every
 computational claim rests on a replayable artifact validated by small
 independent code.
 
-The 78-relator input has $H_1=\Z^2$, and each filling pair kills its
-abelianization; triviality rather than mere perfectness is carried by the
-derivation certificates.  The negative controls and calibration examples in
+The $78$-relator input has $H_1=\Z^2$.  In the sealed generator order its
+relator exponent vectors span $\Z(0,0,1)$, while
+\[
+ [M]=[N]=0,\qquad [\lambda_\alpha]=g_2,\qquad
+ [\lambda_\beta]=-g_1.
+\]
+Consequently the two-slope family
+$M\lambda_\alpha^p=N\lambda_\beta^q=1$ has
+$H_1\cong\Z/q\oplus\Z/p$ (with $\Z/0=\Z$), as proved in the
+slope-family proposition of Section~5 of the main paper.  Thus single
+fillings and infinitely many nonunit-coefficient fillings are visibly
+nontrivial.  The four theorem-facing unit-coefficient fillings kill
+abelianization; their triviality rather than mere perfectness is carried by
+the derivation certificates.  The negative controls and calibration examples in
 Section~\ref{app:engineering} show that the pipeline also produces
 nontrivial groups and that both checkers reject altered records and incomplete
 inventories.  Those controls test implementation behavior; they are not
@@ -906,11 +917,16 @@ corroborating history and no ledger node depends on it.
 Four adjacent $n=1$ presentations replace $Ax$ by
 $Ar^{-1}=Ax(rx)^{-1}$.  They pass the same full-inventory certificate
 pipeline and check Wuebben's one-step re-indexing, but they are not used for
-the fixed $n=0$ member.  Likewise, the framing-robustness scan tests 96
+the fixed $n=0$ member.  Wuebben's public sensitivity computations provide a
+particularly important negative control on interpretation: a $72$-case
+nearby grid reports only trivial groups, and $14$ of $15$ single-word
+perturbations are silent at the group-decision layer
+\cite{WuebbenRepo}.  Likewise, the framing-robustness scan here tests 96
 cross-and-diagonal meridian shifts plus four zero-shift controls: 22 have
 derivation certificates and 78 have retained GAP session verdicts.  All 100
-were reported trivial.  Since these counterfactuals do not distinguish the
-correct framing, the scan is explicitly auxiliary.
+were reported trivial.  Together these experiments show that triviality is
+non-discriminating in this neighborhood.  They do not validate any geometric
+dictionary or framing choice and are explicitly auxiliary.
 
 The implementation has both positive and negative calibrations.  On the
 standard $T^4$ Luttinger example it returns the complement
@@ -941,6 +957,16 @@ B.~J.~Wuebben,
 \emph{An exotic $S^2\times S^2$ and an exotic
 $\CP^2\#\overline{\CP}{}^2$},
 arXiv:2608.17267v1 (2026).
+
+\bibitem{WuebbenRepo}
+B.~J.~Wuebben,
+\emph{Public verification repository accompanying
+An exotic $S^2\times S^2$ and an exotic
+$\CP^2\#\overline{\CP}{}^2$},
+commit \texttt{82fbf7ef4c2f75c75ff8e4239af8c258f244cdbc} (2026);
+see \texttt{scripts/pi1\_grid.g}, \texttt{logs/pi1\_grid.log},
+\texttt{scripts/vsens.g}, and \texttt{logs/vsens\_out.txt},
+\url{https://github.com/bwuebben/exotic-s2xs2}.
 
 \bibitem{LidmanPiccirillo}
 T.~Lidman and L.~Piccirillo,

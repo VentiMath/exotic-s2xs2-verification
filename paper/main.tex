@@ -60,8 +60,8 @@
 model associated with Wuebben's proposed exotic $S^2\times S^2$ construction}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
-\date{Version 2.2.2 --- 30 August 2026\\
-\small \url{https://doi.org/10.5281/zenodo.22182187}}
+\date{Working revision after v2.2.2 --- 30 August 2026\\
+\small Artifact base: \url{https://doi.org/10.5281/zenodo.22182187}}
 
 \begin{document}
 \maketitle
@@ -115,6 +115,19 @@ argument reconstructs the marked bundle, torus exteriors, peripheral curves,
 and drilled transport relation and identifies the fixed $(+,+)$ presentation
 with $\pione(V_{\mathrm{aud}})$.  The other three sign sheets are algebraic
 robustness checks, not three additional geometric manifolds.
+
+Triviality is deliberately not used as evidence that a proposed
+source-to-presentation dictionary is correct.  Wuebben's public
+computations report trivial groups for all $72$ cases in one nearby grid and
+classify $14$ of $15$ single-word perturbations as \textsc{silent} at the
+group-decision layer \cite{WuebbenRepo}; the separate $100$-case
+meridian-shift scan in this project likewise reports only trivial groups.
+These experiments show that triviality is non-discriminating in this
+neighborhood.  They do not support the source comparison.  Instead, the
+identification of the fixed presentation with $V_{\mathrm{aud}}$ is proved
+by the geometric reconstruction in
+Sections~\ref{sec:model}--\ref{sec:peripheral}, and the further transfer to
+Wuebben remains conditional as stated below.
 
 The source comparison is deliberately separate.  Fourteen Source Comparison
 Hypotheses D1--D14 state exactly what must hold for the audit object to be
@@ -842,6 +855,46 @@ and the four algebraic sign sheets append exactly
  N\lambda_\beta^{\epsilon_B}=1,\qquad
  (\epsilon_A,\epsilon_B)\in\{\pm1\}^2.
 \end{equation}
+
+\begin{proposition}[abelianization of a slope family]
+\label{prop:slope-family-h1}
+For $p,q\in\Z$, let $P_{p,q}$ be the quotient of the sealed complement
+presentation $Q$ obtained by adjoining
+\[
+             M\lambda_\alpha^p=1,\qquad
+             N\lambda_\beta^q=1.
+\]
+With the convention $\Z/0=\Z$,
+\[
+             H_1(P_{p,q};\Z)\cong \Z/q\oplus\Z/p.
+\]
+In particular the complement has infinitely many fillings with nontrivial
+fundamental group.  Omitting either filling relation leaves an infinite
+cyclic summand, while $|p|>1$ or $|q|>1$ produces nonzero torsion in
+abelianization.
+\end{proposition}
+
+\begin{proof}
+Let $g_1,g_2,g_3$ be the generators of $Q$ in its sealed order.  The exponent
+vectors of its $78$ relators span exactly
+$\Z(0,0,1)\subset\Z^3$, so
+\[
+             H_1(Q;\Z)=\Z\langle g_1\rangle\oplus
+                        \Z\langle g_2\rangle.
+\]
+The hash-bound tracked words have exponent vectors
+\[
+\begin{array}{c|cccc}
+ &M&N&\lambda_\alpha&\lambda_\beta\\ \hline
+\text{vector in }\Z^3 &(0,0,1)&(0,0,0)&(0,1,2)&(-1,0,-3).
+\end{array}
+\]
+Thus their classes in $H_1(Q)$ are respectively
+$0,0,g_2,-g_1$.  The two new relations impose
+$pg_2=0$ and $qg_1=0$, which gives the displayed answer.  The single-filling
+and nonunit-coefficient assertions follow immediately.
+\end{proof}
+
 These are four algebraic specializations in one fixed symbolic basis.  Only
 the $(+,+)$ specialization is used below as a presentation of
 $V_{\mathrm{aud}}$.  The finite presentations of Theorem~\ref{thm:main} are
@@ -1739,6 +1792,16 @@ B.~J.~Wuebben,
 \emph{An exotic $S^2\times S^2$ and an exotic
 $\CP^2\#\overline{\CP}{}^2$},
 arXiv:2608.17267v1 (2026).
+
+\bibitem{WuebbenRepo}
+B.~J.~Wuebben,
+\emph{Public verification repository accompanying
+An exotic $S^2\times S^2$ and an exotic
+$\CP^2\#\overline{\CP}{}^2$},
+commit \texttt{82fbf7ef4c2f75c75ff8e4239af8c258f244cdbc} (2026);
+see \texttt{scripts/pi1\_grid.g}, \texttt{logs/pi1\_grid.log},
+\texttt{scripts/vsens.g}, and \texttt{logs/vsens\_out.txt},
+\url{https://github.com/bwuebben/exotic-s2xs2}.
 
 \bibitem{ClydeArtifact}
 J.~Clyde,
