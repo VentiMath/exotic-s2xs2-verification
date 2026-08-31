@@ -1,15 +1,22 @@
 # arXiv submission packet
 
-> **WORKING-REVISION GATE:** the metadata below describes the unreleased
-> post-v2.2.2 manuscript. Do not upload it to arXiv until the revision has a
-> new immutable tag and exact archive DOI, every printed identifier has been
-> regenerated, and `python3 paper/check_release_sync.py --final --version VERSION` passes from
-> a clean checkout of that new tag. The v2.2.2 identifiers below are only the
-> archived artifact base, not identifiers for the revised PDFs.
-
 This file preserves the intended arXiv metadata while preventing the web form
-from drifting from the rendered paper.  Final release hashes must be inserted
-only after the next immutable archive is built.
+from drifting from the rendered paper.
+
+## Release identifiers
+
+- Release URL: https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0
+- Exact v2.3.0 archive DOI: https://doi.org/10.5281/zenodo.22184725
+- Concept DOI: https://doi.org/10.5281/zenodo.22169753
+
+Source-archive SHA-256:
+  `d6635e72cc69ef00e09b0208868f93e259f654d3d30f76a6a54d7a9e56e60a55`
+
+Main PDF SHA-256:
+  `980c056c8deb4c852dbe82b202a127b4ce536a91bf4769ff705c741cf70a4b5d`
+
+Supplement PDF SHA-256:
+  `eb4d90c5a822802236b6deb68567db1679a9a655a7eb2037f3b4e2386d56f291`
 
 ## Build and upload
 
@@ -79,7 +86,7 @@ We define a compact marked surface-bundle surgery manifold $V_{aud}$ and prove t
 **Comments**
 
 ```text
-22 pages, four figures, and two tables, with a 17-page mathematical and computational supplement planned as a release asset. The primary result is the source-independent theorem $\pi_1(V_aud)=1$. The comparison with arXiv:2608.17267v1 remains open and is recorded as checklist D1--D14 in the supplement; no exotic-manifold conclusion is asserted. Replace this sentence with the new immutable release URL and exact archive DOI before submission.
+22 pages, four figures, and two tables, with a 17-page mathematical and computational supplement available as a release asset at https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0 (archived at https://doi.org/10.5281/zenodo.22184725). The primary result is the source-independent theorem $\pi_1(V_aud)=1$. The comparison with arXiv:2608.17267v1 remains open and is recorded as checklist D1--D14 in the supplement; no exotic-manifold conclusion is asserted.
 ```
 
 **Classification**

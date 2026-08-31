@@ -3,46 +3,47 @@ message: >-
   If you use these certificates, checkers, or the audit itself, please cite
   both this archived artifact and the accompanying manuscript.
 title: >-
-  A certificate-based audit of simple connectivity for an explicit model
-  associated with Wuebben's proposed exotic S^2 x S^2 construction
+  Certificate-checked simple connectivity of a surface-bundle surgery manifold
 abstract: >-
-  We define an explicit marked surface-bundle surgery manifold V_aud modeled on
-  the data in Wuebben's proposed exotic S^2 x S^2 construction. Four
-  hash-identified finite presentations are proved trivial by replayable
-  derivation certificates, and separate geometric arguments identify the
-  fixed (+,+) presentation with pi_1(V_aud). Consequently V_aud is simply
-  connected. The other three sign sheets are algebraic robustness checks. A
-  separate theorem supplies the product-to-Lagrangian framing bridge.
-  Comparison with Wuebben's fixed surgery member is isolated as the
-  Source Comparison Hypotheses D1--D14, classified as textual, diagrammatic, or
-  smooth/framing assumptions. The downstream manifold conclusions are
-  conditional on those hypotheses and the cited
-  classification, symplectic, and Floer-theoretic results. A reported contrary
-  fundamental-group computation remains unreconciled; the paper lists all live
-  failure locations without assigning the discrepancy in advance.
+  We define a compact marked surface-bundle surgery manifold $V_{aud}$ and
+  prove that $\pi_1(V_{aud})=1$. Four explicit finite presentations are
+  trivial under a published derivation-certificate specification; a geometric
+  reconstruction identifies one of them with $\pi_1(V_{aud})$. The same
+  construction gives $\chi(V_{aud})=2$, integral homology concentrated in
+  degrees zero and two, spinness, a primitive square-zero genus-two fiber, and
+  a surviving relative section. A separate framing theorem identifies the
+  product push-offs used in the definition with canonical Lagrangian-framing
+  classes, so standard Luttinger surgery gives a symplectic structure on
+  $V_{aud}$. Automated certificate replay assumes that at least one checker
+  conforms to the mathematical specification; the two shipped implementations
+  have not received an independent human line-by-line audit. The construction
+  was motivated by Wuebben's proposed exotic $S^2 \times S^2$, but identifying
+  $V_{aud}$ with Wuebben's fixed member remains an open comparison problem
+  recorded clause by clause in the supplement. No exotic-manifold conclusion
+  is asserted here.
 type: software
 authors:
   - family-names: Clyde
     given-names: John
     affiliation: VentiMath
     email: verification@ventimath.org
-version: v2.2.2
+version: v2.3.0
 date-released: '2026-08-30'
-doi: 10.5281/zenodo.22182187
+doi: 10.5281/zenodo.22184725
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.22182187
-    description: 'Version DOI for the v2.2.2 archived artifact'
+    value: 10.5281/zenodo.22184725
+    description: 'Version DOI for the v2.3.0 archived artifact'
   - type: url
-    value: 'https://doi.org/10.5281/zenodo.22182187'
-    description: 'Resolver link for the v2.2.2 version DOI'
+    value: 'https://doi.org/10.5281/zenodo.22184725'
+    description: 'Resolver link for the v2.3.0 version DOI'
   - type: doi
     value: 10.5281/zenodo.22169753
     description: 'Concept DOI, resolving to the newest archived version'
 license: MIT
 repository-code: 'https://github.com/VentiMath/exotic-s2xs2-verification'
 url: >-
-  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.2.2
+  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0
 keywords:
   - 4-manifolds
   - exotic smooth structures
