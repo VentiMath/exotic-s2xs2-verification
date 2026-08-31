@@ -45,7 +45,8 @@ only after the next immutable archive is built.
 
 Run `python3 paper/check_release_sync.py` while preparing the candidate.  It
 checks the PDF/source hashes, page/figure/table counts, open-checklist
-D1--D14 terminology, and the two theorem-artifact manifests.  After reserving the
+D1--D14 terminology, executes every documented theorem-facing replay in both
+implementations where available, and checks both artifact digests.  After reserving the
 exact version DOI and replacing every candidate placeholder, run
 `python3 paper/check_release_sync.py --final --version VERSION` from the clean checkout carrying
 the new tag.  Final mode must pass before arXiv upload; it also requires

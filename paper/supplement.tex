@@ -211,10 +211,17 @@ whose SHA-256 is
 \end{center}
 The current working \texttt{verification/} directory has git tree object
 \begin{center}\small
-\texttt{57ed025145378a84884c5a63293ae35a8c00f899}.
+\texttt{d784d5502d414a206bd60e10c0ee995c26688e2c}.
 \end{center}
-These three identifiers are the operational root referenced by the finite
-theorem in the main paper.
+The historical conditional-application chain, which is not a premise of the
+finite theorem, has SHA-256
+\begin{center}\small
+\texttt{73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca}.
+\end{center}
+The manifest, sealed input, and verification-tree object are the operational
+root referenced by the finite theorem in the main paper.  The fourth digest
+allows the separately labeled historical chain to be replayed without
+silently retaining an earlier manifest dependency.
 
 \subsection{The four algebraic sign specializations}
 

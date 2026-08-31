@@ -36,8 +36,8 @@ CITATION = ROOT / "CITATION.cff"
 MAIN_PDF = PAPER / "main.pdf"
 SUPP_PDF = PAPER / "supplement.pdf"
 BUILD_SOURCE = PAPER / "build_arxiv_source.sh"
+LUTTINGER = ROOT / "verification/luttinger"
 MANIFEST = ROOT / "verification/luttinger/proof_certificates/manifest.json"
-MAKE_MANIFEST = ROOT / "verification/luttinger/make_proof_manifest.py"
 DOWNSTREAM = ROOT / "verification/luttinger/downstream_chain_certificate.json"
 
 
@@ -57,6 +57,61 @@ def run(*args: str) -> str:
     return subprocess.run(
         args, cwd=ROOT, check=True, text=True, capture_output=True
     ).stdout.strip()
+
+
+def checked_run(label: str, *args: str, cwd: Path = ROOT) -> str:
+    """Run a release check and report its own output if it fails."""
+    result = subprocess.run(args, cwd=cwd, text=True, capture_output=True)
+    if result.returncode:
+        detail = "\n".join(part for part in (result.stdout, result.stderr) if part)
+        fail(f"{label} failed\n{detail.rstrip()}")
+    return result.stdout.strip()
+
+
+def replay_suite() -> None:
+    """Run every theorem-facing replay documented for a clean checkout."""
+    sealed_certificates = sorted(
+        str(path.relative_to(LUTTINGER))
+        for path in (LUTTINGER / "sealed_transport/proof_certificates").glob("*.json.gz")
+    )
+    commands: list[tuple[str, tuple[str, ...]]] = [
+        ("proof manifest", ("python3", "make_proof_manifest.py", "--check")),
+        ("sealed Tietze transport (Python)",
+         ("python3", "verify_tietze_transport.py", "--negative-controls")),
+        ("sealed Tietze transport (Ruby)",
+         ("ruby", "verify_tietze_transport.rb", "--negative-controls")),
+        ("sealed filled groups (Python)",
+         ("python3", "verify_kbmag_certificate.py", "--input",
+          "sealed_transport/r_presentations.json", "--full-inventory",
+          "--expect-generators", "3", "--expect-relators", "78",
+          "--negative-controls", *sealed_certificates)),
+        ("sealed filled groups (Ruby)",
+         ("ruby", "verify_certificates.rb", "--root", "sealed_transport",
+          "--full-inventory", "--expect-generators", "3",
+          "--expect-relators", "78", "--negative-controls")),
+        ("audit-manifold invariant arithmetic",
+         ("python3", "audit_manifold_invariants.py")),
+        ("downstream chain regeneration check",
+         ("python3", "downstream_chain.py", "--check")),
+        ("downstream chain independent replay",
+         ("ruby", "verify_downstream_chain.rb")),
+        ("proof ledger", ("python3", "proof_ledger.py")),
+        ("publication semantics", ("python3", "publication_semantics_check.py")),
+        ("alpha residual (Python)",
+         ("python3", "alpha_residual/verify_certificate.py",
+          "--negative-controls", "alpha_residual/certificate.json.gz")),
+        ("alpha residual (Ruby)",
+         ("ruby", "alpha_residual/verify_certificate.rb",
+          "--negative-controls", "alpha_residual/certificate.json.gz")),
+        ("beta residual (Python)",
+         ("python3", "beta_residual/verify_certificate.py",
+          "--negative-controls", "beta_residual/certificate.json.gz")),
+        ("beta residual (Ruby)",
+         ("ruby", "beta_residual/verify_certificate.rb",
+          "--negative-controls", "beta_residual/certificate.json.gz")),
+    ]
+    for label, command in commands:
+        checked_run(label, *command, cwd=LUTTINGER)
 
 
 def source_archive(stack: contextlib.ExitStack) -> Path:
@@ -226,9 +281,10 @@ def main() -> None:
     if table_count != 2:
         fail("main.tex does not contain exactly two table/longtable environments")
 
-    # The generator, not a hand-edited JSON snapshot, defines the current
-    # inventory.  This catches checker drift and omitted new tools.
-    run("python3", str(MAKE_MANIFEST), "--check")
+    # Execute the documented theorem-facing replays, not merely their hashes.
+    # This catches checker drift, a stale conditional chain, editorial-scope
+    # regression, and failure of either independent implementation.
+    replay_suite()
     for path in (MANIFEST, DOWNSTREAM):
         digest = sha256(path)
         if digest not in supplement:
@@ -291,7 +347,8 @@ def main() -> None:
     if not args.final:
         print("PASS: the post-v2.2.2 working revision is internally synchronized")
         print("  main=22 pages/4 figures/2 tables; supplement=17 pages")
-        print("  fresh source archive matches main.tex; working manifest/tree pins agree")
+        print("  complete replay suite passes; working manifest/tree pins agree")
+        print("  fresh source archive matches main.tex and both committed PDFs")
         print(f"  candidate source SHA-256: {candidate_source_digest}")
         print(f"  candidate main PDF SHA-256: {sha256(MAIN_PDF)}")
         print(f"  candidate supplement PDF SHA-256: {sha256(SUPP_PDF)}")
