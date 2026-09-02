@@ -67,8 +67,8 @@ The v2.4.0 proof manifest has SHA-256
 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9` and
 binds 48 files, including the revised checkers and the audit-manifold
 invariant checker.  The `verification/` tree object is
-`baef54798fa7a54590a85b69bd033e423f3b5c3d`, the existence-chain certificate has SHA-256
-`45f209510744a6828d36168166d6221fea38e214b33f57341d89939f793eb006`, and the attribution-chain certificate has SHA-256
+`f6dae2a84f6b6ecd413ab8c6ff5d68420666b0b5`, the existence-chain certificate has SHA-256
+`8ad215964aaea4c0ce32df048ac259bbf080eb53eda956caf5911481d7b2eee8`, and the attribution-chain certificate has SHA-256
 `73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca`.
 
 **What this repository is not:** a verification or refutation of Wuebben's

@@ -10,13 +10,13 @@ from drifting from the rendered paper.
 - Concept DOI: https://doi.org/10.5281/zenodo.22169753
 
 Source-archive SHA-256:
-  `60119e8df10ccb0cc286f58df7fc855249cd1636683c4f9e7fa766fe2a63b866`
+  `4126d988902654c322a333e196ed9f3c92fb0b87cf0af6842d75393d3858c749`
 
 Main PDF SHA-256:
-  `ca33d82fec0dc786a80cfce5dd7e121d82dbdfcde033cd12f86ef9ef280c9073`
+  `325f4730b1b0d208cf05572675f81a346736418d6def56f877324f63a8638c0a`
 
 Supplement PDF SHA-256:
-  `fdf1e61c215afa6a0953245b68feb6b43c4e6cd0028912e9a77e74f026a8e9cd`
+  `0594d3b5553e79db53a725b3b758544ef25e01889438e3c4c281d27d18314cb1`
 
 ## Build and upload
 
