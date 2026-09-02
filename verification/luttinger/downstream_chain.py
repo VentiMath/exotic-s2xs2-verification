@@ -53,6 +53,21 @@ OUTPUT = HERE / "downstream_chain_certificate.json"
 # --------------------------------------------------------------------------
 
 EVIDENCE = [
+    # pi_1(V_aud) = 1 from the relation sheet (runs 70, 77): the coset
+    # enumeration transcript and the generation / derivation artifact.
+    "verification/luttinger/displayed_sheet/displayed_sheet.g",
+    "verification/luttinger/displayed_sheet/run.sh",
+    "verification/luttinger/displayed_sheet/output.txt",
+    "verification/luttinger/displayed_sheet/SHA256SUMS",
+    "verification/luttinger/generation_check/export_generation_input.py",
+    "verification/luttinger/generation_check/generation_check.g",
+    "verification/luttinger/generation_check/generation_input.g",
+    "verification/luttinger/generation_check/run.sh",
+    "verification/luttinger/generation_check/output.txt",
+    "verification/luttinger/generation_check/SHA256SUMS",
+    "verification/runs/70-displayed-sheet-four-signs.txt",
+    "verification/runs/77-relation-sheet-as-the-proof.txt",
+    "verification/runs/12-based-generators-and-table-relations.txt",
     # pi_1(V_aud) = 1: the sealed chain (run 66) and the earlier export.
     "verification/luttinger/proof_certificates/manifest.json",
     "verification/luttinger/sealed_transport/r_presentations.json",
@@ -119,6 +134,31 @@ CERTIFICATES = [
         "ledger": "C_pi1_Vaud_trivial",
     },
     {
+        "id": "K_relation_sheet_collapse",
+        "claim": "The ten displayed relations of the relation sheet together "
+                 "with the two product-filling words present the trivial "
+                 "group, on all four sign sheets and without the "
+                 "drilled-fiber relation (coset enumeration, run 70); the "
+                 "eight named loops generate the sealed complement group Q, "
+                 "index 1, as do the six without the meridians (run 77); "
+                 "and the drilled-fiber relation is a free-group consequence "
+                 "of the four B-transport relations and the surface relation "
+                 "(run 77).",
+        "evidence": ["verification/luttinger/displayed_sheet/displayed_sheet.g",
+                     "verification/luttinger/displayed_sheet/run.sh",
+                     "verification/luttinger/displayed_sheet/output.txt",
+                     "verification/luttinger/displayed_sheet/SHA256SUMS",
+                     "verification/luttinger/generation_check/export_generation_input.py",
+                     "verification/luttinger/generation_check/generation_check.g",
+                     "verification/luttinger/generation_check/generation_input.g",
+                     "verification/luttinger/generation_check/run.sh",
+                     "verification/luttinger/generation_check/output.txt",
+                     "verification/luttinger/generation_check/SHA256SUMS",
+                     "verification/runs/70-displayed-sheet-four-signs.txt",
+                     "verification/runs/77-relation-sheet-as-the-proof.txt"],
+        "ledger": "M_displayed_sheet_collapse",
+    },
+    {
         "id": "K_section_square_zero",
         "claim": "Gamma_hat = Gamma u_{sigma_aud} Gamma is a closed "
                  "orientable genus-2 surface with Gamma_hat . Gamma_hat = 0: "
@@ -168,6 +208,30 @@ CERTIFICATES = [
 ]
 
 PROOFS = [
+    {
+        "id": "P_relation_sheet",
+        "claim": "In pi_1(C_aud), based off the spine with the fiber loops "
+                 "x, y, r, s (rail parallels of a, b, e, d), the base lifts "
+                 "A, B through the p-section, and the whiskered meridians "
+                 "M, N: the surface relation, the eight transport relations "
+                 "AxA^-1 = r, AyA^-1 = s, ArA^-1 = x, AsA^-1 = N y, "
+                 "BxB^-1 = y^-1, ByB^-1 = M^-1 y x, BrB^-1 = r, "
+                 "BsB^-1 = (r^-1 M^-1 r) s, and the drilled-fiber relation "
+                 "hold.  Each transport relation is the boundary of the "
+                 "membrane swept by a fiber loop along a base loop; the "
+                 "membrane along A meets T_beta exactly at the points of the "
+                 "loop's intersection with e (only s meets e, once, at s_e), "
+                 "the membrane along B meets T_alpha exactly at the points "
+                 "of its intersection with c (y at c_y, s at c_s), and each "
+                 "such point inserts the whiskered meridian with the local "
+                 "sign; the meridian signs and letter placement are the "
+                 "sealed transport certificates.  The eight loops generate "
+                 "pi_1(C_aud) (K_relation_sheet_collapse).",
+        "where": "paper/main.tex, lem:sheet and lem:generation",
+        "evidence": ["paper/main.tex",
+                     "verification/runs/12-based-generators-and-table-relations.txt"],
+        "uses": ["K_relation_sheet_collapse"],
+    },
     {
         "id": "P_split_form",
         "claim": "The clutching maps may be chosen to preserve one positive "
@@ -462,10 +526,21 @@ STEPS = [
     {
         "id": "S0_pi1_Vaud_trivial",
         "claim": "pi_1(V_aud) = 1.",
-        "proof": "The certificate K_pi1_Vaud_trivial, read literally: the "
-                 "certified presentations present pi_1(V_aud), and each is "
-                 "certified trivial.",
-        "uses": ["K_pi1_Vaud_trivial"],
+        "proof": "Two routes.  From the sheet: by van Kampen pi_1(V_aud) is "
+                 "pi_1(C_aud) modulo the normal closure of M lambda_alpha "
+                 "and N lambda_beta; the eight loops generate pi_1(C_aud) "
+                 "and satisfy the ten relations (P_relation_sheet), the "
+                 "longitudes are lambda_alpha = A x and lambda_beta = "
+                 "(r^-1 M r) B in pi_1(C_aud) (the alpha and beta "
+                 "coordinate identities inside K_pi1_Vaud_trivial), and the "
+                 "group presented by the ten relations and the two filling "
+                 "words is trivial (K_relation_sheet_collapse); so pi_1(V_aud) "
+                 "is a quotient of the trivial group.  From the certificates: "
+                 "K_pi1_Vaud_trivial read literally, the certified "
+                 "presentations present pi_1(V_aud) and each is certified "
+                 "trivial.",
+        "uses": ["K_pi1_Vaud_trivial", "P_relation_sheet",
+                 "K_relation_sheet_collapse"],
     },
     {
         "id": "S2_double_simply_connected",

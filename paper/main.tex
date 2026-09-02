@@ -81,12 +81,14 @@ Auroux--Donaldson--Katzarkov, Liu, and Ho--Li; hence, since Li's Kodaira
 dimension is an invariant of the oriented diffeomorphism type, it is not
 diffeomorphic to $S^2\times S^2$.  The final classification and
 non-diffeomorphism deductions use named external theorems whose hypotheses
-are discharged in the text.  Simple connectivity
-itself rests on four explicit finite presentations, trivial under a
-published derivation-certificate specification, one of which a geometric
-reconstruction identifies with $\pione(V_{\mathrm{aud}})$.  Automated
-certificate replay assumes that at least one checker conforms to the
-mathematical specification; the two shipped implementations have not
+are discharged in the text.  Simple connectivity itself rests on ten
+explicit relations in the torus complement together with the two
+product-filling words: the group they present is trivial, a four-line coset
+enumeration, and the geometric content of the paper is that those relations
+and filling words hold.  Sealed derivation certificates derive the same
+relations from the triangulation and re-prove triviality by a second route;
+their automated replay assumes that at least one checker conforms to the
+mathematical specification, and the two shipped implementations have not
 received an independent human line-by-line audit.  The construction was
 motivated by Wuebben's proposed exotic $S^2\times S^2$; whether
 $Z_{\mathrm{aud}}$ is his manifold is an attribution question, recorded
@@ -303,10 +305,14 @@ $V_{\mathrm{aud}}$ admits a symplectic form for which $F$ is symplectic.
 \end{theorem}
 
 Theorem~\ref{thm:audit-manifold} is source-independent: it concerns the
-explicit object in Definition~\ref{def:Vaudit}.  Simple connectivity and
-the topological assertions are proved at the end of
-Section~\ref{sec:peripheral}; symplecticity is proved after the logically
-separate framing theorem in Section~\ref{sec:framing}.
+explicit object in Definition~\ref{def:Vaudit}.  Simple connectivity is
+proved twice in Section~\ref{sec:peripheral}: from ten explicit relations
+in the torus complement by a four-line coset enumeration
+(Section~\ref{sec:sheet}), and from the sealed certificates of
+Section~\ref{sec:certificates} through the geometric identification at the
+end of Section~\ref{sec:peripheral}; the remaining topological assertions
+are proved there, and symplecticity after the logically separate framing
+theorem in Section~\ref{sec:framing}.
 
 \begin{theorem}[an exotic $S^2\times S^2$]\label{thm:exotic}
 Let $\sigma_{\mathrm{aud}}$ be the involution $[z,t]\mapsto[\varphi_0(z),1-t]$
@@ -702,6 +708,232 @@ that a failure of one cannot be hidden by triviality of the final groups.
 This section proves the intrinsic product-filling theorem; it uses no
 symplectic or Lagrangian-framing input.
 
+\subsection{The relation sheet and the collapse}\label{sec:sheet}
+
+Everything this section proves about $\pione(V_{\mathrm{aud}})$ can be read
+from ten relations among eight based loops in $C_{\mathrm{aud}}$.  Base the
+bundle at a point $q$ of $\Sigma_{1,1}$ off the spine loops $\alpha,\beta$,
+so that the fiber over $q$ misses both tori, and at the marked point $p$ of
+that fiber.  The eight loops are: the fiber loops $x,y,r,s$, the based rail
+parallels of $a,b,e,d$ of Lemma~\ref{lem:fiber}, so that $\varphi_0$ carries
+$x,y$ to $r,s$ and $\psi_0=T_aT_b$ acts by $x\mapsto y^{-1}$,
+$y\mapsto yx$, $r\mapsto r$, $s\mapsto s$; the base loops $A,B$, the lifts
+through the $p$-section (which misses both tori, since $p$ lies on neither
+$c$ nor $e$) of loops at $q$ parallel to $\alpha$ and $\beta$, each disjoint
+from its own spine loop and crossing the other once; and the meridians
+$M,N$ of $T_\alpha,T_\beta$, whiskered from $p$ along $y_1$ to
+$c_y=y\cap c$ and along $s_2$ to $s_e=s\cap e$ (Lemma~\ref{lem:normal},
+Figure~\ref{fig:peripheral}).  Among the fiber loops, $y$ meets $c$ once,
+at $c_y$; $s$ meets $c$ once, at $c_s=\varphi_0(c_y)$, and $e$ once, at
+$s_e$; $x$ and $r$ meet neither $c$ nor $e$ (Figure~\ref{fig:crossings}).
+With the orientation sheet of the audit triangulation and $\delta=r^{-1}$:
+
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[>=Latex]
+\begin{scope}
+  \foreach \i/\n in {0/a,1/b,3/d,4/e} {
+    \node[circle,draw,thick,minimum size=7.5mm,inner sep=0pt] (\n) at (2.2*\i,0) {$\n$};
+  }
+  \node[circle,draw,thick,fill=gray!18,minimum size=7.5mm,inner sep=0pt] (c) at (4.4,0) {$c$};
+  \node[circle,draw,thick,fill=gray!18,minimum size=7.5mm,inner sep=0pt] (e) at (8.8,0) {$e$};
+  \draw[thick] (a) -- (b);
+  \draw[thick] (b) -- node[circle,fill,inner sep=1.3pt,label=above:$c_y$] (cy) {} (c);
+  \draw[thick] (c) -- node[circle,fill,inner sep=1.3pt,label=above:$c_s$] (cs) {} (d);
+  \draw[thick] (d) -- node[circle,fill,inner sep=1.3pt,label=above:$s_e$] (se) {} (e);
+  \node[blue!70!black,below=2pt of a] {$x\parallel a$};
+  \node[blue!70!black,below=2pt of b] {$y\parallel b$};
+  \node[blue!70!black,below=2pt of d] {$s\parallel d$};
+  \node[blue!70!black,below=2pt of e] {$r\parallel e$};
+  \node[gray!60!black,above=3pt of c] {$T_\alpha=c\rtimes S^1_\alpha$};
+  \node[gray!60!black,above=3pt of e] {$T_\beta=e\times S^1_\beta$};
+  \node[circle,fill,inner sep=1.3pt,label=below:$p$] (p) at (4.4,-1.9) {};
+  \draw[->,thick,gray!55!black] (p) to[bend left=22] node[pos=.45,left] {$y_1$} (cy);
+  \draw[->,thick,gray!55!black] (p) to[bend right=14] node[pos=.35,right] {$s_2$} (cs);
+  \draw[->,thick,gray!55!black] (cs) to[bend right=25] (se);
+  \node[font=\bfseries] at (-1.1,.9) {(a)};
+\end{scope}
+\begin{scope}[yshift=-5.1cm]
+  \foreach \k/\bot/\top/\side/\pt/\tor/\mer in {
+    0/{s}/{y=\varphi_0(s)}/{A}/{s_e}/{T_\beta}/{N},
+    1/{y}/{yx=\psi_0(y)}/{B}/{c_y}/{T_\alpha}/{M^{-1}},
+    2/{s}/{s=\psi_0(s)}/{B}/{c_s}/{T_\alpha}/{r^{-1}M^{-1}r}} {
+    \begin{scope}[xshift=4.5*\k cm]
+      \draw[thick] (0,0) rectangle (3.2,2.0);
+      \node[below] at (1.6,0) {$\bot$};
+      \node[above] at (1.6,2.0) {$\top$};
+      \node[left] at (0,1.0) {$\side$};
+      \node[right] at (3.2,1.0) {$\side$};
+      \draw[very thick] (1.45,.85) -- (1.75,1.15);
+      \draw[very thick] (1.45,1.15) -- (1.75,.85);
+      \node[font=\small] at (1.6,1.5) {$\tor$ at $\pt$};
+      \node[font=\small] at (1.6,.5) {$\mer$};
+    \end{scope}
+  }
+  \node[font=\bfseries] at (-1.1,2.3) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{Where the meridians enter.  (a) The intersection graph of the chain
+$(a,b,c,d,e)$: consecutive curves meet once and no others meet.  The based
+loops $x,y,s,r$ are rail parallels of $a,b,d,e$, so $y$ meets $c$ once (at
+$c_y$), $s$ meets $c$ once (at $c_s=\varphi_0(c_y)$) and $e$ once (at
+$s_e$), and $x,r$ meet neither $c$ nor $e$, the fiber curves of the two
+tori.  $y_1$ and $s_2$ are the whiskers that base $M$ and $N$; $s_2$ passes
+through $c_s$ on its way to $s_e$.  (b) The three transport membranes that
+meet a torus, each once: $s$ along $A$ meets $T_\beta$ at $s_e$
+($AsA^{-1}=Ny$); $y$ along $B$ meets $T_\alpha$ at $c_y$
+($ByB^{-1}=M^{-1}yx$); $s$ along $B$ meets $T_\alpha$ at $c_s$
+($BsB^{-1}=(r^{-1}M^{-1}r)s$).  The basing square of $\lambda_\beta$ meets
+$T_\alpha$ at the same point $c_s$ through the same whisker
+(Figure~\ref{fig:peripheral}).  The five remaining transport membranes meet
+no torus.  Schematic: basing and word order, not metric geometry.}
+\label{fig:crossings}
+\end{figure}
+
+\begin{lemma}[the relation sheet]\label{lem:sheet}
+In $\pione(C_{\mathrm{aud}})$,
+\begin{align*}
+AxA^{-1}&=r, & AyA^{-1}&=s, & ArA^{-1}&=x,
+& AsA^{-1}&=Ny,\\
+BxB^{-1}&=y^{-1}, & ByB^{-1}&=M^{-1}yx,
+& BrB^{-1}&=r, & BsB^{-1}&=(r^{-1}M^{-1}r)s,\\
+[x,y][r,s]&=1, &&
+B(s^{-1}r^{-1}yx)B^{-1}&=r^{-1}s^{-1}x.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+The surface relation is the boundary of the fiber octagon
+(Lemma~\ref{lem:fiber}).  Each transport relation $LgL^{-1}=w$ is the
+boundary of the membrane swept by the fiber loop $g$ along the base loop
+$L$.  In $R_{\mathrm{aud}}$ that boundary reads $LgL^{-1}=\varphi(g)$ with
+$\varphi$ the monodromy of $L$; in $C_{\mathrm{aud}}$ every point where the
+membrane meets a torus is punctured, and each puncture inserts that torus's
+meridian, whiskered back to $p$ along the membrane, with the sign of the
+local intersection.  The membrane of $g$ along $A$ lies over the loop
+parallel to $\alpha$, so it misses $T_\alpha$ (which lies over $\alpha$) and
+meets $T_\beta=e\times S^1_\beta$ only in the fiber over the one crossing
+with $\beta$, there exactly at the points of $g\cap e$; symmetrically the
+membrane of $g$ along $B$ misses $T_\beta$ and meets $T_\alpha$ exactly at
+the points of $g\cap c$, in one fiber.  Hence:
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item $AxA^{-1}=r$, $AyA^{-1}=s$, $ArA^{-1}=x$: $x,y,r$ miss $e$, so the
+ three membranes miss both tori and the relation is the action of
+ $\varphi_0$.
+\item $AsA^{-1}=Ny$: $s$ meets $e$ once, at $s_e$; the membrane meets
+ $T_\beta$ there, and the meridian at $s_e$ whiskered along $s_2$ is $N$
+ itself.
+\item $BxB^{-1}=y^{-1}$, $BrB^{-1}=r$: $x,r$ miss $c$; the relation is the
+ action of $\psi_0$.
+\item $ByB^{-1}=M^{-1}yx$: $y$ meets $c$ once, at $c_y$; the meridian
+ there, whiskered along $y_1$, is $M$ (the same whisker that bases $M$), and
+ the intersection sign gives $M^{-1}$.
+\item $BsB^{-1}=(r^{-1}M^{-1}r)s$: $s$ meets $c$ once, at $c_s$; the
+ meridian at $c_s$ whiskered along the initial segment of $s$ is
+ $r^{-1}Mr$ in the basing of $M$ (Lemma~\ref{lem:beta-peripheral}: the same
+ crossing and whisker produce the conjugated meridian of $\lambda_\beta$),
+ with sign $-1$.
+\item The drilled-fiber relation is a consequence of the four $B$-transport
+ relations and the surface relation: conjugating $s^{-1}r^{-1}yx$ by $B$
+ letter by letter gives
+ $(s^{-1}r^{-1}Mr)\,r^{-1}\,(M^{-1}yx)\,y^{-1}=s^{-1}r^{-1}yxy^{-1}$, and
+ $s^{-1}r^{-1}yxy^{-1}=r^{-1}s^{-1}x$ is $[y,x]=[r,s]$, the surface
+ relation (both steps are free-group identities, checked in
+ \repopath{verification/luttinger/generation_check/}).
+ Lemma~\ref{lem:drilled} records the direct transport check.
+\end{itemize}
+The two meridian signs and the exact letter placement are certified, not
+inferred: each of the eight transport words, transported into the sealed
+three-generator presentation $Q$ of the complement, reduces to the identity
+in a proof-producing completion replayed by both checkers (Section~\ref{sec:certificates};
+supplement, certificate inventory).
+\end{proof}
+
+\begin{lemma}[generation]\label{lem:generation}
+$x,y,r,s,A,B,M,N$ generate $\pione(C_{\mathrm{aud}})$.
+\end{lemma}
+
+\begin{proof}
+This is not automatic: lifts of generators of $\pione(R_{\mathrm{aud}})$
+together with the meridians need not generate $\pione(C_{\mathrm{aud}})$ (in
+a free group $\langle a,m\rangle$, the elements $a^2ma^{-1}$ and $m$ map
+onto the quotient by $m$ yet generate a proper subgroup).  It is a finite
+check.  Lemma~\ref{lem:complement} presents $\pione(C_{\mathrm{aud}})$ as
+the sealed three-generator, $78$-relator presentation $Q$, and the sealed
+Tietze certificate transports each of the eight loops into $Q$ as an
+explicit word.  Coset enumeration of $Q$ over the subgroup those eight words
+generate terminates with index~$1$
+(\repopath{verification/luttinger/generation_check/}, replayed from the
+manifest-bound sealed file in under a second); so does enumeration over the
+six words $x,y,r,s,A,B$ alone, as the relations $AsA^{-1}=Ny$ and
+$ByB^{-1}=M^{-1}yx$ predict.
+\end{proof}
+
+\begin{theorem}[the collapse]\label{thm:collapse}
+Let $G$ be the group presented by the eight generators, the ten relations of
+Lemma~\ref{lem:sheet}, and the two product-filling relations
+\[
+ M\cdot Ax=1,\qquad N\cdot(r^{-1}Mr)B=1.
+\]
+Then $G=1$.  The same holds with any of the other three sign sheets
+\eqref{eq:fillings} in place of $(+,+)$, and with the drilled-fiber
+relation omitted.
+\end{theorem}
+
+\begin{proof}
+Coset enumeration.  The transcript is
+\repopath{verification/luttinger/displayed_sheet/displayed_sheet.g}: the twelve words
+above, typed from this page, enumerate to a single coset in a quarter of a
+second (GAP~4.16; a few seconds per sheet in the pinned GAP~4.11.1 container
+of the recorded run, which is emulated), and so do the other three sheets
+and the four sheets without the drilled-fiber relation.  The two one-filling
+controls in the same transcript have $H_1\cong\Z$, so the enumeration is
+not collapsing everything it is handed.
+\end{proof}
+
+\begin{corollary}[simple connectivity from the sheet]\label{cor:pi1-from-sheet}
+If the product-framed longitudes of Definition~\ref{def:Vaudit} satisfy
+$\lambda_\alpha=Ax$ and $\lambda_\beta=(r^{-1}Mr)B$ in
+$\pione(C_{\mathrm{aud}})$ (Lemmas~\ref{lem:alpha-peripheral} and
+\ref{lem:beta-peripheral}), then $\pione(V_{\mathrm{aud}})=1$.
+\end{corollary}
+
+\begin{proof}
+$\pione(V_{\mathrm{aud}})=\pione(C_{\mathrm{aud}})/\langle\!\langle M\lambda_\alpha,N\lambda_\beta\rangle\!\rangle$
+by van Kampen.  By Lemmas~\ref{lem:generation} and \ref{lem:sheet} and the
+two longitude identities, the eight loops generate it and satisfy the twelve
+relations of Theorem~\ref{thm:collapse}, so it is a quotient of $G=1$.
+\end{proof}
+
+Thus the geometric content of simple connectivity is Lemma~\ref{lem:sheet},
+Lemma~\ref{lem:generation}, and the two longitude identities; the group
+theory is Theorem~\ref{thm:collapse}.  The sealed certificates of
+Theorem~\ref{thm:main} reach the same conclusion by a second route that
+derives the presentation from the triangulation with no hand-written word:
+Lemma~\ref{lem:complement} presents $\pione(C_{\mathrm{aud}})$ from the
+cellular structure, the Tietze certificate transports the eight loops into
+it, and the derivation certificates prove triviality without coset
+enumeration.  Theorem~\ref{prop:ident} upgrades the quotient of
+Corollary~\ref{cor:pi1-from-sheet} to an isomorphism.
+
+\begin{remark}[what the controls do and do not show]\label{rem:controls}
+At unit slopes every filling of the sheet has $H_1=0$
+(Proposition~\ref{prop:slope-family-h1} with $|p|=|q|=1$), all four sign
+sheets collapse (Theorem~\ref{thm:collapse}), and so does every one of the
+$100$ meridian-shifted presentations of the framing scan; abelianization
+and triviality are therefore blind to the choice of sheet and to those
+shifts.  Coset enumeration time is not evidence either: replacing
+$\lambda_\alpha$ by $\lambda_\alpha c^{-1}$ or $\lambda_\beta$ by
+$\lambda_\beta r^{-1}$ (fiber-direction shifts of the filling slope)
+lengthens the enumeration from a fraction of a second to minutes and can
+exceed a fixed coset ceiling, yet every such filling that has completed is
+again trivial.  What Proposition~\ref{prop:slope-family-h1} does show is
+that the complement has infinitely many fillings, at non-unit slopes, that
+are provably not simply connected.  A unit-slope filling that is provably
+not simply connected has not been exhibited.
+\end{remark}
+
+
 \subsection{Normal frontier and compact exterior}
 
 \begin{lemma}[local flatness and the normal frontier]\label{lem:normal}
@@ -803,21 +1035,10 @@ with no regular-neighborhood theorem invoked.  The doubled-section datum
 used in the historical target application is kept in the supplement; the
 intrinsic section of $V_{\mathrm{aud}}$ is treated directly below.
 
-\subsection{Relation sheet and product fillings}
+\subsection{Product fillings and the slope family}
 
-To make Theorem~\ref{prop:ident} inspectable without opening the
-repository, fix the orientation sheet used by the audit triangulation and put
-$\delta=r^{-1}$.  Before filling, the resulting coordinate presentation read
-from the literal paths has the surface relation, the following eight
-transport relations, and the drilled-fiber relation:
-\begin{align*}
-AxA^{-1}&=r, & AyA^{-1}&=s, & ArA^{-1}&=x,
-& AsA^{-1}&=Ny,\\
-BxB^{-1}&=y^{-1}, & ByB^{-1}&=M^{-1}yx,
-& BrB^{-1}&=r, & BsB^{-1}&=(r^{-1}M^{-1}r)s,\\
-[x,y][r,s]&=1, &&
-B(s^{-1}r^{-1}yx)B^{-1}&=r^{-1}s^{-1}x.
-\end{align*}
+The relation sheet of Lemma~\ref{lem:sheet} is the coordinate presentation
+read from the literal paths of the audit triangulation, before filling.
 The two commonly based product-framed directions are
 \[
  \lambda_\alpha=Ax,\qquad
@@ -873,7 +1094,9 @@ These are four algebraic specializations in one fixed symbolic basis.  Only
 the $(+,+)$ specialization is used below as a presentation of
 $V_{\mathrm{aud}}$.  The finite presentations of Theorem~\ref{thm:main} are
 the frozen Tietze images of all four literal word lists; for the other three,
-no identification with a filled geometric manifold is asserted here.
+no identification with a filled geometric manifold is asserted here.  At
+unit slopes the proposition is silent ($H_1=0$ for all four sheets), and
+Remark~\ref{rem:controls} says what the controls do and do not show.
 
 \begin{lemma}[extension across a torus filling]\label{lem:torus-extension}
 Let $X=T^2\times D^2$ and order an integral basis of its boundary as
@@ -1117,24 +1340,27 @@ The based relation
 \[
  B(s^{-1}r^{-1}yx)B^{-1}=r^{-1}s^{-1}x
 \]
-holds in $\pione(C_{\mathrm{aud}})$, not merely in the unpunctured mapping cylinder.
+holds in $\pione(C_{\mathrm{aud}})$.  It is a formal consequence of the
+four $B$-transport relations and the surface relation
+(Lemma~\ref{lem:sheet}), so it adds nothing to the presentation; it is kept
+as an independent check of the transport machinery, because it is also
+verified directly.
 \end{lemma}
 
 \begin{proof}
-The transported loop $\kappa_3$ misses $c$ but meets
-$e$ once; sweeping it along the core of the beta curve would therefore meet
-$T_\beta$ and would not prove the stated complement relation.  The audit
-uses the specified parallel push-off.  Along that push-off, the complete
-mapping-cylinder stack has no vertex on either surgery torus.  A simplicial homotopy grid
-at $p$ joins the push-off basepoint loop to the core one and identifies it
-with the presentation's whiskered generator; it too is disjoint from both
-tori.  The based monodromy target then reduces to $r^{-1}s^{-1}x$.
-
-The finite checker exhausts the stack, both torus vertex sets, every grid
-cell, and the target path.  Thus the entire transport homotopy lies in
-$C_{\mathrm{aud}}$.  This is the construction-specific fact that was absent from the
-earlier mapping-cylinder-only calculation; no group simplification or
-low-index fingerprint is used to supply it.
+The derivation is in the proof of Lemma~\ref{lem:sheet}: conjugating
+$s^{-1}r^{-1}yx$ by $B$ letter by letter, the two meridian factors cancel
+and the residual is a conjugate of the surface relator.  Independently, the
+transported loop $\kappa_3$ misses $c$ but meets $e$ once, so sweeping it
+along the core of the beta curve would meet $T_\beta$; the audit sweeps it
+along the specified parallel push-off instead, and along that push-off the
+complete mapping-cylinder stack has no vertex on either surgery torus.  A
+simplicial homotopy grid at $p$ joins the push-off basepoint loop to the
+core one and identifies it with the presentation's whiskered generator; it
+too is disjoint from both tori, and the based monodromy target reduces to
+$r^{-1}s^{-1}x$.  The finite checker exhausts the stack, both torus vertex
+sets, every grid cell, and the target path, so the entire transport homotopy
+lies in $C_{\mathrm{aud}}$; Theorem~\ref{thm:collapse} does not need it.
 \end{proof}
 
 \subsection{Simple connectivity of the product-filled audit model}
@@ -2022,18 +2248,25 @@ finite checks localize these questions; they do not replace specialist
 review.  The supplement gives exact files and a longer review checklist.
 
 The $100$-case framing scan is not evidence for the dictionary: every sampled
-shifted presentation was reported trivial.  By contrast,
-Proposition~\ref{prop:slope-family-h1} supplies a transparent negative
-control showing that infinitely many other slope fillings have nontrivial
-abelianization.
+shifted presentation was reported trivial, as is every fiber-direction
+shift of the filling words that has been enumerated to completion
+(Remark~\ref{rem:controls}).  Proposition~\ref{prop:slope-family-h1}
+supplies the one transparent negative control: infinitely many non-unit
+slope fillings have nontrivial abelianization.
 
 \section{Conclusion}
 
-Four manifest-bound presentations are trivial under a complete certificate
-specification.  A separate geometric reconstruction identifies one of them
-with the explicitly defined $V_{\mathrm{aud}}$, yielding the intrinsic
-topological statements of Theorem~\ref{thm:audit-manifold}; the framing
-theorem supplies its symplectic structure.  Doubling along the intrinsic
+Ten relations among eight based loops in the torus complement, with the two
+product-filling words, present the trivial group; the geometric content of
+simple connectivity is that the relations, the generation statement, and
+the filling words hold for the explicitly defined $V_{\mathrm{aud}}$
+(Section~\ref{sec:sheet}).  Four manifest-bound presentations, derived from
+the triangulation with no hand-written word, are trivial under a complete
+certificate specification and confirm the same conclusion by a second route;
+the geometric reconstruction identifies one of them with
+$\pione(V_{\mathrm{aud}})$, yielding the intrinsic topological statements of
+Theorem~\ref{thm:audit-manifold}; the framing theorem supplies its
+symplectic structure.  Doubling along the intrinsic
 boundary involution $\sigma_{\mathrm{aud}}$ and descending that form gives
 Theorem~\ref{thm:exotic}: $Z_{\mathrm{aud}}$ is a closed symplectic
 four-manifold homeomorphic but not diffeomorphic to $S^2\times S^2$.  The

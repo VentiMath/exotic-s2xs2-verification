@@ -16,13 +16,15 @@ abstract: >-
   Kodaira dimension is an invariant of the oriented diffeomorphism type, it is
   not diffeomorphic to $S^2 \times S^2$. The final classification and
   non-diffeomorphism deductions use named external theorems whose hypotheses
-  are discharged in the text. Simple connectivity
-  itself rests on four explicit finite presentations, trivial under a
-  published derivation-certificate specification, one of which a geometric
-  reconstruction identifies with $\pi_1(V_{aud})$. Automated certificate
-  replay assumes that at least one checker conforms to the mathematical
-  specification; the two shipped implementations have not received an
-  independent human line-by-line audit. The construction was motivated by
+  are discharged in the text. Simple connectivity itself rests on ten
+  explicit relations in the torus complement together with the two
+  product-filling words: the group they present is trivial, a four-line coset
+  enumeration, and the geometric content of the paper is that those relations
+  and filling words hold. Sealed derivation certificates derive the same
+  relations from the triangulation and re-prove triviality by a second route;
+  their automated replay assumes that at least one checker conforms to the
+  mathematical specification, and the two shipped implementations have not
+  received an independent human line-by-line audit. The construction was motivated by
   Wuebben's proposed exotic $S^2 \times S^2$; whether $Z_{aud}$ is his
   manifold is an attribution question, recorded clause by clause as checklist
   D1--D14 in the supplement, on which no theorem here depends.

@@ -3,11 +3,21 @@
     "S7_theorem_A_prime"
   ],
   "evidence_sha256": {
-    "paper/main.tex": "8bc19be582153ac82928b99027327c5e20bc797e2c09afb1b8e99d199835130a",
+    "paper/main.tex": "26b9214dabf9ee89cf82f6739c0747be7d3edde28d6e0e1b680fd3d2eec5990f",
     "verification/luttinger/alpha_residual/certificate.json.gz": "5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5",
     "verification/luttinger/alpha_residual/source.json": "4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e",
     "verification/luttinger/beta_residual/certificate.json.gz": "2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604",
     "verification/luttinger/beta_residual/source.json": "50cafd6352652de990b11f6178f82c107488c885ba2577ba3b0f0377ce98b1a2",
+    "verification/luttinger/displayed_sheet/SHA256SUMS": "9ceb323528216e4c4ac7b2f769f4a5983dcea35e17507056dd306fdc7234e967",
+    "verification/luttinger/displayed_sheet/displayed_sheet.g": "f62fc98b113ee16906add0393e0f1b4469d57678db8bfed50773c3a4db7349da",
+    "verification/luttinger/displayed_sheet/output.txt": "8d1fc385a5f24a664b4de103d48d19136d9df0d157e3ac388c13b99f8c8fe828",
+    "verification/luttinger/displayed_sheet/run.sh": "af84d2000729592313e59ce3f5c1ac0aec1b32899692be5448d879319be9f355",
+    "verification/luttinger/generation_check/SHA256SUMS": "f64ff7f40d3d25d2856c340b780056cf53b06d331e2d12f6c247deb6bf196e94",
+    "verification/luttinger/generation_check/export_generation_input.py": "5913ba0a920ffe3cbb7b60dc8395a367c3261b4a9db6211fede7669c7639897d",
+    "verification/luttinger/generation_check/generation_check.g": "3c6f5299e4b1e4e74d015c210de06b3ca14907826d68cc5f48f37ff06dc0a3ff",
+    "verification/luttinger/generation_check/generation_input.g": "5cf5328de6198d682d2bb0f025bc84b346eece63cbabd53c85f57c393cb2f45f",
+    "verification/luttinger/generation_check/output.txt": "1dfc650185f5fa05fc77e072d9c4c6430d0ccc7d765f62988ab7728a4dae372f",
+    "verification/luttinger/generation_check/run.sh": "163b0a419f6ab3bfa9a53e3d70ddf11fd6f92aa1114f4d1c332752f4bca6c70f",
     "verification/luttinger/proof_certificates/manifest.json": "e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9",
     "verification/luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
     "verification/luttinger/sealed_transport/r_presentations.json": "1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c",
@@ -16,6 +26,7 @@
     "verification/luttinger/sigma_aud/sigma_aud_check.py": "fcd3f3b8ddea059ee0d930a2d00fede6d4f3ffe472e1551b477088423cb99900",
     "verification/notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",
     "verification/notes/pl_self_intersection_certificate_2026-08-24.md": "c2f12d6b47cff014073344b5c67e3f0c5013c7b7698bd53ff35d756f45ac7082",
+    "verification/runs/12-based-generators-and-table-relations.txt": "81c5e260c359ead0a188468413e9a97f47c2360495497c0b1fc1b35181b6c56d",
     "verification/runs/20-direct-peripheral-fillings-trivial.txt": "b839216d8b7bbad8b50d699564fcb5dede9962459097328f1b4fdcf43110470b",
     "verification/runs/22-model-correspondence-and-framing.txt": "d88410bfbe13ad319dd4f5c35ee14332c7d998c711625b850c76054e81f0f959",
     "verification/runs/28-pl-self-intersection-certificate.txt": "377d983c6f45a289b6f157275117b07fdbe44b23e01a221b16681963e089b47e",
@@ -29,8 +40,10 @@
     "verification/runs/67-r3-complement-and-lp-disagreement.txt": "106be7052127f8c28b9e6fd88b50202a74e826c56788eac1ca30c1c9a9ed3d83",
     "verification/runs/68-alpha-longitude-sealed-certificate.txt": "a9ed18ac1e07d82617d448602359a606bf203b36a76a753226c5890c964fd337",
     "verification/runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b",
+    "verification/runs/70-displayed-sheet-four-signs.txt": "f804452156dfd0f32d0280d6e8d15bb2350664e9f782f45d76f05009b23b8ff4",
     "verification/runs/72-sigma-aud-boundary-involution.txt": "bb5980a2af7d3f3d39fa69193501965a5b9fb94d40df1de500bee94f36b86691",
-    "verification/runs/73-symplectic-form-on-the-double.txt": "55348279d018b4ccab6aeb5fb6c98851b4fa897c024c401b672a5c5c61195f98"
+    "verification/runs/73-symplectic-form-on-the-double.txt": "55348279d018b4ccab6aeb5fb6c98851b4fa897c024c401b672a5c5c61195f98",
+    "verification/runs/77-relation-sheet-as-the-proof.txt": "dc3eb9fbbaf8842d7f087047591dae84ec00e34692e5f5e2ffb1bc625a3d1fef"
   },
   "forbidden": [
     "Lidman",
@@ -155,6 +168,26 @@
       "ledger": "C_pi1_Vaud_trivial"
     },
     {
+      "claim": "The ten displayed relations of the relation sheet together with the two product-filling words present the trivial group, on all four sign sheets and without the drilled-fiber relation (coset enumeration, run 70); the eight named loops generate the sealed complement group Q, index 1, as do the six without the meridians (run 77); and the drilled-fiber relation is a free-group consequence of the four B-transport relations and the surface relation (run 77).",
+      "evidence": [
+        "verification/luttinger/displayed_sheet/displayed_sheet.g",
+        "verification/luttinger/displayed_sheet/run.sh",
+        "verification/luttinger/displayed_sheet/output.txt",
+        "verification/luttinger/displayed_sheet/SHA256SUMS",
+        "verification/luttinger/generation_check/export_generation_input.py",
+        "verification/luttinger/generation_check/generation_check.g",
+        "verification/luttinger/generation_check/generation_input.g",
+        "verification/luttinger/generation_check/run.sh",
+        "verification/luttinger/generation_check/output.txt",
+        "verification/luttinger/generation_check/SHA256SUMS",
+        "verification/runs/70-displayed-sheet-four-signs.txt",
+        "verification/runs/77-relation-sheet-as-the-proof.txt"
+      ],
+      "id": "K_relation_sheet_collapse",
+      "kind": "certificate",
+      "ledger": "M_displayed_sheet_collapse"
+    },
+    {
       "claim": "Gamma_hat = Gamma u_{sigma_aud} Gamma is a closed orientable genus-2 surface with Gamma_hat . Gamma_hat = 0: certified on the simplicial model with an explicit normal push-off for every constant boundary clutching rotation (run 28); the derivative of sigma_aud at p is phi_0's action on the 24-cycle link of p, shift 12 = -I, the 'constant clutch shift 2' case (run 72).",
       "evidence": [
         "verification/runs/28-pl-self-intersection-certificate.txt",
@@ -190,6 +223,19 @@
       "id": "K_sigma_aud",
       "kind": "certificate",
       "ledger": "G_sigma_aud"
+    },
+    {
+      "claim": "In pi_1(C_aud), based off the spine with the fiber loops x, y, r, s (rail parallels of a, b, e, d), the base lifts A, B through the p-section, and the whiskered meridians M, N: the surface relation, the eight transport relations AxA^-1 = r, AyA^-1 = s, ArA^-1 = x, AsA^-1 = N y, BxB^-1 = y^-1, ByB^-1 = M^-1 y x, BrB^-1 = r, BsB^-1 = (r^-1 M^-1 r) s, and the drilled-fiber relation hold.  Each transport relation is the boundary of the membrane swept by a fiber loop along a base loop; the membrane along A meets T_beta exactly at the points of the loop's intersection with e (only s meets e, once, at s_e), the membrane along B meets T_alpha exactly at the points of its intersection with c (y at c_y, s at c_s), and each such point inserts the whiskered meridian with the local sign; the meridian signs and letter placement are the sealed transport certificates.  The eight loops generate pi_1(C_aud) (K_relation_sheet_collapse).",
+      "evidence": [
+        "paper/main.tex",
+        "verification/runs/12-based-generators-and-table-relations.txt"
+      ],
+      "id": "P_relation_sheet",
+      "kind": "proof",
+      "uses": [
+        "K_relation_sheet_collapse"
+      ],
+      "where": "paper/main.tex, lem:sheet and lem:generation"
     },
     {
       "claim": "The clutching maps may be chosen to preserve one positive area form Omega on F, phi_0 as the stated half-rotation on a collar of c and psi_0 the identity on a collar of e, both fixing p and O; in the resulting flat product atlas omega_K = Omega_vert + K pi^* eta is a symplectic form on R_aud for every K > 0 and every positive area form eta on Sigma_{1,1}, T_alpha and T_beta are Lagrangian, and each has a protected neighborhood with split coordinates omega_K = f dt ^ dtheta_1 + K du ^ dtheta_2.",
@@ -313,9 +359,11 @@
       "claim": "pi_1(V_aud) = 1.",
       "id": "S0_pi1_Vaud_trivial",
       "kind": "step",
-      "proof": "The certificate K_pi1_Vaud_trivial, read literally: the certified presentations present pi_1(V_aud), and each is certified trivial.",
+      "proof": "Two routes.  From the sheet: by van Kampen pi_1(V_aud) is pi_1(C_aud) modulo the normal closure of M lambda_alpha and N lambda_beta; the eight loops generate pi_1(C_aud) and satisfy the ten relations (P_relation_sheet), the longitudes are lambda_alpha = A x and lambda_beta = (r^-1 M r) B in pi_1(C_aud) (the alpha and beta coordinate identities inside K_pi1_Vaud_trivial), and the group presented by the ten relations and the two filling words is trivial (K_relation_sheet_collapse); so pi_1(V_aud) is a quotient of the trivial group.  From the certificates: K_pi1_Vaud_trivial read literally, the certified presentations present pi_1(V_aud) and each is certified trivial.",
       "uses": [
-        "K_pi1_Vaud_trivial"
+        "K_pi1_Vaud_trivial",
+        "P_relation_sheet",
+        "K_relation_sheet_collapse"
       ]
     },
     {

@@ -111,7 +111,7 @@ spurious spanned simplices; check `K.is_full(T)` (the code asserts it).
 product and `is_full` with indexed lookups. Python Tietze handles 10⁴
 generators; GAP takes the rest.
 
-## 5. Honest scope (as of Run 75)
+## 5. Honest scope (as of Run 77)
 * Done by machine, from the triangulation with zero hand-derived words: the
   engine and its two calibrations; the construction of R and of both tori
   (`bundle.py`, `r_run.py`, with `alternative_bundle.py` and
@@ -127,10 +127,18 @@ generators; GAP takes the rest.
   Moser scripts (runs 35/43/46/47).  Not a machine derivation; a lemma with
   every identity in it executed.
 * Written proofs with no machine content beyond their inputs: the descent
-  of the split form to the double (paper Lemma 7.4, run 73) and the
-  assembly of Theorem A' from cited theorems (paper §7.3).  The dependency
-  chain `downstream_chain.py` binds them by hash and is replayed by two
-  checkers.
+  of the split form to the double (paper Lemma 7.4, run 73), the assembly
+  of Theorem A' from cited theorems (paper §7.3), the smooth doubling bridge
+  and the Euler number of the doubled section (run 76), and the relation
+  sheet as a written argument -- membranes, crossings, whiskers (paper
+  Lemma 5.1, run 77), whose signs and letter placement still come from the
+  sealed transport certificates.  The dependency chain `downstream_chain.py`
+  binds them by hash and is replayed by two checkers.
+* Simple connectivity has two proofs: the relation sheet plus two coset
+  enumerations (collapse; generation), replayable in GAP in a second, and
+  the derivation certificates.  A simplicial filling that reads pi_1(V_aud)
+  from a triangulation of V_aud itself, removing the whisker-level trust, is
+  the next machine milestone and is not done.
 * Open: attribution -- whether V_aud and Z_aud are Wuebben's V and his
   double (checklist D1--D14; `luttinger/attribution/`); the reported
   contrary computation; an outside conformance audit of one filled-group

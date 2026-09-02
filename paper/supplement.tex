@@ -235,6 +235,26 @@ root referenced by the finite theorem in the main paper.  The two chain
 digests allow each separately labeled chain to be replayed without silently
 retaining an earlier manifest dependency.
 
+\subsection{The relation sheet: collapse, generation, and the drilled-fiber derivation}
+
+Two small GAP artifacts stand beside the certificates and read nothing from
+them except, in the second case, the sealed presentation.
+\repopath{verification/luttinger/displayed_sheet/displayed_sheet.g}
+transcribes the ten relations and two longitudes displayed in the main
+paper's Section~5.1 and enumerates cosets: all four sign sheets, and all
+four without the drilled-fiber relation, collapse to one coset; the two
+one-filling controls have $H_1\cong\Z$.  The recorded run is in a GAP~4.11.1
+container pinned by image digest (\texttt{run.sh}; a native GAP~4.16 run
+takes a quarter of a second on the $(+,+)$ sheet).
+\repopath{verification/luttinger/generation_check/} exports the
+sealed presentation $Q$ and the eight named loops as the Tietze certificate
+transports them into $Q$, and enumerates cosets of $Q$ over the subgroup
+they generate: index~$1$, and index~$1$ already for the six loops without
+the meridians.  Its second half verifies, as two identities in a free group,
+that the drilled-fiber relation follows from the four $B$-transport
+relations and the surface relation.  Both artifacts record output and
+SHA-256 sums; \texttt{run.sh} in each directory replays them.
+
 \subsection{The four algebraic sign specializations}
 
 For each of the four $n=0$ entries defined in the finite theorem of the main
@@ -501,11 +521,13 @@ from earlier items --- and freezes the result as
 The chain has 9 external theorems (van Kampen; duality and universal
 coefficients; the sublattice index formula; Wu's formula; Freedman;
 Luttinger surgery after Auroux--Donaldson--Katzarkov; asphericity of surface
-bundles; symplectic Kodaira dimension after Li and Liu; and Ho--Li), 4
-certificates ($\pione(V_{\mathrm{aud}})=1$; $\Ghat\cdot\Ghat=0$; the
-framing identification; the seam identity of $\sigma_{\mathrm{aud}}$), 3
-bound proofs (the split form, the double, and the descent of the form), 5
-computed facts, and 7 steps, ending in Theorem~A$'$.  The separately
+bundles; symplectic Kodaira dimension after Li and Liu; and Ho--Li), 5
+certificates ($\pione(V_{\mathrm{aud}})=1$ by derivation certificates; the
+collapse of the relation sheet and the generation check by coset
+enumeration; $\Ghat\cdot\Ghat=0$; the framing identification; the seam
+identity of $\sigma_{\mathrm{aud}}$), 4 bound proofs (the relation sheet,
+the split form, the double, and the descent of the form), 5 computed facts,
+and 7 steps, ending in Theorem~A$'$.  The separately
 implemented Ruby checker \repopath{verify_downstream_chain.rb} re-derives
 every computed fact, checks that every citation resolves and the graph is
 acyclic, that the conclusion rests on the certified fundamental group, the

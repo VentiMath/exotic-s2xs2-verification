@@ -1,0 +1,6 @@
+index of <x,y,r,s,A,B,M,N> in Q: 1
+index of <x,y,r,s,A,B> in Q:     1
+GENERATION CHECK PASSED
+(a) subst(s^-1 r^-1 y x) = s^-1 r^-1 y x y^-1 in the free group: true
+(b) residual is a conjugate of the inverse surface relator:   true
+DERIVATION CHECK PASSED

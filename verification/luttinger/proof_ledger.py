@@ -127,6 +127,21 @@ NODES = {
     "M_independent_peripheral_extraction": (
         "machine_certificate", (),
         "luttinger/independent_peripheral_certificate.json"),
+    # Run 70: the ten displayed relations plus the two filling words, typed
+    # from the paper, enumerate to the trivial group on all four sign sheets.
+    "M_displayed_sheet_collapse": (
+        "machine_certificate", (), "luttinger/displayed_sheet/output.txt"),
+    # Run 77: the eight named loops generate the sealed complement group Q
+    # (index 1), and the drilled-fiber relation is a free-group consequence
+    # of the four B-transport relations and the surface relation.
+    "M_generation_check": (
+        "machine_certificate", (), "luttinger/generation_check/output.txt"),
+    # The relation sheet as a written geometric argument (paper, Lemma "the
+    # relation sheet"): membranes, crossings, whiskers; signs and letter
+    # placement certified by the sealed transport.
+    "G_relation_sheet": (
+        "geometric_argument",
+        ("M_based_monodromy", "M_sealed_tietze_transport", "M_R3"), None),
     "M_R3": ("machine_certificate", (), "runs/23-drilled-fiber-relation.txt"),
     # Run 67: the run-23 based monodromy identity lives in the unpunctured
     # beta mapping cylinder.  This node is the missing complement-level
@@ -272,9 +287,15 @@ NODES = {
          "G_derived_frontier_identification",
          "T_simplicial_pi1_presentation", "T_tietze"),
         "notes/complement_presentation_referee_packet_2026-08-26.md"),
+    "C_pi1_Vaud_trivial_from_sheet": (
+        "derived_claim",
+        ("G_relation_sheet", "M_generation_check",
+         "M_displayed_sheet_collapse",
+         "M_alpha_coordinate_identity", "M_beta_coordinate_identity"), None),
     "C_pi1_Vaud_trivial": (
         "derived_claim",
-        ("C_correct_sealed_filled_presentation",
+        ("C_pi1_Vaud_trivial_from_sheet",
+         "C_correct_sealed_filled_presentation",
          "M_sealed_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
     "C_pi1_Vaud_trivial_unseeded_chain": (

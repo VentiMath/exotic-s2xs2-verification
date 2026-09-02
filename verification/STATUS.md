@@ -42,13 +42,20 @@ The audit manifold `V_aud` is defined explicitly in the manuscript, and
     pi_1(V_aud) = 1
 
 is proved with no clause of the Source Comparison Hypotheses entering the
-argument. The finite step is syntactic: four explicitly named presentations,
-each with 3 generators and 80 relators, present the trivial group.
+argument, by two routes. The readable one (Run 77): ten explicit relations
+among eight based loops in the torus complement, with the two product-filling
+words, present the trivial group by coset enumeration
+(`luttinger/displayed_sheet/`), the eight loops generate the complement group
+(`luttinger/generation_check/`, index 1), and the geometric content is that the
+relations and filling words hold (paper Section 5.1). The machine one: four
+explicitly named presentations, each with 3 generators and 80 relators, derived
+from the triangulation with no hand-written word, present the trivial group
+under derivation certificates replayed by two checkers.
 
 The double `Z_aud = V_aud u_{sigma_aud} V_aud` along the intrinsic boundary
 involution `sigma_aud[z,t] = [phi_0 z, 1-t]` (Run 72) is a closed symplectic
 4-manifold homeomorphic but not diffeomorphic to `S^2 x S^2` (Theorem A' of
-the manuscript; Runs 73--76). Its machine-checked dependency chain,
+the manuscript; Runs 73--77). Its machine-checked dependency chain,
 `luttinger/downstream_chain.py`, has no assumption item and no item about
 any other author's construction; both of its checkers refuse either.
 
