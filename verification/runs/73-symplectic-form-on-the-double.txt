@@ -1,0 +1,163 @@
+Run 73: the symplectic form on the audit double, and the existence theorem (2026-09-02)
+======================================================================================
+
+Question
+--------
+
+Run 72 (#807) doubled the audit object along its own boundary involution
+sigma_aud and settled the topological half: R_hat = R_aud u_sigma R_aud is a closed
+genus-2 bundle over a closed genus-2 surface, Z_aud = V_aud u_sigma V_aud is R_hat
+surgered on four disjoint interior tori missing a fiber F and the doubled section
+Gamma_hat, with F.F = 0, Gamma_hat.Gamma_hat = 0, F.Gamma_hat = 1.  What was left
+open was the symplectic half: a symplectic form on R_hat, positive on F and
+Gamma_hat, for which all four tori are Lagrangian with Lagrangian-framed slopes.
+Each copy has one (main.tex, lem:bundle-symplectic-form and thm:framing); do the
+two agree under sigma_aud on a collar of the seam?  (Issue #804.)
+
+Answer
+------
+
+Yes, with no new choices.  In the paper's flat product atlas the vertical form is
+the single phi_0- and psi_0-invariant area form Omega on every fiber, and over the
+seam collar the gluing sigma_aud is, fiber by fiber, the constant Omega-preserving
+map phi_0; so Omega_vert descends to R_hat as it is.  On the base, with the
+outward-normal-first convention the positive area form on a boundary collar is
+ds ^ dt (t the boundary parameter, s outward-increasing), and the second copy's
+collar coordinates are t' = 1 - t, s' = -s, so ds' ^ dt' = ds ^ dt: eta descends
+too.  Hence
+
+    omega_hat_K = Omega_hat_vert + K pi_hat^* eta_hat
+
+is symplectic on R_hat for every K > 0, restricts to the paper's omega_K on each
+copy, is positive on F (= Omega) and on Gamma_hat (= K eta_hat), and the four tori
+sit in the interiors of the copies away from the seam collar, where
+lem:bundle-symplectic-form and thm:framing apply verbatim.  Four Luttinger
+surgeries (ADK Prop. 2.2) give a symplectic form on Z_aud with F and Gamma_hat
+symplectic.
+
+With that, the existence theorem is assembled from the audit object alone:
+
+  * pi_1(Z_aud) = 1 by van Kampen (pi_1(V_aud) = 1, thm:audit-manifold);
+    chi(Z_aud) = 2 chi(V_aud) - chi(M_h) = 4, so b_2 = 2; (F, Gamma_hat) has Gram
+    matrix H, unimodular, hence a basis; even, so spin; smooth, so
+    Kirby-Siebenmann vanishes; Freedman: Z_aud is homeomorphic to S^2 x S^2.
+  * R_hat is aspherical (aspherical fiber and base), so minimal and neither
+    rational nor ruled; Li: kappa(R_hat) >= 0; Ho-Li: Luttinger surgery
+    preserves kappa, so kappa(Z_aud) >= 0; kappa(S^2 x S^2) = -infinity and
+    kappa is a diffeomorphism invariant (Li): Z_aud is not diffeomorphic to
+    S^2 x S^2.
+
+Frozen input and artifacts
+--------------------------
+
+    paper/symplectic_double.tex     lem:double-form (i)-(v), cor:Z-symplectic,
+                                    sec:external-hypotheses (each external result
+                                    with its hypotheses and where they are
+                                    discharged), prop:Z-topology, thm:exotic, and
+                                    a closing remark on what the theorem does not
+                                    say; NOT yet \input by main.tex (that is #809)
+    paper/sigma_aud.tex             one correction, see below
+
+    sha256 of both files recorded in the commit that adds them.
+
+What was checked, and how
+-------------------------
+
+This run's content is a proof, not a computation.  What can be checked by
+machine was checked earlier and is cited, not repeated:
+
+  * phi_0 h phi_0^-1 = h^-1 and (h phi_0)^2 = id on the certified monodromy
+    actions -- Run 72, luttinger/sigma_aud/sigma_aud_check.py.
+  * Gamma_hat.Gamma_hat = 0 for the sigma_aud gluing --
+    luttinger/pl_self_intersection.py, constant clutch shift 2, maximal-cell
+    sha256 9f72585b...f9db48b3b (Run 72).
+  * chi(V_aud) = 2 -- main.tex, proof of thm:audit-manifold (chi(F) = -2,
+    chi(Sigma_{1,1}) = -1, surgeries preserve chi).
+
+The two fragments were compiled together with tectonic inside a wrapper that
+supplies the paper's theorem environments, the macro \pione, stub statements
+carrying the labels def:Vaudit, lem:bundle-symplectic-form, thm:framing,
+thm:audit-manifold, sec:relation, and a stub bibliography with the keys
+LidmanPiccirillo, ADK, Freedman, Thurston, Luttinger, HoLi, Li, Wuebben:
+exit 0, no undefined or multiply-defined labels, no "??" in the text.  The
+hand checks were the orientation bookkeeping in lem:double-form(i) (the
+Jacobian of (t,s) -> (1-t,-s) has determinant +1) and that p, O stay fixed by
+the Omega-preserving representatives of lem:bundle-symplectic-form (phi_0 is
+unchanged there -- only Omega is averaged -- and the shears replacing T_a, T_b
+are supported in annuli around a, b, away from the disks holding p and O), so
+the constant section {p} x Sigma survives and Gamma_hat = {p} x Sigma_hat in
+the flat atlas.
+
+Correction to Run 72's fragment
+-------------------------------
+
+Writing lem:double-form(i) exposed a wrong parenthetical in the proof of
+cor:audit-double(a) in paper/sigma_aud.tex: it said that, viewed from the
+orientation of Sigma_hat, the second copy's fiber and base orientations are
+"both reversed; their product is unchanged".  Neither is reversed: the base
+gluing rho is a reflection of the boundary circle, so Sigma_hat restricts to the
+given orientation on both copies of Sigma_{1,1}, and the fiber gluing phi_0 is
+orientation-preserving on F.  The corollary's statement and conclusion were
+unaffected (R_hat is oriented compatibly with both copies either way); the
+parenthetical is replaced by the factorwise statement.  lem:double-form(i)
+depends on the corrected version.
+
+External results used, and their bibliography keys
+--------------------------------------------------
+
+ADK (Definition 2.1, Proposition 2.2), Luttinger, Freedman, Ho-Li, Li.
+Thurston is listed in sec:external-hypotheses and explicitly NOT invoked -- the
+form is built directly.  main.tex's bibliography has ADK only; Freedman,
+Luttinger, HoLi, Li, Thurston are in supplement.tex and must be carried over by
+#809.
+
+What this establishes
+---------------------
+
+Given the paper's Definition def:Vaudit and its own lemmas
+(lem:bundle-symplectic-form, thm:framing, thm:audit-manifold) plus Run 72's
+lem:sigma-aud / cor:audit-double, Theorem thm:exotic -- Z_aud is a closed
+symplectic 4-manifold homeomorphic but not diffeomorphic to S^2 x S^2 -- has a
+written proof whose only external inputs are published theorems with their
+hypotheses discharged in the text.  The chain item E_lp_double, and with it the
+assumption A_source_formalization_D on the Theorem A path, is no longer needed
+for existence.  That recut of downstream_chain_certificate.json is #808; the
+insertion into main.tex, the bibliography carry-over, and the retitling are
+#809.  Nothing is marked done here.
+
+What this does not establish
+----------------------------
+
+  * Attribution.  Nothing here says Z_aud is Wuebben's manifold or LP's; the
+    contrary fundamental-group computation (Runs 67, 70, 71) stands
+    unreconciled and is disclosed in thm:exotic's closing remark.
+  * The quotient W = Z/sigma and LP's Theorem B: sigma_aud is not free
+    (Run 72); out of scope.
+  * Any independent check of the cited theorems themselves.
+  * That main.tex compiles with the fragments inserted: the fragments were
+    compiled in a wrapper with stub labels, not inside main.tex (#809).
+
+Replay
+------
+
+    cd paper && cat > /tmp/wrap.tex <<'X'
+    \documentclass{article}
+    \usepackage{amsmath,amsthm,amssymb}
+    \newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{corollary}[theorem]{Corollary}\newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{remark}[theorem]{Remark}\newtheorem{definition}[theorem]{Definition}
+    \newcommand{\pione}{\pi_1}
+    \begin{document}
+    \begin{definition}\label{def:Vaudit}stub\end{definition}
+    \begin{lemma}\label{lem:bundle-symplectic-form}stub\end{lemma}
+    \begin{lemma}\label{thm:framing}stub\end{lemma}
+    \begin{lemma}\label{thm:audit-manifold}stub\end{lemma}
+    \section{stub}\label{sec:relation}
+    \input{sigma_aud.tex}
+    \input{symplectic_double.tex}
+    \begin{thebibliography}{9}\bibitem{LidmanPiccirillo}s\bibitem{ADK}s\bibitem{Freedman}s
+    \bibitem{Thurston}s\bibitem{Luttinger}s\bibitem{HoLi}s\bibitem{Li}s\bibitem{Wuebben}s
+    \end{thebibliography}
+    \end{document}
+    X
+    cp /tmp/wrap.tex . && tectonic -X compile wrap.tex && pdftotext wrap.pdf - | grep -c '??'   # expect 0
