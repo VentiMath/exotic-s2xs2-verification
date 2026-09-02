@@ -1,0 +1,90 @@
+Run 70: coset enumeration of the displayed relation sheet, four sign sheets (2026-09-02)
+=========================================================================================
+
+Question
+--------
+
+The paper's "Relation sheet and product fillings" subsection displays ten
+relations (the surface relation, eight transport relations, the drilled-fiber
+relation) and two longitudes, and says the four algebraic sign sheets append
+`M lambda_alpha^{eps_A} = 1`, `N lambda_beta^{eps_B} = 1`.  An outside reader
+(2026-09-01) reported encoding exactly those displayed words in GAP and getting
+the trivial group for all four sheets in under a second, without touching the
+sealed 78-relator presentation Q or any certificate.  Is that reproducible
+from the displayed text alone, as our own artifact?
+
+Frozen input
+------------
+
+`luttinger/displayed_sheet/displayed_sheet.g` transcribes the displayed words
+literally.  Nothing is read from the repository: no JSON, no sealed
+presentation, no certificate.  The commutator convention is the paper's own,
+`[a,b] = a b a^-1 b^-1`, matching the surface word written out on the audit
+octagon as `x y x^-1 y^-1 r s r^-1 s^-1`.  The enumeration is bounded
+(`CosetTableDefaultMaxLimit := 2000000`) so a hard case fails rather than
+hangs.
+
+Permanent artifact SHA-256
+-------------------------
+
+    displayed_sheet.g   f62fc98b113ee16906add0393e0f1b4469d57678db8bfed50773c3a4db7349da
+    run.sh              bfed1874fe9bb81fcf615216500444814764932d3070dd52b1029e569024d107
+    output.txt          c6a2e009c6d357a5f65e07b5eccadff1bf349fcf4fe7126f402377624b6c01b7
+
+Environment
+-----------
+
+    GAP 4.11.1, image gapsystem/gap-docker:latest
+    digest sha256:d66dca500c3d8b8ca88824d3c3c7315183335af029f6b74ce592ed0d148edaee
+    host arm64 (Colima, aarch64); the image is linux/amd64 and ran under
+    qemu-x86_64 emulation.  Timings below are therefore NOT comparable to a
+    native run and are recorded only as orders of magnitude.
+
+Result
+------
+
+Every filled sheet collapses to the trivial group.
+
+    full sheet (+,+)  relators=12  |G|=1  H1=[ ]   ~3.1 s
+    full sheet (+,-)  relators=12  |G|=1  H1=[ ]   ~3.8 s
+    full sheet (-,+)  relators=12  |G|=1  H1=[ ]   ~0.18 s
+    full sheet (-,-)  relators=12  |G|=1  H1=[ ]   ~0.19 s
+
+The same four sheets with the drilled-fiber relation removed (eleven relators)
+also collapse, roughly four to twelve times more slowly:
+
+    no-drilled (+,+)  |G|=1   ~12.2 s
+    no-drilled (+,-)  |G|=1   ~13.8 s
+    no-drilled (-,+)  |G|=1   ~1.8 s
+    no-drilled (-,-)  |G|=1   ~1.0 s
+
+Negative controls: with only one filling relation adjoined, the abelianization
+is infinite cyclic in both cases (`H1 = [ 0 ]`), so the enumeration is not
+collapsing everything it is handed.  This matches the slope-family
+abelianization proposition for the sealed presentation.
+
+What this does and does not establish
+-------------------------------------
+
+Established: the ten displayed relations plus the two fillings force
+triviality, for all four sign sheets, by coset enumeration alone.  The
+78-relator presentation and the certificate replay are not needed to reach
+this verdict.  The verdict is now a repository artifact with a recorded
+environment, not a reviewer's report.
+
+Also observed, feeding the separate redundancy question: triviality does not
+depend on the drilled-fiber relation.  This run does not show that relation
+is a formal consequence of the other nine; that requires a derivation, not an
+enumeration.
+
+Not established: anything about which sheet, if any, is pi_1 of a geometric
+manifold.  The identification of a presentation with pi_1(V_aud) is the
+paper's reconstruction step and is untouched here.  Lidman and Piccirillo's
+contrary computation stands unreconciled, exactly as recorded in Run 67.
+
+Replay
+------
+
+    cd luttinger/displayed_sheet && ./run.sh
+
+Requires Docker (or Colima) for `verification/bin/gap`.
