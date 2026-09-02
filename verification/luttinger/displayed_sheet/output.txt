@@ -1,13 +1,13 @@
 === 1. ten displayed relations + two fillings ===
-full sheet (+,+)  relators=12  |G|=1  H1=[  ]  coset-enum 3065 ms
-full sheet (+,-)  relators=12  |G|=1  H1=[  ]  coset-enum 3774 ms
-full sheet (-,+)  relators=12  |G|=1  H1=[  ]  coset-enum 179 ms
-full sheet (-,-)  relators=12  |G|=1  H1=[  ]  coset-enum 190 ms
+full sheet (+,+)  relators=12  |G|=1  H1=[  ]  coset-enum 3244 ms
+full sheet (+,-)  relators=12  |G|=1  H1=[  ]  coset-enum 3708 ms
+full sheet (-,+)  relators=12  |G|=1  H1=[  ]  coset-enum 174 ms
+full sheet (-,-)  relators=12  |G|=1  H1=[  ]  coset-enum 179 ms
 === 2. same, WITHOUT the drilled-fiber relation ===
-no-drilled sheet (+,+)  relators=11  |G|=1  H1=[  ]  coset-enum 12182 ms
-no-drilled sheet (+,-)  relators=11  |G|=1  H1=[  ]  coset-enum 13758 ms
-no-drilled sheet (-,+)  relators=11  |G|=1  H1=[  ]  coset-enum 1783 ms
-no-drilled sheet (-,-)  relators=11  |G|=1  H1=[  ]  coset-enum 1008 ms
+no-drilled sheet (+,+)  relators=11  |G|=1  H1=[  ]  coset-enum 12076 ms
+no-drilled sheet (+,-)  relators=11  |G|=1  H1=[  ]  coset-enum 13361 ms
+no-drilled sheet (-,+)  relators=11  |G|=1  H1=[  ]  coset-enum 1785 ms
+no-drilled sheet (-,-)  relators=11  |G|=1  H1=[  ]  coset-enum 977 ms
 === 3. negative controls: single filling, H_1 must be infinite cyclic ===
 alpha filling only:  H1=[ 0 ]
 beta  filling only:  H1=[ 0 ]

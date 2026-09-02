@@ -28,33 +28,40 @@ Permanent artifact SHA-256
 -------------------------
 
     displayed_sheet.g   f62fc98b113ee16906add0393e0f1b4469d57678db8bfed50773c3a4db7349da
-    run.sh              bfed1874fe9bb81fcf615216500444814764932d3070dd52b1029e569024d107
-    output.txt          c6a2e009c6d357a5f65e07b5eccadff1bf349fcf4fe7126f402377624b6c01b7
+    run.sh              af84d2000729592313e59ce3f5c1ac0aec1b32899692be5448d879319be9f355
+    output.txt          8d1fc385a5f24a664b4de103d48d19136d9df0d157e3ac388c13b99f8c8fe828
 
 Environment
 -----------
 
-    GAP 4.11.1, image gapsystem/gap-docker:latest
-    digest sha256:d66dca500c3d8b8ca88824d3c3c7315183335af029f6b74ce592ed0d148edaee
-    host arm64 (Colima, aarch64); the image is linux/amd64 and ran under
-    qemu-x86_64 emulation.  Timings below are therefore NOT comparable to a
-    native run and are recorded only as orders of magnitude.
+    GAP 4.11.1, image gapsystem/gap-docker pinned BY DIGEST in run.sh:
+    sha256:d66dca500c3d8b8ca88824d3c3c7315183335af029f6b74ce592ed0d148edaee
+    (run.sh does not go through verification/bin/gap, which invokes the
+    mutable :latest tag; the platform is requested explicitly as linux/amd64.)
+    Host arm64 (Colima, aarch64), so the image ran under qemu-x86_64
+    emulation.  Timings below are therefore NOT comparable to a native run
+    and are recorded only as orders of magnitude.
+
+    History: the first version of this run (2026-09-02, earlier the same day)
+    invoked the :latest tag and recorded the digest by hand; it produced the
+    identical verdicts.  The artifact was regenerated under the digest pin so
+    that the replay and the record name the same image.
 
 Result
 ------
 
 Every filled sheet collapses to the trivial group.
 
-    full sheet (+,+)  relators=12  |G|=1  H1=[ ]   ~3.1 s
-    full sheet (+,-)  relators=12  |G|=1  H1=[ ]   ~3.8 s
-    full sheet (-,+)  relators=12  |G|=1  H1=[ ]   ~0.18 s
-    full sheet (-,-)  relators=12  |G|=1  H1=[ ]   ~0.19 s
+    full sheet (+,+)  relators=12  |G|=1  H1=[ ]   ~3.2 s
+    full sheet (+,-)  relators=12  |G|=1  H1=[ ]   ~3.7 s
+    full sheet (-,+)  relators=12  |G|=1  H1=[ ]   ~0.17 s
+    full sheet (-,-)  relators=12  |G|=1  H1=[ ]   ~0.18 s
 
 The same four sheets with the drilled-fiber relation removed (eleven relators)
 also collapse, roughly four to twelve times more slowly:
 
-    no-drilled (+,+)  |G|=1   ~12.2 s
-    no-drilled (+,-)  |G|=1   ~13.8 s
+    no-drilled (+,+)  |G|=1   ~12.1 s
+    no-drilled (+,-)  |G|=1   ~13.4 s
     no-drilled (-,+)  |G|=1   ~1.8 s
     no-drilled (-,-)  |G|=1   ~1.0 s
 
@@ -87,4 +94,5 @@ Replay
 
     cd luttinger/displayed_sheet && ./run.sh
 
-Requires Docker (or Colima) for `verification/bin/gap`.
+Requires Docker (or Colima).  run.sh pulls the image by digest; it does not
+use `verification/bin/gap`.

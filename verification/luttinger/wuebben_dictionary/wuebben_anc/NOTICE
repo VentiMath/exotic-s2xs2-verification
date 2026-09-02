@@ -1,0 +1,34 @@
+The two GAP scripts in this directory are copied verbatim from the ancillary
+files of arXiv:2608.17267v1 (Bernd J. Wuebben, "An exotic S^2 x S^2 and an
+exotic CP^2 # CP^2-bar"), whose maintained home is
+https://github.com/bwuebben/exotic-s2xs2 under the MIT License:
+
+    MIT License
+    Copyright (c) 2026 Bernd J. Wuebben
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+Provenance (SHA-256):
+
+    2cdd848816994561be29541322a6c8e197366cdf1ff1825646886d97734b78b2  arXiv e-print 2608.17267v1 (tar.gz)
+    e750ebb79ed8856388a1b598b7cd003cb096d47531066411ffe45acc2e2900b5  anc/scripts/decide2.g
+    da77de354824d023c2f1939bbe72ad3cb2466224e813c1e6e2f466f230612e37  anc/scripts/fixed_v_certify.g
+
+They are inputs to compare_sheets.py, which verifies these hashes before
+reading anything, and are not modified.
