@@ -67,9 +67,9 @@ The v2.4.0 proof manifest has SHA-256
 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9` and
 binds 48 files, including the revised checkers and the audit-manifold
 invariant checker.  The `verification/` tree object is
-`f6dae2a84f6b6ecd413ab8c6ff5d68420666b0b5`, the existence-chain certificate has SHA-256
-`8ad215964aaea4c0ce32df048ac259bbf080eb53eda956caf5911481d7b2eee8`, and the attribution-chain certificate has SHA-256
-`73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca`.
+`eea43135efbd0f2f8b0d8879e28aa4be2ade85ea`, the existence-chain certificate has SHA-256
+`1a38728e1bc073c8115b870e698e4b3de875d6f842dc9ee0ff20e4304c2377c1`, and the attribution-chain certificate has SHA-256
+`f2ac2932547caa960a4776d060784dcf467a5d51eee1883965629af80a70bd6d`.
 
 **What this repository is not:** a verification or refutation of Wuebben's
 fixed manifold; a proof of his Theorems B and C (the quotient and the
