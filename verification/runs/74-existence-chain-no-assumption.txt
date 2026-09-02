@@ -1,0 +1,172 @@
+Run 74: the existence chain -- Theorem A' with no assumption and no other author's construction (2026-09-02)
+============================================================================================================
+
+Question
+--------
+
+Runs 72 and 73 defined sigma_aud and put the symplectic form on the double.
+The machine-checked dependency chain, luttinger/downstream_chain.py (Run 64),
+still reached Theorem A through E_lp_double, E_lp_regluing and the one
+assumption A_source_formalization_D (D1--D14), because it was written as a
+transfer of Wuebben's theorems to the audit manifold.  Recut it so that the
+existence theorem about Z_aud depends on nothing from Lidman--Piccirillo,
+nothing from Wuebben, and no assumption -- and make the checkers refuse any
+chain that does.  (Issue #808.)
+
+What was done
+-------------
+
+1.  The Run-64 chain was MOVED, content unchanged, to
+    luttinger/attribution/wuebben_transfer_chain.py, with its certificate
+    (wuebben_transfer_chain_certificate.json) and Ruby checker
+    (verify_wuebben_transfer_chain.rb).  Only paths and the header changed.
+    Both checkers still pass on the unchanged frozen certificate:
+
+        python3 attribution/wuebben_transfer_chain.py --check
+        PASS: downstream proof chain replays (assumption=1, certificate=3,
+              computed=15, external=25, step=17); 25 evidence digests match
+        ruby attribution/verify_wuebben_transfer_chain.rb
+        ALL RUBY DOWNSTREAM-CHAIN CHECKS PASSED: ... 25 evidence digests verified
+
+    It is the attribution track: what the comparison with those papers would
+    establish IF D1--D14 held.  Nothing on the existence path cites it.
+
+2.  luttinger/downstream_chain.py is now the EXISTENCE chain, format
+    luttinger-existence-chain-v3, one conclusion:
+
+        S7_theorem_A_prime: Z_aud = V_aud u_{sigma_aud} V_aud is a closed
+        symplectic 4-manifold homeomorphic but not diffeomorphic to S^2 x S^2.
+
+    Items: 9 external theorems (van Kampen, duality/UCT, lattice index, Wu,
+    Freedman, Luttinger/ADK, asphericity, Kodaira dimension (Li, Liu),
+    Ho--Li), 4 certificates (K_pi1_Vaud_trivial, K_section_square_zero,
+    K_lagrangian_framing, K_sigma_aud), 3 written proofs bound by hash
+    (P_split_form = main.tex lem:bundle-symplectic-form; P_audit_double =
+    sigma_aud.tex; P_double_form = symplectic_double.tex), 5 computed facts
+    (chi, Betti, hyperbolic basis, signature/KS, orientation reversal),
+    7 steps S0, S2--S7.  NO assumption kind exists in this format.
+
+    Dropped from the existence path: E_lp_double, E_lp_quotient,
+    E_lp_regluing, E_lp_floer, E_kawauchi_B, E_hambleton_kreck,
+    E_covering_sequence, E_symplectic_thom, E_cover_construction,
+    E_adjunction, E_klug, E_levine_arf, E_trace_embedding, E_ball_isotopy,
+    E_novikov (all Theorem B/C machinery), E_bundle_symplectic (Thurston --
+    not invoked; the form is built directly), the assumption
+    A_source_formalization_D, the old S00 transfer step, S1 (homology of
+    V -- used only by the B/C steps; the Ruby checker caught it dangling),
+    and S8--S16.
+
+3.  Guards, enforced by BOTH checkers (Python builder, Ruby replay):
+      * no item of kind "assumption" and no A_ id;
+      * no text field of any item (claim, statement, proof, name, source,
+        where, hypotheses) contains "Lidman", "Piccirillo", "LP25",
+        "2505.14387", "Wuebben", "2608.17267", "Source Formalization",
+        "D1--D14", "D1-D14";
+      * the conclusion's dependency closure contains the three pillars
+        K_pi1_Vaud_trivial, K_sigma_aud, P_double_form;
+      * every item other than the conclusion lies on the conclusion's path
+        (nothing dangling, nothing decorative);
+      * every certificate and proof item is bound to files whose SHA-256
+        matches (30 files: the pi_1 chain, run 28, the framing runs, runs
+        72--73, luttinger/sigma_aud/, and paper/main.tex, paper/sigma_aud.tex,
+        paper/symplectic_double.tex).
+
+    Negative controls, each run against a modified copy of the frozen
+    certificate with verify_downstream_chain.rb:
+        injected assumption item        -> FAILED: chain carries an assumption
+        "(as in Lidman--Piccirillo)" in S5 -> FAILED: S5_Z_symplectic.proof mentions Lidman
+        tampered digest of symplectic_double.tex -> FAILED: digest mismatch
+        S7 cut to S4 only               -> FAILED: does not rest on P_double_form
+        chi(Z) := 6                     -> FAILED: chi(Z)
+
+4.  proof_ledger.py: M_downstream_chain renamed M_wuebben_transfer_chain and
+    repointed to attribution/; new nodes M_existence_chain,
+    M_sigma_aud_seam_identity, G_sigma_aud, G_audit_double, G_double_form,
+    and derived claims C_pi1_Zaud_trivial, C_Zaud_form_hyperbolic,
+    C_Zaud_homeomorphic_S2xS2, C_Zaud_symplectic,
+    C_Zaud_not_diffeomorphic_S2xS2, C_theorem_A_prime_exotic_S2xS2.  New
+    check_existence_boundary(): the closure of C_theorem_A_prime_exotic_S2xS2
+    contains no source_assumption node and no node with "_lp_" or "wuebben"
+    in its name, and contains C_pi1_Vaud_trivial, G_sigma_aud, G_double_form,
+    M_existence_chain.  Result:
+
+        existence boundary of C_theorem_A_prime_exotic_S2xS2:
+        derived_claim=7, external_theorem=16, geometric_argument=13,
+        machine_certificate=31; source_assumption=0; no _lp_/wuebben node
+
+    The 16 external theorems in that closure: asphericity, contractible PL
+    3-ball, cyclic-knot-unknot, duality/UCT, elementary bistellar trace,
+    Freedman, Ho--Li, Kodaira dimension, lattice index, Luttinger,
+    rotation-system thickening, simplicial pi_1 presentation, surface
+    classification, Tietze, van Kampen, Wu.  None is from Lidman--Piccirillo
+    or Wuebben.
+
+5.  publication_semantics_check.py reads the slice-polarity items (Theorem B
+    machinery) from the attribution certificate, and asserts of the existence
+    certificate: format v3, conclusion S7_theorem_A_prime only, no assumption
+    kind, no E_lp_ item, no S11/S12.
+
+6.  Docs: README.md, verification/README.md, verification/STATUS.md,
+    verification/IMPORT.md describe the two chains and where each lives.
+
+Commands and results
+--------------------
+
+    cd verification/luttinger
+    python3 downstream_chain.py --check
+    PASS: existence chain replays (certificate=4, computed=5, external=9,
+          proof=3, step=7); 30 evidence digests match; assumptions=0
+    ruby verify_downstream_chain.rb
+    ALL RUBY EXISTENCE-CHAIN CHECKS PASSED: certificate=4, computed=5,
+          external=9, proof=3, step=7; 5 computed facts replayed;
+          30 evidence digests verified; assumptions=0; forbidden names absent
+    python3 proof_ledger.py            PASS (see item 4)
+    python3 publication_semantics_check.py   PASS
+    python3 paper/check_release_sync.py
+        replay suite (every checker above plus the residual and sealed
+        verifiers): PASS; then
+        FAIL: supplement does not record the digest of
+              verification/luttinger/downstream_chain_certificate.json
+        -- expected.  The supplement pins the v2.3.0 verification/ tree
+        object and certificate digest; both have moved since Run 70.  The
+        release gate is rebuilt at the next release (#809), not here.
+
+What this establishes
+---------------------
+
+The machine-checked dependency structure of Theorem A' about Z_aud has no
+assumption, no item from Lidman--Piccirillo, and no item from Wuebben, and
+the checkers will reject any future edit that reintroduces one.  Its inputs
+are this repository's certificates (pi_1(V_aud)=1, Gamma_hat^2=0, the framing
+identification, sigma_aud), three written proofs in paper/ bound by hash, and
+nine standard published theorems.
+
+What this does not establish
+----------------------------
+
+  * Nothing mathematical is new here; Runs 72--73 carry the mathematics.
+    This run changes what the chain SAYS it depends on, and makes that
+    checkable.
+  * One provenance contact with Wuebben remains inside the existence
+    closure and is not a premise about his manifold: M_independent_paper_
+    dictionary (Run 54) reads his paper's text to reconstruct the marked
+    data that DEFINE the audit object, and G_topological_smooth_reroute
+    cites it for that definition (its note's v2.0.0 clarification says so
+    explicitly).  Theorem A' is about V_aud as defined; the definition's
+    origin is not a hypothesis.  If a fully origin-free ledger is wanted,
+    def:Vaudit can be made the sole source of the marked data and that node
+    removed from the reroute's premise list -- a separate, documented edit.
+  * The paper itself: the two fragments are still not \input by main.tex,
+    and main.tex still frames the doubling as conditional (#809).  The
+    certificate binds paper/main.tex, so #809 will require a refreeze --
+    intended: the chain tracks the text it certifies.
+  * Attribution (whether Z_aud is anyone else's manifold) is untouched and
+    remains where it was: attribution/ and the D1--D14 checklist.
+
+Replay
+------
+
+    cd verification/luttinger
+    python3 downstream_chain.py --check && ruby verify_downstream_chain.rb
+    python3 proof_ledger.py && python3 publication_semantics_check.py
+    python3 attribution/wuebben_transfer_chain.py --check && ruby attribution/verify_wuebben_transfer_chain.rb

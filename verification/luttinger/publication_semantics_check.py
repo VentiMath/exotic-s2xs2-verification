@@ -19,7 +19,12 @@ REPO = HERE.parents[1]
 MAIN = (REPO / "paper/main.tex").read_text(encoding="utf-8")
 SUPPLEMENT = (REPO / "paper/supplement.tex").read_text(encoding="utf-8")
 FACTS = json.loads((HERE / "publication_semantics.json").read_text())
-CHAIN = json.loads((HERE / "downstream_chain_certificate.json").read_text())
+# The attribution chain (Wuebben's Theorems A, B, C transferred under D1--D14)
+# carries the slice-polarity items checked below; the existence chain is
+# checked separately for having no assumption and no such item.
+CHAIN = json.loads(
+    (HERE / "attribution/wuebben_transfer_chain_certificate.json").read_text())
+EXISTENCE = json.loads((HERE / "downstream_chain_certificate.json").read_text())
 
 
 def normalize_space(text):
@@ -110,8 +115,18 @@ def main():
     assert "4_1 is slice in B" in theorem_b["proof"]
     assert "not in W" in theorem_b["proof"]
 
+    assert EXISTENCE["format"] == "luttinger-existence-chain-v3"
+    assert EXISTENCE["conclusions"] == ["S7_theorem_A_prime"]
+    existence_kinds = {node["kind"] for node in EXISTENCE["items"]}
+    assert "assumption" not in existence_kinds
+    assert not any(node["id"].startswith("E_lp_") for node in EXISTENCE["items"])
+    assert not any("S11" in node["id"] or "S12" in node["id"]
+                   for node in EXISTENCE["items"])
+
     print("PASS: publication semantics agree across main paper, supplement, "
-          "and downstream certificate")
+          "and both chain certificates")
+    print("  existence chain: no assumption, no E_lp_ item, conclusion "
+          "S7_theorem_A_prime")
     print("  slice(4_1,B)=true; slice(4_1,W)=false")
     print("  pi_1(V_aud)=1; Wuebben comparison requires D1--D14")
 

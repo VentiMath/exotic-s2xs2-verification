@@ -54,7 +54,8 @@ Evidence:
 | the raw complex reduces to the sealed presentation | `luttinger/sealed_transport/r_tietze_certificate.json.gz` |
 | the two paper-coordinate longitude identities | `luttinger/alpha_residual/`, `luttinger/beta_residual/` |
 | the dependency structure of every conclusion | `luttinger/proof_ledger.py` |
-| the conditional downstream chain | `luttinger/downstream_chain_certificate.json` |
+| the existence chain for Theorem A′ (no assumption) | `luttinger/downstream_chain_certificate.json` |
+| the conditional transfer chain (attribution only) | `luttinger/attribution/wuebben_transfer_chain_certificate.json` |
 
 Each certificate is replayed by two separately implemented checkers, one
 Python and one Ruby, sharing neither source code nor runtime. Both reject the

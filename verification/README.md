@@ -116,17 +116,26 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
   remaining filling relator kills its generator. Independent Python and Ruby
   replay of the retained 4,040-record ancestry DAG gives the final auxiliary
   tally: **100/100 reported trivial — 22 certificate-backed, 78 retained GAP-session verdicts — 0 inconclusive, 0 nontrivial**.
-* **Downstream proof chain:** `downstream_chain.py` carries every
-  implication from certified simple connectivity of the audit manifold to
-  Theorems A, B, C as an explicit item — Source Comparison Hypotheses D1--D14 as one
-  source-comparison assumption, 25 external theorems with hypotheses and
-  sources, 3 hash-bound certificates, 15 computed facts, and 17 deduction
-  steps — and
-  freezes it as `downstream_chain_certificate.json`;
-  `verify_downstream_chain.rb` independently recomputes every fact, checks
-  the graph, and verifies the evidence digests. See `runs/64` and
-  `notes/downstream_proof_chain_2026-08-28.md`; the earlier hypothesis
-  audit is `runs/24`.
+* **Existence chain:** `downstream_chain.py` carries every implication
+  from certified simple connectivity of the audit manifold to Theorem A′ —
+  `Z_aud = V_aud ∪_{σ_aud} V_aud` is a closed symplectic 4-manifold
+  homeomorphic but not diffeomorphic to `S²×S²` — as an explicit item:
+  9 external theorems with hypotheses and sources, 4 hash-bound
+  certificates (π₁(V_aud)=1, Γ̂·Γ̂=0, the framing identification, σ_aud),
+  3 hash-bound written proofs (the split form, the double, the descent of
+  the form), 5 computed facts, and 7 deduction steps. It has **no
+  assumption item**, and both checkers fail if one is added, if any item's
+  text names Lidman–Piccirillo, Wuebben, or D1--D14, or if the conclusion
+  stops resting on the three intrinsic pillars. Frozen as
+  `downstream_chain_certificate.json`; `verify_downstream_chain.rb`
+  independently recomputes every fact, checks the graph, and verifies the
+  evidence digests. See `runs/74`.
+* **Attribution chain:** the run-64 transfer of Wuebben's Theorems A, B, C
+  to the audit manifold under D1--D14, through Lidman–Piccirillo's σ,
+  quotient, regluing and Floer lemmas, is preserved unchanged and replayable
+  in `attribution/wuebben_transfer_chain.py` with its certificate and Ruby
+  checker. Nothing on the existence path cites it. See `runs/64` and
+  `notes/downstream_proof_chain_2026-08-28.md`.
 * **Proof artifacts:** the seeded 99,860-step raw-complex Tietze transport
   is sealed with its serialized input and replays under standalone Python
   and Ruby checkers, and the eight fillings of the resulting 3-generator
@@ -166,9 +175,11 @@ Status (updated 2026-08-29; see the root `STATUS.md` for the precise caveats):
 | `beta_residual/` | frozen sealed-complement source, proof certificate, compiler, and independent Python/Ruby verifiers for `lb_b_s2 = (r^-1 M r)B` (Run 69) |
 | `case100_transfer/` | exact 96-relator common-core source, compact case-100 ancestry certificate, and independent Python/Ruby verifiers |
 | `alpha_residual/` | frozen 72-letter alpha-longitude target in the sealed complement, compact 2,506-record ancestry certificate, and independent Python/Ruby verifiers |
-| `downstream_chain.py` | the proof chain from π₁(V)=1 to Theorems A, B, C: external theorems, certificates, computed facts, deduction steps |
-| `downstream_chain_certificate.json` | frozen Run-64 chain with evidence digests |
-| `verify_downstream_chain.rb` | independent Ruby replay of the chain: recomputes every fact, checks the graph and the digests |
+| `downstream_chain.py` | the existence chain from π₁(V_aud)=1 to Theorem A′ about Z_aud: external theorems, certificates, written proofs, computed facts, deduction steps; no assumption |
+| `downstream_chain_certificate.json` | frozen Run-74 existence chain with evidence digests |
+| `verify_downstream_chain.rb` | independent Ruby replay of the existence chain: recomputes every fact, checks the graph, the absence of assumptions and of other authors' constructions, and the digests |
+| `attribution/` | the Run-64 transfer chain (Wuebben's Theorems A, B, C under D1--D14), its certificate and Ruby checker, unchanged; attribution only |
+| `sigma_aud/` | stdlib control for the seam identity of the intrinsic boundary involution σ_aud (Run 72) |
 | `proof_ledger.py` | the dependency ledger of the whole verification: external theorems, machine certificates, geometric arguments, derived claims |
 | `paper_bridge.py` | explicit p-whiskered octagon generators, based open-stack monodromy, and drilled-fiber R3 certificates |
 | `peripheral_bridge.py` | exact torus-slope permutation and opposite-side alpha basing checks |

@@ -21,7 +21,9 @@ certificate, `luttinger/verify_downstream_chain.rb`, the extension of
 — also originates in this repository. The v2.1 chain makes Source
 Formalization D a distinct assumption node: it first transfers
 `pi_1(V_aud)=1` to the target member and only then begins the downstream
-deductions.
+deductions. Run 74 moved that transfer chain, unchanged, to
+`luttinger/attribution/` and replaced `luttinger/downstream_chain.py` by
+the assumption-free existence chain for Theorem A′.
 So does run 65, the batch inventory checks in `luttinger/verify_kbmag_certificate.py`,
 `luttinger/verify_certificates.rb`, and `luttinger/make_proof_manifest.py`, with the
 regenerated proof manifest and downstream-chain certificate.
