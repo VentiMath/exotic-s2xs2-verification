@@ -1,0 +1,182 @@
+Run 76: outside-reader pass on the v2.4.0 manuscript (2026-09-02)
+=================================================================
+
+Question
+--------
+
+Four items from a first outside reading of the v2.4.0 PDF.
+
+  1. Does the proof of Theorem 2.3 (Theorem A') cite the symplectic Kodaira
+     dimension at the strength the literature actually proves?  Three
+     statements are used: (a) a minimal symplectic 4-manifold with
+     kappa = -infinity is rational or ruled; (b) Luttinger surgery preserves
+     kappa; (c) kappa does not depend on the symplectic form.  The v2.4.0
+     text credited (a) to [Li] alone and stated (c) as "kappa depends only
+     on the diffeomorphism type".
+  2. The smooth-category transition: Lemma 7.1 proved sigma_aud is a
+     homeomorphism, PL after subdivision, while Theorem 2.3 calls Z_aud
+     smooth and symplectic.
+  3. Gamma_hat . Gamma_hat = 0 rested on the certificate alone; a readable
+     argument was asked for.
+  4. The abstract and conclusion said "every step after pi_1(V_aud) = 1 is
+     a citation", which Sections 6--7 contradict.
+  A fifth item, that the two cases of the display in Lemma 5.4 are
+  identical, is not a defect: the source reads \overline z in the
+  epsilon = -1 case and the PDF renders the bar (page 13 rasterized and
+  inspected); text extraction drops it.  Nothing was changed there.
+
+Item 1
+------
+
+What the sources say
+--------------------
+
+  * C.-I. Ho and T.-J. Li, Luttinger surgery and Kodaira dimension, Asian
+    J. Math. 16 (2012), 299--318, read in arXiv:1108.0479v2.  Theorem 1.1:
+    "The Luttinger surgery preserves the symplectic Kodaira dimension."
+    The surgery is the one of their Section 2.1 (after Auroux--Donaldson--
+    Katzarkov): a (1,k)-surgery with respect to a Lagrangian framing of a
+    Lagrangian torus, with the induced form; all manifolds oriented.  The
+    proof blows down -1 spheres disjoint from the torus (Welschinger) and
+    compares K^2 and K.[omega] on the common complement.
+  * T.-J. Li, The Kodaira dimension of symplectic 4-manifolds, Clay Math.
+    Proc. 5 (2006), 249--261 (Floer homology, gauge theory, and low-
+    dimensional topology; Ellwood, Ozsvath, Stipsicz, Szabo, eds.), read
+    from the volume PDF published by the Clay Mathematics Institute.
+    Definition 2.2: kappa of a minimal (M, omega) is -infinity iff
+    K.[omega] < 0 or K.K < 0.  Theorem 2.4 (M closed oriented, omega
+    compatible with the orientation, (M, omega) minimal): (2) "(M, omega)
+    has Kodaira dimension -infinity if and only if it is rational or
+    ruled"; the text says "Property (2) follows from [41]", which is
+    A.-K. Liu, Some new applications of general wall crossing formula,
+    Gompf's conjecture and its applications, Math. Res. Lett. 3 (1996),
+    569--585.  Rational and ruled are defined there by the underlying
+    smooth manifold.  Page 251: "the Kodaira dimension of (M, omega) only
+    depends on the oriented diffeomorphism type of M, i.e. if omega' is
+    another symplectic form on M compatible with the orientation of M,
+    then kappa(M, omega) = kappa(M, omega')."
+  * T.-J. Li, Symplectic 4-manifolds with Kodaira dimension zero, J.
+    Differential Geom. 74 (2006), 321--352: the source the Clay survey
+    summarizes; bibliographic data confirmed on Project Euclid (DOI
+    10.4310/jdg/1175266207).  Its internal theorem numbering was not
+    read, so the paper cites the Clay survey by number and the JDG paper
+    by title.
+  * Bibliographic data for Liu and for the Clay survey confirmed against
+    zbMATH (zbMATH 980873 and 5082593).
+
+So (a) is Liu's theorem, (b) is Ho--Li Theorem 1.1 as used, and (c) is
+proved for forms compatible with one orientation, not for the unoriented
+diffeomorphism type.  The machine chain's S6 already used the oriented
+form of (c) with the reflection of one S^2 factor; the manuscript prose
+did not.
+
+What was done for item 1
+------------------------
+
+paper/main.tex:
+
+  * Proof of Theorem 2.3 rewritten in four steps.  Step 1: R_hat is
+    aspherical, hence minimal and neither rational nor ruled (each of those
+    contains a homologically nonzero embedded sphere), so by Liu's theorem
+    [Liu], [LiClay, Theorem 2.4(2)] kappa(R_hat, omega_hat_K) != -infinity.
+    Step 2: the four Luttinger surgeries of Corollary 7.5 each preserve
+    kappa [HoLi, Theorem 1.1].  Step 3: a diffeomorphism psi to S^2 x S^2
+    is made orientation-preserving by a reflection of one factor; the
+    pullback of a product form omega_{a,b} is compatible with the
+    omega_hat-orientation and has kappa = -infinity by Definition 2.2
+    (S^2 x S^2 is minimal since its form is even; K evaluates to -2 on
+    each factor sphere, so K.[omega_{a,b}] = -2a - 2b < 0).  Step 4:
+    two forms compatible with one orientation have equal kappa [Li],
+    [LiClay, p. 251]; contradiction.
+  * Section 7.3 list: the Ho--Li item names Theorem 1.1 and the surgery
+    definition it covers; the former Li item is split into a Liu item
+    (the -infinity characterization, with the definition of rational and
+    ruled by the underlying smooth manifold, hypothesis minimality) and a
+    Li item (oriented-diffeomorphism invariance, hypothesis a common
+    orientation); "five results" becomes "six".
+  * Abstract: "by Auroux--Donaldson--Katzarkov, Liu, and Ho--Li; hence,
+    since Li's Kodaira dimension is an invariant of the oriented
+    diffeomorphism type, it is not diffeomorphic".  Same sentence in
+    ARXIV_SUBMISSION.md and CITATION.cff.
+  * Bibliography: LiClay and Liu added (data verified as above).
+  * main.pdf is now 29 pages; check_release_sync.py and the arXiv
+    comments line updated to 29.
+
+verification/luttinger/downstream_chain.py: E_kodaira now quotes the Clay
+survey's Definition 2.2, Theorem 2.4(2) with Liu credited, and the p. 251
+invariance sentence, with the hypotheses "closed oriented; forms
+compatible with that orientation; minimality for the -infinity
+characterization"; E_ho_li names Section 2.1's surgery and the arXiv
+numbering; S6's proof text follows the four steps above.  Refrozen
+(the certificate binds paper/main.tex).
+
+Items 2--4
+----------
+
+paper/main.tex:
+
+  * Section 7.1 opens by fixing phi_0, psi_0 as the smooth representatives
+    of Lemma 6.1 on the smooth surface F and R_aud as the smooth bundle
+    they clutch (Corollary 4.3, "the audit-defined smooth target"); h is a
+    diffeomorphism and M_h a closed smooth 3-manifold.  Lemma 7.1(i) now
+    says sigma_aud is a smooth involution, with the seam-chart computation:
+    in F x (1-eps, 1+eps) with (w,s), s>1, denoting (h w, s-1), the map is
+    (w,s) -> (h^{-1} phi_0 w, 2-s) for s<1 and (phi_0 h w, 2-s) for s>1,
+    one smooth map exactly because the seam identity (2) holds as an
+    identity of maps.  The PL statement is kept in parentheses as a remark
+    about the PL model.
+  * Corollary 7.3 states that R_hat and Z_aud are glued along the boundary
+    diffeomorphism sigma_aud with the smooth structure fixed by the collar
+    extension of Lemma 7.4(ii); (a) now asserts R_hat is a smooth bundle
+    and Z_aud a closed oriented smooth 4-manifold, and the proof says so.
+  * Corollary 7.3(c): Gamma_hat . Gamma_hat = 0 is now proved in prose as
+    the Euler number of nu(Gamma_hat): over each copy nu(Gamma) is the flat
+    plane bundle with holonomy d phi_0(p) along alpha and I along beta,
+    trivial over the punctured torus, framed along the boundary by the flat
+    structure (holonomy around the boundary is the commutator, I), and that
+    framing has degree zero relative to a global trivialization since the
+    SO(2) connection form is closed (Stokes); the gluing map acts on T_pF
+    by the constant d phi_0(p) = -I (phi_0 is linearizable at its isolated
+    fixed point p, and an orientation-preserving linear involution other
+    than I is -I), of degree zero in SO(2).  The certificate
+    pl_self_intersection.py is cited as the combinatorial confirmation,
+    with its f-vector and "constant clutch shift 2" text kept.
+  * Abstract and conclusion: "The final classification and
+    non-diffeomorphism deductions use named external theorems whose
+    hypotheses are discharged in the text."  Same sentence in
+    ARXIV_SUBMISSION.md and CITATION.cff.
+
+Checked
+-------
+
+    tectonic main.tex: exit 0; pages 22, 23, 26 rendered and inspected.
+    python3 downstream_chain.py --check       PASS (28 digests, assumptions=0)
+    ruby verify_downstream_chain.rb           PASS
+    python3 proof_ledger.py                   PASS (existence boundary unchanged)
+    python3 publication_semantics_check.py    PASS
+    python3 paper/check_release_sync.py       see the release record
+
+What this establishes
+---------------------
+
+Every Kodaira-dimension statement in the proof of Theorem 2.3 is now cited
+to a numbered statement (or a quoted page) whose hypotheses are discharged
+in the text, and the orientation hypothesis of Li's invariance is met
+explicitly rather than assumed away.  The passage from the PL model to the
+smooth double is stated where it happens, and the one intersection number
+that was certificate-only has a written proof with the certificate as
+confirmation.
+
+What this does not establish
+----------------------------
+
+  * The mathematics of Theorem A' is unchanged; this run changes what the
+    proof cites and how one hypothesis is discharged.
+  * The JDG paper's own theorem numbers were not read; the Clay survey is
+    the numbered citation.
+
+Replay
+------
+
+    cd paper && tectonic main.tex
+    cd verification/luttinger && python3 downstream_chain.py --check && ruby verify_downstream_chain.rb && python3 proof_ledger.py && python3 publication_semantics_check.py

@@ -77,9 +77,11 @@ is simply connected and spin with intersection form $H$, hence homeomorphic
 to $S^2\times S^2$ by Freedman; it is a closed genus-two surface bundle over
 a genus-two surface surgered along four Lagrangian tori, hence symplectic
 with symplectic Kodaira dimension at least zero by
-Auroux--Donaldson--Katzarkov, Ho--Li, and Li; hence it is not diffeomorphic
-to $S^2\times S^2$.  Every step after $\pione(V_{\mathrm{aud}})=1$ is a
-citation whose hypotheses are discharged in the text.  Simple connectivity
+Auroux--Donaldson--Katzarkov, Liu, and Ho--Li; hence, since Li's Kodaira
+dimension is an invariant of the oriented diffeomorphism type, it is not
+diffeomorphic to $S^2\times S^2$.  The final classification and
+non-diffeomorphism deductions use named external theorems whose hypotheses
+are discharged in the text.  Simple connectivity
 itself rests on four explicit finite presentations, trivial under a
 published derivation-certificate specification, one of which a geometric
 reconstruction identifies with $\pione(V_{\mathrm{aud}})$.  Automated
@@ -1512,15 +1514,20 @@ proof.
 
 \subsection{The intrinsic boundary involution}\label{sec:sigma-aud}
 
-Write $h\colon F\to F$ for the monodromy of the boundary bundle
-$\partial R_{\mathrm{aud}}\to\partial\Sigma_{1,1}$, the commutator of
-$\varphi_0$ and $\psi_0$ determined by the oriented boundary word, and
+Throughout this section $\varphi_0$ and $\psi_0$ are the smooth
+representatives of Lemma~\ref{lem:bundle-symplectic-form} on the smooth
+surface $F$, and $R_{\mathrm{aud}}$ is the smooth bundle they clutch
+(Corollary~\ref{cor:tori}).  Write $h\colon F\to F$ for the monodromy of
+the boundary bundle $\partial R_{\mathrm{aud}}\to\partial\Sigma_{1,1}$,
+the commutator of $\varphi_0$ and $\psi_0$ determined by the oriented
+boundary word, a diffeomorphism, and
 \[
  M_h=(F\times[0,1])/((z,1)\sim(h(z),0))
 \]
-for its mapping torus, so that $\partial R_{\mathrm{aud}}=M_h$ with the
-base coordinate $t\in\mathbb R/\mathbb Z$.  Since both surgeries take
-place in the interior, $\partial V_{\mathrm{aud}}=M_h$ as well.
+for its mapping torus, a closed smooth 3-manifold with the base coordinate
+$t\in\mathbb R/\mathbb Z$, so that $\partial R_{\mathrm{aud}}=M_h$.
+Since both surgeries take place in the interior,
+$\partial V_{\mathrm{aud}}=M_h$ as well.
 
 \begin{lemma}[the audit boundary involution]\label{lem:sigma-aud}
 Define
@@ -1531,7 +1538,7 @@ Define
 Then:
 \begin{enumerate}
 \item[(i)] $\sigma_{\mathrm{aud}}$ is well defined, and is a
- fiber-preserving involution of $M_h$ covering the reflection
+ fiber-preserving smooth involution of $M_h$ covering the reflection
  $t\mapsto 1-t$ of $\partial\Sigma_{1,1}$;
 \item[(ii)] $\sigma_{\mathrm{aud}}$ reverses the orientation of
  $\partial R_{\mathrm{aud}}$;
@@ -1541,9 +1548,9 @@ Then:
 \item[(iv)] $\sigma_{\mathrm{aud}}$ fixes $[p,\tfrac12]$, $[O,\tfrac12]$,
  $[p,0]$, and $[O,0]$; in particular it is not free.
 \end{enumerate}
-No property of $\psi_0$ beyond its being a homeomorphism fixing $p$ and $O$
+No property of $\psi_0$ beyond its being a diffeomorphism fixing $p$ and $O$
 is used, and no property of $\varphi_0$ beyond its being an
-orientation-preserving involution fixing $p$ and $O$.
+orientation-preserving smooth involution fixing $p$ and $O$.
 \end{lemma}
 
 \begin{proof}
@@ -1569,9 +1576,16 @@ orientations of the commutator are checked in the same way (the machine
 control \texttt{luttinger/sigma\_aud/sigma\_aud\_check.py} verifies all
 four exactly on the based generators of $\pi_1(F,p)$, using the
 certified monodromy actions).  So $\sigma_{\mathrm{aud}}$ is well defined.
-It is a homeomorphism because $\varphi_0$ and the reflection are, and it
-is PL after subdividing $[0,1]$ symmetrically about $\tfrac12$.  It
-preserves fibers and covers $t\mapsto1-t$ by construction, and
+It is smooth: away from the seam it is $\varphi_0\times(t\mapsto1-t)$;
+in the seam chart $F\times(1-\varepsilon,1+\varepsilon)$ of $M_h$, in
+which $(w,s)$ with $s>1$ denotes $(h(w),s-1)$, it reads
+$(w,s)\mapsto(h^{-1}\varphi_0 w,\,2-s)$ for $s<1$ and
+$(w,s)\mapsto(\varphi_0 h\,w,\,2-s)$ for $s>1$, and these are one smooth
+map precisely because \eqref{eq:sigma-seam} holds as an identity of maps.
+Being an involution it is a diffeomorphism.  (On the PL model it is PL
+after subdividing $[0,1]$ symmetrically about $\tfrac12$; only the smooth
+statement is used below.)  It preserves fibers and covers $t\mapsto1-t$ by
+construction, and
 $\sigma_{\mathrm{aud}}^{2}[z,t]=[\varphi_0^{2}z,t]=[z,t]$.
 
 (ii) Orient $M_h$ as $F\times[0,1]$, fiber first.  By
@@ -1610,10 +1624,14 @@ oriented surface of genus two, and put
  \qquad
  Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}},
 \]
-both copies carrying the orientation of $R_{\mathrm{aud}}$.  Then:
+both copies carrying the orientation of $R_{\mathrm{aud}}$, glued along
+the boundary diffeomorphism $\sigma_{\mathrm{aud}}$ of
+Lemma~\ref{lem:sigma-aud}, with the smooth structure on the union fixed by
+the collar extension of Lemma~\ref{lem:double-form}(ii).  Then:
 \begin{enumerate}
-\item[(a)] $\hat R$ is a closed oriented genus-two surface bundle over
- $\hat\Sigma$, and $\hat\Sigma$ has genus two;
+\item[(a)] $\hat R$ is a closed oriented smooth genus-two surface bundle
+ over $\hat\Sigma$, $\hat\Sigma$ has genus two, and $Z_{\mathrm{aud}}$
+ is a closed oriented smooth 4-manifold;
 \item[(b)] $Z_{\mathrm{aud}}$ is obtained from $\hat R$ by the two audit
  surgeries and their images under the swap of the two copies, performed on
  four pairwise disjoint tori in the interior of $\hat R$, all disjoint from
@@ -1626,11 +1644,17 @@ both copies carrying the orientation of $R_{\mathrm{aud}}$.  Then:
 \end{corollary}
 
 \begin{proof}
-(a) Gluing two copies of a bundle along their boundary by a
-fiber-preserving homeomorphism covering a homeomorphism of the base
-boundary produces a bundle over the glued base; here the base gluing is
-$\rho$, and $\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$ is the double of a
-once-punctured torus, hence closed, orientable, of genus two.  Both
+(a) Gluing two copies of a smooth manifold with boundary along a
+boundary diffeomorphism, with collars chosen as in
+Lemma~\ref{lem:double-form}(ii), produces a closed smooth manifold, and
+any two collar choices give diffeomorphic results; this is how $\hat R$
+and $Z_{\mathrm{aud}}$ are smooth manifolds, and $V_{\mathrm{aud}}$
+differs from $R_{\mathrm{aud}}$ only in its interior.  Gluing two copies
+of a smooth bundle by a fiber-preserving diffeomorphism covering a
+diffeomorphism of the base boundary produces a smooth bundle over the
+glued base; here the base gluing is $\rho$, and
+$\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$ is the double of a once-punctured
+torus, hence closed, orientable, of genus two.  Both
 copies of $R_{\mathrm{aud}}$ induce the same orientation on the common
 boundary, and by Lemma~\ref{lem:sigma-aud}(ii) the gluing map reverses
 it, so $\hat R$ is oriented compatibly with both copies.  (Factorwise:
@@ -1653,20 +1677,37 @@ mirror copy; and by Lemma~\ref{lem:sigma-aud}(iii) the two halves glue
 along $\partial\Gamma=\{p\}\times S^1$ to a closed surface $\hat\Gamma$.
 
 (c) $\hat\Gamma$ is the double of the once-punctured torus $\Gamma$ along
-its boundary circle, hence closed, orientable, of genus two; the
-certificate \texttt{luttinger/pl\_self\_intersection.py} constructs it
-explicitly as a simplicial surface with $f$-vector $(138,420,280)$.  For
-the self-intersection, the normal direction to $\hat\Gamma$ along
-$\partial\Gamma$ is the fiber direction $T_pF$, on which
-$\sigma_{\mathrm{aud}}$ acts by $d\varphi_0(p)$; on the actual
-$24$-cycle link of $p$ in the fiber triangulation, $\varphi_0$ acts by the
-half-turn (shift $12$), i.e.\ by $-I$.  The certificate builds the
-triangulated normal disk bundle of $\hat\Gamma$ for each of the four
-constant boundary clutching rotations, including this one (its
-``constant clutch shift $2$''), and in each case exhibits a disjoint
+its boundary circle, hence closed, orientable, of genus two.  For the
+self-intersection, $\hat\Gamma\cdot\hat\Gamma$ is the Euler number of
+the oriented normal bundle $\nu(\hat\Gamma)$.  Over each copy,
+$\Gamma=\{p\}\times\Sigma_{1,1}$ is horizontal in the flat product
+atlas of Lemma~\ref{lem:bundle-symplectic-form}, so $\nu(\Gamma)$ is the
+flat oriented plane bundle with fiber $T_pF$ and holonomy
+$d\varphi_0(p)$ along $\alpha$ and $d\psi_0(p)=I$ along $\beta$
+($\psi_0$ is the identity near $p$).  Such a bundle is trivial, its base
+being homotopy equivalent to a graph, and its holonomy around
+$\partial\Gamma$ is the commutator $[d\varphi_0(p),d\psi_0(p)]=I$, so
+the flat structure frames it along $\partial\Gamma$; that flat boundary
+framing has degree zero relative to a global trivialization, because with
+respect to an invariant inner product the connection form $A$ is a closed
+real 1-form and the rotation is
+$\frac1{2\pi}\oint_{\partial\Gamma}A=\frac1{2\pi}\int_\Gamma dA=0$.  Along
+$\partial\Gamma=\{p\}\times S^1$ the gluing map $\sigma_{\mathrm{aud}}$
+acts on $T_pF$ by the constant map $d\varphi_0(p)=-I$ ($\varphi_0$ is a
+smooth involution with $p$ an isolated fixed point, so it is linearizable
+at $p$ with derivative $-I$), which has degree zero in $SO(2)$.  Hence the
+clutching map of $\nu(\hat\Gamma)$ between the two flat boundary framings
+has degree zero and $\hat\Gamma\cdot\hat\Gamma=0$.  The certificate
+\texttt{luttinger/pl\_self\_intersection.py} confirms this
+combinatorially: it constructs $\hat\Gamma$ as a simplicial surface with
+$f$-vector $(138,420,280)$, on whose $24$-cycle link of $p$ in the fiber
+triangulation $\varphi_0$ acts by the half-turn (shift $12$), i.e.\ by
+$-I$; it builds the triangulated normal disk bundle of $\hat\Gamma$ for
+each of the four constant boundary clutching rotations, including this one
+(its ``constant clutch shift $2$''), and in each case exhibits a disjoint
 simplicial push-off together with the radial PL cylinder joining it to the
-zero section, so the signed intersection chain is empty and
-$\hat\Gamma\cdot\hat\Gamma=0$.  A fiber has trivial normal bundle, so
+zero section, so the signed intersection chain is empty.  A fiber has
+trivial normal bundle, so
 $F\cdot F=0$, and a fiber meets a section transversally in one point, so
 $F\cdot\hat\Gamma=1$.
 \end{proof}
@@ -1778,7 +1819,7 @@ restricts positively to $F$ and $\hat\Gamma$ by Lemma~\ref{lem:double-form}(iv).
 \subsection{Hypotheses of the external results, discharged}
 \label{sec:external-hypotheses}
 
-The proof of Theorem~\ref{thm:exotic} uses five results from the
+The proof of Theorem~\ref{thm:exotic} uses six results from the
 literature.  Each is stated with its hypotheses, and each hypothesis is
 discharged by a statement about the audit object proved in this article.
 No comparison with any other author's construction enters.
@@ -1803,13 +1844,26 @@ No comparison with any other author's construction enters.
  a symplectic manifold with a form agreeing with the old one away from the
  torus.  Hypotheses discharged in Lemma~\ref{lem:double-form}(v) and
  Theorem~\ref{thm:framing}: Lagrangian tori, Lagrangian-framed slopes.
-\item[Ho--Li \cite{HoLi}.] Luttinger surgery preserves the symplectic
- Kodaira dimension.  Hypothesis: the surgery is Luttinger
- (Corollary~\ref{cor:Z-symplectic}).
-\item[Li \cite{Li}.] The symplectic Kodaira dimension of a closed
- symplectic 4-manifold is a diffeomorphism invariant, equal to $-\infty$
- exactly for rational and ruled manifolds.  Hypothesis: a closed symplectic
- 4-manifold (Corollary~\ref{cor:Z-symplectic}).
+\item[{Ho--Li \cite[Theorem~1.1]{HoLi}.}] Luttinger surgery preserves the
+ symplectic Kodaira dimension.  The surgery there is the one of
+ \cite[Section~2.1]{HoLi}, which follows \cite{ADK}, performed on a
+ Lagrangian torus of a closed symplectic 4-manifold.  Hypotheses discharged
+ in Corollary~\ref{cor:Z-symplectic}: each of the four surgeries is a
+ Luttinger surgery in the sense of \cite[Definition~2.1]{ADK} on a
+ Lagrangian torus of the closed symplectic manifold produced by the
+ previous one.
+\item[{Liu \cite{Liu}, as stated in \cite[Theorem~2.4(2)]{LiClay}.}] A
+ minimal closed symplectic 4-manifold has Kodaira dimension $-\infty$ only
+ if it is rational or ruled, where rational and ruled are defined by the
+ underlying smooth manifold ($S^2\times S^2$, $\CP^2\#k\,\overline{\CP}{}^2$,
+ or an $S^2$-bundle over a surface blown up $k\ge0$ times).  Hypothesis:
+ minimality, discharged for $(\hat R,\hat\omega_K)$ in Step~1 of the proof
+ below by asphericity.
+\item[{Li \cite{Li}, \cite[p.~251]{LiClay}.}] The Kodaira dimension of a
+ closed symplectic 4-manifold depends only on the oriented diffeomorphism
+ type: two symplectic forms on one closed oriented 4-manifold, both
+ compatible with its orientation, have the same $\kappa$.  Hypothesis: a
+ common orientation, arranged in Step~3 of the proof below.
 \end{description}
 
 \begin{proposition}[topology of $Z_{\mathrm{aud}}$]\label{prop:Z-topology}
@@ -1839,17 +1893,57 @@ $Z_{\mathrm{aud}}\cong S^2\times S^2$.
 \begin{proof}[Proof of Theorem~\ref{thm:exotic}]
 Symplectic and homeomorphic to $S^2\times S^2$ by
 Corollary~\ref{cor:Z-symplectic} and Proposition~\ref{prop:Z-topology}.
-For non-diffeomorphism: $\hat R$ is a surface bundle with aspherical fiber
-and base, hence aspherical, so it contains no essential sphere; a
+For non-diffeomorphism we use the symplectic Kodaira dimension $\kappa$ of
+\cite{Li}: for a minimal closed symplectic 4-manifold $(M,\omega)$ with
+canonical class $K_\omega$, $\kappa(M,\omega)=-\infty$ if and only if
+$K_\omega\cdot[\omega]<0$ or $K_\omega^2<0$
+\cite[Definition~2.2]{LiClay}.  Throughout, a manifold is oriented and its
+symplectic forms are compatible with that orientation.
+
+\emph{Step 1: $\kappa(\hat R,\hat\omega_K)\ne-\infty$.}  $\hat R$ is a
+surface bundle with aspherical fiber and base, hence aspherical.  A
 symplectic 4-manifold with $\pi_2=0$ is minimal (an exceptional sphere
-would be null-homotopic, hence of square $0$, not $-1$) and is neither
-rational nor ruled (those have $\pi_2\ne0$).  By \cite{Li},
-$\kappa(\hat R,\hat\omega_K)\ne-\infty$.  By \cite{HoLi}, each of the four
-Luttinger surgeries preserves $\kappa$, so $\kappa(Z_{\mathrm{aud}},\hat\omega)\ne-\infty$.
-Since $S^2\times S^2$ is rational, every symplectic form on it has
-$\kappa=-\infty$, and by \cite{Li} $\kappa$ depends only on the
-diffeomorphism type.  Hence $Z_{\mathrm{aud}}$ is not diffeomorphic to
-$S^2\times S^2$.
+would be null-homotopic, hence null-homologous, of square $0$, not $-1$)
+and is neither rational nor ruled: each of those contains an embedded
+sphere that is homologically nonzero (a factor sphere, a line, an
+exceptional sphere, or a fiber of an $S^2$-bundle, which meets a section
+once), so has $\pi_2\ne0$.  By Liu's theorem
+\cite{Liu}, \cite[Theorem~2.4(2)]{LiClay}, a minimal symplectic 4-manifold
+with $\kappa=-\infty$ is rational or ruled.  Hence
+$\kappa(\hat R,\hat\omega_K)\ne-\infty$.
+
+\emph{Step 2: $\kappa(Z_{\mathrm{aud}},\hat\omega)\ne-\infty$.}  By
+Corollary~\ref{cor:Z-symplectic}, $(Z_{\mathrm{aud}},\hat\omega)$ is
+obtained from $(\hat R,\hat\omega_K)$ by four successive Luttinger
+surgeries, each on a Lagrangian torus of the closed symplectic 4-manifold
+produced by the previous one.  Each preserves $\kappa$
+\cite[Theorem~1.1]{HoLi}.
+
+\emph{Step 3: a pulled-back product form.}  Suppose
+$\psi\colon Z_{\mathrm{aud}}\to S^2\times S^2$ were a diffeomorphism.
+Orient $Z_{\mathrm{aud}}$ by $\hat\omega$ and $S^2\times S^2$ as a product
+of oriented spheres.  If $\psi$ reverses orientation, replace it by
+$(r\times\mathrm{id})\circ\psi$ with $r$ a reflection of $S^2$; so
+$\psi$ may be taken orientation-preserving.  Let
+$\omega_{a,b}=a\,\mathrm{pr}_1^*\sigma+b\,\mathrm{pr}_2^*\sigma$
+($a,b>0$, $\sigma$ an area form of total area $1$ on $S^2$), a symplectic
+form on $S^2\times S^2$ compatible with its orientation.  Then
+$\psi^*\omega_{a,b}$ is a symplectic form on $Z_{\mathrm{aud}}$ compatible
+with the $\hat\omega$-orientation, and
+$\kappa(Z_{\mathrm{aud}},\psi^*\omega_{a,b})=\kappa(S^2\times S^2,\omega_{a,b})$
+since $\psi$ is a symplectomorphism.  The latter is $-\infty$ by the
+definition: the intersection form of $S^2\times S^2$ is even, so no class
+has square $-1$ and the manifold is minimal; and the canonical class of the
+product form evaluates to $-\chi(S^2)=-2$ on each factor sphere, so
+$K\cdot[\omega_{a,b}]=-2a-2b<0$.
+
+\emph{Step 4.}  $\hat\omega$ and $\psi^*\omega_{a,b}$ are symplectic forms
+on $Z_{\mathrm{aud}}$ compatible with one orientation, so
+$\kappa(Z_{\mathrm{aud}},\hat\omega)=\kappa(Z_{\mathrm{aud}},\psi^*\omega_{a,b})$
+by \cite{Li}, \cite[p.~251]{LiClay}: the Kodaira dimension depends only on
+the oriented diffeomorphism type.  Steps~2 and~3 make the two sides
+$\ne-\infty$ and $=-\infty$.  Hence no such $\psi$ exists, and
+$Z_{\mathrm{aud}}$ is not diffeomorphic to $S^2\times S^2$.
 \end{proof}
 
 \begin{remark}[what the theorem does and does not say]
@@ -1944,8 +2038,9 @@ boundary involution $\sigma_{\mathrm{aud}}$ and descending that form gives
 Theorem~\ref{thm:exotic}: $Z_{\mathrm{aud}}$ is a closed symplectic
 four-manifold homeomorphic but not diffeomorphic to $S^2\times S^2$.  The
 separation between finite derivation, geometric conversion, symplectic
-framing, and doubling is the article's contribution; after simple
-connectivity, every step is a citation with its hypotheses discharged.
+framing, and doubling is the article's contribution; the final
+classification and non-diffeomorphism deductions use named external
+theorems whose hypotheses are discharged in the text.
 
 Whether Wuebben's text and diagrams specify the same marked smooth surgery
 data, and whether his double coincides with $Z_{\mathrm{aud}}$, remain
@@ -2043,6 +2138,20 @@ Asian J. Math. \textbf{16} (2012), 299--318.
 T.-J.~Li,
 \emph{Symplectic 4-manifolds with Kodaira dimension zero},
 J. Differential Geom. \textbf{74} (2006), 321--352.
+
+\bibitem{LiClay}
+T.-J.~Li,
+\emph{The Kodaira dimension of symplectic 4-manifolds},
+in: Floer homology, gauge theory, and low-dimensional topology
+(D.~A.~Ellwood, P.~S.~Ozsv\'ath, A.~I.~Stipsicz, Z.~Szab\'o, eds.),
+Clay Math. Proc. \textbf{5}, Amer. Math. Soc., Providence, RI, 2006,
+pp.~249--261.
+
+\bibitem{Liu}
+A.-K.~Liu,
+\emph{Some new applications of general wall crossing formula, Gompf's
+conjecture and its applications},
+Math. Res. Lett. \textbf{3} (1996), 569--585.
 
 \bibitem{ConstantinKolev}
 A.~Constantin and B.~Kolev,

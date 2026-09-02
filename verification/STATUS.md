@@ -48,7 +48,7 @@ each with 3 generators and 80 relators, present the trivial group.
 The double `Z_aud = V_aud u_{sigma_aud} V_aud` along the intrinsic boundary
 involution `sigma_aud[z,t] = [phi_0 z, 1-t]` (Run 72) is a closed symplectic
 4-manifold homeomorphic but not diffeomorphic to `S^2 x S^2` (Theorem A' of
-the manuscript; Runs 73--75). Its machine-checked dependency chain,
+the manuscript; Runs 73--76). Its machine-checked dependency chain,
 `luttinger/downstream_chain.py`, has no assumption item and no item about
 any other author's construction; both of its checkers refuse either.
 

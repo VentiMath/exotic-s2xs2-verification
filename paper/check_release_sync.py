@@ -272,9 +272,9 @@ def main() -> None:
     require(main_pdf_text, PDF_TITLE, "current title in main PDF")
     require(supp_pdf_text, PDF_TITLE, "current title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 28 or pdf_pages(SUPP_PDF) != 17:
-        fail("PDF page counts are not main=28 and supplement=17")
-    require(metadata, "28 pages, four figures, and two tables", "arXiv counts")
+    if pdf_pages(MAIN_PDF) != 29 or pdf_pages(SUPP_PDF) != 17:
+        fail("PDF page counts are not main=29 and supplement=17")
+    require(metadata, "29 pages, four figures, and two tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 4:
         fail("main.tex does not contain exactly four figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
@@ -356,7 +356,7 @@ def main() -> None:
 
     if not args.final:
         print("PASS: the working revision is internally synchronized")
-        print("  main=28 pages/4 figures/2 tables; supplement=17 pages")
+        print("  main=29 pages/4 figures/2 tables; supplement=17 pages")
         print("  complete replay suite passes; working manifest/tree pins agree")
         print("  fresh source archive matches main.tex and both committed PDFs")
         print(f"  candidate source SHA-256: {candidate_source_digest}")

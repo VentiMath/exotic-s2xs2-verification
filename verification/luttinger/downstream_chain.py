@@ -307,24 +307,35 @@ EXTERNAL = [
     },
     {
         "id": "E_kodaira",
-        "name": "Symplectic Kodaira dimension (Li) and its -infinity "
-                "characterization (Liu, Li)",
-        "statement": "quoted (Ho--Li 2012, p. 1): the Kodaira dimension "
-                     "kappa(X, omega) of a symplectic 4-manifold is defined "
-                     "from K_omega^2 and K_omega.[omega] of a minimal model, "
-                     "with kappa = -infinity iff K^2 < 0 or K.[omega] < 0 for "
-                     "the minimal model; \"According to [Li06], kappa(X, "
-                     "omega) is independent of the choice of symplectic form "
-                     "omega and hence is denoted by kappa(X).\"  For a "
-                     "minimal symplectic 4-manifold kappa = -infinity iff it "
-                     "is rational or ruled (Liu 1996, Li 2006).  Rational "
-                     "and ruled 4-manifolds (CP^2, S^2-bundles over surfaces, "
-                     "and their blow-ups) have pi_2 != 0.",
-        "source": "T.-J. Li, J. Differential Geom. 74 (2006); A.-K. Liu, "
-                  "Math. Res. Lett. 3 (1996); C.-I. Ho and T.-J. Li, Asian "
-                  "J. Math. 16 (2012), p. 1",
-        "hypotheses": ["X closed symplectic; independence of omega is over "
-                       "forms inducing the given orientation"],
+        "name": "Symplectic Kodaira dimension (Li), its -infinity "
+                "characterization (Liu), and its oriented-diffeomorphism "
+                "invariance (Li)",
+        "statement": "Definition (Li, Clay Math. Proc. 5 (2006), Definition "
+                     "2.2): for a minimal closed symplectic 4-manifold "
+                     "(M, omega) with canonical class K, kappa(M, omega) = "
+                     "-infinity if K.[omega] < 0 or K.K < 0, 0 if both vanish, "
+                     "1 if K.[omega] > 0 and K.K = 0, 2 if both are positive; "
+                     "for a non-minimal manifold it is that of any symplectic "
+                     "minimal model.  Theorem 2.4(2) there (attributed to "
+                     "Liu 1996): quoted, \"(M, omega) has Kodaira dimension "
+                     "-infinity if and only if it is rational or ruled\", "
+                     "rational meaning the underlying smooth manifold is "
+                     "S^2 x S^2 or CP^2 # k(-CP^2), ruled meaning an S^2-bundle "
+                     "over a surface blown up k >= 0 times; all have pi_2 != 0 "
+                     "since each contains a homologically nonzero embedded "
+                     "sphere.  Invariance (p. 251): quoted, \"the Kodaira "
+                     "dimension of (M, omega) only depends on the oriented "
+                     "diffeomorphism type of M, i.e. if omega' is another "
+                     "symplectic form on M compatible with the orientation of "
+                     "M, then kappa(M, omega) = kappa(M, omega')\".",
+        "source": "T.-J. Li, The Kodaira dimension of symplectic "
+                  "4-manifolds, Clay Math. Proc. 5 (2006), 249--261, "
+                  "Definition 2.2, Theorem 2.4(2), p. 251; T.-J. Li, J. "
+                  "Differential Geom. 74 (2006), 321--352; A.-K. Liu, Math. "
+                  "Res. Lett. 3 (1996), 569--585",
+        "hypotheses": ["M closed oriented; every symplectic form compatible "
+                       "with that orientation; minimality for the -infinity "
+                       "characterization"],
     },
     {
         "id": "E_ho_li",
@@ -332,9 +343,10 @@ EXTERNAL = [
         "statement": "quoted (Ho--Li 2012, Theorem 1.1): \"The Luttinger "
                      "surgery preserves the symplectic Kodaira dimension.\"",
         "source": "C.-I. Ho and T.-J. Li, Asian J. Math. 16 (2012), "
-                  "Theorem 1.1",
-        "hypotheses": ["surgery is a Luttinger surgery on a Lagrangian torus "
-                       "of a closed symplectic 4-manifold"],
+                  "299--318, Theorem 1.1 (numbering as in arXiv:1108.0479v2)",
+        "hypotheses": ["surgery is the Luttinger surgery of Ho--Li Section "
+                       "2.1 (Auroux--Donaldson--Katzarkov), on a Lagrangian "
+                       "torus of a closed oriented symplectic 4-manifold"],
     },
 ]
 
@@ -516,15 +528,23 @@ STEPS = [
         "proof": "R_hat is a surface bundle with genus-2 fiber and genus-2 "
                  "base, hence aspherical, hence minimal (an exceptional "
                  "sphere would be null-homotopic, of square 0, not -1) and "
-                 "neither rational nor ruled (those have pi_2 != 0); so "
-                 "kappa(R_hat) != -infinity.  Luttinger surgery preserves "
-                 "kappa (Ho--Li), so kappa(Z_aud) != -infinity.  If "
+                 "neither rational nor ruled (those have pi_2 != 0); by "
+                 "Liu's theorem (E_kodaira, Theorem 2.4(2)) "
+                 "kappa(R_hat, omega_hat_K) != -infinity.  Each of the four "
+                 "Luttinger surgeries preserves kappa (Ho--Li), so "
+                 "kappa(Z_aud, omega_hat) != -infinity.  If "
                  "psi: Z_aud -> S^2 x S^2 were a diffeomorphism, composing "
                  "with a reflection of one factor if necessary makes it "
-                 "orientation-preserving; pulling back a product form gives "
-                 "a symplectic form on Z_aud inducing its orientation with "
-                 "kappa = kappa(S^2 x S^2) = -infinity (rational), "
-                 "contradicting the independence of kappa from the form.",
+                 "orientation-preserving from the omega_hat-orientation; "
+                 "the pullback of a product form omega_{a,b} is then a "
+                 "symplectic form on Z_aud compatible with that orientation, "
+                 "and kappa(Z_aud, psi^* omega_{a,b}) = kappa(S^2 x S^2, "
+                 "omega_{a,b}) = -infinity by the definition (S^2 x S^2 is "
+                 "minimal, its intersection form being even, and K.[omega_"
+                 "{a,b}] = -2a - 2b < 0 since K evaluates to -2 on each "
+                 "factor sphere).  Two symplectic forms on Z_aud compatible "
+                 "with one orientation have equal kappa (E_kodaira, p. 251), "
+                 "contradiction.",
         "uses": ["S5_Z_symplectic", "P_audit_double", "E_asphericity",
                  "E_kodaira", "E_ho_li", "C_orientation_reversal"],
     },
