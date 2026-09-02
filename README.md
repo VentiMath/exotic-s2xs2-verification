@@ -1,21 +1,31 @@
-# Certificate-checked simple connectivity of a surface-bundle surgery manifold
+# An exotic S²×S² from a certificate-checked surface-bundle surgery manifold
 
 This repository contains the manuscript, supplement, and proof artifacts for
-an explicit marked surface-bundle surgery manifold `V_aud`.  Its primary,
-source-independent result is
+an explicit marked surface-bundle surgery manifold `V_aud` and its double.
+Its primary, source-independent result (Theorem A′, working revision after
+v2.3.0) is
+
+> `Z_aud = V_aud ∪_{σ_aud} V_aud` is a closed symplectic 4-manifold that is
+> homeomorphic but not diffeomorphic to `S²×S²`,
+
+resting on
 
 > `pi_1(V_aud) = 1`, with `chi(V_aud)=2`, `H_2(V_aud)=Z`, spinness, a
 > primitive square-zero genus-two fiber, a relative section, and a symplectic
-> structure.
+> structure,
+
+an intrinsic boundary involution `σ_aud`, the descent of the symplectic form
+to the double, and published theorems (Freedman; Auroux–Donaldson–Katzarkov;
+Ho–Li; Li) whose hypotheses are discharged in the text.
 
 The construction was motivated by
 
 > B. J. Wuebben, *An exotic S²×S² and an exotic ℂP²#C̄P²*, arXiv:2608.17267v1,
 
 which builds on Lidman–Piccirillo, arXiv:2505.14387v1.  The comparison
-`V_aud ≅ V` is not a theorem of the manuscript.  The supplement preserves an
-open fourteen-clause checklist for that comparison and the historical
-conditional downstream chain.  Wuebben's own code and certificates are at
+`V_aud ≅ V` is not a theorem of the manuscript and no theorem depends on it.
+The supplement preserves an open fourteen-clause attribution checklist for
+that comparison and the historical transfer chain.  Wuebben's own code and certificates are at
 [bwuebben/exotic-s2xs2](https://github.com/bwuebben/exotic-s2xs2); nothing
 here is derived from that repository except where explicitly cited.
 
@@ -27,8 +37,9 @@ of the stored derivations assumes that at least one checker conforms to that
 specification.  A separate audit-model theorem identifies the fixed
 `(+, +)` presentation with the explicitly defined manifold `V_aud`, which is
 therefore simply connected and has the intrinsic topology listed above; the
-other three sign sheets are algebraic robustness checks.  The main paper does
-not assert the proposed exotic-manifold consequences.
+other three sign sheets are algebraic robustness checks.  The main paper then
+proves Theorem A′ about the double `Z_aud`; it does not assert anything about
+Wuebben's own manifolds.
 
 The proof that `pi_1(V_aud)=1` uses only the product-framed filling.  The
 separate product-to-Lagrangian framing theorem is not an input to simple
@@ -62,9 +73,11 @@ certificate has SHA-256
 `73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca`.
 
 **What this repository is not:** a verification or refutation of Wuebben's
-fixed manifold; an unconditional proof of the proposed exotic-manifold
-conclusions; or a substitute for independent human review of one certificate
-checker, the PL conversion, and the symplectic framing argument.
+fixed manifold; a proof of his Theorems B and C (the quotient and the
+regluing, which need a free boundary involution and are outside the
+existence route); or a substitute for independent human review of one
+certificate checker, the PL conversion, the symplectic framing argument, and
+the descent of the form to the double.
 
 **Bounded external-review packets.** The remaining reviews are specified in
 [`verification/luttinger/CHECKER_AUDIT_GUIDE.md`](verification/luttinger/CHECKER_AUDIT_GUIDE.md)

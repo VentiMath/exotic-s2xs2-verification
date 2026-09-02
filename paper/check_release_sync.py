@@ -23,8 +23,11 @@ from datetime import date
 from pathlib import Path
 
 
-TITLE_FRAGMENT = "Certificate-checked simple connectivity"
-PDF_TITLE = "Certificate-checked simple connectivity of a surface-bundle surgery manifold"
+# The title carries TeX math; text files and PDFs are checked on its math-free
+# tail, and CITATION.cff on the exact TeX form used in ARXIV_SUBMISSION.md.
+TITLE_FRAGMENT = "from a certificate-checked surface-bundle surgery manifold"
+PDF_TITLE = TITLE_FRAGMENT
+CFF_TITLE = "An exotic $S^2 \\times S^2$ from a certificate-checked surface-bundle surgery manifold"
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper"
 ARXIV = ROOT / "ARXIV_SUBMISSION.md"
@@ -269,9 +272,9 @@ def main() -> None:
     require(main_pdf_text, PDF_TITLE, "current title in main PDF")
     require(supp_pdf_text, PDF_TITLE, "current title in supplement PDF")
 
-    if pdf_pages(MAIN_PDF) != 22 or pdf_pages(SUPP_PDF) != 17:
-        fail("PDF page counts are not main=22 and supplement=17")
-    require(metadata, "22 pages, four figures, and two tables", "arXiv counts")
+    if pdf_pages(MAIN_PDF) != 28 or pdf_pages(SUPP_PDF) != 17:
+        fail("PDF page counts are not main=28 and supplement=17")
+    require(metadata, "28 pages, four figures, and two tables", "arXiv counts")
     if main_tex.count(r"\begin{figure}") != 4:
         fail("main.tex does not contain exactly four figure environments")
     table_count = main_tex.count(r"\begin{table}") + main_tex.count(
@@ -305,9 +308,17 @@ def main() -> None:
 
     require(
         metadata,
-        "The primary result is the source-independent theorem $\\pi_1(V_aud)=1$.",
+        "The primary result is Theorem A'",
         "primary-result statement in arXiv comments",
     )
+    require(
+        main_tex,
+        "homeomorphic but not diffeomorphic to $S^2\\times S^2$.\n\\end{theorem}",
+        "Theorem A' stated in the main paper",
+    )
+    require(main_tex, "\\label{lem:double-form}", "descent lemma in the main paper")
+    for key in ("Freedman", "Luttinger", "HoLi", "Li", "Thurston"):
+        require(main_tex, "\\bibitem{" + key + "}", f"main bibliography entry {key}")
     require(
         main_tex,
         r"P_{+,+}\;\cong\;\pione(V_{\mathrm{aud}})",
@@ -345,7 +356,7 @@ def main() -> None:
 
     if not args.final:
         print("PASS: the working revision is internally synchronized")
-        print("  main=22 pages/4 figures/2 tables; supplement=17 pages")
+        print("  main=28 pages/4 figures/2 tables; supplement=17 pages")
         print("  complete replay suite passes; working manifest/tree pins agree")
         print("  fresh source archive matches main.tex and both committed PDFs")
         print(f"  candidate source SHA-256: {candidate_source_digest}")
@@ -398,7 +409,7 @@ def main() -> None:
     # and placeholder checks miss: a stale CFF title/version, a README that
     # still calls the previous tag newest, an old normative-root sentence,
     # or an old self-citation/recovery command can no longer pass final mode.
-    if folded_cff_field(citation, "title") != PDF_TITLE:
+    if folded_cff_field(citation, "title") != CFF_TITLE:
         fail("CITATION.cff title is not the exact manuscript title")
     abstract_match = re.search(
         r"\*\*Abstract\*\*\s*```text\s*(.*?)\s*```",

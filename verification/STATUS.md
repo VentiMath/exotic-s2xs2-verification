@@ -45,6 +45,13 @@ is proved with no clause of the Source Comparison Hypotheses entering the
 argument. The finite step is syntactic: four explicitly named presentations,
 each with 3 generators and 80 relators, present the trivial group.
 
+The double `Z_aud = V_aud u_{sigma_aud} V_aud` along the intrinsic boundary
+involution `sigma_aud[z,t] = [phi_0 z, 1-t]` (Run 72) is a closed symplectic
+4-manifold homeomorphic but not diffeomorphic to `S^2 x S^2` (Theorem A' of
+the manuscript; Runs 73--75). Its machine-checked dependency chain,
+`luttinger/downstream_chain.py`, has no assumption item and no item about
+any other author's construction; both of its checkers refuse either.
+
 Evidence:
 
 | Claim | Artifact |
@@ -72,9 +79,14 @@ Comparison Hypotheses D1--D14. The manuscript tabulates each clause against a
 specific citation and records which clauses retain diagrammatic or
 smooth/framing content rather than being forced by the pinned text.
 
-Every conclusion about exoticity depends on both `pi_1(V_aud)=1` and the
-Source Comparison Hypotheses. Two results depend on neither the source nor
-the seeded chain: the presentation-correctness claims are pure algebra.
+Theorem A' about `Z_aud` depends on `pi_1(V_aud)=1`, the intrinsic doubling,
+and named published theorems, and on no Source Comparison Hypothesis. What
+remains conditional on D1--D14 is attribution -- whether `V_aud` and `Z_aud`
+are Wuebben's `V` and his double -- together with the transfer of his
+Theorems B and C, which need a free boundary involution and are outside the
+existence route (`luttinger/attribution/`). Two results depend on neither the
+source nor the seeded chain: the presentation-correctness claims are pure
+algebra.
 
 Frozen dependency artifacts retain the legacy node name
 `A_source_formalization_D`; it denotes the same conjunction as D1--D14.
@@ -83,8 +95,8 @@ Frozen dependency artifacts retain the legacy node name
 
 * The comparison with `arXiv:2608.17267v1` is conditional on D1--D14, and
   several of those clauses are diagrammatic or smooth rather than textual.
-* The downstream corollaries are additionally relative to their cited
-  external results.
+* Theorem A' and the transferred corollaries are additionally relative to
+  their cited external results, each stated with its hypotheses.
 * Both filled-group checkers were produced within this project. They have not
   received an independent human line-by-line audit.
 * The framing-robustness scan is auxiliary. All sampled shifted presentations

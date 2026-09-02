@@ -68,7 +68,7 @@ All fields below are ASCII, as required by arXiv.
 **Title**
 
 ```text
-Certificate-checked simple connectivity of a surface-bundle surgery manifold
+An exotic $S^2 \times S^2$ from a certificate-checked surface-bundle surgery manifold
 ```
 
 **Authors**
@@ -80,13 +80,13 @@ John Clyde (VentiMath)
 **Abstract**
 
 ```text
-We define a compact marked surface-bundle surgery manifold $V_{aud}$ and prove that $\pi_1(V_{aud})=1$. Four explicit finite presentations are trivial under a published derivation-certificate specification; a geometric reconstruction identifies one of them with $\pi_1(V_{aud})$. The same construction gives $\chi(V_{aud})=2$, integral homology concentrated in degrees zero and two, spinness, a primitive square-zero genus-two fiber, and a surviving relative section. A separate framing theorem identifies the product push-offs used in the definition with canonical Lagrangian-framing classes, so standard Luttinger surgery gives a symplectic structure on $V_{aud}$. Automated certificate replay assumes that at least one checker conforms to the mathematical specification; the two shipped implementations have not received an independent human line-by-line audit. The construction was motivated by Wuebben's proposed exotic $S^2 \times S^2$, but identifying $V_{aud}$ with Wuebben's fixed member remains an open comparison problem recorded clause by clause in the supplement. No exotic-manifold conclusion is asserted here.
+We define a compact marked surface-bundle surgery manifold $V_{aud}$, prove that $\pi_1(V_{aud})=1$, and double it along an explicit involution $\sigma_{aud}$ of its boundary. The closed manifold $Z_{aud} = V_{aud} \cup_{\sigma_{aud}} V_{aud}$ is simply connected and spin with intersection form $H$, hence homeomorphic to $S^2 \times S^2$ by Freedman; it is a closed genus-two surface bundle over a genus-two surface surgered along four Lagrangian tori, hence symplectic with symplectic Kodaira dimension at least zero by Auroux-Donaldson-Katzarkov, Ho-Li, and Li; hence it is not diffeomorphic to $S^2 \times S^2$. Every step after $\pi_1(V_{aud})=1$ is a citation whose hypotheses are discharged in the text. Simple connectivity itself rests on four explicit finite presentations, trivial under a published derivation-certificate specification, one of which a geometric reconstruction identifies with $\pi_1(V_{aud})$. Automated certificate replay assumes that at least one checker conforms to the mathematical specification; the two shipped implementations have not received an independent human line-by-line audit. The construction was motivated by Wuebben's proposed exotic $S^2 \times S^2$; whether $Z_{aud}$ is his manifold is an attribution question, recorded clause by clause as checklist D1--D14 in the supplement, on which no theorem here depends.
 ```
 
 **Comments**
 
 ```text
-22 pages, four figures, and two tables, with a 17-page mathematical and computational supplement available as a release asset at https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0 (archived at https://doi.org/10.5281/zenodo.22184725). The primary result is the source-independent theorem $\pi_1(V_aud)=1$. The comparison with arXiv:2608.17267v1 remains open and is recorded as checklist D1--D14 in the supplement; no exotic-manifold conclusion is asserted.
+28 pages, four figures, and two tables, with a 17-page mathematical and computational supplement available as a release asset at https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0 (archived at https://doi.org/10.5281/zenodo.22184725). The primary result is Theorem A': the double $Z_{aud}$ of the certificate-checked simply connected surgery manifold $V_{aud}$ along its intrinsic boundary involution is a closed symplectic 4-manifold homeomorphic but not diffeomorphic to $S^2 \times S^2$. The comparison with arXiv:2608.17267v1 is attribution, recorded as checklist D1--D14 in the supplement; no theorem depends on it.
 ```
 
 **Classification**

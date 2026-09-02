@@ -1,4 +1,4 @@
-% Certificate-checked simple connectivity of a surface-bundle surgery
+% An exotic S^2 x S^2 from a certificate-checked surface-bundle surgery
 % manifold -- source-independent computer-assisted topology paper.
 %
 % Numbers are taken from the imported certificates in this repository
@@ -11,10 +11,10 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Certificate-checked simple connectivity of a surface-bundle surgery manifold},
+  pdftitle={An exotic S^2 x S^2 from a certificate-checked surface-bundle surgery manifold},
   pdfauthor={John Clyde},
   pdfsubject={Computer-assisted geometric topology and certificate-checked group presentations},
-  pdfkeywords={geometric topology, 4-manifolds, fundamental group, Luttinger surgery, proof certificates, computer-assisted proof}
+  pdfkeywords={geometric topology, 4-manifolds, exotic smooth structures, fundamental group, Luttinger surgery, proof certificates, computer-assisted proof}
 }
 % URLs wrap at slashes and dots only, never between the scheme and its
 % slashes, and never with an inserted hyphen.
@@ -55,35 +55,41 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
 
-\title{Certificate-checked simple connectivity of a
+\title{An exotic $S^2\times S^2$ from a certificate-checked\\
 surface-bundle surgery manifold}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
-\date{Version 2.3.0 --- 30 August 2026\\
-\small \url{https://doi.org/10.5281/zenodo.22184725}}
+\date{Working revision after v2.3.0 --- 2 September 2026\\
+\small Artifact base: \url{https://doi.org/10.5281/zenodo.22184725}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 We define a compact marked surface-bundle surgery manifold
-$V_{\mathrm{aud}}$ and prove that $\pione(V_{\mathrm{aud}})=1$.
-Four explicit finite presentations are trivial under a published
-derivation-certificate specification; a geometric reconstruction identifies
-one of them with $\pione(V_{\mathrm{aud}})$.  The same construction gives
-$\chi(V_{\mathrm{aud}})=2$, integral homology concentrated in degrees $0$
-and $2$, spinness, a primitive square-zero genus-two fiber, and a surviving
-relative section.  A separate framing theorem identifies the product
-push-offs used in the definition with canonical Lagrangian-framing classes,
-so standard Luttinger surgery gives a symplectic structure on
-$V_{\mathrm{aud}}$.  Automated certificate replay assumes that at least one
-checker conforms to the mathematical specification; the two shipped
-implementations have not received an independent human line-by-line audit.
-The construction was motivated by Wuebben's proposed exotic
-$S^2\times S^2$, but identifying $V_{\mathrm{aud}}$ with Wuebben's fixed
-member remains an open comparison problem, recorded clause by clause in the
-supplement.  No exotic-manifold conclusion is asserted here.
+$V_{\mathrm{aud}}$, prove that $\pione(V_{\mathrm{aud}})=1$, and double it
+along an explicit involution $\sigma_{\mathrm{aud}}$ of its boundary.  The
+closed manifold
+$Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}}$
+is simply connected and spin with intersection form $H$, hence homeomorphic
+to $S^2\times S^2$ by Freedman; it is a closed genus-two surface bundle over
+a genus-two surface surgered along four Lagrangian tori, hence symplectic
+with symplectic Kodaira dimension at least zero by
+Auroux--Donaldson--Katzarkov, Ho--Li, and Li; hence it is not diffeomorphic
+to $S^2\times S^2$.  Every step after $\pione(V_{\mathrm{aud}})=1$ is a
+citation whose hypotheses are discharged in the text.  Simple connectivity
+itself rests on four explicit finite presentations, trivial under a
+published derivation-certificate specification, one of which a geometric
+reconstruction identifies with $\pione(V_{\mathrm{aud}})$.  Automated
+certificate replay assumes that at least one checker conforms to the
+mathematical specification; the two shipped implementations have not
+received an independent human line-by-line audit.  The construction was
+motivated by Wuebben's proposed exotic $S^2\times S^2$; whether
+$Z_{\mathrm{aud}}$ is his manifold is an attribution question, recorded
+clause by clause as checklist D1--D14 in the supplement, on which no
+theorem here depends.
 \end{abstract}
 
 \noindent\textit{2020 Mathematics Subject Classification.}
@@ -91,30 +97,35 @@ supplement.  No exotic-manifold conclusion is asserted here.
 
 \section{Introduction}
 
-This paper defines a compact marked surface-bundle surgery manifold
-$V_{\mathrm{aud}}$ and proves
-\[
-             \pione(V_{\mathrm{aud}})=1.
-\]
-The proof has two independent-looking but logically consecutive parts.
-Finite derivation certificates first prove that four explicit presentations
-are trivial.  A geometric argument then reconstructs the marked bundle,
-torus exterior, peripheral curves, and drilled transport relation, and
-identifies one fixed presentation with $\pione(V_{\mathrm{aud}})$.  The
-other three presentations are algebraic robustness checks, not additional
-geometric manifolds.  Elementary topology and a separate framing theorem
-then give the intrinsic homology, spin, fiber, section, and symplectic
-statements in Theorem~\ref{thm:audit-manifold}.
+This paper constructs a closed symplectic four-manifold homeomorphic but
+not diffeomorphic to $S^2\times S^2$.  The construction has three layers.
+A compact marked surface-bundle surgery manifold $V_{\mathrm{aud}}$ is
+defined from explicit data (Definition~\ref{def:Vaudit}) and proved simply
+connected: finite derivation certificates first prove that four explicit
+presentations are trivial, and a geometric argument then reconstructs the
+marked bundle, torus exterior, peripheral curves, and drilled transport
+relation, and identifies one fixed presentation with
+$\pione(V_{\mathrm{aud}})$.  Elementary topology and a separate framing
+theorem give the intrinsic homology, spin, fiber, section, and symplectic
+statements of Theorem~\ref{thm:audit-manifold}.  Finally
+$V_{\mathrm{aud}}$ is doubled along an involution $\sigma_{\mathrm{aud}}$
+of its boundary defined from the same data, and the double
+$Z_{\mathrm{aud}}$ is shown to be homeomorphic to $S^2\times S^2$ and
+symplectic of nonnegative Kodaira dimension (Theorem~\ref{thm:exotic}).
+The other three presentations are algebraic robustness checks, not
+additional geometric manifolds.
 
 The construction was motivated by the disputed fundamental-group step in
-Wuebben's proposed exotic-manifold construction \cite{Wuebben}.  Simple
-connectivity of Wuebben's piece $V$ is an input to the proposed exotic
-$S^2\times S^2$, quotient, and $\CPbar$ conclusions.  A contrary computation
-attributed to Lidman and Piccirillo has been reported, but no presentation or
-nontriviality witness for it is publicly available in the materials examined
-here.  This paper does not resolve that dispute: it proves a theorem about
-the separately defined $V_{\mathrm{aud}}$ and records the remaining
-source-to-audit comparison as an open checklist in the supplement.
+Wuebben's proposed exotic-manifold construction \cite{Wuebben}, which
+builds on the surgery scheme of Lidman and Piccirillo
+\cite{LidmanPiccirillo}.  A contrary computation attributed to Lidman and
+Piccirillo has been reported, but no presentation or nontriviality witness
+for it is publicly available in the materials examined here.  This paper
+does not adjudicate that dispute.  Its theorems concern the separately
+defined $V_{\mathrm{aud}}$ and $Z_{\mathrm{aud}}$; whether these coincide
+with Wuebben's $V$ and his double is an attribution question, recorded as
+the open checklist D1--D14 in the supplement, and no theorem here has a
+clause of that checklist among its hypotheses.
 
 Triviality is deliberately not used as evidence that a proposed
 source-to-presentation dictionary is correct.  Wuebben's public
@@ -126,11 +137,12 @@ These experiments show that triviality is non-discriminating in this
 neighborhood.  They do not support the source comparison.  Instead, the
 identification of the fixed presentation with $V_{\mathrm{aud}}$ is proved
 by the geometric reconstruction in
-Sections~\ref{sec:model}--\ref{sec:peripheral}, and the further transfer to
-Wuebben remains an open comparison problem.
+Sections~\ref{sec:model}--\ref{sec:peripheral}; the transfer to Wuebben's
+member is the attribution question of Section~\ref{sec:relation}.
 
 The logical architecture is summarized below.  Solid arrows are proved in
-this article; the dashed arrow is the open comparison with Wuebben.
+this article; the dashed arrow is the attribution question, which no
+theorem here uses.
 
 \begin{figure}[!htbp]
 \centering
@@ -141,17 +153,23 @@ this article; the dashed arrow is the open comparison with Wuebben.
 \node[box,right=of cert] (geom) {marked bundle, exterior,\\periphery, and filling};
 \node[box,right=of geom] (pi) {$\pione(V_{\mathrm{aud}})=1$\\and intrinsic topology};
 \node[box,below=of geom] (frame) {product-to-\\Lagrangian framing theorem};
-\node[box,right=of frame] (symp) {symplectic\\$V_{\mathrm{aud}}$};
+\node[box,right=of frame] (double) {$\sigma_{\mathrm{aud}}$, the double
+  $Z_{\mathrm{aud}}$,\\and the descended form};
+\node[box,below=of double] (exotic) {Theorem~\ref{thm:exotic}:
+  $Z_{\mathrm{aud}}$ is\\an exotic $S^2\times S^2$};
 \node[box,below=of cert] (source) {Wuebben's fixed\\surgery member};
 \draw[->,thick] (cert)--(geom);
 \draw[->,thick] (geom)--(pi);
 \draw[->,thick] (geom)--(frame);
-\draw[->,thick] (frame)--(symp);
+\draw[->,thick] (frame)--(double);
+\draw[->,thick] (pi)--(double);
+\draw[->,thick] (double)--(exotic);
 \draw[->,dashed,thick] (source)--node[above,sloped,font=\small,
-  fill=white,inner sep=1pt]{open comparison}(geom);
+  fill=white,inner sep=1pt]{attribution}(geom);
 \end{tikzpicture}
 \caption{Dependency structure.  Certificate checking, geometric conversion,
-and symplectic framing are different evidence layers.}
+symplectic framing, and doubling are different evidence layers; the dashed
+arrow is the attribution question, which no theorem uses.}
 \label{fig:dependencies}
 \end{figure}
 \FloatBarrier
@@ -162,8 +180,8 @@ least one checker conforms to the mathematical specification; neither has
 received an independent human line-by-line audit.  The PL and symplectic
 arguments likewise await external specialist review.  These review targets
 are stated once, in Section~\ref{sec:relation}; implementation inventories,
-source-comparison clauses, and the conditional downstream history are kept
-in the companion supplement.
+the attribution checklist, and the historical transfer chain are kept in
+the companion supplement.
 
 \section{The audit manifold and principal statements}\label{sec:audit-object}
 
@@ -287,6 +305,21 @@ explicit object in Definition~\ref{def:Vaudit}.  Simple connectivity and
 the topological assertions are proved at the end of
 Section~\ref{sec:peripheral}; symplecticity is proved after the logically
 separate framing theorem in Section~\ref{sec:framing}.
+
+\begin{theorem}[an exotic $S^2\times S^2$]\label{thm:exotic}
+Let $\sigma_{\mathrm{aud}}$ be the involution $[z,t]\mapsto[\varphi_0(z),1-t]$
+of the boundary mapping torus $\partial V_{\mathrm{aud}}$
+(Lemma~\ref{lem:sigma-aud}) and
+$Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}}$.
+Then $Z_{\mathrm{aud}}$ is a closed symplectic four-manifold that is
+homeomorphic but not diffeomorphic to $S^2\times S^2$.
+\end{theorem}
+
+Theorem~\ref{thm:exotic} is proved in Section~\ref{sec:double} from
+Theorem~\ref{thm:audit-manifold}, the framing theorem, and published
+results whose hypotheses are discharged there one by one.  It is a
+statement about the object defined here; its relation to Wuebben's proposed
+manifold is discussed in Section~\ref{sec:relation} and enters no proof.
 
 \section{The finite certificate theorem}\label{sec:certificates}
 
@@ -1465,17 +1498,384 @@ above is disjoint from both surgery neighborhoods, so the resulting form
 still restricts positively to $F$.
 \end{proof}
 
-\section{Relation to Wuebben's construction and review boundary}
+\section{The audit double and the exotic $S^2\times S^2$}\label{sec:double}
+
+This section proves Theorem~\ref{thm:exotic}.  The boundary of
+$V_{\mathrm{aud}}$ is the mapping torus of the boundary monodromy.  The
+first subsection defines an involution of it from the clutching map
+$\varphi_0$ alone and records the topology of the double.  The second shows
+that the symplectic form of Lemma~\ref{lem:bundle-symplectic-form} descends
+to the double, so that the four surgeries are Luttinger surgeries on a
+closed symplectic surface bundle.  The third lists every external result
+used, with the place where its hypotheses are discharged, and assembles the
+proof.
+
+\subsection{The intrinsic boundary involution}\label{sec:sigma-aud}
+
+Write $h\colon F\to F$ for the monodromy of the boundary bundle
+$\partial R_{\mathrm{aud}}\to\partial\Sigma_{1,1}$, the commutator of
+$\varphi_0$ and $\psi_0$ determined by the oriented boundary word, and
+\[
+ M_h=(F\times[0,1])/((z,1)\sim(h(z),0))
+\]
+for its mapping torus, so that $\partial R_{\mathrm{aud}}=M_h$ with the
+base coordinate $t\in\mathbb R/\mathbb Z$.  Since both surgeries take
+place in the interior, $\partial V_{\mathrm{aud}}=M_h$ as well.
+
+\begin{lemma}[the audit boundary involution]\label{lem:sigma-aud}
+Define
+\[
+ \sigma_{\mathrm{aud}}\colon M_h\to M_h,\qquad
+ \sigma_{\mathrm{aud}}[z,t]=[\varphi_0(z),\,1-t].
+\]
+Then:
+\begin{enumerate}
+\item[(i)] $\sigma_{\mathrm{aud}}$ is well defined, and is a
+ fiber-preserving involution of $M_h$ covering the reflection
+ $t\mapsto 1-t$ of $\partial\Sigma_{1,1}$;
+\item[(ii)] $\sigma_{\mathrm{aud}}$ reverses the orientation of
+ $\partial R_{\mathrm{aud}}$;
+\item[(iii)] $\sigma_{\mathrm{aud}}$ carries each of the circles
+ $\{p\}\times S^1$ and $\{O\}\times S^1$, the boundaries of the two
+ fixed-point sections, onto itself;
+\item[(iv)] $\sigma_{\mathrm{aud}}$ fixes $[p,\tfrac12]$, $[O,\tfrac12]$,
+ $[p,0]$, and $[O,0]$; in particular it is not free.
+\end{enumerate}
+No property of $\psi_0$ beyond its being a homeomorphism fixing $p$ and $O$
+is used, and no property of $\varphi_0$ beyond its being an
+orientation-preserving involution fixing $p$ and $O$.
+\end{lemma}
+
+\begin{proof}
+(i) The only identification in $M_h$ is $(z,1)\sim(h(z),0)$.  Under the
+displayed formula, $(z,1)\mapsto(\varphi_0 z,0)$ while
+$(h z,0)\mapsto(\varphi_0 h z,1)\sim(h\varphi_0 h z,0)$.  These agree for
+every $z$ if and only if $\varphi_0=h\varphi_0 h$ as maps, that is,
+using $\varphi_0^{-1}=\varphi_0$, if and only if
+\begin{equation}\label{eq:sigma-seam}
+ \varphi_0\,h\,\varphi_0^{-1}=h^{-1}.
+\end{equation}
+Now $h$ is a commutator of $\varphi_0$ and $\psi_0$.  For the ordering
+$h=\varphi_0\psi_0\varphi_0^{-1}\psi_0^{-1}$,
+\[
+ \varphi_0\,h\,\varphi_0^{-1}
+ =\varphi_0^{2}\,\psi_0\,\varphi_0^{-1}\psi_0^{-1}\varphi_0^{-1}
+ =\psi_0\,\varphi_0\,\psi_0^{-1}\varphi_0
+ =\bigl(\varphi_0^{-1}\psi_0\varphi_0\psi_0^{-1}\bigr)^{-1}
+ =h^{-1},
+\]
+using only $\varphi_0^{2}=\mathrm{id}$; the other three orderings and
+orientations of the commutator are checked in the same way (the machine
+control \texttt{luttinger/sigma\_aud/sigma\_aud\_check.py} verifies all
+four exactly on the based generators of $\pi_1(F,p)$, using the
+certified monodromy actions).  So $\sigma_{\mathrm{aud}}$ is well defined.
+It is a homeomorphism because $\varphi_0$ and the reflection are, and it
+is PL after subdividing $[0,1]$ symmetrically about $\tfrac12$.  It
+preserves fibers and covers $t\mapsto1-t$ by construction, and
+$\sigma_{\mathrm{aud}}^{2}[z,t]=[\varphi_0^{2}z,t]=[z,t]$.
+
+(ii) Orient $M_h$ as $F\times[0,1]$, fiber first.  By
+Definition~\ref{def:Vaudit}, $\varphi_0$ preserves the orientation of
+$F$; the reflection reverses that of $[0,1]$; the product reverses.
+
+(iii) $\varphi_0(p)=p$ and $\varphi_0(O)=O$.
+
+(iv) A point $[z,t]$ is fixed only if $t=1-t$ in $\mathbb R/\mathbb Z$,
+so $t=\tfrac12$ or $t=0$.  Over $t=\tfrac12$ the fixed points are
+$\{z:\varphi_0 z=z\}=\{p,O\}$.  Over the seam,
+$\sigma_{\mathrm{aud}}[z,0]=[\varphi_0 z,1]=[h\varphi_0 z,0]$, so the
+fixed points are those of $h\varphi_0$; since $\varphi_0$ and $\psi_0$
+both fix $p$ and $O$, so does $h$, and $p,O$ are among them.  (By
+\eqref{eq:sigma-seam}, $(h\varphi_0)^2=h\,\varphi_0h\varphi_0=\mathrm{id}$,
+so $h\varphi_0$ is itself an orientation-preserving involution of $F$;
+its full fixed set is finite but is not needed.)
+\end{proof}
+
+\begin{remark}
+$\sigma_{\mathrm{aud}}$ is not free.  Freeness of a boundary involution is
+needed only to form a quotient $W=V/\sigma$, as in the surgery scheme of
+\cite{LidmanPiccirillo}; nothing in the proof of Theorem~\ref{thm:exotic}
+uses it, and the quotient and everything downstream of it are outside the
+scope of this article.  The supplement's historical transfer chain imports a
+free involution through the attribution checklist; this article uses
+$\sigma_{\mathrm{aud}}$ only.
+\end{remark}
+
+\begin{corollary}[the audit double]\label{cor:audit-double}
+Let $\hat\Sigma=\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$ be the double of the
+base along the reflection $\rho(t)=1-t$ of its boundary circle, a closed
+oriented surface of genus two, and put
+\[
+ \hat R=R_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}R_{\mathrm{aud}},
+ \qquad
+ Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}},
+\]
+both copies carrying the orientation of $R_{\mathrm{aud}}$.  Then:
+\begin{enumerate}
+\item[(a)] $\hat R$ is a closed oriented genus-two surface bundle over
+ $\hat\Sigma$, and $\hat\Sigma$ has genus two;
+\item[(b)] $Z_{\mathrm{aud}}$ is obtained from $\hat R$ by the two audit
+ surgeries and their images under the swap of the two copies, performed on
+ four pairwise disjoint tori in the interior of $\hat R$, all disjoint from
+ a fiber $F$ over a base point away from $\alpha,\beta$ and their mirrors,
+ and from the doubled section
+ $\hat\Gamma=\Gamma\cup_{\sigma_{\mathrm{aud}}}\Gamma$;
+\item[(c)] $\hat\Gamma$ is a closed orientable surface of genus two with
+ $\hat\Gamma\cdot\hat\Gamma=0$, $F\cdot F=0$, and $F\cdot\hat\Gamma=1$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) Gluing two copies of a bundle along their boundary by a
+fiber-preserving homeomorphism covering a homeomorphism of the base
+boundary produces a bundle over the glued base; here the base gluing is
+$\rho$, and $\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$ is the double of a
+once-punctured torus, hence closed, orientable, of genus two.  Both
+copies of $R_{\mathrm{aud}}$ induce the same orientation on the common
+boundary, and by Lemma~\ref{lem:sigma-aud}(ii) the gluing map reverses
+it, so $\hat R$ is oriented compatibly with both copies.  (Factorwise:
+the base gluing $\rho$ reverses the boundary circle, so $\hat\Sigma$
+restricts to the given orientation on each copy of $\Sigma_{1,1}$; the
+fiber gluing $\varphi_0$ preserves the orientation of $F$; so neither
+factor of the product orientation is reversed on the second copy.)
+
+(b) $T_\alpha$ and $T_\beta$ lie over the spine loops $\alpha,\beta$,
+which are interior to $\Sigma_{1,1}$, so both tori and their product
+collars miss $\partial R_{\mathrm{aud}}$; the surgeries therefore commute
+with the gluing, and their images under the swap are surgeries on the
+mirror tori.  The four tori are disjoint: the two audit tori are disjoint
+by construction and lie in one copy, their mirrors in the other, and the
+two copies meet only along $\partial R_{\mathrm{aud}}$, which none of
+them meets.  A fiber over a base point away from the four loops misses all
+four tori.  The section $\Gamma$ through $p$ misses $T_\alpha$ and
+$T_\beta$ because $p$ lies on neither $c$ nor $e$; the same holds in the
+mirror copy; and by Lemma~\ref{lem:sigma-aud}(iii) the two halves glue
+along $\partial\Gamma=\{p\}\times S^1$ to a closed surface $\hat\Gamma$.
+
+(c) $\hat\Gamma$ is the double of the once-punctured torus $\Gamma$ along
+its boundary circle, hence closed, orientable, of genus two; the
+certificate \texttt{luttinger/pl\_self\_intersection.py} constructs it
+explicitly as a simplicial surface with $f$-vector $(138,420,280)$.  For
+the self-intersection, the normal direction to $\hat\Gamma$ along
+$\partial\Gamma$ is the fiber direction $T_pF$, on which
+$\sigma_{\mathrm{aud}}$ acts by $d\varphi_0(p)$; on the actual
+$24$-cycle link of $p$ in the fiber triangulation, $\varphi_0$ acts by the
+half-turn (shift $12$), i.e.\ by $-I$.  The certificate builds the
+triangulated normal disk bundle of $\hat\Gamma$ for each of the four
+constant boundary clutching rotations, including this one (its
+``constant clutch shift $2$''), and in each case exhibits a disjoint
+simplicial push-off together with the radial PL cylinder joining it to the
+zero section, so the signed intersection chain is empty and
+$\hat\Gamma\cdot\hat\Gamma=0$.  A fiber has trivial normal bundle, so
+$F\cdot F=0$, and a fiber meets a section transversally in one point, so
+$F\cdot\hat\Gamma=1$.
+\end{proof}
+
+\subsection{The symplectic form on the audit double}\label{sec:symplectic-double}
+
+Keep the notation of Lemma~\ref{lem:sigma-aud} and
+Corollary~\ref{cor:audit-double}: $\hat\Sigma=\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$,
+$\hat R=R_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}R_{\mathrm{aud}}$,
+$Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}}$,
+with $\hat\pi\colon\hat R\to\hat\Sigma$ the projection and $F$, $\hat\Gamma$
+the fiber and doubled section of that corollary.
+
+\begin{lemma}[symplectic form on the audit double]\label{lem:double-form}
+Let $\Omega$ be the positive area form on $F$ of
+Lemma~\ref{lem:bundle-symplectic-form}, preserved by $\varphi_0$ and
+$\psi_0$.  Choose the positive area form $\eta$ on $\Sigma_{1,1}$ so that on
+a collar $\partial\Sigma_{1,1}\times(-\varepsilon,0]$ with boundary parameter
+$t\in\mathbb R/\mathbb Z$ and outward-increasing collar coordinate $s$ it
+equals $ds\wedge dt$, and so that the collar is disjoint from the annular
+collars of $\alpha,\beta$ used in that lemma.  Then:
+\begin{enumerate}
+\item[(i)] $\eta$ on each copy glues to a smooth positive area form
+ $\hat\eta$ on $\hat\Sigma$;
+\item[(ii)] the vertical form $\Omega_{\mathrm{vert}}$ on each copy glues to
+ a smooth closed vertical form $\hat\Omega_{\mathrm{vert}}$ on $\hat R$;
+\item[(iii)] for every $K>0$,
+ $\hat\omega_K=\hat\Omega_{\mathrm{vert}}+K\hat\pi^*\hat\eta$ is a
+ symplectic form on $\hat R$ restricting to $\omega_K$ on each copy;
+\item[(iv)] $\hat\omega_K$ is positive on $F$ and on $\hat\Gamma$;
+\item[(v)] the four surgery tori of Corollary~\ref{cor:audit-double}(b) are
+ Lagrangian for $\hat\omega_K$, and each has a protected neighborhood with
+ the split coordinates of Lemma~\ref{lem:bundle-symplectic-form}, disjoint
+ from the seam collar $\hat\pi^{-1}(\partial\Sigma_{1,1}\times(-\varepsilon,\varepsilon))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) On the seam collar of $\hat\Sigma$ use the chart
+$(t,s)\in\mathbb R/\mathbb Z\times(-\varepsilon,\varepsilon)$ in which
+$s\le0$ is the first copy's collar and, for $s\ge0$, the point $(t,s)$ is the
+second copy's collar point with its own coordinates $t'=\rho(t)=1-t$ and
+$s'=-s$: the second copy's outward direction is toward the seam, so its
+outward-increasing coordinate is $-s$.  In its own coordinates the second
+copy's form is $ds'\wedge dt'=d(-s)\wedge d(1-t)=ds\wedge dt$.  So the two
+copies of $\eta$ are the single form $ds\wedge dt$ on the whole chart, and
+$\hat\eta$ is smooth.  It is positive on both copies since each is oriented
+as $\Sigma_{1,1}$ and $\hat\Sigma$ restricts to those orientations
+(Corollary~\ref{cor:audit-double}(a)).
+
+(ii) Over the seam collar the flat product atlas of
+Lemma~\ref{lem:bundle-symplectic-form} presents the bundle as
+$M_h\times(-\varepsilon,0]$ with $\Omega_{\mathrm{vert}}$ equal to $\Omega$
+on every fiber; this is well defined because the seam map $h$ of $M_h$ is a
+product of the clutching maps and so preserves $\Omega$.  Extend the gluing map over the two collars as
+$(z,t,s)\mapsto(\varphi_0 z,1-t,-s)$; this fixes the smooth structure of
+$\hat R$ near the seam (any two collar choices give diffeomorphic doubles),
+and in the flat atlas it is, on every fiber, the single map $\varphi_0$,
+which is locally constant in the base and preserves $\Omega$.  Hence the transition maps of the flat atlas of $\hat R$
+obtained by adjoining $\sigma_{\mathrm{aud}}$ all lie in the group generated
+by $\varphi_0$ and $\psi_0$, all preserve $\Omega$, and the fiberwise form
+$\Omega$ descends to a globally defined vertical form
+$\hat\Omega_{\mathrm{vert}}$ on $\hat R$.  It is closed because in each flat
+product chart it is the pullback of the closed form $\Omega$ from the fiber
+factor.
+
+(iii) $d\hat\omega_K=0$ by (i) and (ii), and with the fiber and base
+orientations fixed by $\Omega$ and $\hat\eta$,
+$\hat\omega_K^2=2K\,\hat\Omega_{\mathrm{vert}}\wedge\hat\pi^*\hat\eta>0$,
+exactly as in Lemma~\ref{lem:bundle-symplectic-form}.  On each copy the form
+is $\Omega_{\mathrm{vert}}+K\pi^*\eta=\omega_K$ by construction.
+
+(iv) $F$ is a fiber, on which $\hat\omega_K$ restricts to $\Omega>0$.
+$\hat\Gamma$ is the doubled section through the common fixed point $p$; in
+every flat product chart it is $\{p\}\times U$, so
+$\hat\Omega_{\mathrm{vert}}$ restricts to zero on it and
+$\hat\omega_K|_{\hat\Gamma}=K\hat\eta>0$.
+
+(v) Each of the four tori lies in the interior of one copy, over the
+annular collar of $\alpha$ or $\beta$ in that copy, which is disjoint from
+the seam collar by the choice of $\eta$.  On that copy $\hat\omega_K=\omega_K$,
+so Lemma~\ref{lem:bundle-symplectic-form} applies verbatim: the torus has
+one fiber tangent and one base tangent, both summands vanish on it, and the
+protected split coordinates are the ones displayed there.  The mirror tori
+are the images of $T_\alpha,T_\beta$ under the swap of the two copies, which
+is an isomorphism of the second copy with $R_{\mathrm{aud}}$ carrying
+$\hat\omega_K|_{\text{copy }2}$ to $\omega_K$.
+\end{proof}
+
+\begin{corollary}[$Z_{\mathrm{aud}}$ is symplectic]\label{cor:Z-symplectic}
+$Z_{\mathrm{aud}}$ carries a symplectic form $\hat\omega$ that agrees with
+$\hat\omega_K$ outside the four surgery neighborhoods, restricts positively
+to $F$ and to $\hat\Gamma$, and is obtained from $(\hat R,\hat\omega_K)$ by
+four Luttinger surgeries in the sense of \cite[Definition~2.1]{ADK}.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:double-form}(v) and Theorem~\ref{thm:framing} applied in
+each copy, the four tori are Lagrangian and the four unit-coefficient filling
+slopes are their Lagrangian-framing classes; the surgeries of
+Corollary~\ref{cor:audit-double}(b) are therefore Luttinger surgeries, and
+\cite[Proposition~2.2]{ADK} supplies, one surgery at a time, a symplectic
+form agreeing with the previous one outside the surgered neighborhood.  The
+four neighborhoods are disjoint from one another, from $F$, and from
+$\hat\Gamma$ (Corollary~\ref{cor:audit-double}(b)), so the final form still
+restricts positively to $F$ and $\hat\Gamma$ by Lemma~\ref{lem:double-form}(iv).
+\end{proof}
+
+\subsection{Hypotheses of the external results, discharged}
+\label{sec:external-hypotheses}
+
+The proof of Theorem~\ref{thm:exotic} uses five results from the
+literature.  Each is stated with its hypotheses, and each hypothesis is
+discharged by a statement about the audit object proved in this article.
+No comparison with any other author's construction enters.
+
+\begin{description}
+\item[Van Kampen.] $Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\partial}V_{\mathrm{aud}}$
+ with connected, bicollared common boundary $\partial V_{\mathrm{aud}}=M_h$
+ and $\pione(V_{\mathrm{aud}})=1$ (Theorem~\ref{thm:audit-manifold});
+ hence $\pione(Z_{\mathrm{aud}})=1$.
+\item[Freedman \cite{Freedman}.] Closed simply connected topological
+ 4-manifolds are classified by intersection form and Kirby--Siebenmann
+ invariant, the latter determined by $\sigma/8$ when the form is even.
+ Hypotheses discharged in Proposition~\ref{prop:Z-topology}: simple
+ connectivity, $b_2=2$, form $H$ on the basis $(F,\hat\Gamma)$,
+ smoothness (so Kirby--Siebenmann vanishes).
+\item[Thurston \cite{Thurston}.] A closed surface bundle over a surface with
+ homologically essential fiber is symplectic with symplectic fibers.  We do
+ not invoke it: Lemma~\ref{lem:double-form} constructs the form directly
+ (the fiber is essential anyway, since $F\cdot\hat\Gamma=1$).
+\item[Auroux--Donaldson--Katzarkov \cite{ADK} (Luttinger \cite{Luttinger}).]
+ Luttinger surgery on a Lagrangian torus along its Lagrangian framing yields
+ a symplectic manifold with a form agreeing with the old one away from the
+ torus.  Hypotheses discharged in Lemma~\ref{lem:double-form}(v) and
+ Theorem~\ref{thm:framing}: Lagrangian tori, Lagrangian-framed slopes.
+\item[Ho--Li \cite{HoLi}.] Luttinger surgery preserves the symplectic
+ Kodaira dimension.  Hypothesis: the surgery is Luttinger
+ (Corollary~\ref{cor:Z-symplectic}).
+\item[Li \cite{Li}.] The symplectic Kodaira dimension of a closed
+ symplectic 4-manifold is a diffeomorphism invariant, equal to $-\infty$
+ exactly for rational and ruled manifolds.  Hypothesis: a closed symplectic
+ 4-manifold (Corollary~\ref{cor:Z-symplectic}).
+\end{description}
+
+\begin{proposition}[topology of $Z_{\mathrm{aud}}$]\label{prop:Z-topology}
+$Z_{\mathrm{aud}}$ is closed, simply connected, and spin, with
+$b_2(Z_{\mathrm{aud}})=2$, signature $0$, and intersection form $H$ on the
+basis $(F,\hat\Gamma)$.  Consequently $Z_{\mathrm{aud}}$ is homeomorphic to
+$S^2\times S^2$.
+\end{proposition}
+
+\begin{proof}
+Closed: $\partial V_{\mathrm{aud}}$ is glued to itself.  Simply connected
+by van Kampen as above.  $\chi(Z_{\mathrm{aud}})=2\chi(V_{\mathrm{aud}})-\chi(M_h)=4-0=4$
+(the proof of Theorem~\ref{thm:audit-manifold} gives
+$\chi(V_{\mathrm{aud}})=2$; a mapping torus has Euler characteristic $0$),
+so $b_2=2$ with $H_2$ torsion-free.  By
+Corollary~\ref{cor:audit-double}(c), $F\cdot F=0$, $\hat\Gamma\cdot\hat\Gamma=0$,
+$F\cdot\hat\Gamma=1$: the Gram matrix of $(F,\hat\Gamma)$ is $H$, of
+determinant $-1$, hence unimodular; a unimodular rank-two sublattice of the
+unimodular rank-two lattice $H_2(Z_{\mathrm{aud}})$ has index one, so
+$(F,\hat\Gamma)$ is a basis and the form is $H$.  $H$ is even, so
+$w_2=0$ by Wu's formula and $Z_{\mathrm{aud}}$ is spin; its signature is
+$0$.  $Z_{\mathrm{aud}}$ is smooth, so its Kirby--Siebenmann invariant
+vanishes, and Freedman's classification gives
+$Z_{\mathrm{aud}}\cong S^2\times S^2$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:exotic}]
+Symplectic and homeomorphic to $S^2\times S^2$ by
+Corollary~\ref{cor:Z-symplectic} and Proposition~\ref{prop:Z-topology}.
+For non-diffeomorphism: $\hat R$ is a surface bundle with aspherical fiber
+and base, hence aspherical, so it contains no essential sphere; a
+symplectic 4-manifold with $\pi_2=0$ is minimal (an exceptional sphere
+would be null-homotopic, hence of square $0$, not $-1$) and is neither
+rational nor ruled (those have $\pi_2\ne0$).  By \cite{Li},
+$\kappa(\hat R,\hat\omega_K)\ne-\infty$.  By \cite{HoLi}, each of the four
+Luttinger surgeries preserves $\kappa$, so $\kappa(Z_{\mathrm{aud}},\hat\omega)\ne-\infty$.
+Since $S^2\times S^2$ is rational, every symplectic form on it has
+$\kappa=-\infty$, and by \cite{Li} $\kappa$ depends only on the
+diffeomorphism type.  Hence $Z_{\mathrm{aud}}$ is not diffeomorphic to
+$S^2\times S^2$.
+\end{proof}
+
+\begin{remark}[what the theorem does and does not say]
+Theorem~\ref{thm:exotic} is a statement about the object of
+Definition~\ref{def:Vaudit} and its double along $\sigma_{\mathrm{aud}}$.
+It does not assert that $Z_{\mathrm{aud}}$ is the manifold proposed by
+Wuebben \cite{Wuebben}; that attribution question is the subject of
+Section~\ref{sec:relation}, and no statement there enters this proof.
+\end{remark}
+
+\section{Attribution: relation to Wuebben's construction, and review
+boundary}
 \label{sec:relation}
 
-Nothing in Theorem~\ref{thm:audit-manifold} identifies
-$V_{\mathrm{aud}}$ with Wuebben's fixed surgery member.  The companion
-supplement records fourteen comparison clauses D1--D14: textual and
-diagrammatic clauses D1--D11 specify the proposed dictionary, while D12--D14
-ask for the actual relative smooth identification of the two Lagrangian
-tori, framing conventions, and marked bundles.  Those clauses are a
-checklist for future comparison, not hypotheses of any theorem in this
-article.  In particular, no exotic-manifold conclusion is asserted here.
+Nothing in Theorem~\ref{thm:audit-manifold} or Theorem~\ref{thm:exotic}
+identifies $V_{\mathrm{aud}}$ with Wuebben's fixed surgery member or
+$Z_{\mathrm{aud}}$ with his double.  The companion supplement records
+fourteen comparison clauses D1--D14: textual and diagrammatic clauses
+D1--D11 specify the proposed dictionary, while D12--D14 ask for the actual
+relative smooth identification of the two Lagrangian tori, framing
+conventions, and marked bundles.  Those clauses are a checklist for
+attribution, not hypotheses of any theorem in this article.  Even if every
+clause held, $Z_{\mathrm{aud}}$ is glued by $\sigma_{\mathrm{aud}}$ rather
+than by the free involution of \cite{LidmanPiccirillo}, so the two doubles
+would still require a separate comparison.  The exotic-manifold conclusion
+asserted here is Theorem~\ref{thm:exotic}, about $Z_{\mathrm{aud}}$.
 
 \subsection{The reported contrary computation and live failure locations}
 \label{sec:contrary}
@@ -1489,8 +1889,11 @@ nontriviality witness for the reported calculation is available in the
 materials examined here.
 
 The finite Theorem~\ref{thm:main} is unaffected because its objects are
-explicit strings.  If the contrary calculation concerns the same geometric
-member, the live explanations are deliberately left neutral: a
+explicit strings, and Theorem~\ref{thm:exotic} is a statement about the
+explicit object $Z_{\mathrm{aud}}$.  A contrary calculation about a
+different member says nothing about either; one about the same member would
+locate an error in one of the two computations.  If the contrary calculation
+concerns the same geometric member, the live explanations are deliberately left neutral: a
 source-to-audit clause may fail; a displayed geometric identification or
 finite checker may be defective; the contrary calculation may be defective;
 or the computations may concern different members or conventions.  A
@@ -1516,8 +1919,9 @@ are the steps that turn the finite presentation into
 $\pione(V_{\mathrm{aud}})$.
 
 Third, a symplectic reviewer should check that the split form in
-Lemma~\ref{lem:bundle-symplectic-form} descends and standardizes both collars,
-that the seam and normal-circle orientations agree with the filling basis,
+Lemma~\ref{lem:bundle-symplectic-form} descends to the double as claimed in
+Lemma~\ref{lem:double-form}, that the seam and normal-circle orientations
+agree with the filling basis,
 that constant-covector copies have zero meridional coefficient, and that the
 chart-independence isotopy remains in a uniform punctured neighborhood.  The
 finite checks localize these questions; they do not replace specialist
@@ -1534,28 +1938,34 @@ abelianization.
 Four manifest-bound presentations are trivial under a complete certificate
 specification.  A separate geometric reconstruction identifies one of them
 with the explicitly defined $V_{\mathrm{aud}}$, yielding the intrinsic
-topological statements of Theorem~\ref{thm:audit-manifold}.  The framing
-theorem then supplies its symplectic structure.  This separation between
-finite derivation, geometric conversion, and symplectic framing is the
-article's source-independent contribution.
+topological statements of Theorem~\ref{thm:audit-manifold}; the framing
+theorem supplies its symplectic structure.  Doubling along the intrinsic
+boundary involution $\sigma_{\mathrm{aud}}$ and descending that form gives
+Theorem~\ref{thm:exotic}: $Z_{\mathrm{aud}}$ is a closed symplectic
+four-manifold homeomorphic but not diffeomorphic to $S^2\times S^2$.  The
+separation between finite derivation, geometric conversion, symplectic
+framing, and doubling is the article's contribution; after simple
+connectivity, every step is a citation with its hypotheses discharged.
 
 Whether Wuebben's text and diagrams specify the same marked smooth surgery
-data remains open.  The supplement records that comparison and its historical
-downstream consequences without promoting either into a theorem of this
-article.
+data, and whether his double coincides with $Z_{\mathrm{aud}}$, remain
+open.  The supplement records that attribution question and the historical
+transfer chain without promoting either into a theorem of this article.
 
 \section{Data and reproducibility}\label{sec:data}
 
-The immutable certificate set, frozen inputs, and reconstruction
+The immutable predecessor certificate set, frozen inputs, and reconstruction
 programs are in the public repository and its v2.3.0 archival deposit
 \cite{ClydeArtifact}:
 \begin{center}
 \small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0},\\[.3em]
 \small\url{https://doi.org/10.5281/zenodo.22184725}.
 \end{center}
-That version DOI identifies this immutable release.  The proof manifest and
-verification-tree object printed in the supplement are the ones bound by that
-release.  The concept DOI
+That version DOI identifies the preceding immutable artifact base.  The
+current working manifest and verification-tree object are printed in the
+supplement; they bind the doubling lemmas of Section~\ref{sec:double} and
+the existence chain but do not become an archival citation until the next
+release is cut.  The concept DOI
 \url{https://doi.org/10.5281/zenodo.22169753} resolves to the newest
 archived version.
 
@@ -1608,6 +2018,31 @@ D.~Auroux, S.~K.~Donaldson, and L.~Katzarkov,
 \emph{Luttinger surgery along Lagrangian tori and non-isotopy for singular
 symplectic plane curves},
 Math. Ann. \textbf{326} (2003), 185--203.
+
+\bibitem{Luttinger}
+K.~M.~Luttinger,
+\emph{Lagrangian tori in $\R^4$},
+J. Differential Geom. \textbf{42} (1995), 220--228.
+
+\bibitem{Thurston}
+W.~P.~Thurston,
+\emph{Some simple examples of symplectic manifolds},
+Proc. Amer. Math. Soc. \textbf{55} (1976), 467--468.
+
+\bibitem{Freedman}
+M.~H.~Freedman,
+\emph{The topology of four-dimensional manifolds},
+J. Differential Geom. \textbf{17} (1982), 357--453.
+
+\bibitem{HoLi}
+C.-I.~Ho and T.-J.~Li,
+\emph{Luttinger surgery and Kodaira dimension},
+Asian J. Math. \textbf{16} (2012), 299--318.
+
+\bibitem{Li}
+T.-J.~Li,
+\emph{Symplectic 4-manifolds with Kodaira dimension zero},
+J. Differential Geom. \textbf{74} (2006), 321--352.
 
 \bibitem{ConstantinKolev}
 A.~Constantin and B.~Kolev,

@@ -78,17 +78,24 @@ def main():
             "No clause of the open source-comparison checklist D1--D14 "
             "enters this theorem.",
             "source-independent audit-model identification")
-    require(MAIN, "member remains an open comparison problem",
-            "open Wuebben comparison in the main paper")
-    require(MAIN, "No exotic-manifold conclusion is asserted here.",
-            "main-paper exoticity scope boundary")
+    require(MAIN, "is an attribution question",
+            "Wuebben comparison framed as attribution in the main paper")
+    require(MAIN, "The exotic-manifold conclusion\nasserted here is Theorem~\\ref{thm:exotic}, about $Z_{\\mathrm{aud}}$.",
+            "main-paper exoticity scope: Theorem A' about Z_aud only")
+    exotic = labeled_environment(MAIN, "theorem", "thm:exotic")
+    require(exotic, "homeomorphic but not diffeomorphic to $S^2\\times S^2$",
+            "Theorem A' statement")
+    forbid(MAIN, "No exotic-manifold conclusion is asserted here.",
+           "obsolete pre-A' scope sentence")
 
     require(SUPPLEMENT, "D1 &", "first atomic source clause")
     require(SUPPLEMENT, "D14 &", "last atomic source clause")
     require(SUPPLEMENT,
-            "This appendix is historical and conditional: assume every clause "
-            "D1--D14",
-            "conditional downstream appendix")
+            "The remainder of this appendix is historical and conditional: "
+            "assume every clause D1--D14",
+            "conditional transfer appendix")
+    require(SUPPLEMENT, "There is no assumption kind.",
+            "assumption-free existence chain described in the supplement")
     slice_w = labeled_environment(SUPPLEMENT, "proposition", "prop:slice")
     require(slice_w, "The figure-eight knot is not smoothly slice in $W$.",
             "supplemental nonsliceness proposition")

@@ -1,0 +1,107 @@
+Run 75: Theorem A' becomes the paper's headline (2026-09-02)
+============================================================
+
+Question
+--------
+
+Runs 72-74 produced the mathematics (sigma_aud, the descended form, the
+existence theorem) and the assumption-free chain, but the manuscript still
+said "no exotic-manifold conclusion is asserted here" three times, and the
+two fragments carrying the new sections were not part of it.  Make the paper
+say what the chain certifies.  (Issue #809.)
+
+What was done
+-------------
+
+paper/main.tex (working revision after v2.3.0):
+
+  * Title: "An exotic S^2 x S^2 from a certificate-checked surface-bundle
+    surgery manifold".  Abstract and introduction lead with Z_aud; the
+    dependency figure gains the doubling layer and Theorem A'; the dashed
+    arrow to Wuebben's member is labelled "attribution".
+  * Section 2 states Theorem A' (thm:exotic) after the Audit-Manifold
+    Theorem: with sigma_aud[z,t] = [phi_0 z, 1-t] on the boundary mapping
+    torus, Z_aud = V_aud u_{sigma_aud} V_aud is a closed symplectic
+    four-manifold homeomorphic but not diffeomorphic to S^2 x S^2.
+  * New Section 7, "The audit double and the exotic S^2 x S^2" (sec:double),
+    is the former paper/sigma_aud.tex and paper/symplectic_double.tex
+    inlined -- the arXiv source archive must contain main.tex alone, so no
+    \input -- with the theorem statement moved to Section 2 and its proof
+    kept in 7.3 as "Proof of Theorem 2.3".  Both fragment files are deleted
+    from the tree; their content is in main.tex, their history in Runs 72
+    and 73.  A remark environment was added to the preamble.
+  * Section 8 is retitled "Attribution: relation to Wuebben's construction,
+    and review boundary".  Its opening states that no theorem identifies
+    V_aud or Z_aud with Wuebben's objects, that Z_aud is glued by sigma_aud
+    rather than by the free involution of Lidman-Piccirillo so even a full
+    D1-D14 match would leave the doubles to compare, and that the
+    exotic-manifold conclusion asserted is Theorem A' about Z_aud.  The
+    reported-contrary-computation subsection is kept verbatim except for one
+    added sentence saying what such a computation would and would not bear
+    on; the neutral phrasing the release gate requires is unchanged.  The
+    symplectic review target now names lem:double-form.
+  * Conclusion and data sections rewritten for the working revision;
+    bibliography gains Luttinger, Thurston, Freedman, Ho-Li, Li (copied from
+    the supplement's verified entries).
+  * The three scope sentences "No exotic-manifold conclusion is asserted
+    here" are gone; publication_semantics_check.py now forbids that sentence
+    and requires Theorem A' and the attribution framing.
+
+paper/supplement.tex: title and abstract; "How to use"; the D1-D14 section
+is introduced as the attribution checklist; Appendix "The existence chain,
+and the historical transfer chain (attribution only)" describes the v3
+chain (kinds, counts, guards, negative controls) and then keeps the run-64
+transfer chain text, pointing at luttinger/attribution/; pins updated to the
+current verification/ tree object and both chain digests (existence and
+attribution); v2.3.0 release block left as the immutable artifact base.
+
+README.md, ARXIV_SUBMISSION.md (title, abstract, comments: 28 pages),
+CITATION.cff (title, abstract, keyword; version/DOI/date stay v2.3.0 until
+the release cut), verification/STATUS.md (what is established / what is
+conditional), paper/check_release_sync.py (new title fragment and CFF title,
+page count 28, requires Theorem A', lem:double-form and the five carried
+bibliography keys in main.tex).
+
+verification/luttinger/downstream_chain.py: evidence for K_sigma_aud,
+P_audit_double, P_double_form rebound from the deleted fragments to
+paper/main.tex; refrozen (28 evidence files).
+
+Checked
+-------
+
+    tectonic main.tex / supplement.tex: exit 0, no undefined references,
+        no "??" in either PDF; title page, dependency figure, and Section 7
+        rendered and inspected.
+    python3 downstream_chain.py --check       PASS (28 digests, assumptions=0)
+    ruby verify_downstream_chain.rb           PASS
+    python3 proof_ledger.py                   PASS (existence boundary unchanged)
+    python3 publication_semantics_check.py    PASS
+    python3 paper/check_release_sync.py       PASS in working mode, run after
+        the pin commit (the gate reads the committed verification/ tree object)
+
+What this establishes
+---------------------
+
+The manuscript now claims Theorem A' as its primary result, proves it in
+Section 7 from its own earlier theorems and five named published results,
+and the machine chain that certifies the argument binds the manuscript text
+it certifies.  No sentence in the manuscript conditions any theorem on
+D1-D14 or on Lidman-Piccirillo.
+
+What this does not establish
+----------------------------
+
+  * It is a working revision, not a release: the DOI, tag, and CITATION.cff
+    version are still v2.3.0's.  The release cut (reserve DOI, replace the
+    working wording, tag, rerun check_release_sync.py --final) is a separate
+    step.
+  * Attribution is untouched: whether Z_aud is Wuebben's manifold, and the
+    reported contrary computation, stand exactly as before.
+  * Theorems B and C of the source are not claimed for the audit object.
+
+Replay
+------
+
+    cd paper && tectonic main.tex && tectonic supplement.tex
+    python3 paper/check_release_sync.py
+    cd verification/luttinger && python3 downstream_chain.py --check && ruby verify_downstream_chain.rb && python3 proof_ledger.py && python3 publication_semantics_check.py

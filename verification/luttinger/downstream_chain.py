@@ -38,7 +38,7 @@ ROOT = HERE.parent.parent          # repository root: paper/ and verification/
 OUTPUT = HERE / "downstream_chain_certificate.json"
 
 # --------------------------------------------------------------------------
-# Objects (paper/main.tex, paper/sigma_aud.tex, paper/symplectic_double.tex).
+# Objects (paper/main.tex, Sections 2, 6 and 7).
 #
 #   F          closed genus-2 surface with the marked five-chain and points p, O
 #   phi_0,     the clutching maps of Definition def:Vaudit; both fix p and O
@@ -84,10 +84,8 @@ EVIDENCE = [
     "verification/luttinger/sigma_aud/SHA256SUMS",
     "verification/runs/72-sigma-aud-boundary-involution.txt",
     "verification/runs/73-symplectic-form-on-the-double.txt",
-    # The written proofs.
+    # The written proofs (Sections 6 and 7 of the main paper).
     "paper/main.tex",
-    "paper/sigma_aud.tex",
-    "paper/symplectic_double.tex",
 ]
 
 CERTIFICATES = [
@@ -164,7 +162,7 @@ CERTIFICATES = [
                      "verification/luttinger/sigma_aud/output.txt",
                      "verification/luttinger/sigma_aud/SHA256SUMS",
                      "verification/runs/72-sigma-aud-boundary-involution.txt",
-                     "paper/sigma_aud.tex"],
+                     "paper/main.tex"],
         "ledger": "G_sigma_aud",
     },
 ]
@@ -196,8 +194,8 @@ PROOFS = [
                  "the copies -- all missing a fiber F and the doubled section "
                  "Gamma_hat; Gamma_hat is closed of genus 2; F.F = 0, "
                  "F.Gamma_hat = 1, Gamma_hat.Gamma_hat = 0.",
-        "where": "paper/sigma_aud.tex, lem:sigma-aud and cor:audit-double",
-        "evidence": ["paper/sigma_aud.tex",
+        "where": "paper/main.tex, lem:sigma-aud and cor:audit-double",
+        "evidence": ["paper/main.tex",
                      "verification/runs/72-sigma-aud-boundary-involution.txt"],
         "uses": ["K_sigma_aud", "K_section_square_zero"],
     },
@@ -214,8 +212,8 @@ PROOFS = [
                  "is positive on F and on Gamma_hat, and the four surgery "
                  "tori are Lagrangian with protected split coordinates "
                  "disjoint from the seam collar.",
-        "where": "paper/symplectic_double.tex, lem:double-form",
-        "evidence": ["paper/symplectic_double.tex",
+        "where": "paper/main.tex, lem:double-form",
+        "evidence": ["paper/main.tex",
                      "verification/runs/73-symplectic-form-on-the-double.txt"],
         "uses": ["P_split_form", "K_sigma_aud", "P_audit_double"],
     },

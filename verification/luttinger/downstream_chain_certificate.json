@@ -3,9 +3,7 @@
     "S7_theorem_A_prime"
   ],
   "evidence_sha256": {
-    "paper/main.tex": "7165d905a97f4e07a96854834666ffc7d15c7b90d9cc51a79016655d3140a117",
-    "paper/sigma_aud.tex": "55527aef25c2d6afb88170a4280db73f65cc6d1017a2ff88b7556b0f512e3a30",
-    "paper/symplectic_double.tex": "a7529b0770b56702a5f85fa30f298b2a73c4cec9063deec5335165fb9c6fc928",
+    "paper/main.tex": "d7a46dc369c7fe3f6ff3e47659848aa5207c68b1e42500ea0253a7a1806f6a23",
     "verification/luttinger/alpha_residual/certificate.json.gz": "5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5",
     "verification/luttinger/alpha_residual/source.json": "4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e",
     "verification/luttinger/beta_residual/certificate.json.gz": "2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604",
@@ -187,7 +185,7 @@
         "verification/luttinger/sigma_aud/output.txt",
         "verification/luttinger/sigma_aud/SHA256SUMS",
         "verification/runs/72-sigma-aud-boundary-involution.txt",
-        "paper/sigma_aud.tex"
+        "paper/main.tex"
       ],
       "id": "K_sigma_aud",
       "kind": "certificate",
@@ -206,7 +204,7 @@
     {
       "claim": "R_hat = R_aud u_{sigma_aud} R_aud is a closed oriented genus-2 surface bundle over the closed genus-2 surface Sigma_hat = Sigma_{1,1} u_rho Sigma_{1,1}, oriented compatibly with both copies; Z_aud = V_aud u_{sigma_aud} V_aud is R_hat surgered on four pairwise disjoint interior tori -- T_alpha, T_beta and their images under the swap of the copies -- all missing a fiber F and the doubled section Gamma_hat; Gamma_hat is closed of genus 2; F.F = 0, F.Gamma_hat = 1, Gamma_hat.Gamma_hat = 0.",
       "evidence": [
-        "paper/sigma_aud.tex",
+        "paper/main.tex",
         "verification/runs/72-sigma-aud-boundary-involution.txt"
       ],
       "id": "P_audit_double",
@@ -215,12 +213,12 @@
         "K_sigma_aud",
         "K_section_square_zero"
       ],
-      "where": "paper/sigma_aud.tex, lem:sigma-aud and cor:audit-double"
+      "where": "paper/main.tex, lem:sigma-aud and cor:audit-double"
     },
     {
       "claim": "With eta = ds ^ dt on a boundary collar disjoint from the annular collars of alpha, beta: eta glues to a positive area form eta_hat on Sigma_hat (the second copy's collar coordinates are t' = 1-t, s' = -s, and ds' ^ dt' = ds ^ dt); Omega_vert glues to a closed vertical form on R_hat (sigma_aud is fiberwise the constant Omega-preserving phi_0); omega_hat_K = Omega_hat_vert + K pi_hat^* eta_hat is symplectic on R_hat, restricts to omega_K on each copy, is positive on F and on Gamma_hat, and the four surgery tori are Lagrangian with protected split coordinates disjoint from the seam collar.",
       "evidence": [
-        "paper/symplectic_double.tex",
+        "paper/main.tex",
         "verification/runs/73-symplectic-form-on-the-double.txt"
       ],
       "id": "P_double_form",
@@ -230,7 +228,7 @@
         "K_sigma_aud",
         "P_audit_double"
       ],
-      "where": "paper/symplectic_double.tex, lem:double-form"
+      "where": "paper/main.tex, lem:double-form"
     },
     {
       "claim": "chi(F) = -2, chi(Sigma_{1,1}) = -1, chi(R_aud) = 2, chi(V_aud) = 2, chi(Z_aud) = 4",
