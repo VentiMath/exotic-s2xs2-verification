@@ -1,37 +1,51 @@
 {
   "conclusions": [
-    "S7_theorem_A",
-    "S12_theorem_B",
-    "S16_theorem_C"
+    "S7_theorem_A_prime"
   ],
   "evidence_sha256": {
-    "luttinger/alpha_residual/certificate.json.gz": "5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5",
-    "luttinger/alpha_residual/source.json": "4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e",
-    "luttinger/beta_residual/certificate.json.gz": "2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604",
-    "luttinger/beta_residual/source.json": "50cafd6352652de990b11f6178f82c107488c885ba2577ba3b0f0377ce98b1a2",
-    "luttinger/proof_certificates/manifest.json": "e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9",
-    "luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
-    "luttinger/sealed_transport/r_presentations.json": "1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c",
-    "notes/downstream_theorem_audit_2026-08-23.md": "e4fe2e26f96d2f643ea0e778ab7fb310935f2dcd8aee72870911028a7511f2af",
-    "notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",
-    "notes/pl_self_intersection_certificate_2026-08-24.md": "c2f12d6b47cff014073344b5c67e3f0c5013c7b7698bd53ff35d756f45ac7082",
-    "notes/source_identification_assumptions_2026-08-29.md": "4168b778a5acb95700cf4d3a27f972334efb1aa1927a14f4e94a55efe2687f23",
-    "runs/20-direct-peripheral-fillings-trivial.txt": "b839216d8b7bbad8b50d699564fcb5dede9962459097328f1b4fdcf43110470b",
-    "runs/22-model-correspondence-and-framing.txt": "d88410bfbe13ad319dd4f5c35ee14332c7d998c711625b850c76054e81f0f959",
-    "runs/24-downstream-theorem-audit.txt": "20c15082cebb94ffd325bc94fae4cfd455cb8783e9153f2e0f8fda2267731c1d",
-    "runs/28-pl-self-intersection-certificate.txt": "377d983c6f45a289b6f157275117b07fdbe44b23e01a221b16681963e089b47e",
-    "runs/29-independent-filled-group-certificates.txt": "29ca62be7e901a84f0817187c5595eb755d4e4356ec6aa8403047bc39e8d63d5",
-    "runs/35-framing-lemma-referee-packet.txt": "6de0aae2f3fc7ac7bdf967c885670b099b2db181dd8b21744dbdf45b2cb6ec14",
-    "runs/43-weinstein-chart-independence.txt": "58f09c26e13edf39fc7e9ba3a4976790beb8f20fa3cb42a22b6eeeb54725d8e7",
-    "runs/46-direct-equivariant-moser.txt": "8b8d19de4ce9fa8994c50dd4f321dadaf27c89edd2ae0f52564ff0a94725ff0e",
-    "runs/47-cumulative-moser-flow.txt": "2867003047d48eb4cc866ae98d3637b2f189d8168eadc2fa7c463db37708956d",
-    "runs/57-second-certificate-verifier.txt": "18b12c770dab047c8a4d797b95fee86cee256b34696b01baad8abb496108f84a",
-    "runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89",
-    "runs/67-r3-complement-and-lp-disagreement.txt": "106be7052127f8c28b9e6fd88b50202a74e826c56788eac1ca30c1c9a9ed3d83",
-    "runs/68-alpha-longitude-sealed-certificate.txt": "a9ed18ac1e07d82617d448602359a606bf203b36a76a753226c5890c964fd337",
-    "runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b"
+    "paper/main.tex": "7165d905a97f4e07a96854834666ffc7d15c7b90d9cc51a79016655d3140a117",
+    "paper/sigma_aud.tex": "55527aef25c2d6afb88170a4280db73f65cc6d1017a2ff88b7556b0f512e3a30",
+    "paper/symplectic_double.tex": "a7529b0770b56702a5f85fa30f298b2a73c4cec9063deec5335165fb9c6fc928",
+    "verification/luttinger/alpha_residual/certificate.json.gz": "5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5",
+    "verification/luttinger/alpha_residual/source.json": "4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e",
+    "verification/luttinger/beta_residual/certificate.json.gz": "2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604",
+    "verification/luttinger/beta_residual/source.json": "50cafd6352652de990b11f6178f82c107488c885ba2577ba3b0f0377ce98b1a2",
+    "verification/luttinger/proof_certificates/manifest.json": "e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9",
+    "verification/luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
+    "verification/luttinger/sealed_transport/r_presentations.json": "1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c",
+    "verification/luttinger/sigma_aud/SHA256SUMS": "4bbf5533e9017b00123276ff7bd16a4d5ee4bc70edcedd3157eb524757e77b3e",
+    "verification/luttinger/sigma_aud/output.txt": "929682fad5f60c3f87022cc7847e15239371f4b7df5142d8c180de7c03eb2040",
+    "verification/luttinger/sigma_aud/sigma_aud_check.py": "fcd3f3b8ddea059ee0d930a2d00fede6d4f3ffe472e1551b477088423cb99900",
+    "verification/notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",
+    "verification/notes/pl_self_intersection_certificate_2026-08-24.md": "c2f12d6b47cff014073344b5c67e3f0c5013c7b7698bd53ff35d756f45ac7082",
+    "verification/runs/20-direct-peripheral-fillings-trivial.txt": "b839216d8b7bbad8b50d699564fcb5dede9962459097328f1b4fdcf43110470b",
+    "verification/runs/22-model-correspondence-and-framing.txt": "d88410bfbe13ad319dd4f5c35ee14332c7d998c711625b850c76054e81f0f959",
+    "verification/runs/28-pl-self-intersection-certificate.txt": "377d983c6f45a289b6f157275117b07fdbe44b23e01a221b16681963e089b47e",
+    "verification/runs/29-independent-filled-group-certificates.txt": "29ca62be7e901a84f0817187c5595eb755d4e4356ec6aa8403047bc39e8d63d5",
+    "verification/runs/35-framing-lemma-referee-packet.txt": "6de0aae2f3fc7ac7bdf967c885670b099b2db181dd8b21744dbdf45b2cb6ec14",
+    "verification/runs/43-weinstein-chart-independence.txt": "58f09c26e13edf39fc7e9ba3a4976790beb8f20fa3cb42a22b6eeeb54725d8e7",
+    "verification/runs/46-direct-equivariant-moser.txt": "8b8d19de4ce9fa8994c50dd4f321dadaf27c89edd2ae0f52564ff0a94725ff0e",
+    "verification/runs/47-cumulative-moser-flow.txt": "2867003047d48eb4cc866ae98d3637b2f189d8168eadc2fa7c463db37708956d",
+    "verification/runs/57-second-certificate-verifier.txt": "18b12c770dab047c8a4d797b95fee86cee256b34696b01baad8abb496108f84a",
+    "verification/runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89",
+    "verification/runs/67-r3-complement-and-lp-disagreement.txt": "106be7052127f8c28b9e6fd88b50202a74e826c56788eac1ca30c1c9a9ed3d83",
+    "verification/runs/68-alpha-longitude-sealed-certificate.txt": "a9ed18ac1e07d82617d448602359a606bf203b36a76a753226c5890c964fd337",
+    "verification/runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b",
+    "verification/runs/72-sigma-aud-boundary-involution.txt": "bb5980a2af7d3f3d39fa69193501965a5b9fb94d40df1de500bee94f36b86691",
+    "verification/runs/73-symplectic-form-on-the-double.txt": "55348279d018b4ccab6aeb5fb6c98851b4fa897c024c401b672a5c5c61195f98"
   },
-  "format": "luttinger-downstream-proof-chain-v2",
+  "forbidden": [
+    "Lidman",
+    "Piccirillo",
+    "LP25",
+    "2505.14387",
+    "Wuebben",
+    "2608.17267",
+    "Source Formalization",
+    "D1--D14",
+    "D1-D14"
+  ],
+  "format": "luttinger-existence-chain-v3",
   "items": [
     {
       "hypotheses": [
@@ -43,17 +57,6 @@
       "name": "Seifert--van Kampen theorem (union along a connected collared boundary)",
       "source": "standard (e.g. Hatcher, Algebraic Topology, Thm 1.20)",
       "statement": "If X = X_1 u_Y X_2 with X_1, X_2, Y path connected and Y bicollared, then pi_1(X) is the pushout pi_1(X_1) *_{pi_1(Y)} pi_1(X_2); in particular pi_1(X) is a quotient of pi_1(X_1) * pi_1(X_2)."
-    },
-    {
-      "hypotheses": [
-        "Z connected",
-        "p regular with deck group G"
-      ],
-      "id": "E_covering_sequence",
-      "kind": "external",
-      "name": "Exact sequence of a regular covering",
-      "source": "standard (Hatcher, Prop 1.40)",
-      "statement": "For a connected regular covering p: Z -> W with deck group G there is an exact sequence 1 -> pi_1(Z) -> pi_1(W) -> G -> 1."
     },
     {
       "hypotheses": [],
@@ -89,67 +92,18 @@
       "kind": "external",
       "name": "Freedman's classification of closed simply connected topological 4-manifolds",
       "source": "M. H. Freedman, J. Differential Geom. 17 (1982), Theorem 1.5",
-      "statement": "Closed simply connected topological 4-manifolds are classified up to homeomorphism by the intersection form and the Kirby--Siebenmann invariant KS in Z/2.  Every unimodular form is realized; if the form is even, KS = signature/8 (mod 2) and the manifold is unique; if the form is odd there are exactly two, one for each value of KS."
+      "statement": "Closed simply connected topological 4-manifolds are classified up to homeomorphism by the intersection form and the Kirby--Siebenmann invariant KS in Z/2.  Every unimodular form is realized; if the form is even, KS = signature/8 (mod 2) and the manifold is unique; if the form is odd there are exactly two, one for each value of KS.  A smooth manifold has KS = 0."
     },
     {
       "hypotheses": [
-        "closed",
-        "oriented",
-        "topological 4-manifold",
-        "pi_1 finite cyclic"
-      ],
-      "id": "E_hambleton_kreck",
-      "kind": "external",
-      "name": "Hambleton--Kreck classification for finite cyclic fundamental group",
-      "source": "I. Hambleton and M. Kreck, J. Reine Angew. Math. 444 (1993), Theorem C; I. Hambleton, Proc. Gokova 2008, Theorem 5.1",
-      "statement": "quoted (Hambleton 2008, Theorem 5.1, summarizing [HK88, HK93]): \"Closed, oriented topological 4-manifolds with finite cyclic fundamental groups are classified up to homeomorphism by pi_1(M), q_M, the w_2-type, and KS(M).\"  Here q_M is the intersection form on H_2(M; Z)/Tors and the w_2-type is (I) if the universal cover is not spin, (II) if M is spin, (III) if M is not spin but its universal cover is."
-    },
-    {
-      "hypotheses": [
-        "fiber class nonzero in H_2(R u_sigma R)"
-      ],
-      "id": "E_bundle_symplectic",
-      "kind": "external",
-      "name": "Thurston's construction and the paper's Thurston-type form",
-      "source": "W. Thurston, Proc. AMS 55 (1976); arXiv:2608.17267, proof of Proposition 1.3 and Lemma 8.2; LP25, proof of Theorem 8",
-      "statement": "A closed oriented surface bundle over a closed oriented surface whose fiber is homologically essential carries a symplectic form (Thurston 1976).  For R u_sigma R the paper chooses such a form whose fiber term is positive on F and whose base term is positive on the closed section Gamma_hat, so that both are symplectic surfaces, and for which the surgery tori are Lagrangian."
-    },
-    {
-      "hypotheses": [
-        "torus Lagrangian"
+        "torus Lagrangian",
+        "slope Lagrangian-framed"
       ],
       "id": "E_luttinger",
       "kind": "external",
       "name": "Luttinger surgery is symplectic and local",
-      "source": "K. Luttinger, J. Differential Geom. 42 (1995); Auroux, Donaldson, Katzarkov, Math. Ann. 326 (2003), Sect. 2",
-      "statement": "Luttinger surgery on a Lagrangian torus in a symplectic 4-manifold produces a symplectic 4-manifold whose form agrees with the original outside the surgered neighborhood; it replaces T^2 x D^2 by T^2 x D^2, so the Euler characteristic is unchanged."
-    },
-    {
-      "hypotheses": [],
-      "id": "E_lp_double",
-      "kind": "external",
-      "name": "Lidman--Piccirillo: the double is a surgered surface bundle",
-      "source": "arXiv:2505.14387v1, Lemmas 4, 6, proof of Theorem 8",
-      "statement": "sigma is a free orientation-reversing bundle isomorphism of S^3_0(Q) (LP25 Lemma 4); R u_sigma R, with the second copy oriented by (-F, -B), is a closed oriented genus-2 surface bundle over a closed genus-2 surface; the surgeries in int V commute with doubling, so Z = V u_sigma V is R u_sigma R surgered along four disjoint Lagrangian tori that miss a fiber F and the sections; sigma preserves the boundary circles of the sections Gamma, Gamma' setwise, so Gamma_hat = Gamma u_sigma Gamma is a closed surface (LP25 Lemma 6 and proof of Theorem 8, footnote 3)."
-    },
-    {
-      "hypotheses": [
-        "V spin with H_2(V) = Z<F>, F.F = 0, F.Gamma = 1",
-        "sigma descends (all surgeries in int V)"
-      ],
-      "id": "E_lp_quotient",
-      "kind": "external",
-      "name": "Lidman--Piccirillo: the quotient W and its double cover",
-      "source": "arXiv:2505.14387v1, Section 1 and Lemma 7; arXiv:2608.17267, proof of Proposition 1.3",
-      "statement": "W = V / sigma is a closed oriented smooth 4-manifold, and Z = V u_sigma V -> W is the connected 2-fold covering whose deck involution swaps the two copies of V.  W is spin: H_2(W; Z/2) = (Z/2)^2 carries a hyperbolic pair (the image of F and the closed non-orientable image of Gamma), so its mod-2 form is even and w_2(W) = 0 by Wu's formula (LP25 Lemma 7, whose proof arXiv:2608.17267 Proposition 1.3 shows applies verbatim to V)."
-    },
-    {
-      "hypotheses": [],
-      "id": "E_kawauchi_B",
-      "kind": "external",
-      "name": "The Kawauchi manifold B",
-      "source": "A. Kawauchi, Commun. Math. Res. 25 (2009); arXiv:2505.14387v1, Theorem 1 and Section 1",
-      "statement": "B is a closed smooth oriented spin 4-manifold with pi_1(B) = H_1(B) = Z/2 and b_2(B) = 0, and the figure-eight knot 4_1 is smoothly slice in B."
+      "source": "K. Luttinger, J. Differential Geom. 42 (1995); Auroux, Donaldson, Katzarkov, Math. Ann. 326 (2003), Definition 2.1 and Proposition 2.2",
+      "statement": "Luttinger surgery on a Lagrangian torus in a symplectic 4-manifold, along the Lagrangian framing, produces a symplectic 4-manifold whose form agrees with the original outside the surgered neighborhood; it replaces T^2 x D^2 by T^2 x D^2, so the Euler characteristic is unchanged."
     },
     {
       "hypotheses": [],
@@ -180,175 +134,118 @@
       "statement": "quoted (Ho--Li 2012, Theorem 1.1): \"The Luttinger surgery preserves the symplectic Kodaira dimension.\""
     },
     {
-      "hypotheses": [
-        "closed symplectic 4-manifold",
-        "embedded connected symplectic surface"
-      ],
-      "id": "E_symplectic_thom",
-      "kind": "external",
-      "name": "Symplectic Thom conjecture",
-      "source": "P. Ozsvath and Z. Szabo, Ann. of Math. 151 (2000), Theorem 1.1",
-      "statement": "An embedded symplectic surface in a closed symplectic 4-manifold is genus-minimizing in its homology class."
-    },
-    {
-      "hypotheses": [
-        "S symplectic",
-        "S.S = 0"
-      ],
-      "id": "E_cover_construction",
-      "kind": "external",
-      "name": "Connected symplectic k-fold covers of a square-zero symplectic surface",
-      "source": "arXiv:2608.17267, proof of Lemma 4.3 (after Stipsicz--Szabo, arXiv:2307.04202, proof of Theorem 1.4)",
-      "statement": "For a symplectic surface S of square zero in a symplectic 4-manifold and k >= 1, the surface Sigma_k = {(u, z) : z^k = eps f(u)} in S x D^2, for a map f: S -> S^1 surjective on H_1 and small eps > 0, is an embedded, connected, unbranched degree-k cover of S representing k[S], and is symplectic."
-    },
-    {
-      "hypotheses": [
-        "S symplectic"
-      ],
-      "id": "E_adjunction",
-      "kind": "external",
-      "name": "Adjunction formula for symplectic surfaces",
-      "source": "standard (c_1(TX|S) = c_1(TS) + c_1(nu S))",
-      "statement": "For a connected embedded symplectic surface S of genus g in a symplectic 4-manifold with canonical class K, K.S + S.S = 2g - 2."
-    },
-    {
-      "hypotheses": [
-        "X smooth compact connected oriented",
-        "dX an integer homology sphere",
-        "F orientable, connected boundary, characteristic"
-      ],
-      "id": "E_klug",
-      "kind": "external",
-      "name": "Klug's relative Rochlin theorem",
-      "source": "M. R. Klug, arXiv:2011.12418 (2021), Theorem 2 and Section 2",
-      "statement": "quoted (Klug 2021, Theorem 2): \"Let X^4 be a smooth compact connected oriented 4-manifold with dX an integer homology sphere. Let F^2 be an orientable characteristic surface with connected boundary that is properly embedded in X. Then Arf(F) + Arf(dF) = (sigma(X) - [F]^2)/8 + mu(dX) (mod 2).\"  A properly embedded surface is characteristic iff its class in H_2(X, dX; Z/2) is Lefschetz dual to w_2(X); for spin X this means the class vanishes."
-    },
-    {
-      "hypotheses": [],
-      "id": "E_levine_arf",
-      "kind": "external",
-      "name": "Levine's criterion for the Arf invariant",
-      "source": "J. Levine, Amer. J. Math. 88 (1966); Lickorish, An Introduction to Knot Theory, Thm 10.6",
-      "statement": "For a knot K in S^3, Arf(K) = 0 if Delta_K(-1) = +-1 (mod 8) and Arf(K) = 1 if Delta_K(-1) = +-3 (mod 8).  Equivalently Arf(K) is the Arf invariant of the quadratic form x -> x^T S x (mod 2) on H_1 of a Seifert surface with Seifert matrix S."
-    },
-    {
-      "hypotheses": [
-        "H_2(X - B^4, d; Z) torsion"
-      ],
-      "id": "E_trace_embedding",
-      "kind": "external",
-      "name": "Slice disks and the 0-trace",
-      "source": "arXiv:2505.14387v1, proof of Theorem 1; standard handle calculus",
-      "statement": "If K in S^3 = d(X - B^4) bounds a smoothly embedded disk D in X - B^4 whose normal framing restricts to the Seifert framing of K, then the 0-trace X_0(K) = B^4 u (0-framed 2-handle along K) embeds smoothly in X as B^4 u nu(D), and a Seifert surface of K capped by D is a closed surface of self-intersection 0 in X_0(K) whose class generates H_2(X_0(K)) = Z.  The framing condition is automatic when H_2(X - B^4, d; Z) is torsion.  X_0(K) is simply connected, and the figure-eight knot has Seifert genus 1."
-    },
-    {
-      "hypotheses": [],
-      "id": "E_ball_isotopy",
-      "kind": "external",
-      "name": "Sliceness is a diffeomorphism invariant",
-      "source": "standard",
-      "statement": "Any two smooth orientation-preserving embeddings of B^4 into a connected 4-manifold are isotopic (Palais--Cerf), so whether a knot is smoothly slice in X - B^4 does not depend on the ball; the figure-eight knot is amphichiral, so orientation plays no role either."
-    },
-    {
-      "hypotheses": [],
-      "id": "E_novikov",
-      "kind": "external",
-      "name": "Novikov additivity",
-      "source": "standard (Atiyah--Singer 1968)",
-      "statement": "If X = X_1 u_Y X_2 is a closed oriented 4-manifold glued along a closed 3-manifold Y, then sigma(X) = sigma(X_1) + sigma(X_2).  Reversing the orientation of a 4-manifold negates its signature."
-    },
-    {
-      "hypotheses": [],
-      "id": "E_lp_regluing",
-      "kind": "external",
-      "name": "Lidman--Piccirillo: the parity-changing regluing",
-      "source": "arXiv:2505.14387v1, proof of Theorem 2; arXiv:2608.17267, proof of Theorem 1.2(c)",
-      "statement": "There is an orientation-preserving diffeomorphism f of S^3_0(Q) (two Gluck twists and an isotopy, LP25 Figure 3) sending the framed meridian (mu, 0) to (mu', 1).  With A the framed homology from (mu', 0) to (mu, 0), the surface Gamma'' = Gamma u_A Gamma in Z'' = V u_{f o sigma} V has odd self-intersection; it meets the fiber F once, since F lies in the interior of one copy of V."
-    },
-    {
-      "hypotheses": [
-        "Z symplectic",
-        "|K_Z . F| = 2",
-        "H^2(V) = Z",
-        "b_2^+(Z'') = 1 and s_+- non-torsion",
-        "span{F} is a square-zero line of Z''"
-      ],
-      "id": "E_lp_floer",
-      "kind": "external",
-      "name": "Lidman--Piccirillo's Floer-theoretic obstruction",
-      "source": "arXiv:2505.14387v1, Lemmas 9, 10 and proof of Theorem 2; P. Ozsvath and Z. Szabo, Duke Math. J. 121 (2004) and Adv. Math. 202 (2006)",
-      "statement": "quoted (LP25 Lemma 9): \"Let t be a spin^c structure on V with |<c_1(t), F>| = 2. Then Psi_{V,t} != 0.\"  Its proof uses: Z symplectic, |<c_1(k), F>| = 2 for the canonical class k, H^2(V) = Z, the nonvanishing of the mixed invariant of a symplectic 4-manifold for the line spanned by F [OS04], and conjugation symmetry [OS06, Thm 3.6].  quoted (LP25 Lemma 10): \"Let (M_1, t_1) and (M_2, t_2) be two spin^c four-manifolds glued along S^3_0(Q) so that t_1| = t_2| = s_+-. If Psi_{M_1,t_1} and Psi_{M_2,t_2} are non-zero, then Phi_{M_1 u M_2, span{F}, t} != 0 for any t restricting to t_i.\"  (HF_red(S^3_0(Q), s_+-) is one-dimensional because S^3_0(Q) is fibered with genus-2 fiber, OS04 Thm 5.2.)  Finally (LP25, proof of Theorem 2): CP^2 # -CP^2, and CP^2 # -CP^2 # D for any homology 4-sphere D, admits for each of its two square-zero lines a splitting along S^2 x S^1, and HF_red(S^2 x S^1) = 0 in every non-torsion spin^c structure, so every mixed invariant of it vanishes; the mixed invariant is an invariant of the triple (M, L, t)."
-    },
-    {
-      "evidence": [
-        "notes/source_identification_assumptions_2026-08-29.md"
-      ],
-      "id": "A_source_formalization_D",
-      "kind": "assumption",
-      "ledger": "A_Source_Formalization_D",
-      "statement": "Source Formalization D1--D14 holds: the marked fiber, bundle, torus, based-peripheral, coefficient, framing, and relative smooth data in Wuebben's pinned source identify its fixed (m,n)=(0,0) member with V_aud."
-    },
-    {
       "claim": "pi_1(V_aud) = 1: each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the audit-model peripheral identification shows they present pi_1(V_aud); the alpha and beta paper-coordinate identities are separately certified inside the sealed complement (runs 68--69).",
       "evidence": [
-        "luttinger/proof_certificates/manifest.json",
-        "luttinger/sealed_transport/r_presentations.json",
-        "luttinger/r_presentations.json",
-        "runs/66-sealed-tietze-transport.txt",
-        "runs/67-r3-complement-and-lp-disagreement.txt",
-        "luttinger/alpha_residual/source.json",
-        "luttinger/alpha_residual/certificate.json.gz",
-        "runs/68-alpha-longitude-sealed-certificate.txt",
-        "luttinger/beta_residual/source.json",
-        "luttinger/beta_residual/certificate.json.gz",
-        "runs/69-beta-longitude-sealed-certificate.txt",
-        "runs/29-independent-filled-group-certificates.txt",
-        "runs/57-second-certificate-verifier.txt",
-        "runs/20-direct-peripheral-fillings-trivial.txt",
-        "runs/22-model-correspondence-and-framing.txt"
+        "verification/luttinger/proof_certificates/manifest.json",
+        "verification/luttinger/sealed_transport/r_presentations.json",
+        "verification/luttinger/r_presentations.json",
+        "verification/runs/66-sealed-tietze-transport.txt",
+        "verification/runs/67-r3-complement-and-lp-disagreement.txt",
+        "verification/luttinger/alpha_residual/source.json",
+        "verification/luttinger/alpha_residual/certificate.json.gz",
+        "verification/runs/68-alpha-longitude-sealed-certificate.txt",
+        "verification/luttinger/beta_residual/source.json",
+        "verification/luttinger/beta_residual/certificate.json.gz",
+        "verification/runs/69-beta-longitude-sealed-certificate.txt",
+        "verification/runs/29-independent-filled-group-certificates.txt",
+        "verification/runs/57-second-certificate-verifier.txt",
+        "verification/runs/20-direct-peripheral-fillings-trivial.txt",
+        "verification/runs/22-model-correspondence-and-framing.txt"
       ],
       "id": "K_pi1_Vaud_trivial",
       "kind": "certificate",
       "ledger": "C_pi1_Vaud_trivial"
     },
     {
-      "claim": "The closed section Gamma_hat of the doubled bundle is a closed orientable genus-2 surface with Gamma_hat . Gamma_hat = 0, certified on the simplicial model with an explicit normal push-off (run 28).",
+      "claim": "Gamma_hat = Gamma u_{sigma_aud} Gamma is a closed orientable genus-2 surface with Gamma_hat . Gamma_hat = 0: certified on the simplicial model with an explicit normal push-off for every constant boundary clutching rotation (run 28); the derivative of sigma_aud at p is phi_0's action on the 24-cycle link of p, shift 12 = -I, the 'constant clutch shift 2' case (run 72).",
       "evidence": [
-        "runs/28-pl-self-intersection-certificate.txt",
-        "notes/pl_self_intersection_certificate_2026-08-24.md"
+        "verification/runs/28-pl-self-intersection-certificate.txt",
+        "verification/notes/pl_self_intersection_certificate_2026-08-24.md",
+        "verification/runs/72-sigma-aud-boundary-involution.txt"
       ],
       "id": "K_section_square_zero",
       "kind": "certificate",
       "ledger": "G_section_square_zero"
     },
     {
-      "claim": "For the Thurston-type form on the audit bundle the tori T_alpha, T_beta are Lagrangian and their Lagrangian framing is the fibered framing of the certified longitudes, so the audit fillings are Luttinger surgeries. Source Formalization D is the separate bridge to the target paper's smooth surgery data.",
+      "claim": "For the split form omega_K on R_aud the tori T_alpha, T_beta are Lagrangian and their Lagrangian framing is the fibered framing of the certified longitudes, so the two product-framed fillings defining V_aud are Luttinger surgeries.",
       "evidence": [
-        "runs/35-framing-lemma-referee-packet.txt",
-        "runs/43-weinstein-chart-independence.txt",
-        "runs/46-direct-equivariant-moser.txt",
-        "runs/47-cumulative-moser-flow.txt",
-        "notes/framing_lemma_referee_packet_2026-08-25.md"
+        "verification/runs/35-framing-lemma-referee-packet.txt",
+        "verification/runs/43-weinstein-chart-independence.txt",
+        "verification/runs/46-direct-equivariant-moser.txt",
+        "verification/runs/47-cumulative-moser-flow.txt",
+        "verification/notes/framing_lemma_referee_packet_2026-08-25.md"
       ],
       "id": "K_lagrangian_framing",
       "kind": "certificate",
       "ledger": "G_lagrangian_framing"
     },
     {
-      "claim": "chi(F) = -2, chi(base) = -1, chi(R) = 2, chi(V) = 2, chi(Z) = chi(Z'') = 4, chi(W) = 2",
+      "claim": "sigma_aud[z,t] = [phi_0 z, 1-t] is a well-defined fiber-preserving involution of M_h = dR_aud = dV_aud covering the reflection t -> 1-t of the base circle, reversing orientation (phi_0 preserves the fiber's, the reflection reverses the base's), and carrying each of the circles {p} x S^1, {O} x S^1 onto itself.  The seam identity phi_0 h phi_0^-1 = h^-1 is verified exactly on the certified based monodromy actions, as automorphisms of the free group on x, y, r, s and on H_1(F), for all four commutator conventions of h; also (h phi_0)^2 = id.",
+      "evidence": [
+        "verification/luttinger/sigma_aud/sigma_aud_check.py",
+        "verification/luttinger/sigma_aud/output.txt",
+        "verification/luttinger/sigma_aud/SHA256SUMS",
+        "verification/runs/72-sigma-aud-boundary-involution.txt",
+        "paper/sigma_aud.tex"
+      ],
+      "id": "K_sigma_aud",
+      "kind": "certificate",
+      "ledger": "G_sigma_aud"
+    },
+    {
+      "claim": "The clutching maps may be chosen to preserve one positive area form Omega on F, phi_0 as the stated half-rotation on a collar of c and psi_0 the identity on a collar of e, both fixing p and O; in the resulting flat product atlas omega_K = Omega_vert + K pi^* eta is a symplectic form on R_aud for every K > 0 and every positive area form eta on Sigma_{1,1}, T_alpha and T_beta are Lagrangian, and each has a protected neighborhood with split coordinates omega_K = f dt ^ dtheta_1 + K du ^ dtheta_2.",
+      "evidence": [
+        "paper/main.tex"
+      ],
+      "id": "P_split_form",
+      "kind": "proof",
+      "uses": [],
+      "where": "paper/main.tex, lem:bundle-symplectic-form"
+    },
+    {
+      "claim": "R_hat = R_aud u_{sigma_aud} R_aud is a closed oriented genus-2 surface bundle over the closed genus-2 surface Sigma_hat = Sigma_{1,1} u_rho Sigma_{1,1}, oriented compatibly with both copies; Z_aud = V_aud u_{sigma_aud} V_aud is R_hat surgered on four pairwise disjoint interior tori -- T_alpha, T_beta and their images under the swap of the copies -- all missing a fiber F and the doubled section Gamma_hat; Gamma_hat is closed of genus 2; F.F = 0, F.Gamma_hat = 1, Gamma_hat.Gamma_hat = 0.",
+      "evidence": [
+        "paper/sigma_aud.tex",
+        "verification/runs/72-sigma-aud-boundary-involution.txt"
+      ],
+      "id": "P_audit_double",
+      "kind": "proof",
+      "uses": [
+        "K_sigma_aud",
+        "K_section_square_zero"
+      ],
+      "where": "paper/sigma_aud.tex, lem:sigma-aud and cor:audit-double"
+    },
+    {
+      "claim": "With eta = ds ^ dt on a boundary collar disjoint from the annular collars of alpha, beta: eta glues to a positive area form eta_hat on Sigma_hat (the second copy's collar coordinates are t' = 1-t, s' = -s, and ds' ^ dt' = ds ^ dt); Omega_vert glues to a closed vertical form on R_hat (sigma_aud is fiberwise the constant Omega-preserving phi_0); omega_hat_K = Omega_hat_vert + K pi_hat^* eta_hat is symplectic on R_hat, restricts to omega_K on each copy, is positive on F and on Gamma_hat, and the four surgery tori are Lagrangian with protected split coordinates disjoint from the seam collar.",
+      "evidence": [
+        "paper/symplectic_double.tex",
+        "verification/runs/73-symplectic-form-on-the-double.txt"
+      ],
+      "id": "P_double_form",
+      "kind": "proof",
+      "uses": [
+        "P_split_form",
+        "K_sigma_aud",
+        "P_audit_double"
+      ],
+      "where": "paper/symplectic_double.tex, lem:double-form"
+    },
+    {
+      "claim": "chi(F) = -2, chi(Sigma_{1,1}) = -1, chi(R_aud) = 2, chi(V_aud) = 2, chi(Z_aud) = 4",
       "id": "C_euler",
       "kind": "computed",
       "result": {
         "chi_F": -2,
         "chi_R": 2,
         "chi_V": 2,
-        "chi_W": 2,
         "chi_Z": 4,
         "chi_base": -1
       }
     },
     {
-      "claim": "b_2(V) = 1, b_2(Z) = b_2(Z'') = 2, b_2(W) = 0, and dim H_2(W; Z/2) = 2",
+      "claim": "b_2(V_aud) = 1 and b_2(Z_aud) = 2",
       "id": "C_betti",
       "kind": "computed",
       "result": {
@@ -358,20 +255,6 @@
           "b2": 1,
           "b3": 0,
           "b4": 0
-        },
-        "W": {
-          "b0": 1,
-          "b1": 0,
-          "b2": 0,
-          "b3": 0,
-          "b4": 1
-        },
-        "W_mod2": {
-          "b0": 1,
-          "b1": 1,
-          "b2": 2,
-          "b3": 1,
-          "b4": 1
         },
         "Z": {
           "b0": 1,
@@ -383,17 +266,7 @@
       }
     },
     {
-      "claim": "<w_2, [F]> = chi(F) + F.F = -2 + 0 = 0 (mod 2), so a 4-manifold whose mod-2 second homology is generated by F is spin",
-      "id": "C_w2_fiber",
-      "kind": "computed",
-      "result": {
-        "F_squared": 0,
-        "chi_F": -2,
-        "w2_pairing_mod2": 0
-      }
-    },
-    {
-      "claim": "With F.F = 0, F.Gamma_hat = 1, Gamma_hat.Gamma_hat = 0 the Gram determinant is -1, so (F, Gamma_hat) is a basis of the unimodular rank-2 lattice H_2(Z) and the form is the hyperbolic form H: even, signature 0, b+ = b- = 1",
+      "claim": "With F.F = 0, F.Gamma_hat = 1, Gamma_hat.Gamma_hat = 0 the Gram determinant is -1, so (F, Gamma_hat) is a basis of the unimodular rank-2 lattice H_2(Z_aud) and the form is the hyperbolic form H: even, signature 0, b+ = b- = 1",
       "id": "C_hyperbolic_basis",
       "kind": "computed",
       "result": {
@@ -420,186 +293,17 @@
       }
     },
     {
-      "claim": "(aF + b Gamma_hat)^2 = 2ab; a nonzero square-zero class is kF or k Gamma_hat with k != 0",
-      "id": "C_square_zero_axes",
-      "kind": "computed",
-      "result": {
-        "box": 60,
-        "off_axis_square_zero": 0,
-        "square_formula": "2ab"
-      }
-    },
-    {
-      "claim": "A connected unbranched degree-k cover of a closed genus-2 surface has chi = -2k and genus k + 1; hence a symplectic representative of kF (k != 0) has genus |k| + 1 >= 2",
-      "id": "C_cover_genus",
-      "kind": "computed",
-      "result": {
-        "checked_k_up_to": 40,
-        "genus_of_k_cover": [
-          [
-            1,
-            2
-          ],
-          [
-            2,
-            3
-          ],
-          [
-            3,
-            4
-          ],
-          [
-            4,
-            5
-          ],
-          [
-            5,
-            6
-          ],
-          [
-            6,
-            7
-          ],
-          [
-            7,
-            8
-          ],
-          [
-            8,
-            9
-          ]
-        ],
-        "minimum_over_k_nonzero": 2
-      }
-    },
-    {
-      "claim": "K_Z . F = 2g(F) - 2 - F.F = 2, so |<c_1(K_Z), F>| = 2",
-      "id": "C_adjunction",
-      "kind": "computed",
-      "result": {
-        "F_squared": 0,
-        "K_dot_F": 2,
-        "genus": 2
-      }
-    },
-    {
-      "claim": "With F.F = 0, F.Gamma'' = 1 and Gamma''.Gamma'' = 2n+1 odd, E = Gamma'' - nF and D = F - E satisfy E.E = 1, D.D = -1, E.D = 0 and det = -1, so H_2(Z'') = Z<E, D> with form <1> + <-1>: odd, signature 0, b+ = 1",
-      "id": "C_odd_basis",
-      "kind": "computed",
-      "result": {
-        "b_plus": 1,
-        "checked_n_range": [
-          -25,
-          25
-        ],
-        "identities": "E.E = (2n+1) - 2n = 1; D.D = 0 - 2(1) + 1 = -1; E.D = 1 - 1 = 0",
-        "odd": true,
-        "signature": 0
-      }
-    },
-    {
-      "claim": "The form <1> + <-1> has exactly two square-zero lines, spanned by (1, 1) and (1, -1); a diffeomorphism from Z'' to CP^2 # -CP^2 carries span{F} to one of them",
-      "id": "C_square_zero_lines_odd",
-      "kind": "computed",
-      "result": {
-        "box": 60,
-        "lines": [
-          [
-            1,
-            1
-          ],
-          [
-            1,
-            -1
-          ]
-        ]
-      }
-    },
-    {
-      "claim": "Arf(4_1) = 1: Delta(t) = -t^2 + 3t - 1 gives Delta(-1) = -5 = 3 (mod 8), and the Seifert quadratic form takes the value 0 on exactly one of four elements",
-      "id": "C_arf_figure_eight",
-      "kind": "computed",
-      "result": {
-        "alexander_coefficients": [
-          -1,
-          3,
-          -1
-        ],
-        "arf": 1,
-        "arf_by_levine": 1,
-        "arf_by_quadratic_form": 1,
-        "delta_at_minus_one": -5,
-        "quadratic_form_zeros": 1,
-        "residue_mod_8": 3,
-        "seifert_matrix": [
-          [
-            1,
-            -1
-          ],
-          [
-            0,
-            -1
-          ]
-        ]
-      }
-    },
-    {
-      "claim": "For a slice disk of 4_1 in W - B^4 that vanishes in H_2(W - B^4, d; Z/2), Klug's formula forces Arf(4_1) = 0, contradicting Arf(4_1) = 1",
-      "id": "C_klug_instance",
-      "kind": "computed",
-      "result": {
-        "D_squared": 0,
-        "actual_arf_41": 1,
-        "arf_disk": 0,
-        "contradiction": true,
-        "forced_arf_41": 0,
-        "mu_S3": 0,
-        "sigma": 0
-      }
-    },
-    {
-      "claim": "1 -> pi_1(Z) -> pi_1(W) -> Z/2 -> 1 with pi_1(Z) = 1 gives |pi_1(W)| = 2, so pi_1(W) = Z/2 (the only group of order 2)",
-      "id": "C_covering_order",
-      "kind": "computed",
-      "result": {
-        "deck_order": 2,
-        "order_pi1_W": 2,
-        "order_pi1_Z": 1
-      }
-    },
-    {
-      "claim": "W and B have the same Hambleton--Kreck invariants: pi_1 = Z/2, q = the zero form on H_2/Tors = 0, w_2-type (II), KS = 0",
-      "id": "C_hk_invariants",
-      "kind": "computed",
-      "result": {
-        "B": {
-          "KS": 0,
-          "form_on_H2_mod_torsion": "zero form of rank 0",
-          "pi_1": "Z/2",
-          "w2_type": "II"
-        },
-        "W": {
-          "KS": 0,
-          "form_on_H2_mod_torsion": "zero form of rank 0",
-          "pi_1": "Z/2",
-          "w2_type": "II"
-        },
-        "equal": true
-      }
-    },
-    {
-      "claim": "Z and Z'' are unions of V and -V along the whole boundary, so sigma(Z) = sigma(Z'') = sigma(V) - sigma(V) = 0; for the even form H, KS = sigma/8 = 0 (mod 2)",
+      "claim": "Z_aud is the union of V_aud and -V_aud along the whole boundary, so sigma(Z_aud) = sigma(V_aud) - sigma(V_aud) = 0 (also read off the form H); Z_aud is smooth, so KS = 0",
       "id": "C_signatures",
       "kind": "computed",
       "result": {
-        "KS_even_case": 0,
+        "KS_smooth": 0,
         "sigma_V": "s",
-        "sigma_Z": "s + (-s) = 0",
-        "sigma_Zpp": "s + (-s) = 0"
+        "sigma_Z": "s + (-s) = 0"
       }
     },
     {
-      "claim": "S^2 x S^2 admits an orientation-reversing diffeomorphism (a reflection of one factor), so a diffeomorphism Z -> S^2 x S^2 may be taken orientation-preserving",
+      "claim": "S^2 x S^2 admits an orientation-reversing diffeomorphism (a reflection of one factor), so a diffeomorphism Z_aud -> S^2 x S^2 may be taken orientation-preserving",
       "id": "C_orientation_reversal",
       "kind": "computed",
       "result": {
@@ -608,53 +312,36 @@
       }
     },
     {
-      "claim": "Under Source Formalization D, Wuebben's fixed target member V is simply connected.",
-      "id": "S00_pi1_V_trivial",
+      "claim": "pi_1(V_aud) = 1.",
+      "id": "S0_pi1_Vaud_trivial",
       "kind": "step",
-      "proof": "The Audit-Manifold Theorem gives pi_1(V_aud)=1.  Source Formalization D supplies a relative orientation-preserving smooth comparison carrying both torus collars, based peripheral classes, framing classes, and filling slopes.  It therefore extends over the two fillings to a diffeomorphism V_aud -> V, which transports the trivial fundamental group.",
+      "proof": "The certificate K_pi1_Vaud_trivial, read literally: the certified presentations present pi_1(V_aud), and each is certified trivial.",
       "uses": [
-        "A_source_formalization_D",
         "K_pi1_Vaud_trivial"
       ]
     },
     {
-      "claim": "H_1(V) = 0, H_3(V) = 0, H_2(V) = Z generated by the fiber F with F.F = 0, and V is spin.",
-      "id": "S1_homology_of_V",
-      "kind": "step",
-      "proof": "pi_1(V) = 1 gives H_1(V) = 0.  The boundary S^3_0(Q) is connected, so Lefschetz duality with universal coefficients gives H_3(V) = H^1(V, dV) = 0 and Tors H_2(V) = Tors H^3(V) = Tors H_1(V, dV) = 0.  chi(V) = 2 then gives b_2(V) = 1.  A section Gamma is a properly embedded surface meeting the fiber once, so [F] pairs to 1 with a relative class and is primitive: H_2(V) = Z<F>.  F.F = 0 since a fiber has trivial normal bundle.  H_2(V; Z/2) = Z/2<F> by universal coefficients, w_2 is detected on it, and <w_2, F> = chi(F) + F.F = 0 (mod 2).",
-      "uses": [
-        "S00_pi1_V_trivial",
-        "E_duality_uct",
-        "C_euler",
-        "C_betti",
-        "C_w2_fiber",
-        "E_wu",
-        "E_lp_double"
-      ]
-    },
-    {
-      "claim": "pi_1(Z) = 1 and pi_1(Z'') = 1.",
+      "claim": "pi_1(Z_aud) = 1.",
       "id": "S2_double_simply_connected",
       "kind": "step",
-      "proof": "Z = V u_sigma V and Z'' = V u_{f o sigma} V are unions of two copies of V along the connected bicollared boundary S^3_0(Q); by van Kampen each fundamental group is a quotient of pi_1(V) * pi_1(V) = 1.  This is the one place where pi_1(V) = 1, rather than pi_1(Z) = 1, is needed: the regluing twists the amalgam.",
+      "proof": "Z_aud = V_aud u_{sigma_aud} V_aud is a union of two copies of V_aud along the connected bicollared boundary M_h; by van Kampen pi_1(Z_aud) is a quotient of pi_1(V_aud) * pi_1(V_aud) = 1.",
       "uses": [
-        "S00_pi1_V_trivial",
+        "S0_pi1_Vaud_trivial",
         "E_van_kampen",
-        "E_lp_double",
-        "E_lp_regluing"
+        "P_audit_double"
       ]
     },
     {
-      "claim": "H_2(Z) = Z<F, Gamma_hat> with intersection form H; Z is spin, closed, simply connected, with b_2 = 2 and signature 0.",
+      "claim": "H_2(Z_aud) = Z<F, Gamma_hat> with intersection form H; Z_aud is closed, smooth, simply connected and spin, with b_2 = 2 and signature 0.",
       "id": "S3_form_of_Z",
       "kind": "step",
-      "proof": "chi(Z) = 2 chi(V) - chi(S^3_0(Q)) = 4 and pi_1(Z) = 1 give b_2(Z) = 2 with H_2(Z) torsion-free.  F.F = 0, F.Gamma_hat = 1 (a fiber meets a section once), and Gamma_hat.Gamma_hat = 0 by the run-28 certificate.  The Gram determinant is -1 and the form is unimodular, so (F, Gamma_hat) is a basis and the form is H.  H is even, so by Wu's formula w_2(Z) = 0.",
+      "proof": "chi(Z_aud) = 2 chi(V_aud) - chi(M_h) = 4 and pi_1(Z_aud) = 1 give b_2 = 2 with H_2 torsion-free.  F.F = 0, F.Gamma_hat = 1 and Gamma_hat.Gamma_hat = 0 by cor:audit-double and the run-28 certificate.  The Gram determinant is -1 and the form is unimodular, so (F, Gamma_hat) is a basis and the form is H.  H is even, so by Wu's formula w_2(Z_aud) = 0.",
       "uses": [
         "S2_double_simply_connected",
         "C_euler",
         "C_betti",
         "K_section_square_zero",
-        "E_lp_double",
+        "P_audit_double",
         "E_lattice_index",
         "C_hyperbolic_basis",
         "E_wu",
@@ -662,10 +349,10 @@
       ]
     },
     {
-      "claim": "Z is homeomorphic to S^2 x S^2.",
+      "claim": "Z_aud is homeomorphic to S^2 x S^2.",
       "id": "S4_Z_homeomorphic_S2xS2",
       "kind": "step",
-      "proof": "Z is a closed simply connected topological 4-manifold with even intersection form H, the form of S^2 x S^2; for even forms KS = signature/8 = 0 is determined, so Freedman's classification gives the homeomorphism.",
+      "proof": "Z_aud is a closed simply connected 4-manifold with even intersection form H, the form of S^2 x S^2, and KS = 0 because it is smooth; Freedman's classification gives the homeomorphism.",
       "uses": [
         "S3_form_of_Z",
         "E_freedman",
@@ -673,25 +360,25 @@
       ]
     },
     {
-      "claim": "Z is a closed symplectic 4-manifold, obtained from the closed genus-2 surface bundle R u_sigma R over a genus-2 surface by Luttinger surgery on four disjoint Lagrangian tori that miss F and Gamma_hat; F and Gamma_hat are symplectic surfaces of genus 2 and square 0.",
+      "claim": "Z_aud is a closed symplectic 4-manifold, obtained from the closed genus-2 surface bundle (R_hat, omega_hat_K) by Luttinger surgery on four disjoint Lagrangian tori that miss F and Gamma_hat; F and Gamma_hat are symplectic surfaces of genus 2 and square 0.",
       "id": "S5_Z_symplectic",
       "kind": "step",
-      "proof": "R u_sigma R is a closed surface bundle whose fiber is homologically essential (F.Gamma_hat = 1), so it carries the paper's Thurston-type form, positive on F and on Gamma_hat.  The surgery tori are Lagrangian for it (Lemma 8.2, machine-checked), the surgeries are the certified Luttinger surgeries, and Luttinger surgery preserves the symplectic structure away from the surgered neighborhoods, which miss F and Gamma_hat.",
+      "proof": "omega_hat_K is symplectic on R_hat, positive on F and Gamma_hat, and the four tori are Lagrangian with split protected coordinates (lem:double-form).  On each copy the form is omega_K, so the product-framed filling slopes are the Lagrangian-framing classes (thm:framing, certified); the mirror tori are carried to T_alpha, T_beta by the swap of the copies, which is a symplectomorphism (phi_0 preserves Omega, (t,s) -> (1-t,-s) preserves ds ^ dt).  So the four surgeries are Luttinger surgeries, and the surgered form agrees with omega_hat_K away from the four neighborhoods, which miss F and Gamma_hat.",
       "uses": [
-        "E_lp_double",
-        "E_bundle_symplectic",
+        "P_double_form",
         "K_lagrangian_framing",
         "E_luttinger",
-        "S3_form_of_Z"
+        "P_audit_double"
       ]
     },
     {
-      "claim": "Z is not diffeomorphic to S^2 x S^2.",
+      "claim": "Z_aud is not diffeomorphic to S^2 x S^2.",
       "id": "S6_Z_not_diffeomorphic_S2xS2",
       "kind": "step",
-      "proof": "R u_sigma R is aspherical (genus-2 fiber and base), hence minimal (an exceptional sphere would be null-homotopic, hence of square 0, not -1) and neither rational nor ruled (those have pi_2 != 0); so kappa(R u_sigma R) != -infinity.  Luttinger surgery preserves kappa (Ho--Li), so kappa(Z) != -infinity.  If psi: Z -> S^2 x S^2 were a diffeomorphism, composing with a reflection of one factor if necessary makes it orientation-preserving; pulling back a product form gives a symplectic form on Z inducing its orientation with kappa = kappa(S^2 x S^2) = -infinity (rational), contradicting the independence of kappa from the form.",
+      "proof": "R_hat is a surface bundle with genus-2 fiber and genus-2 base, hence aspherical, hence minimal (an exceptional sphere would be null-homotopic, of square 0, not -1) and neither rational nor ruled (those have pi_2 != 0); so kappa(R_hat) != -infinity.  Luttinger surgery preserves kappa (Ho--Li), so kappa(Z_aud) != -infinity.  If psi: Z_aud -> S^2 x S^2 were a diffeomorphism, composing with a reflection of one factor if necessary makes it orientation-preserving; pulling back a product form gives a symplectic form on Z_aud inducing its orientation with kappa = kappa(S^2 x S^2) = -infinity (rational), contradicting the independence of kappa from the form.",
       "uses": [
         "S5_Z_symplectic",
+        "P_audit_double",
         "E_asphericity",
         "E_kodaira",
         "E_ho_li",
@@ -699,141 +386,21 @@
       ]
     },
     {
-      "claim": "Theorem A: Z is homeomorphic but not diffeomorphic to S^2 x S^2.",
-      "id": "S7_theorem_A",
+      "claim": "Theorem A': Z_aud is a closed symplectic 4-manifold homeomorphic but not diffeomorphic to S^2 x S^2.",
+      "id": "S7_theorem_A_prime",
       "kind": "step",
-      "proof": "S4 and S6.",
+      "proof": "S4, S5 and S6.",
       "uses": [
         "S4_Z_homeomorphic_S2xS2",
+        "S5_Z_symplectic",
         "S6_Z_not_diffeomorphic_S2xS2"
-      ]
-    },
-    {
-      "claim": "W is a closed oriented smooth spin 4-manifold with pi_1(W) = Z/2, b_2(W) = 0 (a rational homology sphere), signature 0 and KS(W) = 0.",
-      "id": "S8_W_invariants",
-      "kind": "step",
-      "proof": "Z -> W is a connected 2-fold covering, so pi_1(W) has order 2.  chi(W) = chi(Z)/2 = 2 and b_1(W) = 0 give b_2(W) = 0, hence sigma(W) = 0.  W is spin by Lidman--Piccirillo's Lemma 7, whose hypotheses S1 supplies.  KS(W) = 0 because W is smooth.",
-      "uses": [
-        "S2_double_simply_connected",
-        "E_lp_quotient",
-        "E_covering_sequence",
-        "C_covering_order",
-        "C_euler",
-        "C_betti",
-        "S1_homology_of_V",
-        "E_duality_uct"
-      ]
-    },
-    {
-      "claim": "W is homeomorphic to the Kawauchi manifold B.",
-      "id": "S9_W_homeomorphic_B",
-      "kind": "step",
-      "proof": "Both are closed oriented topological 4-manifolds with pi_1 = Z/2, zero intersection form on H_2/Tors = 0, w_2-type (II), and KS = 0 (both smooth).  These are the Hambleton--Kreck invariants, which classify up to homeomorphism.",
-      "uses": [
-        "S8_W_invariants",
-        "E_kawauchi_B",
-        "C_hk_invariants",
-        "E_hambleton_kreck"
-      ]
-    },
-    {
-      "claim": "No nonzero square-zero class in H_2(Z; Z) is represented by a smoothly embedded torus (the paper's Lemma 4.3).",
-      "id": "S10_no_square_zero_torus",
-      "kind": "step",
-      "proof": "For k >= 1 the connected symplectic k-fold covers of F and of Gamma_hat represent kF and k Gamma_hat with genus k + 1; by the symplectic Thom theorem these genera are minimal, and reversing orientation covers k < 0.  Since (aF + b Gamma_hat)^2 = 2ab, every nonzero square-zero class is kF or k Gamma_hat with k != 0 and has minimal genus |k| + 1 >= 2.",
-      "uses": [
-        "S5_Z_symplectic",
-        "S3_form_of_Z",
-        "E_cover_construction",
-        "C_cover_genus",
-        "E_symplectic_thom",
-        "C_square_zero_axes"
-      ]
-    },
-    {
-      "claim": "The figure-eight knot is not smoothly slice in W.",
-      "id": "S11_figure_eight_not_slice_in_W",
-      "kind": "step",
-      "proof": "Let D be a smooth slice disk in W - B^4.  H_2(W - B^4, d; Z) = H^2(W) = Z/2 is torsion, so D's relative self-intersection is 0 and its framing is the Seifert framing.  Case 1: [D, dD] = 0 in H_2(W - B^4, d; Z/2).  Then D is characteristic in the spin manifold W - B^4, and Klug's Theorem 2 with Arf(D) = 0, sigma = 0, [D]^2 = 0, mu(S^3) = 0 forces Arf(4_1) = 0; but Arf(4_1) = 1.  Case 2: [D, dD] != 0.  Then the 0-trace X_0(4_1) embeds in W and the torus T = (Seifert surface) u D has square 0 and [T] != 0 in H_2(W; Z/2).  X_0(4_1) is simply connected, so it lifts to Z and T lifts to a torus T~ with p_*[T~] = [T] != 0, hence [T~] != 0 in H_2(Z; Z/2) = H_2(Z) (x) Z/2, so [T~] != 0 in H_2(Z; Z); T~.T~ = T.T = 0 since p is a local diffeomorphism.  This contradicts S10.",
-      "uses": [
-        "S8_W_invariants",
-        "S9_W_homeomorphic_B",
-        "E_trace_embedding",
-        "E_klug",
-        "E_levine_arf",
-        "C_arf_figure_eight",
-        "C_klug_instance",
-        "E_covering_sequence",
-        "E_duality_uct",
-        "S10_no_square_zero_torus",
-        "C_betti"
-      ]
-    },
-    {
-      "claim": "Theorem B: W is homeomorphic to B, and the pair (B, W) is distinguished by the smooth sliceness of the figure-eight knot, hence not diffeomorphic.",
-      "id": "S12_theorem_B",
-      "kind": "step",
-      "proof": "S9 gives the homeomorphism.  4_1 is slice in B and, by S11, not in W; sliceness in a closed 4-manifold is a diffeomorphism invariant, so no diffeomorphism B -> W exists.",
-      "uses": [
-        "S9_W_homeomorphic_B",
-        "S11_figure_eight_not_slice_in_W",
-        "E_kawauchi_B",
-        "E_ball_isotopy"
-      ]
-    },
-    {
-      "claim": "Z'' is closed, simply connected, smooth, with b_2 = 2, signature 0 and odd intersection form <1> + <-1>.",
-      "id": "S13_form_of_Zpp",
-      "kind": "step",
-      "proof": "pi_1(Z'') = 1 by S2 and chi(Z'') = 4 give b_2 = 2 with H_2 free.  Novikov additivity over the two copies of V (the second with reversed orientation) gives signature 0.  F.F = 0, F.Gamma'' = 1 and Gamma''.Gamma'' odd by Lidman--Piccirillo's regluing; the Gram determinant is -1 so (F, Gamma'') is a basis, and the explicit change of basis E = Gamma'' - nF, D = F - E diagonalizes the form as <1> + <-1>.",
-      "uses": [
-        "S2_double_simply_connected",
-        "C_euler",
-        "C_betti",
-        "E_novikov",
-        "C_signatures",
-        "E_lp_regluing",
-        "E_lattice_index",
-        "C_odd_basis",
-        "E_duality_uct"
-      ]
-    },
-    {
-      "claim": "Z'' is homeomorphic to CP^2 # -CP^2.",
-      "id": "S14_Zpp_homeomorphic_CP2",
-      "kind": "step",
-      "proof": "Z'' is closed and simply connected with the odd form <1> + <-1> and KS = 0 (smooth); of Freedman's two manifolds with this form, the one with KS = 0 is CP^2 # -CP^2.",
-      "uses": [
-        "S13_form_of_Zpp",
-        "E_freedman"
-      ]
-    },
-    {
-      "claim": "Z'' is not diffeomorphic to CP^2 # -CP^2.",
-      "id": "S15_Zpp_not_diffeomorphic_CP2",
-      "kind": "step",
-      "proof": "Z is symplectic with |K_Z . F| = 2 by adjunction (F symplectic of genus 2 and square 0) and H^2(V) = Z, so Lidman--Piccirillo's Lemma 9 gives Psi_{V,t} != 0 for both spin^c structures with |<c_1(t), F>| = 2.  Z'' is V u V along S^3_0(Q) with t restricting to the non-torsion s_+-, b_2^+(Z'') = 1 and span{F} a square-zero line, so Lemma 10 gives a nonvanishing mixed invariant Phi_{Z'', span{F}, t}.  A diffeomorphism to CP^2 # -CP^2 would carry span{F} to one of its two square-zero lines, along each of which the manifold splits over S^2 x S^1 and every mixed invariant vanishes.",
-      "uses": [
-        "S5_Z_symplectic",
-        "C_adjunction",
-        "E_adjunction",
-        "S1_homology_of_V",
-        "S13_form_of_Zpp",
-        "C_square_zero_lines_odd",
-        "E_lp_floer"
-      ]
-    },
-    {
-      "claim": "Theorem C: Z'' is a closed simply connected 4-manifold homeomorphic but not diffeomorphic to CP^2 # -CP^2.",
-      "id": "S16_theorem_C",
-      "kind": "step",
-      "proof": "S2, S14 and S15.",
-      "uses": [
-        "S2_double_simply_connected",
-        "S14_Zpp_homeomorphic_CP2",
-        "S15_Zpp_not_diffeomorphic_CP2"
       ]
     }
   ],
-  "target": "arXiv:2608.17267 Theorems A, B, C from the audit theorem under Source Formalization D"
+  "pillars": [
+    "K_pi1_Vaud_trivial",
+    "K_sigma_aud",
+    "P_double_form"
+  ],
+  "target": "Theorem A': Z_aud = V_aud u_{sigma_aud} V_aud is a closed symplectic 4-manifold homeomorphic but not diffeomorphic to S^2 x S^2, from the audit theorem, the paper's own lemmas, and named external theorems; no assumption"
 }

@@ -1,20 +1,25 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Independent replay of downstream_chain_certificate.json.
+# Independent replay of downstream_chain_certificate.json -- the existence
+# chain for Theorem A'.
 #
 # This checker shares no code with downstream_chain.py.  It re-derives every
-# computed fact of the chain from scratch, checks that every dependency the
-# chain cites exists and that the dependency graph is acyclic, that each of
-# the three conclusions depends on certified triviality of pi_1(V_aud) and
-# on the explicit Source Formalization D comparison assumption, and
-# that every evidence file is present with the recorded SHA-256.
+# computed fact from scratch, checks that every dependency the chain cites
+# exists and that the graph is acyclic, that the chain carries NO assumption
+# item, that no item's text mentions Lidman--Piccirillo, Wuebben, or the
+# source-formalization clauses, that the single conclusion rests on the
+# three intrinsic pillars (certified pi_1(V_aud) = 1, certified sigma_aud,
+# the written descent lemma), that every certificate and proof item is
+# bound to files, and that every bound file is present with the recorded
+# SHA-256.
 #
 #   ruby verify_downstream_chain.rb [--root DIR] [CERTIFICATE]
 
 require "digest"
 require "json"
 require "optparse"
+require "set"
 
 def demand(condition, message)
   raise "FAILED: #{message}" unless condition
@@ -39,24 +44,20 @@ CHECKS = {
     chi_base = 2 - 2 * 1 - 1
     chi_r = chi_f * chi_base
     chi_v = chi_r                       # T^2 x D^2 and T^3 both have chi 0
-    chi_z = 2 * chi_v - 0
+    chi_z = 2 * chi_v - 0               # M_h is a closed 3-manifold
     demand(r["chi_F"] == chi_f && r["chi_base"] == chi_base, "chi(F), chi(base)")
     demand(r["chi_R"] == chi_r && r["chi_V"] == chi_v, "chi(R), chi(V)")
-    demand(r["chi_Z"] == chi_z && r["chi_W"] == chi_z / 2, "chi(Z), chi(W)")
+    demand(r["chi_Z"] == chi_z, "chi(Z)")
     demand(chi_v == 2 && chi_z == 4, "expected chi(V) = 2, chi(Z) = 4")
+    demand(r.keys.sort == %w[chi_F chi_R chi_V chi_Z chi_base], "no other manifolds")
   end,
   "C_betti" => lambda do |r|
     b2 = ->(chi, b) { chi - b["b0"] + b["b1"] + b["b3"] - b["b4"] }
     demand(b2.call(2, r["V"]) == r["V"]["b2"] && r["V"]["b2"] == 1, "b2(V)")
     demand(b2.call(4, r["Z"]) == r["Z"]["b2"] && r["Z"]["b2"] == 2, "b2(Z)")
-    demand(b2.call(2, r["W"]) == r["W"]["b2"] && r["W"]["b2"] == 0, "b2(W)")
-    demand(b2.call(2, r["W_mod2"]) == r["W_mod2"]["b2"] && r["W_mod2"]["b2"] == 2,
-           "b2(W; Z/2)")
-    demand(r["V"]["b4"] == 0 && r["Z"]["b4"] == 1, "top Betti numbers")
-    demand(r["W_mod2"]["b1"] == 1 && r["W_mod2"]["b3"] == 1, "mod-2 duality")
-  end,
-  "C_w2_fiber" => lambda do |r|
-    demand(((2 - 2 * 2) + 0) % 2 == 0 && r["w2_pairing_mod2"] == 0, "w2 pairing")
+    demand(r["V"]["b4"].zero? && r["Z"]["b4"] == 1, "top Betti numbers")
+    demand(r["V"]["b1"].zero? && r["Z"]["b1"].zero?, "b1 = 0 from pi_1 = 1")
+    demand(r.keys.sort == %w[V Z], "no other manifolds")
   end,
   "C_hyperbolic_basis" => lambda do |r|
     g = [[0, 1], [1, 0]]
@@ -67,109 +68,59 @@ CHECKS = {
            "signature witnesses")
     even = (-3..3).to_a.product((-3..3).to_a).all? { |v| pair(g, v, v).even? }
     demand(even && r["even"] == true, "evenness")
-    demand(r["signature"] == 0 && r["b_plus"] == 1 && r["b_minus"] == 1, "signature")
-  end,
-  "C_square_zero_axes" => lambda do |r|
-    h = [[0, 1], [1, 0]]
-    box = r["box"]
-    bad = (-box..box).to_a.product((-box..box).to_a).count do |a, b|
-      (a != 0 || b != 0) && pair(h, [a, b], [a, b]).zero? && a != 0 && b != 0
-    end
-    demand(bad.zero? && r["off_axis_square_zero"].zero?, "square-zero axes")
-    demand(pair(h, [3, 5], [3, 5]) == 2 * 3 * 5, "(aF + bG)^2 = 2ab")
-  end,
-  "C_cover_genus" => lambda do |r|
-    (1..r["checked_k_up_to"]).each do |k|
-      genus = 1 - (k * (2 - 2 * 2)) / 2
-      demand(genus == k + 1, "genus of #{k}-fold cover")
-    end
-    r["genus_of_k_cover"].each { |k, g| demand(g == k + 1, "table row #{k}") }
-    demand(r["minimum_over_k_nonzero"] == 2, "minimum genus")
-  end,
-  "C_adjunction" => lambda do |r|
-    demand(2 * 2 - 2 - 0 == 2 && r["K_dot_F"] == 2, "adjunction")
-  end,
-  "C_odd_basis" => lambda do |r|
-    lo, hi = r["checked_n_range"]
-    (lo..hi).each do |n|
-      q = [[0, 1], [1, 2 * n + 1]]
-      e = [-n, 1]
-      d = [1 + n, -1]
-      demand(pair(q, e, e) == 1, "E.E at n=#{n}")
-      demand(pair(q, d, d) == -1, "D.D at n=#{n}")
-      demand(pair(q, e, d).zero?, "E.D at n=#{n}")
-      demand(det2(q) == -1, "det at n=#{n}")
-    end
-    demand(r["signature"] == 0 && r["b_plus"] == 1 && r["odd"] == true, "odd form data")
-  end,
-  "C_square_zero_lines_odd" => lambda do |r|
-    box = r["box"]
-    lines = (-box..box).to_a.product((-box..box).to_a).select do |a, b|
-      (a != 0 || b != 0) && a * a - b * b == 0
-    end.map { |a, b| a == b ? [1, 1] : [1, -1] }.uniq.sort
-    demand(lines == [[1, -1], [1, 1]] && r["lines"].sort == lines, "square-zero lines")
-  end,
-  "C_arf_figure_eight" => lambda do |r|
-    s = [[1, -1], [0, -1]]
-    demand(r["seifert_matrix"] == s, "Seifert matrix")
-    # det(S - t S^T) computed symbolically as polynomial coefficients.
-    # S - tS^T = [[1 - t, -1], [t, -1 + t]]
-    # det = (1 - t)(-1 + t) - (-1)(t) = -(1 - t)^2 + t = -1 + 3t - t^2
-    coeffs = [-1, 3, -1]
-    demand(r["alexander_coefficients"] == coeffs, "Alexander coefficients")
-    at_minus_one = coeffs.each_with_index.sum { |c, i| c * (-1)**i }
-    demand(at_minus_one == -5 && r["delta_at_minus_one"] == -5, "Delta(-1)")
-    residue = at_minus_one % 8
-    arf_levine = [1, 7].include?(residue) ? 0 : 1
-    zeros = [0, 1].product([0, 1]).count do |x|
-      ((0..1).sum { |i| (0..1).sum { |j| x[i] * s[i][j] * x[j] } } % 2).zero?
-    end
-    arf_quadratic = zeros == 3 ? 0 : 1
-    demand(arf_levine == 1 && arf_quadratic == 1 && r["arf"] == 1, "Arf(4_1)")
-    demand(r["quadratic_form_zeros"] == zeros, "quadratic form zeros")
-  end,
-  "C_klug_instance" => lambda do |r|
-    rhs = ((r["sigma"] - r["D_squared"]) / 8 + r["mu_S3"]) % 2
-    forced = (rhs - r["arf_disk"]) % 2
-    demand(r["sigma"].zero? && r["D_squared"].zero? && r["arf_disk"].zero?, "inputs")
-    demand(forced.zero? && r["forced_arf_41"].zero? && r["actual_arf_41"] == 1,
-           "Klug contradiction")
-  end,
-  "C_covering_order" => lambda do |r|
-    demand(r["order_pi1_Z"] * r["deck_order"] == 2 && r["order_pi1_W"] == 2, "covering order")
-  end,
-  "C_hk_invariants" => lambda do |r|
-    demand(r["W"] == r["B"] && r["equal"] == true, "HK invariants equal")
-    demand(r["W"]["pi_1"] == "Z/2" && r["W"]["w2_type"] == "II" && r["W"]["KS"].zero?,
-           "HK invariant values")
+    demand(r["signature"].zero? && r["b_plus"] == 1 && r["b_minus"] == 1, "signature")
   end,
   "C_signatures" => lambda do |r|
-    demand(r["KS_even_case"].zero?, "KS of even form with signature 0")
-    demand(r["sigma_Z"].end_with?("= 0") && r["sigma_Zpp"].end_with?("= 0"), "signatures")
+    demand(r["KS_smooth"].zero?, "KS of a smooth manifold")
+    demand(r["sigma_Z"].end_with?("= 0"), "signature of Z")
   end,
   "C_orientation_reversal" => lambda do |r|
     demand(r["degree"] == -1, "orientation-reversing self-map of S^2 x S^2")
   end,
 }.freeze
 
+FORBIDDEN = ["Lidman", "Piccirillo", "LP25", "2505.14387", "Wuebben",
+             "2608.17267", "Source Formalization", "D1--D14", "D1-D14"].freeze
+TEXT_FIELDS = %w[claim statement proof name source where hypotheses].freeze
+PILLARS = %w[K_pi1_Vaud_trivial K_sigma_aud P_double_form].freeze
+
 # ---------------------------------------------------------------- main
 
 options = { root: nil }
 OptionParser.new do |parser|
   parser.banner = "usage: verify_downstream_chain.rb [--root DIR] [CERTIFICATE]"
-  parser.on("--root DIR", "repository verification root") { |v| options[:root] = File.expand_path(v) }
+  parser.on("--root DIR", "repository root") { |v| options[:root] = File.expand_path(v) }
 end.parse!
 
 certificate = ARGV.first || File.join(__dir__, "downstream_chain_certificate.json")
-root = options[:root] || File.expand_path("..", __dir__)
+root = options[:root] || File.expand_path("../..", __dir__)
 data = JSON.parse(File.read(certificate))
 
-demand(data["format"] == "luttinger-downstream-proof-chain-v2", "unknown format")
+demand(data["format"] == "luttinger-existence-chain-v3", "unknown format")
 items = data["items"]
 by_id = items.to_h { |item| [item["id"], item] }
 demand(by_id.size == items.size, "duplicate item ids")
 
-# Dependency graph: every citation resolves; acyclic; conclusions reach K.
+# No assumption of any kind.
+demand(items.none? { |i| i["kind"] == "assumption" }, "chain carries an assumption")
+demand(items.none? { |i| i["id"].start_with?("A_") }, "chain carries an A_ item")
+demand(%w[external certificate proof computed step].to_set.superset?(items.map { |i| i["kind"] }.to_set),
+       "unknown item kind")
+
+# No item text refers to another author's construction.
+items.each do |item|
+  TEXT_FIELDS.each do |field|
+    text = item[field]
+    text = text.join(" ") if text.is_a?(Array)
+    next if text.nil?
+    FORBIDDEN.each do |word|
+      demand(!text.include?(word), "#{item['id']}.#{field} mentions #{word}")
+    end
+  end
+end
+demand(data["forbidden"].sort == FORBIDDEN.sort, "forbidden list matches")
+
+# Dependency graph: every citation resolves; acyclic; conclusion reaches pillars.
 items.each do |item|
   (item["uses"] || []).each do |dep|
     demand(by_id.key?(dep), "#{item['id']} cites unknown #{dep}")
@@ -193,16 +144,20 @@ reach = lambda do |name, acc|
   end
   acc
 end
+demand(data["conclusions"] == %w[S7_theorem_A_prime], "the conclusion is Theorem A'")
+demand(data["pillars"].sort == PILLARS.sort, "pillars match")
 data["conclusions"].each do |conclusion|
   demand(by_id.key?(conclusion), "missing conclusion #{conclusion}")
   dependencies = reach.call(conclusion, [])
-  demand(dependencies.include?("K_pi1_Vaud_trivial"),
-         "#{conclusion} does not rest on certified pi_1(V_aud) = 1")
-  demand(dependencies.include?("A_source_formalization_D"),
-         "#{conclusion} does not rest on Source Formalization D")
+  PILLARS.each do |pillar|
+    demand(dependencies.include?(pillar), "#{conclusion} does not rest on #{pillar}")
+  end
 end
-demand(data["conclusions"].sort == %w[S12_theorem_B S16_theorem_C S7_theorem_A],
-       "conclusions are Theorems A, B, C")
+# Every non-step item is on the path of the conclusion.
+on_path = reach.call("S7_theorem_A_prime", [])
+items.reject { |i| i["kind"] == "step" }.each do |item|
+  demand(on_path.include?(item["id"]), "#{item['id']} is not on the path of Theorem A'")
+end
 
 # Every computed fact is recomputed here.
 computed = items.select { |item| item["kind"] == "computed" }
@@ -213,22 +168,20 @@ computed.each do |item|
 end
 demand(computed.size == CHECKS.size, "every check corresponds to a computed item")
 
-# External items carry a statement and a source; certificates carry evidence.
+# External items carry a statement and a source; certificates and proofs
+# carry bound evidence.
 items.select { |i| i["kind"] == "external" }.each do |item|
   demand(!item["statement"].to_s.empty? && !item["source"].to_s.empty?,
          "external #{item['id']} lacks a statement or source")
 end
-items.select { |i| i["kind"] == "certificate" }.each do |item|
+items.select { |i| %w[certificate proof].include?(i["kind"]) }.each do |item|
+  demand(!item["evidence"].to_a.empty?, "#{item['id']} has no evidence")
   item["evidence"].each do |relative|
     demand(data["evidence_sha256"].key?(relative), "#{item['id']} evidence #{relative} unbound")
   end
 end
-items.select { |i| i["kind"] == "assumption" }.each do |item|
-  demand(!item["statement"].to_s.empty?, "assumption #{item['id']} lacks a statement")
-  item["evidence"].each do |relative|
-    demand(data["evidence_sha256"].key?(relative),
-           "#{item['id']} evidence #{relative} unbound")
-  end
+items.select { |i| i["kind"] == "proof" }.each do |item|
+  demand(!item["where"].to_s.empty?, "proof #{item['id']} does not say where it is written")
 end
 
 # Evidence files are present with the recorded digests.
@@ -240,7 +193,8 @@ data["evidence_sha256"].each do |relative, digest|
 end
 
 kinds = items.group_by { |i| i["kind"] }.transform_values(&:size)
-puts "ALL RUBY DOWNSTREAM-CHAIN CHECKS PASSED: " \
+puts "ALL RUBY EXISTENCE-CHAIN CHECKS PASSED: " \
      "#{kinds.sort.map { |k, v| "#{k}=#{v}" }.join(', ')}; " \
      "#{computed.size} computed facts replayed; " \
-     "#{data['evidence_sha256'].size} evidence digests verified"
+     "#{data['evidence_sha256'].size} evidence digests verified; " \
+     "assumptions=0; forbidden names absent"

@@ -156,8 +156,18 @@ NODES = {
         "machine_certificate", (),
         "runs/47-cumulative-moser-flow.txt"),
     "M_downstream_algebra": ("machine_certificate", (), "runs/24-downstream-theorem-audit.txt"),
-    "M_downstream_chain": (
+    # Run 74 split the run-64 chain in two.  The transfer of Wuebben's
+    # Theorems A, B, C under D1--D14 is the ATTRIBUTION chain, moved to
+    # luttinger/attribution/ unchanged; the EXISTENCE chain for Theorem A'
+    # about Z_aud carries no assumption and no item about any other
+    # author's construction (check_existence_boundary below enforces it).
+    "M_wuebben_transfer_chain": (
+        "machine_certificate", (),
+        "luttinger/attribution/wuebben_transfer_chain_certificate.json"),
+    "M_existence_chain": (
         "machine_certificate", (), "luttinger/downstream_chain_certificate.json"),
+    "M_sigma_aud_seam_identity": (
+        "machine_certificate", (), "runs/72-sigma-aud-boundary-involution.txt"),
     "M_section_PL_push_off": ("machine_certificate", (), "runs/28-pl-self-intersection-certificate.txt"),
 
     "G_equivariant_normal_form": (
@@ -216,6 +226,21 @@ NODES = {
         ("G_audit_model_identification", "M_section_PL_push_off",
          "M_PL_theorem_hypotheses", "G_topological_smooth_reroute"),
         "notes/pl_self_intersection_certificate_2026-08-24.md"),
+    # The intrinsic boundary involution and the double (runs 72, 73;
+    # paper/sigma_aud.tex, paper/symplectic_double.tex).
+    "G_sigma_aud": (
+        "geometric_argument",
+        ("M_sigma_aud_seam_identity", "M_based_monodromy",
+         "G_audit_model_identification"),
+        "runs/72-sigma-aud-boundary-involution.txt"),
+    "G_audit_double": (
+        "geometric_argument",
+        ("G_sigma_aud", "G_section_square_zero"),
+        "runs/72-sigma-aud-boundary-involution.txt"),
+    "G_double_form": (
+        "geometric_argument",
+        ("G_sigma_aud", "G_audit_double", "G_lagrangian_framing"),
+        "runs/73-symplectic-form-on-the-double.txt"),
     "G_torus_local_flatness": (
         "geometric_argument",
         ("M_torus_local_flatness", "T_surface_classification",
@@ -256,14 +281,44 @@ NODES = {
         "derived_claim",
         ("C_correct_filled_presentation", "M_filled_group_derivations",
          "M_second_filled_group_verifier"), None),
+    # The existence chain (run 74): every step below is an item of
+    # luttinger/downstream_chain_certificate.json, replayed by two checkers,
+    # and none of them depends on a source assumption or on any other
+    # author's construction.
+    "C_pi1_Zaud_trivial": (
+        "derived_claim",
+        ("C_pi1_Vaud_trivial", "T_van_kampen", "G_audit_double"), None),
+    "C_Zaud_form_hyperbolic": (
+        "derived_claim",
+        ("C_pi1_Zaud_trivial", "G_section_square_zero", "G_audit_double",
+         "M_existence_chain", "T_lattice_index", "T_wu_formula",
+         "T_duality_uct"), None),
+    "C_Zaud_homeomorphic_S2xS2": (
+        "derived_claim", ("C_Zaud_form_hyperbolic", "T_freedman"), None),
+    "C_Zaud_symplectic": (
+        "derived_claim",
+        ("G_double_form", "G_lagrangian_framing", "T_luttinger_symplectic",
+         "G_audit_double"), None),
+    "C_Zaud_not_diffeomorphic_S2xS2": (
+        "derived_claim",
+        ("C_Zaud_symplectic", "G_audit_double", "T_asphericity",
+         "T_kodaira_dimension", "T_ho_li", "M_existence_chain"), None),
+    "C_theorem_A_prime_exotic_S2xS2": (
+        "derived_claim",
+        ("C_Zaud_homeomorphic_S2xS2", "C_Zaud_symplectic",
+         "C_Zaud_not_diffeomorphic_S2xS2"), None),
+
+    # ---- attribution track: the transfer of Wuebben's theorems under
+    # D1--D14 (luttinger/attribution/wuebben_transfer_chain.py, run 64).
     "C_pi1_V_trivial": (
         "derived_claim",
         ("C_pi1_Vaud_trivial", "G_Wuebben_comparison"), None),
-    # The downstream chain (run 64): every step below is an item of
-    # luttinger/downstream_chain_certificate.json, replayed by two checkers.
+    # Every step below is an item of
+    # luttinger/attribution/wuebben_transfer_chain_certificate.json,
+    # replayed by two checkers.
     "C_homology_of_V": (
         "derived_claim",
-        ("C_pi1_V_trivial", "M_downstream_chain", "T_duality_uct",
+        ("C_pi1_V_trivial", "M_wuebben_transfer_chain", "T_duality_uct",
          "T_wu_formula", "T_lp_double_bundle"), None),
     "C_pi1_double_trivial": (
         "derived_claim",
@@ -272,7 +327,7 @@ NODES = {
     "C_Z_form_hyperbolic": (
         "derived_claim",
         ("C_pi1_double_trivial", "G_section_square_zero",
-         "M_downstream_chain", "T_lattice_index", "T_wu_formula",
+         "M_wuebben_transfer_chain", "T_lattice_index", "T_wu_formula",
          "T_duality_uct", "T_lp_double_bundle"), None),
     "C_Z_homeomorphic_S2xS2": (
         "derived_claim", ("C_Z_form_hyperbolic", "T_freedman"), None),
@@ -284,29 +339,29 @@ NODES = {
     "C_Z_not_diffeomorphic_S2xS2": (
         "derived_claim",
         ("C_Z_symplectic", "T_asphericity", "T_kodaira_dimension",
-         "T_ho_li", "M_downstream_chain"), None),
+         "T_ho_li", "M_wuebben_transfer_chain"), None),
     "C_theorem_A_exotic_S2xS2": (
         "derived_claim",
         ("C_Z_homeomorphic_S2xS2", "C_Z_not_diffeomorphic_S2xS2"), None),
     "C_W_invariants": (
         "derived_claim",
         ("C_pi1_double_trivial", "T_lp_quotient_spin",
-         "T_covering_sequence", "M_downstream_chain", "C_homology_of_V",
+         "T_covering_sequence", "M_wuebben_transfer_chain", "C_homology_of_V",
          "T_duality_uct"), None),
     "C_W_homeomorphic_B": (
         "derived_claim",
         ("C_W_invariants", "T_kawauchi_B", "T_hambleton_kreck",
-         "M_downstream_chain"), None),
+         "M_wuebben_transfer_chain"), None),
     "C_no_square_zero_torus": (
         "derived_claim",
         ("C_Z_symplectic", "C_Z_form_hyperbolic",
          "T_symplectic_cover_construction", "T_symplectic_thom",
-         "M_downstream_chain"), None),
+         "M_wuebben_transfer_chain"), None),
     "C_figure_eight_not_slice_W": (
         "derived_claim",
         ("C_W_invariants", "T_trace_embedding", "T_klug_relative_rochlin",
          "T_levine_arf", "T_covering_sequence", "T_duality_uct",
-         "C_no_square_zero_torus", "M_downstream_chain"), None),
+         "C_no_square_zero_torus", "M_wuebben_transfer_chain"), None),
     "C_theorem_B_slicing_pair": (
         "derived_claim",
         ("C_W_homeomorphic_B", "C_figure_eight_not_slice_W",
@@ -314,13 +369,13 @@ NODES = {
     "C_Zpp_form_odd": (
         "derived_claim",
         ("C_pi1_double_trivial", "T_novikov", "T_lp_regluing",
-         "T_lattice_index", "M_downstream_chain", "T_duality_uct"), None),
+         "T_lattice_index", "M_wuebben_transfer_chain", "T_duality_uct"), None),
     "C_Zpp_homeomorphic_CP2": (
         "derived_claim", ("C_Zpp_form_odd", "T_freedman"), None),
     "C_Zpp_not_diffeomorphic_CP2": (
         "derived_claim",
         ("C_Z_symplectic", "T_adjunction", "C_homology_of_V",
-         "C_Zpp_form_odd", "T_lp_floer", "M_downstream_chain"), None),
+         "C_Zpp_form_odd", "T_lp_floer", "M_wuebben_transfer_chain"), None),
     "C_theorem_C_exotic_CP2": (
         "derived_claim",
         ("C_pi1_double_trivial", "C_Zpp_homeomorphic_CP2",
@@ -353,8 +408,37 @@ def check_graph():
     assert done == set(NODES)
 
 
+EXISTENCE_CONCLUSION = "C_theorem_A_prime_exotic_S2xS2"
+
+
+def closure(name, acc=None):
+    acc = set() if acc is None else acc
+    for dependency in NODES[name][1]:
+        if dependency not in acc:
+            acc.add(dependency)
+            closure(dependency, acc)
+    return acc
+
+
+def check_existence_boundary():
+    """Theorem A' rests on no source assumption and on nothing named after
+    another author's construction."""
+    deps = closure(EXISTENCE_CONCLUSION)
+    for name in sorted(deps):
+        kind = NODES[name][0]
+        assert kind != "source_assumption", f"{EXISTENCE_CONCLUSION} rests on {name}"
+        lowered = name.lower()
+        assert "_lp_" not in lowered and "wuebben" not in lowered, (
+            f"{EXISTENCE_CONCLUSION} rests on {name}")
+    for pillar in ("C_pi1_Vaud_trivial", "G_sigma_aud", "G_double_form",
+                   "M_existence_chain"):
+        assert pillar in deps, f"{EXISTENCE_CONCLUSION} misses {pillar}"
+    return deps
+
+
 def main():
     check_graph()
+    existence = check_existence_boundary()
     evidence = []
     for name, (kind, _, relative) in NODES.items():
         if relative:
@@ -373,6 +457,12 @@ def main():
                     "geometric_argument"}:
             print(f"  {kind}: {name}")
     print(f"bound evidence files: {len(evidence)}")
+    kinds_e = {}
+    for name in existence:
+        kinds_e[NODES[name][0]] = kinds_e.get(NODES[name][0], 0) + 1
+    print(f"existence boundary of {EXISTENCE_CONCLUSION}: "
+          + ", ".join(f"{k}={v}" for k, v in sorted(kinds_e.items()))
+          + "; source_assumption=0; no _lp_/wuebben node")
 
 
 if __name__ == "__main__":

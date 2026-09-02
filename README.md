@@ -200,10 +200,20 @@ the paper's coordinates, with proof-producing certificates that replay.
   in-project with ADK03 §2.1 / Proposition 2.2 as corroboration. A
   self-contained referee packet states the lemma's proof with each identity
   cross-referenced to the executable check.
-* **The historical downstream chain.** The conditional deductions from
-  simple connectivity of Wuebben's `V` to the three proposed theorems are
-  preserved as an explicit dependency chain
-  (`verification/luttinger/downstream_chain.py`, run 64): Source
+* **The existence chain.** `verification/luttinger/downstream_chain.py`
+  (run 74) carries every implication from certified π₁(V_aud)=1 to
+  Theorem A′ — `Z_aud = V_aud ∪_{σ_aud} V_aud` is a closed symplectic
+  4-manifold homeomorphic but not diffeomorphic to `S²×S²` — as an explicit
+  item: 9 external theorems, 4 hash-bound certificates, 3 hash-bound written
+  proofs (`paper/sigma_aud.tex`, `paper/symplectic_double.tex`, the split
+  form of `paper/main.tex`), 5 computed facts, 7 deduction steps, and no
+  assumption. Both its checkers fail if an assumption is added, if any item
+  names Lidman–Piccirillo, Wuebben, or D1--D14, or if the conclusion stops
+  resting on the certified π₁, the certified σ_aud, and the descent lemma.
+* **The historical transfer chain (attribution only).** The conditional
+  deductions from simple connectivity of Wuebben's `V` to the three proposed
+  theorems are preserved unchanged as an explicit dependency chain
+  (`verification/luttinger/attribution/wuebben_transfer_chain.py`, run 64): Source
   Formalization D as one explicit comparison assumption, 25 external
   theorems stated with their hypotheses and sources (Klug's relative
   Rochlin theorem, Hambleton's classification statement, Ho–Li's Kodaira
