@@ -1,0 +1,115 @@
+Run 72: the intrinsic boundary involution sigma_aud and the audit double (2026-09-02)
+====================================================================================
+
+Question
+--------
+
+The downstream chain (Run 64, downstream_chain_certificate.json) reaches Theorem A
+-- an exotic S^2 x S^2 -- through exactly one assumption, A_source_formalization_D
+(clauses D1-D14), and the only reason that assumption sits on the Theorem A path
+is the external item E_lp_double: Lidman-Piccirillo's "sigma", a free
+orientation-reversing bundle involution of S^3_0(Q), applied to V_aud by
+transfer.  Can the same doubling structure be defined on the audit object itself,
+from its own data, with no reference to whose manifold it is?  (Issue #807.)
+
+Answer
+------
+
+Yes, and it is one line.  On the boundary mapping torus M_h of R_aud, with h the
+commutator of the clutching maps phi_0 and psi_0, put
+
+    sigma_aud [z, t] = [ phi_0(z), 1 - t ].
+
+It respects the seam (z,1) ~ (h z, 0) iff phi_0 h phi_0^-1 = h^-1, and that holds
+for any commutator of phi_0 with anything, in any order, because phi_0 is an
+involution: phi_0 (phi_0 psi_0 phi_0^-1 psi_0^-1) phi_0^-1 = psi_0 phi_0 psi_0^-1
+phi_0 = h^-1.  It reverses orientation (phi_0 preserves the fiber's, the
+reflection reverses the base's), preserves the section boundary circles
+(phi_0 fixes p and O), and is NOT free (it fixes [p,1/2], [O,1/2], [p,0], [O,0]).
+Freeness is used by LP only for the quotient W = V/sigma (Theorem B); the
+existence argument for Theorem A never uses it.
+
+Frozen input and artifacts
+--------------------------
+
+    paper/sigma_aud.tex                          the lemma, corollary, and remarks, in the
+                                                 paper's notation; compiles standalone;
+                                                 NOT yet \input by main.tex (that is #809)
+    luttinger/sigma_aud/sigma_aud_check.py       stdlib control on the certified monodromy
+                                                 actions (see below)
+    luttinger/sigma_aud/output.txt               its output
+
+    sigma_aud_check.py  see luttinger/sigma_aud/SHA256SUMS
+    output.txt          see luttinger/sigma_aud/SHA256SUMS
+    paper/sigma_aud.tex sha256 recorded in the commit that adds it
+
+What the control checks
+-----------------------
+
+On the based monodromy actions Phi = (phi_0)_* : x->r, y->s, r->x, s->y and
+Psi = (psi_0)_* : x->y^-1, y->yx, r->r, s->s -- the transport relations of the
+displayed sheet with the meridians deleted; Phi(x)=r, Phi(y)=s are certified as
+literal based paths by paper_bridge.py -- as automorphisms of the free group on
+x,y,r,s, exactly, not up to inner automorphism:
+
+  * Phi o Phi = id; Phi carries the surface relator to a conjugate; Psi fixes it.
+  * Psi has the exact inverse x->xy, y->x^-1.
+  * For all four orderings/orientations of the commutator h of Phi and Psi,
+    Phi o h o Phi^-1 = h^-1 on every generator.
+  * The same on H_1(F) = Z^4 as 4x4 matrices.
+  * (h phi_0)^2 = id, so the seam fixed set of sigma_aud is the fixed set of an
+    involution containing p and O.
+
+Observation, not a claim: on H_1(F) the boundary monodromy is block diagonal,
+[[1,-1],[1,0]] (+) [[0,1],[-1,1]] -- a trefoil monodromy and its inverse, i.e.
+the square knot T(2,3) # T(2,-3), whose 0-surgery LP call S^3_0(Q).  Consistent
+with the boundary being S^3_0(Q); nothing here identifies it.
+
+The doubled section
+-------------------
+
+The corollary in sigma_aud.tex needs Gamma_hat . Gamma_hat = 0 for
+Gamma_hat = Gamma u_{sigma_aud} Gamma.  That is ALREADY certified intrinsically:
+pl_self_intersection.py doubles the p-section along a boundary reflection, reads
+phi_0's action on the actual 24-cycle link of p (shift 12, i.e. -I), and exhibits
+a disjoint push-off with an exact radial cylinder for each of the four constant
+boundary clutching rotations.  sigma_aud's derivative at p is the shift-12 case,
+"constant clutch shift 2".  Replayed 2026-09-02: PASS, all four shifts, square 0;
+shift-2 maximal-cell sha256
+
+    9f72585b90c3454b5a70dcf8d7a211bea634f59cce090281c63d1dcf9db48b3b
+
+That certificate was written for the transferred argument; nothing in it depends
+on LP's sigma, only on the reflection-double of the base and the fiber link at p.
+The lemma just names the gluing it already covers.
+
+What this establishes
+---------------------
+
+Every TOPOLOGICAL input the supplement's Theorem A propositions take from
+E_lp_double is now a statement about the audit object with a written proof:
+R_aud u_sigma R_aud is a closed genus-2 bundle over a closed genus-2 surface;
+Z_aud is that bundle surgered on four disjoint interior tori missing F and
+Gamma_hat; Gamma_hat is closed of genus 2 with square 0; F.F = 0, F.Gamma_hat = 1.
+
+What this does not establish
+----------------------------
+
+The symplectic half.  A symplectic form on the closed bundle R_aud u_sigma R_aud,
+positive on F and Gamma_hat, for which all four tori are Lagrangian with
+Lagrangian-framed slopes, is not constructed here.  Each copy has one (the
+paper's split-form lemma and framing theorem); what is missing is that the two
+can be made to agree under sigma_aud on a collar of the seam -- the "descends and
+standardizes both collars" item of the paper's own symplectic review list.  That
+is issue #804.  Until it lands, Theorem A is not yet unconditional; after it,
+#808 recuts the chain and #809 writes the theorem.
+
+Also unchanged: LP's contrary computation stands unreconciled (Runs 67, 70, 71);
+whether Z_aud is anyone else's manifold is the attribution track, not this one.
+
+Replay
+------
+
+    cd luttinger/sigma_aud && python3 sigma_aud_check.py       (standard library)
+    cd luttinger && python3 pl_self_intersection.py            (~20 s)
+    tectonic on paper/sigma_aud.tex wrapped with the paper's theorem environments

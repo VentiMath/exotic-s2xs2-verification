@@ -1,0 +1,44 @@
+1. Phi is an exact involution on the free basis
+  OK   Φ∘Φ = id on (x,y,r,s)
+  OK   Φ([x,y][r,s]) = [r,s][x,y]  (= [x,y]^-1 · [x,y][r,s] · [x,y], conjugate: surface relator preserved)
+2. Psi has the stated exact inverse; both preserve the surface relator
+  OK   Ψ∘Ψ⁻¹ = Ψ⁻¹∘Ψ = id
+  OK   Ψ([x,y][r,s]) = [x,y][r,s] exactly
+3. Phi conjugates every commutator of Phi and Psi to its inverse (exactly on the free basis)
+  OK   h = [Φ,Ψ] = Φ Ψ Φ⁻¹ Ψ⁻¹: h∘h⁻¹ = id
+  OK   h = [Φ,Ψ] = Φ Ψ Φ⁻¹ Ψ⁻¹: Φ∘h∘Φ⁻¹ = h⁻¹ on every generator
+         h  : {'x': 'xy', 'y': 'x^-1', 'r': 's^-1', 's': 'sr'}
+         h⁻¹: {'x': 'y^-1', 'y': 'yx', 'r': 'rs', 's': 'r^-1'}
+  OK   h = [Ψ,Φ] = Ψ Φ Ψ⁻¹ Φ⁻¹: h∘h⁻¹ = id
+  OK   h = [Ψ,Φ] = Ψ Φ Ψ⁻¹ Φ⁻¹: Φ∘h∘Φ⁻¹ = h⁻¹ on every generator
+         h  : {'x': 'y^-1', 'y': 'yx', 'r': 'rs', 's': 'r^-1'}
+         h⁻¹: {'x': 'xy', 'y': 'x^-1', 'r': 's^-1', 's': 'sr'}
+  OK   h = Φ⁻¹ Ψ⁻¹ Φ Ψ: h∘h⁻¹ = id
+  OK   h = Φ⁻¹ Ψ⁻¹ Φ Ψ: Φ∘h∘Φ⁻¹ = h⁻¹ on every generator
+         h  : {'x': 'y^-1', 'y': 'yx', 'r': 'rs', 's': 'r^-1'}
+         h⁻¹: {'x': 'xy', 'y': 'x^-1', 'r': 's^-1', 's': 'sr'}
+  OK   h = Ψ⁻¹ Φ⁻¹ Ψ Φ: h∘h⁻¹ = id
+  OK   h = Ψ⁻¹ Φ⁻¹ Ψ Φ: Φ∘h∘Φ⁻¹ = h⁻¹ on every generator
+         h  : {'x': 'xy', 'y': 'x^-1', 'r': 's^-1', 's': 'sr'}
+         h⁻¹: {'x': 'y^-1', 'y': 'yx', 'r': 'rs', 's': 'r^-1'}
+4. the same on H_1(F) = Z^4 (columns = images of x,y,r,s)
+   Φ  = [ 0  0  1  0;  0  0  0  1;  1  0  0  0;  0  1  0  0]
+   Ψ  = [ 0  1  0  0; -1  1  0  0;  0  0  1  0;  0  0  0  1]
+   h  = [ 1 -1  0  0;  1  0  0  0;  0  0  0  1;  0  0 -1  1]
+   h⁻¹= [ 0  1  0  0; -1  1  0  0;  0  0  1 -1;  0  0  1  0]
+   ΦhΦ= [ 0  1  0  0; -1  1  0  0;  0  0  1 -1;  0  0  1  0]
+  OK   Φ h Φ⁻¹ = h⁻¹ on H_1(F)
+5. fixed points of sigma_aud[z,t] = [phi_0(z), 1-t] on M_h = F x [0,1] / (z,1)~(h z,0)
+   base points fixed by the reflection: t = 1/2 and the seam t = 0.
+   over t = 1/2: Fix(phi_0) = {p, O} (fiber.py asserts Fix(phi0) == {p, O});
+   over the seam: Fix(h phi_0), an involution since (h phi_0)^2 = h (phi_0 h phi_0) = id;
+   it contains p and O because phi_0 and psi_0 both fix them, hence so does h.
+   So sigma_aud has at least four fixed points and is NOT free.
+   Theorem A (existence) never uses freeness; only the quotient W = V/sigma (Theorem B) does.
+  OK   (h phi_0)^2 = id on the free basis (so it is an involution)
+6. derivative of sigma_aud at the section boundary
+   phi_0 acts on the 24-cycle link of p by shift 12 (pl_self_intersection.py), i.e. by -I;
+   that is constant clutch shift 2 of the four cases certified there, each with
+   Gamma_hat . Gamma_hat = 0.  So the doubled-section certificate already covers sigma_aud.
+
+RESULT: PASS

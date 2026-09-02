@@ -1,0 +1,182 @@
+% sigma_aud.tex -- the intrinsic boundary involution and the audit double.
+% Written for issue #807.  NOT yet \input by main.tex: inserting it, and
+% replacing the supplement's imported "sigma" by it, is issue #809.
+% Notation as in main.tex: F, (a,b,c,d,e), p, O, phi_0, psi_0, R_aud, V_aud,
+% T_alpha, T_beta, Gamma.
+
+\subsection{The intrinsic boundary involution}\label{sec:sigma-aud}
+
+Write $h\colon F\to F$ for the monodromy of the boundary bundle
+$\partial R_{\mathrm{aud}}\to\partial\Sigma_{1,1}$, the commutator of
+$\varphi_0$ and $\psi_0$ determined by the oriented boundary word, and
+\[
+ M_h=(F\times[0,1])/((z,1)\sim(h(z),0))
+\]
+for its mapping torus, so that $\partial R_{\mathrm{aud}}=M_h$ with the
+base coordinate $t\in\mathbb R/\mathbb Z$.  Since both surgeries take
+place in the interior, $\partial V_{\mathrm{aud}}=M_h$ as well.
+
+\begin{lemma}[the audit boundary involution]\label{lem:sigma-aud}
+Define
+\[
+ \sigma_{\mathrm{aud}}\colon M_h\to M_h,\qquad
+ \sigma_{\mathrm{aud}}[z,t]=[\varphi_0(z),\,1-t].
+\]
+Then:
+\begin{enumerate}
+\item[(i)] $\sigma_{\mathrm{aud}}$ is well defined, and is a
+ fiber-preserving involution of $M_h$ covering the reflection
+ $t\mapsto 1-t$ of $\partial\Sigma_{1,1}$;
+\item[(ii)] $\sigma_{\mathrm{aud}}$ reverses the orientation of
+ $\partial R_{\mathrm{aud}}$;
+\item[(iii)] $\sigma_{\mathrm{aud}}$ carries each of the circles
+ $\{p\}\times S^1$ and $\{O\}\times S^1$, the boundaries of the two
+ fixed-point sections, onto itself;
+\item[(iv)] $\sigma_{\mathrm{aud}}$ fixes $[p,\tfrac12]$, $[O,\tfrac12]$,
+ $[p,0]$, and $[O,0]$; in particular it is not free.
+\end{enumerate}
+No property of $\psi_0$ beyond its being a homeomorphism fixing $p$ and $O$
+is used, and no property of $\varphi_0$ beyond its being an
+orientation-preserving involution fixing $p$ and $O$.
+\end{lemma}
+
+\begin{proof}
+(i) The only identification in $M_h$ is $(z,1)\sim(h(z),0)$.  Under the
+displayed formula, $(z,1)\mapsto(\varphi_0 z,0)$ while
+$(h z,0)\mapsto(\varphi_0 h z,1)\sim(h\varphi_0 h z,0)$.  These agree for
+every $z$ if and only if $\varphi_0=h\varphi_0 h$ as maps, that is,
+using $\varphi_0^{-1}=\varphi_0$, if and only if
+\begin{equation}\label{eq:sigma-seam}
+ \varphi_0\,h\,\varphi_0^{-1}=h^{-1}.
+\end{equation}
+Now $h$ is a commutator of $\varphi_0$ and $\psi_0$.  For the ordering
+$h=\varphi_0\psi_0\varphi_0^{-1}\psi_0^{-1}$,
+\[
+ \varphi_0\,h\,\varphi_0^{-1}
+ =\varphi_0^{2}\,\psi_0\,\varphi_0^{-1}\psi_0^{-1}\varphi_0^{-1}
+ =\psi_0\,\varphi_0\,\psi_0^{-1}\varphi_0
+ =\bigl(\varphi_0^{-1}\psi_0\varphi_0\psi_0^{-1}\bigr)^{-1}
+ =h^{-1},
+\]
+using only $\varphi_0^{2}=\mathrm{id}$; the other three orderings and
+orientations of the commutator are checked in the same way (the machine
+control \texttt{luttinger/sigma\_aud/sigma\_aud\_check.py} verifies all
+four exactly on the based generators of $\pi_1(F,p)$, using the
+certified monodromy actions).  So $\sigma_{\mathrm{aud}}$ is well defined.
+It is a homeomorphism because $\varphi_0$ and the reflection are, and it
+is PL after subdividing $[0,1]$ symmetrically about $\tfrac12$.  It
+preserves fibers and covers $t\mapsto1-t$ by construction, and
+$\sigma_{\mathrm{aud}}^{2}[z,t]=[\varphi_0^{2}z,t]=[z,t]$.
+
+(ii) Orient $M_h$ as $F\times[0,1]$, fiber first.  By
+Definition~\ref{def:Vaudit}, $\varphi_0$ preserves the orientation of
+$F$; the reflection reverses that of $[0,1]$; the product reverses.
+
+(iii) $\varphi_0(p)=p$ and $\varphi_0(O)=O$.
+
+(iv) A point $[z,t]$ is fixed only if $t=1-t$ in $\mathbb R/\mathbb Z$,
+so $t=\tfrac12$ or $t=0$.  Over $t=\tfrac12$ the fixed points are
+$\{z:\varphi_0 z=z\}=\{p,O\}$.  Over the seam,
+$\sigma_{\mathrm{aud}}[z,0]=[\varphi_0 z,1]=[h\varphi_0 z,0]$, so the
+fixed points are those of $h\varphi_0$; since $\varphi_0$ and $\psi_0$
+both fix $p$ and $O$, so does $h$, and $p,O$ are among them.  (By
+\eqref{eq:sigma-seam}, $(h\varphi_0)^2=h\,\varphi_0h\varphi_0=\mathrm{id}$,
+so $h\varphi_0$ is itself an orientation-preserving involution of $F$;
+its full fixed set is finite but is not needed.)
+\end{proof}
+
+\begin{remark}
+Lidman and Piccirillo use a \emph{free} orientation-reversing bundle
+involution of $S^3_0(Q)$ because they also form the quotient
+$W=V/\sigma$.  Nothing in the existence argument for an exotic
+$S^2\times S^2$ uses freeness, and $\sigma_{\mathrm{aud}}$ is not free.
+Where the supplement previously imported ``$\sigma$'' from
+\cite{LidmanPiccirillo} through the comparison checklist, the lemma
+above is to be used instead; the quotient $W$ and everything downstream
+of it remain outside the scope of this article.
+\end{remark}
+
+\begin{corollary}[the audit double]\label{cor:audit-double}
+Let $\hat\Sigma=\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$ be the double of the
+base along the reflection $\rho(t)=1-t$ of its boundary circle, a closed
+oriented surface of genus two, and put
+\[
+ \hat R=R_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}R_{\mathrm{aud}},
+ \qquad
+ Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}},
+\]
+both copies carrying the orientation of $R_{\mathrm{aud}}$.  Then:
+\begin{enumerate}
+\item[(a)] $\hat R$ is a closed oriented genus-two surface bundle over
+ $\hat\Sigma$, and $\hat\Sigma$ has genus two;
+\item[(b)] $Z_{\mathrm{aud}}$ is obtained from $\hat R$ by the two audit
+ surgeries and their images under the swap of the two copies, performed on
+ four pairwise disjoint tori in the interior of $\hat R$, all disjoint from
+ a fiber $F$ over a base point away from $\alpha,\beta$ and their mirrors,
+ and from the doubled section
+ $\hat\Gamma=\Gamma\cup_{\sigma_{\mathrm{aud}}}\Gamma$;
+\item[(c)] $\hat\Gamma$ is a closed orientable surface of genus two with
+ $\hat\Gamma\cdot\hat\Gamma=0$, $F\cdot F=0$, and $F\cdot\hat\Gamma=1$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) Gluing two copies of a bundle along their boundary by a
+fiber-preserving homeomorphism covering a homeomorphism of the base
+boundary produces a bundle over the glued base; here the base gluing is
+$\rho$, and $\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$ is the double of a
+once-punctured torus, hence closed, orientable, of genus two.  Both
+copies of $R_{\mathrm{aud}}$ induce the same orientation on the common
+boundary, and by Lemma~\ref{lem:sigma-aud}(ii) the gluing map reverses
+it, so $\hat R$ is oriented compatibly with both copies.  (Viewed from
+the orientation of $\hat\Sigma$, the second copy's fiber and base
+orientations are both reversed; their product is unchanged.)
+
+(b) $T_\alpha$ and $T_\beta$ lie over the spine loops $\alpha,\beta$,
+which are interior to $\Sigma_{1,1}$, so both tori and their product
+collars miss $\partial R_{\mathrm{aud}}$; the surgeries therefore commute
+with the gluing, and their images under the swap are surgeries on the
+mirror tori.  The four tori are disjoint: the two audit tori are disjoint
+by construction and lie in one copy, their mirrors in the other, and the
+two copies meet only along $\partial R_{\mathrm{aud}}$, which none of
+them meets.  A fiber over a base point away from the four loops misses all
+four tori.  The section $\Gamma$ through $p$ misses $T_\alpha$ and
+$T_\beta$ because $p$ lies on neither $c$ nor $e$; the same holds in the
+mirror copy; and by Lemma~\ref{lem:sigma-aud}(iii) the two halves glue
+along $\partial\Gamma=\{p\}\times S^1$ to a closed surface $\hat\Gamma$.
+
+(c) $\hat\Gamma$ is the double of the once-punctured torus $\Gamma$ along
+its boundary circle, hence closed, orientable, of genus two; the
+certificate \texttt{luttinger/pl\_self\_intersection.py} constructs it
+explicitly as a simplicial surface with $f$-vector $(138,420,280)$.  For
+the self-intersection, the normal direction to $\hat\Gamma$ along
+$\partial\Gamma$ is the fiber direction $T_pF$, on which
+$\sigma_{\mathrm{aud}}$ acts by $d\varphi_0(p)$; on the actual
+$24$-cycle link of $p$ in the fiber triangulation, $\varphi_0$ acts by the
+half-turn (shift $12$), i.e.\ by $-I$.  The certificate builds the
+triangulated normal disk bundle of $\hat\Gamma$ for each of the four
+constant boundary clutching rotations, including this one (its
+``constant clutch shift $2$''), and in each case exhibits a disjoint
+simplicial push-off together with the radial PL cylinder joining it to the
+zero section, so the signed intersection chain is empty and
+$\hat\Gamma\cdot\hat\Gamma=0$.  A fiber has trivial normal bundle, so
+$F\cdot F=0$, and a fiber meets a section transversally in one point, so
+$F\cdot\hat\Gamma=1$.
+\end{proof}
+
+\begin{remark}[what remains for the symplectic half]
+The corollary supplies the topological input to the existence argument:
+with it, the supplement's propositions on the form of $Z$, its
+homeomorphism type, and its non-diffeomorphism from $S^2\times S^2$ read
+verbatim for $Z_{\mathrm{aud}}$ with \emph{no} comparison clause, once
+the symplectic form on $\hat R$ is in hand.  That form is the one item
+this section does not construct: a symplectic form on the closed bundle
+$\hat R$, positive on $F$ and $\hat\Gamma$, for which all four surgery
+tori are Lagrangian and the four surgery slopes are their Lagrangian
+framings.  On each copy, Lemma~\ref{lem:bundle-symplectic-form} and
+Theorem~\ref{thm:framing} already provide this; what must be added
+is that the two split forms can be chosen to agree under
+$\sigma_{\mathrm{aud}}$ on a collar of the seam, which is the
+``descends and standardizes both collars'' item of the symplectic review
+list.  That is the content of issue \#804.
+\end{remark}
