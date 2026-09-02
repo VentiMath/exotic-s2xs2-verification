@@ -1,0 +1,107 @@
+Run 71: locating the displayed relation sheet in Wuebben's ancillary families (2026-09-02)
+=========================================================================================
+
+Question
+--------
+
+Which member (m,n) of Wuebben's surgery family, and which point of his
+relation-sign robustness family, has the same relation sheet as the one
+displayed in this paper's "Relation sheet and product fillings" subsection?
+Supplement clause D10 asserts (m,n)=(0,0) by "independent relation-sheet
+extraction and exact comparison" against his text.  This run makes the
+comparison against his *ancillary GAP source* instead, exhaustively, and
+records the answer as a repository artifact.
+
+Frozen input
+------------
+
+Wuebben's side is the arXiv:2608.17267v1 ancillary package, pinned:
+
+    2cdd848816994561be29541322a6c8e197366cdf1ff1825646886d97734b78b2  e-print tar.gz
+    e750ebb79ed8856388a1b598b7cd003cb096d47531066411ffe45acc2e2900b5  anc/scripts/decide2.g
+    da77de354824d023c2f1939bbe72ad3cb2466224e813c1e6e2f466f230612e37  anc/scripts/fixed_v_certify.g
+
+Two of his scripts define parametrized relation systems on the free group
+<x,y,r,s,A,B,M,N>:
+
+  decide2.g          (m,n) in {-1,0,1}^2 times (e3,e4,e5,eA,eB) in {+-1}^5   = 288 systems
+                     lambda_alpha(n) = A x . ((r x)^-1)^n
+                     lambda_beta(m)  = (r^-1 M^{-e5} r) B . (s r^-1 s^-1)^m
+  fixed_v_certify.g  (m,n)=(0,0); every local choice varied: three correction
+                     placements, two c-arc conjugators, meridian sign and
+                     placement for the beta push-off, five relation signs;
+                     for two alpha sections (y1/Ax and y2/Ar^-1)              = 8192 systems
+
+Our side is the displayed sheet: surface relation, eight transport relations,
+drilled-fiber relation, lambda_alpha = A x, lambda_beta = (r^-1 M r) B, and
+the four sign sheets (eps_A, eps_B).
+
+`luttinger/wuebben_dictionary/compare_sheets.py` transcribes both sides into
+sympy free-group words (no GAP, no coset enumeration, no repository input)
+and tests every one of the 8,480 Wuebben systems for equality with each of
+our four sheets as a multiset of freely reduced relators.
+
+Permanent artifact SHA-256
+-------------------------
+
+    compare_sheets.py   353e1b28835f43ddeb8dd7210fa10c8a3b40050b1e910287dedcd96b2a495f23
+    output.txt          fc9bd4e97a5ed43d8706604108e71d2610648ae8b72a6e711ff307d52df41be8
+
+Result
+------
+
+Each of our four sheets matches exactly ONE system in each family, and the
+match is literal (identical reduced words), not merely up to inversion:
+
+    decide2.g:          (m,n) = (0,0),  e3=+1, e4=-1, e5=-1,  (eA,eB) = (eps_A, eps_B)
+    fixed_v_certify.g:  section y1/Ax; all three corrections left-placed;
+                        deltaBs = deltaF = r^-1; eta = +1; beta correction pre-B;
+                        e3=+1, e4=-1, e5=-1; (eA,eB) = (eps_A, eps_B)
+
+Generator dictionary: the identity on (x, y, r, s, A, B, M, N).  Same
+commutator convention [u,v] = u v u^-1 v^-1.  Same drilled-fiber relation
+(his R3).  No (m,n) offset.
+
+What this establishes
+---------------------
+
+At the level of finite presentations, V_aud's displayed sheet IS Wuebben's
+fixed member V'_{0,0} on his y1/Ax section, at one specific point of his
+robustness family.  Clause D10 is confirmed against his source, not just his
+text, and the answer is unique across 8,480 candidates.  Consequently:
+
+  * Run 70's four-sheet enumeration is contained in Wuebben's own
+    `fixed_v_certify` run (which reports 4096/4096 trivial); the two GAP
+    installations agree on those four rows.
+  * The question "is Lidman-Piccirillo's V the same member as V_aud?" is the
+    same question as "is it the same member as Wuebben's V'_{0,0}?".  There
+    is no offset between this paper and Wuebben's in which a discrepancy
+    could hide.  Whatever LP's parametrization is relative to his, it is
+    that relative to ours.
+  * Wuebben's own decide2 log shows every system at n = -1 overflowing at
+    400,000 cosets for all m, while n in {0,1} is uniformly trivial.  His
+    beta-shift word is (s r^-1 s^-1)^m, which is not the r^m used in the
+    2026-09-01 outside grid; any in-repo sensitivity grid should use his
+    words to be comparable.
+
+What this does not establish
+----------------------------
+
+Nothing about manifolds.  Equality of relation sheets is equality of two
+strings that two authors each claim to have read off geometry.  The smooth
+identification V_aud ~= V'_{0,0} remains exactly where the paper leaves it:
+clauses D12-D14 of the supplement, open.  And a shared sheet means a shared
+reconstruction risk: if one of the three conjugating-path lines is wrong,
+it is wrong in both papers at once.  LP's contrary computation stands
+unreconciled, as in Runs 67 and 70.
+
+Replay
+------
+
+    cd luttinger/wuebben_dictionary && python3 compare_sheets.py
+
+Requires sympy only.  The Wuebben scripts are not copied into this
+repository; obtain the ancillary package from arXiv and verify the hashes
+above before trusting the transcription.
+
+Index note: follows Run 70 directly on main.
