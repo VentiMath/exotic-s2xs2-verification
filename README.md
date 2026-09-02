@@ -2,8 +2,7 @@
 
 This repository contains the manuscript, supplement, and proof artifacts for
 an explicit marked surface-bundle surgery manifold `V_aud` and its double.
-Its primary, source-independent result (Theorem A′, working revision after
-v2.3.0) is
+Its primary, source-independent result (Theorem A′) is
 
 > `Z_aud = V_aud ∪_{σ_aud} V_aud` is a closed symplectic 4-manifold that is
 > homeomorphic but not diffeomorphic to `S²×S²`,
@@ -51,25 +50,25 @@ and the earlier phrase “Source Formalization D.” In v2.1 these names denote
 exactly the conjunction of the open source-comparison checklist D1--D14; the rename
 does not change the frozen dependency node or its digest.
 
-The immutable v2.3.0 verification snapshot is archived at
-[doi:10.5281/zenodo.22184725](https://doi.org/10.5281/zenodo.22184725);
+The immutable v2.4.0 verification snapshot is archived at
+[doi:10.5281/zenodo.22254457](https://doi.org/10.5281/zenodo.22254457);
 [doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
 concept DOI for the newest archived version.
 
-**v2.3.0 release.** The newest public immutable release is:
-[releases/tag/v2.3.0](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0),
+**v2.4.0 release.** The newest public immutable release is:
+[releases/tag/v2.4.0](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0),
 archived under version DOI
-[10.5281/zenodo.22184725](https://doi.org/10.5281/zenodo.22184725). Run
+[10.5281/zenodo.22254457](https://doi.org/10.5281/zenodo.22254457). Run
 `python3 paper/check_release_sync.py` to verify the release's hashes, counts,
 terminology, bound manifests, and the pinned `verification/` tree object; the
 gate rebuilds the deterministic arXiv archive itself, so it runs from a clean
 clone. The release URL and both DOIs resolve from a logged-out browser.
-The v2.3.0 proof manifest has SHA-256
+The v2.4.0 proof manifest has SHA-256
 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9` and
 binds 48 files, including the revised checkers and the audit-manifold
 invariant checker.  The `verification/` tree object is
-`d784d5502d414a206bd60e10c0ee995c26688e2c`, and the downstream-chain
-certificate has SHA-256
+`@@TREE@@`, the existence-chain certificate has SHA-256
+`@@EXISTENCE_DIGEST@@`, and the attribution-chain certificate has SHA-256
 `73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca`.
 
 **What this repository is not:** a verification or refutation of Wuebben's

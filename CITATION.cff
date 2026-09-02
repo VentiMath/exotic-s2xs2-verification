@@ -30,23 +30,23 @@ authors:
     given-names: John
     affiliation: VentiMath
     email: verification@ventimath.org
-version: v2.3.0
-date-released: '2026-08-30'
-doi: 10.5281/zenodo.22184725
+version: v2.4.0
+date-released: '2026-09-02'
+doi: 10.5281/zenodo.22254457
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.22184725
-    description: 'Version DOI for the v2.3.0 archived artifact'
+    value: 10.5281/zenodo.22254457
+    description: 'Version DOI for the v2.4.0 archived artifact'
   - type: url
-    value: 'https://doi.org/10.5281/zenodo.22184725'
-    description: 'Resolver link for the v2.3.0 version DOI'
+    value: 'https://doi.org/10.5281/zenodo.22254457'
+    description: 'Resolver link for the v2.4.0 version DOI'
   - type: doi
     value: 10.5281/zenodo.22169753
     description: 'Concept DOI, resolving to the newest archived version'
 license: MIT
 repository-code: 'https://github.com/VentiMath/exotic-s2xs2-verification'
 url: >-
-  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0
+  https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0
 keywords:
   - 4-manifolds
   - exotic smooth structures

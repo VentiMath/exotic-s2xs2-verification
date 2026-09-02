@@ -453,7 +453,7 @@ def main() -> None:
     require(main_tex, f"the {version} proof manifest", "current normative root")
     require(
         main_tex,
-        r"\emph{Certificate-checked simple connectivity of a surface-bundle surgery manifold}",
+        "\\emph{" + CFF_TITLE.replace("$S^2 \\times S^2$", "$S^2\\times S^2$") + "}",
         "current artifact title in the bibliography",
     )
     require(main_tex, f"verification artifact {version}", "current artifact version")
