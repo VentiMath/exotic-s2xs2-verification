@@ -1,0 +1,205 @@
+% symplectic_double.tex -- the symplectic form on the audit double and the
+% existence theorem assembled from it.  Written for issue #804; companion to
+% sigma_aud.tex (#807).  NOT yet \input by main.tex (that is #809).  Uses the
+% bibliography keys of the supplement: Thurston, Luttinger, HoLi, Li, Freedman;
+% main.tex currently has only ADK of these, so #809 must carry those entries over.
+% Orientation convention throughout: outward normal first, so on a collar of a
+% boundary circle with parameter t and outward-increasing s the positive area
+% form is ds ^ dt.
+
+\subsection{The symplectic form on the audit double}\label{sec:symplectic-double}
+
+Keep the notation of Lemma~\ref{lem:sigma-aud} and
+Corollary~\ref{cor:audit-double}: $\hat\Sigma=\Sigma_{1,1}\cup_\rho\Sigma_{1,1}$,
+$\hat R=R_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}R_{\mathrm{aud}}$,
+$Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\sigma_{\mathrm{aud}}}V_{\mathrm{aud}}$,
+with $\hat\pi\colon\hat R\to\hat\Sigma$ the projection and $F$, $\hat\Gamma$
+the fiber and doubled section of that corollary.
+
+\begin{lemma}[symplectic form on the audit double]\label{lem:double-form}
+Let $\Omega$ be the positive area form on $F$ of
+Lemma~\ref{lem:bundle-symplectic-form}, preserved by $\varphi_0$ and
+$\psi_0$.  Choose the positive area form $\eta$ on $\Sigma_{1,1}$ so that on
+a collar $\partial\Sigma_{1,1}\times(-\varepsilon,0]$ with boundary parameter
+$t\in\mathbb R/\mathbb Z$ and outward-increasing collar coordinate $s$ it
+equals $ds\wedge dt$, and so that the collar is disjoint from the annular
+collars of $\alpha,\beta$ used in that lemma.  Then:
+\begin{enumerate}
+\item[(i)] $\eta$ on each copy glues to a smooth positive area form
+ $\hat\eta$ on $\hat\Sigma$;
+\item[(ii)] the vertical form $\Omega_{\mathrm{vert}}$ on each copy glues to
+ a smooth closed vertical form $\hat\Omega_{\mathrm{vert}}$ on $\hat R$;
+\item[(iii)] for every $K>0$,
+ $\hat\omega_K=\hat\Omega_{\mathrm{vert}}+K\hat\pi^*\hat\eta$ is a
+ symplectic form on $\hat R$ restricting to $\omega_K$ on each copy;
+\item[(iv)] $\hat\omega_K$ is positive on $F$ and on $\hat\Gamma$;
+\item[(v)] the four surgery tori of Corollary~\ref{cor:audit-double}(b) are
+ Lagrangian for $\hat\omega_K$, and each has a protected neighborhood with
+ the split coordinates of Lemma~\ref{lem:bundle-symplectic-form}, disjoint
+ from the seam collar $\hat\pi^{-1}(\partial\Sigma_{1,1}\times(-\varepsilon,\varepsilon))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) On the seam collar of $\hat\Sigma$ use the chart
+$(t,s)\in\mathbb R/\mathbb Z\times(-\varepsilon,\varepsilon)$ in which
+$s\le0$ is the first copy's collar and, for $s\ge0$, the point $(t,s)$ is the
+second copy's collar point with its own coordinates $t'=\rho(t)=1-t$ and
+$s'=-s$: the second copy's outward direction is toward the seam, so its
+outward-increasing coordinate is $-s$.  In its own coordinates the second
+copy's form is $ds'\wedge dt'=d(-s)\wedge d(1-t)=ds\wedge dt$.  So the two
+copies of $\eta$ are the single form $ds\wedge dt$ on the whole chart, and
+$\hat\eta$ is smooth.  It is positive on both copies since each is oriented
+as $\Sigma_{1,1}$ and $\hat\Sigma$ restricts to those orientations
+(Corollary~\ref{cor:audit-double}(a)).
+
+(ii) Over the seam collar the flat product atlas of
+Lemma~\ref{lem:bundle-symplectic-form} presents the bundle as
+$M_h\times(-\varepsilon,0]$ with $\Omega_{\mathrm{vert}}$ equal to $\Omega$
+on every fiber; this is well defined because the seam map $h$ of $M_h$ is a
+product of the clutching maps and so preserves $\Omega$.  Extend the gluing map over the two collars as
+$(z,t,s)\mapsto(\varphi_0 z,1-t,-s)$; this fixes the smooth structure of
+$\hat R$ near the seam (any two collar choices give diffeomorphic doubles),
+and in the flat atlas it is, on every fiber, the single map $\varphi_0$,
+which is locally constant in the base and preserves $\Omega$.  Hence the transition maps of the flat atlas of $\hat R$
+obtained by adjoining $\sigma_{\mathrm{aud}}$ all lie in the group generated
+by $\varphi_0$ and $\psi_0$, all preserve $\Omega$, and the fiberwise form
+$\Omega$ descends to a globally defined vertical form
+$\hat\Omega_{\mathrm{vert}}$ on $\hat R$.  It is closed because in each flat
+product chart it is the pullback of the closed form $\Omega$ from the fiber
+factor.
+
+(iii) $d\hat\omega_K=0$ by (i) and (ii), and with the fiber and base
+orientations fixed by $\Omega$ and $\hat\eta$,
+$\hat\omega_K^2=2K\,\hat\Omega_{\mathrm{vert}}\wedge\hat\pi^*\hat\eta>0$,
+exactly as in Lemma~\ref{lem:bundle-symplectic-form}.  On each copy the form
+is $\Omega_{\mathrm{vert}}+K\pi^*\eta=\omega_K$ by construction.
+
+(iv) $F$ is a fiber, on which $\hat\omega_K$ restricts to $\Omega>0$.
+$\hat\Gamma$ is the doubled section through the common fixed point $p$; in
+every flat product chart it is $\{p\}\times U$, so
+$\hat\Omega_{\mathrm{vert}}$ restricts to zero on it and
+$\hat\omega_K|_{\hat\Gamma}=K\hat\eta>0$.
+
+(v) Each of the four tori lies in the interior of one copy, over the
+annular collar of $\alpha$ or $\beta$ in that copy, which is disjoint from
+the seam collar by the choice of $\eta$.  On that copy $\hat\omega_K=\omega_K$,
+so Lemma~\ref{lem:bundle-symplectic-form} applies verbatim: the torus has
+one fiber tangent and one base tangent, both summands vanish on it, and the
+protected split coordinates are the ones displayed there.  The mirror tori
+are the images of $T_\alpha,T_\beta$ under the swap of the two copies, which
+is an isomorphism of the second copy with $R_{\mathrm{aud}}$ carrying
+$\hat\omega_K|_{\text{copy }2}$ to $\omega_K$.
+\end{proof}
+
+\begin{corollary}[$Z_{\mathrm{aud}}$ is symplectic]\label{cor:Z-symplectic}
+$Z_{\mathrm{aud}}$ carries a symplectic form $\hat\omega$ that agrees with
+$\hat\omega_K$ outside the four surgery neighborhoods, restricts positively
+to $F$ and to $\hat\Gamma$, and is obtained from $(\hat R,\hat\omega_K)$ by
+four Luttinger surgeries in the sense of \cite[Definition~2.1]{ADK}.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:double-form}(v) and Theorem~\ref{thm:framing} applied in
+each copy, the four tori are Lagrangian and the four unit-coefficient filling
+slopes are their Lagrangian-framing classes; the surgeries of
+Corollary~\ref{cor:audit-double}(b) are therefore Luttinger surgeries, and
+\cite[Proposition~2.2]{ADK} supplies, one surgery at a time, a symplectic
+form agreeing with the previous one outside the surgered neighborhood.  The
+four neighborhoods are disjoint from one another, from $F$, and from
+$\hat\Gamma$ (Corollary~\ref{cor:audit-double}(b)), so the final form still
+restricts positively to $F$ and $\hat\Gamma$ by Lemma~\ref{lem:double-form}(iv).
+\end{proof}
+
+\subsection{Hypotheses of the external results, discharged}
+\label{sec:external-hypotheses}
+
+The existence theorem below uses five results from the literature.  Each is
+stated with its hypotheses, and each hypothesis is discharged by a statement
+about the audit object proved in this article.  No comparison with any
+other author's construction enters.
+
+\begin{description}
+\item[Van Kampen.] $Z_{\mathrm{aud}}=V_{\mathrm{aud}}\cup_{\partial}V_{\mathrm{aud}}$
+ with connected, bicollared common boundary $\partial V_{\mathrm{aud}}=M_h$
+ and $\pione(V_{\mathrm{aud}})=1$ (Theorem~\ref{thm:audit-manifold});
+ hence $\pione(Z_{\mathrm{aud}})=1$.
+\item[Freedman \cite{Freedman}.] Closed simply connected topological
+ 4-manifolds are classified by intersection form and Kirby--Siebenmann
+ invariant, the latter determined by $\sigma/8$ when the form is even.
+ Hypotheses discharged in Proposition~\ref{prop:Z-topology}: simple
+ connectivity, $b_2=2$, form $H$ on the basis $(F,\hat\Gamma)$,
+ smoothness (so Kirby--Siebenmann vanishes).
+\item[Thurston \cite{Thurston}.] A closed surface bundle over a surface with
+ homologically essential fiber is symplectic with symplectic fibers.  We do
+ not invoke it: Lemma~\ref{lem:double-form} constructs the form directly
+ (the fiber is essential anyway, since $F\cdot\hat\Gamma=1$).
+\item[Auroux--Donaldson--Katzarkov \cite{ADK} (Luttinger \cite{Luttinger}).]
+ Luttinger surgery on a Lagrangian torus along its Lagrangian framing yields
+ a symplectic manifold with a form agreeing with the old one away from the
+ torus.  Hypotheses discharged in Lemma~\ref{lem:double-form}(v) and
+ Theorem~\ref{thm:framing}: Lagrangian tori, Lagrangian-framed slopes.
+\item[Ho--Li \cite{HoLi}.] Luttinger surgery preserves the symplectic
+ Kodaira dimension.  Hypothesis: the surgery is Luttinger
+ (Corollary~\ref{cor:Z-symplectic}).
+\item[Li \cite{Li}.] The symplectic Kodaira dimension of a closed
+ symplectic 4-manifold is a diffeomorphism invariant, equal to $-\infty$
+ exactly for rational and ruled manifolds.  Hypothesis: a closed symplectic
+ 4-manifold (Corollary~\ref{cor:Z-symplectic}).
+\end{description}
+
+\begin{proposition}[topology of $Z_{\mathrm{aud}}$]\label{prop:Z-topology}
+$Z_{\mathrm{aud}}$ is closed, simply connected, and spin, with
+$b_2(Z_{\mathrm{aud}})=2$, signature $0$, and intersection form $H$ on the
+basis $(F,\hat\Gamma)$.  Consequently $Z_{\mathrm{aud}}$ is homeomorphic to
+$S^2\times S^2$.
+\end{proposition}
+
+\begin{proof}
+Closed: $\partial V_{\mathrm{aud}}$ is glued to itself.  Simply connected
+by van Kampen as above.  $\chi(Z_{\mathrm{aud}})=2\chi(V_{\mathrm{aud}})-\chi(M_h)=4-0=4$
+(the proof of Theorem~\ref{thm:audit-manifold} gives
+$\chi(V_{\mathrm{aud}})=2$; a mapping torus has Euler characteristic $0$),
+so $b_2=2$ with $H_2$ torsion-free.  By
+Corollary~\ref{cor:audit-double}(c), $F\cdot F=0$, $\hat\Gamma\cdot\hat\Gamma=0$,
+$F\cdot\hat\Gamma=1$: the Gram matrix of $(F,\hat\Gamma)$ is $H$, of
+determinant $-1$, hence unimodular; a unimodular rank-two sublattice of the
+unimodular rank-two lattice $H_2(Z_{\mathrm{aud}})$ has index one, so
+$(F,\hat\Gamma)$ is a basis and the form is $H$.  $H$ is even, so
+$w_2=0$ by Wu's formula and $Z_{\mathrm{aud}}$ is spin; its signature is
+$0$.  $Z_{\mathrm{aud}}$ is smooth, so its Kirby--Siebenmann invariant
+vanishes, and Freedman's classification gives
+$Z_{\mathrm{aud}}\cong S^2\times S^2$.
+\end{proof}
+
+\begin{theorem}[an exotic $S^2\times S^2$]\label{thm:exotic}
+$Z_{\mathrm{aud}}$ is a closed symplectic 4-manifold that is homeomorphic
+but not diffeomorphic to $S^2\times S^2$.
+\end{theorem}
+
+\begin{proof}
+Symplectic and homeomorphic to $S^2\times S^2$ by
+Corollary~\ref{cor:Z-symplectic} and Proposition~\ref{prop:Z-topology}.
+For non-diffeomorphism: $\hat R$ is a surface bundle with aspherical fiber
+and base, hence aspherical, so it contains no essential sphere; a
+symplectic 4-manifold with $\pi_2=0$ is minimal (an exceptional sphere
+would be null-homotopic, hence of square $0$, not $-1$) and is neither
+rational nor ruled (those have $\pi_2\ne0$).  By \cite{Li},
+$\kappa(\hat R,\hat\omega_K)\ne-\infty$.  By \cite{HoLi}, each of the four
+Luttinger surgeries preserves $\kappa$, so $\kappa(Z_{\mathrm{aud}},\hat\omega)\ne-\infty$.
+Since $S^2\times S^2$ is rational, every symplectic form on it has
+$\kappa=-\infty$, and by \cite{Li} $\kappa$ depends only on the
+diffeomorphism type.  Hence $Z_{\mathrm{aud}}$ is not diffeomorphic to
+$S^2\times S^2$.
+\end{proof}
+
+\begin{remark}[what the theorem does and does not say]
+Theorem~\ref{thm:exotic} is a statement about the object of
+Definition~\ref{def:Vaudit} and its double.  It does not assert that
+$Z_{\mathrm{aud}}$ is the manifold constructed by Wuebben \cite{Wuebben} or
+by Lidman--Piccirillo \cite{LidmanPiccirillo}; that comparison is the
+subject of Section~\ref{sec:relation} and its checklist, and the contrary
+fundamental-group computation reported there stands unreconciled and may
+or may not concern this member.  Nor does the theorem depend on any
+statement in that section.
+\end{remark}
