@@ -1,31 +1,31 @@
-Wuebben sources (sha256):
-  2cdd848816994561be29541322a6c8e197366cdf1ff1825646886d97734b78b2  arXiv e-print 2608.17267v1 (tar.gz)
-  e750ebb79ed8856388a1b598b7cd003cb096d47531066411ffe45acc2e2900b5  anc/scripts/decide2.g
-  da77de354824d023c2f1939bbe72ad3cb2466224e813c1e6e2f466f230612e37  anc/scripts/fixed_v_certify.g
+vendored Wuebben sources (sha256, verified):
+  e750ebb79ed8856388a1b598b7cd003cb096d47531066411ffe45acc2e2900b5  wuebben_anc/decide2.g  OK
+  da77de354824d023c2f1939bbe72ad3cb2466224e813c1e6e2f466f230612e37  wuebben_anc/fixed_v_certify.g  OK
+  2cdd848816994561be29541322a6c8e197366cdf1ff1825646886d97734b78b2  arXiv e-print 2608.17267v1 tar.gz (provenance, not vendored)
 
 === our sheet (+,+): 12 relators ===
   decide2.g grid (288 systems): 1 match(es)
     literal        m=+0 n=+0  e3=+1 e4=-1 e5=-1  eA=+1 eB=+1
   fixed_v_certify.g family (8192 systems): 1 match(es)
-    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r**-1 deltaF=r**-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=+1 eB=+1
+    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r^-1 deltaF=r^-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=+1 eB=+1
 
 === our sheet (+,-): 12 relators ===
   decide2.g grid (288 systems): 1 match(es)
     literal        m=+0 n=+0  e3=+1 e4=-1 e5=-1  eA=+1 eB=-1
   fixed_v_certify.g family (8192 systems): 1 match(es)
-    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r**-1 deltaF=r**-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=+1 eB=-1
+    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r^-1 deltaF=r^-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=+1 eB=-1
 
 === our sheet (-,+): 12 relators ===
   decide2.g grid (288 systems): 1 match(es)
     literal        m=+0 n=+0  e3=+1 e4=-1 e5=-1  eA=-1 eB=+1
   fixed_v_certify.g family (8192 systems): 1 match(es)
-    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r**-1 deltaF=r**-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=-1 eB=+1
+    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r^-1 deltaF=r^-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=-1 eB=+1
 
 === our sheet (-,-): 12 relators ===
   decide2.g grid (288 systems): 1 match(es)
     literal        m=+0 n=+0  e3=+1 e4=-1 e5=-1  eA=-1 eB=-1
   fixed_v_certify.g family (8192 systems): 1 match(es)
-    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r**-1 deltaF=r**-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=-1 eB=-1
+    literal        section=y1/Ax     placements(As,By,Bs,F)=(1,1,1,1)  deltaBs=r^-1 deltaF=r^-1 eta=+1  e3=+1 e4=-1 e5=-1 eA=-1 eB=-1
 
 generator dictionary: identity on (x, y, r, s, A, B, M, N); same commutator convention
-RESULT: our (+,+) sheet is literally a decide2.g system at (m,n)=(0,0)
+RESULT: PASS — each sheet is literally Wuebben's (m,n)=(0,0), y1/Ax, e3=+1 e4=-1 e5=-1 system, uniquely, in both families
