@@ -60,7 +60,12 @@ discipline, mechanized.
   is symplectic geometry and stays a lemma. Everything downstream of it is
   mechanical.
 
-## 4. The bundle case (Wuebben's R) — what remains
+## 4. The bundle case (Wuebben's R) — the design as written before the build
+(Executed: `luttinger/bundle.py` and `luttinger/r_run.py` build R and
+extract its presentation exactly along these lines; `alternative_bundle.py`
+and `independent_fiber.py` are the independent constructions.  §5 records
+the current state.)
+
 R = genus-2 fiber F over the once-punctured torus T₀, monodromy φ₀ (half-turn
 of the octagon) along α, ψ₀ = T_a T_b along β; T_α = c × α (φ₀(c)=c setwise,
 half-rotation), T_β = e × β (ψ₀ = id near e).
@@ -106,12 +111,27 @@ spurious spanned simplices; check `K.is_full(T)` (the code asserts it).
 product and `is_full` with indexed lookups. Python Tietze handles 10⁴
 generators; GAP takes the rest.
 
-## 5. Honest scope
-* Done: the engine and the two calibrations the paper itself uses to
-  validate its hand-derivation. The engine derives the same sign-sensitive
-  Baldridge–Kirk groups from a triangulation with zero hand-derived words.
-* Not done: the flip-cobordism construction of R (§4). That is the work
-  standing between this and an independent machine derivation of §8.
-* Never done by any machine: Lemma 8.2 (framing). It stays a lemma; it is a
-  short explicit Weinstein-chart computation and is the one line of the
-  paper a referee must read.
+## 5. Honest scope (as of Run 75)
+* Done by machine, from the triangulation with zero hand-derived words: the
+  engine and its two calibrations; the construction of R and of both tori
+  (`bundle.py`, `r_run.py`, with `alternative_bundle.py` and
+  `independent_fiber.py` as independent constructions); the meridians and
+  longitudes (`independent_peripheral_extractor.py`, runs 20/22, sealed in
+  runs 66--69); the four filled groups, certified trivial by two checkers
+  (runs 29/57/66); the section self-intersection (`pl_self_intersection.py`,
+  run 28); the seam identity of the boundary involution sigma_aud
+  (`sigma_aud/sigma_aud_check.py`, run 72).
+* Framing (the paper's Theorem 6.3, formerly "Lemma 8.2"): a written proof
+  in the paper, with machine controls -- `framing_check.py`,
+  `weinstein_chart_check.py`/`weinstein_chart_independence.py`, the two
+  Moser scripts (runs 35/43/46/47).  Not a machine derivation; a lemma with
+  every identity in it executed.
+* Written proofs with no machine content beyond their inputs: the descent
+  of the split form to the double (paper Lemma 7.4, run 73) and the
+  assembly of Theorem A' from cited theorems (paper §7.3).  The dependency
+  chain `downstream_chain.py` binds them by hash and is replayed by two
+  checkers.
+* Open: attribution -- whether V_aud and Z_aud are Wuebben's V and his
+  double (checklist D1--D14; `luttinger/attribution/`); the reported
+  contrary computation; an outside conformance audit of one filled-group
+  checker; outside PL and symplectic review of the written proofs.

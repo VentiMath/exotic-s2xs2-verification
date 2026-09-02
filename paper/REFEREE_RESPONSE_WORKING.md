@@ -1,11 +1,12 @@
 # Working response to the major-revision reports
 
-This is an internal completion ledger for the v2.3.0 revision. It is not a
-claim of peer review and is not part of the arXiv source archive.
+This is an internal completion ledger for the v2.3.0 revision, extended by
+the v2.4.0 rows at the end of the table. It is not a claim of peer review and
+is not part of the arXiv source archive.
 
 | Referee issue | Disposition in the working revision |
 |---|---|
-| The paper had not chosen between an intrinsic audit paper and a verification of Wuebben. | **Resolved.** The title, abstract, principal theorem, dependency figure, and conclusion now center the separately defined `V_aud`. No theorem identifies it with Wuebben's member and no exotic-manifold conclusion is asserted. |
+| The paper had not chosen between an intrinsic audit paper and a verification of Wuebben. | **Resolved.** The title, abstract, principal theorem, dependency figure, and conclusion now center the separately defined `V_aud`. No theorem identifies it with Wuebben's member. (v2.4.0: the paper now also proves Theorem A′ about the double `Z_aud`; see the last rows.) |
 | The abstract and conclusion repeated validation status. | **Resolved.** The abstract is shortened and begins with the intrinsic theorem; the conclusion is two short paragraphs. One scope/review section carries the detailed caveats. |
 | Tables and implementation inventory overwhelmed the main mathematics. | **Resolved.** The main paper now has one dependency figure and two mathematical tables. Record counts, raw paths, hashes other than the normative manifest, and historical inventories are in the supplement. Tables S1 and S2 use landscape pages. |
 | Section 6 was logically separate from simple connectivity. | **Resolved.** Simple connectivity and intrinsic topology are complete before the framing section. The section is retained because it now proves the co-primary, source-independent symplecticity assertion in the Audit-Manifold Theorem. |
@@ -29,6 +30,9 @@ claim of peer review and is not part of the arXiv source archive.
 | The final gate could accept stale CFF metadata, a stale README “newest release,” an old normative-root sentence, or old supplement recovery instructions. | **Resolved.** Final mode now checks the exact CFF title, abstract, version, top-level DOI, DOI descriptions, and release date; the README newest-release declaration; the main-paper manifest digest, versioned normative root, and self-citation; and the supplement's exact tag and `git rev-parse VERSION:verification` command. Release history belongs in Git and Zenodo, so final mode rejects every archived-base version string in all public-facing packet files. |
 | The working manifest did not bind the revised checkers or the invariant checker. | **Resolved.** The regenerated 48-file manifest has SHA-256 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9`; both papers record it, the supplement pins verification tree `d784d5502d414a206bd60e10c0ee995c26688e2c`, and the release gate executes the complete replay suite. |
 | Three commands in the documented replay block failed after the scope revision. | **Resolved.** The downstream certificate was regenerated; its only changed leaf is the proof-manifest digest, and both Python and Ruby now replay all 61 items. The publication checker now locates the Audit-Manifold Theorem and the conditional sliceness proposition by stable TeX labels, places the Wuebben and Theorem B requirements in the supplement, and applies both polarity-reversal guards to both documents. The release gate executes every documented theorem-facing replay. |
+| (v2.4.0) The exotic-manifold conclusion was conditional on the comparison with Wuebben and on Lidman–Piccirillo's involution. | **Resolved.** The boundary involution `σ_aud[z,t] = [φ₀(z), 1−t]` is defined from the audit data (Lemma 7.1); the split form descends to the double (Lemma 7.4); Theorem A′ — `Z_aud` is a closed symplectic 4-manifold homeomorphic but not diffeomorphic to `S²×S²` — is stated in §2 and proved in §7 from the Audit-Manifold Theorem, the framing theorem, and Freedman, ADK/Luttinger, Ho–Li, Li, each with its hypotheses discharged. No clause of D1--D14 and nothing from Lidman–Piccirillo enters. |
+| (v2.4.0) The machine dependency chain still carried the source-comparison assumption on the Theorem A path. | **Resolved.** `downstream_chain.py` is the assumption-free existence chain (no assumption kind; both checkers reject any assumption item, any item naming Lidman–Piccirillo, Wuebben, or D1--D14, and any conclusion not resting on the certified π₁, the certified involution, and the descent lemma); the run-64 transfer chain is preserved unchanged under `luttinger/attribution/`. |
+| (v2.4.0) The comparison with Wuebben read as a pending hypothesis rather than as attribution. | **Resolved editorially.** §8 is retitled as attribution; it states that even a full D1--D14 match would leave the two doubles (glued by different involutions) to compare, and keeps the contrary-computation report verbatim. |
 
 ## External items intentionally not represented as completed
 
@@ -38,6 +42,6 @@ claim of peer review and is not part of the arXiv source archive.
 4. the missing Lidman--Piccirillo presentation and reconciliation; and
 5. a relative smooth comparison proving D12--D14.
 
-The revised paper does not require any of these five items for the theorem it
-actually states. They determine what further claims could responsibly be
+The revised paper does not require any of these five items for the theorems
+it actually states; item 3 now also covers the descent lemma (7.4). They determine what further claims could responsibly be
 made and what a journal referee should examine.
