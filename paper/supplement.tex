@@ -38,8 +38,8 @@ An exotic $S^2\times S^2$ from a certificate-checked\\
 surface-bundle surgery manifold}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
-\date{Working revision after v2.3.0 --- 2 September 2026\\
-\small Artifact base: \url{https://doi.org/10.5281/zenodo.22184725}}
+\date{Version 2.4.0 --- 2 September 2026\\
+\small \url{https://doi.org/10.5281/zenodo.22254457}}
 
 \begin{document}
 \renewcommand{\thetable}{S\arabic{table}}
@@ -217,13 +217,13 @@ whose SHA-256 is
 \end{center}
 The current working \texttt{verification/} directory has git tree object
 \begin{center}\small
-\texttt{bc6806eb9b4065377d6194ff3797fbb02d58b386}.
+\texttt{650069254d921c218c6fa50fc359c0f128ef7ddb}.
 \end{center}
 The existence chain certificate
 \repopath{verification/luttinger/downstream_chain_certificate.json}, which
 binds \repopath{paper/main.tex} among its evidence files, has SHA-256
 \begin{center}\small
-\texttt{49c1a7ad02a38cf26c7796a2cc4d471df3ed78c74da7c4c73348c20c0163fa29}.
+\texttt{197c9944ab5fcbb95a3ab767f786ab9bbc0ab002bdea4d64723dfa870fb78357}.
 \end{center}
 The historical transfer chain, which is not a premise of any theorem, has
 SHA-256
@@ -356,13 +356,13 @@ nontrivial groups and that both checkers reject altered records and incomplete
 inventories.  Those controls test implementation behavior; they are not
 substitutes for the soundness argument above.
 
-This release adds the small checker
+Release 2.3.0 added the small checker
 \repopath{verification/luttinger/audit_manifold_invariants.py}.  It binds the
 sealed input and replays the exponent-lattice, slope-family,
 Euler-characteristic, Betti-number, and mod-two fiber calculations promoted
-to the Audit-Manifold Theorem.  The v2.3.0 manifest binds it.  Its output
+to the Audit-Manifold Theorem.  The manifest binds it.  Its output
 distinguishes finite arithmetic from the topological hypotheses established
-in prose.  This release also repairs Python's integer-letter check so
+in prose.  That release also repaired Python's integer-letter check so
 that JSON booleans are rejected and expands its built-in corruption tests to
 match the Ruby checker's major failure classes.  The external checker and geometry
 review guides are versioned with the repository but are not represented as
@@ -978,10 +978,10 @@ The target-version ledger in \texttt{TARGET.md} also records the
 Lidman--Piccirillo v1 digest.  The immutable certificate set,
 frozen inputs, replay scripts, run transcripts, and provenance records are
 contained, with clean-checkout replay instructions, in the tagged release
-\texttt{v2.3.0} of the repository:
-\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.3.0}\end{center}
-The v2.3.0 verification snapshot is permanently archived at
-\begin{center}\small\url{https://doi.org/10.5281/zenodo.22184725}\end{center}
+\texttt{v2.4.0} of the repository:
+\begin{center}\small\url{https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0}\end{center}
+The v2.4.0 verification snapshot is permanently archived at
+\begin{center}\small\url{https://doi.org/10.5281/zenodo.22254457}\end{center}
 with concept DOI
 \begin{center}\small\url{https://doi.org/10.5281/zenodo.22169753},\end{center}
 which resolves to the newest archived version.
@@ -992,18 +992,17 @@ extractors requires supplying hash-matching copies as directed in
 \texttt{verification/IMPORT.md}; their frozen outputs and all subsequent
 comparisons ship. No certificate used for the finite or Audit-Manifold
 Theorem depends on downloading those files.
-The v2.3.0 manuscript and supplement correspond to that tagged release and
-its archival deposit.  The working revision instead uses the manifest and
-verification-tree object printed at the start of this section; it is not an
-immutable release packet yet.
+This manuscript and supplement correspond to that tagged release and its
+archival deposit, and use the manifest, verification-tree object, and chain
+certificates printed at the start of this section.
 The \texttt{verification/} tree of that release has git tree object hash
-\begin{center}\small\texttt{d784d5502d414a206bd60e10c0ee995c26688e2c}\end{center}
+\begin{center}\small\texttt{650069254d921c218c6fa50fc359c0f128ef7ddb}\end{center}
 recoverable from a clean checkout as
-\texttt{git rev-parse v2.3.0:verification};
+\texttt{git rev-parse v2.4.0:verification};
 its filled-group proof manifest has SHA-256
 \begin{center}\small\texttt{e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9}\end{center}
-and its downstream-chain certificate has SHA-256
-\begin{center}\small\texttt{73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca}\end{center}
+and its existence-chain certificate has SHA-256
+\begin{center}\small\texttt{197c9944ab5fcbb95a3ab767f786ab9bbc0ab002bdea4d64723dfa870fb78357}\end{center}
 The repository itself is public at
 \begin{center}\small
 \url{https://github.com/VentiMath/exotic-s2xs2-verification}
