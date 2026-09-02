@@ -5,9 +5,9 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Supplement to Certificate-checked simple connectivity of a surface-bundle surgery manifold},
+  pdftitle={Supplement to An exotic S^2 x S^2 from a certificate-checked surface-bundle surgery manifold},
   pdfauthor={John Clyde},
-  pdfsubject={Supplementary certificate inventory, source-comparison ledger, and conditional topology deductions},
+  pdfsubject={Supplementary certificate inventory, attribution ledger, existence chain, and historical transfer chain},
   pdfkeywords={geometric topology, 4-manifolds, proof certificates, computational supplement, Luttinger surgery}
 }
 \DeclareUrlCommand\repopath{\urlstyle{tt}\def\UrlBreaks{\do\/\do\_\do\-\do\.}}
@@ -34,38 +34,43 @@
 \newtheorem{proposition}{Proposition}[section]
 
 \title{Mathematical and computational supplement to\\
-Certificate-checked simple connectivity of a\\
+An exotic $S^2\times S^2$ from a certificate-checked\\
 surface-bundle surgery manifold}
 \author{John Clyde\\ \small VentiMath\\
 \small \texttt{verification@ventimath.org}}
-\date{Version 2.3.0 --- 30 August 2026\\
-\small \url{https://doi.org/10.5281/zenodo.22184725}}
+\date{Working revision after v2.3.0 --- 2 September 2026\\
+\small Artifact base: \url{https://doi.org/10.5281/zenodo.22184725}}
 
 \begin{document}
 \renewcommand{\thetable}{S\arabic{table}}
 \maketitle
 
 \begin{abstract}
-This supplement preserves the implementation inventory, source-comparison
-checklist, historical conditional applications, trust boundary, data pins,
+This supplement preserves the implementation inventory, attribution
+checklist, machine-checked dependency chains, trust boundary, data pins,
 calibrations, and superseded exports behind the main paper.  The article
-proves source-independent topological and symplectic statements about
-$V_{\mathrm{aud}}$.  The comparison $V_{\mathrm{aud}}\cong V$ is not a
-theorem there: clauses D1--D14 below record what a future comparison must
-establish.  The former exotic-manifold application is retained only as a
-conditional dependency audit relative to that checklist and named external
-results.
+proves that $\pione(V_{\mathrm{aud}})=1$ and that the double
+$Z_{\mathrm{aud}}$ of $V_{\mathrm{aud}}$ along its intrinsic boundary
+involution is a closed symplectic four-manifold homeomorphic but not
+diffeomorphic to $S^2\times S^2$.  The comparison $V_{\mathrm{aud}}\cong V$
+with Wuebben's member is not a theorem there and enters no proof: clauses
+D1--D14 below record what that attribution must establish.  The existence
+chain for Theorem~A$'$ carries no assumption; the earlier transfer of
+Wuebben's Theorems A, B, C under D1--D14 is retained, unchanged, as the
+attribution chain.
 \end{abstract}
 
 \section*{How to use this supplement}
 The main paper contains the mathematical certificate specification, the
 product-filled audit-model identification, the intrinsic topology of
-$V_{\mathrm{aud}}$, and a separate product-to-Lagrangian framing theorem.
-Section~\ref{sec:detailed-boundaries} preserves the full source-comparison
+$V_{\mathrm{aud}}$, a separate product-to-Lagrangian framing theorem, the
+intrinsic boundary involution $\sigma_{\mathrm{aud}}$, and the proof that
+the double $Z_{\mathrm{aud}}$ is an exotic $S^2\times S^2$.
+Section~\ref{sec:detailed-boundaries} preserves the full attribution
 ledger, and Section~\ref{sec:certificates}
 below records the concrete certificate batches and replay architecture.
-Appendix~\ref{sec:downstream} preserves the historical
-proposition-by-proposition conditional chain; Appendix~\ref{sec:trust}
+Appendix~\ref{sec:downstream} describes the assumption-free existence chain
+and preserves the historical transfer chain; Appendix~\ref{sec:trust}
 records provenance, trust, and data availability; Appendix~\ref{app:engineering}
 preserves calibrations and historical computations.  The machine-readable
 ledger and every bound digest remain normative for exact inventories.
@@ -74,7 +79,8 @@ ledger and every bound digest remain normative for exact inventories.
 \label{sec:detailed-boundaries}
 
 The main paper deliberately makes no transfer theorem about Wuebben's fixed
-member.  The full clause-by-clause comparison checklist follows; the
+member: its Theorem~A$'$ is about $Z_{\mathrm{aud}}$, and no clause below is
+a hypothesis of it.  The full clause-by-clause attribution checklist follows; the
 geometric layer inventory, including filenames and checker sizes, remains in
 Section~\ref{sec:geometric-inventory}.  D1--D11 are textual or diagrammatic
 identifications to be checked against the source, while D12--D14 are the
@@ -211,17 +217,23 @@ whose SHA-256 is
 \end{center}
 The current working \texttt{verification/} directory has git tree object
 \begin{center}\small
-\texttt{d784d5502d414a206bd60e10c0ee995c26688e2c}.
+\texttt{bc6806eb9b4065377d6194ff3797fbb02d58b386}.
 \end{center}
-The historical conditional-application chain, which is not a premise of the
-finite theorem, has SHA-256
+The existence chain certificate
+\repopath{verification/luttinger/downstream_chain_certificate.json}, which
+binds \repopath{paper/main.tex} among its evidence files, has SHA-256
+\begin{center}\small
+\texttt{49c1a7ad02a38cf26c7796a2cc4d471df3ed78c74da7c4c73348c20c0163fa29}.
+\end{center}
+The historical transfer chain, which is not a premise of any theorem, has
+SHA-256
 \begin{center}\small
 \texttt{73257b9ea0883255bb15c70f77f551526eec1714a866ab9e645cfe374528e8ca}.
 \end{center}
 The manifest, sealed input, and verification-tree object are the operational
-root referenced by the finite theorem in the main paper.  The fourth digest
-allows the separately labeled historical chain to be replayed without
-silently retaining an earlier manifest dependency.
+root referenced by the finite theorem in the main paper.  The two chain
+digests allow each separately labeled chain to be replayed without silently
+retaining an earlier manifest dependency.
 
 \subsection{The four algebraic sign specializations}
 
@@ -472,16 +484,48 @@ terminological refinement.
 
 
 \appendix
-\section{From simple connectivity to the three
-theorems}\label{sec:downstream}
+\section{The existence chain, and the historical transfer chain
+(attribution only)}\label{sec:downstream}
+
+\subsection*{The existence chain}
+
+The proof of Theorem~A$'$ in the main paper is mirrored by a machine
+artifact, \repopath{verification/luttinger/downstream_chain.py}, which
+records every item of the argument as one of five kinds --- an
+\emph{external theorem} stated with its hypotheses and source; a
+\emph{certificate} of this repository, bound by SHA-256; a written
+\emph{proof} of the main paper, bound by SHA-256 of the source file; a
+\emph{computed} fact, executed by the script; or a \emph{step}, a deduction
+from earlier items --- and freezes the result as
+\repopath{downstream_chain_certificate.json}.  There is no assumption kind.
+The chain has 9 external theorems (van Kampen; duality and universal
+coefficients; the sublattice index formula; Wu's formula; Freedman;
+Luttinger surgery after Auroux--Donaldson--Katzarkov; asphericity of surface
+bundles; symplectic Kodaira dimension after Li and Liu; and Ho--Li), 4
+certificates ($\pione(V_{\mathrm{aud}})=1$; $\Ghat\cdot\Ghat=0$; the
+framing identification; the seam identity of $\sigma_{\mathrm{aud}}$), 3
+bound proofs (the split form, the double, and the descent of the form), 5
+computed facts, and 7 steps, ending in Theorem~A$'$.  The separately
+implemented Ruby checker \repopath{verify_downstream_chain.rb} re-derives
+every computed fact, checks that every citation resolves and the graph is
+acyclic, that the conclusion rests on the certified fundamental group, the
+certified involution, and the descent lemma, that every item lies on the
+conclusion's path, that no item is an assumption, that no item's text names
+Lidman--Piccirillo, Wuebben, or the clauses D1--D14, and that every bound
+file matches its digest.  Both checkers reject five distributed negative
+controls.
+
+\subsection*{The historical transfer chain}
 
 The deductions from $\pione(V)=1$ to Theorems A, B, C occupy Part~I of
 \cite{Wuebben}, whose Theorem~1.2 reduces them to the simple connectivity
-of $V$.  This appendix is historical and conditional: assume every clause
-D1--D14 above and thereby identify the audit-defined
-$V_{\mathrm{aud}}$ with this $V$.
-This section carries the subsequent deductions through as an explicit
-dependency chain. The chain is itself a machine artifact: a script
+of $V$.  The remainder of this appendix is historical and conditional:
+assume every clause D1--D14 above and thereby identify the audit-defined
+$V_{\mathrm{aud}}$ with this $V$.  It carries the subsequent deductions
+through as an explicit dependency chain, now kept unchanged at
+\repopath{verification/luttinger/attribution/wuebben_transfer_chain.py}
+with its own certificate and Ruby checker; nothing on the existence path
+cites it.  That chain is likewise a machine artifact: a script
 records every item as one of five kinds --- an \emph{external theorem}
 stated with its hypotheses and source; the explicit source-comparison
 \emph{assumption} D; a \emph{certificate} of this
@@ -948,9 +992,10 @@ extractors requires supplying hash-matching copies as directed in
 \texttt{verification/IMPORT.md}; their frozen outputs and all subsequent
 comparisons ship. No certificate used for the finite or Audit-Manifold
 Theorem depends on downloading those files.
-This manuscript and supplement correspond to that tagged release and its
-archival deposit, and use the manifest and verification-tree object printed
-at the start of this section.
+The v2.3.0 manuscript and supplement correspond to that tagged release and
+its archival deposit.  The working revision instead uses the manifest and
+verification-tree object printed at the start of this section; it is not an
+immutable release packet yet.
 The \texttt{verification/} tree of that release has git tree object hash
 \begin{center}\small\texttt{d784d5502d414a206bd60e10c0ee995c26688e2c}\end{center}
 recoverable from a clean checkout as
