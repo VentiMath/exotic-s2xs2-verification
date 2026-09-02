@@ -86,7 +86,7 @@ We define a compact marked surface-bundle surgery manifold $V_{aud}$, prove that
 **Comments**
 
 ```text
-32 pages, five figures, and two tables, with an 18-page mathematical and computational supplement available as a release asset at https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0 (archived at https://doi.org/10.5281/zenodo.22254457). The primary result is Theorem A': the double $Z_{aud}$ of the certificate-checked simply connected surgery manifold $V_{aud}$ along its intrinsic boundary involution is a closed symplectic 4-manifold homeomorphic but not diffeomorphic to $S^2 \times S^2$. The comparison with arXiv:2608.17267v1 is attribution, recorded as checklist D1--D14 in the supplement; no theorem depends on it.
+33 pages, five figures, and two tables, with an 18-page mathematical and computational supplement available as a release asset at https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0 (archived at https://doi.org/10.5281/zenodo.22254457). The primary result is Theorem A': the double $Z_{aud}$ of the certificate-checked simply connected surgery manifold $V_{aud}$ along its intrinsic boundary involution is a closed symplectic 4-manifold homeomorphic but not diffeomorphic to $S^2 \times S^2$. The comparison with arXiv:2608.17267v1 is attribution, recorded as checklist D1--D14 in the supplement; no theorem depends on it.
 ```
 
 **Classification**

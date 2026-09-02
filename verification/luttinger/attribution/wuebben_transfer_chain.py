@@ -93,6 +93,14 @@ EVIDENCE = [
     "runs/22-model-correspondence-and-framing.txt",
     # The explicit source-to-audit comparison boundary.
     "notes/source_identification_assumptions_2026-08-29.md",
+    # D10 at the level of strings: the displayed sheet located in Wuebben's
+    # ancillary GAP families, literally and uniquely at (m,n)=(0,0) with the
+    # identity generator dictionary (runs 71 and 78).
+    "luttinger/wuebben_dictionary/compare_sheets.py",
+    "luttinger/wuebben_dictionary/output.txt",
+    "luttinger/wuebben_dictionary/print_dictionary.py",
+    "luttinger/wuebben_dictionary/dictionary.txt",
+    "runs/71-wuebben-relation-sheet-dictionary.txt",
     # The run-24 audit this chain supersedes.
     "runs/24-downstream-theorem-audit.txt",
     "notes/downstream_theorem_audit_2026-08-23.md",
@@ -104,8 +112,16 @@ ASSUMPTIONS = [
         "statement": "Source Formalization D1--D14 holds: the marked fiber, "
                      "bundle, torus, based-peripheral, coefficient, framing, "
                      "and relative smooth data in Wuebben's pinned source "
-                     "identify its fixed (m,n)=(0,0) member with V_aud.",
-        "evidence": ["notes/source_identification_assumptions_2026-08-29.md"],
+                     "identify its fixed (m,n)=(0,0) member with V_aud.  "
+                     "D10 holds at the level of relation sheets: the "
+                     "displayed sheet is literally his (0,0) system, uniquely "
+                     "among the 8,480 systems of his ancillary GAP families, "
+                     "under the identity generator dictionary "
+                     "(luttinger/wuebben_dictionary/); the remaining clauses "
+                     "are geometric.",
+        "evidence": ["notes/source_identification_assumptions_2026-08-29.md",
+                     "luttinger/wuebben_dictionary/output.txt",
+                     "luttinger/wuebben_dictionary/dictionary.txt"],
         "ledger": "A_Source_Formalization_D",
     },
 ]

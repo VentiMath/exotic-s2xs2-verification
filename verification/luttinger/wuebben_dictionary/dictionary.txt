@@ -1,0 +1,88 @@
+vendored Wuebben sources (sha256, verified):
+  e750ebb79ed8856388a1b598b7cd003cb096d47531066411ffe45acc2e2900b5  wuebben_anc/decide2.g  OK
+  da77de354824d023c2f1939bbe72ad3cb2466224e813c1e6e2f466f230612e37  wuebben_anc/fixed_v_certify.g  OK
+  2cdd848816994561be29541322a6c8e197366cdf1ff1825646886d97734b78b2  arXiv e-print 2608.17267v1 tar.gz (provenance, not vendored)
+
+generator dictionary (ours -> Wuebben's): x->x  y->y  r->r  s->s  A->A  B->B  M->M  N->N
+commutator convention in both: [u,v] = u v u^-1 v^-1;  loops compose left to right in both
+located member: (m,n) = (0,0);  relation signs e3=+1 e4=-1 e5=-1;  (eA,eB) = (eps_A,eps_B)
+
+=== sheet (+,+): relation by relation ===
+       ours                                           reduced relator        Wuebben decide2.g form                                                               parameter                    equal
+  R1   [x,y][r,s] = 1                                 xyx^-1y^-1rsr^-1s^-1   R0 = [x,y][r,s]                                                                      -                            yes
+  R2   A x A^-1 = r                                   AxA^-1r^-1             A x A^-1 r^-1                                                                        -                            yes
+  R3   A y A^-1 = s                                   AyA^-1s^-1             A y A^-1 s^-1                                                                        -                            yes
+  R4   A r A^-1 = x                                   ArA^-1x^-1             A r A^-1 x^-1                                                                        -                            yes
+  R5   A s A^-1 = N y                                 AsA^-1y^-1N^-1         A s A^-1 (N^e3 y)^-1                                                                 e3 = +1                      yes
+  R6   B x B^-1 = y^-1                                BxB^-1y                B x B^-1 y                                                                           -                            yes
+  R7   B y B^-1 = M^-1 y x                            ByB^-1x^-1y^-1M        B y B^-1 (M^e4 y x)^-1                                                               e4 = -1                      yes
+  R8   B r B^-1 = r                                   BrB^-1r^-1             B r B^-1 r^-1                                                                        -                            yes
+  R9   B s B^-1 = (r^-1 M^-1 r) s                     BsB^-1s^-1r^-1Mr       B s B^-1 (r^-1 M^e5 r s)^-1                                                          e5 = -1                      yes
+  R10  B (s^-1 r^-1 y x) B^-1 = r^-1 s^-1 x           Bs^-1r^-1yxB^-1x^-1sr  B kappa3 B^-1 psik3^-1  (his R3)                                                     -                            yes
+  F1   M lambda_alpha^(+1),  lambda_alpha = A x       MAx                    M (dirTaBase dirTaFib^n)^eA,  dirTaBase = A x,  dirTaFib = (r x)^-1                  n = 0, eA = +1               yes
+  F2   N lambda_beta^(+1),  lambda_beta = (r^-1 M r) B Nr^-1MrB               N (dirTbBase dirTbFib^m)^eB,  dirTbBase = r^-1 M^(-e5) r B,  dirTbFib = s r^-1 s^-1  m = 0, e5 = -1, eB = +1      yes
+  rows reproduce ours(): True;  decide2.g at (0,0): True;  fixed_v_certify.g at the located point: True
+  unified diff of sorted relator lists: EMPTY
+
+=== sheet (+,-): relation by relation ===
+       ours                                           reduced relator        Wuebben decide2.g form                                                               parameter                    equal
+  R1   [x,y][r,s] = 1                                 xyx^-1y^-1rsr^-1s^-1   R0 = [x,y][r,s]                                                                      -                            yes
+  R2   A x A^-1 = r                                   AxA^-1r^-1             A x A^-1 r^-1                                                                        -                            yes
+  R3   A y A^-1 = s                                   AyA^-1s^-1             A y A^-1 s^-1                                                                        -                            yes
+  R4   A r A^-1 = x                                   ArA^-1x^-1             A r A^-1 x^-1                                                                        -                            yes
+  R5   A s A^-1 = N y                                 AsA^-1y^-1N^-1         A s A^-1 (N^e3 y)^-1                                                                 e3 = +1                      yes
+  R6   B x B^-1 = y^-1                                BxB^-1y                B x B^-1 y                                                                           -                            yes
+  R7   B y B^-1 = M^-1 y x                            ByB^-1x^-1y^-1M        B y B^-1 (M^e4 y x)^-1                                                               e4 = -1                      yes
+  R8   B r B^-1 = r                                   BrB^-1r^-1             B r B^-1 r^-1                                                                        -                            yes
+  R9   B s B^-1 = (r^-1 M^-1 r) s                     BsB^-1s^-1r^-1Mr       B s B^-1 (r^-1 M^e5 r s)^-1                                                          e5 = -1                      yes
+  R10  B (s^-1 r^-1 y x) B^-1 = r^-1 s^-1 x           Bs^-1r^-1yxB^-1x^-1sr  B kappa3 B^-1 psik3^-1  (his R3)                                                     -                            yes
+  F1   M lambda_alpha^(+1),  lambda_alpha = A x       MAx                    M (dirTaBase dirTaFib^n)^eA,  dirTaBase = A x,  dirTaFib = (r x)^-1                  n = 0, eA = +1               yes
+  F2   N lambda_beta^(-1),  lambda_beta = (r^-1 M r) B NB^-1r^-1M^-1r         N (dirTbBase dirTbFib^m)^eB,  dirTbBase = r^-1 M^(-e5) r B,  dirTbFib = s r^-1 s^-1  m = 0, e5 = -1, eB = -1      yes
+  rows reproduce ours(): True;  decide2.g at (0,0): True;  fixed_v_certify.g at the located point: True
+  unified diff of sorted relator lists: EMPTY
+
+=== sheet (-,+): relation by relation ===
+       ours                                           reduced relator        Wuebben decide2.g form                                                               parameter                    equal
+  R1   [x,y][r,s] = 1                                 xyx^-1y^-1rsr^-1s^-1   R0 = [x,y][r,s]                                                                      -                            yes
+  R2   A x A^-1 = r                                   AxA^-1r^-1             A x A^-1 r^-1                                                                        -                            yes
+  R3   A y A^-1 = s                                   AyA^-1s^-1             A y A^-1 s^-1                                                                        -                            yes
+  R4   A r A^-1 = x                                   ArA^-1x^-1             A r A^-1 x^-1                                                                        -                            yes
+  R5   A s A^-1 = N y                                 AsA^-1y^-1N^-1         A s A^-1 (N^e3 y)^-1                                                                 e3 = +1                      yes
+  R6   B x B^-1 = y^-1                                BxB^-1y                B x B^-1 y                                                                           -                            yes
+  R7   B y B^-1 = M^-1 y x                            ByB^-1x^-1y^-1M        B y B^-1 (M^e4 y x)^-1                                                               e4 = -1                      yes
+  R8   B r B^-1 = r                                   BrB^-1r^-1             B r B^-1 r^-1                                                                        -                            yes
+  R9   B s B^-1 = (r^-1 M^-1 r) s                     BsB^-1s^-1r^-1Mr       B s B^-1 (r^-1 M^e5 r s)^-1                                                          e5 = -1                      yes
+  R10  B (s^-1 r^-1 y x) B^-1 = r^-1 s^-1 x           Bs^-1r^-1yxB^-1x^-1sr  B kappa3 B^-1 psik3^-1  (his R3)                                                     -                            yes
+  F1   M lambda_alpha^(-1),  lambda_alpha = A x       Mx^-1A^-1              M (dirTaBase dirTaFib^n)^eA,  dirTaBase = A x,  dirTaFib = (r x)^-1                  n = 0, eA = -1               yes
+  F2   N lambda_beta^(+1),  lambda_beta = (r^-1 M r) B Nr^-1MrB               N (dirTbBase dirTbFib^m)^eB,  dirTbBase = r^-1 M^(-e5) r B,  dirTbFib = s r^-1 s^-1  m = 0, e5 = -1, eB = +1      yes
+  rows reproduce ours(): True;  decide2.g at (0,0): True;  fixed_v_certify.g at the located point: True
+  unified diff of sorted relator lists: EMPTY
+
+=== sheet (-,-): relation by relation ===
+       ours                                           reduced relator        Wuebben decide2.g form                                                               parameter                    equal
+  R1   [x,y][r,s] = 1                                 xyx^-1y^-1rsr^-1s^-1   R0 = [x,y][r,s]                                                                      -                            yes
+  R2   A x A^-1 = r                                   AxA^-1r^-1             A x A^-1 r^-1                                                                        -                            yes
+  R3   A y A^-1 = s                                   AyA^-1s^-1             A y A^-1 s^-1                                                                        -                            yes
+  R4   A r A^-1 = x                                   ArA^-1x^-1             A r A^-1 x^-1                                                                        -                            yes
+  R5   A s A^-1 = N y                                 AsA^-1y^-1N^-1         A s A^-1 (N^e3 y)^-1                                                                 e3 = +1                      yes
+  R6   B x B^-1 = y^-1                                BxB^-1y                B x B^-1 y                                                                           -                            yes
+  R7   B y B^-1 = M^-1 y x                            ByB^-1x^-1y^-1M        B y B^-1 (M^e4 y x)^-1                                                               e4 = -1                      yes
+  R8   B r B^-1 = r                                   BrB^-1r^-1             B r B^-1 r^-1                                                                        -                            yes
+  R9   B s B^-1 = (r^-1 M^-1 r) s                     BsB^-1s^-1r^-1Mr       B s B^-1 (r^-1 M^e5 r s)^-1                                                          e5 = -1                      yes
+  R10  B (s^-1 r^-1 y x) B^-1 = r^-1 s^-1 x           Bs^-1r^-1yxB^-1x^-1sr  B kappa3 B^-1 psik3^-1  (his R3)                                                     -                            yes
+  F1   M lambda_alpha^(-1),  lambda_alpha = A x       Mx^-1A^-1              M (dirTaBase dirTaFib^n)^eA,  dirTaBase = A x,  dirTaFib = (r x)^-1                  n = 0, eA = -1               yes
+  F2   N lambda_beta^(-1),  lambda_beta = (r^-1 M r) B NB^-1r^-1M^-1r         N (dirTbBase dirTbFib^m)^eB,  dirTbBase = r^-1 M^(-e5) r B,  dirTbFib = s r^-1 s^-1  m = 0, e5 = -1, eB = -1      yes
+  rows reproduce ours(): True;  decide2.g at (0,0): True;  fixed_v_certify.g at the located point: True
+  unified diff of sorted relator lists: EMPTY
+
+Wuebben's shift family in these letters (decide2.g):
+  lambda_alpha(n) = A x . ((r x)^-1)^n
+  lambda_beta(m)  = (r^-1 M r) B . (s r^-1 s^-1)^m        (at e5 = -1)
+  V_aud's longitudes are the n = 0 and m = 0 members; no offset.
+  Note: an outside 2026-09-01 grid shifted lambda_beta by r^m instead of (s r^-1 s^-1)^m;
+  those are different words away from m = 0 and agree with his only at m = 0.
+
+fixed_v_certify.g point: section y1/Ax; corrections for (As, By, Bs, F) all left-placed;
+  deltaBs = deltaF = r^-1; eta = +1; beta correction before B.
+
+RESULT: PASS - twelve of twelve relators agree letter for letter in all four sheets; the diff is empty

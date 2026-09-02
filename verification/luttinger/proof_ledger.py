@@ -102,6 +102,12 @@ NODES = {
     "M_lp_source_figure": (
         "machine_certificate", (),
         "luttinger/lp_source_figure_certificate.json"),
+    # Run 71/78: the displayed sheet located inside Wuebben's ancillary GAP
+    # families (8,480 systems), literally and uniquely at (m,n)=(0,0), with
+    # the identity generator dictionary; D10 at the level of strings.
+    "M_wuebben_relation_sheet_dictionary": (
+        "machine_certificate", (),
+        "luttinger/wuebben_dictionary/dictionary.txt"),
     "M_complement_tietze": ("machine_certificate", (), "runs/11-proof-certificate-and-group-attacks.txt"),
     # Run 66: the seeded raw-complex-to-reduced-presentation transport is
     # sealed with its serialized input and replays under two standalone
@@ -235,6 +241,7 @@ NODES = {
         ("G_audit_model_identification", "G_peripheral_identification",
          "G_equivariant_normal_form", "M_interpretation_dictionary",
          "M_independent_paper_dictionary", "M_lp_source_figure",
+         "M_wuebben_relation_sheet_dictionary",
          "A_Source_Formalization_D"), None),
     "G_section_square_zero": (
         "geometric_argument",

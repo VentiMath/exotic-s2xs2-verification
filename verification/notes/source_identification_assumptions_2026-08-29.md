@@ -55,7 +55,14 @@ file is the repository ledger version of the same boundary.
   certificate and side mutations test the audit realization.
 - **D10 — fixed family member and slopes.** Section 9.1 and Table 1 select
   `(m,n)=(0,0)` and the displayed F1/F2 slopes. The independent relation-
-  sheet extractor agrees exactly.
+  sheet extractor agrees exactly. Settled at the level of strings (Runs 71
+  and 78, `luttinger/wuebben_dictionary/`): the displayed sheet, for each of
+  the four sign sheets, is literally the `(m,n)=(0,0)` system of his
+  ancillary `decide2.g` at `e3=+1, e4=-1, e5=-1` and the `y1/Ax` point of
+  his `fixed_v_certify.g` family, uniquely among 8,480 systems, under the
+  identity map on `x,y,r,s,A,B,M,N`; the relator-by-relator diff is empty.
+  What remains of D10 is not textual: whether his slopes are ours as curves
+  on the tori is D12--D13.
 - **D11 — convention exponents.** Convention 2.1(C7) and Remark 11.1 are
   read as making `epsilon_A,epsilon_B` relation-sheet orientation exponents,
   not four different geometric surgeries. All four sheets certify the same

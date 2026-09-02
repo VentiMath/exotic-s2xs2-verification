@@ -157,8 +157,11 @@ $y_1$-based half-drift with word $Ax$ & complement-only 72-letter identity
 certificate; side-sensitive controls & textual choice of reference
 half-drift \\
 D10 & \cite[\S9.1 and Table~1]{Wuebben} & fixed member is $(m,n)=(0,0)$ and
-uses displayed F1 and F2 slopes & independent relation-sheet extraction and
-exact comparison & textual member selection and relation-sheet transcription \\
+uses displayed F1 and F2 slopes & relation-sheet dictionary against his
+ancillary GAP source (Section~\ref{sec:dictionary-artifact}): the displayed
+sheet is literally his $(0,0)$ system, uniquely among $8480$ & at the level of
+relation sheets, none; the hand transcription of his GAP definitions is
+inspectable, not self-checked \\
 D11 & \cite[Convention~2.1(C7), Remark~11.1]{Wuebben} &
 $\epsilon_A,\epsilon_B$ index algebraic relation sheets; fixed audit basis
 uses $(+,+)$ & four finite certificates; convention-change lemma;
@@ -254,6 +257,39 @@ the meridians.  Its second half verifies, as two identities in a free group,
 that the drilled-fiber relation follows from the four $B$-transport
 relations and the surface relation.  Both artifacts record output and
 SHA-256 sums; \texttt{run.sh} in each directory replays them.
+
+\subsection{The Wuebben relation-sheet dictionary}
+\label{sec:dictionary-artifact}
+
+\repopath{verification/luttinger/wuebben_dictionary/} settles D10 at the
+level of strings (main paper, Proposition~8.1).  It vendors, verbatim and
+under their MIT notice, the two scripts of the arXiv:2608.17267v1 ancillary
+package that define Wuebben's relation systems, \texttt{decide2.g} (the
+$(m,n)$ grid with five signs, $288$ systems) and \texttt{fixed\_v\_certify.g}
+(the robustness family around $(0,0)$, $8192$ systems), and records the
+SHA-256 digests of both and of the e-print archive.  \texttt{compare\_sheets.py},
+standard-library Python with its own twenty-line free-group reducer, verifies
+those digests before reading anything, transcribes both parametrized
+families, tests every system for equality with each of the four displayed
+sheets as a multiset of freely reduced relators, and asserts the answer:
+exactly one literal match per sheet per family, at $(m,n)=(0,0)$,
+$e_3=+1$, $e_4=-1$, $e_5=-1$, $(e_A,e_B)=(\epsilon_A,\epsilon_B)$ and at
+the $y_1/Ax$ point of the robustness family, and no other match of any
+kind; it exits nonzero otherwise.  \texttt{print\_dictionary.py} writes the
+twelve relators of each sheet beside his at those parameters, names the
+parameter that makes each pair agree, checks that the rows reproduce both
+transcribed systems, and prints the unified diff of the two sorted relator
+lists, which is empty (\texttt{dictionary.txt}).  Neither program checks the
+hand transcription of the GAP definitions; the vendored sources sit beside
+them.  Negative controls, run and not committed: one byte appended to a
+vendored file exits~2; $N\mapsto N^{-1}$ in $AsA^{-1}=Ny$ finds a different
+unique system, at $e_3=-1$, and exits~1.
+
+The dictionary also fixes the two shift words of his family in this
+paper's letters, $\lambda_\alpha(n)=Ax\,((rx)^{-1})^n$ and
+$\lambda_\beta(m)=(r^{-1}Mr)B\,(sr^{-1}s^{-1})^m$; a fiber-direction
+control that shifts $\lambda_\beta$ by $r^{m}$ instead is a different family
+away from $m=0$.
 
 \subsection{The four algebraic sign specializations}
 

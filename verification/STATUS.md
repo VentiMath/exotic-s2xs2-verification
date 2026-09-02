@@ -55,7 +55,7 @@ under derivation certificates replayed by two checkers.
 The double `Z_aud = V_aud u_{sigma_aud} V_aud` along the intrinsic boundary
 involution `sigma_aud[z,t] = [phi_0 z, 1-t]` (Run 72) is a closed symplectic
 4-manifold homeomorphic but not diffeomorphic to `S^2 x S^2` (Theorem A' of
-the manuscript; Runs 73--77). Its machine-checked dependency chain,
+the manuscript; Runs 73--78). Its machine-checked dependency chain,
 `luttinger/downstream_chain.py`, has no assumption item and no item about
 any other author's construction; both of its checkers refuse either.
 
@@ -84,7 +84,14 @@ The identification of `V_aud` with the object named in Wuebben's target
 version is a separate proposition, conditional on the fourteen Source
 Comparison Hypotheses D1--D14. The manuscript tabulates each clause against a
 specific citation and records which clauses retain diagrammatic or
-smooth/framing content rather than being forced by the pinned text.
+smooth/framing content rather than being forced by the pinned text. One
+clause is settled at the level of strings (Runs 71 and 78,
+`luttinger/wuebben_dictionary/`): the displayed relation sheet is literally
+Wuebben's fixed `(m,n)=(0,0)` system, uniquely among the 8,480 systems of his
+ancillary GAP families, under the identity generator dictionary, with an
+empty relator-by-relator diff (paper Proposition 8.1). There is no offset
+between the two papers' presentations; what remains of D1--D14 is geometric,
+and a shared sheet is a shared reconstruction risk.
 
 Theorem A' about `Z_aud` depends on `pi_1(V_aud)=1`, the intrinsic doubling,
 and named published theorems, and on no Source Comparison Hypothesis. What

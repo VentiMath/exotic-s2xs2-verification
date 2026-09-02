@@ -3,7 +3,7 @@
     "S7_theorem_A_prime"
   ],
   "evidence_sha256": {
-    "paper/main.tex": "26b9214dabf9ee89cf82f6739c0747be7d3edde28d6e0e1b680fd3d2eec5990f",
+    "paper/main.tex": "aaea64da566ab8ecc9117346442c062a8e98d1e1779beb6551ccdaa0b6300372",
     "verification/luttinger/alpha_residual/certificate.json.gz": "5aff68ec3fb7689b6025b68d6ad1333617c3f5092764711aba0b8f33d1008cf5",
     "verification/luttinger/alpha_residual/source.json": "4e0007783219e1f862a2302b4425a791833cfa6c808617dd5df620272daec74e",
     "verification/luttinger/beta_residual/certificate.json.gz": "2caf994573c1e2db0a094f940a03fa13949d593baa080fa5ff67a8d8feebc604",

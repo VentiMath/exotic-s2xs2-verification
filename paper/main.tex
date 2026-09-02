@@ -129,7 +129,10 @@ does not adjudicate that dispute.  Its theorems concern the separately
 defined $V_{\mathrm{aud}}$ and $Z_{\mathrm{aud}}$; whether these coincide
 with Wuebben's $V$ and his double is an attribution question, recorded as
 the open checklist D1--D14 in the supplement, and no theorem here has a
-clause of that checklist among its hypotheses.
+clause of that checklist among its hypotheses.  At the level of relation
+sheets there is nothing left to translate: the sheet displayed in
+Section~\ref{sec:sheet} is that of his fixed member, letter for letter
+(Proposition~\ref{prop:dictionary}); the open clauses are geometric.
 
 Triviality is deliberately not used as evidence that a proposed
 source-to-presentation dictionary is correct.  Wuebben's public
@@ -2197,6 +2200,64 @@ than by the free involution of \cite{LidmanPiccirillo}, so the two doubles
 would still require a separate comparison.  The exotic-manifold conclusion
 asserted here is Theorem~\ref{thm:exotic}, about $Z_{\mathrm{aud}}$.
 
+\subsection{The presentation-level dictionary}
+\label{sec:dictionary}
+
+One clause, D10, is settled at the level of strings.  The ancillary package
+of \cite{Wuebben} defines his surgery family as parametrized relation
+systems on the free group on $x,y,r,s,A,B,M,N$: a grid indexed by
+$(m,n)\in\{-1,0,1\}^2$ with filling words
+\[
+ \lambda_\alpha(n)=Ax\,\bigl((rx)^{-1}\bigr)^{n},\qquad
+ \lambda_\beta(m)=(r^{-1}Mr)B\,(sr^{-1}s^{-1})^{m},
+\]
+and five relation signs ($288$ systems), and a robustness family around his
+fixed member $(0,0)$ that varies every local choice, namely the placement of
+each meridian correction, the two conjugating arcs, the sign and placement
+of the $\beta$ push-off correction, the reference half-drift, and the five
+signs ($8192$ systems).
+
+\begin{proposition}[the relation-sheet dictionary]\label{prop:dictionary}
+For each sign sheet $(\epsilon_A,\epsilon_B)$, the twelve relators of
+Theorem~\ref{thm:collapse}, namely the ten relations of
+Lemma~\ref{lem:sheet} and $M\lambda_\alpha^{\epsilon_A}$,
+$N\lambda_\beta^{\epsilon_B}$, coincide letter for letter, under the
+identity map on the eight generators, with the relators of exactly one
+system in each family: in the grid, the member $(m,n)=(0,0)$ with signs
+$e_3=+1$, $e_4=-1$, $e_5=-1$, $(e_A,e_B)=(\epsilon_A,\epsilon_B)$; in the
+robustness family, the point with the $y_1$-based reference $Ax$, every
+correction placed before its image, both conjugating arcs $r^{-1}$, and
+push-off sign $+1$.  No other system of the $8480$ matches, even after
+inverting relators.
+\end{proposition}
+
+\begin{proof}
+A standard-library program in
+\repopath{verification/luttinger/wuebben_dictionary/} vendors his two
+ancillary scripts, verifies their SHA-256 digests against the arXiv package,
+transcribes their definitions into free-group words, and tests every system
+of both families for equality with each of our four sheets as a multiset of
+freely reduced relators; it asserts the answer above and exits nonzero
+otherwise.  A companion program prints the twelve pairs side by side, names
+the parameter that makes each pair agree, and prints the empty diff.
+Neither program can check the hand transcription of the GAP definitions;
+the vendored sources sit beside them for inspection.  Changing one letter,
+$N$ to $N^{-1}$ in $AsA^{-1}=Ny$, moves the unique match to $e_3=-1$ and
+fails the assertion, so the comparison discriminates a single sign.
+\end{proof}
+
+The generator dictionary is the identity; the commutator convention and the
+drilled-fiber relation are the same; there is no $(m,n)$ offset between
+this paper and his fixed member.  Consequently the four sheets of
+Theorem~\ref{thm:collapse} are four rows of his own $4096$-case robustness
+run, and an error in a conjugating-path line of Lemma~\ref{lem:sheet} would
+be an error in both papers at once.  The proposition compares strings that
+two authors each read off geometry.  It does not identify
+$V_{\mathrm{aud}}$ with his manifold: whether his marked bundle, tori,
+basings, and framings are those of Definition~\ref{def:Vaudit} is exactly
+D1--D9 and D11--D14, and the contrary computation of
+Section~\ref{sec:contrary} is untouched by it.
+
 \subsection{The reported contrary computation and live failure locations}
 \label{sec:contrary}
 
@@ -2277,7 +2338,8 @@ theorems whose hypotheses are discharged in the text.
 
 Whether Wuebben's text and diagrams specify the same marked smooth surgery
 data, and whether his double coincides with $Z_{\mathrm{aud}}$, remain
-open.  The supplement records that attribution question and the historical
+open; the relation sheets themselves coincide
+(Proposition~\ref{prop:dictionary}).  The supplement records that attribution question and the historical
 transfer chain without promoting either into a theorem of this article.
 
 \section{Data and reproducibility}\label{sec:data}

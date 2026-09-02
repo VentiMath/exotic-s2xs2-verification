@@ -1,0 +1,138 @@
+Run 78: the Wuebben dictionary, relator by relator, in the paper (2026-09-02)
+============================================================================
+
+Question
+--------
+
+Run 71 located the paper's displayed relation sheet inside Wuebben's
+ancillary GAP families -- literally and uniquely his fixed member
+(m,n) = (0,0), identity generator dictionary -- but the paper still said
+only that the comparison with his fixed member was open, and the
+supplement's D10 row cited "independent relation-sheet extraction" without
+naming the artifact or the answer.  A reader of v2.4.0 was owed the
+translation: which (m,n), which dictionary, and the diff.  This run writes
+it down, as a proposition in the main paper, as a named artifact in the
+supplement, and as a relator-by-relator table in the repository, and says
+in each place exactly what it does not settle.
+
+What was done
+-------------
+
+verification/luttinger/wuebben_dictionary/print_dictionary.py (new): the
+converse of compare_sheets.py.  It imports the reducer and both
+transcriptions from compare_sheets.py (whose source-hash check runs first),
+takes the located parameters, and for each of the four sign sheets writes
+the twelve relators of the paper's sheet beside Wuebben's decide2.g
+relators at those parameters, names the parameter that makes each pair
+agree (e3 = +1 for A s A^-1 = N y; e4 = -1 for B y B^-1 = M^-1 y x;
+e5 = -1 for B s B^-1 = (r^-1 M^-1 r) s; n = 0, m = 0, (eA,eB) = (eps_A,eps_B)
+for the two fillings; nothing for the other seven), checks that the rows
+reproduce ours(), his decide2.g system at (0,0), and his fixed_v_certify.g
+system at the located point as multisets, and prints the unified diff of
+the two sorted relator lists.  Output: dictionary.txt.  Twelve of twelve
+relators agree letter for letter in all four sheets; the diff is empty.
+The file also records his two shift words in this paper's letters,
+
+    lambda_alpha(n) = A x . ((r x)^-1)^n
+    lambda_beta(m)  = (r^-1 M r) B . (s r^-1 s^-1)^m
+
+and notes that the outside reader's beta shift r^m is a different word
+away from m = 0.  SHA256SUMS now lists seven files.
+
+paper/main.tex: new Section 8.1 "The presentation-level dictionary" with
+Proposition 8.1 (the relation-sheet dictionary): for each sign sheet the
+twelve relators of Theorem 5.3 coincide letter for letter, under the
+identity map on the eight generators, with the relators of exactly one
+system in each of his two families -- (m,n) = (0,0), e3 = +1, e4 = -1,
+e5 = -1, (eA,eB) = (eps_A,eps_B) in the grid; the y1/Ax point with every
+correction before its image, both conjugating arcs r^-1, push-off sign +1
+in the robustness family -- and no other system of the 8,480 matches, even
+after inverting relators.  Proof: the two programs, the negative control
+(N -> N^-1 moves the unique match to e3 = -1 and fails the assertion), and
+the one thing neither program checks (the hand transcription of the GAP
+definitions).  The paragraph after it: identity dictionary, same commutator
+convention and drilled-fiber relation, no (m,n) offset; the four sheets of
+Theorem 5.3 are four rows of his own 4096-case run; an error in a
+conjugating-path line would be an error in both papers at once; the
+proposition compares strings and does not identify V_aud with his
+manifold -- that is D1--D9 and D11--D14, and the contrary computation of
+Section 8.2 is untouched.  One sentence in the introduction and one in the
+conclusion point to it.  main.pdf is 33 pages.
+
+paper/supplement.tex: the D10 row's support column names the dictionary
+and its result; its residual column now reads "at the level of relation
+sheets, none; the hand transcription of his GAP definitions is inspectable,
+not self-checked".  New subsection 2.2 "The Wuebben relation-sheet
+dictionary" in the certificate inventory describes both programs, the
+vendored sources and their digests, the assertion, the negative controls,
+and the shift words.  18 pages.
+
+verification/luttinger/proof_ledger.py: node
+M_wuebben_relation_sheet_dictionary (luttinger/wuebben_dictionary/
+dictionary.txt), a dependency of G_Wuebben_comparison.  61 bound evidence
+files.  The existence boundary is unchanged (no _lp_/wuebben node; the
+node sits on the attribution side).
+
+verification/luttinger/attribution/wuebben_transfer_chain.py: the
+assumption A_source_formalization_D now states that D10 holds at the level
+of relation sheets and that the remaining clauses are geometric; its
+evidence and the chain's EVIDENCE list bind the four dictionary files and
+Run 71's record.  Refrozen: 30 evidence files (was 25).
+
+verification/notes/source_identification_assumptions_2026-08-29.md: D10
+entry records the result and what remains of it (D12--D13, slopes as
+curves).
+
+verification/luttinger/downstream_chain_certificate.json: refrozen because
+it hashes paper/main.tex.  Same 41 evidence files.
+
+verification/STATUS.md, paper/REFEREE_RESPONSE_WORKING.md,
+paper/check_release_sync.py (33/18), ARXIV_SUBMISSION.md (counts).
+
+Checked
+-------
+
+    cd verification/luttinger/wuebben_dictionary
+    python3 compare_sheets.py            RESULT: PASS  (unchanged, sha 0663ff16...)
+    python3 print_dictionary.py > dictionary.txt   exit 0, RESULT: PASS
+    shasum -a 256 -c SHA256SUMS          7 OK
+    cd .. && python3 proof_ledger.py     PASS; 61 bound evidence files
+    cd attribution && python3 wuebben_transfer_chain.py && python3 wuebben_transfer_chain.py --check && ruby verify_wuebben_transfer_chain.rb
+                                         PASS / PASS; 30 evidence digests
+    cd .. && python3 downstream_chain.py && python3 downstream_chain.py --check && ruby verify_downstream_chain.rb
+                                         PASS / PASS; 41 evidence digests; assumptions=0
+    python3 publication_semantics_check.py   PASS
+    tectonic main.tex, supplement.tex    exit 0; pages 29--30 of main and
+                                         page 5 of the supplement rendered
+                                         and inspected
+    python3 paper/check_release_sync.py  (after the re-pin commit)
+
+What this establishes
+---------------------
+
+The translation the paper owed is in the paper.  At the level of finite
+presentations there is nothing between this paper and Wuebben's fixed
+member: same eight generators, same twelve relators, no offset, unique
+among every system his own scripts define.  A reader who wants to know
+"which member is V_aud" has the answer in one proposition and can replay
+it in a second with no dependencies.
+
+What this does not establish
+----------------------------
+
+Nothing about manifolds, as Run 71 already said.  Whether Wuebben's marked
+bundle, tori, basings, and framings are those of Definition 2.1 is
+D1--D9 and D11--D14, unchanged.  Whether Lidman--Piccirillo's drawn
+manifold is this member is open and essential.  A shared sheet is a shared
+reconstruction risk.
+
+Replay
+------
+
+    cd verification/luttinger/wuebben_dictionary && python3 compare_sheets.py && python3 print_dictionary.py | diff - dictionary.txt
+    cd verification/luttinger && python3 proof_ledger.py && python3 publication_semantics_check.py
+    cd verification/luttinger/attribution && python3 wuebben_transfer_chain.py --check && ruby verify_wuebben_transfer_chain.rb
+    cd verification/luttinger && python3 downstream_chain.py --check && ruby verify_downstream_chain.rb
+    python3 paper/check_release_sync.py
+
+Index note: follows Run 77 directly on main.

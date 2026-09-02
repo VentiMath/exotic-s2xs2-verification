@@ -12,10 +12,14 @@
     "luttinger/proof_certificates/manifest.json": "e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9",
     "luttinger/r_presentations.json": "2a6c0be95bc48acc1d6c8d83eb616845fdef75281b240305274152256d4a0fd6",
     "luttinger/sealed_transport/r_presentations.json": "1e5fc8cb6872a25fa45a227c1e1c207b288c861a3998fe3aae8722ea510c852c",
+    "luttinger/wuebben_dictionary/compare_sheets.py": "0663ff16630a8e5cb5a0267019ea8598d6847f1aef5a042c95d598f8d3cc47c3",
+    "luttinger/wuebben_dictionary/dictionary.txt": "bc039d397d4652f18d4b7b1ab656fae54c30c5498dca32fbfbb28a12562eaefd",
+    "luttinger/wuebben_dictionary/output.txt": "37b8cbd0095a0d868d12ac22fe569e759fb4711618ac9d253e3b5d01269bd9f8",
+    "luttinger/wuebben_dictionary/print_dictionary.py": "06202f3489a2a0f972fcec4d1544a8f2e1a76d3404f75d95e81edd16c2036ef2",
     "notes/downstream_theorem_audit_2026-08-23.md": "e4fe2e26f96d2f643ea0e778ab7fb310935f2dcd8aee72870911028a7511f2af",
     "notes/framing_lemma_referee_packet_2026-08-25.md": "0eed67872a2eb2f541022f206892b2a3df16fcf5baec433370d90c6ef2624eeb",
     "notes/pl_self_intersection_certificate_2026-08-24.md": "c2f12d6b47cff014073344b5c67e3f0c5013c7b7698bd53ff35d756f45ac7082",
-    "notes/source_identification_assumptions_2026-08-29.md": "4168b778a5acb95700cf4d3a27f972334efb1aa1927a14f4e94a55efe2687f23",
+    "notes/source_identification_assumptions_2026-08-29.md": "7e91f34dde9cfb93c03bd44fe38089471635f5b7188fd05fd928fae5d6b1d1a8",
     "runs/20-direct-peripheral-fillings-trivial.txt": "b839216d8b7bbad8b50d699564fcb5dede9962459097328f1b4fdcf43110470b",
     "runs/22-model-correspondence-and-framing.txt": "d88410bfbe13ad319dd4f5c35ee14332c7d998c711625b850c76054e81f0f959",
     "runs/24-downstream-theorem-audit.txt": "20c15082cebb94ffd325bc94fae4cfd455cb8783e9153f2e0f8fda2267731c1d",
@@ -29,7 +33,8 @@
     "runs/66-sealed-tietze-transport.txt": "57e0e77f2524df6c875e00ac8eb321e96d8905f9f14e6d9a783384ca1514ba89",
     "runs/67-r3-complement-and-lp-disagreement.txt": "106be7052127f8c28b9e6fd88b50202a74e826c56788eac1ca30c1c9a9ed3d83",
     "runs/68-alpha-longitude-sealed-certificate.txt": "a9ed18ac1e07d82617d448602359a606bf203b36a76a753226c5890c964fd337",
-    "runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b"
+    "runs/69-beta-longitude-sealed-certificate.txt": "87588dc6b2832eca218e9f56ae67c63c7a815c64415644d9533ecee0ce26d96b",
+    "runs/71-wuebben-relation-sheet-dictionary.txt": "84682ffbab0d7039c3015064706195c0181c1bea8c4a8563b9f4fd09ae31805e"
   },
   "format": "luttinger-downstream-proof-chain-v2",
   "items": [
@@ -281,12 +286,14 @@
     },
     {
       "evidence": [
-        "notes/source_identification_assumptions_2026-08-29.md"
+        "notes/source_identification_assumptions_2026-08-29.md",
+        "luttinger/wuebben_dictionary/output.txt",
+        "luttinger/wuebben_dictionary/dictionary.txt"
       ],
       "id": "A_source_formalization_D",
       "kind": "assumption",
       "ledger": "A_Source_Formalization_D",
-      "statement": "Source Formalization D1--D14 holds: the marked fiber, bundle, torus, based-peripheral, coefficient, framing, and relative smooth data in Wuebben's pinned source identify its fixed (m,n)=(0,0) member with V_aud."
+      "statement": "Source Formalization D1--D14 holds: the marked fiber, bundle, torus, based-peripheral, coefficient, framing, and relative smooth data in Wuebben's pinned source identify its fixed (m,n)=(0,0) member with V_aud.  D10 holds at the level of relation sheets: the displayed sheet is literally his (0,0) system, uniquely among the 8,480 systems of his ancillary GAP families, under the identity generator dictionary (luttinger/wuebben_dictionary/); the remaining clauses are geometric."
     },
     {
       "claim": "pi_1(V_aud) = 1: each of the four n=0 filled presentations of the sealed complement presentation (whose Tietze transport from the serialized raw complex replays from frozen files) carries a derivation-DAG certificate accepted by two independent checkers, the four fillings of the earlier four-generator export reach the same verdicts, and the audit-model peripheral identification shows they present pi_1(V_aud); the alpha and beta paper-coordinate identities are separately certified inside the sealed complement (runs 68--69).",
