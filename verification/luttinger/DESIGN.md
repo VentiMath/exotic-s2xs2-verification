@@ -60,7 +60,10 @@ discipline, mechanized.
   is symplectic geometry and stays a lemma. Everything downstream of it is
   mechanical.
 
-## 4. The bundle case (Wuebben's R) — what remains
+## 4. The bundle case (Wuebben's R) — the plan as written 22 Aug 2026
+(Realized in `bundle.py` / `r_run.py`; the checks it calls for are the ones
+listed in §5. Kept as the design record.)
+
 R = genus-2 fiber F over the once-punctured torus T₀, monodromy φ₀ (half-turn
 of the octagon) along α, ψ₀ = T_a T_b along β; T_α = c × α (φ₀(c)=c setwise,
 half-rotation), T_β = e × β (ψ₀ = id near e).
@@ -106,12 +109,52 @@ spurious spanned simplices; check `K.is_full(T)` (the code asserts it).
 product and `is_full` with indexed lookups. Python Tietze handles 10⁴
 generators; GAP takes the rest.
 
-## 5. Honest scope
-* Done: the engine and the two calibrations the paper itself uses to
-  validate its hand-derivation. The engine derives the same sign-sensitive
-  Baldridge–Kirk groups from a triangulation with zero hand-derived words.
-* Not done: the flip-cobordism construction of R (§4). That is the work
-  standing between this and an independent machine derivation of §8.
-* Never done by any machine: Lemma 8.2 (framing). It stays a lemma; it is a
-  short explicit Weinstein-chart computation and is the one line of the
-  paper a referee must read.
+## 5. Honest scope (revised 2026-09-03)
+The original §5 (22 Aug) predates the bundle build and is superseded.
+
+* **Done by machine.** The marked bundle R over the thickened figure-8
+  base (`bundle.py`, `r_run.py`), its fundamental group and the two-torus
+  complement, all from the triangulation. The based monodromies are certified
+  against Prop. 3.5 by replayed Tietze transports, and again on an
+  independently built second triangulation (`alternative_bundle.py`); the
+  marked fiber has a second, import-free realization matched equivariantly
+  (`independent_fiber.py`). Both tori are certified locally flat at every
+  simplex link. Meridians and longitudes are traced as literal simplicial
+  loops with named whiskers and reproduced by a separate extractor
+  (`independent_peripheral_extractor.py`). The complement's presentation is
+  sealed with a fixed hash seed. Filling that presentation with the sealed
+  peripheral words gives eight groups that are trivial by complete confluent
+  rewriting, each certificate replayed by two checkers.
+* **The framing lemma (8.2) is a written lemma with executable identities,
+  not a certificate.** Its Weinstein-chart, seam, and constant-momentum
+  algebra are checked exactly (`framing_check.py`); the Moser flow is
+  constructed rather than cited (`moser_flow_check.py`,
+  `moser_cumulative_flow.py`); the equivariant lift is built on the
+  simplicial collar (`equivariant_moser_lift.py`); chart independence is
+  argued twice in-project, with Weinstein germ uniqueness as corroboration
+  only. What is not mechanized is the lemma's content as symplectic
+  geometry: that the fibered framing *is* the Lagrangian framing is still
+  read from the argument, with each identity in it executable.
+* **Open, and the current boundary of what is proved (found 2 Sep 2026;
+  `honest_filling/README.md`).** The sealed filling relators are not Dehn
+  filling relators of the tori as based: the beta relator pairs a meridian
+  whiskered along `A` then `s_2` with a longitude whiskered along `s_2`
+  alone. The honest filled group differs from the certified one by the
+  single commutator `[A, N_grid]`, and it is undecided: Knuth–Bendix to
+  500,000 equations, coset enumeration, low-index subgroups, finite
+  quotients to order 604,800 and small linear representations all return
+  nothing either way. So the machine route derives the complement, the
+  seams, and the peripheral words, and proves the *sealed* presentations
+  trivial; it does not establish that pi_1 of the filled manifold is
+  trivial. Two further rows are open: the printed transport
+  `B x B^-1 = y^-1` is certified only as `y^-1 M`, with `M` undecided in the
+  complement; and the direct double's boundary word, now derived from the
+  complex (`direct_z_variants/`), gives a doubled presentation that does not
+  collapse at 500,000 equations. The doubling involution and the descent of
+  the symplectic form to the double are defined from audit data (runs
+  72–73); the double's fundamental group is not known.
+* **Cited, not mechanized (unchanged in kind).** Simplicial
+  fundamental-group and Tietze theory, the classification of surfaces, the
+  local-flatness criteria, Kerékjártó's periodic-disk theorem, and the
+  downstream chain's named theorems; see the repository README, "What is
+  not claimed".
