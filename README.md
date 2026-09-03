@@ -1,5 +1,22 @@
 # An exotic S²×S² from a certificate-checked surface-bundle surgery manifold
 
+> **Status, 3 September 2026 — the headline below is withdrawn as unproven.**
+> On 2 September the sealed filling relators were found not to be Dehn-filling
+> relators of the surgery tori as based: the beta relator pairs a meridian
+> whiskered along `A` then `s_2` with a longitude whiskered along `s_2` alone.
+> The certificates in this repository therefore prove trivial a group that is
+> the honest filled group with one extra relation, and `pi_1(V_aud) = 1` is
+> **open**, not established. Theorem A′ and every statement that rests on
+> `pi_1(V_aud) = 1` (including the v2.3.0 headline "V_aud is simply connected")
+> are unproven; nothing here refutes them either. What does stand: the
+> triangulated model of the construction, its sealed complement presentation,
+> the based monodromies and peripheral words, the framing lemma's executable
+> identities, and the reduction of the question to a single commutator. See
+> `verification/luttinger/DESIGN.md` §5, `verification/luttinger/honest_filling/README.md`,
+> and the project journal for the record. Lidman and Piccirillo report a
+> computation in which the corresponding group is nontrivial (Wuebben's README,
+> and correspondence of 31 August); it is not yet public.
+
 This repository contains the manuscript, supplement, and proof artifacts for
 an explicit marked surface-bundle surgery manifold `V_aud` and its double.
 Its primary, source-independent result (Theorem A′) is
@@ -50,19 +67,18 @@ and the earlier phrase “Source Formalization D.” In v2.1 these names denote
 exactly the conjunction of the open source-comparison checklist D1--D14; the rename
 does not change the frozen dependency node or its digest.
 
-The immutable v2.4.0 verification snapshot is archived at
-[doi:10.5281/zenodo.22254457](https://doi.org/10.5281/zenodo.22254457);
-[doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) is the
-concept DOI for the newest archived version.
+A Zenodo record for v2.4.0 was reserved (10.5281/zenodo.22254457) but never
+published; that DOI does not resolve. The concept DOI
+[doi:10.5281/zenodo.22169753](https://doi.org/10.5281/zenodo.22169753) resolves
+to the newest archived version, v2.3.0.
 
 **v2.4.0 release.** The newest public immutable release is:
-[releases/tag/v2.4.0](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0),
-archived under version DOI
-[10.5281/zenodo.22254457](https://doi.org/10.5281/zenodo.22254457). Run
+[releases/tag/v2.4.0](https://github.com/VentiMath/exotic-s2xs2-verification/releases/tag/v2.4.0)
+(not archived on Zenodo; see the status note above). Run
 `python3 paper/check_release_sync.py` to verify the release's hashes, counts,
 terminology, bound manifests, and the pinned `verification/` tree object; the
 gate rebuilds the deterministic arXiv archive itself, so it runs from a clean
-clone. The release URL and both DOIs resolve from a logged-out browser.
+clone.
 The v2.4.0 proof manifest has SHA-256
 `e8118b489a1b365c002a1931839fb419ab0f456aaecf724f2acf979612c9b5b9` and
 binds 48 files, including the revised checkers and the audit-manifold
