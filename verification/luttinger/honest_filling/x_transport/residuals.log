@@ -1,0 +1,35 @@
+complement system: 49990 rules, maxlen 31, loaded in 2s
+ours: B x B^-1 (y^-1 M)^-1  [certified row]
+    input length 116 -> residual length   0   IDENTITY IN Q
+his:  B x B^-1 (y^-1)^-1     [printed row B1]
+    input length 127 -> residual length  27   normal form: g3 g1 g2^-1 g2^-1 g3^-1 g2 g2 g1^-1 g3^-1 g3^-1 g1^-1 g2 g2 g3 g2^-1 g3 g2^-1 g1 g3 g1 g3 g3 g1^-1 g2 g3^-1 g2^-1 g3^-1
+quotient of the two rows: (B x B^-1 y) . (B x B^-1 M^-1 y)^-1 = B x B^-1 M B x^-1 B^-1 (free group)
+    input length 231 -> residual length  27   normal form: g3 g1 g2^-1 g2^-1 g3^-1 g2 g2 g1^-1 g3^-1 g3^-1 g1^-1 g2 g2 g3 g2^-1 g3 g2^-1 g1 g3 g1 g3 g3 g1^-1 g2 g3^-1 g2^-1 g3^-1
+M itself
+    input length  45 -> residual length  30   normal form: g2^-1 g2^-1 g1 g3^-1 g1^-1 g3^-1 g2^-1 g3^-1 g1 g2 g1^-1 g3^-1 g1 g2^-1 g1^-1 g2 g2 g1^-1 g2^-1 g3 g2 g3 g1 g1 g2^-1 g3 g2 g3 g1^-1 g2
+y^-1 M y  (= the quotient, using the certified row)
+    input length  33 -> residual length  27   normal form: g3 g1 g2^-1 g2^-1 g3^-1 g2 g2 g1^-1 g3^-1 g3^-1 g1^-1 g2 g2 g3 g2^-1 g3 g2^-1 g1 g3 g1 g3 g3 g1^-1 g2 g3^-1 g2^-1 g3^-1
+inverse transport B^-1 x B (x y)^-1  [psi^-1(x) = x y, no meridian]
+    input length  92 -> residual length   0   IDENTITY IN Q
+inverse transport B^-1 y B x  [psi^-1(y) = x^-1, no meridian]
+    input length 115 -> residual length  26   normal form: g3 g1 g2^-1 g3 g1 g2 g1^-1 g3^-1 g1 g2^-1 g1^-1 g2 g1^-1 g2^-1 g1 g3^-1 g1^-1 g2 g2 g3^-1 g2^-1 g2^-1 g1 g3 g1^-1 g2
+inverse transport B^-1 r B r^-1
+    input length 118 -> residual length   0   IDENTITY IN Q
+inverse transport B^-1 s B s^-1
+    input length 104 -> residual length  17   normal form: g3 g1 g3 g1 g2^-1 g3 g2^-1 g3 g2 g2 g1^-1 g3^-1 g2 g3^-1 g2^-1 g3^-1 g1^-1
+his row under the dictionary y -> M^-1 y: B x B^-1 (M^-1 y)
+    input length 116 -> residual length   0   IDENTITY IN Q
+[B, M] = B M B^-1 M^-1
+    input length 150 -> residual length  45   normal form: g2^-1 g1 g3^-1 g1^-1 g2 g3^-1 g1^-1 g2^-1 g1 g3 g1^-1 g1^-1 g3 g1 g3 g1 g2^-1 g3 g2^-1 g3 g2 g2 g1^-1 g3^-1 g2 g2 g2 g3^-1 g2^-1 g2^-1 g1 g3 g2^-1 g1 g3^-1 g1^-1 g2 g2 g3^-1 g2^-1 g2^-1 g1 g3 g1^-1 g2
+M_W = B M B^-1
+    input length 149 -> residual length  33   normal form: g2^-1 g1 g3^-1 g1^-1 g2 g3^-1 g1^-1 g2^-1 g1 g3 g1^-1 g2 g2 g2 g3^-1 g2^-1 g3^-1 g1^-1 g3 g1 g2^-1 g3 g1 g3 g3 g2 g3 g1 g3 g1^-1 g3^-1 g2^-1 g3^-1
+his alpha filling F1_W = B M B^-1 A x
+    input length 172 -> residual length  35   normal form: g2^-1 g1 g3^-1 g1^-1 g2 g3^-1 g1^-1 g2^-1 g1 g3 g1^-1 g2 g2 g3^-1 g1^-1 g2 g2 g3 g2^-1 g2^-1 g1 g3 g3 g3 g2^-1 g1 g3 g1 g2 g1^-1 g3^-1 g1 g2^-1 g1^-1 g2
+derived alpha filling F1 = M A x
+    input length  68 -> residual length  28   normal form: g2^-1 g2^-1 g1 g3^-1 g1^-1 g2 g2 g3^-1 g2^-1 g2^-1 g1 g3 g1^-1 g2 g2 g1^-1 g2^-1 g3 g2 g3 g1 g1 g2^-1 g3 g2 g3 g1^-1 g2
+F1_W . F1^-1 = B M B^-1 M^-1 (free group)
+    input length 150 -> residual length  45   normal form: g2^-1 g1 g3^-1 g1^-1 g2 g3^-1 g1^-1 g2^-1 g1 g3 g1^-1 g1^-1 g3 g1 g3 g1 g2^-1 g3 g2^-1 g3 g2 g2 g1^-1 g3^-1 g2 g2 g2 g3^-1 g2^-1 g2^-1 g1 g3 g2^-1 g1 g3^-1 g1^-1 g2 g2 g3^-1 g2^-1 g2^-1 g1 g3 g1^-1 g2
+nf(B x B^-1 y) == nf(y^-1 M y): True
+nf(quotient B x B^-1 M B x^-1 B^-1) == nf(y^-1 M y): True
+nf(F1_W . F1^-1) == nf([B,M]): True
+wrote residuals.json

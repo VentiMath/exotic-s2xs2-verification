@@ -1,0 +1,4 @@
+core(no BxB^-1) eA=1 eB=1: overflow >300000 (345 ms)
+core(no BxB^-1) eA=1 eB=-1: overflow >300000 (368 ms)
+core(no BxB^-1) eA=-1 eB=1: overflow >300000 (362 ms)
+core(no BxB^-1) eA=-1 eB=-1: overflow >300000 (387 ms)

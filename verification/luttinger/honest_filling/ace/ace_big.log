@@ -1,0 +1,10 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+START <a> felsch
+RESULT <a> felsch INCONCLUSIVE
+START <b> felsch
+RESULT <b> felsch INCONCLUSIVE
+START trivial felsch
+RESULT trivial felsch INCONCLUSIVE
+START <a> hard
+RESULT <a> hard INCONCLUSIVE
+ACE DONE

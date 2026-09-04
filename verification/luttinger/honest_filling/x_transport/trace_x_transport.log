@@ -1,0 +1,11 @@
+K f-vector [9156, 116714, 356728, 403152, 153984] (16s)
+bundle checks: T = two disjoint closed tori, K 4-manifold near T: OK
+pi_1(C): 99863 generators, 321702 relators (50s)
+[   50s] raw presentation reproduces the sealed input letter for letter
+[   50s] R1[x]: radial grid at A1 is simplicial; T_alpha hits [], T_beta hits []
+[   50s] R1[y]: radial grid at A1 is simplicial; T_alpha hits [(1, 4, "(('A', 1, ('b', -1, 4)), ('J', 1))")], T_beta hits []
+[   51s] R1[y]: oriented intersection sign -1; punctured boundary cycles of lengths [18]
+[   51s] 13 raw words read in the 2-skeleton presentation of C
+[   54s] S1: stack minus e: rank 0, relators [], residuals {'x_bottom = (y^-1)_top': 0, 'x_top = (x y)_bottom': 0, 'y_bottom = (y x)_top': 0}
+[   84s] sealed transport replayed: Q and the 89 sealed words reproduced; new words in Q letters
+[   84s] wrote trace_x_transport.json

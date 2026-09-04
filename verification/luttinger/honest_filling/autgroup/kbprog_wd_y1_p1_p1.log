@@ -1,0 +1,197 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+  #244 eqns; total len: lhs, rhs = 3660, 3446; 2146 states; 0 secs.
+	#There are 2091 word-differences.
+  #469 eqns; total len: lhs, rhs = 7044, 6711; 3396 states; 0 secs.
+	#There are 2805 word-differences.
+  #677 eqns; total len: lhs, rhs = 10257, 9779; 4420 states; 0 secs.
+	#There are 3318 word-differences.
+  #958 eqns; total len: lhs, rhs = 14438, 13721; 5865 states; 0 secs.
+	#There are 4475 word-differences.
+  #1293 eqns; total len: lhs, rhs = 20113, 19137; 8166 states; 0 secs.
+	#There are 6240 word-differences.
+  #1491 eqns; total len: lhs, rhs = 23617, 22499; 9437 states; 1 secs.
+	#There are 7048 word-differences.
+  #1671 eqns; total len: lhs, rhs = 26728, 25485; 10558 states; 1 secs.
+	#There are 8071 word-differences.
+  #1846 eqns; total len: lhs, rhs = 30190, 28820; 12001 states; 2 secs.
+	#There are 8860 word-differences.
+  #2029 eqns; total len: lhs, rhs = 33279, 31785; 13027 states; 2 secs.
+	#There are 9375 word-differences.
+  #2370 eqns; total len: lhs, rhs = 40129, 38347; 15658 states; 3 secs.
+	#There are 11545 word-differences.
+  #2641 eqns; total len: lhs, rhs = 45182, 43205; 17384 states; 5 secs.
+	#There are 12124 word-differences.
+  #2811 eqns; total len: lhs, rhs = 48292, 46195; 18512 states; 6 secs.
+	#There are 12330 word-differences.
+  #3145 eqns; total len: lhs, rhs = 54534, 52189; 20755 states; 8 secs.
+	#There are 13887 word-differences.
+  #3393 eqns; total len: lhs, rhs = 59573, 57044; 22842 states; 9 secs.
+	#There are 15095 word-differences.
+  #3665 eqns; total len: lhs, rhs = 65163, 62432; 25369 states; 12 secs.
+	#There are 17486 word-differences.
+  #4024 eqns; total len: lhs, rhs = 72642, 69612; 28660 states; 15 secs.
+	#There are 20138 word-differences.
+  #4189 eqns; total len: lhs, rhs = 76013, 72869; 29856 states; 19 secs.
+	#There are 20641 word-differences.
+  #4539 eqns; total len: lhs, rhs = 83261, 79865; 32698 states; 23 secs.
+	#There are 22379 word-differences.
+  #4749 eqns; total len: lhs, rhs = 87192, 83641; 33992 states; 28 secs.
+	#There are 22991 word-differences.
+  #4915 eqns; total len: lhs, rhs = 90188, 86530; 34936 states; 33 secs.
+	#There are 23292 word-differences.
+  #5090 eqns; total len: lhs, rhs = 93152, 89394; 35839 states; 38 secs.
+	#There are 23775 word-differences.
+  #5258 eqns; total len: lhs, rhs = 96636, 92737; 36942 states; 44 secs.
+	#There are 23952 word-differences.
+  #5485 eqns; total len: lhs, rhs = 100321, 96317; 38000 states; 49 secs.
+	#There are 24367 word-differences.
+  #5626 eqns; total len: lhs, rhs = 103423, 99283; 39069 states; 55 secs.
+	#There are 24587 word-differences.
+  #5835 eqns; total len: lhs, rhs = 107512, 103230; 40149 states; 61 secs.
+	#There are 25231 word-differences.
+  #6066 eqns; total len: lhs, rhs = 112226, 107742; 42046 states; 67 secs.
+	#There are 26715 word-differences.
+  #6252 eqns; total len: lhs, rhs = 115993, 111365; 43300 states; 73 secs.
+	#There are 27188 word-differences.
+  #6446 eqns; total len: lhs, rhs = 119460, 114664; 44283 states; 84 secs.
+	#There are 27656 word-differences.
+  #6628 eqns; total len: lhs, rhs = 122890, 117947; 45472 states; 92 secs.
+	#There are 28094 word-differences.
+  #6810 eqns; total len: lhs, rhs = 126648, 121570; 46924 states; 101 secs.
+	#There are 28717 word-differences.
+  #7038 eqns; total len: lhs, rhs = 131312, 126076; 48384 states; 110 secs.
+	#There are 29171 word-differences.
+  #7261 eqns; total len: lhs, rhs = 136060, 130654; 49810 states; 119 secs.
+	#There are 29873 word-differences.
+  #7496 eqns; total len: lhs, rhs = 141191, 135583; 51664 states; 128 secs.
+	#There are 30641 word-differences.
+  #7686 eqns; total len: lhs, rhs = 144646, 138883; 52743 states; 140 secs.
+	#There are 31246 word-differences.
+  #7889 eqns; total len: lhs, rhs = 148756, 142810; 54106 states; 150 secs.
+	#There are 31467 word-differences.
+  #8087 eqns; total len: lhs, rhs = 152718, 146603; 55291 states; 161 secs.
+	#There are 32016 word-differences.
+  #8255 eqns; total len: lhs, rhs = 156246, 150027; 56622 states; 171 secs.
+	#There are 32339 word-differences.
+  #8452 eqns; total len: lhs, rhs = 159991, 153646; 57877 states; 181 secs.
+	#There are 32652 word-differences.
+  #8714 eqns; total len: lhs, rhs = 164836, 158272; 59392 states; 192 secs.
+	#There are 33580 word-differences.
+  #8942 eqns; total len: lhs, rhs = 169611, 162873; 60786 states; 204 secs.
+	#There are 33854 word-differences.
+  #9308 eqns; total len: lhs, rhs = 177299, 170243; 63482 states; 215 secs.
+	#There are 35411 word-differences.
+  #9498 eqns; total len: lhs, rhs = 181297, 174069; 65058 states; 227 secs.
+	#There are 36595 word-differences.
+  #9534 eqns; total len: lhs, rhs = 182247, 174988; 65473 states; 240 secs.
+	#There are 36817 word-differences.
+  #9845 eqns; total len: lhs, rhs = 188912, 181418; 67932 states; 252 secs.
+	#There are 38150 word-differences.
+  #10186 eqns; total len: lhs, rhs = 196621, 188876; 70968 states; 267 secs.
+	#There are 40263 word-differences.
+  #10396 eqns; total len: lhs, rhs = 201154, 193217; 72704 states; 282 secs.
+	#There are 41073 word-differences.
+  #10613 eqns; total len: lhs, rhs = 205077, 197008; 73581 states; 298 secs.
+	#There are 41309 word-differences.
+  #10943 eqns; total len: lhs, rhs = 212092, 203723; 75744 states; 314 secs.
+	#There are 42554 word-differences.
+  #11145 eqns; total len: lhs, rhs = 216102, 207576; 77163 states; 331 secs.
+	#There are 43491 word-differences.
+  #11334 eqns; total len: lhs, rhs = 219575, 210877; 78352 states; 349 secs.
+	#There are 44251 word-differences.
+  #11669 eqns; total len: lhs, rhs = 226101, 217192; 80488 states; 370 secs.
+	#There are 45522 word-differences.
+  #11900 eqns; total len: lhs, rhs = 231009, 221931; 82120 states; 391 secs.
+	#There are 46310 word-differences.
+  #12116 eqns; total len: lhs, rhs = 235424, 226199; 83335 states; 412 secs.
+	#There are 46617 word-differences.
+  #12450 eqns; total len: lhs, rhs = 241540, 232026; 85174 states; 434 secs.
+	#There are 47535 word-differences.
+  #12651 eqns; total len: lhs, rhs = 245483, 235804; 86413 states; 456 secs.
+	#There are 48410 word-differences.
+  #12816 eqns; total len: lhs, rhs = 249102, 239309; 87551 states; 478 secs.
+	#There are 48578 word-differences.
+  #13041 eqns; total len: lhs, rhs = 252936, 242949; 88580 states; 503 secs.
+	#There are 49225 word-differences.
+  #13382 eqns; total len: lhs, rhs = 259708, 249429; 91058 states; 527 secs.
+	#There are 50721 word-differences.
+  #13656 eqns; total len: lhs, rhs = 265379, 254841; 92713 states; 554 secs.
+	#There are 51883 word-differences.
+  #13845 eqns; total len: lhs, rhs = 269042, 258346; 93737 states; 582 secs.
+	#There are 52428 word-differences.
+  #14035 eqns; total len: lhs, rhs = 272851, 261996; 94929 states; 613 secs.
+	#There are 52688 word-differences.
+  #14254 eqns; total len: lhs, rhs = 277554, 266523; 96586 states; 642 secs.
+	#There are 52981 word-differences.
+  #14447 eqns; total len: lhs, rhs = 282123, 270935; 98093 states; 672 secs.
+	#There are 53279 word-differences.
+  #14617 eqns; total len: lhs, rhs = 286201, 274883; 99692 states; 702 secs.
+	#There are 54073 word-differences.
+  #14798 eqns; total len: lhs, rhs = 290522, 279089; 101080 states; 740 secs.
+	#There are 54605 word-differences.
+  #14990 eqns; total len: lhs, rhs = 294728, 283141; 102380 states; 774 secs.
+	#There are 54799 word-differences.
+  #15160 eqns; total len: lhs, rhs = 297959, 286288; 103321 states; 806 secs.
+	#There are 55357 word-differences.
+  #15370 eqns; total len: lhs, rhs = 302357, 290528; 104656 states; 837 secs.
+	#There are 56049 word-differences.
+  #15534 eqns; total len: lhs, rhs = 306140, 294172; 105910 states; 873 secs.
+	#There are 56061 word-differences.
+  #15758 eqns; total len: lhs, rhs = 310693, 298531; 107215 states; 905 secs.
+	#There are 57052 word-differences.
+  #15935 eqns; total len: lhs, rhs = 314392, 302119; 108429 states; 940 secs.
+	#There are 57198 word-differences.
+  #16285 eqns; total len: lhs, rhs = 321087, 308576; 110608 states; 972 secs.
+	#There are 58301 word-differences.
+  #16534 eqns; total len: lhs, rhs = 326270, 313529; 112077 states; 1006 secs.
+	#There are 58692 word-differences.
+  #16772 eqns; total len: lhs, rhs = 331496, 318576; 113790 states; 1042 secs.
+	#There are 59405 word-differences.
+  #17045 eqns; total len: lhs, rhs = 337367, 324279; 115388 states; 1084 secs.
+	#There are 60282 word-differences.
+  #17214 eqns; total len: lhs, rhs = 340981, 327764; 116619 states; 1125 secs.
+	#There are 60641 word-differences.
+  #17522 eqns; total len: lhs, rhs = 347916, 334436; 119550 states; 1163 secs.
+	#There are 62883 word-differences.
+  #17815 eqns; total len: lhs, rhs = 354573, 340832; 121918 states; 1204 secs.
+	#There are 63820 word-differences.
+  #17982 eqns; total len: lhs, rhs = 357974, 344122; 122964 states; 1246 secs.
+	#There are 64400 word-differences.
+  #18162 eqns; total len: lhs, rhs = 361800, 347808; 124168 states; 1291 secs.
+	#There are 64764 word-differences.
+  #18356 eqns; total len: lhs, rhs = 366100, 351961; 125531 states; 1334 secs.
+	#There are 64993 word-differences.
+  #18534 eqns; total len: lhs, rhs = 369812, 355566; 126484 states; 1378 secs.
+	#There are 65196 word-differences.
+  #18891 eqns; total len: lhs, rhs = 377234, 362678; 128964 states; 1424 secs.
+	#There are 66542 word-differences.
+  #19066 eqns; total len: lhs, rhs = 380638, 365946; 129859 states; 1471 secs.
+	#There are 66708 word-differences.
+  #19223 eqns; total len: lhs, rhs = 384010, 369176; 130900 states; 1517 secs.
+	#There are 66918 word-differences.
+  #19400 eqns; total len: lhs, rhs = 388143, 373180; 132235 states; 1563 secs.
+	#There are 67222 word-differences.
+  #19616 eqns; total len: lhs, rhs = 392624, 377488; 133568 states; 1613 secs.
+	#There are 67902 word-differences.
+  #19834 eqns; total len: lhs, rhs = 397364, 382052; 135038 states; 1660 secs.
+	#There are 67982 word-differences.
+  #20059 eqns; total len: lhs, rhs = 401756, 386240; 136052 states; 1707 secs.
+	#There are 68522 word-differences.
+  #20250 eqns; total len: lhs, rhs = 405727, 390019; 137199 states; 1771 secs.
+	#There are 68729 word-differences.
+  #20409 eqns; total len: lhs, rhs = 409288, 393494; 138003 states; 1821 secs.
+	#There are 68949 word-differences.
+  #20686 eqns; total len: lhs, rhs = 414983, 398929; 139756 states; 1871 secs.
+	#There are 69975 word-differences.
+  #21040 eqns; total len: lhs, rhs = 423048, 406699; 142142 states; 1935 secs.
+	#There are 71351 word-differences.
+  #21388 eqns; total len: lhs, rhs = 430902, 414289; 144165 states; 1998 secs.
+	#There are 72062 word-differences.
+  #21726 eqns; total len: lhs, rhs = 439055, 422181; 146962 states; 2065 secs.
+	#There are 73804 word-differences.
+  #21963 eqns; total len: lhs, rhs = 444453, 427356; 148559 states; 2128 secs.
+	#There are 74322 word-differences.
+  #22154 eqns; total len: lhs, rhs = 448862, 431589; 150250 states; 2193 secs.
+	#There are 75526 word-differences.
+  #22368 eqns; total len: lhs, rhs = 453757, 436302; 151744 states; 2254 secs.
+exit status 137

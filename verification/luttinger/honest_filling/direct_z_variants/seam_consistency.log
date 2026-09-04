@@ -1,0 +1,9 @@
+system ../kbmag/honest_y1_p1_p1.rws.kbprog equations 499983
+AiBiAB   consistent_with_trivial_transport=False residual_lengths=[('x', 0), ('y', 0), ('r', 2), ('s', 7)]
+BiABAi   consistent_with_trivial_transport=True  residual_lengths=[('x', 0), ('y', 0), ('r', 0), ('s', 0)]
+ABAiBi   consistent_with_trivial_transport=False residual_lengths=[('x', 2), ('y', 7), ('r', 4), ('s', 8)]
+BAiBiA   consistent_with_trivial_transport=False residual_lengths=[('x', 3), ('y', 8), ('r', 1), ('s', 8)]
+BiAiBA   consistent_with_trivial_transport=False residual_lengths=[('x', 0), ('y', 0), ('r', 1), ('s', 9)]
+AiBABi   consistent_with_trivial_transport=False residual_lengths=[('x', 2), ('y', 8), ('r', 3), ('s', 8)]
+BABiAi   consistent_with_trivial_transport=False residual_lengths=[('x', 3), ('y', 6), ('r', 1), ('s', 6)]
+ABiAiB   consistent_with_trivial_transport=True  residual_lengths=[('x', 0), ('y', 0), ('r', 0), ('s', 0)]

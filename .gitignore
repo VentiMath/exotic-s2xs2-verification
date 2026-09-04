@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 .DS_Store
 paper/arxiv-source-v*.tar.gz
+
+# honest_filling: kbprog / proof-log outputs stay local (hundreds of MB); inputs, scripts, logs and documents are tracked
+verification/luttinger/honest_filling/**/*.kbprog
+verification/luttinger/honest_filling/**/*.reduce
+verification/luttinger/honest_filling/**/*.ec
+verification/luttinger/honest_filling/**/*.proof.log

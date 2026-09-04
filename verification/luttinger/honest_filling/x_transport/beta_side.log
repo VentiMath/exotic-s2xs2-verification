@@ -1,0 +1,79 @@
+== provenance of N
+IDENTITY   geom_N = A N_grid^-1 A^-1 (free-word identity, as words in Q)
+IDENTITY   certified row A s A^-1 = N y
+IDENTITY   A M A^-1 = K = r^-1 M r  (c_y meridian transported around alpha is the c_s meridian)
+residual  34   A M A^-1 = K^-1
+residual  44   [K, N_dir]  (c_s meridian vs e meridian, both s-whiskered)
+residual  72   [M, N_dir]
+== his row M1: A s_W A^-1 = N_W^e3 y_W, with s_W = K^-1 s, y_W = M^-1 y
+residual  47   M1 printed   N_W=N_dir = A^-1 N A (direct, honest orientation), e3=+1
+residual  53   M1 mechanism (A N_W A^-1)^e3   N_W=N_dir = A^-1 N A (direct, honest orientation), e3=+1
+residual  53   M1 printed . [A, N_W^e3]^-1   N_W=N_dir = A^-1 N A (direct, honest orientation), e3=+1
+residual  41   M1 printed   N_W=N_dir = A^-1 N A (direct, honest orientation), e3=-1
+residual  53   M1 mechanism (A N_W A^-1)^e3   N_W=N_dir = A^-1 N A (direct, honest orientation), e3=-1
+residual  53   M1 printed . [A, N_W^e3]^-1   N_W=N_dir = A^-1 N A (direct, honest orientation), e3=-1
+residual  41   M1 printed   N_W=N_dir^-1, e3=+1
+residual  53   M1 mechanism (A N_W A^-1)^e3   N_W=N_dir^-1, e3=+1
+residual  53   M1 printed . [A, N_W^e3]^-1   N_W=N_dir^-1, e3=+1
+residual  47   M1 printed   N_W=N_dir^-1, e3=-1
+residual  53   M1 mechanism (A N_W A^-1)^e3   N_W=N_dir^-1, e3=-1
+residual  53   M1 printed . [A, N_W^e3]^-1   N_W=N_dir^-1, e3=-1
+residual  54   M1 printed   N_W=K^-1 N_dir K (geometric image of his N), e3=+1
+IDENTITY   M1 mechanism (A N_W A^-1)^e3   N_W=K^-1 N_dir K (geometric image of his N), e3=+1
+IDENTITY   M1 printed . [A, N_W^e3]^-1   N_W=K^-1 N_dir K (geometric image of his N), e3=+1
+residual  49   M1 printed   N_W=K^-1 N_dir K (geometric image of his N), e3=-1
+residual  46   M1 mechanism (A N_W A^-1)^e3   N_W=K^-1 N_dir K (geometric image of his N), e3=-1
+residual  46   M1 printed . [A, N_W^e3]^-1   N_W=K^-1 N_dir K (geometric image of his N), e3=-1
+residual  49   M1 printed   N_W=K^-1 N_dir^-1 K, e3=+1
+residual  46   M1 mechanism (A N_W A^-1)^e3   N_W=K^-1 N_dir^-1 K, e3=+1
+residual  46   M1 printed . [A, N_W^e3]^-1   N_W=K^-1 N_dir^-1 K, e3=+1
+residual  54   M1 printed   N_W=K^-1 N_dir^-1 K, e3=-1
+IDENTITY   M1 mechanism (A N_W A^-1)^e3   N_W=K^-1 N_dir^-1 K, e3=-1
+IDENTITY   M1 printed . [A, N_W^e3]^-1   N_W=K^-1 N_dir^-1 K, e3=-1
+residual  80   M1 printed   N_W=K N_dir K^-1, e3=+1
+residual  85   M1 mechanism (A N_W A^-1)^e3   N_W=K N_dir K^-1, e3=+1
+residual  85   M1 printed . [A, N_W^e3]^-1   N_W=K N_dir K^-1, e3=+1
+residual  73   M1 printed   N_W=K N_dir K^-1, e3=-1
+residual  80   M1 mechanism (A N_W A^-1)^e3   N_W=K N_dir K^-1, e3=-1
+residual  80   M1 printed . [A, N_W^e3]^-1   N_W=K N_dir K^-1, e3=-1
+residual  73   M1 printed   N_W=K N_dir^-1 K^-1, e3=+1
+residual  80   M1 mechanism (A N_W A^-1)^e3   N_W=K N_dir^-1 K^-1, e3=+1
+residual  80   M1 printed . [A, N_W^e3]^-1   N_W=K N_dir^-1 K^-1, e3=+1
+residual  80   M1 printed   N_W=K N_dir^-1 K^-1, e3=-1
+residual  85   M1 mechanism (A N_W A^-1)^e3   N_W=K N_dir^-1 K^-1, e3=-1
+residual  85   M1 printed . [A, N_W^e3]^-1   N_W=K N_dir^-1 K^-1, e3=-1
+IDENTITY   M1 printed   N_W=M^-1 N M (algebraic dictionary), e3=+1
+residual  52   M1 mechanism (A N_W A^-1)^e3   N_W=M^-1 N M (algebraic dictionary), e3=+1
+residual  52   M1 printed . [A, N_W^e3]^-1   N_W=M^-1 N M (algebraic dictionary), e3=+1
+residual  47   M1 printed   N_W=M^-1 N M (algebraic dictionary), e3=-1
+residual  54   M1 mechanism (A N_W A^-1)^e3   N_W=M^-1 N M (algebraic dictionary), e3=-1
+residual  54   M1 printed . [A, N_W^e3]^-1   N_W=M^-1 N M (algebraic dictionary), e3=-1
+residual  53   M1 printed   N_W=N (as printed), e3=+1
+residual  45   M1 mechanism (A N_W A^-1)^e3   N_W=N (as printed), e3=+1
+residual  45   M1 printed . [A, N_W^e3]^-1   N_W=N (as printed), e3=+1
+residual  53   M1 printed   N_W=N (as printed), e3=-1
+residual  45   M1 mechanism (A N_W A^-1)^e3   N_W=N (as printed), e3=-1
+residual  45   M1 printed . [A, N_W^e3]^-1   N_W=N (as printed), e3=-1
+== his filling F2 = N_W ((r^-1 M_W^{-e} r) B)^eB with e = -1 (his M3 sign matching our B s B^-1 row)
+IDENTITY   F2_W(geo) . F2_honest^-1   N_W=N_dir = A^-1 N A (direct, honest orientation), eB=+1
+IDENTITY   F2_W(geo) . F2_honest^-1   N_W=N_dir = A^-1 N A (direct, honest orientation), eB=-1
+residual  28   F2_W(geo) . F2_honest^-1   N_W=N_dir^-1, eB=+1
+residual  28   F2_W(geo) . F2_honest^-1   N_W=N_dir^-1, eB=-1
+residual  42   F2_W(geo) . F2_honest^-1   N_W=K^-1 N_dir K (geometric image of his N), eB=+1
+residual  42   F2_W(geo) . F2_honest^-1   N_W=K^-1 N_dir K (geometric image of his N), eB=-1
+residual  46   F2_W(geo) . F2_honest^-1   N_W=K^-1 N_dir^-1 K, eB=+1
+residual  46   F2_W(geo) . F2_honest^-1   N_W=K^-1 N_dir^-1 K, eB=-1
+residual  44   F2_W(geo) . F2_honest^-1   N_W=K N_dir K^-1, eB=+1
+residual  44   F2_W(geo) . F2_honest^-1   N_W=K N_dir K^-1, eB=-1
+residual  45   F2_W(geo) . F2_honest^-1   N_W=K N_dir^-1 K^-1, eB=+1
+residual  45   F2_W(geo) . F2_honest^-1   N_W=K N_dir^-1 K^-1, eB=-1
+residual  61   F2_W(dict) . F2_honest^-1   eB=+1
+residual  88   F2_W(dict) . (sealed N (r^-1 M r B)^eB)^-1   eB=+1
+residual  58   F2_W(dict) . F2_honest^-1   eB=-1
+residual  82   F2_W(dict) . (sealed N (r^-1 M r B)^eB)^-1   eB=-1
+== named quotients (free-group identities noted; reductions in Q)
+residual  42   [K^-1, N_dir]  (= F2_W(geo) . F2_honest^-1 as free words)
+residual  32   [B, K] = [B, A M A^-1]  (= (K^-1 lam K) lam^-1 as free words)
+residual  30   [A, K]
+residual  40   [K, lam]
+residual  45   [B, M]

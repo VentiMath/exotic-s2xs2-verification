@@ -1,0 +1,19 @@
+derived double: 6 generators, 165 relators
+H1 = [  ]
+#I  Coset table calculation failed -- trying with bigger table limit
+Error, reached the pre-set memory limit
+(change it with the -o command line option)
+Stack trace:
+*[1] g[2 * limit] := 0;
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/grpfp.gi:1234
+ [2] TCENUM.CosetTableFromGensAndRels( fgens, grels, fsgens )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/grpfp.gi:1068
+ [3] CosetTableFromGensAndRels( fgens, grels, trial )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/grpfp.gi:3829
+ [4] Attempt( trial )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/grpfp.gi:3832
+ [5] Attempt( gens )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/grpfp.gi:3854
+...  at size_ladder.g:5
+you can 'return;'
+[1m[34m[0m[31m

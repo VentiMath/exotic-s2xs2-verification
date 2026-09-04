@@ -1,0 +1,36 @@
+P+cert8 y1 sealed: [ "overflow", 1, 1, 1 ]
+P+cert8 y1 honest: [ "overflow", "overflow", "overflow", "overflow" ]
+P+cert8 y2 sealed: [ 1, 1, "overflow", 1 ]
+P+cert8 y2 honest: [ "overflow", "overflow", "overflow", "overflow" ]
+minimal P relators needed (19):
+  h5^-1*h3*h5*h1^-1
+  h5*h3*h5^-1*h1^-1
+  h4*h5*h2^-1*h5^-1
+  h6*h3^-1*h6^-1*h3
+  h5*h7*h1^-1*h5^-1*h7^-1*h3
+  h1*h7*h5^-1*h3^-1*h7^-1*h5
+  h7^-1*h5*h3^-1*h7*h3*h5^-1
+  h7*h6*h2*h6^-1*h1^-1*h2^-1
+  h4*h6^-1*h4^-1*h3^-1*h7*h6*h3
+  h1*h7*h6*h2^-1*h1^-1*h4*h6^-1*h4^-1
+  h3^-1*h6*h5*h1*h3*h5^-1*h2*h6^-1*h1^-1
+  h2*h6^-1*h1^-1*h6*h1*h5*h2^-1*h1^-1*h5^-1*h3*h4
+  h4*h3*h4^-1*h3^-1*h8^-1*h5*h4*h5^-1*h1*h2^-1*h1^-1
+  h4*h3^-1*h4^-1*h3^-1*h5*h1*h2*h1*h2^-1*h1^-1*h5^-1*h3
+  h3^-1*h6^-1*h7^-1*h5^2*h7*(h3*h5^-1)^2*h6*h2^-1*h1^-1
+  h1*h2*h1*h2^-1*h1^-1*h3^-1*h5*h1*h2*h1*h2^-1*h1^-1*h3^-1*h5^-1
+  h3*h4*h5*h6^-1*h1^-1*h5^-1*h7^-1*h2*h3*h5*h6*h5^-1*h4^-1*h3^-1*h2^-1
+  h7*h6*h5*h1*h2*h1*h2^-1*h1^-1*h5^-1*h6^-1*h7^-1*h5^-1*h1*h2*h1^-1*h2^-1*h1^-\
+1*h5
+  h3^-1*h5*h1*h2*h1*h2^-1*h1^-1*h3^-1*h2*h1*h2^-1*h1^-1*h5^-1*h2*h6^-1*h1*h6*h\
+2^-1*h1*h2^-1*h1^-1
+certified sheet relations still needed (8):
+  h5*h1*h5^-1*h3^-1
+  h5*h2*h5^-1*h4^-1
+  h5*h3*h5^-1*h1^-1
+  h5*h4*h5^-1*h2^-1*h8^-1
+  h6*h2*h6^-1*h1^-1*h2^-1*h7
+  h6*h3*h6^-1*h3^-1
+  h6*h4*h6^-1*h4^-1*h3^-1*h7*h3
+  h1*h2*h1^-1*h2^-1*h3*h4*h3^-1*h4^-1
+final check all eight honest cases with minimal set: false

@@ -1,0 +1,16 @@
+P+cert8 y1 sealed: [ 1, 1, 1, 1 ]
+P+cert8 y1 honest: [ 1, 1, 1, 1 ]
+P+cert8 y2 sealed: [ 1, 1, 1, 1 ]
+P+cert8 y2 honest: [ 1, 1, 1, 1 ]
+minimal P relators needed (1):
+  h1*h7*h6*h2^-1*h1^-1*h4*h6^-1*h4^-1
+certified sheet relations still needed (8):
+  h5*h1*h5^-1*h3^-1
+  h5*h2*h5^-1*h4^-1
+  h5*h3*h5^-1*h1^-1
+  h5*h4*h5^-1*h2^-1*h8^-1
+  h6*h2*h6^-1*h1^-1*h2^-1*h7
+  h6*h3*h6^-1*h3^-1
+  h6*h4*h6^-1*h4^-1*h3^-1*h7*h3
+  h1^-1*h2^-1*h1*h2*h3^-1*h4^-1*h3*h4
+final check all eight honest cases with minimal set: true

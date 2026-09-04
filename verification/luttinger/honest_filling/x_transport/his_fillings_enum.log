@@ -1,0 +1,36 @@
+signs (1,1)
+  honest:                          overflow
+  honest + [B,M]:                  index 1
+  geometric, N_W = A^-1 N A:       overflow  (identical to honest)
+  geometric, N_W = K^-1 A^-1 N A K:index 1
+  geometric, N_W = K A^-1 N A K^-1:index 1
+  algebraic dictionary:            index 1
+  dictionary F1 only + honest F2:  index 1
+  honest F1 + dictionary F2:       index 1
+signs (1,-1)
+  honest:                          overflow
+  honest + [B,M]:                  index 1
+  geometric, N_W = A^-1 N A:       overflow  (identical to honest)
+  geometric, N_W = K^-1 A^-1 N A K:index 1
+  geometric, N_W = K A^-1 N A K^-1:index 1
+  algebraic dictionary:            index 1
+  dictionary F1 only + honest F2:  index 1
+  honest F1 + dictionary F2:       index 1
+signs (-1,1)
+  honest:                          overflow
+  honest + [B,M]:                  index 1
+  geometric, N_W = A^-1 N A:       overflow  (identical to honest)
+  geometric, N_W = K^-1 A^-1 N A K:index 1
+  geometric, N_W = K A^-1 N A K^-1:index 1
+  algebraic dictionary:            index 1
+  dictionary F1 only + honest F2:  index 1
+  honest F1 + dictionary F2:       index 1
+signs (-1,-1)
+  honest:                          overflow
+  honest + [B,M]:                  index 1
+  geometric, N_W = A^-1 N A:       overflow  (identical to honest)
+  geometric, N_W = K^-1 A^-1 N A K:index 1
+  geometric, N_W = K A^-1 N A K^-1:index 1
+  algebraic dictionary:            index 1
+  dictionary F1 only + honest F2:  index 1
+  honest F1 + dictionary F2:       index 1

@@ -1,0 +1,19 @@
+honest_y1_p1_p1: loaded 499978 rules in 9s
+  control: this case alpha relator: residual word = 1
+  control: this case beta relator: residual word = 1
+  control: certified Q row BxB^-1 y M^-1: residual word = y^-1 M y M^-1
+  control: Wuebben B1 under dictionary: residual word = 1
+  control: Wuebben M1 under dictionary: residual word = 1
+  control: Wuebben M2 under dictionary: residual word = 1
+  control: Wuebben M3 under dictionary: residual word = 1
+  [B, M]: residual word = x N^-1 B^-1 A
+  [B, Ax]: residual word = B M^-1 B^-1 M
+  M^-1NM (A^-1NA)^-1: residual word = M^-1 A B^-1 M A^-1 B
+  F1_W eA=1: residual word = x N^-1 B^-1 A
+  F1_W eA=-1: residual word = B M B^-1 M
+  F2_W eB=1: residual word = r M^-1 N M N^-1 x^-1
+  F2_W eB=-1: residual word = r M^-1 A B^-1 B^-1
+  F1_W with M_W:=M, eA=1: residual word = 1
+  F1_W with M_W:=M, eA=-1: residual word = M M
+  F2_W with M_W:=M, N_W:=M^-1NM, eB=1: residual word = M^-1 A B^-1 M A^-1 B
+  F2_W with M_W:=M, N_W:=M^-1NM, eB=-1: residual word = M^-1 N M s B^-1 s^-1

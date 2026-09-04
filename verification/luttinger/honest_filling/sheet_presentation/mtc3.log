@@ -1,0 +1,32 @@
+P only               sealed: [ "overflow/2097ms", "overflow/2128ms", 
+  "overflow/2140ms", "overflow/2154ms" ]
+P only               honest: [ "overflow/2145ms", "overflow/2109ms", 
+  "overflow/2092ms", "overflow/2098ms" ]
+P + certified8       sealed: [ "index 1/23ms", "index 1/19ms", 
+  "index 1/17ms", "index 1/7ms" ]
+P + certified8       honest: [ "index 1/13ms", "index 1/10ms", 
+  "index 1/13ms", "index 1/30ms" ]
+P + certified8 + x   honest: [ "index 1/1ms", "index 1/0ms", "index 1/24ms", 
+  "index 1/1ms" ]
+P relators:
+  h5^-1*h3*h5*h1^-1
+  h5*h3*h5^-1*h1^-1
+  h4*h5*h2^-1*h5^-1
+  h6*h3^-1*h6^-1*h3
+  h5*h7*h1^-1*h5^-1*h7^-1*h3
+  h1*h7*h5^-1*h3^-1*h7^-1*h5
+  h7^-1*h5*h3^-1*h7*h3*h5^-1
+  h7*h6*h2*h6^-1*h1^-1*h2^-1
+  h4*h6^-1*h4^-1*h3^-1*h7*h6*h3
+  h1*h7*h6*h2^-1*h1^-1*h4*h6^-1*h4^-1
+  h3^-1*h6*h5*h1*h3*h5^-1*h2*h6^-1*h1^-1
+  h2*h6^-1*h1^-1*h6*h1*h5*h2^-1*h1^-1*h5^-1*h3*h4
+  h4*h3*h4^-1*h3^-1*h8^-1*h5*h4*h5^-1*h1*h2^-1*h1^-1
+  h4*h3^-1*h4^-1*h3^-1*h5*h1*h2*h1*h2^-1*h1^-1*h5^-1*h3
+  h3^-1*h6^-1*h7^-1*h5^2*h7*(h3*h5^-1)^2*h6*h2^-1*h1^-1
+  h1*h2*h1*h2^-1*h1^-1*h3^-1*h5*h1*h2*h1*h2^-1*h1^-1*h3^-1*h5^-1
+  h3*h4*h5*h6^-1*h1^-1*h5^-1*h7^-1*h2*h3*h5*h6*h5^-1*h4^-1*h3^-1*h2^-1
+  h7*h6*h5*h1*h2*h1*h2^-1*h1^-1*h5^-1*h6^-1*h7^-1*h5^-1*h1*h2*h1^-1*h2^-1*h1^-\
+1*h5
+  h3^-1*h5*h1*h2*h1*h2^-1*h1^-1*h3^-1*h2*h1*h2^-1*h1^-1*h5^-1*h2*h6^-1*h1*h6*h\
+2^-1*h1*h2^-1*h1^-1

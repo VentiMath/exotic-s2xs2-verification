@@ -1,0 +1,8 @@
+K f-vector [9156, 116714, 356728, 403152, 153984] 16s
+{0: 102, 1: 243, 2: 140}
+alpha_positive len 4 missing vertices [] missing edges []
+beta_positive len 37 missing vertices [] missing edges []
+boundary len 67 missing vertices [] missing edges []
+section: V 102 E 243 F 140 chi -1 free edges 66
+wrote section_complex.json 16s
+exit 0

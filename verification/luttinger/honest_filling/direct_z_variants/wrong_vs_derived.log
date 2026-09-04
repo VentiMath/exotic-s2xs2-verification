@@ -1,0 +1,4 @@
+delta_1 = A^-1 delta_0^-1 A (same copy): true
+delta1_L delta1_R (with delta0_R := delta0_L^-1) = A_L^-1 [delta0_L^-1, u] A_L\
+ : true
+lhs * lhs_mod^-1 = c (delta0_L delta0_R)^-1 c^-1 : true

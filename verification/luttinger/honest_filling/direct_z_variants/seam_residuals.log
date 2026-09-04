@@ -1,0 +1,25 @@
+AiBiAB g=r: delta g delta^-1 = r s * [M B]
+AiBiAB g=s: delta g delta^-1 = r^-1 * [A^-1 B^-1 M^-1 N M B A]
+ABAiBi g=x: delta g delta^-1 = x y * [x A]
+ABAiBi g=y: delta g delta^-1 = x^-1 * [M^-1 N^-1 B^-1 M B N M]
+ABAiBi g=r: delta g delta^-1 = s^-1 * [s^-1 r^-1 y A^-1]
+ABAiBi g=s: delta g delta^-1 = s r * [M^-1 N^-1 B^-1 A^-1 B y^-1 A B^-1]
+BAiBiA g=x: delta g delta^-1 = y^-1 * [y^-1 M y]
+BAiBiA g=y: delta g delta^-1 = y x * [B M x B^-1 M B N M^-1]
+BAiBiA g=r: delta g delta^-1 = r s * [B]
+BAiBiA g=s: delta g delta^-1 = r^-1 * [x N^-1 B^-1 M^-1 B^-1 M B N]
+BiAiBA g=r: delta g delta^-1 = s^-1 * [B^-1]
+BiAiBA g=s: delta g delta^-1 = s r * [x B^-1 M B N B^-1 A B s^-1]
+AiBABi g=x: delta g delta^-1 = x y * [x A]
+AiBABi g=y: delta g delta^-1 = x^-1 * [A^-1 B s^-1 N M s B^-1 s^-1]
+AiBABi g=r: delta g delta^-1 = s^-1 * [s^-1 B^-1 s]
+AiBABi g=s: delta g delta^-1 = s r * [x y B N M B^-1 A s^-1]
+BABiAi g=x: delta g delta^-1 = y^-1 * [y^-1 M y]
+BABiAi g=y: delta g delta^-1 = y x * [B N M N^-1 B^-1 M^-1]
+BABiAi g=r: delta g delta^-1 = r s * [M^-1]
+BABiAi g=s: delta g delta^-1 = r^-1 * [B s^-1 N M A^-1 N]
+--- hand check for A^-1B^-1AB, g=r: residual should equal r A^-1 N^-1 A r^-1
+residual nf      : M B
+hand word nf     : M B
+difference nf    : 1 (empty = certified equal)
+N nf             : N    A^-1 N A nf: s B^-1 s^-1    M nf: M

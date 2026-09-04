@@ -1,0 +1,4 @@
+round0 ngens=2 nrels=5 total=137 ab=[  ]
+  sub gen1^2 index=1
+  -> after MTC on   sub gen1^2 + TzGoGo: ngens=2 nrels=6 total=831735 ab=[  ]
+rnd1 ngens=2 nrels=6 total=831735 ab=[  ]

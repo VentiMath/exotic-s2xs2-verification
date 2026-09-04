@@ -1,0 +1,11 @@
+V=102 E=243 F=140 chi=-1
+free edges: 66
+boundary path uses exactly the free edges: true
+spanning tree reaches all vertices: true
+pi_1(section) simplified: 2 generators, 0 relators
+alpha_positive = f17
+beta_positive  = f87
+boundary       = f17^-1*f87*f17*f87^-1
+boundary loop at q = (BiABAi)^-1 (in A, B)
+boundary loop at q = ABiAiB (in A, B)
+A, B generate pi_1(section): true

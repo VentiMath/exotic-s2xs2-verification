@@ -1,0 +1,7 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+#Running Knuth-Bendix Program
+  /home/gap/inst/gap-4.11.1/pkg/kbmag-1.5.9/bin/x86_64-pc-linux-gnu-default64-kv7/kbprog -mt 20 -hf 100 -cn 0 -wd -v -me 262144 -t 500 /w/reduced_honest_y1_p1_p1.rws
+  #702 eqns; total len: lhs, rhs = 10891, 10369; 4958 states; 0 secs.
+Maximum number of word-differences exceeded. Cannot continue.
+#Knuth-Bendix program failed or was inconclusive. Giving up.
+exit status 1

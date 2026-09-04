@@ -1,0 +1,12 @@
+V=12 E=23 F=10 chi=-1
+boundary edges: [ 3, 9, 16, 17, 20, 21 ]
+  [ [ [ "a", 2, 0 ], [ "a", 0, 0 ] ], [ [ "a", 2, 2 ], [ "a", 0, 2 ] ], 
+  [ [ "a", 0, 2 ], [ "s", 1, 0 ] ], [ [ "s", 1, 0 ], [ "a", 0, 0 ] ], 
+  [ [ "a", 2, 2 ], [ "s", 1, 2 ] ], [ [ "s", 1, 2 ], [ "a", 2, 0 ] ] ]
+pi_1(base) simplified: 2 generators, 0 relators
+alpha_positive = f2
+beta_positive  = f17
+boundary       = f2^-1*f17*f2*f17^-1
+boundary loop based at q  =  (BiABAi)^-1  (in A, B)
+boundary loop based at q  =  ABiAiB  (in A, B)
+A,B generate pi_1(base): true

@@ -1,0 +1,40 @@
+honest_y1_p1_p1 <a> overflow
+honest_y1_p1_p1 <b> overflow
+honest_y1_p1_p1 <ab> overflow
+honest_y1_p1_p1 <a,b^2> INDEX 1
+honest_y1_p1_p1 <a^2,b> INDEX 1
+honest_y1_p1_m1 <a> overflow
+honest_y1_p1_m1 <b> overflow
+honest_y1_p1_m1 <ab> overflow
+honest_y1_p1_m1 <a,b^2> INDEX 1
+honest_y1_p1_m1 <a^2,b> overflow
+honest_y1_m1_p1 <a> overflow
+honest_y1_m1_p1 <b> overflow
+honest_y1_m1_p1 <ab> overflow
+honest_y1_m1_p1 <a,b^2> INDEX 1
+honest_y1_m1_p1 <a^2,b> overflow
+honest_y1_m1_m1 <a> overflow
+honest_y1_m1_m1 <b> overflow
+honest_y1_m1_m1 <ab> overflow
+honest_y1_m1_m1 <a,b^2> INDEX 1
+honest_y1_m1_m1 <a^2,b> INDEX 1
+honest_y2_p1_p1 <a> overflow
+honest_y2_p1_p1 <b> overflow
+honest_y2_p1_p1 <ab> overflow
+honest_y2_p1_p1 <a,b^2> overflow
+honest_y2_p1_p1 <a^2,b> overflow
+honest_y2_p1_m1 <a> overflow
+honest_y2_p1_m1 <b> overflow
+honest_y2_p1_m1 <ab> overflow
+honest_y2_p1_m1 <a,b^2> overflow
+honest_y2_p1_m1 <a^2,b> overflow
+honest_y2_m1_p1 <a> overflow
+honest_y2_m1_p1 <b> overflow
+honest_y2_m1_p1 <ab> overflow
+honest_y2_m1_p1 <a,b^2> INDEX 1
+honest_y2_m1_p1 <a^2,b> overflow
+honest_y2_m1_m1 <a> overflow
+honest_y2_m1_m1 <b> overflow
+honest_y2_m1_m1 <ab> overflow
+honest_y2_m1_m1 <a,b^2> INDEX 1
+honest_y2_m1_m1 <a^2,b> overflow

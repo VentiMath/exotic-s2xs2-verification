@@ -1,0 +1,56 @@
+honest_y1_p1_p1 ngens=2 nrels=5 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y1_p1_m1 ngens=2 nrels=5 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y1_m1_p1 ngens=2 nrels=5 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y1_m1_m1 ngens=2 nrels=5 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y2_p1_p1 ngens=2 nrels=7 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y2_p1_m1 ngens=2 nrels=5 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y2_m1_p1 ngens=2 nrels=7 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1
+honest_y2_m1_m1 ngens=2 nrels=6 abelian=[  ]
+  index<=2 subgroups: 1
+  index<=3 subgroups: 1
+  index<=4 subgroups: 1
+  index<=5 subgroups: 1
+  index<=6 subgroups: 1
+  index<=7 subgroups: 1

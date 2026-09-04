@@ -1,0 +1,14 @@
+{
+ "derived (phi_0 seams, delta = A B^-1 A^-1 B)": "PASS",
+ "certified v2.5.0 (phi_0 seams, delta = A^-1 B^-1 A B)": "FAIL",
+ "identity seams (g_L = g_R, delta = A^-1 B^-1 A B)": "FAIL",
+ "phi_0 seams, delta = AiBiAB": "FAIL",
+ "phi_0 seams, delta = BiABAi": "PASS",
+ "phi_0 seams, delta = ABAiBi": "FAIL",
+ "phi_0 seams, delta = BAiBiA": "FAIL",
+ "phi_0 seams, delta = BiAiBA": "FAIL",
+ "phi_0 seams, delta = AiBABi": "FAIL",
+ "phi_0 seams, delta = BABiAi": "FAIL",
+ "phi_0 seams, delta = ABiAiB": "PASS",
+ "phi_0 seams, delta = ABiAiB, relation delta_L = delta_R": "FAIL"
+}

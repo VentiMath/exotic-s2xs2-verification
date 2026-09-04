@@ -1,0 +1,9 @@
+honest_y1_p1_p1: best residual overall 5.08e-40 (dist from I 5.01e-20); best nontrivial residual 5.03e-01 tr(a)=1.4160+0.0865j tr(b)=1.7141+0.0696j tr(ab)=1.5800+0.0297j
+honest_y1_p1_m1: best residual overall 5.47e-45 (dist from I 1.10e-22); best nontrivial residual 5.05e-02 tr(a)=1.9515+0.0029j tr(b)=2.0361-0.0038j tr(ab)=1.9828-0.0007j
+honest_y1_m1_p1: best residual overall 4.50e-49 (dist from I 1.93e-24); best nontrivial residual 3.83e-01 tr(a)=1.9967-0.0189j tr(b)=2.0420-0.0630j tr(ab)=2.0143-0.2008j
+honest_y1_m1_m1: best residual overall 1.14e-45 (dist from I 1.37e-22); best nontrivial residual 2.51e+00 tr(a)=0.6418+0.2120j tr(b)=-0.5214-0.3523j tr(ab)=-0.9211-0.6471j
+honest_y2_p1_p1: best residual overall 1.64e-35 (dist from I 5.22e-18); best nontrivial residual 5.02e+00 tr(a)=-0.7098-0.0198j tr(b)=-0.1504-0.0062j tr(ab)=0.1891+0.0173j
+honest_y2_p1_m1: best residual overall 3.63e-47 (dist from I 1.00e-23); best nontrivial residual 7.39e-01 tr(a)=3.1166+0.5537j tr(b)=2.0203-0.0886j tr(ab)=2.1932-0.0958j
+honest_y2_m1_p1: best residual overall 7.19e-49 (dist from I 2.20e-24); best nontrivial residual 2.48e+00 tr(a)=-0.1482-0.0000j tr(b)=0.8553-0.0000j tr(ab)=-0.6457-0.0000j
+honest_y2_m1_m1: best residual overall 1.66e-36 (dist from I 4.87e-18); best nontrivial residual 4.44e+00 tr(a)=2.0232-0.0000j tr(b)=0.9366-0.0002j tr(ab)=0.9661-0.0001j
+SL2 SEARCH DONE

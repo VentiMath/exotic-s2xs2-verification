@@ -1,0 +1,23 @@
+{
+ "A1: x at (A1,J2) = geom_x": 0,
+ "A1: y at (A1,J2) = geom_y": 0,
+ "R1[x]: x at (A1,J0) via the radial p-track = x at (A1,J2)  [no puncture]": 0,
+ "R1[y]: y at (A1,J0) via the radial p-track = ring . y at (A1,J2)": 0,
+ "R1[y]: y at (A1,J0) via the radial p-track = ring^-1 . y at (A1,J2)": 44,
+ "R1[y]: y at (A1,J0) = y at (A1,J2) . ring": 45,
+ "R1[y]: y at (A1,J0) = y at (A1,J2) . ring^-1": 39,
+ "ring = geom_M": 44,
+ "ring = geom_M^-1": 0,
+ "band: y via band = B^-1 (y via radial) B": 0,
+ "band: x via band = B^-1 (x via radial) B": 0,
+ "S1: x at (A1,J2) = (y via band)^-1   [x_bottom = y^-1_top]": 0,
+ "S1: x via band = geom_x geom_y        [x_top = (x y)_bottom]": 0,
+ "row (ours): B x B^-1 = y^-1 ring^-1": 0,
+ "row (ours): B x B^-1 = y^-1 ring": 44,
+ "row (ours): B x B^-1 = y^-1 M   [certified before]": 0,
+ "row (inverse loop): B^-1 x B = x y": 0,
+ "row (inverse loop, y): B^-1 y B = (B^-1 M B) x^-1": 0,
+ "row (inverse loop, y): B^-1 y B = M x^-1   [unconjugated meridian]": 39,
+ "row (inverse loop, y): B^-1 y B = M^-1 x^-1": 28,
+ "row (inverse loop, y): B^-1 y B = (B^-1 M^-1 B) x^-1": 42
+}

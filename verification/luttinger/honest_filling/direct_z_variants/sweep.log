@@ -1,0 +1,20 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+RESULT ctrl_fiber_seams_only exit=2 confluent=0 trivial_eqs=12
+RESULT ctrl_wrong_fiber_seams_plus_delta exit=0 confluent=1 trivial_eqs=12
+RESULT ctrl_delta_only_no_fiber_seams exit=2 confluent=0 trivial_eqs=12
+RESULT prod_AiBiAB exit=0 confluent=1 trivial_eqs=12
+RESULT eqn_AiBiAB exit=0 confluent=1 trivial_eqs=12
+RESULT prod_BiABAi exit=2 confluent=0 trivial_eqs=12
+RESULT eqn_BiABAi exit=0 confluent=1 trivial_eqs=12
+RESULT prod_ABAiBi exit=2 confluent=0 trivial_eqs=12
+RESULT eqn_ABAiBi exit=2 confluent=0 trivial_eqs=12
+RESULT prod_BAiBiA exit=0 confluent=1 trivial_eqs=12
+RESULT eqn_BAiBiA exit=0 confluent=1 trivial_eqs=12
+RESULT prod_BiAiBA exit=0 confluent=1 trivial_eqs=12
+RESULT eqn_BiAiBA exit=0 confluent=1 trivial_eqs=12
+RESULT prod_AiBABi exit=0 confluent=1 trivial_eqs=12
+RESULT eqn_AiBABi exit=0 confluent=1 trivial_eqs=12
+RESULT prod_BABiAi exit=2 confluent=0 trivial_eqs=12
+RESULT eqn_BABiAi exit=2 confluent=0 trivial_eqs=12
+RESULT prod_ABiAiB exit=2 confluent=0 trivial_eqs=12
+RESULT eqn_ABiAiB exit=0 confluent=1 trivial_eqs=12

@@ -1,0 +1,38 @@
+S3: [ "M nontrivial in 0/3", "N nontrivial in 0/3", 
+  "sheet_x nontrivial in 0/3", "corrected_x nontrivial in 0/3", 
+  "drilled_printed nontrivial in 0/3", "drilled_corrected nontrivial in 0/3" ]
+S4: [ "M nontrivial in 0/9", "N nontrivial in 0/9", 
+  "sheet_x nontrivial in 0/9", "corrected_x nontrivial in 0/9", 
+  "drilled_printed nontrivial in 0/9", "drilled_corrected nontrivial in 0/9" ]
+A5: [ "M nontrivial in 0/19", "N nontrivial in 0/19", 
+  "sheet_x nontrivial in 0/19", "corrected_x nontrivial in 0/19", 
+  "drilled_printed nontrivial in 0/19", 
+  "drilled_corrected nontrivial in 0/19" ]
+PSL(2,7): [ "M nontrivial in 0/57", "N nontrivial in 0/57", 
+  "sheet_x nontrivial in 0/57", "corrected_x nontrivial in 0/57", 
+  "drilled_printed nontrivial in 0/57", 
+  "drilled_corrected nontrivial in 0/57" ]
+A6: [ "M nontrivial in 0/53", "N nontrivial in 0/53", 
+  "sheet_x nontrivial in 0/53", "corrected_x nontrivial in 0/53", 
+  "drilled_printed nontrivial in 0/53", 
+  "drilled_corrected nontrivial in 0/53" ]
+PSL(2,8): [ "M nontrivial in 0/142", "N nontrivial in 0/142", 
+  "sheet_x nontrivial in 0/142", "corrected_x nontrivial in 0/142", 
+  "drilled_printed nontrivial in 0/142", 
+  "drilled_corrected nontrivial in 0/142" ]
+PSL(2,11): [ "M nontrivial in 0/254", "N nontrivial in 0/254", 
+  "sheet_x nontrivial in 0/254", "corrected_x nontrivial in 0/254", 
+  "drilled_printed nontrivial in 0/254", 
+  "drilled_corrected nontrivial in 0/254" ]
+S5: [ "M nontrivial in 0/58", "N nontrivial in 0/58", 
+  "sheet_x nontrivial in 0/58", "corrected_x nontrivial in 0/58", 
+  "drilled_printed nontrivial in 0/58", 
+  "drilled_corrected nontrivial in 0/58" ]
+S6: [ "M nontrivial in 0/159", "N nontrivial in 0/159", 
+  "sheet_x nontrivial in 0/159", "corrected_x nontrivial in 0/159", 
+  "drilled_printed nontrivial in 0/159", 
+  "drilled_corrected nontrivial in 0/159" ]
+A7: [ "M nontrivial in 0/917", "N nontrivial in 1/917", 
+  "sheet_x nontrivial in 0/917", "corrected_x nontrivial in 0/917", 
+  "drilled_printed nontrivial in 0/917", 
+  "drilled_corrected nontrivial in 0/917" ]

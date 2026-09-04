@@ -1,0 +1,57 @@
+sheet relations: 30
+sheet only: abelian [ 0, 0 ]
+sheet+alpha: abelian [ 0 ]  sheet+beta: [ 0 ]  both: [  ]
+  A*x*A^-1*r^-1
+  A*y*A^-1*s^-1
+  A*r*A^-1*x^-1
+  A*s*A^-1*y^-1*N^-1
+  B*y*B^-1*x^-1*y^-1*M
+  B*r*B^-1*r^-1
+  B*s*B^-1*s^-1*r^-1*M*r
+  x*y*x^-1*y^-1*r*s*r^-1*s^-1
+  A^-1*r*A*x^-1
+  s*A*y^-1*A^-1
+  B*r^-1*B^-1*r
+  A*M*x^-1*A^-1*M^-1*r
+  x*M*A^-1*r^-1*M^-1*A
+  M^-1*A*r^-1*M*r*A^-1
+  M*B*y*B^-1*x^-1*y^-1
+  s*B^-1*s^-1*r^-1*M*B*r
+  x*M*B*y^-1*x^-1*s*B^-1*s^-1
+  r^-1*B*A*x*r*A^-1*y*B^-1*x^-1
+  y*B^-1*x^-1*B*x*A*y^-1*x^-1*A^-1*r*s
+  s*r*s^-1*r^-1*N^-1*A*s*A^-1*x*y^-1*x^-1
+  s*r^-1*s^-1*r^-1*A*x*y*x*y^-1*x^-1*A^-1*r
+  x*y*x*y^-1*x^-1*r^-1*A*x*y*x*y^-1*x^-1*r^-1*A^-1
+  r*s*A*B^-1*x^-1*A^-1*M^-1*y*r*A*B*A^-1*s^-1*r^-1*y^-1
+  M*B*A*x*y*x*y^-1*x^-1*A^-1*B^-1*M^-1*A^-1*x*y*x^-1*y^-1*x^-1*A
+  r^-1*A*x*y*x*y^-1*x^-1*r^-1*y*x*y^-1*x^-1*A^-1*y*B^-1*x*B*y^-1*x*y^-1*x^-1
+  r^-1*B^-1*M^-1*A^2*M*(r*A^-1)^2*B*y^-1*x^-1
+  B*x*B^-1*M^-1*y
+  B*s^-1*r^-1*y*x*B^-1*M^-1*x^-1*s*r
+  M*A*x*M^-1*x^-1*A^-1
+  A^-1*N*A*r^-1*M*r*B*A^-1*N^-1*A*B^-1*r^-1*M^-1*r
+honest_y1_p1_p1 sheet+fill: overflow
+honest_y1_p1_p1 sheet+Wrows+fill: overflow
+honest_y1_p1_p1 sheet+Wrows+fill+[B,M]: index 1
+honest_y1_p1_m1 sheet+fill: overflow
+honest_y1_p1_m1 sheet+Wrows+fill: overflow
+honest_y1_p1_m1 sheet+Wrows+fill+[B,M]: index 1
+honest_y1_m1_p1 sheet+fill: overflow
+honest_y1_m1_p1 sheet+Wrows+fill: overflow
+honest_y1_m1_p1 sheet+Wrows+fill+[B,M]: index 1
+honest_y1_m1_m1 sheet+fill: overflow
+honest_y1_m1_m1 sheet+Wrows+fill: overflow
+honest_y1_m1_m1 sheet+Wrows+fill+[B,M]: index 1
+honest_y2_p1_p1 sheet+fill: overflow
+honest_y2_p1_p1 sheet+Wrows+fill: overflow
+honest_y2_p1_p1 sheet+Wrows+fill+[B,M]: index 1
+honest_y2_p1_m1 sheet+fill: overflow
+honest_y2_p1_m1 sheet+Wrows+fill: overflow
+honest_y2_p1_m1 sheet+Wrows+fill+[B,M]: index 1
+honest_y2_m1_p1 sheet+fill: overflow
+honest_y2_m1_p1 sheet+Wrows+fill: overflow
+honest_y2_m1_p1 sheet+Wrows+fill+[B,M]: index 1
+honest_y2_m1_m1 sheet+fill: overflow
+honest_y2_m1_m1 sheet+Wrows+fill: overflow
+honest_y2_m1_m1 sheet+Wrows+fill+[B,M]: index 1

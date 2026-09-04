@@ -1,0 +1,21 @@
+IDENTITY   A1: x at (A1,J2) = geom_x
+IDENTITY   A1: y at (A1,J2) = geom_y
+IDENTITY   R1[x]: x at (A1,J0) via the radial p-track = x at (A1,J2)  [no puncture]
+IDENTITY   R1[y]: y at (A1,J0) via the radial p-track = ring . y at (A1,J2)
+residual  44   R1[y]: y at (A1,J0) via the radial p-track = ring^-1 . y at (A1,J2)
+residual  45   R1[y]: y at (A1,J0) = y at (A1,J2) . ring
+residual  39   R1[y]: y at (A1,J0) = y at (A1,J2) . ring^-1
+residual  44   ring = geom_M
+IDENTITY   ring = geom_M^-1
+IDENTITY   band: y via band = B^-1 (y via radial) B
+IDENTITY   band: x via band = B^-1 (x via radial) B
+IDENTITY   S1: x at (A1,J2) = (y via band)^-1   [x_bottom = y^-1_top]
+IDENTITY   S1: x via band = geom_x geom_y        [x_top = (x y)_bottom]
+IDENTITY   row (ours): B x B^-1 = y^-1 ring^-1
+residual  44   row (ours): B x B^-1 = y^-1 ring
+IDENTITY   row (ours): B x B^-1 = y^-1 M   [certified before]
+IDENTITY   row (inverse loop): B^-1 x B = x y
+IDENTITY   row (inverse loop, y): B^-1 y B = (B^-1 M B) x^-1
+residual  39   row (inverse loop, y): B^-1 y B = M x^-1   [unconjugated meridian]
+residual  28   row (inverse loop, y): B^-1 y B = M^-1 x^-1
+residual  42   row (inverse loop, y): B^-1 y B = (B^-1 M^-1 B) x^-1

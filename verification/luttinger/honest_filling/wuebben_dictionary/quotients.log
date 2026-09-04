@@ -1,0 +1,29 @@
+sheet relations: 30
++[A,N_grid]: index 1
++[B,M]: index 1
++[B,M]^2: index 1
++[B,M]^3: index 1
++[B,M]^4: overflow
++[B,M]^5: overflow
++[B,M]^6: overflow
++[[B,M],B]: index 1
++[[B,M],M]: index 1
++[[B,M],A]: index 1
++[[B,M],x]: index 1
++[[B,M],[A,N_grid]]: index 1
++[B,M]=[A,N_grid]: index 1
++[B,M]=[A,N_grid]^-1: index 1
++[B,M]^2=[A,N_grid]: index 1
++B commutes with Ax: index 1
++A commutes with r^-1MrB (lb_b_s2): index 1
++[A,B]: index 1
++[A,B]^2: index 1
++[x,M]: index 1
++[B,N]: index 1
++[A,M]: index 1
++[A,N]: index 1
++[M,N]: index 1
++M^2: index 1
++M^3: index 1
++A^2: index 1
++B^2: index 1

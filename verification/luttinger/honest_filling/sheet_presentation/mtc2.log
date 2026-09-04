@@ -1,0 +1,18 @@
+P: 8 gens, 19 relators, lengths [ 4, 4, 4, 4, 6, 6, 6, 6, 7, 8, 9, 11, 11, 
+  12, 13, 14, 15, 18, 21 ]
+geom_M_y2: length 909
+lb_a_y2: length 628
+geom_M: length 1179
+lb_a_y1: length 1206
+Ngrid: length 1192
+lbs2: length 1048
+geom_N: length 2362
+A^-1 geom_N A * Ngrid = 1 in FP? false
+P(Q on sheet loops) y1 sealed: [ "overflow/15271ms", "overflow/14602ms", 
+  "overflow/14774ms", "overflow/14644ms" ]
+P(Q on sheet loops) y1 honest: [ "overflow/11958ms", "overflow/11882ms", 
+  "overflow/11957ms", "overflow/11860ms" ]
+P(Q on sheet loops) y2 sealed: [ "overflow/13603ms", "overflow/13282ms", 
+  "overflow/13358ms", "overflow/13410ms" ]
+P(Q on sheet loops) y2 honest: [ "overflow/10433ms", "overflow/10449ms", 
+  "overflow/10579ms", "overflow/10629ms" ]

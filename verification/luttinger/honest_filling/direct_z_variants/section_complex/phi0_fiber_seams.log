@@ -1,0 +1,6 @@
+phi_0 is an involution on all 86 fiber vertices: True
+phi_0 fixes p: True
+phi_0(x) = r as literal based edge paths (length 10): True
+phi_0(y) = s as literal based edge paths (length 10): True
+phi_0(r) = x as literal based edge paths (length 10): True
+phi_0(s) = y as literal based edge paths (length 10): True

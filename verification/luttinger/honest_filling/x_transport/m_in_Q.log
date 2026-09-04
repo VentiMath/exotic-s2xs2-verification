@@ -1,0 +1,151 @@
+AbelianInvariants(Q) = [ 0, 0 ]
+image of M in Q^ab: <identity ...>  trivial? true
+image of N in Q^ab: <identity ...>  trivial? true
+image of [B,M] in Q^ab trivial? true
+exponent vector of x: [ 0, 0, 1 ]
+exponent vector of y: [ 0, 0, 0 ]
+exponent vector of r: [ 0, 0, 1 ]
+exponent vector of s: [ 0, 0, 0 ]
+exponent vector of A: [ 0, 1, 1 ]
+exponent vector of B: [ -1, 0, -3 ]
+exponent vector of M: [ 0, 0, 1 ]
+exponent vector of N: [ 0, 0, 0 ]
+exponent vectors of the 78 relators span rank: 1
+low index subgroups of Q to index 5 ...
+  count: 135
+  index 1: M in U? true   [B,M] in U? true
+  index 2: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 2: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 2: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 3: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 4: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+  index 5: M in U? true   [B,M] in U? true
+coset enumeration Q over <M> (limit 2000000): OVERFLOW

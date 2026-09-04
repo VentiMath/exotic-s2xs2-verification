@@ -1,0 +1,21 @@
+== algebraic dictionary (M -> B M B^-1)
+   IDENTITY   B1: B x B^-1 = y_W^-1
+   IDENTITY   M2 (e4=-1): B y_W B^-1 = M_W^-1 y_W x
+   residual  50   M2 (e4=+1): B y_W B^-1 = M_W y_W x
+   IDENTITY   M3 (e=-1): B s_W B^-1 = d M_W^-1 d^-1 s_W, d = r^-1
+   residual  52   M3 (e=+1): B s_W B^-1 = d M_W d^-1 s_W, d = r^-1
+   residual  35   F1_W (eA=+1) = M_W A x
+   residual  45   F1_W (eA=+1) . (M A x)^-1   == ['[B,M] = B M B^-1 M^-1']
+== geometric map (M -> M)
+   IDENTITY   B1: B x B^-1 = y_W^-1
+   residual  50   M2 (e4=-1): B y_W B^-1 = M_W^-1 y_W x   == ['[B,M^-1] = B M^-1 B^-1 M']
+   residual  35   M2 (e4=+1): B y_W B^-1 = M_W y_W x   == ['B M^-1 B^-1 M^-1 (M2/M3 with the other sign)']
+   residual  50   M3 (e=-1): B s_W B^-1 = d M_W^-1 d^-1 s_W, d = r^-1
+   residual  26   M3 (e=+1): B s_W B^-1 = d M_W d^-1 s_W, d = r^-1
+   residual  28   F1_W (eA=+1) = M_W A x   == ['M A x (derived filling)']
+   IDENTITY   F1_W (eA=+1) . (M A x)^-1
+== explicit quotients under the geometric map (M_W = M)
+   IDENTITY   M2 (e4=-1) relator . [B,M^-1]^-1
+   IDENTITY   M3 (e=-1) relator . (r^-1 [B,M^-1] r)^-1
+   IDENTITY   M3 (e=+1) relator . (r^-1 B M^-1 B^-1 M^-1 r)^-1
+   IDENTITY   M2 (e4=+1) relator . (B M^-1 B^-1 M^-1)^-1

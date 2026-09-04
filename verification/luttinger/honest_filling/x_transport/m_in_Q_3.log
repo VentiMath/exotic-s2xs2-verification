@@ -1,0 +1,10 @@
+n = 3: index 9
+   H1(U) = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+   M trivial in H1(U)? true   [B,M] trivial? true
+n = 4: index 16
+   H1(U) = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+   M trivial in H1(U)? true   [B,M] trivial? true
+n = 5: index 25
+   H1(U) = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+  0, 0, 0, 0, 0 ]
+   M trivial in H1(U)? true   [B,M] trivial? true
