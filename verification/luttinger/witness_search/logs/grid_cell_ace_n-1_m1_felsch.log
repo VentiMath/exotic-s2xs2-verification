@@ -1,0 +1,5 @@
+ACE felsch, cell (n,m)=(-1,1), workspace 480000000 words
+(n,m)=(-1,1): ACE index=0 activecosets=29642175 maxcosets=29642175 totcosets=
+29999998  0s
+(n,m)=(-1,1): ACE did not close (index 0 = overflow)
+RESULT exit=0

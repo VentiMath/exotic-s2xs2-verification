@@ -1,0 +1,7 @@
+grid 3x3 on the displayed (+,+) sheet [0s]
+(n,m)=(-1,-1): overflow at 4000000, 2s
+(n,m)=(-1,-1): overflow at 16000000, 12s
+(n,m)=(-1,-1): overflow at 32000000, 25s
+(n,m)=(-1,-1): H1=[  ]  UNDECIDED: overflow at 32000000 cosets
+Error, no method found! For debugging hints type ?Recovery from NoMethodFound
+Error, no 2nd choice method found for `InverseSameMutability' on 1 arguments

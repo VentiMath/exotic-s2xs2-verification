@@ -1,0 +1,13 @@
+stage 1: 24 cases, coset ceiling 4000000
+case 1 ours (-1,-1) e=[ 1, -1, -1, 1, 1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 2 ours (-1,-1) e=[ 1, -1, -1, 1, -1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 3 ours (-1,-1) e=[ 1, -1, -1, -1, 1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 4 ours (-1,-1) e=[ 1, -1, -1, -1, -1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 5 ours (0,-1) e=[ 1, -1, -1, 1, 1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 6 ours (0,-1) e=[ 1, -1, -1, 1, -1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 7 ours (0,-1) e=[ 1, -1, -1, -1, 1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 8 ours (0,-1) e=[ 1, -1, -1, -1, -1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 9 ours (1,-1) e=[ 1, -1, -1, 1, 1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 10 ours (1,-1) e=[ 1, -1, -1, 1, -1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 11 ours (1,-1) e=[ 1, -1, -1, -1, 1 ]: H1=0  enum(4000000) OVERFLOW  2s
+case 12 ours (1,-1) e=[ 1, -1, -1, -1, -1 ]: H1=0  enum(4000000) OVERFLOW  2s

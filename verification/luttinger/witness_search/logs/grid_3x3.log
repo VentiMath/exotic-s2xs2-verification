@@ -1,0 +1,23 @@
+grid 3x3 on the displayed (+,+) sheet [0s]
+(n,m)=(-1,-1): overflow at 4000000, 2s
+--- relaunch (third attempt, killed unfixed run) ---
+grid 3x3 on the displayed (+,+) sheet [0s]
+(n,m)=(-1,-1): overflow at 4000000, 2s
+(n,m)=(-1,-1): overflow at 16000000, 12s
+(n,m)=(-1,-1): overflow at 32000000, 25s
+(n,m)=(-1,-1): H1=[  ]  UNDECIDED: overflow at 32000000 cosets
+(n,m)=(-1,0): overflow at 4000000, 3s
+(n,m)=(-1,0): overflow at 16000000, 12s
+(n,m)=(-1,0): overflow at 32000000, 24s
+(n,m)=(-1,0): H1=[  ]  UNDECIDED: overflow at 32000000 cosets
+(n,m)=(-1,1): overflow at 4000000, 3s
+(n,m)=(-1,1): overflow at 16000000, 11s
+(n,m)=(-1,1): overflow at 32000000, 23s
+(n,m)=(-1,1): H1=[  ]  UNDECIDED: overflow at 32000000 cosets
+(n,m)=(0,-1): H1=[  ]  |G|=1  closed under 4000000 cosets, 0s
+(n,m)=(0,0): H1=[  ]  |G|=1  closed under 4000000 cosets, 0s
+(n,m)=(0,1): H1=[  ]  |G|=1  closed under 4000000 cosets, 0s
+(n,m)=(1,-1): H1=[  ]  |G|=1  closed under 4000000 cosets, 0s
+(n,m)=(1,0): H1=[  ]  |G|=1  closed under 4000000 cosets, 0s
+(n,m)=(1,1): H1=[  ]  |G|=1  closed under 4000000 cosets, 0s
+grid done [119s]

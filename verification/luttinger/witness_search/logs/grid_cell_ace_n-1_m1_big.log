@@ -1,0 +1,5 @@
+ACE hard, cell (n,m)=(-1,1), workspace 1000000000 words
+(n,m)=(-1,1): ACE index=1 activecosets=1 maxcosets=39024955 totcosets=
+39845696  0s
+(n,m)=(-1,1): |G|=1 by ACE hard
+RESULT exit=0

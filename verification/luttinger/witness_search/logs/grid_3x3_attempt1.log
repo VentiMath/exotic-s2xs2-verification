@@ -1,0 +1,22 @@
+grid 3x3 on the displayed (+,+) sheet, Size ladder to 32M, [0s]
+Syntax warning: Unbound global variable in grid_3x3.g:13
+  res := CALL_WITH_CATCH(function() return Size(G); end, []);
+                                                ^
+Error, the coset enumeration has defined more than 32000001 cosets
+Stack trace:
+*[1] Error( "the coset enumeration has defined more ", "than ", DATA.limit, 
+ " cosets\n" );
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/sgpres.gi:2390
+ [2] NEWTC_Define( DATA, i, a )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/sgpres.gi:3106
+ [3] NEWTC_DoCosetEnum( freegens, freerels, subgens, aug, trace )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/sgpres.gi:3254
+ [4] NEWTC_CosetEnumerator( FreeGeneratorsOfFpGroup( G ), 
+ RelatorsOfFpGroup( G ), GeneratorsOfGroup( H ), true, false )
+   @ /Users/johnclyde/opt/gap-4.16.1/lib/grpfp.gi:3937
+ [5] Size( G )
+   @ grid_3x3.g:13
+...  at grid_3x3.g:19
+you can 'quit;' to quit to outer loop, or
+you can 'return;' to continue
+[1m[34m[0m[31m
