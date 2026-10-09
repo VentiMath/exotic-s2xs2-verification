@@ -1,6 +1,27 @@
-# An exotic S²×S² from a certificate-checked surface-bundle surgery manifold
+# Exotic S²×S² verification investigation (discontinued)
 
-> **Status, 3 September 2026 — the headline below is withdrawn as unproven.**
+> [!IMPORTANT]
+> **Project status — October 9, 2026**
+>
+> VentiMath discontinued active investigation in early September 2026 after
+> losing confidence in the claimed exotic-manifold construction.
+>
+> Wuebben's [author's notice](https://github.com/bwuebben/exotic-s2xs2#readme)
+> acknowledges issues in the geometric derivation of the fundamental-group
+> relations and states that the claimed simple connectivity and exotic-manifold
+> consequences are **not established**. The author reports that he is working
+> on a repair.
+>
+> This repository is retained as a historical research and audit record. It
+> **does not establish an exotic S²×S² construction and should not be cited as a
+> verification of one**. Earlier claims in this README, manuscripts, or releases
+> that the construction or its exotic consequences were established are
+> superseded by this notice and the September 3 correction below. Individual
+> computations and earlier materials remain available for transparency.
+
+## Technical correction recorded September 3, 2026
+
+> **Our claimed construction is withdrawn as unproven.**
 > On 2 September the sealed filling relators were found not to be Dehn-filling
 > relators of the surgery tori as based: the beta relator pairs a meridian
 > whiskered along `A` then `s_2` with a longitude whiskered along `s_2` alone.
@@ -16,6 +37,11 @@
 > and the project journal for the record. Lidman and Piccirillo report a
 > computation in which the corresponding group is nontrivial (Wuebben's README,
 > and correspondence of 31 August); it is not yet public.
+
+## Historical project description
+
+The description below records earlier claims and must be read subject to the
+status notice and technical correction above.
 
 This repository contains the manuscript, supplement, and proof artifacts for
 an explicit marked surface-bundle surgery manifold `V_aud` and its double.
